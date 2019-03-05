@@ -1,0 +1,28 @@
+---
+layout: post
+title: "guice 手册"
+subtitle: ""
+date: 2015-02-16 14:14:00
+author: Le
+header_img: "img/post-bg-2015.jpg"
+tags:
+    - DI
+    - IoC
+    - AOP
+    - java
+    - guice
+    - spring
+---
+
+
+
+> Guice provides the best of both worlds and finally enables agile programming in Java[More](http://blog.crazybob.org/2007/10/guice-interview-on-tss.html). -- Bob Lee
+
+
+
+## Why Guice
+
+---
+
+Java 的世界里，轮子太多，结果在开始一件事情或者一个项目之前，伤脑筋的却是选择哪些轮子来构建自己的应用。也许需要思考这个问题，那选择 Java 可能本身就是一个错误。
+

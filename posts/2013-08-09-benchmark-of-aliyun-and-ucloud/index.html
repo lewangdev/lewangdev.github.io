@@ -1,0 +1,1110 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8">
+    <meta name="generator" content="Hugo 0.40.1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>阿里云和 ucloud 云主机评测 | 小码哥的博客</title>
+    <meta property="og:title" content="阿里云和 ucloud 云主机评测 - 小码哥的博客">
+    <meta property="og:type" content="article">
+        
+    <meta property="article:published_time" content="2013-08-09T00:40:00&#43;08:00">
+        
+        
+    <meta property="article:modified_time" content="2013-08-09T00:40:00&#43;08:00">
+        
+    <meta name="Keywords" content="IoT, 物联网, 智能硬件，工业互联网方案，智能家居, 智慧工厂, 智慧建筑, Golang, Java, JVM, Python, 树莓派, Linux 玩家，果粉，系统架构，技术管理">
+    <meta name="description" content="阿里云和 ucloud 云主机评测">
+        <meta name="author" content="Le">
+        
+    <meta property="og:url" content="https://127.0.0.1/posts/2013-08-09-benchmark-of-aliyun-and-ucloud/">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="/css/normalize.css">
+    
+        <link rel="stylesheet" href="/css/prism.css">
+    
+    <link rel="stylesheet" href="/css/style.css">
+    <script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+
+    
+
+
+    
+    
+</head>
+
+<body>
+<header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="https://127.0.0.1/">
+                        小码哥的博客
+                    </a>
+                
+                <p class="description">Work hard, Play harder</p>
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="" href="https://127.0.0.1/">首页</a>
+                    
+                    <a  href="https://127.0.0.1/tags/" title="标签">标签</a>
+                    
+                    <a  href="https://127.0.0.1/archives/" title="归档">归档</a>
+                    
+                    <a  href="https://127.0.0.1/about/" title="关于">关于</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+<div id="body">
+    <div class="container">
+        <div class="col-group">
+
+            <div class="col-8" id="main">
+                <div class="res-cons">
+                    <article class="post">
+                        <header>
+                            <h1 class="post-title">阿里云和 ucloud 云主机评测</h1>
+                        </header>
+                        <date class="post-meta meta-date">
+                            2013年8月9日
+                        </date>
+                        
+                        
+                        <div class="post-content">
+                            
+
+<h2 id="总体说明">总体说明</h2>
+
+<p>我使用联通10M光网，SSH在多个时间段登录两个主机都是非常的快，但是阿里云的SSH有时会断开连接，需要重新登录(<em>一天遇到n次</em>)，ucloud一次都没有断开连接过。两者总体操作上都很流畅。平时我比较习惯于使用ubuntu，于是在两个主机上都安装了Ubuntu 12.04_64的Server版本。在安装初始化系统过程中(测试过两次)，Ucloud的速度要快于阿里云主机，粗略估计都是在20s以内，因此差别不大。</p>
+
+<p>阿里云主机安装过程中不需要人为参与，选好主机配置即可，主机一旦创建完成，用户名和口令会发送到测试者手机上，而且直接发送的是root账户口令。Ucloud除了选择配置之外，还需要设置强登录密码，使用普通用户登录，感觉更geek一点。</p>
+
+<p>默认情况配置下，关闭重启服务器，Ucloud会发送主机变化短信到手机，阿里云不会。阿里云在系统负载预警方面比较全面，ucloud侧重于server上在线状态和相关服务的预警。</p>
+
+<p>在试用和测试过程中我主要偏向于静态的测试，后面还有一个好玩的 Super PI 测试。</p>
+
+<p>阿里云和ucloud都是主机，和实际的服务器使用上没有什么区别。另外阿里云有paas，需要单独购买，目前支持php和nodejs，一些基本的服务如memcached等都可直接使用。</p>
+
+<p>如果做互备，如果我们不使用这两个云平台各自特有的一些服务(主要是阿里云有一些如开放存储服务OSS等)，相互切换难度上应该是差不多的。</p>
+
+<h2 id="主机概览">主机概览</h2>
+
+<table>
+<thead>
+<tr>
+<th align="left">项目</th>
+<th align="left">阿里云</th>
+<th align="left">ucloud</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">按量付费</td>
+<td align="left">支持(不能升级或者调整主机配置<sup>*</sup>)</td>
+<td align="left">不支持</td>
+</tr>
+
+<tr>
+<td align="left">包年包月</td>
+<td align="left">支持</td>
+<td align="left">支持</td>
+</tr>
+
+<tr>
+<td align="left">操作系统</td>
+<td align="left">可重置</td>
+<td align="left">可重装</td>
+</tr>
+
+<tr>
+<td align="left">CPU升级</td>
+<td align="left">支持(需要关机)</td>
+<td align="left">支持(需要关机)</td>
+</tr>
+
+<tr>
+<td align="left">内存升级</td>
+<td align="left">支持(需要关机)</td>
+<td align="left">支持(需要关机)</td>
+</tr>
+
+<tr>
+<td align="left">磁盘扩容</td>
+<td align="left">支持，可以升级或者添加新的磁盘，最大为2000G</td>
+<td align="left">支持，可以扩容最大到1000G（与系统盘在同一个主机上），</br/>或者添加新的网络磁盘udisk</td>
+</tr>
+
+<tr>
+<td align="left">磁盘镜像</td>
+<td align="left">支持</td>
+<td align="left">支持</td>
+</tr>
+
+<tr>
+<td align="left">带宽升级</td>
+<td align="left">支持</td>
+<td align="left">支持</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="其它服务-需要单独购买">其它服务[需要单独购买]</h2>
+
+<table>
+<thead>
+<tr>
+<th align="left">项目</th>
+<th align="left">阿里云</th>
+<th align="left">ucloud</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">负载均衡服务</td>
+<td align="left">支持(目前免费)，需要两台主机以上</td>
+<td align="left">支持(目前免费)，需要两台主机以上</td>
+</tr>
+
+<tr>
+<td align="left">关系型数据库服务</td>
+<td align="left">支持，mysql和sqlserver</td>
+<td align="left">支持，mysql和percona</td>
+</tr>
+
+<tr>
+<td align="left">特有的服务</td>
+<td align="left">开放存储服务 OSS、开放数据处理服务 ODPS、开放结构化数据服务 OTS</td>
+<td align="left">CDN、短信服务（可二次开发）、与又拍、DNSPod和搜狐SendCloud直接绑定</td>
+</tr>
+</tbody>
+</table>
+
+<p><em><sup>*</sup>按量付费不支持更换操作系统；不支持配置变更功能（包括带宽升级、CPU和内存升级、新增数据盘）;“包年包月“和”按量付费“不支持相互更换;1台云服务器只能选择1种，无法同时选择</em></p>
+
+<h2 id="收费结构-参考">收费结构(参考)</h2>
+
+<table>
+<thead>
+<tr>
+<th align="left">项目</th>
+<th align="left">阿里云</th>
+<th align="left">ucloud</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">价格动态计算</td>
+<td align="left"><a href="http://buy.aliyun.com/">http://buy.aliyun.com/</a></td>
+<td align="left"><a href="http://www.ucloud.cn/price">http://www.ucloud.cn/price</a></td>
+</tr>
+
+<tr>
+<td align="left">1核CPU/2GB内存/100G数据盘/10M带宽</td>
+<td align="left">8,620元/年</td>
+<td align="left">5,200元/年</td>
+</tr>
+
+<tr>
+<td align="left">2核CPU/4GB内存/100G数据盘/10M带宽</td>
+<td align="left">10,590元/年</td>
+<td align="left">6,900元/年</td>
+</tr>
+
+<tr>
+<td align="left">4核CPU/16GB内存/1000G数据盘/10M带宽</td>
+<td align="left">24,030元/年</td>
+<td align="left">19,800元/年</td>
+</tr>
+
+<tr>
+<td align="left">4核CPU/16GB内存/1000G数据盘/20M带宽</td>
+<td align="left">3,4030元/年</td>
+<td align="left">24,900元/年</td>
+</tr>
+
+<tr>
+<td align="left">2核CPU/4GB内存/100G数据盘/20M带宽</td>
+<td align="left">20,590元/年</td>
+<td align="left">11,400元/年</td>
+</tr>
+
+<tr>
+<td align="left">4核CPU/8GB内存/100G数据盘/20M带宽</td>
+<td align="left">24,530元/年</td>
+<td align="left">14,800元/年</td>
+</tr>
+
+<tr>
+<td align="left">……</td>
+<td align="left">……</td>
+<td align="left">……</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="试用情况">试用情况</h2>
+
+<table>
+<thead>
+<tr>
+<th align="left">项目</th>
+<th align="left">阿里云</th>
+<th align="left">ucloud</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">主机名</td>
+<td align="left">aliyun-s1</td>
+<td align="left">ucloud-s1</td>
+</tr>
+
+<tr>
+<td align="left">用户名</td>
+<td align="left">root</td>
+<td align="left">ubuntu[默认普通用户权限]</td>
+</tr>
+
+<tr>
+<td align="left">登录口令</td>
+<td align="left">自动生成默认密码，弱密码</td>
+<td align="left">必须设置强密码</td>
+</tr>
+
+<tr>
+<td align="left">数据中心</td>
+<td align="left">华东青岛BGP</td>
+<td align="left">北京BGP(2M)，客服推荐使用北京BGP，另外还有华东双线可选</td>
+</tr>
+
+<tr>
+<td align="left">CPU</td>
+<td align="left">2核Intel&reg; Xeon&reg; CPU E5-2420 0 @ 1.90GHz</td>
+<td align="left">2核QEMU Virtual CPU version (cpu64-rhel6)</td>
+</tr>
+
+<tr>
+<td align="left">内存</td>
+<td align="left">1.5GB</td>
+<td align="left">2GB</td>
+</tr>
+
+<tr>
+<td align="left">系统盘[ 免费]</td>
+<td align="left">20GB</td>
+<td align="left">20GB</td>
+</tr>
+
+<tr>
+<td align="left">OS</td>
+<td align="left">Ubuntu 12.04 64位[只有64位]，支持Centos(5.7,5.8,6.3)、Debian 6.06、Ubuntu 12.04, RHEL(5.4,5.7)、Windows(2003,2008r2)等64位版本</td>
+<td align="left">Ubuntu 12.04 64位，比阿里云支持更多的OS，并且都有32位版本可选</td>
+</tr>
+
+<tr>
+<td align="left">uptime</td>
+<td align="left">10:44:11 up 54 min, 1 user, load average: 0.00, 0.01, 0.04</td>
+<td align="left">10:44:11 up 54 min, 1 user, load average: 0.00, 0.01, 0.04</td>
+</tr>
+
+<tr>
+<td align="left">监控</td>
+<td align="left">默认没有发送短信</td>
+<td align="left">默认情况下会发送主机状态变化到注册者手机</td>
+</tr>
+</tbody>
+</table>
+
+<p>##监控和预警</p>
+
+<p>###站点可用性监控</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">项目</th>
+<th align="left">阿里云</th>
+<th align="left">ucloud</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">ping</td>
+<td align="left">支持</td>
+<td align="left">支持</td>
+</tr>
+
+<tr>
+<td align="left">端口或协议</td>
+<td align="left">支持，傻瓜式，预制好了一些常用的，如HTTP监控、TCP端口监控、UDP监控、DNS监控、POP3监控、SMTP监控、FTP监控</td>
+<td align="left">需要自己定义端口和监控策略</td>
+</tr>
+
+<tr>
+<td align="left">预警</td>
+<td align="left">短信或者邮件</td>
+<td align="left">短信或者邮件</td>
+</tr>
+</tbody>
+</table>
+
+<p>###服务器监控</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">项目</th>
+<th align="left">阿里云</th>
+<th align="left">ucloud</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">内容</td>
+<td align="left">CPU利用率监控、内存利用率监控、磁盘利用率监控、网络流量监控、进程状态监控、进程数量监控、进程CPU资源监控、进程内存资源监控、TCP连接数监控、Swap利用率监控、CPU负载(load)监控、Filesystem可用性监控、服务监控、日志监控</td>
+<td align="left">无，有数据视图，需要登录查看系统负载状态</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="ping测试">ping测试</h2>
+
+<h3 id="测试工具">测试工具</h3>
+
+<ul>
+<li><a href="http://ping.chinaz.com/">http://ping.chinaz.com/</a></li>
+</ul>
+
+<h3 id="测试结果">测试结果</h3>
+
+<p><strong>阿里云(IP:115.28.3.138)</strong></p>
+
+<table>
+<thead>
+<tr>
+<th align="left">线路</th>
+<th align="left">最快节点</th>
+<th align="left">响应</th>
+<th align="left">最慢节点</th>
+<th align="left">响应</th>
+<th align="left">平均响应</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">所有线路</td>
+<td align="left">上海[电信]</td>
+<td align="left">13 毫秒</td>
+<td align="left">德国[海外]</td>
+<td align="left">311 毫秒</td>
+<td align="left">73毫秒</td>
+</tr>
+
+<tr>
+<td align="left">电信</td>
+<td align="left">上海[电信]</td>
+<td align="left">13 毫秒</td>
+<td align="left">香港[电信]</td>
+<td align="left">187 毫秒</td>
+<td align="left">62 毫秒</td>
+</tr>
+
+<tr>
+<td align="left">多线</td>
+<td align="left">上海[多线]</td>
+<td align="left">22 毫秒</td>
+<td align="left">北京[多线]</td>
+<td align="left">39 毫秒</td>
+<td align="left">30 毫秒</td>
+</tr>
+
+<tr>
+<td align="left">联通</td>
+<td align="left">北京[联通]</td>
+<td align="left">16 毫秒</td>
+<td align="left">泉州[联通]</td>
+<td align="left">65 毫秒</td>
+<td align="left">38 毫秒</td>
+</tr>
+
+<tr>
+<td align="left">移动</td>
+<td align="left">上海[移动]</td>
+<td align="left">22 毫秒</td>
+<td align="left">河北[移动]</td>
+<td align="left">68 毫秒</td>
+<td align="left">38毫秒</td>
+</tr>
+
+<tr>
+<td align="left">海外</td>
+<td align="left">香港[海外]</td>
+<td align="left">46毫秒</td>
+<td align="left">德国[海外]</td>
+<td align="left">311 毫秒</td>
+<td align="left">165 毫秒</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>ucloud(IP:42.62.56.129)</strong></p>
+
+<table>
+<thead>
+<tr>
+<th align="left">线路</th>
+<th align="left">最快节点</th>
+<th align="left">响应</th>
+<th align="left">最慢节点</th>
+<th align="left">响应</th>
+<th align="left">平均响应</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">所有线路</td>
+<td align="left">北京[联通]</td>
+<td align="left">3 毫秒</td>
+<td align="left">德国[海外]</td>
+<td align="left">403 毫秒</td>
+<td align="left">64 毫秒</td>
+</tr>
+
+<tr>
+<td align="left">电信</td>
+<td align="left">陕西西安[电信]</td>
+<td align="left">21 毫秒</td>
+<td align="left">四川绵阳[电信]</td>
+<td align="left">53 毫秒</td>
+<td align="left">35 毫秒</td>
+</tr>
+
+<tr>
+<td align="left">多线</td>
+<td align="left">北京[多线]</td>
+<td align="left">4 毫秒</td>
+<td align="left">河南郑州[多线]</td>
+<td align="left">53 毫秒</td>
+<td align="left">28 毫秒</td>
+</tr>
+
+<tr>
+<td align="left">联通</td>
+<td align="left">北京[联通]</td>
+<td align="left">3 毫秒</td>
+<td align="left">深圳[联通]</td>
+<td align="left">73 毫秒</td>
+<td align="left">33 毫秒</td>
+</tr>
+
+<tr>
+<td align="left">移动</td>
+<td align="left">河北[移动]</td>
+<td align="left">26 毫秒</td>
+<td align="left">福建厦门[移动]</td>
+<td align="left">45 毫秒</td>
+<td align="left">35 毫秒</td>
+</tr>
+
+<tr>
+<td align="left">海外</td>
+<td align="left">韩国[海外]</td>
+<td align="left">49 毫秒</td>
+<td align="left">德国[海外]</td>
+<td align="left">403 毫秒</td>
+<td align="left">186 毫秒</td>
+</tr>
+</tbody>
+</table>
+
+<p>经过多次ping测试，ucloud要比阿里云快一些。这里使用的客服推荐的各自的BGP网络：阿里云华东青岛机房和ucloud北京BGP机房。</p>
+
+<h2 id="下载测试">下载测试</h2>
+
+<p>在各自主机上使用wget下载<a href="http://mirrors.163.com/ubuntu-releases/13.04/ubuntu-13.04-server-i386.iso">http://mirrors.163.com/ubuntu-releases/13.04/ubuntu-13.04-server-i386.iso</a></p>
+
+<table>
+<thead>
+<tr>
+<th align="left">项目</th>
+<th align="left">阿里云</th>
+<th align="left">ucloud</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">解析后IP</td>
+<td align="left">123.58.173.106</td>
+<td align="left">123.58.173.106</td>
+</tr>
+
+<tr>
+<td align="left">平均速度</td>
+<td align="left">913K/s</td>
+<td align="left">5.41M/s</td>
+</tr>
+</tbody>
+</table>
+
+<p>ucloud下载速度达到了5.41M/s，可能它和网易的镜像比较近吧。好吧，那来测试一下scp吧。
+在各自服务器上都dd一个100M文件出来，然后分别使用scp上传和下载。之后搭建一个Niginx Server来测试一下HTTP。
+新建的20G数据盘情况(tune2fs -l /dev/vdb |grep Block)</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">项目</th>
+<th align="left">阿里云</th>
+<th align="left">ucloud</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">Block Size</td>
+<td align="left">4096</td>
+<td align="left">4096</td>
+</tr>
+</tbody>
+</table>
+
+<p>使用dd创建2000M文件，block大小为8K</p>
+
+<pre><code>dd if=/dev/zero of=file_8k bs=8k count=250k
+</code></pre>
+
+<p>使用dd创建2000M文件，block大小为4K</p>
+
+<pre><code>dd if=/dev/zero of=file_4k bs=4k count=500k
+</code></pre>
+
+<table>
+<thead>
+<tr>
+<th align="left">项目</th>
+<th align="left">阿里云</th>
+<th align="left">ucloud</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">file_8k</td>
+<td align="left">79.3401 s, 26.4 MB/s</td>
+<td align="left">6.84755 s, 306 MB/s</td>
+</tr>
+
+<tr>
+<td align="left">file_4k</td>
+<td align="left">77.6012 s, 27.0 MB/s</td>
+<td align="left">6.36673 s, 329 MB/s</td>
+</tr>
+</tbody>
+</table>
+
+<p><em>ucloud数据盘是和系统盘在一起的，应该不是那种分布式存储，它的udisk估计和阿里云的数据盘比较类似，udisk没有测。</em>
+<strong>使用scp主动拷贝文件</strong></p>
+
+<table>
+<thead>
+<tr>
+<th align="left">项目</th>
+<th align="left">阿里云-&gt;ucloud</th>
+<th align="left">ucloud -&gt;阿里云</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">file_8k</td>
+<td align="left">277.7KB/s</td>
+<td align="left">234.5KB/s</td>
+</tr>
+
+<tr>
+<td align="left">file_4k</td>
+<td align="left">288.8KB/s</td>
+<td align="left">242.4KB/s</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>阿里云ab测试(n=1000, 4.1k大小html文件)</strong></p>
+
+<table>
+<thead>
+<tr>
+<th align="left">并发数</th>
+<th align="left">reqs/s</th>
+<th align="left">平均等待时间</th>
+<th align="left">平均处理时间</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">1</td>
+<td align="left">3751.57</td>
+<td align="left">0.267 ms</td>
+<td align="left">0.267 ms</td>
+</tr>
+
+<tr>
+<td align="left">10</td>
+<td align="left">8809.25</td>
+<td align="left">1.135 ms</td>
+<td align="left">0.114 ms</td>
+</tr>
+
+<tr>
+<td align="left">20</td>
+<td align="left">9596.84</td>
+<td align="left">2.084 ms</td>
+<td align="left">0.104 ms</td>
+</tr>
+
+<tr>
+<td align="left"><strong>50</strong></td>
+<td align="left"><strong>9851.63</strong></td>
+<td align="left"><strong>5.075 ms</strong></td>
+<td align="left"><strong>0.102 ms</strong></td>
+</tr>
+
+<tr>
+<td align="left">100</td>
+<td align="left">9382.89</td>
+<td align="left">10.658 ms</td>
+<td align="left">0.107 ms</td>
+</tr>
+
+<tr>
+<td align="left">150</td>
+<td align="left">8800.88</td>
+<td align="left">17.044 ms</td>
+<td align="left">0.114 ms</td>
+</tr>
+
+<tr>
+<td align="left">200</td>
+<td align="left">6666.13</td>
+<td align="left">30.002 ms</td>
+<td align="left">0.150 ms</td>
+</tr>
+
+<tr>
+<td align="left">500</td>
+<td align="left">3740.30</td>
+<td align="left">133.679 ms</td>
+<td align="left">0.267 ms</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>ucloud ab测试(n=1000, 4.1k大小html文件)</strong></p>
+
+<table>
+<thead>
+<tr>
+<th align="left">并发数</th>
+<th align="left">reqs/s</th>
+<th align="left">平均等待时间</th>
+<th align="left">平均处理时间</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">1</td>
+<td align="left">6135.53</td>
+<td align="left">0.163 ms</td>
+<td align="left">0.163 ms</td>
+</tr>
+
+<tr>
+<td align="left">10</td>
+<td align="left">10202.83</td>
+<td align="left">0.980 ms</td>
+<td align="left">0.098 ms</td>
+</tr>
+
+<tr>
+<td align="left">20</td>
+<td align="left">15624.27</td>
+<td align="left">1.280 ms</td>
+<td align="left">0.064 ms</td>
+</tr>
+
+<tr>
+<td align="left"><strong>50</strong></td>
+<td align="left"><strong>16508.19</strong></td>
+<td align="left"><strong>3.029 ms</strong></td>
+<td align="left"><strong>0.061 ms</strong></td>
+</tr>
+
+<tr>
+<td align="left">100</td>
+<td align="left">14707.14</td>
+<td align="left">6.799 ms</td>
+<td align="left">0.068 ms</td>
+</tr>
+
+<tr>
+<td align="left">150</td>
+<td align="left">14320.49</td>
+<td align="left">10.475 ms</td>
+<td align="left">0.070 ms</td>
+</tr>
+
+<tr>
+<td align="left">200</td>
+<td align="left">10312.57</td>
+<td align="left">19.394 ms</td>
+<td align="left">0.097 ms</td>
+</tr>
+
+<tr>
+<td align="left">500</td>
+<td align="left">3805.55</td>
+<td align="left">131.387 ms</td>
+<td align="left">0.263 ms</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="unixbench-分数越高越好">UnixBench(分数越高越好)</h2>
+
+<table>
+<thead>
+<tr>
+<th align="left">项目</th>
+<th align="left">阿里云</th>
+<th align="left">ucloud</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">running 1 copy of tests</td>
+<td align="left">731.3</td>
+<td align="left">1150.5</td>
+</tr>
+
+<tr>
+<td align="left">running 2 parallel copies of tests</td>
+<td align="left">1401.4</td>
+<td align="left">2310.9</td>
+</tr>
+</tbody>
+</table>
+
+<p>分值上两个主机的差别还是很明显，从报告的细节上来看，磁盘IO、CPU等方面差别也很明显。
+<a href="http://www.github.com/thisiswangle/">查看阿里云主机UnixBench报告</a>、
+<a href="http://www.github.com/thisiswangle/">查看ucloud主机UnixBench报告</a></p>
+
+                        </div>
+
+                        
+
+<div class="post-archive">
+    <h2>See Also</h2>
+    <ul class="listing">
+        
+        <li><a href="/posts/2013-03-04-so-load-path-in-linux/">Linux 共享库（动态链接库）相关的一些记录</a></li>
+        
+        <li><a href="/posts/2012-03-22-a-short-discuss-of-simplexml-of-php/">再说 PHP 中 SimpleXML</a></li>
+        
+        <li><a href="/posts/2012-03-13-things-i-create-must-be-cool/">我想做的东西可以不值钱，但是它必须‘酷’</a></li>
+        
+        <li><a href="/posts/2012-03-10-at-a-late-night/">在这安静的夜里</a></li>
+        
+        <li><a href="/posts/2012-01-09-for-baigetan-2012/">写给 2012 的摆摊</a></li>
+        
+    </ul>
+</div>
+
+
+                        <div class="post-meta meta-tags">
+                            
+                            <ul class="clearfix">
+                                
+                                <li><a href="https://127.0.0.1/tags/aliyun">aliyun</a></li>
+                                
+                                <li><a href="https://127.0.0.1/tags/ucloud">ucloud</a></li>
+                                
+                            </ul>
+                            
+                        </div>
+                    </article>
+                    
+    
+
+    
+    
+                </div>
+            </div>
+            <div id="secondary">
+    <section class="widget">
+        <form id="search" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="https://127.0.0.1/">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="https://127.0.0.1/posts/2018-12-18-gitlab-docker-install/" title="使用 Docker 方式安装 Gitlab，没你想得那么简单">使用 Docker 方式安装 Gitlab，没你想得那么简单</a>
+    </li>
+    
+    <li>
+        <a href="https://127.0.0.1/posts/2017-12-31-year-end-reviews-of-2017/" title="有关 2017 流水账和胡思乱想的记录">有关 2017 流水账和胡思乱想的记录</a>
+    </li>
+    
+    <li>
+        <a href="https://127.0.0.1/posts/2017-08-03-lvm-in-action/" title="LVM 实战记录">LVM 实战记录</a>
+    </li>
+    
+    <li>
+        <a href="https://127.0.0.1/posts/2017-07-23-log-processing-system/" title="日志收集和分析系统架构">日志收集和分析系统架构</a>
+    </li>
+    
+    <li>
+        <a href="https://127.0.0.1/posts/2017-07-15-log4j2/" title="Log4j2 配置">Log4j2 配置</a>
+    </li>
+    
+    <li>
+        <a href="https://127.0.0.1/posts/2017-06-06-xtrabackup/" title="MySQL 数据备份和不停机重新搭建主从同步">MySQL 数据备份和不停机重新搭建主从同步</a>
+    </li>
+    
+    <li>
+        <a href="https://127.0.0.1/posts/2016-01-28-banlinpai/" title="办理机动车临牌">办理机动车临牌</a>
+    </li>
+    
+    <li>
+        <a href="https://127.0.0.1/posts/2015-10-15-huanzheng/" title="驾照转入换证">驾照转入换证</a>
+    </li>
+    
+    <li>
+        <a href="https://127.0.0.1/posts/2014-10-16-tuning-nginx/" title="Nginx 性能调优「译」">Nginx 性能调优「译」</a>
+    </li>
+    
+    <li>
+        <a href="https://127.0.0.1/posts/2014-05-06-github-pages-dns-settings/" title="Github Pages 服务的域名设置">Github Pages 服务的域名设置</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">分类</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="https://127.0.0.1/categories/docker/">docker(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://127.0.0.1/categories/linux/">linux(3)</a>
+    </li>
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title">标签</h3>
+<div class="tagcloud">
+    
+    <a href="https://127.0.0.1/tags/ajax/">ajax</a>
+    
+    <a href="https://127.0.0.1/tags/aliyun/">aliyun</a>
+    
+    <a href="https://127.0.0.1/tags/blog/">blog</a>
+    
+    <a href="https://127.0.0.1/tags/cassandra/">cassandra</a>
+    
+    <a href="https://127.0.0.1/tags/catcat/">catcat</a>
+    
+    <a href="https://127.0.0.1/tags/cdn/">cdn</a>
+    
+    <a href="https://127.0.0.1/tags/database/">database</a>
+    
+    <a href="https://127.0.0.1/tags/dns/">dns</a>
+    
+    <a href="https://127.0.0.1/tags/docker/">docker</a>
+    
+    <a href="https://127.0.0.1/tags/easy_install/">easy_install</a>
+    
+    <a href="https://127.0.0.1/tags/fackbook/">fackbook</a>
+    
+    <a href="https://127.0.0.1/tags/fdisk/">fdisk</a>
+    
+    <a href="https://127.0.0.1/tags/flume/">flume</a>
+    
+    <a href="https://127.0.0.1/tags/github/">github</a>
+    
+    <a href="https://127.0.0.1/tags/gitlab/">gitlab</a>
+    
+    <a href="https://127.0.0.1/tags/idea/">idea</a>
+    
+    <a href="https://127.0.0.1/tags/java/">java</a>
+    
+    <a href="https://127.0.0.1/tags/jquery/">jquery</a>
+    
+    <a href="https://127.0.0.1/tags/json/">json</a>
+    
+    <a href="https://127.0.0.1/tags/kafka/">kafka</a>
+    
+    <a href="https://127.0.0.1/tags/linux/">linux</a>
+    
+    <a href="https://127.0.0.1/tags/log4j2/">log4j2</a>
+    
+    <a href="https://127.0.0.1/tags/lvm/">lvm</a>
+    
+    <a href="https://127.0.0.1/tags/mysql/">mysql</a>
+    
+    <a href="https://127.0.0.1/tags/nginx/">nginx</a>
+    
+    <a href="https://127.0.0.1/tags/performance/">performance</a>
+    
+    <a href="https://127.0.0.1/tags/php/">php</a>
+    
+    <a href="https://127.0.0.1/tags/pip/">pip</a>
+    
+    <a href="https://127.0.0.1/tags/python/">python</a>
+    
+    <a href="https://127.0.0.1/tags/resize2fs/">resize2fs</a>
+    
+    <a href="https://127.0.0.1/tags/review/">review</a>
+    
+    <a href="https://127.0.0.1/tags/rmbp/">rmbp</a>
+    
+    <a href="https://127.0.0.1/tags/ssh/">ssh</a>
+    
+    <a href="https://127.0.0.1/tags/tuning/">tuning</a>
+    
+    <a href="https://127.0.0.1/tags/ucloud/">ucloud</a>
+    
+    <a href="https://127.0.0.1/tags/vagrant/">vagrant</a>
+    
+    <a href="https://127.0.0.1/tags/virtualbox/">virtualbox</a>
+    
+    <a href="https://127.0.0.1/tags/virtualenv/">virtualenv</a>
+    
+    <a href="https://127.0.0.1/tags/xtrabackup/">xtrabackup</a>
+    
+    <a href="https://127.0.0.1/tags/%E4%B8%B4%E7%89%8C/">临牌</a>
+    
+    <a href="https://127.0.0.1/tags/%E5%9B%9E%E5%BF%86/">回忆</a>
+    
+    <a href="https://127.0.0.1/tags/%E5%B1%95%E6%9C%9B/">展望</a>
+    
+    <a href="https://127.0.0.1/tags/%E5%BF%83%E6%83%85/">心情</a>
+    
+    <a href="https://127.0.0.1/tags/%E6%80%9D%E8%80%83/">思考</a>
+    
+    <a href="https://127.0.0.1/tags/%E6%91%84%E5%BD%B1/">摄影</a>
+    
+    <a href="https://127.0.0.1/tags/%E6%95%99%E8%AE%AD/">教训</a>
+    
+    <a href="https://127.0.0.1/tags/%E7%89%A9%E7%90%86/">物理</a>
+    
+    <a href="https://127.0.0.1/tags/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/">系统架构</a>
+    
+    <a href="https://127.0.0.1/tags/%E7%BB%8F%E9%AA%8C/">经验</a>
+    
+    <a href="https://127.0.0.1/tags/%E9%A9%BE%E7%85%A7/">驾照</a>
+    
+    <a href="https://127.0.0.1/tags/%E9%AD%94%E9%83%BD%E7%94%9F%E5%AD%98%E6%89%8B%E5%86%8C/">魔都生存手册</a>
+    
+</div>
+    </section>
+
+    
+<section class="widget">
+    <h3 class="widget-title">友情链接</h3>
+    <ul class="widget-list">
+        
+        <li>
+            <a target="_blank" href="https://microservices.io/" title="Microservice Architecture">Microservice Architecture</a>
+        </li>
+        
+        <li>
+            <a target="_blank" href="http://stuff-gil-says.blogspot.com/" title="Stuff Gil Says">Stuff Gil Says</a>
+        </li>
+        
+    </ul>
+</section>
+
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="https://127.0.0.1/index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+        </div>
+    </div>
+</div>
+<footer id="footer">
+    <div class="container">
+        &copy; 2018 <a href="https://127.0.0.1/">小码哥的博客 By 小码哥</a>.
+        Powered by <a rel="nofollow noreferer noopener" href="https://gohugo.io" target="_blank">Hugo</a>.
+        <a href="https://www.flysnow.org/" target="_blank">Theme</a> based on <a href="https://github.com/rujews/maupassant-hugo" target="_blank">maupassant</a>.
+        
+    </div>
+</footer>
+
+
+    <script type="text/javascript">
+    
+    (function(){
+        $("pre code").parent().addClass("line-numbers")
+    }())
+
+    window.MathJax = {
+        tex2jax: {
+            inlineMath: [ ['$','$'] ],
+            processEscapes: true
+        }
+    };
+    </script>
+    <script type="text/javascript" src="/js/prism.js" async="true"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src="/js/totop.js?v=0.0.0" async=""></script>
+
+
+
+
+
+
+</body>
+</html>

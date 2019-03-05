@@ -1,0 +1,620 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8">
+    <meta name="generator" content="Hugo 0.40.1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>从域名和 CDN 来看网站架构 | 小码哥的博客</title>
+    <meta property="og:title" content="从域名和 CDN 来看网站架构 - 小码哥的博客">
+    <meta property="og:type" content="article">
+        
+    <meta property="article:published_time" content="2014-03-06T00:40:00&#43;08:00">
+        
+        
+    <meta property="article:modified_time" content="2014-03-06T00:40:00&#43;08:00">
+        
+    <meta name="Keywords" content="IoT, 物联网, 智能硬件，工业互联网方案，智能家居, 智慧工厂, 智慧建筑, Golang, Java, JVM, Python, 树莓派, Linux 玩家，果粉，系统架构，技术管理">
+    <meta name="description" content="从域名和 CDN 来看网站架构">
+        
+    <meta name="author" content="小码哥">
+    <meta property="og:url" content="https://127.0.0.1/posts/2014-03-06-arch-of-website-domain-cdn/">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="/css/normalize.css">
+    
+        <link rel="stylesheet" href="/css/prism.css">
+    
+    <link rel="stylesheet" href="/css/style.css">
+    <script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+
+    
+
+
+    
+    
+</head>
+
+<body>
+<header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="https://127.0.0.1/">
+                        小码哥的博客
+                    </a>
+                
+                <p class="description">Work hard, Play harder</p>
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="" href="https://127.0.0.1/">首页</a>
+                    
+                    <a  href="https://127.0.0.1/tags/" title="标签">标签</a>
+                    
+                    <a  href="https://127.0.0.1/archives/" title="归档">归档</a>
+                    
+                    <a  href="https://127.0.0.1/about/" title="关于">关于</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+<div id="body">
+    <div class="container">
+        <div class="col-group">
+
+            <div class="col-8" id="main">
+                <div class="res-cons">
+                    <article class="post">
+                        <header>
+                            <h1 class="post-title">从域名和 CDN 来看网站架构</h1>
+                        </header>
+                        <date class="post-meta meta-date">
+                            2014年3月6日
+                        </date>
+                        
+                        <div class="post-meta">
+                            <span>|</span>
+                            
+                                <span class="meta-category"><a href="https://127.0.0.1/categories/linux">Linux</a></span>
+                            
+                        </div>
+                        
+                        
+                        <div class="post-content">
+                            
+
+<p>为了自己做好网站的架构，找了知乎，豆瓣，大众点评和百姓网来做参考。这里主要来看域名和CDN相关的部分，后台的架构也还是要边学便实践。</p>
+
+<h2 id="大概情况">大概情况</h2>
+
+<p>从前端分析了知乎的域名和 DNS 情况，同时对比了一下豆瓣、大众点评和百姓网。从域名、DNS、CDN等使用角度来说，他们之间大同小异。</p>
+
+<h2 id="使用的分析工具">使用的分析工具</h2>
+
+<ul>
+<li>Chrome</li>
+<li><a href="http://whois.chinaz.com/">WHOIS</a></li>
+<li><a href="http://webscan.360.cn/tools/dnslookup">DNSLookup</a></li>
+</ul>
+
+<h2 id="非-cdn-使用">非 CDN 使用</h2>
+
+<table>
+<thead>
+<tr>
+<th>记录</th>
+<th>域名</th>
+<th>用途</th>
+<th>路径</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>A</td>
+<td>zhihu.com</td>
+<td>使用 301 跳转到 www.zhuhu.com</td>
+<td>IP</td>
+</tr>
+
+<tr>
+<td>A</td>
+<td>zhi.hu</td>
+<td>使用 302 跳转到 www.zhihu.com</td>
+<td>IP</td>
+</tr>
+
+<tr>
+<td>A</td>
+<td>www.zhihu.com</td>
+<td></td>
+<td>IP</td>
+</tr>
+
+<tr>
+<td>A</td>
+<td>comet.zhihu.com</td>
+<td>WebSocket 推送消息</td>
+<td>IP</td>
+</tr>
+
+<tr>
+<td>A</td>
+<td>analytics.zhihu.com</td>
+<td>知乎自己的统计分析，同时使用了 Google Analytics</td>
+<td>IP</td>
+</tr>
+</tbody>
+</table>
+
+<p>大部分都是用了 301 或者 302 跳转，注意他们的区别：301 是永久跳转(浏览器会做客户端端缓存)，而 302 是临时跳转。此外 baidu.com 到 www.baidu.com 并不是使用 301 或者 302 ，而是使用下面的一段 HTML 代码</p>
+
+<pre><code class="language-html">&lt;html&gt;
+&lt;meta http-equiv=&quot;refresh&quot; content=&quot;0;url=http://www.baidu.com/&quot;&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>相比而言，我觉得使用 301 更 Geek，更好一些。</p>
+
+<h2 id="cdn-使用">CDN 使用</h2>
+
+<table>
+<thead>
+<tr>
+<th>记录</th>
+<th>域名</th>
+<th>用途</th>
+<th>路径</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>CNAME</td>
+<td>static.analytics.zhihu.com</td>
+<td>CDN, 看 CNAME 以为是七牛CDN，其实用了 ChinaNetCenter 的 CDN</td>
+<td>d.qiniudn.com &gt; wsall.36tr.com.wscdns.com &gt; 08911.xdwscache.glb0.lxdns.com &gt; IP</td>
+</tr>
+
+<tr>
+<td>CNAME</td>
+<td>static.zhihu.com</td>
+<td>网页资源文件cdn，包括css，js，image，不包括用户头像、用户发布的图片等</td>
+<td>同上</td>
+</tr>
+
+<tr>
+<td>CNAME</td>
+<td>p1.zhimg.com</td>
+<td>用户头像，用户发布的图片, 这里使用又拍云CDN</td>
+<td>zhcdn-img.b0.aicdn.com &gt; ctn.b9.aicdn.com &gt; IP</td>
+</tr>
+
+<tr>
+<td>CNAME</td>
+<td>p2.zhimg.com</td>
+<td>用户头像，用户发布的图片，这里使用了七牛CDN</td>
+<td>zhimg0.qiniudn.com &gt; 其它非七牛CDN</td>
+</tr>
+
+<tr>
+<td>CNAME</td>
+<td>p3.zhimg.com</td>
+<td>与p1.zhimg.com相同</td>
+<td></td>
+</tr>
+
+<tr>
+<td>CNAME</td>
+<td>p4.zhimg.com</td>
+<td>与p1.zhimg.com相同</td>
+<td></td>
+</tr>
+
+<tr>
+<td>CNAME</td>
+<td>s1.zhimg.com</td>
+<td>视频片段等</td>
+<td>这里使用了七牛CDN</td>
+</tr>
+
+<tr>
+<td>CNAME</td>
+<td>s2.zhimg.com</td>
+<td></td>
+<td>这里使用了七牛CDN</td>
+</tr>
+
+<tr>
+<td>CNAME</td>
+<td>s3.zhimg.com</td>
+<td></td>
+<td>这里使用了七牛CDN</td>
+</tr>
+
+<tr>
+<td>CNAME</td>
+<td>s4.zhimg.com</td>
+<td></td>
+<td>这里使用了七牛CDN</td>
+</tr>
+</tbody>
+</table>
+
+<p>p1-p4， s1-s4  由知乎服务器端按照一定算法选择（有可能就是等概率随机）</p>
+
+<p>不得不有点疑问？为什么七牛CDN最后都直到别人的CDN服务器上去了，而又拍云全部是A记录到自己的服务器。又拍强调的自建机房就是这个意思？</p>
+
+<h2 id="静态资源版本控制">静态资源版本控制</h2>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>方法</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>知乎</td>
+<td>在文件名前添加类似 md5 的字符串，如 app.js, 发布版本为f853b06af5428ff5f78f66e3d09397e2.app.js</td>
+</tr>
+
+<tr>
+<td>百姓网</td>
+<td>如gallery.js 发布版本为 gallery.f07b79d6.js</td>
+</tr>
+
+<tr>
+<td>豆瓣</td>
+<td>将类似md5值放在路径中，如<a href="http://img3.douban.com/f/shire/55c9fe0e9ecb5725037e9839fc515504008dae74/js/ad.js">http://img3.douban.com/f/shire/55c9fe0e9ecb5725037e9839fc515504008dae74/js/ad.js</a></td>
+</tr>
+
+<tr>
+<td>大众点评</td>
+<td>和百姓网类似，如发布版本为ga2.min.acd5dfe89e87135b4eef62dcf81ef849.js</td>
+</tr>
+</tbody>
+</table>
+
+<p>由于CDN使用简单镜像＋缓存的功能，每一个缓存的文件有一定的时效性，而且基本都是静态文件，不支持 Query String （如 ?ver=201413），于是需要在源头控制将要被分发到 CDN 中文件的版本。最为简单的做法就是对开发人员透明，在发布项目的时候，通过计算文件的 hash 签名或者 md5 签名来做类 HTML 等文本代码的重构。</p>
+
+<h2 id="dns-选择">DNS 选择</h2>
+
+<table>
+<thead>
+<tr>
+<th>域名</th>
+<th>DNS 服务商</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>zhihu.com</td>
+<td>DNSPOD 企业版</td>
+</tr>
+
+<tr>
+<td>zhimg.com</td>
+<td>DNSPOD 免费版</td>
+</tr>
+
+<tr>
+<td>baixing.com</td>
+<td>DNSPOD 企业版</td>
+</tr>
+
+<tr>
+<td>baixing.net</td>
+<td>DNSPOD 企业版</td>
+</tr>
+
+<tr>
+<td>dianping.com</td>
+<td>自建</td>
+</tr>
+
+<tr>
+<td>douban.com</td>
+<td>自建</td>
+</tr>
+</tbody>
+</table>
+
+                        </div>
+
+                        
+
+<div class="post-archive">
+    <h2>See Also</h2>
+    <ul class="listing">
+        
+        <li><a href="/posts/2014-03-03-building-devenv-by-vagrant/">使用 Vagrant 构建开发环境</a></li>
+        
+        <li><a href="/posts/2014-03-02-python-on-my-rmbp/">Python on My rMBP</a></li>
+        
+        <li><a href="/posts/2013-08-09-benchmark-of-aliyun-and-ucloud/">阿里云和 ucloud 云主机评测</a></li>
+        
+        <li><a href="/posts/2013-03-04-so-load-path-in-linux/">Linux 共享库（动态链接库）相关的一些记录</a></li>
+        
+        <li><a href="/posts/2012-03-22-a-short-discuss-of-simplexml-of-php/">再说 PHP 中 SimpleXML</a></li>
+        
+    </ul>
+</div>
+
+
+                        <div class="post-meta meta-tags">
+                            
+                            <ul class="clearfix">
+                                
+                                <li><a href="https://127.0.0.1/tags/cdn">CDN</a></li>
+                                
+                                <li><a href="https://127.0.0.1/tags/dns">DNS</a></li>
+                                
+                            </ul>
+                            
+                        </div>
+                    </article>
+                    
+    
+
+    
+    
+                </div>
+            </div>
+            <div id="secondary">
+    <section class="widget">
+        <form id="search" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="https://127.0.0.1/">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="https://127.0.0.1/posts/2018-12-18-gitlab-docker-install/" title="使用 Docker 方式安装 Gitlab，没你想得那么简单">使用 Docker 方式安装 Gitlab，没你想得那么简单</a>
+    </li>
+    
+    <li>
+        <a href="https://127.0.0.1/posts/2017-12-31-year-end-reviews-of-2017/" title="有关 2017 流水账和胡思乱想的记录">有关 2017 流水账和胡思乱想的记录</a>
+    </li>
+    
+    <li>
+        <a href="https://127.0.0.1/posts/2017-08-03-lvm-in-action/" title="LVM 实战记录">LVM 实战记录</a>
+    </li>
+    
+    <li>
+        <a href="https://127.0.0.1/posts/2017-07-23-log-processing-system/" title="日志收集和分析系统架构">日志收集和分析系统架构</a>
+    </li>
+    
+    <li>
+        <a href="https://127.0.0.1/posts/2017-07-15-log4j2/" title="Log4j2 配置">Log4j2 配置</a>
+    </li>
+    
+    <li>
+        <a href="https://127.0.0.1/posts/2017-06-06-xtrabackup/" title="MySQL 数据备份和不停机重新搭建主从同步">MySQL 数据备份和不停机重新搭建主从同步</a>
+    </li>
+    
+    <li>
+        <a href="https://127.0.0.1/posts/2016-01-28-banlinpai/" title="办理机动车临牌">办理机动车临牌</a>
+    </li>
+    
+    <li>
+        <a href="https://127.0.0.1/posts/2015-10-15-huanzheng/" title="驾照转入换证">驾照转入换证</a>
+    </li>
+    
+    <li>
+        <a href="https://127.0.0.1/posts/2014-10-16-tuning-nginx/" title="Nginx 性能调优「译」">Nginx 性能调优「译」</a>
+    </li>
+    
+    <li>
+        <a href="https://127.0.0.1/posts/2014-05-06-github-pages-dns-settings/" title="Github Pages 服务的域名设置">Github Pages 服务的域名设置</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">分类</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="https://127.0.0.1/categories/docker/">docker(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://127.0.0.1/categories/linux/">linux(3)</a>
+    </li>
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title">标签</h3>
+<div class="tagcloud">
+    
+    <a href="https://127.0.0.1/tags/ajax/">ajax</a>
+    
+    <a href="https://127.0.0.1/tags/aliyun/">aliyun</a>
+    
+    <a href="https://127.0.0.1/tags/blog/">blog</a>
+    
+    <a href="https://127.0.0.1/tags/cassandra/">cassandra</a>
+    
+    <a href="https://127.0.0.1/tags/catcat/">catcat</a>
+    
+    <a href="https://127.0.0.1/tags/cdn/">cdn</a>
+    
+    <a href="https://127.0.0.1/tags/database/">database</a>
+    
+    <a href="https://127.0.0.1/tags/dns/">dns</a>
+    
+    <a href="https://127.0.0.1/tags/docker/">docker</a>
+    
+    <a href="https://127.0.0.1/tags/easy_install/">easy_install</a>
+    
+    <a href="https://127.0.0.1/tags/fackbook/">fackbook</a>
+    
+    <a href="https://127.0.0.1/tags/fdisk/">fdisk</a>
+    
+    <a href="https://127.0.0.1/tags/flume/">flume</a>
+    
+    <a href="https://127.0.0.1/tags/github/">github</a>
+    
+    <a href="https://127.0.0.1/tags/gitlab/">gitlab</a>
+    
+    <a href="https://127.0.0.1/tags/idea/">idea</a>
+    
+    <a href="https://127.0.0.1/tags/java/">java</a>
+    
+    <a href="https://127.0.0.1/tags/jquery/">jquery</a>
+    
+    <a href="https://127.0.0.1/tags/json/">json</a>
+    
+    <a href="https://127.0.0.1/tags/kafka/">kafka</a>
+    
+    <a href="https://127.0.0.1/tags/linux/">linux</a>
+    
+    <a href="https://127.0.0.1/tags/log4j2/">log4j2</a>
+    
+    <a href="https://127.0.0.1/tags/lvm/">lvm</a>
+    
+    <a href="https://127.0.0.1/tags/mysql/">mysql</a>
+    
+    <a href="https://127.0.0.1/tags/nginx/">nginx</a>
+    
+    <a href="https://127.0.0.1/tags/performance/">performance</a>
+    
+    <a href="https://127.0.0.1/tags/php/">php</a>
+    
+    <a href="https://127.0.0.1/tags/pip/">pip</a>
+    
+    <a href="https://127.0.0.1/tags/python/">python</a>
+    
+    <a href="https://127.0.0.1/tags/resize2fs/">resize2fs</a>
+    
+    <a href="https://127.0.0.1/tags/review/">review</a>
+    
+    <a href="https://127.0.0.1/tags/rmbp/">rmbp</a>
+    
+    <a href="https://127.0.0.1/tags/ssh/">ssh</a>
+    
+    <a href="https://127.0.0.1/tags/tuning/">tuning</a>
+    
+    <a href="https://127.0.0.1/tags/ucloud/">ucloud</a>
+    
+    <a href="https://127.0.0.1/tags/vagrant/">vagrant</a>
+    
+    <a href="https://127.0.0.1/tags/virtualbox/">virtualbox</a>
+    
+    <a href="https://127.0.0.1/tags/virtualenv/">virtualenv</a>
+    
+    <a href="https://127.0.0.1/tags/xtrabackup/">xtrabackup</a>
+    
+    <a href="https://127.0.0.1/tags/%E4%B8%B4%E7%89%8C/">临牌</a>
+    
+    <a href="https://127.0.0.1/tags/%E5%9B%9E%E5%BF%86/">回忆</a>
+    
+    <a href="https://127.0.0.1/tags/%E5%B1%95%E6%9C%9B/">展望</a>
+    
+    <a href="https://127.0.0.1/tags/%E5%BF%83%E6%83%85/">心情</a>
+    
+    <a href="https://127.0.0.1/tags/%E6%80%9D%E8%80%83/">思考</a>
+    
+    <a href="https://127.0.0.1/tags/%E6%91%84%E5%BD%B1/">摄影</a>
+    
+    <a href="https://127.0.0.1/tags/%E6%95%99%E8%AE%AD/">教训</a>
+    
+    <a href="https://127.0.0.1/tags/%E7%89%A9%E7%90%86/">物理</a>
+    
+    <a href="https://127.0.0.1/tags/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/">系统架构</a>
+    
+    <a href="https://127.0.0.1/tags/%E7%BB%8F%E9%AA%8C/">经验</a>
+    
+    <a href="https://127.0.0.1/tags/%E9%A9%BE%E7%85%A7/">驾照</a>
+    
+    <a href="https://127.0.0.1/tags/%E9%AD%94%E9%83%BD%E7%94%9F%E5%AD%98%E6%89%8B%E5%86%8C/">魔都生存手册</a>
+    
+</div>
+    </section>
+
+    
+<section class="widget">
+    <h3 class="widget-title">友情链接</h3>
+    <ul class="widget-list">
+        
+        <li>
+            <a target="_blank" href="https://microservices.io/" title="Microservice Architecture">Microservice Architecture</a>
+        </li>
+        
+        <li>
+            <a target="_blank" href="http://stuff-gil-says.blogspot.com/" title="Stuff Gil Says">Stuff Gil Says</a>
+        </li>
+        
+    </ul>
+</section>
+
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="https://127.0.0.1/index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+        </div>
+    </div>
+</div>
+<footer id="footer">
+    <div class="container">
+        &copy; 2018 <a href="https://127.0.0.1/">小码哥的博客 By 小码哥</a>.
+        Powered by <a rel="nofollow noreferer noopener" href="https://gohugo.io" target="_blank">Hugo</a>.
+        <a href="https://www.flysnow.org/" target="_blank">Theme</a> based on <a href="https://github.com/rujews/maupassant-hugo" target="_blank">maupassant</a>.
+        
+    </div>
+</footer>
+
+
+    <script type="text/javascript">
+    
+    (function(){
+        $("pre code").parent().addClass("line-numbers")
+    }())
+
+    window.MathJax = {
+        tex2jax: {
+            inlineMath: [ ['$','$'] ],
+            processEscapes: true
+        }
+    };
+    </script>
+    <script type="text/javascript" src="/js/prism.js" async="true"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src="/js/totop.js?v=0.0.0" async=""></script>
+
+
+
+
+
+
+</body>
+</html>

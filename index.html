@@ -1,0 +1,555 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8">
+    <meta name="generator" content="Hugo 0.40.1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>小码哥的博客 | Work hard, Play harder</title>
+    <meta property="og:title" content="小码哥的博客 | Work hard, Play harder">
+    <meta property="og:type" content="website">
+    <meta name="Keywords" content="IoT, 物联网, 智能硬件，工业互联网方案，智能家居, 智慧工厂, 智慧建筑, Golang, Java, JVM, Python, 树莓派, Linux 玩家，果粉，系统架构，技术管理">
+    <meta name="description" content="物联网创业狗">
+    <meta property="og:url" content="https://127.0.0.1/">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="/css/normalize.css">
+    
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="alternate" type="application/rss+xml" href="https://127.0.0.1/index.xml" title="小码哥的博客" />
+    <script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+
+    
+
+
+    
+    
+</head>
+
+
+<body>
+<header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <h1>
+                        <a id="logo" href="https://127.0.0.1/">
+                            小码哥的博客
+                        </a>
+                    </h1>
+                
+                <p class="description">Work hard, Play harder</p>
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="current" href="https://127.0.0.1/">首页</a>
+                    
+                    <a  href="https://127.0.0.1/tags/" title="标签">标签</a>
+                    
+                    <a  href="https://127.0.0.1/archives/" title="归档">归档</a>
+                    
+                    <a  href="https://127.0.0.1/about/" title="关于">关于</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+<div id="body">
+    <div class="container">
+        <div class="col-group">
+
+            <div class="col-8" id="main">
+                <div class="res-cons">
+                    
+                        <article class="post">
+                            <header>
+                                <h1 class="post-title">
+                                    <a href="https://127.0.0.1/posts/2018-12-18-gitlab-docker-install/" title="使用 Docker 方式安装 Gitlab，没你想得那么简单" >使用 Docker 方式安装 Gitlab，没你想得那么简单</a>
+                                </h1>
+                            </header>
+                            <date class="post-meta meta-date">
+                                2018年12月18日
+                            </date>
+                            
+                            <div class="post-meta">
+                                <span>|</span>
+                                
+                                <span class="meta-category"><a href="https://127.0.0.1/categories/linux">Linux</a></span>
+                                
+                                <span class="meta-category"><a href="https://127.0.0.1/categories/docker">Docker</a></span>
+                                
+                            </div>
+                            
+                            <div class="post-content">
+                                为什么要写这篇文章？ 曾经几年前在 Docker 还没有广泛应用的时候，在公司使用过源码的方式安装和升级过 Gitlab，虽远没有 Docker 方便，因为自己对 Linux 系统的理解，所以整体上感觉还是挺简单的。这几年随着 Docker 的普及，使得安装 Gitlab 更加的容易，不仅方便了我这样的老鸟，也更方便了小白用户们。但是 Gitlab 官方的 Docker 安装文档并没有写得很完善, 除了官方文档之外，检索出来的安装文档也是人云亦云，东拼西凑，结果也就是能运行起来，凑合着能用而已。
+我希望每做一件小事的时候也都能抱着“知其然知其所以然”的心态对待，用 Docker 方式安装 Gitlab，说简单来说就是一行命令的事儿，但是这样就够了吗？我看是不够的，所以就有了这篇文档。
+本文需要达成的事项  在 CentOS 7 系统中安装 Docker 使用 Docker 方式安装中文版 Gitlab 和宿主机器共用 22(SSH) 端口 支持 SSH(22)/HTTPS(443) 方式推拉仓库 使用 SMTP 方式配置通知邮箱(腾讯企业邮箱) 改写默认的项目标签(Labels)  在 CentOS 7 系统中安装 Docker 这部分参考 Docker 的官方文档, 罗列一下安装步骤, 细节请看 Docker 的官方文档。如果使用 root 用户安装，sudo 可以去掉。
+1. 删除老版本 Docker $ sudo yum remove docker \ docker-client \ docker-client-latest \ docker-common \ docker-latest \ docker-latest-logrotate \ docker-logrotate \ docker-selinux \ docker-engine-selinux \ docker-engine  2.……
+                            </div>
+                            <p class="readmore"><a href="https://127.0.0.1/posts/2018-12-18-gitlab-docker-install/">阅读全文</a></p>
+                        </article>
+                    
+                        <article class="post">
+                            <header>
+                                <h1 class="post-title">
+                                    <a href="https://127.0.0.1/posts/2017-12-31-year-end-reviews-of-2017/" title="有关 2017 流水账和胡思乱想的记录" >有关 2017 流水账和胡思乱想的记录</a>
+                                </h1>
+                            </header>
+                            <date class="post-meta meta-date">
+                                2017年12月31日
+                            </date>
+                            
+                            <div class="post-content">
+                                好久没有写过文字了，前几篇文也是自己从 Google Doc 中摘出来的工作日志，拿来凑凑数，刷新下 Github 的时间线，有点儿不太像话。看看自己书桌上叠起来超过一尺高的新书才知道，想看的还没来得及看完，想学的也还没来得及学会，想做的也没有做得很好，一年就过去了。2017 是我来魔都的第 5 年，回想这 5 年，自己的成长还是很多的，但 2017 这一年，好像与 2016 并没有什么大的不同，这让自己感到很担忧。
+在 2017 年的最后几天，终于离开了自己熟悉的工作环境，从自己的舒适空间加入了一个新的环境，我想这就是改变的开始，一个新的起点。
+2017 是平淡的，可能和未来的每一年也不会有太大差别，尽管我不希望这样。元旦假期这 3 天有空的时候都在回想，但是又想不起有那些特别印象深刻的事情，以至于总结都不太好写下去。我想那不如就回想几个和自己有关系的场景，做一个清单好了：
+ Bye 2017 区块链和比特币 人工智能（AI） 物联网大数据 Insurtech 和 Fintech 关于个人职业发展的思考 Hello 2018  Bye 2017 编程语言学习  Golang：完成基本语法学习（官方文档和《Go 语言实战》），可以无障碍阅读 Golang 项目代码（《自己动手写 Java 虚拟机》），并且可手动完成简单 Golang 项目用 Python 重写，主要有 eureka client Kotlin：除协程外，完成官方文档中所有语言部分的学习内容，并使用 kotlin 开发了 2 个项目，其中一个是用 kotlin 重写了 Aprereo CAS 的核心功能 TypeScript：完成基本语法学习，目前没有实际应用的场景，希望从 2018 起，自己在需要写 JavaScript 的地方，全部用 TypeScript 来代替  书籍阅读 阅读量太少，希望在 2018 年里能增大阅读量。……
+                            </div>
+                            <p class="readmore"><a href="https://127.0.0.1/posts/2017-12-31-year-end-reviews-of-2017/">阅读全文</a></p>
+                        </article>
+                    
+                        <article class="post">
+                            <header>
+                                <h1 class="post-title">
+                                    <a href="https://127.0.0.1/posts/2017-08-03-lvm-in-action/" title="LVM 实战记录" >LVM 实战记录</a>
+                                </h1>
+                            </header>
+                            <date class="post-meta meta-date">
+                                2017年8月3日
+                            </date>
+                            
+                            <div class="post-meta">
+                                <span>|</span>
+                                
+                                <span class="meta-category"><a href="https://127.0.0.1/categories/linux">Linux</a></span>
+                                
+                            </div>
+                            
+                            <div class="post-content">
+                                背景 阿里云云主机两块 100G 的云盘合一个逻辑卷（LV）来使用，单个的 100G 磁盘不够用，需要合在一起使用，并且方便以后扩容
+基本知识  磁盘 /dev/xvdb /dev/xvdc 分区, 使用 fdisk 进行分区 fdisk &gt; n &gt; p &gt; 1..4, 主分区最多只有4个 准备分区后，将分区类型变为 LVM 分区，fdisk &gt; t &gt; 8e, 8e 是 LVM 类型 ID 物理卷（PV），卷组（VG），逻辑卷（LV），从磁盘分区创建 PV，通过 PV 创建 VG 或者把 PV 加入已有的 VG，在 VG 上创建 LV，LV 看起来就是逻辑的上磁盘，使用和真实的磁盘没什么明显区别, 在 LV 上构建文件系统  创建  创建物理卷 pvcreate /dev/xvdb1，对分区进行操作 创建 vg0 卷组 vgcreate vg0 /dev/xvdb1 查看卷组 vgdisplay， 可以看到卷组有多大 在 vg0 上创建 data 逻辑卷 lvcreate -L 99G -n data vg0 或者 lvcreate -l 25556 -n data vg0 创建文件系统 mkfs.……
+                            </div>
+                            <p class="readmore"><a href="https://127.0.0.1/posts/2017-08-03-lvm-in-action/">阅读全文</a></p>
+                        </article>
+                    
+                        <article class="post">
+                            <header>
+                                <h1 class="post-title">
+                                    <a href="https://127.0.0.1/posts/2017-07-23-log-processing-system/" title="日志收集和分析系统架构" >日志收集和分析系统架构</a>
+                                </h1>
+                            </header>
+                            <date class="post-meta meta-date">
+                                2017年7月23日
+                            </date>
+                            
+                            <div class="post-content">
+                                背景 微服务，日志分散且种类多（php/java/python），用 docker 起应用，日志通过卷放在宿主机器指定目录下，服务有众多实例，metrics 数据也不仅相同，无论是日志还是 metrics 数据，都可以看作是时间序列数据
+分散主要表现为：
+ 多个主机 多个目录下多个文件 应用开发所使用的技术栈不同日志格式不同 web log（主要是 nginx） 各类事件 一些其它事务性的日志  日志为时间序列数据，包括：
+ 系统日志: 各类系统产生的跟业务有关的日志或者与业务无关的日志 web 服务器日志：如 access.log/error.log 等有固定格式的日志 性能监控日志：打点记录各类服务的 metrics(全部为数值类型long/double/bool)  系统日志 由时间戳、一些枚举值以及日志内容(变长字符串)组成
+ 日志时间颗粒度：支持毫秒/秒 枚举值包括：  [必选]主机名/host [必选]服务名/service [必选]实例编号/instance [必选]日记级别/level：info/debug/warn/trace/error 等 [可选]异常名/exception: 如果是异常，把异常名作为枚举值记录 [可选]线程名/thread: [可选]方法名/method： [可选]文件名/file： [可选]行号/line：  日志内容(变长字符串): 为实际记录的内容以及异常堆栈信息  web 服务器日志 access log（nginx） 日志内容：主要是文本(string）或者一些系统 metrics 数据(数值类型long/double)
+日志存储和处理：  数据磁带（1周）：kafka 提供热数据检索（1个月）：solr(or lucence based on cassandra) 日志存储（永久）： kariosdb/cassandra: 支持 double/long/string类型，kariosdb 相当于在 cassandra 上面套了一个壳，这样简化了很多时间序列数据处理的操作 数据展示：grafana，官方支持 kariosdb 扩展：数据深度挖掘分析  系统架构 特点：……
+                            </div>
+                            <p class="readmore"><a href="https://127.0.0.1/posts/2017-07-23-log-processing-system/">阅读全文</a></p>
+                        </article>
+                    
+                        <article class="post">
+                            <header>
+                                <h1 class="post-title">
+                                    <a href="https://127.0.0.1/posts/2017-07-15-log4j2/" title="Log4j2 配置" >Log4j2 配置</a>
+                                </h1>
+                            </header>
+                            <date class="post-meta meta-date">
+                                2017年7月15日
+                            </date>
+                            
+                            <div class="post-content">
+                                背景 Java 生态下的日志库太多，配置也不同，大多数情况下会使用 SLF4j (又引入了一个库)来抽象日志接口。在使用 Log4j2 后，发现可以不使用 SLF4j 了，并且配置变得更简单，可以使用 lombok 的 log4j2 注解等。
+需要搞清楚
+ 如何设置哪些日志要记录下来 日志记录到哪里去  LEVEL 日志级别：  内置（有Fatal）：All &lt; Trace &lt; Debug &lt; Info &lt; Warn &lt; Error &lt; Fatal &lt; OFF 还可以自定义： https://logging.apache.org/log4j/2.0/manual/customloglevels.html  Appender: 日志输出的目的地 内置的目的地有：
+ console, files（FIle/RollingFile）, remote socket servers, Apache Flume, JMS, remote UNIX Syslog daemons, various database APIs &hellip;  Appender 在接受到日志以后，可以通过级别过滤选择记录日志，具体配置： https://logging.apache.org/log4j/2.0/manual/appenders.html
+Logger 负责决定哪些日志要记录和发配日志 哪些需要记日志，设置什么级别，并且配置日志输出到哪些个 Appender 中去都在 Logger 中配置。Logger 有类似继承的关系，名为 Root 的的 Logger  为所有 Logger 的根，也就是说没有做特殊设置（additivity=false), 那么这个 Logger 的日志将会记录到自己指定的 Appender，并且也都会记录到自己所有“父” Logger 设置的 Appender 中去……
+                            </div>
+                            <p class="readmore"><a href="https://127.0.0.1/posts/2017-07-15-log4j2/">阅读全文</a></p>
+                        </article>
+                    
+                        <article class="post">
+                            <header>
+                                <h1 class="post-title">
+                                    <a href="https://127.0.0.1/posts/2017-06-06-xtrabackup/" title="MySQL 数据备份和不停机重新搭建主从同步" >MySQL 数据备份和不停机重新搭建主从同步</a>
+                                </h1>
+                            </header>
+                            <date class="post-meta meta-date">
+                                2017年6月6日
+                            </date>
+                            
+                            <div class="post-content">
+                                背景 目前公司主要服务都是直接使用 MySQL 主服务器，从服务主要给离线数据分析服务使用，由于前期弄得比较简单的粗暴，从服务上还有一两个数据库在做生产使用, 并且从服数据已经不能和主服进行进行同步了，有大量错误，忽略都没有办法进行。此外，主服仅配置了三个核心数据的 binlog，随着业务的变化，其它数据库不能走主从这条路来同步数据，于是希望不停机的情形下重新调整主服配置，记录所有的数据库的 binlog，同时添加新的从服务器来同步数据
+方案1 MySQL 的主从是通过同步 binlog 日志来实现数据同步的，于是需要想办法把从服数据先于主服同步，记录 binlog 的 pos 值，再配置从服从该 pos 处开始同步，考虑可以使用 mysqldump 导出所有 innodb 数据，使用 rsync 同步所有 myisam 数据文件，然后再开启主从同步。但是目前这种方案不适用，主服不能长时间停机
+方案2 使用 xtrabackup 来完成目标
+主从服务器上都需要安装 xtrabackup（实际使用 xtrabackupex）：
+yum install http://www.percona.com/downloads/percona-release/redhat/0.1-4/percona-release-0.1-4.noarch.rpm yum install -y percona-xtrabackup-24  主服： 备份数据 # 注意数据库名称的转义，例如 - 号是 @002d innobackupex --defaults-file=/etc/my.cnf --socket=/var/lib/mysql/mysql.sock --user=root --password=xxxx --parallel=2 --databases=&quot;db1 db2&quot; /data/backup/xtrabackup/  保持事务一致 innobackupex --apply-log /data/backup/xtrabackup/2017-06-06_13-16-21/  同步数据 rsync -avHz 2017-06-06_13-16-21 sysops@cow:/data/backup  从服： 修改 my.……
+                            </div>
+                            <p class="readmore"><a href="https://127.0.0.1/posts/2017-06-06-xtrabackup/">阅读全文</a></p>
+                        </article>
+                    
+                        <article class="post">
+                            <header>
+                                <h1 class="post-title">
+                                    <a href="https://127.0.0.1/posts/2016-01-28-banlinpai/" title="办理机动车临牌" >办理机动车临牌</a>
+                                </h1>
+                            </header>
+                            <date class="post-meta meta-date">
+                                2016年1月28日
+                            </date>
+                            
+                            <div class="post-content">
+                                  政策已变，目前只能办理有效期为 15 天的临牌，并且最多只能办理两次
+ 问题 外地户口，上海购车办理机动车(出省)临牌(出省和不出省的临牌办理方法一样,出省临牌有效期是30天，不出省的是15天)
+文档记录状态 可用
+发生时间 2016年01月28日9:00至9:30
+体验得分 90
+办理地点 黄浦公安分局交警支队，地址上海黄浦区陆家浜路88号（地铁4号线南浦大桥站1号出口200米处）
+可办理时间 周一至周六 8:30-17:00
+需要材料  车辆合格证原件和复印件 购车发票原件和复印件 交强险保单原件和复印件 身份证原件和正反面复印件 零钱5元  办理流程记录  进入大厅后跟保安说办理机动车临牌，拿一张《申请办理机动车临时号牌单》，然后坐在椅子上排队并填好临时号牌单 等待办理, 交警会打印两张临牌出来 恭喜你，没有第3步，可以拿着临牌走了  提高效率的小提示  自带黑色签字笔一支 原件和复印件分开成两份  ……
+                            </div>
+                            <p class="readmore"><a href="https://127.0.0.1/posts/2016-01-28-banlinpai/">阅读全文</a></p>
+                        </article>
+                    
+                        <article class="post">
+                            <header>
+                                <h1 class="post-title">
+                                    <a href="https://127.0.0.1/posts/2015-10-15-huanzheng/" title="驾照转入换证" >驾照转入换证</a>
+                                </h1>
+                            </header>
+                            <date class="post-meta meta-date">
+                                2015年10月15日
+                            </date>
+                            
+                            <div class="post-content">
+                                 问题 外地户口＋上海居住证，外地驾照即将到期，需要将外地驾照转入上海并且进行驾照到期换证。
+可用状态 可用
+发生时间 2015年10月15日8:00至10:00
+体验得分 90
+办理地点 车辆管理所三分所，地址浦东新区沪南公路2638 号
+可办理时间 周一至周五 9:00-17:00
+办理流程记录  前往4号楼的3层填表缴费并拍照，缴费需要排队，人较多，费用 25 元 拍好照片并拿到照片和表格后前往4号楼2层填表缴费并体检，缴费需要排队，人较多，费用 60 元  缴完体检费进去之后，需要填表并且贴好照片，体检项都是分开进行，主要体检内容包括视力，听力，身高体重，色盲等检测，其他项都是医生随手填上去的，哪个人少就先去体检哪个。我体检的顺序依次是视力，听力，身高体重，色盲检测。 每项体检完，看下体检表格，看看体检项有没有空的，如果没有就直接去出口处，把表格交上去，然后等报告 拿到体检报告后，直接去1号楼一层大厅门口右手处工作人员拿号，号码那张纸要保存好，最后一步领证还需要使用。  叫号后前往柜台管理，跟工作人员确认下需要办理的内容。我这里是办理转入和到期换证。这里会使用照片一张，工作人员会提供剪刀。办理过程大约需要5分钟 前往缴费处缴费，注意看下缴费窗口的号码，缴费处在大厅另外一侧，费用 10 元 前往发证处等待叫号领证  提高效率的小提示  8点30之前到达4号楼3层排队, 尽管 9 点才开始 自带黑色签字笔一支 身份证复印件和居住证复印件各一份  ……
+                            </div>
+                            <p class="readmore"><a href="https://127.0.0.1/posts/2015-10-15-huanzheng/">阅读全文</a></p>
+                        </article>
+                    
+                        <article class="post">
+                            <header>
+                                <h1 class="post-title">
+                                    <a href="https://127.0.0.1/posts/2014-10-16-tuning-nginx/" title="Nginx 性能调优「译」" >Nginx 性能调优「译」</a>
+                                </h1>
+                            </header>
+                            <date class="post-meta meta-date">
+                                2014年10月16日
+                            </date>
+                            
+                            <div class="post-content">
+                                这是一篇译文，原文链接：Tuning NGINX for Performance
+ Nginx 为人熟知的是在负载均衡、静态缓存和 WEB 服务器等方面的高性能，目前世界上最繁忙的站点中大约有 40% 在使用 Nginx。绝大多数情况下，大多数默认的 Nginx 和 Linux 配置都可以工作得非常好，但也需要做一些优化以获得最好的性能。本文将讨论在优化系统时需要考虑的 Nginx 和 Linux 的部分配置。可配置的选项有很多，但是本文只涵盖推荐大多数用户调整的配置选项。本文没有涵盖的配置选项，只有那些对 Nginx 和 Linux 有了深入的理解的人或者获得了 Nginx 技术支持和专业的服务团队的推荐建议后，才可以考虑调整。Nginx 专业服务器团队已经为世界上一些最繁忙的站点通过优化 Nginx 获得了最高水平的性能，并且可以为任何需要获得自己系统最大产出的客户服务。
+简介 本文假设读者对 Nginx 架构和配置的概念已有了基本的了解。Nginx 的文档内容将不会在本文中重复，但本文会提供各项配置简要的介绍和相关文档的链接。
+在性能调优时，要遵循一个好的规则：一次只修改一个配置选项，如果这个修改没有在性能方面带来优化，那么要再改回默认值。
+我们从 Linux 性能优化的讨论开始，因为 Linux 性能优化的一些值会影响到 Nginx 的一些配置。
+Linux 配置 尽管现代 Linux 内核（2.6+）在各种配置情况下都工作得很好，但也有一些配置是想要修改的。如果操作系统的配置设置的太低，那内核日志将会有错误信息，从而得知哪些配置需要调整。Linux 性能优化可能涉及的配置有很多，这里我们只讨论那些优化达到正常工作负载最有可能涉及到的那些配置。调整这些配置请参考详细的 Linux 文档。
+Backlog 队列 下面的配置选项与网络连接和其排队方法直接相关。如果连入率很高（译者注：客户端发起的连接很多）且系统性能配置不匹配，例如一些连接表现得有所停顿，那么修改下面得配置将可能有用。
+ net.core.somaxconn: 设置等待 Nginx 接受的连接队列的大小。由于 Nginx 接受连接非常的快，这个值通常情况下不用设置得很大，但系统默认值可能比较小，所以对于流量比较大的站点，增大这个值是个不错的想法。如果这个值太小，在内核日志中应该会看到错误消息，那么就需要增大这个值，直到错误消失。注意：若将这个值设置为大于 512 的话，那么需要在 Nginx 配置中修改 listen 指令的 backlog 参数来匹配这个数字。……
+                            </div>
+                            <p class="readmore"><a href="https://127.0.0.1/posts/2014-10-16-tuning-nginx/">阅读全文</a></p>
+                        </article>
+                    
+                        <article class="post">
+                            <header>
+                                <h1 class="post-title">
+                                    <a href="https://127.0.0.1/posts/2014-05-06-github-pages-dns-settings/" title="Github Pages 服务的域名设置" >Github Pages 服务的域名设置</a>
+                                </h1>
+                            </header>
+                            <date class="post-meta meta-date">
+                                2014年5月6日
+                            </date>
+                            
+                            <div class="post-content">
+                                这几天每次 Push 博客到 Github Pages 时总会收到一封邮件：
+ The page build completed successfully, but returned the following warning:
+GitHub Pages recently underwent some improvements (https://github.com/blog/1715-faster-more-awesome-github-pages) to make your site faster and more awesome, but we&rsquo;ve noticed that iforget.info isn&rsquo;t properly configured to take advantage of these new features. While your site will continue to work just fine, updating your domain&rsquo;s configuration offers some additional speed and performance benefits. Instructions on updating your site&rsquo;s IP address can be found at https://help.……
+                            </div>
+                            <p class="readmore"><a href="https://127.0.0.1/posts/2014-05-06-github-pages-dns-settings/">阅读全文</a></p>
+                        </article>
+                    
+
+                    
+
+
+<ol class="page-navigator">
+    
+
+    
+    <li  class="current">
+        <a href="https://127.0.0.1/">1</a>
+    </li>
+    
+    <li >
+        <a href="https://127.0.0.1/page/2/">2</a>
+    </li>
+    
+    <li >
+        <a href="https://127.0.0.1/page/3/">3</a>
+    </li>
+    
+    <li >
+        <a href="https://127.0.0.1/page/4/">4</a>
+    </li>
+    
+
+    
+    <li class="next">
+        <a href="https://127.0.0.1/page/2/">下一页</a>
+    </li>
+    
+</ol>
+
+
+
+                </div>
+            </div>
+
+            <div id="secondary">
+    <section class="widget">
+        <form id="search" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="https://127.0.0.1/">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="https://127.0.0.1/posts/2018-12-18-gitlab-docker-install/" title="使用 Docker 方式安装 Gitlab，没你想得那么简单">使用 Docker 方式安装 Gitlab，没你想得那么简单</a>
+    </li>
+    
+    <li>
+        <a href="https://127.0.0.1/posts/2017-12-31-year-end-reviews-of-2017/" title="有关 2017 流水账和胡思乱想的记录">有关 2017 流水账和胡思乱想的记录</a>
+    </li>
+    
+    <li>
+        <a href="https://127.0.0.1/posts/2017-08-03-lvm-in-action/" title="LVM 实战记录">LVM 实战记录</a>
+    </li>
+    
+    <li>
+        <a href="https://127.0.0.1/posts/2017-07-23-log-processing-system/" title="日志收集和分析系统架构">日志收集和分析系统架构</a>
+    </li>
+    
+    <li>
+        <a href="https://127.0.0.1/posts/2017-07-15-log4j2/" title="Log4j2 配置">Log4j2 配置</a>
+    </li>
+    
+    <li>
+        <a href="https://127.0.0.1/posts/2017-06-06-xtrabackup/" title="MySQL 数据备份和不停机重新搭建主从同步">MySQL 数据备份和不停机重新搭建主从同步</a>
+    </li>
+    
+    <li>
+        <a href="https://127.0.0.1/posts/2016-01-28-banlinpai/" title="办理机动车临牌">办理机动车临牌</a>
+    </li>
+    
+    <li>
+        <a href="https://127.0.0.1/posts/2015-10-15-huanzheng/" title="驾照转入换证">驾照转入换证</a>
+    </li>
+    
+    <li>
+        <a href="https://127.0.0.1/posts/2014-10-16-tuning-nginx/" title="Nginx 性能调优「译」">Nginx 性能调优「译」</a>
+    </li>
+    
+    <li>
+        <a href="https://127.0.0.1/posts/2014-05-06-github-pages-dns-settings/" title="Github Pages 服务的域名设置">Github Pages 服务的域名设置</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">分类</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="https://127.0.0.1/categories/docker/">docker(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://127.0.0.1/categories/linux/">linux(3)</a>
+    </li>
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title">标签</h3>
+<div class="tagcloud">
+    
+    <a href="https://127.0.0.1/tags/ajax/">ajax</a>
+    
+    <a href="https://127.0.0.1/tags/aliyun/">aliyun</a>
+    
+    <a href="https://127.0.0.1/tags/blog/">blog</a>
+    
+    <a href="https://127.0.0.1/tags/cassandra/">cassandra</a>
+    
+    <a href="https://127.0.0.1/tags/catcat/">catcat</a>
+    
+    <a href="https://127.0.0.1/tags/cdn/">cdn</a>
+    
+    <a href="https://127.0.0.1/tags/database/">database</a>
+    
+    <a href="https://127.0.0.1/tags/dns/">dns</a>
+    
+    <a href="https://127.0.0.1/tags/docker/">docker</a>
+    
+    <a href="https://127.0.0.1/tags/easy_install/">easy_install</a>
+    
+    <a href="https://127.0.0.1/tags/fackbook/">fackbook</a>
+    
+    <a href="https://127.0.0.1/tags/fdisk/">fdisk</a>
+    
+    <a href="https://127.0.0.1/tags/flume/">flume</a>
+    
+    <a href="https://127.0.0.1/tags/github/">github</a>
+    
+    <a href="https://127.0.0.1/tags/gitlab/">gitlab</a>
+    
+    <a href="https://127.0.0.1/tags/idea/">idea</a>
+    
+    <a href="https://127.0.0.1/tags/java/">java</a>
+    
+    <a href="https://127.0.0.1/tags/jquery/">jquery</a>
+    
+    <a href="https://127.0.0.1/tags/json/">json</a>
+    
+    <a href="https://127.0.0.1/tags/kafka/">kafka</a>
+    
+    <a href="https://127.0.0.1/tags/linux/">linux</a>
+    
+    <a href="https://127.0.0.1/tags/log4j2/">log4j2</a>
+    
+    <a href="https://127.0.0.1/tags/lvm/">lvm</a>
+    
+    <a href="https://127.0.0.1/tags/mysql/">mysql</a>
+    
+    <a href="https://127.0.0.1/tags/nginx/">nginx</a>
+    
+    <a href="https://127.0.0.1/tags/performance/">performance</a>
+    
+    <a href="https://127.0.0.1/tags/php/">php</a>
+    
+    <a href="https://127.0.0.1/tags/pip/">pip</a>
+    
+    <a href="https://127.0.0.1/tags/python/">python</a>
+    
+    <a href="https://127.0.0.1/tags/resize2fs/">resize2fs</a>
+    
+    <a href="https://127.0.0.1/tags/review/">review</a>
+    
+    <a href="https://127.0.0.1/tags/rmbp/">rmbp</a>
+    
+    <a href="https://127.0.0.1/tags/ssh/">ssh</a>
+    
+    <a href="https://127.0.0.1/tags/tuning/">tuning</a>
+    
+    <a href="https://127.0.0.1/tags/ucloud/">ucloud</a>
+    
+    <a href="https://127.0.0.1/tags/vagrant/">vagrant</a>
+    
+    <a href="https://127.0.0.1/tags/virtualbox/">virtualbox</a>
+    
+    <a href="https://127.0.0.1/tags/virtualenv/">virtualenv</a>
+    
+    <a href="https://127.0.0.1/tags/xtrabackup/">xtrabackup</a>
+    
+    <a href="https://127.0.0.1/tags/%E4%B8%B4%E7%89%8C/">临牌</a>
+    
+    <a href="https://127.0.0.1/tags/%E5%9B%9E%E5%BF%86/">回忆</a>
+    
+    <a href="https://127.0.0.1/tags/%E5%B1%95%E6%9C%9B/">展望</a>
+    
+    <a href="https://127.0.0.1/tags/%E5%BF%83%E6%83%85/">心情</a>
+    
+    <a href="https://127.0.0.1/tags/%E6%80%9D%E8%80%83/">思考</a>
+    
+    <a href="https://127.0.0.1/tags/%E6%91%84%E5%BD%B1/">摄影</a>
+    
+    <a href="https://127.0.0.1/tags/%E6%95%99%E8%AE%AD/">教训</a>
+    
+    <a href="https://127.0.0.1/tags/%E7%89%A9%E7%90%86/">物理</a>
+    
+    <a href="https://127.0.0.1/tags/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/">系统架构</a>
+    
+    <a href="https://127.0.0.1/tags/%E7%BB%8F%E9%AA%8C/">经验</a>
+    
+    <a href="https://127.0.0.1/tags/%E9%A9%BE%E7%85%A7/">驾照</a>
+    
+    <a href="https://127.0.0.1/tags/%E9%AD%94%E9%83%BD%E7%94%9F%E5%AD%98%E6%89%8B%E5%86%8C/">魔都生存手册</a>
+    
+</div>
+    </section>
+
+    
+<section class="widget">
+    <h3 class="widget-title">友情链接</h3>
+    <ul class="widget-list">
+        
+        <li>
+            <a target="_blank" href="https://microservices.io/" title="Microservice Architecture">Microservice Architecture</a>
+        </li>
+        
+        <li>
+            <a target="_blank" href="http://stuff-gil-says.blogspot.com/" title="Stuff Gil Says">Stuff Gil Says</a>
+        </li>
+        
+    </ul>
+</section>
+
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="https://127.0.0.1/index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+        </div>
+    </div>
+</div>
+<footer id="footer">
+    <div class="container">
+        &copy; 2018 <a href="https://127.0.0.1/">小码哥的博客 By 小码哥</a>.
+        Powered by <a rel="nofollow noreferer noopener" href="https://gohugo.io" target="_blank">Hugo</a>.
+        <a href="https://www.flysnow.org/" target="_blank">Theme</a> based on <a href="https://github.com/rujews/maupassant-hugo" target="_blank">maupassant</a>.
+        
+    </div>
+</footer>
+
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src="/js/totop.js?v=0.0.0" async=""></script>
+
+
+
+
+
+
+
+</body>
+</html>

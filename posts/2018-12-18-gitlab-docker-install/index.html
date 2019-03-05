@@ -1,0 +1,657 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8">
+    <meta name="generator" content="Hugo 0.40.1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>使用 Docker 方式安装 Gitlab，没你想得那么简单 | 小码哥的博客</title>
+    <meta property="og:title" content="使用 Docker 方式安装 Gitlab，没你想得那么简单 - 小码哥的博客">
+    <meta property="og:type" content="article">
+        
+    <meta property="article:published_time" content="2018-12-18T23:25:20&#43;08:00">
+        
+        
+    <meta property="article:modified_time" content="2018-12-18T23:25:20&#43;08:00">
+        
+    <meta name="Keywords" content="IoT, 物联网, 智能硬件，工业互联网方案，智能家居, 智慧工厂, 智慧建筑, Golang, Java, JVM, Python, 树莓派, Linux 玩家，果粉，系统架构，技术管理">
+    <meta name="description" content="使用 Docker 方式安装 Gitlab，没你想得那么简单">
+        
+    <meta name="author" content="小码哥">
+    <meta property="og:url" content="https://127.0.0.1/posts/2018-12-18-gitlab-docker-install/">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="/css/normalize.css">
+    
+        <link rel="stylesheet" href="/css/prism.css">
+    
+    <link rel="stylesheet" href="/css/style.css">
+    <script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+
+    
+
+
+    
+    
+</head>
+
+<body>
+<header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="https://127.0.0.1/">
+                        小码哥的博客
+                    </a>
+                
+                <p class="description">Work hard, Play harder</p>
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="" href="https://127.0.0.1/">首页</a>
+                    
+                    <a  href="https://127.0.0.1/tags/" title="标签">标签</a>
+                    
+                    <a  href="https://127.0.0.1/archives/" title="归档">归档</a>
+                    
+                    <a  href="https://127.0.0.1/about/" title="关于">关于</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+<div id="body">
+    <div class="container">
+        <div class="col-group">
+
+            <div class="col-8" id="main">
+                <div class="res-cons">
+                    <article class="post">
+                        <header>
+                            <h1 class="post-title">使用 Docker 方式安装 Gitlab，没你想得那么简单</h1>
+                        </header>
+                        <date class="post-meta meta-date">
+                            2018年12月18日
+                        </date>
+                        
+                        <div class="post-meta">
+                            <span>|</span>
+                            
+                                <span class="meta-category"><a href="https://127.0.0.1/categories/linux">Linux</a></span>
+                            
+                                <span class="meta-category"><a href="https://127.0.0.1/categories/docker">Docker</a></span>
+                            
+                        </div>
+                        
+                        
+                        <div class="post-content">
+                            
+
+<h2 id="为什么要写这篇文章">为什么要写这篇文章？</h2>
+
+<p>曾经几年前在 Docker 还没有广泛应用的时候，在公司使用过源码的方式安装和升级过 Gitlab，虽远没有 Docker 方便，因为自己对 Linux 系统的理解，所以整体上感觉还是挺简单的。这几年随着 Docker 的普及，使得安装 Gitlab 更加的容易，不仅方便了我这样的老鸟，也更方便了小白用户们。但是 Gitlab 官方的 <a href="https://docs.gitlab.com/omnibus/docker/">Docker 安装文档</a>并没有写得很完善, 除了官方文档之外，检索出来的安装文档也是人云亦云，东拼西凑，结果也就是能运行起来，凑合着能用而已。</p>
+
+<p>我希望每做一件小事的时候也都能抱着“知其然知其所以然”的心态对待，用 Docker 方式安装 Gitlab，说简单来说就是一行命令的事儿，但是这样就够了吗？我看是不够的，所以就有了这篇文档。</p>
+
+<h2 id="本文需要达成的事项">本文需要达成的事项</h2>
+
+<ul>
+<li>在 CentOS 7 系统中安装 Docker</li>
+<li>使用 Docker 方式安装中文版 Gitlab</li>
+<li>和宿主机器共用 22(SSH) 端口</li>
+<li>支持 SSH(22)/HTTPS(443) 方式推拉仓库</li>
+<li>使用 SMTP 方式配置通知邮箱(腾讯企业邮箱)</li>
+<li>改写默认的项目标签(Labels)</li>
+</ul>
+
+<h2 id="在-centos-7-系统中安装-docker">在 CentOS 7 系统中安装 Docker</h2>
+
+<p>这部分参考 <a href="https://docs.docker.com/install/linux/docker-ce/centos/">Docker 的官方文档</a>, 罗列一下安装步骤, 细节请看 <a href="https://docs.docker.com/install/linux/docker-ce/centos/">Docker 的官方文档</a>。如果使用 root 用户安装，sudo 可以去掉。</p>
+
+<h3 id="1-删除老版本-docker">1. 删除老版本 Docker</h3>
+
+<pre><code class="language-sh">$ sudo yum remove docker \
+                  docker-client \
+                  docker-client-latest \
+                  docker-common \
+                  docker-latest \
+                  docker-latest-logrotate \
+                  docker-logrotate \
+                  docker-selinux \
+                  docker-engine-selinux \
+                  docker-engine
+</code></pre>
+
+<h3 id="2-安装-docker-ce-的仓库配置">2. 安装 Docker CE 的仓库配置</h3>
+
+<pre><code class="language-sh">$ sudo yum install -y yum-utils \
+  device-mapper-persistent-data \
+  lvm2
+$ sudo yum-config-manager \
+    --add-repo \
+    https://download.docker.com/linux/centos/docker-ce.repo
+
+</code></pre>
+
+<h3 id="3-安装仓库中最高版本-docker-ce">3. 安装仓库中最高版本 Docker CE</h3>
+
+<pre><code class="language-sh">$ sudo yum install -y docker-ce
+</code></pre>
+
+<h3 id="4-启动-docker">4. 启动 Docker</h3>
+
+<pre><code class="language-sh">$ sudo systemctl start docker
+</code></pre>
+
+<h3 id="5-验证-docker-是否安装成功">5. 验证 Docker 是否安装成功</h3>
+
+<pre><code class="language-sh">$ sudo docker run hello-world
+</code></pre>
+
+<h2 id="使用-docker-方式安装中文版-gitlab">使用 Docker 方式安装中文版 Gitlab</h2>
+
+<p>目前我的团队习惯使用中文版的 Gitlab 的，并且使用的版本是 <code>beginor/gitlab-ce:10.3.1-ce.0</code>，所以还是以这个版本来说明安装配置过程。</p>
+
+<p>在起动 Gitlab 之前，创建几个目录作为 Docker 的卷，这样的配置或者升级 gitlab 的时候可以保留配置和数据。</p>
+
+<pre><code class="language-sh">$ sudo mkdir -p /data/var/lib/gitlab/etc
+$ sudo mkdir -p /data/var/lib/gitlab/log
+$ sudo mkdir -p /data/var/lib/gitlab/data
+</code></pre>
+
+<p>启动 Gitlab</p>
+
+<pre><code class="language-sh">$ sudo docker run \
+    --detach \
+    --sysctl net.core.somaxconn=1024 \
+    --publish 8080:80 \
+    --publish 8022:22 \
+    --name gitlab \
+    --restart unless-stopped \
+    --volume /data/var/lib/gitlab/etc:/etc/gitlab \
+    --volume /data/var/lib/gitlab/log:/var/log/gitlab \
+    --volume /data/var/lib/gitlab/data:/var/opt/gitlab \
+    beginor/gitlab-ce:10.3.1-ce.0
+</code></pre>
+
+<p>这个 Gitlab 的 Docker 镜像是基于  Ubuntu 16.04.3 LTS 这个版本来构建的，所以在 <code>docker exec -it gitlab /bin/bash</code> 进入 Docker 容器之后跟使用 Ubuntu 就没有什么差别了。</p>
+
+<p>gitlab 容器中启动了很多服务，主要包括：</p>
+
+<ul>
+<li>gitlab</li>
+<li>redis</li>
+<li>postgresql</li>
+<li>nginx</li>
+<li>sshd</li>
+</ul>
+
+<p>通过查看 Dockerfile 发现，除了可以使用 <code>docker exec -it gitlab /bin/bash</code> 进入容器之外，还可以直接使用 SSH 登录到容器中。其实 Gitlab 这个镜像，并不符合 <a href="https://docs.docker.com/develop/develop-images/dockerfile_best-practices/#decouple-applications">Dockerfile 最佳实践规范</a>, 因为将会有太多的服务在这个镜像构建的容器之中，不利于服务的扩容和重用。不过通过这种超级包的方式确实大大降低了用户的使用门槛，对于高段位选手，自然也会自己去拆分去解耦，进而去构建自己的镜像。</p>
+
+<p>讲到这里，gitlab 服务已经在运行了，大多数人也认为自己任务完成了，一切到此为止。但是对于有些许强迫症的人来说，是无法接受 HTTP 得用 8080 端口， SSH 得用 8022 端口，这样 Git 的 URL 就不太美观了。</p>
+
+<p>偷懒的人有个很简单的方法来解决这个端口的问题， 可以使用这样的命令启动 Docker</p>
+
+<pre><code class="language-sh">$ sudo docker stop gitlab
+$ sudo docker rm gitlab
+$ sudo docker run \
+    --detach \
+    --sysctl net.core.somaxconn=1024 \
+    --publish 443:443 \
+    --publish 80:80 \
+    --publish 22:22 \
+    --name gitlab \
+    --restart unless-stopped \
+    --volume /data/var/lib/gitlab/etc:/etc/gitlab \
+    --volume /data/var/lib/gitlab/log:/var/log/gitlab \
+    --volume /data/var/lib/gitlab/data:/var/opt/gitlab \
+    beginor/gitlab-ce:10.3.1-ce.0
+</code></pre>
+
+<p>这样有带来了新问题:</p>
+
+<ol>
+<li><sup>80</sup>&frasl;<sub>443</sub> 将会被 gitlab 独占，宿主机器上 Nginx 等 HTTP/HTTPS 服务将无法使用 <sup>80</sup>&frasl;<sub>443</sub></li>
+<li>22 将会被 gitlab 独占，那么宿主机器上的 SSHD 服务需要改为其它端口</li>
+</ol>
+
+<p>这两个新问题大概对于有些许强迫症的人来说也是无法接受的。 我们还是回到这样的方式启动 Gitlab</p>
+
+<pre><code class="language-sh">$ sudo docker stop gitlab
+$ sudo docker rm gitlab
+$ sudo docker run \
+    --detach \
+    --sysctl net.core.somaxconn=1024 \
+    --publish 8080:80 \
+    --publish 8022:22 \
+    --name gitlab \
+    --restart unless-stopped \
+    --volume /data/var/lib/gitlab/etc:/etc/gitlab \
+    --volume /data/var/lib/gitlab/log:/var/log/gitlab \
+    --volume /data/var/lib/gitlab/data:/var/opt/gitlab \
+    beginor/gitlab-ce:10.3.1-ce.0
+</code></pre>
+
+<p>然后寻找其它更好的解决方案：</p>
+
+<ol>
+<li>使用 Nginx 代理 8080 端口，这样很容易实现 HTTP(80)/HTTPS(443) 端口共用</li>
+<li>共享宿主机器的 SSH(22) 端口，如果使用 git 这个账号登录，则转发 SSH 到 gitlab 的容器中</li>
+</ol>
+
+<p>下面来讲如何解决这两个问题。</p>
+
+<h2 id="使用-宿主机器上的-nginx-配置-http-和-https">使用宿主机器上的 Nginx 配置 HTTP 和 HTTPS</h2>
+
+<p>使用宿主机器上的 Nginx 使得我们安装 Gitlab 更加灵活。先停用 Gitlab 容器中的 HTTPS 服务, 需要这样改写配置文件, 需要编辑
+<code>/data/var/lib/gitlab/etc/gitlab.rb</code> 文件相应的行，<a href="https://docs.gitlab.com/omnibus/settings/nginx.html#using-a-non-bundled-web-server">具体配置可以参考这里</a></p>
+
+<pre><code class="language-ruby">external_url &quot;https://gitlab.example.com&quot;
+nginx['listen_port'] = 80
+nginx['listen_https'] = false
+</code></pre>
+
+<p>修改完成之后，可以在 Docker 容器中执行 <code>gitlab-ctl reconfigure</code> 来使之生效。这样配置以后，容器中讲只提供 HTTP 服务，不会根据 <code>external_url</code> 解析来自动启动 HTTPS 而导致日志中出现大量的缺少证书的日志。现在只需要配置宿主机器的 Nginx 就可以了。关于如何获取免费的 SSL 证书，这里就不在赘述了，读者可以自行搜索 Let&rsquo;s Encrypt + Nginx 相关文章，如果没有域名，只有 IP，那可以试试 <a href="https://www.trustocean.com/">TrustOcean</a>。</p>
+
+<h2 id="gitlab-docker-和宿主服务器共享-ssh-22-端口">Gitlab Docker 和宿主服务器共享 SSH(22) 端口</h2>
+
+<p>Gitlab Docker 镜像中默认使用的 SSH 账户是 git，那能不能在宿主机器上也建一个账户 git，只是当 git 帐号进行操作的时候，我们转发命令到 gitlab 容器呢？答案是肯定的，宿主机器上非 git 帐号就不受影响了，还可以正常使用。</p>
+
+<p>我们在宿主机器上创建 git 账户，并且获取他的 uid 和 gid</p>
+
+<pre><code class="language-sh">adduser git
+id git
+uid=1001(git) gid=1001(git) groups=1001(git)
+</code></pre>
+
+<p>要完成共享22端口，要求 gitlab 容器中的 git 账户的 uid 和 gid 和宿主机器上完全相同，这样读取 SSH Key 时就不会有权限问题。关于如何修改两个系统中 git 账户的 uid 和 gid，可以通过手动的方式修改这两个文件：<code>/etc/passwd</code> 和 <code>/etc/group</code>, 找到对应的行进行修改。获取通过编辑 <code>/data/var/lib/gitlab/etc/gitlab.rb</code> 这个配置文件，修改其中的行，<a href="https://docs.gitlab.com/omnibus/settings/configuration.html#specify-numeric-user-and-group-identifiers">具体请参考这里</a>:</p>
+
+<pre><code class="language-ruby">user['username'] = 'git'
+user['group'] = 'git'
+user['uid'] = 1001
+user['gid'] = 1001
+</code></pre>
+
+<p>修改完成之后，可以在 Docker 容器中执行 <code>gitlab-ctl reconfigure</code> 来使之生效.</p>
+
+<p>在宿主机器上切换到 git 账户：<code>su - git</code> 然后执行 <code>ln -s /data/var/lib/gitlab/data/.ssh .ssh</code> 与 gitlab 容器共享 .ssh 下面的内容。为了在宿主机器上可以使用 git 账户无密码登录到 gitlab 容器中，需要创建在 .ssh 目录中添加一组密钥，并且把公钥加到 .ssh/authorized_keys 文件中去。</p>
+
+<p>在宿主机器上执行:</p>
+
+<pre><code class="language-ssh">ssh-keygen -t rsa -P ''
+cat ~/.ssh/id_rsa.pub &gt;&gt; ~/.ssh/authorized_keys
+</code></pre>
+
+<p>添加 <code>no-port-forwarding,no-X11-forwarding,no-agent-forwarding,no-pty</code> 到 <code>~/.ssh/authorized_keys</code> 所在的行首，结果看起来是这样的：</p>
+
+<pre><code class="language-sh">no-port-forwarding,no-X11-forwarding,no-agent-forwarding,no-pty ssh-rsa AAAAB3NzaC1yc2EAAA......CzGuj git@cn-bj-aliyun-3
+</code></pre>
+
+<p>登录测试一下</p>
+
+<pre><code class="language-sh">ssh -p 8022 127.0.0.1
+</code></pre>
+
+<p>观察到 <code>~/.ssh/authorized_keys</code> 其它行都是这样</p>
+
+<pre><code class="language-sh">command=&quot;/opt/gitlab/embedded/service/gitlab-shell/bin/gitlab-shell key-32&quot;,no-port-forwarding,no-X11-forwarding,no-agent-forwarding,no-pty ssh-rsa AAAAB3NzaC1yc2EAA......hOtpAl7J
+</code></pre>
+
+<p>在宿主机看来，每次git账户进行操作是都会执行 <code>/opt/gitlab/embedded/service/gitlab-shell/bin/gitlab-shell</code>, 我们恰好可以使用这个脚本来实现转发。</p>
+
+<pre><code class="language-sh">mkdir -p /opt/gitlab/embedded/service/gitlab-shell/bin/
+touch gitlab-shell
+chmod +x gitlab-shell
+</code></pre>
+
+<p>并且输入以下内容到 <code>/opt/gitlab/embedded/service/gitlab-shell/bin/gitlab-shell</code> 中</p>
+
+<pre><code class="language-sh">#!/bin/sh
+
+ssh -p 8022 -o StrictHostKeyChecking=no git@127.0.0.1 &quot;SSH_ORIGINAL_COMMAND=\&quot;$SSH_ORIGINAL_COMMAND\&quot; $0 $@&quot;
+</code></pre>
+
+<p>一切就绪了， 可以使用 <code>https://gitlab.example.com/repo.git</code> 或者 <code>git@gitlab.example.com:repo.git</code> 这样的 URL 了。</p>
+
+<h2 id="使用-smtp-方式配置通知邮箱-腾讯企业邮箱">使用 SMTP 方式配置通知邮箱(腾讯企业邮箱)</h2>
+
+<p><a href="https://docs.gitlab.com/omnibus/settings/smtp.html">Gitlab SMTP 文档参考这里</a></p>
+
+<pre><code class="language-sh">gitlab_rails['smtp_enable'] = true
+gitlab_rails['smtp_address'] = &quot;smtp.exmail.qq.com&quot;
+gitlab_rails['smtp_port'] = 465
+gitlab_rails['smtp_user_name'] = &quot;xxxx@xx.com&quot;
+gitlab_rails['smtp_password'] = &quot;password&quot;
+gitlab_rails['smtp_authentication'] = &quot;login&quot;
+gitlab_rails['smtp_enable_starttls_auto'] = true
+gitlab_rails['smtp_tls'] = true
+gitlab_rails['gitlab_email_from'] = 'xxxx@xx.com'
+gitlab_rails['smtp_domain'] = &quot;exmail.qq.com&quot;
+</code></pre>
+
+<h2 id="改写默认的项目标签-labels">改写默认的项目标签(Labels)</h2>
+
+<p>添加丰富的标准，方便进行项目管理。修改 <code>issues_labels.rb</code> 文件</p>
+
+<pre><code class="language-ruby">labels = [
+  {&quot;title&quot;: &quot;优先级:低&quot;, &quot;color&quot;: &quot;#E99695&quot;, &quot;description&quot;: &quot;低优先级&quot;},
+  {&quot;title&quot;: &quot;优先级:紧急&quot;, &quot;color&quot;: &quot;#E99695&quot;, &quot;description&quot;: &quot;需要立即处理&quot;},
+  {&quot;title&quot;: &quot;优先级:高&quot;, &quot;color&quot;: &quot;#E99695&quot;, &quot;description&quot;: &quot;优先处理&quot;},
+  {&quot;title&quot;: &quot;分类:BUG&quot;, &quot;color&quot;: &quot;#D4C5F9&quot;, &quot;description&quot;: &quot;发现的BUG&quot;},
+  {&quot;title&quot;: &quot;分类:功能增强&quot;, &quot;color&quot;: &quot;#D4C5F9&quot;, &quot;description&quot;: &quot;增强已有的功能，属于优化的环节&quot;},
+  {&quot;title&quot;: &quot;分类:功能完善&quot;, &quot;color&quot;: &quot;#D4C5F9&quot;, &quot;description&quot;: &quot;完善功能&quot;},
+  {&quot;title&quot;: &quot;分类:文档修改&quot;, &quot;color&quot;: &quot;#D4C5F9&quot;, &quot;description&quot;: &quot;只是做文档修改&quot;},
+  {&quot;title&quot;: &quot;分类:新功能&quot;, &quot;color&quot;: &quot;#D4C5F9&quot;, &quot;description&quot;: &quot;新的功能和需求&quot;},
+  {&quot;title&quot;: &quot;项目:已上线&quot;, &quot;color&quot;: &quot;#C5DEF5&quot;, &quot;description&quot;: &quot;已发布上线&quot;},
+  {&quot;title&quot;: &quot;项目:已排期&quot;, &quot;color&quot;: &quot;#C5DEF5&quot;, &quot;description&quot;: &quot;已经安排了开发时间milestone&quot;},
+  {&quot;title&quot;: &quot;项目:已确认&quot;, &quot;color&quot;: &quot;#C5DEF5&quot;, &quot;description&quot;: &quot;功能已经确认，后续进行排期&quot;},
+  {&quot;title&quot;: &quot;项目:延后&quot;, &quot;color&quot;: &quot;#C5DEF5&quot;, &quot;description&quot;: &quot;功能无法确定是否开发，延期处理&quot;},
+  {&quot;title&quot;: &quot;项目:开发中&quot;, &quot;color&quot;: &quot;#C5DEF5&quot;, &quot;description&quot;: &quot;功能正在开发&quot;},
+  {&quot;title&quot;: &quot;项目:待讨论&quot;, &quot;color&quot;: &quot;#C5DEF5&quot;, &quot;description&quot;: &quot;需求已经提出，但是需要讨论是否需要开发&quot;},
+  {&quot;title&quot;: &quot;项目:测试中&quot;, &quot;color&quot;: &quot;#C5DEF5&quot;, &quot;description&quot;: &quot;功能已经完成开发，正在测试&quot;}
+]
+</code></pre>
+
+<h2 id="总结">总结</h2>
+
+<p>使用 Docker 方式安装 Gitlab 部署过程很简单，但是想达到一个理想的配置状况还是挺繁琐的，Docker 并不是治疗百病的良药，打铁还得自身硬。</p>
+
+<p>完</p>
+
+                        </div>
+
+                        
+
+<div class="post-archive">
+    <h2>See Also</h2>
+    <ul class="listing">
+        
+        <li><a href="/posts/2017-08-03-lvm-in-action/">LVM 实战记录</a></li>
+        
+        <li><a href="/posts/2014-10-16-tuning-nginx/">Nginx 性能调优「译」</a></li>
+        
+        <li><a href="/posts/2013-03-04-so-load-path-in-linux/">Linux 共享库（动态链接库）相关的一些记录</a></li>
+        
+        <li><a href="/posts/2017-12-31-year-end-reviews-of-2017/">有关 2017 流水账和胡思乱想的记录</a></li>
+        
+        <li><a href="/posts/2017-07-23-log-processing-system/">日志收集和分析系统架构</a></li>
+        
+    </ul>
+</div>
+
+
+                        <div class="post-meta meta-tags">
+                            
+                            <ul class="clearfix">
+                                
+                                <li><a href="https://127.0.0.1/tags/docker">Docker</a></li>
+                                
+                                <li><a href="https://127.0.0.1/tags/gitlab">Gitlab</a></li>
+                                
+                                <li><a href="https://127.0.0.1/tags/ssh">SSH</a></li>
+                                
+                                <li><a href="https://127.0.0.1/tags/linux">Linux</a></li>
+                                
+                            </ul>
+                            
+                        </div>
+                    </article>
+                    
+    
+
+    
+    
+                </div>
+            </div>
+            <div id="secondary">
+    <section class="widget">
+        <form id="search" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="https://127.0.0.1/">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="https://127.0.0.1/posts/2018-12-18-gitlab-docker-install/" title="使用 Docker 方式安装 Gitlab，没你想得那么简单">使用 Docker 方式安装 Gitlab，没你想得那么简单</a>
+    </li>
+    
+    <li>
+        <a href="https://127.0.0.1/posts/2017-12-31-year-end-reviews-of-2017/" title="有关 2017 流水账和胡思乱想的记录">有关 2017 流水账和胡思乱想的记录</a>
+    </li>
+    
+    <li>
+        <a href="https://127.0.0.1/posts/2017-08-03-lvm-in-action/" title="LVM 实战记录">LVM 实战记录</a>
+    </li>
+    
+    <li>
+        <a href="https://127.0.0.1/posts/2017-07-23-log-processing-system/" title="日志收集和分析系统架构">日志收集和分析系统架构</a>
+    </li>
+    
+    <li>
+        <a href="https://127.0.0.1/posts/2017-07-15-log4j2/" title="Log4j2 配置">Log4j2 配置</a>
+    </li>
+    
+    <li>
+        <a href="https://127.0.0.1/posts/2017-06-06-xtrabackup/" title="MySQL 数据备份和不停机重新搭建主从同步">MySQL 数据备份和不停机重新搭建主从同步</a>
+    </li>
+    
+    <li>
+        <a href="https://127.0.0.1/posts/2016-01-28-banlinpai/" title="办理机动车临牌">办理机动车临牌</a>
+    </li>
+    
+    <li>
+        <a href="https://127.0.0.1/posts/2015-10-15-huanzheng/" title="驾照转入换证">驾照转入换证</a>
+    </li>
+    
+    <li>
+        <a href="https://127.0.0.1/posts/2014-10-16-tuning-nginx/" title="Nginx 性能调优「译」">Nginx 性能调优「译」</a>
+    </li>
+    
+    <li>
+        <a href="https://127.0.0.1/posts/2014-05-06-github-pages-dns-settings/" title="Github Pages 服务的域名设置">Github Pages 服务的域名设置</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">分类</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="https://127.0.0.1/categories/docker/">docker(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://127.0.0.1/categories/linux/">linux(3)</a>
+    </li>
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title">标签</h3>
+<div class="tagcloud">
+    
+    <a href="https://127.0.0.1/tags/ajax/">ajax</a>
+    
+    <a href="https://127.0.0.1/tags/aliyun/">aliyun</a>
+    
+    <a href="https://127.0.0.1/tags/blog/">blog</a>
+    
+    <a href="https://127.0.0.1/tags/cassandra/">cassandra</a>
+    
+    <a href="https://127.0.0.1/tags/catcat/">catcat</a>
+    
+    <a href="https://127.0.0.1/tags/cdn/">cdn</a>
+    
+    <a href="https://127.0.0.1/tags/database/">database</a>
+    
+    <a href="https://127.0.0.1/tags/dns/">dns</a>
+    
+    <a href="https://127.0.0.1/tags/docker/">docker</a>
+    
+    <a href="https://127.0.0.1/tags/easy_install/">easy_install</a>
+    
+    <a href="https://127.0.0.1/tags/fackbook/">fackbook</a>
+    
+    <a href="https://127.0.0.1/tags/fdisk/">fdisk</a>
+    
+    <a href="https://127.0.0.1/tags/flume/">flume</a>
+    
+    <a href="https://127.0.0.1/tags/github/">github</a>
+    
+    <a href="https://127.0.0.1/tags/gitlab/">gitlab</a>
+    
+    <a href="https://127.0.0.1/tags/idea/">idea</a>
+    
+    <a href="https://127.0.0.1/tags/java/">java</a>
+    
+    <a href="https://127.0.0.1/tags/jquery/">jquery</a>
+    
+    <a href="https://127.0.0.1/tags/json/">json</a>
+    
+    <a href="https://127.0.0.1/tags/kafka/">kafka</a>
+    
+    <a href="https://127.0.0.1/tags/linux/">linux</a>
+    
+    <a href="https://127.0.0.1/tags/log4j2/">log4j2</a>
+    
+    <a href="https://127.0.0.1/tags/lvm/">lvm</a>
+    
+    <a href="https://127.0.0.1/tags/mysql/">mysql</a>
+    
+    <a href="https://127.0.0.1/tags/nginx/">nginx</a>
+    
+    <a href="https://127.0.0.1/tags/performance/">performance</a>
+    
+    <a href="https://127.0.0.1/tags/php/">php</a>
+    
+    <a href="https://127.0.0.1/tags/pip/">pip</a>
+    
+    <a href="https://127.0.0.1/tags/python/">python</a>
+    
+    <a href="https://127.0.0.1/tags/resize2fs/">resize2fs</a>
+    
+    <a href="https://127.0.0.1/tags/review/">review</a>
+    
+    <a href="https://127.0.0.1/tags/rmbp/">rmbp</a>
+    
+    <a href="https://127.0.0.1/tags/ssh/">ssh</a>
+    
+    <a href="https://127.0.0.1/tags/tuning/">tuning</a>
+    
+    <a href="https://127.0.0.1/tags/ucloud/">ucloud</a>
+    
+    <a href="https://127.0.0.1/tags/vagrant/">vagrant</a>
+    
+    <a href="https://127.0.0.1/tags/virtualbox/">virtualbox</a>
+    
+    <a href="https://127.0.0.1/tags/virtualenv/">virtualenv</a>
+    
+    <a href="https://127.0.0.1/tags/xtrabackup/">xtrabackup</a>
+    
+    <a href="https://127.0.0.1/tags/%E4%B8%B4%E7%89%8C/">临牌</a>
+    
+    <a href="https://127.0.0.1/tags/%E5%9B%9E%E5%BF%86/">回忆</a>
+    
+    <a href="https://127.0.0.1/tags/%E5%B1%95%E6%9C%9B/">展望</a>
+    
+    <a href="https://127.0.0.1/tags/%E5%BF%83%E6%83%85/">心情</a>
+    
+    <a href="https://127.0.0.1/tags/%E6%80%9D%E8%80%83/">思考</a>
+    
+    <a href="https://127.0.0.1/tags/%E6%91%84%E5%BD%B1/">摄影</a>
+    
+    <a href="https://127.0.0.1/tags/%E6%95%99%E8%AE%AD/">教训</a>
+    
+    <a href="https://127.0.0.1/tags/%E7%89%A9%E7%90%86/">物理</a>
+    
+    <a href="https://127.0.0.1/tags/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/">系统架构</a>
+    
+    <a href="https://127.0.0.1/tags/%E7%BB%8F%E9%AA%8C/">经验</a>
+    
+    <a href="https://127.0.0.1/tags/%E9%A9%BE%E7%85%A7/">驾照</a>
+    
+    <a href="https://127.0.0.1/tags/%E9%AD%94%E9%83%BD%E7%94%9F%E5%AD%98%E6%89%8B%E5%86%8C/">魔都生存手册</a>
+    
+</div>
+    </section>
+
+    
+<section class="widget">
+    <h3 class="widget-title">友情链接</h3>
+    <ul class="widget-list">
+        
+        <li>
+            <a target="_blank" href="https://microservices.io/" title="Microservice Architecture">Microservice Architecture</a>
+        </li>
+        
+        <li>
+            <a target="_blank" href="http://stuff-gil-says.blogspot.com/" title="Stuff Gil Says">Stuff Gil Says</a>
+        </li>
+        
+    </ul>
+</section>
+
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="https://127.0.0.1/index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+        </div>
+    </div>
+</div>
+<footer id="footer">
+    <div class="container">
+        &copy; 2018 <a href="https://127.0.0.1/">小码哥的博客 By 小码哥</a>.
+        Powered by <a rel="nofollow noreferer noopener" href="https://gohugo.io" target="_blank">Hugo</a>.
+        <a href="https://www.flysnow.org/" target="_blank">Theme</a> based on <a href="https://github.com/rujews/maupassant-hugo" target="_blank">maupassant</a>.
+        
+    </div>
+</footer>
+
+
+    <script type="text/javascript">
+    
+    (function(){
+        $("pre code").parent().addClass("line-numbers")
+    }())
+
+    window.MathJax = {
+        tex2jax: {
+            inlineMath: [ ['$','$'] ],
+            processEscapes: true
+        }
+    };
+    </script>
+    <script type="text/javascript" src="/js/prism.js" async="true"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src="/js/totop.js?v=0.0.0" async=""></script>
+
+
+
+
+
+
+</body>
+</html>

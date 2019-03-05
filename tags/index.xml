@@ -1,0 +1,474 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on 小码哥的博客</title>
+    <link>https://127.0.0.1/tags/</link>
+    <description>Recent content in Tags on 小码哥的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Thu, 01 Dec 2011 00:40:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://127.0.0.1/tags/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Ajax</title>
+      <link>https://127.0.0.1/tags/ajax/</link>
+      <pubDate>Thu, 01 Dec 2011 00:40:00 +0000</pubDate>
+      
+      <guid>https://127.0.0.1/tags/ajax/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Aliyun</title>
+      <link>https://127.0.0.1/tags/aliyun/</link>
+      <pubDate>Fri, 09 Aug 2013 00:40:00 +0000</pubDate>
+      
+      <guid>https://127.0.0.1/tags/aliyun/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Blog</title>
+      <link>https://127.0.0.1/tags/blog/</link>
+      <pubDate>Tue, 06 May 2014 22:51:00 +0000</pubDate>
+      
+      <guid>https://127.0.0.1/tags/blog/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Cassandra</title>
+      <link>https://127.0.0.1/tags/cassandra/</link>
+      <pubDate>Sun, 23 Jul 2017 22:30:00 +0000</pubDate>
+      
+      <guid>https://127.0.0.1/tags/cassandra/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Catcat</title>
+      <link>https://127.0.0.1/tags/catcat/</link>
+      <pubDate>Tue, 06 May 2014 22:51:00 +0000</pubDate>
+      
+      <guid>https://127.0.0.1/tags/catcat/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Cdn</title>
+      <link>https://127.0.0.1/tags/cdn/</link>
+      <pubDate>Thu, 06 Mar 2014 00:40:00 +0000</pubDate>
+      
+      <guid>https://127.0.0.1/tags/cdn/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Database</title>
+      <link>https://127.0.0.1/tags/database/</link>
+      <pubDate>Mon, 07 Nov 2011 00:40:00 +0000</pubDate>
+      
+      <guid>https://127.0.0.1/tags/database/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Dns</title>
+      <link>https://127.0.0.1/tags/dns/</link>
+      <pubDate>Thu, 06 Mar 2014 00:40:00 +0000</pubDate>
+      
+      <guid>https://127.0.0.1/tags/dns/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Docker</title>
+      <link>https://127.0.0.1/tags/docker/</link>
+      <pubDate>Tue, 18 Dec 2018 23:25:20 +0000</pubDate>
+      
+      <guid>https://127.0.0.1/tags/docker/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Easy_install</title>
+      <link>https://127.0.0.1/tags/easy_install/</link>
+      <pubDate>Sun, 02 Mar 2014 21:16:00 +0000</pubDate>
+      
+      <guid>https://127.0.0.1/tags/easy_install/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Fackbook</title>
+      <link>https://127.0.0.1/tags/fackbook/</link>
+      <pubDate>Tue, 13 Mar 2012 00:40:00 +0000</pubDate>
+      
+      <guid>https://127.0.0.1/tags/fackbook/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Fdisk</title>
+      <link>https://127.0.0.1/tags/fdisk/</link>
+      <pubDate>Thu, 03 Aug 2017 23:55:00 +0000</pubDate>
+      
+      <guid>https://127.0.0.1/tags/fdisk/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Flume</title>
+      <link>https://127.0.0.1/tags/flume/</link>
+      <pubDate>Sun, 23 Jul 2017 22:30:00 +0000</pubDate>
+      
+      <guid>https://127.0.0.1/tags/flume/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Github</title>
+      <link>https://127.0.0.1/tags/github/</link>
+      <pubDate>Tue, 06 May 2014 22:51:00 +0000</pubDate>
+      
+      <guid>https://127.0.0.1/tags/github/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Gitlab</title>
+      <link>https://127.0.0.1/tags/gitlab/</link>
+      <pubDate>Tue, 18 Dec 2018 23:25:20 +0000</pubDate>
+      
+      <guid>https://127.0.0.1/tags/gitlab/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Idea</title>
+      <link>https://127.0.0.1/tags/idea/</link>
+      <pubDate>Tue, 13 Mar 2012 00:40:00 +0000</pubDate>
+      
+      <guid>https://127.0.0.1/tags/idea/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Java</title>
+      <link>https://127.0.0.1/tags/java/</link>
+      <pubDate>Sun, 23 Jul 2017 22:30:00 +0000</pubDate>
+      
+      <guid>https://127.0.0.1/tags/java/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Jquery</title>
+      <link>https://127.0.0.1/tags/jquery/</link>
+      <pubDate>Thu, 01 Dec 2011 00:40:00 +0000</pubDate>
+      
+      <guid>https://127.0.0.1/tags/jquery/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Json</title>
+      <link>https://127.0.0.1/tags/json/</link>
+      <pubDate>Thu, 01 Dec 2011 00:40:00 +0000</pubDate>
+      
+      <guid>https://127.0.0.1/tags/json/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Kafka</title>
+      <link>https://127.0.0.1/tags/kafka/</link>
+      <pubDate>Sun, 23 Jul 2017 22:30:00 +0000</pubDate>
+      
+      <guid>https://127.0.0.1/tags/kafka/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Linux</title>
+      <link>https://127.0.0.1/tags/linux/</link>
+      <pubDate>Tue, 18 Dec 2018 23:25:20 +0000</pubDate>
+      
+      <guid>https://127.0.0.1/tags/linux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Log4j2</title>
+      <link>https://127.0.0.1/tags/log4j2/</link>
+      <pubDate>Sat, 15 Jul 2017 23:31:00 +0000</pubDate>
+      
+      <guid>https://127.0.0.1/tags/log4j2/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Lvm</title>
+      <link>https://127.0.0.1/tags/lvm/</link>
+      <pubDate>Thu, 03 Aug 2017 23:55:00 +0000</pubDate>
+      
+      <guid>https://127.0.0.1/tags/lvm/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Mysql</title>
+      <link>https://127.0.0.1/tags/mysql/</link>
+      <pubDate>Tue, 06 Jun 2017 12:15:07 +0000</pubDate>
+      
+      <guid>https://127.0.0.1/tags/mysql/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Nginx</title>
+      <link>https://127.0.0.1/tags/nginx/</link>
+      <pubDate>Thu, 16 Oct 2014 15:27:00 +0000</pubDate>
+      
+      <guid>https://127.0.0.1/tags/nginx/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Performance</title>
+      <link>https://127.0.0.1/tags/performance/</link>
+      <pubDate>Thu, 16 Oct 2014 15:27:00 +0000</pubDate>
+      
+      <guid>https://127.0.0.1/tags/performance/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Php</title>
+      <link>https://127.0.0.1/tags/php/</link>
+      <pubDate>Thu, 22 Mar 2012 00:40:00 +0000</pubDate>
+      
+      <guid>https://127.0.0.1/tags/php/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Pip</title>
+      <link>https://127.0.0.1/tags/pip/</link>
+      <pubDate>Sun, 02 Mar 2014 21:16:00 +0000</pubDate>
+      
+      <guid>https://127.0.0.1/tags/pip/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Python</title>
+      <link>https://127.0.0.1/tags/python/</link>
+      <pubDate>Sun, 02 Mar 2014 21:16:00 +0000</pubDate>
+      
+      <guid>https://127.0.0.1/tags/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Resize2fs</title>
+      <link>https://127.0.0.1/tags/resize2fs/</link>
+      <pubDate>Thu, 03 Aug 2017 23:55:00 +0000</pubDate>
+      
+      <guid>https://127.0.0.1/tags/resize2fs/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Review</title>
+      <link>https://127.0.0.1/tags/review/</link>
+      <pubDate>Sun, 31 Dec 2017 00:08:25 +0000</pubDate>
+      
+      <guid>https://127.0.0.1/tags/review/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Rmbp</title>
+      <link>https://127.0.0.1/tags/rmbp/</link>
+      <pubDate>Sun, 02 Mar 2014 21:16:00 +0000</pubDate>
+      
+      <guid>https://127.0.0.1/tags/rmbp/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Ssh</title>
+      <link>https://127.0.0.1/tags/ssh/</link>
+      <pubDate>Tue, 18 Dec 2018 23:25:20 +0000</pubDate>
+      
+      <guid>https://127.0.0.1/tags/ssh/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Tuning</title>
+      <link>https://127.0.0.1/tags/tuning/</link>
+      <pubDate>Thu, 16 Oct 2014 15:27:00 +0000</pubDate>
+      
+      <guid>https://127.0.0.1/tags/tuning/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Ucloud</title>
+      <link>https://127.0.0.1/tags/ucloud/</link>
+      <pubDate>Fri, 09 Aug 2013 00:40:00 +0000</pubDate>
+      
+      <guid>https://127.0.0.1/tags/ucloud/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Vagrant</title>
+      <link>https://127.0.0.1/tags/vagrant/</link>
+      <pubDate>Mon, 03 Mar 2014 23:40:00 +0000</pubDate>
+      
+      <guid>https://127.0.0.1/tags/vagrant/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Virtualbox</title>
+      <link>https://127.0.0.1/tags/virtualbox/</link>
+      <pubDate>Mon, 03 Mar 2014 23:40:00 +0000</pubDate>
+      
+      <guid>https://127.0.0.1/tags/virtualbox/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Virtualenv</title>
+      <link>https://127.0.0.1/tags/virtualenv/</link>
+      <pubDate>Sun, 02 Mar 2014 21:16:00 +0000</pubDate>
+      
+      <guid>https://127.0.0.1/tags/virtualenv/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Xtrabackup</title>
+      <link>https://127.0.0.1/tags/xtrabackup/</link>
+      <pubDate>Tue, 06 Jun 2017 12:15:07 +0000</pubDate>
+      
+      <guid>https://127.0.0.1/tags/xtrabackup/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>临牌</title>
+      <link>https://127.0.0.1/tags/%E4%B8%B4%E7%89%8C/</link>
+      <pubDate>Thu, 28 Jan 2016 11:55:00 +0000</pubDate>
+      
+      <guid>https://127.0.0.1/tags/%E4%B8%B4%E7%89%8C/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>回忆</title>
+      <link>https://127.0.0.1/tags/%E5%9B%9E%E5%BF%86/</link>
+      <pubDate>Sun, 31 Dec 2017 00:08:25 +0000</pubDate>
+      
+      <guid>https://127.0.0.1/tags/%E5%9B%9E%E5%BF%86/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>展望</title>
+      <link>https://127.0.0.1/tags/%E5%B1%95%E6%9C%9B/</link>
+      <pubDate>Sun, 31 Dec 2017 00:08:25 +0000</pubDate>
+      
+      <guid>https://127.0.0.1/tags/%E5%B1%95%E6%9C%9B/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>心情</title>
+      <link>https://127.0.0.1/tags/%E5%BF%83%E6%83%85/</link>
+      <pubDate>Fri, 25 Apr 2014 00:40:00 +0000</pubDate>
+      
+      <guid>https://127.0.0.1/tags/%E5%BF%83%E6%83%85/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>思考</title>
+      <link>https://127.0.0.1/tags/%E6%80%9D%E8%80%83/</link>
+      <pubDate>Sun, 31 Dec 2017 00:08:25 +0000</pubDate>
+      
+      <guid>https://127.0.0.1/tags/%E6%80%9D%E8%80%83/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>摄影</title>
+      <link>https://127.0.0.1/tags/%E6%91%84%E5%BD%B1/</link>
+      <pubDate>Sat, 01 Oct 2011 00:40:00 +0000</pubDate>
+      
+      <guid>https://127.0.0.1/tags/%E6%91%84%E5%BD%B1/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>教训</title>
+      <link>https://127.0.0.1/tags/%E6%95%99%E8%AE%AD/</link>
+      <pubDate>Sun, 31 Dec 2017 00:08:25 +0000</pubDate>
+      
+      <guid>https://127.0.0.1/tags/%E6%95%99%E8%AE%AD/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>物理</title>
+      <link>https://127.0.0.1/tags/%E7%89%A9%E7%90%86/</link>
+      <pubDate>Thu, 13 Mar 2014 21:16:00 +0000</pubDate>
+      
+      <guid>https://127.0.0.1/tags/%E7%89%A9%E7%90%86/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>系统架构</title>
+      <link>https://127.0.0.1/tags/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/</link>
+      <pubDate>Fri, 21 Oct 2011 13:11:00 +0000</pubDate>
+      
+      <guid>https://127.0.0.1/tags/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>经验</title>
+      <link>https://127.0.0.1/tags/%E7%BB%8F%E9%AA%8C/</link>
+      <pubDate>Sun, 31 Dec 2017 00:08:25 +0000</pubDate>
+      
+      <guid>https://127.0.0.1/tags/%E7%BB%8F%E9%AA%8C/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>驾照</title>
+      <link>https://127.0.0.1/tags/%E9%A9%BE%E7%85%A7/</link>
+      <pubDate>Thu, 15 Oct 2015 11:55:00 +0000</pubDate>
+      
+      <guid>https://127.0.0.1/tags/%E9%A9%BE%E7%85%A7/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>魔都生存手册</title>
+      <link>https://127.0.0.1/tags/%E9%AD%94%E9%83%BD%E7%94%9F%E5%AD%98%E6%89%8B%E5%86%8C/</link>
+      <pubDate>Thu, 28 Jan 2016 11:55:00 +0000</pubDate>
+      
+      <guid>https://127.0.0.1/tags/%E9%AD%94%E9%83%BD%E7%94%9F%E5%AD%98%E6%89%8B%E5%86%8C/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

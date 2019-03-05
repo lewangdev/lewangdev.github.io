@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Fackbook on 小码哥的博客</title>
+    <link>https://127.0.0.1/tags/fackbook/</link>
+    <description>Recent content in Fackbook on 小码哥的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Tue, 13 Mar 2012 00:40:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://127.0.0.1/tags/fackbook/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>我想做的东西可以不值钱，但是它必须‘酷’</title>
+      <link>https://127.0.0.1/posts/2012-03-13-things-i-create-must-be-cool/</link>
+      <pubDate>Tue, 13 Mar 2012 00:40:00 +0000</pubDate>
+      
+      <guid>https://127.0.0.1/posts/2012-03-13-things-i-create-must-be-cool/</guid>
+      <description>这句话是FACEBOOK的马克·扎克伯格说的。
+我很认同，并且感觉自己也是这么做的。现在自己做得很多事情，从来没有考虑过它会不会值钱，只是感觉把自己的想法做出来，变成实物的过程就已经很酷。
+对于酷，我觉得至少有两方面的意义。
+一种酷，是一种自我实现的感觉，是一种认同感，成就感。比如自己把自己的不错的想法实现了，当自己看到自己作品的时候，肯定觉得这种感觉很酷。接着你的作品有很多人用了，看了，然后给与了肯定或者赞扬的评价，这时候感到酷，我觉得就应该是一种认同感和成就感。都是内心的感觉，一种推进自我完善的感觉。
+还有一种酷，那就是表面上的酷，比如你的网页效果做得很酷很炫，你实现的功能很酷。虽然这些是表面上的酷，但这些酷的背后却隐藏着无数的思考和磨练。这么表面上的酷，却恰恰可以给人带来内心上的酷。
+就拿摆摊网来说，小小的网站，做得很简单。但是为了实现页面小小的效果，还不得不去多学点东西多花些时间。我喜欢自己东西能弄得那种能给人至简至美的感觉，但是却不能因为简而不“美”了，这里的美是给人一种更好的感觉。所以自己总是在觉得不破坏简的前提下，尽量的让自己的应用让人使用的体验更好更酷。比如说发布书籍信息的页面，以前必须使用ISBN号，现在这里点击查看的将要改成 @林风琦 推荐的 chegg 的效果，是不是比豆瓣的书籍检索要酷很多。进一步思考，对于摆摊首页的检索，以后是不是应该结合用户的搜索习惯和本身的书籍物品数据也实现这种AutoComplete功能。还比如说摆摊还将开发Android手机客户端，到时候只要一拍，就可以把书信息扫下来了，看，多酷！
+现在自己的科研也是这样，能给自己带来一种很酷的感觉，但是就科研的实际应用来说，我觉得可以应用的范围很小。但是想着能把Jim Gray这位数据库大神[此大神已经被外星人带走了，详情看这里]负责的基于微软SQL Server的SDSS项目迁移到适合科学运算的数组模型的数据库上来，然后我们还有可能就性能PK一把，想想就觉得很酷。更酷的是，自己还想到了一种自动迁移的方法[还没有经过深思和验证]。反正就是觉得酷儿！
+为了更酷，继续努力！
+我是 A Lucky Apple，@小码哥</description>
+    </item>
+    
+  </channel>
+</rss>

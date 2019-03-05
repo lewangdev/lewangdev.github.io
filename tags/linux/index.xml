@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Linux on 小码哥的博客</title>
+    <link>https://127.0.0.1/tags/linux/</link>
+    <description>Recent content in Linux on 小码哥的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Tue, 18 Dec 2018 23:25:20 +0000</lastBuildDate>
+    
+	<atom:link href="https://127.0.0.1/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>使用 Docker 方式安装 Gitlab，没你想得那么简单</title>
+      <link>https://127.0.0.1/posts/2018-12-18-gitlab-docker-install/</link>
+      <pubDate>Tue, 18 Dec 2018 23:25:20 +0000</pubDate>
+      
+      <guid>https://127.0.0.1/posts/2018-12-18-gitlab-docker-install/</guid>
+      <description>为什么要写这篇文章？ 曾经几年前在 Docker 还没有广泛应用的时候，在公司使用过源码的方式安装和升级过 Gitlab，虽远没有 Docker 方便，因为自己对 Linux 系统的理解，所以整体上感觉还是挺简单的。这几年随着 Docker 的普及，使得安装 Gitlab 更加的容易，不仅方便了我这样的老鸟，也更方便了小白用户们。但是 Gitlab 官方的 Docker 安装文档并没有写得很完善, 除了官方文档之外，检索出来的安装文档也是人云亦云，东拼西凑，结果也就是能运行起来，凑合着能用而已。
+我希望每做一件小事的时候也都能抱着“知其然知其所以然”的心态对待，用 Docker 方式安装 Gitlab，说简单来说就是一行命令的事儿，但是这样就够了吗？我看是不够的，所以就有了这篇文档。
+本文需要达成的事项  在 CentOS 7 系统中安装 Docker 使用 Docker 方式安装中文版 Gitlab 和宿主机器共用 22(SSH) 端口 支持 SSH(22)/HTTPS(443) 方式推拉仓库 使用 SMTP 方式配置通知邮箱(腾讯企业邮箱) 改写默认的项目标签(Labels)  在 CentOS 7 系统中安装 Docker 这部分参考 Docker 的官方文档, 罗列一下安装步骤, 细节请看 Docker 的官方文档。如果使用 root 用户安装，sudo 可以去掉。
+1. 删除老版本 Docker $ sudo yum remove docker \ docker-client \ docker-client-latest \ docker-common \ docker-latest \ docker-latest-logrotate \ docker-logrotate \ docker-selinux \ docker-engine-selinux \ docker-engine  2.</description>
+    </item>
+    
+    <item>
+      <title>LVM 实战记录</title>
+      <link>https://127.0.0.1/posts/2017-08-03-lvm-in-action/</link>
+      <pubDate>Thu, 03 Aug 2017 23:55:00 +0000</pubDate>
+      
+      <guid>https://127.0.0.1/posts/2017-08-03-lvm-in-action/</guid>
+      <description>背景 阿里云云主机两块 100G 的云盘合一个逻辑卷（LV）来使用，单个的 100G 磁盘不够用，需要合在一起使用，并且方便以后扩容
+基本知识  磁盘 /dev/xvdb /dev/xvdc 分区, 使用 fdisk 进行分区 fdisk &amp;gt; n &amp;gt; p &amp;gt; 1..4, 主分区最多只有4个 准备分区后，将分区类型变为 LVM 分区，fdisk &amp;gt; t &amp;gt; 8e, 8e 是 LVM 类型 ID 物理卷（PV），卷组（VG），逻辑卷（LV），从磁盘分区创建 PV，通过 PV 创建 VG 或者把 PV 加入已有的 VG，在 VG 上创建 LV，LV 看起来就是逻辑的上磁盘，使用和真实的磁盘没什么明显区别, 在 LV 上构建文件系统  创建  创建物理卷 pvcreate /dev/xvdb1，对分区进行操作 创建 vg0 卷组 vgcreate vg0 /dev/xvdb1 查看卷组 vgdisplay， 可以看到卷组有多大 在 vg0 上创建 data 逻辑卷 lvcreate -L 99G -n data vg0 或者 lvcreate -l 25556 -n data vg0 创建文件系统 mkfs.</description>
+    </item>
+    
+    <item>
+      <title>Nginx 性能调优「译」</title>
+      <link>https://127.0.0.1/posts/2014-10-16-tuning-nginx/</link>
+      <pubDate>Thu, 16 Oct 2014 15:27:00 +0000</pubDate>
+      
+      <guid>https://127.0.0.1/posts/2014-10-16-tuning-nginx/</guid>
+      <description>这是一篇译文，原文链接：Tuning NGINX for Performance
+ Nginx 为人熟知的是在负载均衡、静态缓存和 WEB 服务器等方面的高性能，目前世界上最繁忙的站点中大约有 40% 在使用 Nginx。绝大多数情况下，大多数默认的 Nginx 和 Linux 配置都可以工作得非常好，但也需要做一些优化以获得最好的性能。本文将讨论在优化系统时需要考虑的 Nginx 和 Linux 的部分配置。可配置的选项有很多，但是本文只涵盖推荐大多数用户调整的配置选项。本文没有涵盖的配置选项，只有那些对 Nginx 和 Linux 有了深入的理解的人或者获得了 Nginx 技术支持和专业的服务团队的推荐建议后，才可以考虑调整。Nginx 专业服务器团队已经为世界上一些最繁忙的站点通过优化 Nginx 获得了最高水平的性能，并且可以为任何需要获得自己系统最大产出的客户服务。
+简介 本文假设读者对 Nginx 架构和配置的概念已有了基本的了解。Nginx 的文档内容将不会在本文中重复，但本文会提供各项配置简要的介绍和相关文档的链接。
+在性能调优时，要遵循一个好的规则：一次只修改一个配置选项，如果这个修改没有在性能方面带来优化，那么要再改回默认值。
+我们从 Linux 性能优化的讨论开始，因为 Linux 性能优化的一些值会影响到 Nginx 的一些配置。
+Linux 配置 尽管现代 Linux 内核（2.6+）在各种配置情况下都工作得很好，但也有一些配置是想要修改的。如果操作系统的配置设置的太低，那内核日志将会有错误信息，从而得知哪些配置需要调整。Linux 性能优化可能涉及的配置有很多，这里我们只讨论那些优化达到正常工作负载最有可能涉及到的那些配置。调整这些配置请参考详细的 Linux 文档。
+Backlog 队列 下面的配置选项与网络连接和其排队方法直接相关。如果连入率很高（译者注：客户端发起的连接很多）且系统性能配置不匹配，例如一些连接表现得有所停顿，那么修改下面得配置将可能有用。
+ net.core.somaxconn: 设置等待 Nginx 接受的连接队列的大小。由于 Nginx 接受连接非常的快，这个值通常情况下不用设置得很大，但系统默认值可能比较小，所以对于流量比较大的站点，增大这个值是个不错的想法。如果这个值太小，在内核日志中应该会看到错误消息，那么就需要增大这个值，直到错误消失。注意：若将这个值设置为大于 512 的话，那么需要在 Nginx 配置中修改 listen 指令的 backlog 参数来匹配这个数字。</description>
+    </item>
+    
+    <item>
+      <title>Linux 共享库（动态链接库）相关的一些记录</title>
+      <link>https://127.0.0.1/posts/2013-03-04-so-load-path-in-linux/</link>
+      <pubDate>Mon, 04 Mar 2013 00:40:00 +0000</pubDate>
+      
+      <guid>https://127.0.0.1/posts/2013-03-04-so-load-path-in-linux/</guid>
+      <description>相关的环境变量  LD_LIBRARY_PATH ld-linux.so寻找shared object的路径，优先加载出现在路径前面的shared object。如，export LD_LIBRARY_PATH=/home/user/lib:$LD_LIBRARY_PATH LD_PRELOAD 指定优先供ld-linux.so加载的shared object。如，export LD_PRELAOD=/home/user/lib/glibc.so，可以使用这个变量来改变加载顺序，例如我们自定义的glibc.so中实现了新的strcmp之类的函数，那么可以使用这个变量来实现函数的替换，实现注入 LD_DEBUG 使用这个环境变量来debug载入shared object的情况。如，export LD_DEBUG=files,这样会打印所有所有加载shared object的记录  一些工具  如何查看一个程序或者shared object加载哪些shared object  ldd，可以查看程序或者.so，如，
+$ ldd ./foo_test $ ldd ./libfoo.so   对于已经运行的程序，可以这样  $ cat /proc/PID/maps | awk &#39;{print $6}&#39;| grep &#39;\.so&#39;| sort | uniq $ lsof -p PID | awk &#39;{print $9}&#39; | grep &#39;\.so&#39;   没有启动的程序可以这样  $ strace ./foo_test 2&amp;gt;&amp;amp;1 | grep &#39;^open(&amp;quot;.*\.so&#39;  也可以用上面提到的环境变量来看shared object的加载顺序</description>
+    </item>
+    
+  </channel>
+</rss>

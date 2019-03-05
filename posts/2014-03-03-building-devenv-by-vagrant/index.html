@@ -1,0 +1,430 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8">
+    <meta name="generator" content="Hugo 0.40.1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>使用 Vagrant 构建开发环境 | 小码哥的博客</title>
+    <meta property="og:title" content="使用 Vagrant 构建开发环境 - 小码哥的博客">
+    <meta property="og:type" content="article">
+        
+    <meta property="article:published_time" content="2014-03-03T23:40:00&#43;08:00">
+        
+        
+    <meta property="article:modified_time" content="2014-03-03T23:40:00&#43;08:00">
+        
+    <meta name="Keywords" content="IoT, 物联网, 智能硬件，工业互联网方案，智能家居, 智慧工厂, 智慧建筑, Golang, Java, JVM, Python, 树莓派, Linux 玩家，果粉，系统架构，技术管理">
+    <meta name="description" content="使用 Vagrant 构建开发环境">
+        <meta name="author" content="Le">
+        
+    <meta property="og:url" content="https://127.0.0.1/posts/2014-03-03-building-devenv-by-vagrant/">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="/css/normalize.css">
+    
+        <link rel="stylesheet" href="/css/prism.css">
+    
+    <link rel="stylesheet" href="/css/style.css">
+    <script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+
+    
+
+
+    
+    
+</head>
+
+<body>
+<header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="https://127.0.0.1/">
+                        小码哥的博客
+                    </a>
+                
+                <p class="description">Work hard, Play harder</p>
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="" href="https://127.0.0.1/">首页</a>
+                    
+                    <a  href="https://127.0.0.1/tags/" title="标签">标签</a>
+                    
+                    <a  href="https://127.0.0.1/archives/" title="归档">归档</a>
+                    
+                    <a  href="https://127.0.0.1/about/" title="关于">关于</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+<div id="body">
+    <div class="container">
+        <div class="col-group">
+
+            <div class="col-8" id="main">
+                <div class="res-cons">
+                    <article class="post">
+                        <header>
+                            <h1 class="post-title">使用 Vagrant 构建开发环境</h1>
+                        </header>
+                        <date class="post-meta meta-date">
+                            2014年3月3日
+                        </date>
+                        
+                        
+                        <div class="post-content">
+                            
+
+<p><a href="http://www.vagrantup.com/">Vagrant</a> 是一个构建虚拟开发环境的利器，它使得在团队中很容易共享开发环境，有了它，不必每个人都搭建一个自己的开发环境了。在没有使用 vagrant 之前，我在windows中安装了 virtualbox，然后在virtualbox中安装了一个ubuntu server。在 ubuntu 中安装了 mysql、jdk 等软件，并且设置了一个共享目录，以便于将工程代码直接共享给 ubuntu。在外部开发调试过程中（Java 项目），我需要在virtualbox中设置好几个端口映射，如 mysql，ssh等等。这样在 cygwin 里面就可以通过 ssh 登录 ubuntu server 了，为了使得ssh登录不用每次设置密码，还需要手动生成公钥私钥。换机器了，这一切我又得重新配置。新同事来了，他也得像我这样重新配置一遍。有可能他还会有问题说：为什么按照你的说明，代码在我这里却无法运行呢？</p>
+
+<p>一切都从 <a href="http://yining.org">Yining</a> 告诉了我 vagrant 之后发生了变化，原来一切都这么简单。</p>
+
+<h2 id="安装-virtualbox">安装 VirtualBox</h2>
+
+<p>Vagrant 其实是对 virtualbox 做了一层包装，它让使用virtualbox作为虚拟机更为简单。当然也可以使用 vmware，使用vmware那得找一个license了。</p>
+
+<p>好吧，去<a href="https://www.virtualbox.org/wiki/Downloads">这里</a> 下载 VirtualBox。我使用的是 4.3.8 for OSX</p>
+
+<h2 id="安装-vagrant">安装 Vagrant</h2>
+
+<p><a href="http://www.vagrantup.com/downloads.html">下载vagrant</a></p>
+
+<h2 id="添加虚拟机镜像到-vagrant">添加虚拟机镜像到 Vagrant</h2>
+
+<pre><code>vagrant box add vdevenv ~/Workspace/vagrant/boxes/vdevenv-0.0.0.1.box
+</code></pre>
+
+<p>vagrant 的干净的镜像可以在这里下载:</p>
+
+<ul>
+<li><a href="http://files.vagrantup.com/precise32.box">Ubuntu precise 32 VirtualBox</a></li>
+<li><a href="http://files.vagrantup.com/precise64.box">Ubuntu precise 64 VirtualBox</a></li>
+<li><a href="http://www.vagrantbox.es/">更多镜像</a></li>
+</ul>
+
+<h2 id="在工作目录启动-vagrant">在工作目录启动 Vagrant</h2>
+
+<p>进入自己的代码所在的目录，启动刚刚添加的虚拟机镜像</p>
+
+<pre><code>vagrant init vdevenv
+vagrant up
+vagrant ssh  # 登录到虚拟机
+</code></pre>
+
+<p>进入 /vagrant 目录，这里就是共享的目录，所有的代码都在这里。</p>
+
+<h2 id="vagrant-设置">Vagrant 设置</h2>
+
+<p>修改 Vagrantfile</p>
+
+<h2 id="分享开发环境">分享开发环境</h2>
+
+<pre><code>vagrant package
+</code></pre>
+
+<p>执行之后在工作目录下面会生成一个*.bax的文件，把这个文件拷给别人就可以了</p>
+
+<h2 id="常用-vagrant-命令">常用 Vagrant 命令</h2>
+
+<pre><code>vagrant ssh
+vagrant status
+vagrant halt
+vagrant up
+</code></pre>
+
+                        </div>
+
+                        
+
+<div class="post-archive">
+    <h2>See Also</h2>
+    <ul class="listing">
+        
+        <li><a href="/posts/2014-03-02-python-on-my-rmbp/">Python on My rMBP</a></li>
+        
+        <li><a href="/posts/2013-08-09-benchmark-of-aliyun-and-ucloud/">阿里云和 ucloud 云主机评测</a></li>
+        
+        <li><a href="/posts/2013-03-04-so-load-path-in-linux/">Linux 共享库（动态链接库）相关的一些记录</a></li>
+        
+        <li><a href="/posts/2012-03-22-a-short-discuss-of-simplexml-of-php/">再说 PHP 中 SimpleXML</a></li>
+        
+        <li><a href="/posts/2012-03-13-things-i-create-must-be-cool/">我想做的东西可以不值钱，但是它必须‘酷’</a></li>
+        
+    </ul>
+</div>
+
+
+                        <div class="post-meta meta-tags">
+                            
+                            <ul class="clearfix">
+                                
+                                <li><a href="https://127.0.0.1/tags/virtualbox">virtualbox</a></li>
+                                
+                                <li><a href="https://127.0.0.1/tags/vagrant">vagrant</a></li>
+                                
+                            </ul>
+                            
+                        </div>
+                    </article>
+                    
+    
+
+    
+    
+                </div>
+            </div>
+            <div id="secondary">
+    <section class="widget">
+        <form id="search" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="https://127.0.0.1/">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="https://127.0.0.1/posts/2018-12-18-gitlab-docker-install/" title="使用 Docker 方式安装 Gitlab，没你想得那么简单">使用 Docker 方式安装 Gitlab，没你想得那么简单</a>
+    </li>
+    
+    <li>
+        <a href="https://127.0.0.1/posts/2017-12-31-year-end-reviews-of-2017/" title="有关 2017 流水账和胡思乱想的记录">有关 2017 流水账和胡思乱想的记录</a>
+    </li>
+    
+    <li>
+        <a href="https://127.0.0.1/posts/2017-08-03-lvm-in-action/" title="LVM 实战记录">LVM 实战记录</a>
+    </li>
+    
+    <li>
+        <a href="https://127.0.0.1/posts/2017-07-23-log-processing-system/" title="日志收集和分析系统架构">日志收集和分析系统架构</a>
+    </li>
+    
+    <li>
+        <a href="https://127.0.0.1/posts/2017-07-15-log4j2/" title="Log4j2 配置">Log4j2 配置</a>
+    </li>
+    
+    <li>
+        <a href="https://127.0.0.1/posts/2017-06-06-xtrabackup/" title="MySQL 数据备份和不停机重新搭建主从同步">MySQL 数据备份和不停机重新搭建主从同步</a>
+    </li>
+    
+    <li>
+        <a href="https://127.0.0.1/posts/2016-01-28-banlinpai/" title="办理机动车临牌">办理机动车临牌</a>
+    </li>
+    
+    <li>
+        <a href="https://127.0.0.1/posts/2015-10-15-huanzheng/" title="驾照转入换证">驾照转入换证</a>
+    </li>
+    
+    <li>
+        <a href="https://127.0.0.1/posts/2014-10-16-tuning-nginx/" title="Nginx 性能调优「译」">Nginx 性能调优「译」</a>
+    </li>
+    
+    <li>
+        <a href="https://127.0.0.1/posts/2014-05-06-github-pages-dns-settings/" title="Github Pages 服务的域名设置">Github Pages 服务的域名设置</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">分类</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="https://127.0.0.1/categories/docker/">docker(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://127.0.0.1/categories/linux/">linux(3)</a>
+    </li>
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title">标签</h3>
+<div class="tagcloud">
+    
+    <a href="https://127.0.0.1/tags/ajax/">ajax</a>
+    
+    <a href="https://127.0.0.1/tags/aliyun/">aliyun</a>
+    
+    <a href="https://127.0.0.1/tags/blog/">blog</a>
+    
+    <a href="https://127.0.0.1/tags/cassandra/">cassandra</a>
+    
+    <a href="https://127.0.0.1/tags/catcat/">catcat</a>
+    
+    <a href="https://127.0.0.1/tags/cdn/">cdn</a>
+    
+    <a href="https://127.0.0.1/tags/database/">database</a>
+    
+    <a href="https://127.0.0.1/tags/dns/">dns</a>
+    
+    <a href="https://127.0.0.1/tags/docker/">docker</a>
+    
+    <a href="https://127.0.0.1/tags/easy_install/">easy_install</a>
+    
+    <a href="https://127.0.0.1/tags/fackbook/">fackbook</a>
+    
+    <a href="https://127.0.0.1/tags/fdisk/">fdisk</a>
+    
+    <a href="https://127.0.0.1/tags/flume/">flume</a>
+    
+    <a href="https://127.0.0.1/tags/github/">github</a>
+    
+    <a href="https://127.0.0.1/tags/gitlab/">gitlab</a>
+    
+    <a href="https://127.0.0.1/tags/idea/">idea</a>
+    
+    <a href="https://127.0.0.1/tags/java/">java</a>
+    
+    <a href="https://127.0.0.1/tags/jquery/">jquery</a>
+    
+    <a href="https://127.0.0.1/tags/json/">json</a>
+    
+    <a href="https://127.0.0.1/tags/kafka/">kafka</a>
+    
+    <a href="https://127.0.0.1/tags/linux/">linux</a>
+    
+    <a href="https://127.0.0.1/tags/log4j2/">log4j2</a>
+    
+    <a href="https://127.0.0.1/tags/lvm/">lvm</a>
+    
+    <a href="https://127.0.0.1/tags/mysql/">mysql</a>
+    
+    <a href="https://127.0.0.1/tags/nginx/">nginx</a>
+    
+    <a href="https://127.0.0.1/tags/performance/">performance</a>
+    
+    <a href="https://127.0.0.1/tags/php/">php</a>
+    
+    <a href="https://127.0.0.1/tags/pip/">pip</a>
+    
+    <a href="https://127.0.0.1/tags/python/">python</a>
+    
+    <a href="https://127.0.0.1/tags/resize2fs/">resize2fs</a>
+    
+    <a href="https://127.0.0.1/tags/review/">review</a>
+    
+    <a href="https://127.0.0.1/tags/rmbp/">rmbp</a>
+    
+    <a href="https://127.0.0.1/tags/ssh/">ssh</a>
+    
+    <a href="https://127.0.0.1/tags/tuning/">tuning</a>
+    
+    <a href="https://127.0.0.1/tags/ucloud/">ucloud</a>
+    
+    <a href="https://127.0.0.1/tags/vagrant/">vagrant</a>
+    
+    <a href="https://127.0.0.1/tags/virtualbox/">virtualbox</a>
+    
+    <a href="https://127.0.0.1/tags/virtualenv/">virtualenv</a>
+    
+    <a href="https://127.0.0.1/tags/xtrabackup/">xtrabackup</a>
+    
+    <a href="https://127.0.0.1/tags/%E4%B8%B4%E7%89%8C/">临牌</a>
+    
+    <a href="https://127.0.0.1/tags/%E5%9B%9E%E5%BF%86/">回忆</a>
+    
+    <a href="https://127.0.0.1/tags/%E5%B1%95%E6%9C%9B/">展望</a>
+    
+    <a href="https://127.0.0.1/tags/%E5%BF%83%E6%83%85/">心情</a>
+    
+    <a href="https://127.0.0.1/tags/%E6%80%9D%E8%80%83/">思考</a>
+    
+    <a href="https://127.0.0.1/tags/%E6%91%84%E5%BD%B1/">摄影</a>
+    
+    <a href="https://127.0.0.1/tags/%E6%95%99%E8%AE%AD/">教训</a>
+    
+    <a href="https://127.0.0.1/tags/%E7%89%A9%E7%90%86/">物理</a>
+    
+    <a href="https://127.0.0.1/tags/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/">系统架构</a>
+    
+    <a href="https://127.0.0.1/tags/%E7%BB%8F%E9%AA%8C/">经验</a>
+    
+    <a href="https://127.0.0.1/tags/%E9%A9%BE%E7%85%A7/">驾照</a>
+    
+    <a href="https://127.0.0.1/tags/%E9%AD%94%E9%83%BD%E7%94%9F%E5%AD%98%E6%89%8B%E5%86%8C/">魔都生存手册</a>
+    
+</div>
+    </section>
+
+    
+<section class="widget">
+    <h3 class="widget-title">友情链接</h3>
+    <ul class="widget-list">
+        
+        <li>
+            <a target="_blank" href="https://microservices.io/" title="Microservice Architecture">Microservice Architecture</a>
+        </li>
+        
+        <li>
+            <a target="_blank" href="http://stuff-gil-says.blogspot.com/" title="Stuff Gil Says">Stuff Gil Says</a>
+        </li>
+        
+    </ul>
+</section>
+
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="https://127.0.0.1/index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+        </div>
+    </div>
+</div>
+<footer id="footer">
+    <div class="container">
+        &copy; 2018 <a href="https://127.0.0.1/">小码哥的博客 By 小码哥</a>.
+        Powered by <a rel="nofollow noreferer noopener" href="https://gohugo.io" target="_blank">Hugo</a>.
+        <a href="https://www.flysnow.org/" target="_blank">Theme</a> based on <a href="https://github.com/rujews/maupassant-hugo" target="_blank">maupassant</a>.
+        
+    </div>
+</footer>
+
+
+    <script type="text/javascript">
+    
+    (function(){
+        $("pre code").parent().addClass("line-numbers")
+    }())
+
+    window.MathJax = {
+        tex2jax: {
+            inlineMath: [ ['$','$'] ],
+            processEscapes: true
+        }
+    };
+    </script>
+    <script type="text/javascript" src="/js/prism.js" async="true"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src="/js/totop.js?v=0.0.0" async=""></script>
+
+
+
+
+
+
+</body>
+</html>

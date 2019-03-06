@@ -991,3 +991,12 @@ img.alignright {
     background: #F8F8F8;
     border-bottom-color: #D26911; 
 }
+
+/* warning */
+.warning {
+    background: #FEFECC;
+    padding: 1rem;
+    font-size: 14px;
+    text-align: center;
+    border: 1px solid #E4E4A9;
+}

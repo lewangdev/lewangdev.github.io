@@ -2,21 +2,31 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>小码哥的博客</title>
-    <link>https://127.0.0.1/</link>
+    <link>/</link>
     <description>Recent content on 小码哥的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Tue, 18 Dec 2018 23:25:20 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 06 Mar 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://127.0.0.1/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>Java 进阶要点</title>
+      <link>/posts/2019-03-06-keynotes-of-new-java/</link>
+      <pubDate>Wed, 06 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/2019-03-06-keynotes-of-new-java/</guid>
+      <description>[填坑]自己学习 Java 和用 Java 过程中的理解和备忘的主要的点, 后续会准备一些列文章来说明。
+JDK 11  Oracle 不在免费提供 LTS 版本了，包括 JDK 8 ZGC, 可伸缩的、低延迟的垃圾收集器，STW 时间不超过 10ms Nashorn 标记为 Deprecate 了  JDK 9  module try-catch 简化 _ 为保留关键字 var 将在 JDK 10 中作为关键字, 作为本地变量类型推断关键字 字符串相关，主要是 Compact String, 用 byte[] 替换了 char[], char 在 Java 中占两个字节 G1 作为默认垃圾回收器  JVM  启动 JVM 相关的命令行参数 G1 垃圾回收器  内存  JVM(Hotspot) 内存结构 制造各种 OutOfMemery 和 StackOverflow 各种 JVM 相关工具(jstat/jmap/jstack/jps 等) 解决 FullGC 的问题 引用：WeakRefrence/PhantomReference/SoftRefrence/FinalRefrence 等 ClassLoader/URLClassLoader Spring Boot 的 ClassLoader 自定义 ClassLoader  多线程和并发  JVM 的线程模型 1:1 协程 创建线程的方法 线程同步 synchronzied/对象锁/类锁/锁方法/锁锁代码块 线程池 锁相关（Lock 接口和实现类） Condition volatile ThreadLocal 用途和实现 并发（CAS/乐观锁/无锁/无等待/无阻塞）  字节码  基本结构 操作字节码的工具 Javassist/ASM AOP  集合  Collection,List,ArrayList,Vector,LinkedList, SkipList, Stack Queue HashMap/HashTable HashMap 扩容死循环问题 LinkedHashMap TreeMap HashSet,TreeSet WeakHashMap 并发相关的集合  ConcurrentHashMap CopyOnWriteArrayList   IO  IO 模型 NIO Non-blocking IO Java 8 IO 相关的接口和类 Netty Vert.</description>
+    </item>
+    
+    <item>
       <title>使用 Docker 方式安装 Gitlab，没你想得那么简单</title>
-      <link>https://127.0.0.1/posts/2018-12-18-gitlab-docker-install/</link>
+      <link>/posts/2018-12-18-gitlab-docker-install/</link>
       <pubDate>Tue, 18 Dec 2018 23:25:20 +0000</pubDate>
       
-      <guid>https://127.0.0.1/posts/2018-12-18-gitlab-docker-install/</guid>
+      <guid>/posts/2018-12-18-gitlab-docker-install/</guid>
       <description>为什么要写这篇文章？ 曾经几年前在 Docker 还没有广泛应用的时候，在公司使用过源码的方式安装和升级过 Gitlab，虽远没有 Docker 方便，因为自己对 Linux 系统的理解，所以整体上感觉还是挺简单的。这几年随着 Docker 的普及，使得安装 Gitlab 更加的容易，不仅方便了我这样的老鸟，也更方便了小白用户们。但是 Gitlab 官方的 Docker 安装文档并没有写得很完善, 除了官方文档之外，检索出来的安装文档也是人云亦云，东拼西凑，结果也就是能运行起来，凑合着能用而已。
 我希望每做一件小事的时候也都能抱着“知其然知其所以然”的心态对待，用 Docker 方式安装 Gitlab，说简单来说就是一行命令的事儿，但是这样就够了吗？我看是不够的，所以就有了这篇文档。
 本文需要达成的事项  在 CentOS 7 系统中安装 Docker 使用 Docker 方式安装中文版 Gitlab 和宿主机器共用 22(SSH) 端口 支持 SSH(22)/HTTPS(443) 方式推拉仓库 使用 SMTP 方式配置通知邮箱(腾讯企业邮箱) 改写默认的项目标签(Labels)  在 CentOS 7 系统中安装 Docker 这部分参考 Docker 的官方文档, 罗列一下安装步骤, 细节请看 Docker 的官方文档。如果使用 root 用户安装，sudo 可以去掉。
@@ -25,10 +35,10 @@
     
     <item>
       <title>有关 2017 流水账和胡思乱想的记录</title>
-      <link>https://127.0.0.1/posts/2017-12-31-year-end-reviews-of-2017/</link>
+      <link>/posts/2017-12-31-year-end-reviews-of-2017/</link>
       <pubDate>Sun, 31 Dec 2017 00:08:25 +0000</pubDate>
       
-      <guid>https://127.0.0.1/posts/2017-12-31-year-end-reviews-of-2017/</guid>
+      <guid>/posts/2017-12-31-year-end-reviews-of-2017/</guid>
       <description>好久没有写过文字了，前几篇文也是自己从 Google Doc 中摘出来的工作日志，拿来凑凑数，刷新下 Github 的时间线，有点儿不太像话。看看自己书桌上叠起来超过一尺高的新书才知道，想看的还没来得及看完，想学的也还没来得及学会，想做的也没有做得很好，一年就过去了。2017 是我来魔都的第 5 年，回想这 5 年，自己的成长还是很多的，但 2017 这一年，好像与 2016 并没有什么大的不同，这让自己感到很担忧。
 在 2017 年的最后几天，终于离开了自己熟悉的工作环境，从自己的舒适空间加入了一个新的环境，我想这就是改变的开始，一个新的起点。
 2017 是平淡的，可能和未来的每一年也不会有太大差别，尽管我不希望这样。元旦假期这 3 天有空的时候都在回想，但是又想不起有那些特别印象深刻的事情，以至于总结都不太好写下去。我想那不如就回想几个和自己有关系的场景，做一个清单好了：
@@ -37,20 +47,20 @@
     
     <item>
       <title>LVM 实战记录</title>
-      <link>https://127.0.0.1/posts/2017-08-03-lvm-in-action/</link>
+      <link>/posts/2017-08-03-lvm-in-action/</link>
       <pubDate>Thu, 03 Aug 2017 23:55:00 +0000</pubDate>
       
-      <guid>https://127.0.0.1/posts/2017-08-03-lvm-in-action/</guid>
+      <guid>/posts/2017-08-03-lvm-in-action/</guid>
       <description>背景 阿里云云主机两块 100G 的云盘合一个逻辑卷（LV）来使用，单个的 100G 磁盘不够用，需要合在一起使用，并且方便以后扩容
 基本知识  磁盘 /dev/xvdb /dev/xvdc 分区, 使用 fdisk 进行分区 fdisk &amp;gt; n &amp;gt; p &amp;gt; 1..4, 主分区最多只有4个 准备分区后，将分区类型变为 LVM 分区，fdisk &amp;gt; t &amp;gt; 8e, 8e 是 LVM 类型 ID 物理卷（PV），卷组（VG），逻辑卷（LV），从磁盘分区创建 PV，通过 PV 创建 VG 或者把 PV 加入已有的 VG，在 VG 上创建 LV，LV 看起来就是逻辑的上磁盘，使用和真实的磁盘没什么明显区别, 在 LV 上构建文件系统  创建  创建物理卷 pvcreate /dev/xvdb1，对分区进行操作 创建 vg0 卷组 vgcreate vg0 /dev/xvdb1 查看卷组 vgdisplay， 可以看到卷组有多大 在 vg0 上创建 data 逻辑卷 lvcreate -L 99G -n data vg0 或者 lvcreate -l 25556 -n data vg0 创建文件系统 mkfs.</description>
     </item>
     
     <item>
       <title>日志收集和分析系统架构</title>
-      <link>https://127.0.0.1/posts/2017-07-23-log-processing-system/</link>
+      <link>/posts/2017-07-23-log-processing-system/</link>
       <pubDate>Sun, 23 Jul 2017 22:30:00 +0000</pubDate>
       
-      <guid>https://127.0.0.1/posts/2017-07-23-log-processing-system/</guid>
+      <guid>/posts/2017-07-23-log-processing-system/</guid>
       <description>背景 微服务，日志分散且种类多（php/java/python），用 docker 起应用，日志通过卷放在宿主机器指定目录下，服务有众多实例，metrics 数据也不仅相同，无论是日志还是 metrics 数据，都可以看作是时间序列数据
 分散主要表现为：
  多个主机 多个目录下多个文件 应用开发所使用的技术栈不同日志格式不同 web log（主要是 nginx） 各类事件 一些其它事务性的日志  日志为时间序列数据，包括：
@@ -60,11 +70,11 @@
     </item>
     
     <item>
-      <title>Log4j2 配置</title>
-      <link>https://127.0.0.1/posts/2017-07-15-log4j2/</link>
+      <title>Log4j2 快速入门</title>
+      <link>/posts/2017-07-15-log4j2/</link>
       <pubDate>Sat, 15 Jul 2017 23:31:00 +0000</pubDate>
       
-      <guid>https://127.0.0.1/posts/2017-07-15-log4j2/</guid>
+      <guid>/posts/2017-07-15-log4j2/</guid>
       <description>背景 Java 生态下的日志库太多，配置也不同，大多数情况下会使用 SLF4j (又引入了一个库)来抽象日志接口。在使用 Log4j2 后，发现可以不使用 SLF4j 了，并且配置变得更简单，可以使用 lombok 的 log4j2 注解等。
 需要搞清楚
  如何设置哪些日志要记录下来 日志记录到哪里去  LEVEL 日志级别：  内置（有Fatal）：All &amp;lt; Trace &amp;lt; Debug &amp;lt; Info &amp;lt; Warn &amp;lt; Error &amp;lt; Fatal &amp;lt; OFF 还可以自定义： https://logging.apache.org/log4j/2.0/manual/customloglevels.html  Appender: 日志输出的目的地 内置的目的地有：
@@ -74,10 +84,10 @@ Logger 负责决定哪些日志要记录和发配日志 哪些需要记日志，
     
     <item>
       <title>MySQL 数据备份和不停机重新搭建主从同步</title>
-      <link>https://127.0.0.1/posts/2017-06-06-xtrabackup/</link>
+      <link>/posts/2017-06-06-xtrabackup/</link>
       <pubDate>Tue, 06 Jun 2017 12:15:07 +0000</pubDate>
       
-      <guid>https://127.0.0.1/posts/2017-06-06-xtrabackup/</guid>
+      <guid>/posts/2017-06-06-xtrabackup/</guid>
       <description>背景 目前公司主要服务都是直接使用 MySQL 主服务器，从服务主要给离线数据分析服务使用，由于前期弄得比较简单的粗暴，从服务上还有一两个数据库在做生产使用, 并且从服数据已经不能和主服进行进行同步了，有大量错误，忽略都没有办法进行。此外，主服仅配置了三个核心数据的 binlog，随着业务的变化，其它数据库不能走主从这条路来同步数据，于是希望不停机的情形下重新调整主服配置，记录所有的数据库的 binlog，同时添加新的从服务器来同步数据
 方案1 MySQL 的主从是通过同步 binlog 日志来实现数据同步的，于是需要想办法把从服数据先于主服同步，记录 binlog 的 pos 值，再配置从服从该 pos 处开始同步，考虑可以使用 mysqldump 导出所有 innodb 数据，使用 rsync 同步所有 myisam 数据文件，然后再开启主从同步。但是目前这种方案不适用，主服不能长时间停机
 方案2 使用 xtrabackup 来完成目标
@@ -87,10 +97,10 @@ yum install http://www.percona.com/downloads/percona-release/redhat/0.1-4/percon
     
     <item>
       <title>办理机动车临牌</title>
-      <link>https://127.0.0.1/posts/2016-01-28-banlinpai/</link>
+      <link>/posts/2016-01-28-banlinpai/</link>
       <pubDate>Thu, 28 Jan 2016 11:55:00 +0000</pubDate>
       
-      <guid>https://127.0.0.1/posts/2016-01-28-banlinpai/</guid>
+      <guid>/posts/2016-01-28-banlinpai/</guid>
       <description>  政策已变，目前只能办理有效期为 15 天的临牌，并且最多只能办理两次
  问题 外地户口，上海购车办理机动车(出省)临牌(出省和不出省的临牌办理方法一样,出省临牌有效期是30天，不出省的是15天)
 文档记录状态 可用
@@ -103,10 +113,10 @@ yum install http://www.percona.com/downloads/percona-release/redhat/0.1-4/percon
     
     <item>
       <title>驾照转入换证</title>
-      <link>https://127.0.0.1/posts/2015-10-15-huanzheng/</link>
+      <link>/posts/2015-10-15-huanzheng/</link>
       <pubDate>Thu, 15 Oct 2015 11:55:00 +0000</pubDate>
       
-      <guid>https://127.0.0.1/posts/2015-10-15-huanzheng/</guid>
+      <guid>/posts/2015-10-15-huanzheng/</guid>
       <description> 问题 外地户口＋上海居住证，外地驾照即将到期，需要将外地驾照转入上海并且进行驾照到期换证。
 可用状态 可用
 发生时间 2015年10月15日8:00至10:00
@@ -118,10 +128,10 @@ yum install http://www.percona.com/downloads/percona-release/redhat/0.1-4/percon
     
     <item>
       <title>Nginx 性能调优「译」</title>
-      <link>https://127.0.0.1/posts/2014-10-16-tuning-nginx/</link>
+      <link>/posts/2014-10-16-tuning-nginx/</link>
       <pubDate>Thu, 16 Oct 2014 15:27:00 +0000</pubDate>
       
-      <guid>https://127.0.0.1/posts/2014-10-16-tuning-nginx/</guid>
+      <guid>/posts/2014-10-16-tuning-nginx/</guid>
       <description>这是一篇译文，原文链接：Tuning NGINX for Performance
  Nginx 为人熟知的是在负载均衡、静态缓存和 WEB 服务器等方面的高性能，目前世界上最繁忙的站点中大约有 40% 在使用 Nginx。绝大多数情况下，大多数默认的 Nginx 和 Linux 配置都可以工作得非常好，但也需要做一些优化以获得最好的性能。本文将讨论在优化系统时需要考虑的 Nginx 和 Linux 的部分配置。可配置的选项有很多，但是本文只涵盖推荐大多数用户调整的配置选项。本文没有涵盖的配置选项，只有那些对 Nginx 和 Linux 有了深入的理解的人或者获得了 Nginx 技术支持和专业的服务团队的推荐建议后，才可以考虑调整。Nginx 专业服务器团队已经为世界上一些最繁忙的站点通过优化 Nginx 获得了最高水平的性能，并且可以为任何需要获得自己系统最大产出的客户服务。
 简介 本文假设读者对 Nginx 架构和配置的概念已有了基本的了解。Nginx 的文档内容将不会在本文中重复，但本文会提供各项配置简要的介绍和相关文档的链接。
@@ -134,10 +144,10 @@ Backlog 队列 下面的配置选项与网络连接和其排队方法直接相�
     
     <item>
       <title>Github Pages 服务的域名设置</title>
-      <link>https://127.0.0.1/posts/2014-05-06-github-pages-dns-settings/</link>
+      <link>/posts/2014-05-06-github-pages-dns-settings/</link>
       <pubDate>Tue, 06 May 2014 22:51:00 +0000</pubDate>
       
-      <guid>https://127.0.0.1/posts/2014-05-06-github-pages-dns-settings/</guid>
+      <guid>/posts/2014-05-06-github-pages-dns-settings/</guid>
       <description>这几天每次 Push 博客到 Github Pages 时总会收到一封邮件：
  The page build completed successfully, but returned the following warning:
 GitHub Pages recently underwent some improvements (https://github.com/blog/1715-faster-more-awesome-github-pages) to make your site faster and more awesome, but we&amp;rsquo;ve noticed that iforget.info isn&amp;rsquo;t properly configured to take advantage of these new features. While your site will continue to work just fine, updating your domain&amp;rsquo;s configuration offers some additional speed and performance benefits. Instructions on updating your site&amp;rsquo;s IP address can be found at https://help.</description>
@@ -145,10 +155,10 @@ GitHub Pages recently underwent some improvements (https://github.com/blog/1715-
     
     <item>
       <title>悟性</title>
-      <link>https://127.0.0.1/posts/2014-04-26-power-of-understanding/</link>
+      <link>/posts/2014-04-26-power-of-understanding/</link>
       <pubDate>Sat, 26 Apr 2014 01:11:00 +0000</pubDate>
       
-      <guid>https://127.0.0.1/posts/2014-04-26-power-of-understanding/</guid>
+      <guid>/posts/2014-04-26-power-of-understanding/</guid>
       <description>“悟性”是一个很虚的东西吗？
 前段时间和同学聊天，聊如何从众多的各方面初步看起来差不多应聘者中去做选择？聊来聊去最终落到了“悟性”上。我自己在突然想到悟性这个词的时候脑子几乎一片空白，不知道如何去判断一个人的悟性，或者说悟性到底是怎么样的，凭什么说一个人悟性好或者悟性差。
 昨天下午有个年龄不小的同学过来面试，聊了一个小时以后，向老板 汇报面试意见时，这同学各方面都很不错，但是总觉得有些地方不对，找不到词来形容自己内心当时的想法，于是结结巴巴的说，这种情况下，我要看一个人有没有悟性，接着我举了一个例子来说明什么时悟性：
@@ -165,10 +175,10 @@ GitHub Pages recently underwent some improvements (https://github.com/blog/1715-
     
     <item>
       <title>成长</title>
-      <link>https://127.0.0.1/posts/2014-04-25-grow-up/</link>
+      <link>/posts/2014-04-25-grow-up/</link>
       <pubDate>Fri, 25 Apr 2014 00:40:00 +0000</pubDate>
       
-      <guid>https://127.0.0.1/posts/2014-04-25-grow-up/</guid>
+      <guid>/posts/2014-04-25-grow-up/</guid>
       <description>成长就是看自己以前写的东西（包括微博、博客、说说等等）的时候觉得以前自己很 SB, 然后迫切地想把它们删掉
  这句话不止一次看到，反思自己，确实是那么回事儿，不能太赞同哦（我了个去上海腔了呢）。
 先前早些时候，把新浪博客和人人删的一干二净，也就是过把自己过去的所有文字的创造付之一炬，说没有一点惋惜，那是不可能的，想想当年自己顶着农村小孩黝黑皮肤初来乍到大城市，牛流不分，不怕喝不上牛奶只能喝豆浆的尴尬，给学校里各个杂志投稿，现在读来那些稿件，莫不觉得自己二逼。还好是些低年级学生玩的校办杂志，没多少人，为了回忆二逼的岁月，我特地还留了一本，没有其他人变态一样也留了一本吧。
@@ -180,10 +190,10 @@ GitHub Pages recently underwent some improvements (https://github.com/blog/1715-
     
     <item>
       <title>谁是德布罗意</title>
-      <link>https://127.0.0.1/posts/2014-03-13-who-is-de-broglie/</link>
+      <link>/posts/2014-03-13-who-is-de-broglie/</link>
       <pubDate>Thu, 13 Mar 2014 21:16:00 +0000</pubDate>
       
-      <guid>https://127.0.0.1/posts/2014-03-13-who-is-de-broglie/</guid>
+      <guid>/posts/2014-03-13-who-is-de-broglie/</guid>
       <description>这张照片很多人应该都见过，名副其实的二十世纪最伟大科学家们的合影。爱因斯坦占据了最明显的位置，德布罗意也在其中。
 这里是摘自百度百科的一些内容：
  在光具有波粒二象性的启发下，法国物理学家德布罗意（1892～1987）在 1924 年提出一个假说，指出波粒二象性不只是光子才有，一切微观粒子，包括电子和质子、中子，都有波粒二象性。他把光子的动量与波长的关系式 p=h/λ 推广到一切微观粒子上，指出：具有质量 m 和速度 v 的运动粒子也具有波动性，这种波的波长等于普朗克恒量 h 跟粒子动量 mv 的比，即 λ=h/(mv)。这个关系式后来就叫做德布罗意公式。
@@ -199,10 +209,10 @@ GitHub Pages recently underwent some improvements (https://github.com/blog/1715-
     
     <item>
       <title>从域名和 CDN 来看网站架构</title>
-      <link>https://127.0.0.1/posts/2014-03-06-arch-of-website-domain-cdn/</link>
+      <link>/posts/2014-03-06-arch-of-website-domain-cdn/</link>
       <pubDate>Thu, 06 Mar 2014 00:40:00 +0000</pubDate>
       
-      <guid>https://127.0.0.1/posts/2014-03-06-arch-of-website-domain-cdn/</guid>
+      <guid>/posts/2014-03-06-arch-of-website-domain-cdn/</guid>
       <description>为了自己做好网站的架构，找了知乎，豆瓣，大众点评和百姓网来做参考。这里主要来看域名和CDN相关的部分，后台的架构也还是要边学便实践。
 大概情况 从前端分析了知乎的域名和 DNS 情况，同时对比了一下豆瓣、大众点评和百姓网。从域名、DNS、CDN等使用角度来说，他们之间大同小异。
 使用的分析工具  Chrome WHOIS DNSLookup  非 CDN 使用    记录 域名 用途 路径     A zhihu.com 使用 301 跳转到 www.zhuhu.com IP   A zhi.hu 使用 302 跳转到 www.zhihu.com IP   A www.zhihu.com  IP   A comet.zhihu.com WebSocket 推送消息 IP   A analytics.zhihu.com 知乎自己的统计分析，同时使用了 Google Analytics IP    大部分都是用了 301 或者 302 跳转，注意他们的区别：301 是永久跳转(浏览器会做客户端端缓存)，而 302 是临时跳转。此外 baidu.</description>
@@ -210,10 +220,10 @@ GitHub Pages recently underwent some improvements (https://github.com/blog/1715-
     
     <item>
       <title>使用 Vagrant 构建开发环境</title>
-      <link>https://127.0.0.1/posts/2014-03-03-building-devenv-by-vagrant/</link>
+      <link>/posts/2014-03-03-building-devenv-by-vagrant/</link>
       <pubDate>Mon, 03 Mar 2014 23:40:00 +0000</pubDate>
       
-      <guid>https://127.0.0.1/posts/2014-03-03-building-devenv-by-vagrant/</guid>
+      <guid>/posts/2014-03-03-building-devenv-by-vagrant/</guid>
       <description>Vagrant 是一个构建虚拟开发环境的利器，它使得在团队中很容易共享开发环境，有了它，不必每个人都搭建一个自己的开发环境了。在没有使用 vagrant 之前，我在windows中安装了 virtualbox，然后在virtualbox中安装了一个ubuntu server。在 ubuntu 中安装了 mysql、jdk 等软件，并且设置了一个共享目录，以便于将工程代码直接共享给 ubuntu。在外部开发调试过程中（Java 项目），我需要在virtualbox中设置好几个端口映射，如 mysql，ssh等等。这样在 cygwin 里面就可以通过 ssh 登录 ubuntu server 了，为了使得ssh登录不用每次设置密码，还需要手动生成公钥私钥。换机器了，这一切我又得重新配置。新同事来了，他也得像我这样重新配置一遍。有可能他还会有问题说：为什么按照你的说明，代码在我这里却无法运行呢？
 一切都从 Yining 告诉了我 vagrant 之后发生了变化，原来一切都这么简单。
 安装 VirtualBox Vagrant 其实是对 virtualbox 做了一层包装，它让使用virtualbox作为虚拟机更为简单。当然也可以使用 vmware，使用vmware那得找一个license了。
@@ -226,10 +236,10 @@ vagrant init vdevenv vagrant up vagrant ssh # 登录到虚拟机  进入 /vagran
     
     <item>
       <title>Python on My rMBP</title>
-      <link>https://127.0.0.1/posts/2014-03-02-python-on-my-rmbp/</link>
+      <link>/posts/2014-03-02-python-on-my-rmbp/</link>
       <pubDate>Sun, 02 Mar 2014 21:16:00 +0000</pubDate>
       
-      <guid>https://127.0.0.1/posts/2014-03-02-python-on-my-rmbp/</guid>
+      <guid>/posts/2014-03-02-python-on-my-rmbp/</guid>
       <description>前几天入手了一台 Macbook Pro Retina，把 BIG 提到了很爽的地步。经过几天的折腾，可以和 windows，ubuntu desktop 说 Byebye 了。之前整整用了一年的 Ubuntu 来工作，我用它来写 C、Java 和 Python, 要是 windows 没有 cygwin, 没有 MacType，那该多么恐怖。后来用了一段时间的 MBP，让我坚定了以后要自己买一个 MBP。
 ubuntu 那么的惹人爱，因为它有个还挺好用的 GUI，从 debian 那继承过来的 apt-get, 一下子把一个从 redhat 9 用到 fedora 4 的穷学生拉到了 ubuntu 的阵营，至此，deskop 就被 ubuntu 占领了。在此之前，我还用段时间的 debian 和 gentoo。
 不得不说，debian 太伟大太牛逼了，有一次要在一个 MIPS 的小设备上编译安装 erlang， openssl，libcurl 等做一些实验, 要跨平台编译这些软件安装到小设备上去，费了半天终于把这些都编好了，还写了一个编译脚步，结果 erlang 运行的时候虚拟机总是报错，也不知道怎么回事。后来注意到 debian 居然有 MIPS，ARM 的源，后来在 MIPS 设备上安装软件做实验，我再也没有遇到问题，一切都用 apt-get 搞定了。
@@ -238,10 +248,10 @@ ubuntu 那么的惹人爱，因为它有个还挺好用的 GUI，从 debian 那�
     
     <item>
       <title>阿里云和 ucloud 云主机评测</title>
-      <link>https://127.0.0.1/posts/2013-08-09-benchmark-of-aliyun-and-ucloud/</link>
+      <link>/posts/2013-08-09-benchmark-of-aliyun-and-ucloud/</link>
       <pubDate>Fri, 09 Aug 2013 00:40:00 +0000</pubDate>
       
-      <guid>https://127.0.0.1/posts/2013-08-09-benchmark-of-aliyun-and-ucloud/</guid>
+      <guid>/posts/2013-08-09-benchmark-of-aliyun-and-ucloud/</guid>
       <description>总体说明 我使用联通10M光网，SSH在多个时间段登录两个主机都是非常的快，但是阿里云的SSH有时会断开连接，需要重新登录(一天遇到n次)，ucloud一次都没有断开连接过。两者总体操作上都很流畅。平时我比较习惯于使用ubuntu，于是在两个主机上都安装了Ubuntu 12.04_64的Server版本。在安装初始化系统过程中(测试过两次)，Ucloud的速度要快于阿里云主机，粗略估计都是在20s以内，因此差别不大。
 阿里云主机安装过程中不需要人为参与，选好主机配置即可，主机一旦创建完成，用户名和口令会发送到测试者手机上，而且直接发送的是root账户口令。Ucloud除了选择配置之外，还需要设置强登录密码，使用普通用户登录，感觉更geek一点。
 默认情况配置下，关闭重启服务器，Ucloud会发送主机变化短信到手机，阿里云不会。阿里云在系统负载预警方面比较全面，ucloud侧重于server上在线状态和相关服务的预警。
@@ -253,20 +263,20 @@ ubuntu 那么的惹人爱，因为它有个还挺好用的 GUI，从 debian 那�
     
     <item>
       <title>Linux 共享库（动态链接库）相关的一些记录</title>
-      <link>https://127.0.0.1/posts/2013-03-04-so-load-path-in-linux/</link>
+      <link>/posts/2013-03-04-so-load-path-in-linux/</link>
       <pubDate>Mon, 04 Mar 2013 00:40:00 +0000</pubDate>
       
-      <guid>https://127.0.0.1/posts/2013-03-04-so-load-path-in-linux/</guid>
+      <guid>/posts/2013-03-04-so-load-path-in-linux/</guid>
       <description>相关的环境变量  LD_LIBRARY_PATH ld-linux.so寻找shared object的路径，优先加载出现在路径前面的shared object。如，export LD_LIBRARY_PATH=/home/user/lib:$LD_LIBRARY_PATH LD_PRELOAD 指定优先供ld-linux.so加载的shared object。如，export LD_PRELAOD=/home/user/lib/glibc.so，可以使用这个变量来改变加载顺序，例如我们自定义的glibc.so中实现了新的strcmp之类的函数，那么可以使用这个变量来实现函数的替换，实现注入 LD_DEBUG 使用这个环境变量来debug载入shared object的情况。如，export LD_DEBUG=files,这样会打印所有所有加载shared object的记录  一些工具  如何查看一个程序或者shared object加载哪些shared object  ldd，可以查看程序或者.so，如，
 $ ldd ./foo_test $ ldd ./libfoo.so   对于已经运行的程序，可以这样  $ cat /proc/PID/maps | awk &#39;{print $6}&#39;| grep &#39;\.so&#39;| sort | uniq $ lsof -p PID | awk &#39;{print $9}&#39; | grep &#39;\.so&#39;   没有启动的程序可以这样  $ strace ./foo_test 2&amp;gt;&amp;amp;1 | grep &#39;^open(&amp;quot;.*\.so&#39;  也可以用上面提到的环境变量来看shared object的加载顺序</description>
     </item>
     
     <item>
       <title>再说 PHP 中 SimpleXML</title>
-      <link>https://127.0.0.1/posts/2012-03-22-a-short-discuss-of-simplexml-of-php/</link>
+      <link>/posts/2012-03-22-a-short-discuss-of-simplexml-of-php/</link>
       <pubDate>Thu, 22 Mar 2012 00:40:00 +0000</pubDate>
       
-      <guid>https://127.0.0.1/posts/2012-03-22-a-short-discuss-of-simplexml-of-php/</guid>
+      <guid>/posts/2012-03-22-a-short-discuss-of-simplexml-of-php/</guid>
       <description>前一篇帖子使用了xpath，后来了解到xpath的性能可能比较差，而且在遇到有命名空间的时候还有点小麻烦。这里都已豆瓣提供的API返回的xml为例。豆瓣返回的xml不是rss格式的，而是Atom格式，有很多的命名空间，如果习惯于操作rss格式的xml，那么可以直接把xml里面的命名空间的字符串都replace掉，这个方法貌似很简单很暴力，就不会遇到命名空间的问题了。
 从豆瓣API开始，点击这个链接 http://api.douban.com/book/subjects?q=java 你就可以看到xml格式，由于返回的是Atom格式的xml，浏览器会自动帮你解析，所以应该这样
 # 这样就可以得到一个java.xml文件。 $ wget -O java.xml http://api.douban.com/book/subjects?q=java  这样就可以得到一个 java.xml 文件，接下来使用 SimplePHP 处理这个文件。
@@ -278,10 +288,10 @@ $children = $xml-&amp;gt;children(&#39;http://a9.com/-/spec/opensearchrss/1.0/&#
     
     <item>
       <title>我想做的东西可以不值钱，但是它必须‘酷’</title>
-      <link>https://127.0.0.1/posts/2012-03-13-things-i-create-must-be-cool/</link>
+      <link>/posts/2012-03-13-things-i-create-must-be-cool/</link>
       <pubDate>Tue, 13 Mar 2012 00:40:00 +0000</pubDate>
       
-      <guid>https://127.0.0.1/posts/2012-03-13-things-i-create-must-be-cool/</guid>
+      <guid>/posts/2012-03-13-things-i-create-must-be-cool/</guid>
       <description>这句话是FACEBOOK的马克·扎克伯格说的。
 我很认同，并且感觉自己也是这么做的。现在自己做得很多事情，从来没有考虑过它会不会值钱，只是感觉把自己的想法做出来，变成实物的过程就已经很酷。
 对于酷，我觉得至少有两方面的意义。
@@ -295,10 +305,10 @@ $children = $xml-&amp;gt;children(&#39;http://a9.com/-/spec/opensearchrss/1.0/&#
     
     <item>
       <title>在这安静的夜里</title>
-      <link>https://127.0.0.1/posts/2012-03-10-at-a-late-night/</link>
+      <link>/posts/2012-03-10-at-a-late-night/</link>
       <pubDate>Sat, 10 Mar 2012 00:40:00 +0000</pubDate>
       
-      <guid>https://127.0.0.1/posts/2012-03-10-at-a-late-night/</guid>
+      <guid>/posts/2012-03-10-at-a-late-night/</guid>
       <description>今天组会不用开了，报告也不用做了，感觉比较爽，于是晚上的时候决定给摆摊写一些新的东西。
 于是刚刚给摆摊的首页添加了一个小小的功能，就是能够随机的选取5本书在首页上循环展示，另外修正了一些网友提出的问题。
 首页图片轮换是用jquery实现的，做法也很简单，当然实现的功能和效果还是比较弱的，这里是我用到一些资料。 CSS定位：http://www.haozi.cn/code/position-static-relative-absolute-float/
@@ -308,10 +318,10 @@ $children = $xml-&amp;gt;children(&#39;http://a9.com/-/spec/opensearchrss/1.0/&#
     
     <item>
       <title>写给 2012 的摆摊</title>
-      <link>https://127.0.0.1/posts/2012-01-09-for-baigetan-2012/</link>
+      <link>/posts/2012-01-09-for-baigetan-2012/</link>
       <pubDate>Mon, 09 Jan 2012 00:40:00 +0000</pubDate>
       
-      <guid>https://127.0.0.1/posts/2012-01-09-for-baigetan-2012/</guid>
+      <guid>/posts/2012-01-09-for-baigetan-2012/</guid>
       <description>我期待2012的到来，这一年我将有一个新的开始，好期待。
 最近一直在忙着做实验，读论文，都没有什么时间来弄弄摆摊，自己心里的那种对于摆摊的激情也渐渐淡了很多，但是想想自己当初的想法，立马又有动力拾起摆摊。
 一个小小的网站，看起来确实很简单，也就是拿php连连数据库，做做一些简单的操作，可自己在写这个网站的时候总是很慢。时间少而且比较凌乱是一个原因，但是总的还是缺少一个全面完善细致的规划，自己大部分也是照着当初的设计，然后想到哪儿做到哪儿，如今的摆摊，已经和当初的相去甚远了。越写越复杂，问题也越来越多，停下来一想，还是挥起大刀把乱乱的东西都砍了吧，弄得越简单越好。
@@ -321,10 +331,10 @@ $children = $xml-&amp;gt;children(&#39;http://a9.com/-/spec/opensearchrss/1.0/&#
     
     <item>
       <title>SimpleXML使用xpath</title>
-      <link>https://127.0.0.1/posts/2011-12-01-how-to-use-simplexml-of-php/</link>
+      <link>/posts/2011-12-01-how-to-use-simplexml-of-php/</link>
       <pubDate>Thu, 01 Dec 2011 13:09:00 +0000</pubDate>
       
-      <guid>https://127.0.0.1/posts/2011-12-01-how-to-use-simplexml-of-php/</guid>
+      <guid>/posts/2011-12-01-how-to-use-simplexml-of-php/</guid>
       <description>这几天没心情看论文，于是开始写写摆摊网的代码。摆摊主要做高校二手书籍信息的分享，于是需要从豆瓣上获取图书信息，豆瓣提供了一个完整的xml来描述一本书，例如http://api.douban.com/book/subject/isbn/9787543639136，于是需要处理这个xml来获取相应信息，这里小码哥采用的是直接使用xpath来获取xml文档中相应的信息。摆摊使用了sae，于是使用SimpleXML来处理xml，加上自己还只是PHP的初学者，于是出现了一些问题。
 这里是一些学习资料：
  xpath:http://www.w3school.com.cn/xpath/ simplexml:http://cn2.php.net/manual/en/simplexmlelement.xpath.php  新建SimpleXMLElement对象，xml文件内容在$content中
@@ -337,10 +347,10 @@ translator = array(); $author = array(); $i = $j = 0; foreach($result as $item) 
     
     <item>
       <title>jquery $.ajax() 中 datatype 为 json 时的问题</title>
-      <link>https://127.0.0.1/posts/2011-12-01-when-datatype-is-json/</link>
+      <link>/posts/2011-12-01-when-datatype-is-json/</link>
       <pubDate>Thu, 01 Dec 2011 00:40:00 +0000</pubDate>
       
-      <guid>https://127.0.0.1/posts/2011-12-01-when-datatype-is-json/</guid>
+      <guid>/posts/2011-12-01-when-datatype-is-json/</guid>
       <description>最近在为摆摊写点前端 js 的时候，在使用 jquery 的 $.ajax()这个方法的时候，当datatype设置为json时，总是不执行success回调，而是执行error回调。而将datatype设置成text，就可以执行success回调了，摆摊使用的是jQuery JavaScript Library v1.6.2，查看jQuery文档可知：
  “json”: Evaluates the response as JSON and returns a JavaScript object. In jQuery 1.4 the JSON data is parsed in a strict manner; any malformed JSON is rejected and a parse error is thrown. (See json.org for more information on proper JSON formatting.)
  我用php产生的字符串是
@@ -351,10 +361,10 @@ translator = array(); $author = array(); $i = $j = 0; foreach($result as $item) 
     
     <item>
       <title>未来是个未知数</title>
-      <link>https://127.0.0.1/posts/2011-11-09-future-is-unknown/</link>
+      <link>/posts/2011-11-09-future-is-unknown/</link>
       <pubDate>Wed, 09 Nov 2011 13:09:00 +0000</pubDate>
       
-      <guid>https://127.0.0.1/posts/2011-11-09-future-is-unknown/</guid>
+      <guid>/posts/2011-11-09-future-is-unknown/</guid>
       <description>未来是个未知数，自己的未来自己都不知道会是什么样子，问别人，别人又怎么会知道你的未来。
 不要忘了自己心中想要的东西，即使是为了养家糊口而从事自己不喜欢的工作，也不要忘记自己希望做什么，静静的准备着，迟早有一天会爆发的。
 单纯的做着自己的业余爱好，业余爱好也就会发展成职业的。但是我不会忘了我心中想要去做什么，我会为之而积累准备。
@@ -369,10 +379,10 @@ translator = array(); $author = array(); $i = $j = 0; foreach($result as $item) 
     
     <item>
       <title>关于摆摊的一些思考</title>
-      <link>https://127.0.0.1/posts/2011-11-08-think-of-baigetan/</link>
+      <link>/posts/2011-11-08-think-of-baigetan/</link>
       <pubDate>Tue, 08 Nov 2011 00:40:00 +0000</pubDate>
       
-      <guid>https://127.0.0.1/posts/2011-11-08-think-of-baigetan/</guid>
+      <guid>/posts/2011-11-08-think-of-baigetan/</guid>
       <description>今天是十一假期归来的第一天，实验室也启用了新的管理制度，坐在北洋楼的实验室也有一会儿了，刚发了一会儿呆，对摆摊又有了一些新的思考。
 我的目标是想把摆摊做成高校的网上交易平台，也就是类似淘宝，但是作为摆摊网的初期是不合适的，因为这个交易平台太大太复杂。
 所以摆摊的第一步还是做交易信息的发布和检索，主打高校的书籍和物品交易信息，交易还是线下完成，这样，初期的摆摊应该就和赶集、百姓、58等类似了，而且这样摆摊的实现难度也会大大降低，在加上SNS和LBS，摆摊就可以提供比赶集、百姓、58等更精准的信息服务了。
@@ -382,10 +392,10 @@ translator = array(); $author = array(); $i = $j = 0; foreach($result as $item) 
     
     <item>
       <title>摆摊网页面设计</title>
-      <link>https://127.0.0.1/posts/2011-11-07-design-of-baigetan/</link>
+      <link>/posts/2011-11-07-design-of-baigetan/</link>
       <pubDate>Mon, 07 Nov 2011 00:40:00 +0000</pubDate>
       
-      <guid>https://127.0.0.1/posts/2011-11-07-design-of-baigetan/</guid>
+      <guid>/posts/2011-11-07-design-of-baigetan/</guid>
       <description>从泰山回来这几天，抽得空把摆摊网的页面做了出来，包括css和html的编写等，现在可以从baitan.sinaapp.com看到页面效果了，目前兼容ie8、ff、chrome、safari等。
 baitan001.com也在备案之中，应该很快就可以使用baitan001.com域名访问了。
 有同学想练习js，php等web技术的，不妨联系我，我肯定能让你参与进来！
@@ -394,10 +404,10 @@ baitan001.com也在备案之中，应该很快就可以使用baitan001.com域名
     
     <item>
       <title>冬天来了</title>
-      <link>https://127.0.0.1/posts/2011-10-27-winter-is-coming/</link>
+      <link>/posts/2011-10-27-winter-is-coming/</link>
       <pubDate>Thu, 27 Oct 2011 13:10:00 +0000</pubDate>
       
-      <guid>https://127.0.0.1/posts/2011-10-27-winter-is-coming/</guid>
+      <guid>/posts/2011-10-27-winter-is-coming/</guid>
       <description>前几天一场大降温，把我给冻着了，肚子疼了好几天，还发烧，还好有个小盆友给我“打针喂药”，使得我这几天才得以康复，重现往日风采。
 本来这周五得做论文的报告，于是这周基本都在看论文。谁知这周又冒出了几个公司让我去面试，论文的报告又就此作罢，挪到下周。
 自己的外语很烂，基本没有投什么外企，昨天参加了微策略的面试之后，反而对自己的外语变得有些自信，最后和那位印度面试官聊天，他说我外语挺好，可是小盆友却说他那是在说客套话，不管客套不客套，反正我觉得挺开心，哈哈。。。
@@ -409,10 +419,10 @@ baitan001.com也在备案之中，应该很快就可以使用baitan001.com域名
     
     <item>
       <title>摆摊的一些进展</title>
-      <link>https://127.0.0.1/posts/2011-10-21-process-of-baigetan/</link>
+      <link>/posts/2011-10-21-process-of-baigetan/</link>
       <pubDate>Fri, 21 Oct 2011 13:11:00 +0000</pubDate>
       
-      <guid>https://127.0.0.1/posts/2011-10-21-process-of-baigetan/</guid>
+      <guid>/posts/2011-10-21-process-of-baigetan/</guid>
       <description>这段时间都在进行密集的笔试面试，但还是没有停下摆摊网的开发进程。目前摆摊网已经由吴江川同学设计好了产品的原型，我也在原型的基础上做好了全部页面的设计工作，接下来就是开始后台逻辑的开发。
 目前后台数据库部分已经设计完毕。
 加油！
@@ -421,10 +431,10 @@ baitan001.com也在备案之中，应该很快就可以使用baitan001.com域名
     
     <item>
       <title>十一掠影</title>
-      <link>https://127.0.0.1/posts/2011-10-01-snapshot-of-10-1/</link>
+      <link>/posts/2011-10-01-snapshot-of-10-1/</link>
       <pubDate>Sat, 01 Oct 2011 00:40:00 +0000</pubDate>
       
-      <guid>https://127.0.0.1/posts/2011-10-01-snapshot-of-10-1/</guid>
+      <guid>/posts/2011-10-01-snapshot-of-10-1/</guid>
       <description>早上睡到9点才起床，然后下楼载着小盆友去学三吃了早饭，一人吃了六个小包子，出了食堂发现天气真好，决定去拍些照片，然后又载着小盆友回到宿舍拿了相机。
 今天天气真好，微微的风，蓝蓝的天，枝头的树叶也变成了整片整片的金黄，好美！
 东西都已经收拾好了，明天一早出发，去泰山，看日出。
@@ -433,19 +443,19 @@ baitan001.com也在备案之中，应该很快就可以使用baitan001.com域名
     
     <item>
       <title>关于我</title>
-      <link>https://127.0.0.1/about/</link>
+      <link>/about/</link>
       <pubDate>Wed, 28 Sep 2011 03:40:00 +0000</pubDate>
       
-      <guid>https://127.0.0.1/about/</guid>
+      <guid>/about/</guid>
       <description>七里台技术职业学院计算机专业小硕毕业，混迹六七八里台八年，走了一条学生、老师、学生曲折的校园之路，除了那一纸文凭之外，更是收获了爱情、友情和师生情。喜欢折腾，但最后折腾得北京、杭州、硅谷都没去成，飘到了魔都并定居在此。技校授得一技之长，努力成为一名匠人。</description>
     </item>
     
     <item>
       <title>摆摊网</title>
-      <link>https://127.0.0.1/posts/2011-09-28-hello-baigetan/</link>
+      <link>/posts/2011-09-28-hello-baigetan/</link>
       <pubDate>Wed, 28 Sep 2011 03:40:00 +0000</pubDate>
       
-      <guid>https://127.0.0.1/posts/2011-09-28-hello-baigetan/</guid>
+      <guid>/posts/2011-09-28-hello-baigetan/</guid>
       <description>点评：留在这里，让自己可以看到以往无知的自己
  一转眼，20 年就过去了，终于要和自己 20 年的学生身份说拜拜了。
 那天去图书馆借书，回来的路上敬业湖桥边的那棵树的时候，心不由得感叹起来，这棵树，我已经拍下了它的春夏秋冬，它叶枯叶落，相似年年，只因它生根于此，我是要走的。
@@ -462,10 +472,10 @@ baitan001.com也在备案之中，应该很快就可以使用baitan001.com域名
     
     <item>
       <title>归档</title>
-      <link>https://127.0.0.1/archives/</link>
+      <link>/archives/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://127.0.0.1/archives/</guid>
+      <guid>/archives/</guid>
       <description></description>
     </item>
     

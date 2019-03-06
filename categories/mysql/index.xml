@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Mysql on 小码哥的博客</title>
+    <link>/categories/mysql/</link>
+    <description>Recent content in Mysql on 小码哥的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Tue, 06 Jun 2017 12:15:07 +0000</lastBuildDate>
+    
+	<atom:link href="/categories/mysql/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>MySQL 数据备份和不停机重新搭建主从同步</title>
+      <link>/posts/2017-06-06-xtrabackup/</link>
+      <pubDate>Tue, 06 Jun 2017 12:15:07 +0000</pubDate>
+      
+      <guid>/posts/2017-06-06-xtrabackup/</guid>
+      <description>背景 目前公司主要服务都是直接使用 MySQL 主服务器，从服务主要给离线数据分析服务使用，由于前期弄得比较简单的粗暴，从服务上还有一两个数据库在做生产使用, 并且从服数据已经不能和主服进行进行同步了，有大量错误，忽略都没有办法进行。此外，主服仅配置了三个核心数据的 binlog，随着业务的变化，其它数据库不能走主从这条路来同步数据，于是希望不停机的情形下重新调整主服配置，记录所有的数据库的 binlog，同时添加新的从服务器来同步数据
+方案1 MySQL 的主从是通过同步 binlog 日志来实现数据同步的，于是需要想办法把从服数据先于主服同步，记录 binlog 的 pos 值，再配置从服从该 pos 处开始同步，考虑可以使用 mysqldump 导出所有 innodb 数据，使用 rsync 同步所有 myisam 数据文件，然后再开启主从同步。但是目前这种方案不适用，主服不能长时间停机
+方案2 使用 xtrabackup 来完成目标
+主从服务器上都需要安装 xtrabackup（实际使用 xtrabackupex）：
+yum install http://www.percona.com/downloads/percona-release/redhat/0.1-4/percona-release-0.1-4.noarch.rpm yum install -y percona-xtrabackup-24  主服： 备份数据 # 注意数据库名称的转义，例如 - 号是 @002d innobackupex --defaults-file=/etc/my.cnf --socket=/var/lib/mysql/mysql.sock --user=root --password=xxxx --parallel=2 --databases=&amp;quot;db1 db2&amp;quot; /data/backup/xtrabackup/  保持事务一致 innobackupex --apply-log /data/backup/xtrabackup/2017-06-06_13-16-21/  同步数据 rsync -avHz 2017-06-06_13-16-21 sysops@cow:/data/backup  从服： 修改 my.</description>
+    </item>
+    
+  </channel>
+</rss>

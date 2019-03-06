@@ -3,506 +3,541 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://127.0.0.1/posts/2018-12-18-gitlab-docker-install/</loc>
+    <loc>/posts/2019-03-06-keynotes-of-new-java/</loc>
+    <lastmod>2019-03-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/posts/2018-12-18-gitlab-docker-install/</loc>
     <lastmod>2018-12-18T23:25:20+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://127.0.0.1/posts/2017-12-31-year-end-reviews-of-2017/</loc>
+    <loc>/posts/2017-12-31-year-end-reviews-of-2017/</loc>
     <lastmod>2017-12-31T00:08:25+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://127.0.0.1/posts/2017-08-03-lvm-in-action/</loc>
+    <loc>/posts/2017-08-03-lvm-in-action/</loc>
     <lastmod>2017-08-03T23:55:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://127.0.0.1/posts/2017-07-23-log-processing-system/</loc>
+    <loc>/posts/2017-07-23-log-processing-system/</loc>
     <lastmod>2017-07-23T22:30:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://127.0.0.1/posts/2017-07-15-log4j2/</loc>
+    <loc>/posts/2017-07-15-log4j2/</loc>
     <lastmod>2017-07-15T23:31:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://127.0.0.1/posts/2017-06-06-xtrabackup/</loc>
+    <loc>/posts/2017-06-06-xtrabackup/</loc>
     <lastmod>2017-06-06T12:15:07+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://127.0.0.1/posts/2016-01-28-banlinpai/</loc>
+    <loc>/posts/2016-01-28-banlinpai/</loc>
     <lastmod>2016-01-28T11:55:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://127.0.0.1/posts/2015-10-15-huanzheng/</loc>
+    <loc>/posts/2015-10-15-huanzheng/</loc>
     <lastmod>2015-10-15T11:55:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://127.0.0.1/posts/2014-10-16-tuning-nginx/</loc>
+    <loc>/posts/2014-10-16-tuning-nginx/</loc>
     <lastmod>2014-10-16T15:27:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://127.0.0.1/posts/2014-05-06-github-pages-dns-settings/</loc>
+    <loc>/posts/2014-05-06-github-pages-dns-settings/</loc>
     <lastmod>2014-05-06T22:51:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://127.0.0.1/posts/2014-04-26-power-of-understanding/</loc>
+    <loc>/posts/2014-04-26-power-of-understanding/</loc>
     <lastmod>2014-04-26T01:11:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://127.0.0.1/posts/2014-04-25-grow-up/</loc>
+    <loc>/posts/2014-04-25-grow-up/</loc>
     <lastmod>2014-04-25T00:40:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://127.0.0.1/posts/2014-03-13-who-is-de-broglie/</loc>
+    <loc>/posts/2014-03-13-who-is-de-broglie/</loc>
     <lastmod>2014-03-13T21:16:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://127.0.0.1/posts/2014-03-06-arch-of-website-domain-cdn/</loc>
+    <loc>/posts/2014-03-06-arch-of-website-domain-cdn/</loc>
     <lastmod>2014-03-06T00:40:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://127.0.0.1/posts/2014-03-03-building-devenv-by-vagrant/</loc>
+    <loc>/posts/2014-03-03-building-devenv-by-vagrant/</loc>
     <lastmod>2014-03-03T23:40:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://127.0.0.1/posts/2014-03-02-python-on-my-rmbp/</loc>
+    <loc>/posts/2014-03-02-python-on-my-rmbp/</loc>
     <lastmod>2014-03-02T21:16:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://127.0.0.1/posts/2013-08-09-benchmark-of-aliyun-and-ucloud/</loc>
+    <loc>/posts/2013-08-09-benchmark-of-aliyun-and-ucloud/</loc>
     <lastmod>2013-08-09T00:40:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://127.0.0.1/posts/2013-03-04-so-load-path-in-linux/</loc>
+    <loc>/posts/2013-03-04-so-load-path-in-linux/</loc>
     <lastmod>2013-03-04T00:40:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://127.0.0.1/posts/2012-03-22-a-short-discuss-of-simplexml-of-php/</loc>
+    <loc>/posts/2012-03-22-a-short-discuss-of-simplexml-of-php/</loc>
     <lastmod>2012-03-22T00:40:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://127.0.0.1/posts/2012-03-13-things-i-create-must-be-cool/</loc>
+    <loc>/posts/2012-03-13-things-i-create-must-be-cool/</loc>
     <lastmod>2012-03-13T00:40:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://127.0.0.1/posts/2012-03-10-at-a-late-night/</loc>
+    <loc>/posts/2012-03-10-at-a-late-night/</loc>
     <lastmod>2012-03-10T00:40:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://127.0.0.1/posts/2012-01-09-for-baigetan-2012/</loc>
+    <loc>/posts/2012-01-09-for-baigetan-2012/</loc>
     <lastmod>2012-01-09T00:40:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://127.0.0.1/posts/2011-12-01-how-to-use-simplexml-of-php/</loc>
+    <loc>/posts/2011-12-01-how-to-use-simplexml-of-php/</loc>
     <lastmod>2011-12-01T13:09:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://127.0.0.1/posts/2011-12-01-when-datatype-is-json/</loc>
+    <loc>/posts/2011-12-01-when-datatype-is-json/</loc>
     <lastmod>2011-12-01T00:40:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://127.0.0.1/posts/2011-11-09-future-is-unknown/</loc>
+    <loc>/posts/2011-11-09-future-is-unknown/</loc>
     <lastmod>2011-11-09T13:09:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://127.0.0.1/posts/2011-11-08-think-of-baigetan/</loc>
+    <loc>/posts/2011-11-08-think-of-baigetan/</loc>
     <lastmod>2011-11-08T00:40:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://127.0.0.1/posts/2011-11-07-design-of-baigetan/</loc>
+    <loc>/posts/2011-11-07-design-of-baigetan/</loc>
     <lastmod>2011-11-07T00:40:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://127.0.0.1/posts/2011-10-27-winter-is-coming/</loc>
+    <loc>/posts/2011-10-27-winter-is-coming/</loc>
     <lastmod>2011-10-27T13:10:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://127.0.0.1/posts/2011-10-21-process-of-baigetan/</loc>
+    <loc>/posts/2011-10-21-process-of-baigetan/</loc>
     <lastmod>2011-10-21T13:11:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://127.0.0.1/posts/2011-10-01-snapshot-of-10-1/</loc>
+    <loc>/posts/2011-10-01-snapshot-of-10-1/</loc>
     <lastmod>2011-10-01T00:40:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://127.0.0.1/about/</loc>
+    <loc>/about/</loc>
     <lastmod>2011-09-28T03:40:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://127.0.0.1/posts/2011-09-28-hello-baigetan/</loc>
+    <loc>/posts/2011-09-28-hello-baigetan/</loc>
     <lastmod>2011-09-28T03:40:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://127.0.0.1/tags/ajax/</loc>
+    <loc>/tags/ajax/</loc>
     <lastmod>2011-12-01T00:40:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://127.0.0.1/tags/aliyun/</loc>
+    <loc>/tags/aliyun/</loc>
     <lastmod>2013-08-09T00:40:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://127.0.0.1/tags/blog/</loc>
+    <loc>/tags/blog/</loc>
     <lastmod>2014-05-06T22:51:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://127.0.0.1/tags/cassandra/</loc>
+    <loc>/tags/cassandra/</loc>
     <lastmod>2017-07-23T22:30:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://127.0.0.1/tags/catcat/</loc>
+    <loc>/tags/catcat/</loc>
     <lastmod>2014-05-06T22:51:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://127.0.0.1/categories/</loc>
+    <loc>/categories/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://127.0.0.1/tags/cdn/</loc>
+    <loc>/tags/cdn/</loc>
     <lastmod>2014-03-06T00:40:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://127.0.0.1/tags/database/</loc>
+    <loc>/tags/database/</loc>
     <lastmod>2011-11-07T00:40:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://127.0.0.1/tags/dns/</loc>
+    <loc>/tags/dns/</loc>
     <lastmod>2014-03-06T00:40:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://127.0.0.1/categories/docker/</loc>
+    <loc>/categories/docker/</loc>
     <lastmod>2018-12-18T23:25:20+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://127.0.0.1/tags/docker/</loc>
+    <loc>/tags/docker/</loc>
     <lastmod>2018-12-18T23:25:20+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://127.0.0.1/tags/easy_install/</loc>
+    <loc>/tags/easy_install/</loc>
     <lastmod>2014-03-02T21:16:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://127.0.0.1/tags/fackbook/</loc>
+    <loc>/tags/fackbook/</loc>
     <lastmod>2012-03-13T00:40:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://127.0.0.1/tags/fdisk/</loc>
+    <loc>/tags/fdisk/</loc>
     <lastmod>2017-08-03T23:55:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://127.0.0.1/tags/flume/</loc>
+    <loc>/tags/flume/</loc>
     <lastmod>2017-07-23T22:30:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://127.0.0.1/tags/github/</loc>
+    <loc>/tags/github/</loc>
     <lastmod>2014-05-06T22:51:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://127.0.0.1/tags/gitlab/</loc>
+    <loc>/tags/gitlab/</loc>
     <lastmod>2018-12-18T23:25:20+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://127.0.0.1/tags/idea/</loc>
+    <loc>/tags/idea/</loc>
     <lastmod>2012-03-13T00:40:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://127.0.0.1/tags/java/</loc>
-    <lastmod>2017-07-23T22:30:00+00:00</lastmod>
+    <loc>/categories/java/</loc>
+    <lastmod>2019-03-06T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://127.0.0.1/tags/jquery/</loc>
+    <loc>/tags/java/</loc>
+    <lastmod>2019-03-06T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/jquery/</loc>
     <lastmod>2011-12-01T00:40:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://127.0.0.1/tags/json/</loc>
+    <loc>/tags/json/</loc>
     <lastmod>2011-12-01T00:40:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://127.0.0.1/tags/kafka/</loc>
+    <loc>/tags/kafka/</loc>
     <lastmod>2017-07-23T22:30:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://127.0.0.1/categories/linux/</loc>
+    <loc>/categories/linux/</loc>
+    <lastmod>2017-08-03T23:55:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/linux/</loc>
     <lastmod>2018-12-18T23:25:20+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://127.0.0.1/tags/linux/</loc>
-    <lastmod>2018-12-18T23:25:20+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://127.0.0.1/tags/log4j2/</loc>
+    <loc>/tags/log4j2/</loc>
     <lastmod>2017-07-15T23:31:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://127.0.0.1/tags/lvm/</loc>
+    <loc>/tags/lvm/</loc>
     <lastmod>2017-08-03T23:55:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://127.0.0.1/tags/mysql/</loc>
+    <loc>/categories/mysql/</loc>
     <lastmod>2017-06-06T12:15:07+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://127.0.0.1/tags/nginx/</loc>
+    <loc>/tags/mysql/</loc>
+    <lastmod>2017-06-06T12:15:07+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/nginx/</loc>
     <lastmod>2014-10-16T15:27:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://127.0.0.1/tags/performance/</loc>
+    <loc>/tags/performance/</loc>
     <lastmod>2014-10-16T15:27:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://127.0.0.1/tags/php/</loc>
+    <loc>/tags/php/</loc>
     <lastmod>2012-03-22T00:40:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://127.0.0.1/tags/pip/</loc>
+    <loc>/tags/pip/</loc>
     <lastmod>2014-03-02T21:16:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://127.0.0.1/posts/</loc>
-    <lastmod>2018-12-18T23:25:20+00:00</lastmod>
+    <loc>/posts/</loc>
+    <lastmod>2019-03-06T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://127.0.0.1/tags/python/</loc>
+    <loc>/tags/python/</loc>
     <lastmod>2014-03-02T21:16:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://127.0.0.1/tags/resize2fs/</loc>
+    <loc>/tags/resize2fs/</loc>
     <lastmod>2017-08-03T23:55:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://127.0.0.1/tags/review/</loc>
+    <loc>/tags/review/</loc>
     <lastmod>2017-12-31T00:08:25+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://127.0.0.1/tags/rmbp/</loc>
+    <loc>/tags/rmbp/</loc>
     <lastmod>2014-03-02T21:16:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://127.0.0.1/tags/ssh/</loc>
+    <loc>/tags/ssh/</loc>
     <lastmod>2018-12-18T23:25:20+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://127.0.0.1/tags/</loc>
-    <lastmod>2011-12-01T00:40:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://127.0.0.1/tags/tuning/</loc>
+    <loc>/categories/sysops/</loc>
     <lastmod>2014-10-16T15:27:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://127.0.0.1/tags/ucloud/</loc>
+    <loc>/tags/</loc>
+    <lastmod>2011-12-01T00:40:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/tuning/</loc>
+    <lastmod>2014-10-16T15:27:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/ucloud/</loc>
     <lastmod>2013-08-09T00:40:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://127.0.0.1/tags/vagrant/</loc>
+    <loc>/tags/vagrant/</loc>
     <lastmod>2014-03-03T23:40:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://127.0.0.1/tags/virtualbox/</loc>
+    <loc>/tags/virtualbox/</loc>
     <lastmod>2014-03-03T23:40:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://127.0.0.1/tags/virtualenv/</loc>
+    <loc>/tags/virtualenv/</loc>
     <lastmod>2014-03-02T21:16:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://127.0.0.1/tags/xtrabackup/</loc>
+    <loc>/tags/xtrabackup/</loc>
     <lastmod>2017-06-06T12:15:07+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://127.0.0.1/tags/%E4%B8%B4%E7%89%8C/</loc>
+    <loc>/tags/%E4%B8%B4%E7%89%8C/</loc>
     <lastmod>2016-01-28T11:55:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://127.0.0.1/tags/%E5%9B%9E%E5%BF%86/</loc>
+    <loc>/tags/%E5%9B%9E%E5%BF%86/</loc>
     <lastmod>2017-12-31T00:08:25+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://127.0.0.1/</loc>
-    <lastmod>2018-12-18T23:25:20+00:00</lastmod>
+    <loc>/</loc>
+    <lastmod>2019-03-06T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://127.0.0.1/tags/%E5%B1%95%E6%9C%9B/</loc>
+    <loc>/tags/%E5%B1%95%E6%9C%9B/</loc>
     <lastmod>2017-12-31T00:08:25+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://127.0.0.1/archives/</loc>
+    <loc>/archives/</loc>
   </url>
   
   <url>
-    <loc>https://127.0.0.1/tags/%E5%BF%83%E6%83%85/</loc>
+    <loc>/tags/%E5%BF%83%E6%83%85/</loc>
     <lastmod>2014-04-25T00:40:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://127.0.0.1/tags/%E6%80%9D%E8%80%83/</loc>
+    <loc>/tags/%E6%80%9D%E8%80%83/</loc>
     <lastmod>2017-12-31T00:08:25+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://127.0.0.1/tags/%E6%91%84%E5%BD%B1/</loc>
+    <loc>/categories/%E6%80%BB%E7%BB%93/</loc>
+    <lastmod>2017-12-31T00:08:25+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/%E6%91%84%E5%BD%B1/</loc>
     <lastmod>2011-10-01T00:40:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://127.0.0.1/tags/%E6%95%99%E8%AE%AD/</loc>
+    <loc>/tags/%E6%95%99%E8%AE%AD/</loc>
     <lastmod>2017-12-31T00:08:25+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://127.0.0.1/tags/%E7%89%A9%E7%90%86/</loc>
+    <loc>/tags/%E7%89%A9%E7%90%86/</loc>
     <lastmod>2014-03-13T21:16:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://127.0.0.1/tags/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/</loc>
+    <loc>/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/</loc>
+    <lastmod>2017-07-23T22:30:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/</loc>
     <lastmod>2011-10-21T13:11:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://127.0.0.1/tags/%E7%BB%8F%E9%AA%8C/</loc>
+    <loc>/tags/%E7%BB%8F%E9%AA%8C/</loc>
     <lastmod>2017-12-31T00:08:25+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://127.0.0.1/tags/%E9%A9%BE%E7%85%A7/</loc>
+    <loc>/tags/%E9%A9%BE%E7%85%A7/</loc>
     <lastmod>2015-10-15T11:55:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://127.0.0.1/tags/%E9%AD%94%E9%83%BD%E7%94%9F%E5%AD%98%E6%89%8B%E5%86%8C/</loc>
+    <loc>/tags/%E9%AD%94%E9%83%BD%E7%94%9F%E5%AD%98%E6%89%8B%E5%86%8C/</loc>
     <lastmod>2016-01-28T11:55:00+00:00</lastmod>
     <priority>0</priority>
   </url>

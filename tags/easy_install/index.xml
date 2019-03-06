@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Easy_install on 小码哥的博客</title>
-    <link>https://127.0.0.1/tags/easy_install/</link>
+    <link>/tags/easy_install/</link>
     <description>Recent content in Easy_install on 小码哥的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <lastBuildDate>Sun, 02 Mar 2014 21:16:00 +0000</lastBuildDate>
     
-	<atom:link href="https://127.0.0.1/tags/easy_install/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/easy_install/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Python on My rMBP</title>
-      <link>https://127.0.0.1/posts/2014-03-02-python-on-my-rmbp/</link>
+      <link>/posts/2014-03-02-python-on-my-rmbp/</link>
       <pubDate>Sun, 02 Mar 2014 21:16:00 +0000</pubDate>
       
-      <guid>https://127.0.0.1/posts/2014-03-02-python-on-my-rmbp/</guid>
+      <guid>/posts/2014-03-02-python-on-my-rmbp/</guid>
       <description>前几天入手了一台 Macbook Pro Retina，把 BIG 提到了很爽的地步。经过几天的折腾，可以和 windows，ubuntu desktop 说 Byebye 了。之前整整用了一年的 Ubuntu 来工作，我用它来写 C、Java 和 Python, 要是 windows 没有 cygwin, 没有 MacType，那该多么恐怖。后来用了一段时间的 MBP，让我坚定了以后要自己买一个 MBP。
 ubuntu 那么的惹人爱，因为它有个还挺好用的 GUI，从 debian 那继承过来的 apt-get, 一下子把一个从 redhat 9 用到 fedora 4 的穷学生拉到了 ubuntu 的阵营，至此，deskop 就被 ubuntu 占领了。在此之前，我还用段时间的 debian 和 gentoo。
 不得不说，debian 太伟大太牛逼了，有一次要在一个 MIPS 的小设备上编译安装 erlang， openssl，libcurl 等做一些实验, 要跨平台编译这些软件安装到小设备上去，费了半天终于把这些都编好了，还写了一个编译脚步，结果 erlang 运行的时候虚拟机总是报错，也不知道怎么回事。后来注意到 debian 居然有 MIPS，ARM 的源，后来在 MIPS 设备上安装软件做实验，我再也没有遇到问题，一切都用 apt-get 搞定了。

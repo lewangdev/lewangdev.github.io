@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Jquery on 小码哥的博客</title>
-    <link>https://127.0.0.1/tags/jquery/</link>
+    <link>/tags/jquery/</link>
     <description>Recent content in Jquery on 小码哥的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <lastBuildDate>Thu, 01 Dec 2011 00:40:00 +0000</lastBuildDate>
     
-	<atom:link href="https://127.0.0.1/tags/jquery/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/jquery/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>jquery $.ajax() 中 datatype 为 json 时的问题</title>
-      <link>https://127.0.0.1/posts/2011-12-01-when-datatype-is-json/</link>
+      <link>/posts/2011-12-01-when-datatype-is-json/</link>
       <pubDate>Thu, 01 Dec 2011 00:40:00 +0000</pubDate>
       
-      <guid>https://127.0.0.1/posts/2011-12-01-when-datatype-is-json/</guid>
+      <guid>/posts/2011-12-01-when-datatype-is-json/</guid>
       <description>最近在为摆摊写点前端 js 的时候，在使用 jquery 的 $.ajax()这个方法的时候，当datatype设置为json时，总是不执行success回调，而是执行error回调。而将datatype设置成text，就可以执行success回调了，摆摊使用的是jQuery JavaScript Library v1.6.2，查看jQuery文档可知：
  “json”: Evaluates the response as JSON and returns a JavaScript object. In jQuery 1.4 the JSON data is parsed in a strict manner; any malformed JSON is rejected and a parse error is thrown. (See json.org for more information on proper JSON formatting.)
  我用php产生的字符串是

@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>物理 on 小码哥的博客</title>
-    <link>https://127.0.0.1/tags/%E7%89%A9%E7%90%86/</link>
+    <link>/tags/%E7%89%A9%E7%90%86/</link>
     <description>Recent content in 物理 on 小码哥的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <lastBuildDate>Thu, 13 Mar 2014 21:16:00 +0000</lastBuildDate>
     
-	<atom:link href="https://127.0.0.1/tags/%E7%89%A9%E7%90%86/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/%E7%89%A9%E7%90%86/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>谁是德布罗意</title>
-      <link>https://127.0.0.1/posts/2014-03-13-who-is-de-broglie/</link>
+      <link>/posts/2014-03-13-who-is-de-broglie/</link>
       <pubDate>Thu, 13 Mar 2014 21:16:00 +0000</pubDate>
       
-      <guid>https://127.0.0.1/posts/2014-03-13-who-is-de-broglie/</guid>
+      <guid>/posts/2014-03-13-who-is-de-broglie/</guid>
       <description>这张照片很多人应该都见过，名副其实的二十世纪最伟大科学家们的合影。爱因斯坦占据了最明显的位置，德布罗意也在其中。
 这里是摘自百度百科的一些内容：
  在光具有波粒二象性的启发下，法国物理学家德布罗意（1892～1987）在 1924 年提出一个假说，指出波粒二象性不只是光子才有，一切微观粒子，包括电子和质子、中子，都有波粒二象性。他把光子的动量与波长的关系式 p=h/λ 推广到一切微观粒子上，指出：具有质量 m 和速度 v 的运动粒子也具有波动性，这种波的波长等于普朗克恒量 h 跟粒子动量 mv 的比，即 λ=h/(mv)。这个关系式后来就叫做德布罗意公式。

@@ -16,13 +16,13 @@
     <meta name="description" content="Linux">
         
     <meta name="author" content="小码哥">
-    <meta property="og:url" content="https://127.0.0.1/categories/linux/">
+    <meta property="og:url" content="/categories/linux/">
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 
     <link rel="stylesheet" href="/css/normalize.css">
     
     <link rel="stylesheet" href="/css/style.css">
-    <link rel="alternate" type="application/rss+xml" href="https://127.0.0.1/categories/linux/index.xml" title="小码哥的博客" />
+    <link rel="alternate" type="application/rss+xml" href="/categories/linux/index.xml" title="小码哥的博客" />
     <script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
 
     
@@ -39,7 +39,7 @@
         <div class="col-group">
             <div class="site-name ">
                 
-                    <a id="logo" href="https://127.0.0.1/">
+                    <a id="logo" href="">
                         小码哥的博客
                     </a>
                 
@@ -47,13 +47,13 @@
             </div>
             <div>
                 <nav id="nav-menu" class="clearfix">
-                    <a class="" href="https://127.0.0.1/">首页</a>
+                    <a class="" href="">首页</a>
                     
-                    <a  href="https://127.0.0.1/tags/" title="标签">标签</a>
+                    <a  href="/tags/" title="标签">标签</a>
                     
-                    <a  href="https://127.0.0.1/archives/" title="归档">归档</a>
+                    <a  href="/archives/" title="归档">归档</a>
                     
-                    <a  href="https://127.0.0.1/about/" title="关于">关于</a>
+                    <a  href="/about/" title="关于">关于</a>
                     
                 </nav>
             </div>
@@ -80,35 +80,7 @@
                         <article class="post">
                             <header>
                                 <h1 class="post-title">
-                                    <a href="https://127.0.0.1/posts/2018-12-18-gitlab-docker-install/">使用 Docker 方式安装 Gitlab，没你想得那么简单</a>
-                                </h1>
-                            </header>
-                            <date class="post-meta meta-date">
-                                2018年12月18日
-                            </date>
-                            
-                            <div class="post-meta meta-category">
-                                |
-                                
-                                    <a href="https://127.0.0.1/categories/linux">Linux</a>
-                                
-                                    <a href="https://127.0.0.1/categories/docker">Docker</a>
-                                
-                            </div>
-                            
-                            <div class="post-content">
-                                为什么要写这篇文章？ 曾经几年前在 Docker 还没有广泛应用的时候，在公司使用过源码的方式安装和升级过 Gitlab，虽远没有 Docker 方便，因为自己对 Linux 系统的理解，所以整体上感觉还是挺简单的。这几年随着 Docker 的普及，使得安装 Gitlab 更加的容易，不仅方便了我这样的老鸟，也更方便了小白用户们。但是 Gitlab 官方的 Docker 安装文档并没有写得很完善, 除了官方文档之外，检索出来的安装文档也是人云亦云，东拼西凑，结果也就是能运行起来，凑合着能用而已。
-我希望每做一件小事的时候也都能抱着“知其然知其所以然”的心态对待，用 Docker 方式安装 Gitlab，说简单来说就是一行命令的事儿，但是这样就够了吗？我看是不够的，所以就有了这篇文档。
-本文需要达成的事项  在 CentOS 7 系统中安装 Docker 使用 Docker 方式安装中文版 Gitlab 和宿主机器共用 22(SSH) 端口 支持 SSH(22)/HTTPS(443) 方式推拉仓库 使用 SMTP 方式配置通知邮箱(腾讯企业邮箱) 改写默认的项目标签(Labels)  在 CentOS 7 系统中安装 Docker 这部分参考 Docker 的官方文档, 罗列一下安装步骤, 细节请看 Docker 的官方文档。如果使用 root 用户安装，sudo 可以去掉。
-1. 删除老版本 Docker $ sudo yum remove docker \ docker-client \ docker-client-latest \ docker-common \ docker-latest \ docker-latest-logrotate \ docker-logrotate \ docker-selinux \ docker-engine-selinux \ docker-engine  2.……
-                                <p class="readmore"><a href="https://127.0.0.1/posts/2018-12-18-gitlab-docker-install/">阅读全文</a></p>
-                            </div>
-                        </article>
-                    
-                        <article class="post">
-                            <header>
-                                <h1 class="post-title">
-                                    <a href="https://127.0.0.1/posts/2017-08-03-lvm-in-action/">LVM 实战记录</a>
+                                    <a href="/posts/2017-08-03-lvm-in-action/">LVM 实战记录</a>
                                 </h1>
                             </header>
                             <date class="post-meta meta-date">
@@ -118,21 +90,21 @@
                             <div class="post-meta meta-category">
                                 |
                                 
-                                    <a href="https://127.0.0.1/categories/linux">Linux</a>
+                                    <a href="/categories/linux">Linux</a>
                                 
                             </div>
                             
                             <div class="post-content">
                                 背景 阿里云云主机两块 100G 的云盘合一个逻辑卷（LV）来使用，单个的 100G 磁盘不够用，需要合在一起使用，并且方便以后扩容
 基本知识  磁盘 /dev/xvdb /dev/xvdc 分区, 使用 fdisk 进行分区 fdisk &gt; n &gt; p &gt; 1..4, 主分区最多只有4个 准备分区后，将分区类型变为 LVM 分区，fdisk &gt; t &gt; 8e, 8e 是 LVM 类型 ID 物理卷（PV），卷组（VG），逻辑卷（LV），从磁盘分区创建 PV，通过 PV 创建 VG 或者把 PV 加入已有的 VG，在 VG 上创建 LV，LV 看起来就是逻辑的上磁盘，使用和真实的磁盘没什么明显区别, 在 LV 上构建文件系统  创建  创建物理卷 pvcreate /dev/xvdb1，对分区进行操作 创建 vg0 卷组 vgcreate vg0 /dev/xvdb1 查看卷组 vgdisplay， 可以看到卷组有多大 在 vg0 上创建 data 逻辑卷 lvcreate -L 99G -n data vg0 或者 lvcreate -l 25556 -n data vg0 创建文件系统 mkfs.……
-                                <p class="readmore"><a href="https://127.0.0.1/posts/2017-08-03-lvm-in-action/">阅读全文</a></p>
+                                <p class="readmore"><a href="/posts/2017-08-03-lvm-in-action/">阅读全文</a></p>
                             </div>
                         </article>
                     
                         <article class="post">
                             <header>
                                 <h1 class="post-title">
-                                    <a href="https://127.0.0.1/posts/2014-03-06-arch-of-website-domain-cdn/">从域名和 CDN 来看网站架构</a>
+                                    <a href="/posts/2014-03-06-arch-of-website-domain-cdn/">从域名和 CDN 来看网站架构</a>
                                 </h1>
                             </header>
                             <date class="post-meta meta-date">
@@ -142,7 +114,7 @@
                             <div class="post-meta meta-category">
                                 |
                                 
-                                    <a href="https://127.0.0.1/categories/linux">Linux</a>
+                                    <a href="/categories/linux">Linux</a>
                                 
                             </div>
                             
@@ -150,7 +122,7 @@
                                 为了自己做好网站的架构，找了知乎，豆瓣，大众点评和百姓网来做参考。这里主要来看域名和CDN相关的部分，后台的架构也还是要边学便实践。
 大概情况 从前端分析了知乎的域名和 DNS 情况，同时对比了一下豆瓣、大众点评和百姓网。从域名、DNS、CDN等使用角度来说，他们之间大同小异。
 使用的分析工具  Chrome WHOIS DNSLookup  非 CDN 使用    记录 域名 用途 路径     A zhihu.com 使用 301 跳转到 www.zhuhu.com IP   A zhi.hu 使用 302 跳转到 www.zhihu.com IP   A www.zhihu.com  IP   A comet.zhihu.com WebSocket 推送消息 IP   A analytics.zhihu.com 知乎自己的统计分析，同时使用了 Google Analytics IP    大部分都是用了 301 或者 302 跳转，注意他们的区别：301 是永久跳转(浏览器会做客户端端缓存)，而 302 是临时跳转。此外 baidu.……
-                                <p class="readmore"><a href="https://127.0.0.1/posts/2014-03-06-arch-of-website-domain-cdn/">阅读全文</a></p>
+                                <p class="readmore"><a href="/posts/2014-03-06-arch-of-website-domain-cdn/">阅读全文</a></p>
                             </div>
                         </article>
                     
@@ -168,7 +140,7 @@
         <form id="search" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
       
       <input type="text" name="q" maxlength="20" placeholder="Search">
-      <input type="hidden" name="sitesearch" value="https://127.0.0.1/">
+      <input type="hidden" name="sitesearch" value="">
       <button type="submit" class="submit icon-search"></button>
 </form>
     </section>
@@ -178,43 +150,43 @@
 <ul class="widget-list">
     
     <li>
-        <a href="https://127.0.0.1/posts/2018-12-18-gitlab-docker-install/" title="使用 Docker 方式安装 Gitlab，没你想得那么简单">使用 Docker 方式安装 Gitlab，没你想得那么简单</a>
+        <a href="/posts/2019-03-06-keynotes-of-new-java/" title="Java 进阶要点">Java 进阶要点</a>
     </li>
     
     <li>
-        <a href="https://127.0.0.1/posts/2017-12-31-year-end-reviews-of-2017/" title="有关 2017 流水账和胡思乱想的记录">有关 2017 流水账和胡思乱想的记录</a>
+        <a href="/posts/2018-12-18-gitlab-docker-install/" title="使用 Docker 方式安装 Gitlab，没你想得那么简单">使用 Docker 方式安装 Gitlab，没你想得那么简单</a>
     </li>
     
     <li>
-        <a href="https://127.0.0.1/posts/2017-08-03-lvm-in-action/" title="LVM 实战记录">LVM 实战记录</a>
+        <a href="/posts/2017-12-31-year-end-reviews-of-2017/" title="有关 2017 流水账和胡思乱想的记录">有关 2017 流水账和胡思乱想的记录</a>
     </li>
     
     <li>
-        <a href="https://127.0.0.1/posts/2017-07-23-log-processing-system/" title="日志收集和分析系统架构">日志收集和分析系统架构</a>
+        <a href="/posts/2017-08-03-lvm-in-action/" title="LVM 实战记录">LVM 实战记录</a>
     </li>
     
     <li>
-        <a href="https://127.0.0.1/posts/2017-07-15-log4j2/" title="Log4j2 配置">Log4j2 配置</a>
+        <a href="/posts/2017-07-23-log-processing-system/" title="日志收集和分析系统架构">日志收集和分析系统架构</a>
     </li>
     
     <li>
-        <a href="https://127.0.0.1/posts/2017-06-06-xtrabackup/" title="MySQL 数据备份和不停机重新搭建主从同步">MySQL 数据备份和不停机重新搭建主从同步</a>
+        <a href="/posts/2017-07-15-log4j2/" title="Log4j2 快速入门">Log4j2 快速入门</a>
     </li>
     
     <li>
-        <a href="https://127.0.0.1/posts/2016-01-28-banlinpai/" title="办理机动车临牌">办理机动车临牌</a>
+        <a href="/posts/2017-06-06-xtrabackup/" title="MySQL 数据备份和不停机重新搭建主从同步">MySQL 数据备份和不停机重新搭建主从同步</a>
     </li>
     
     <li>
-        <a href="https://127.0.0.1/posts/2015-10-15-huanzheng/" title="驾照转入换证">驾照转入换证</a>
+        <a href="/posts/2016-01-28-banlinpai/" title="办理机动车临牌">办理机动车临牌</a>
     </li>
     
     <li>
-        <a href="https://127.0.0.1/posts/2014-10-16-tuning-nginx/" title="Nginx 性能调优「译」">Nginx 性能调优「译」</a>
+        <a href="/posts/2015-10-15-huanzheng/" title="驾照转入换证">驾照转入换证</a>
     </li>
     
     <li>
-        <a href="https://127.0.0.1/posts/2014-05-06-github-pages-dns-settings/" title="Github Pages 服务的域名设置">Github Pages 服务的域名设置</a>
+        <a href="/posts/2014-10-16-tuning-nginx/" title="Nginx 性能调优「译」">Nginx 性能调优「译」</a>
     </li>
     
 </ul>
@@ -227,11 +199,31 @@
 <ul class="widget-list">
     
     <li>
-        <a href="https://127.0.0.1/categories/docker/">docker(1)</a>
+        <a href="/categories/docker/">docker(1)</a>
     </li>
     
     <li>
-        <a href="https://127.0.0.1/categories/linux/">linux(3)</a>
+        <a href="/categories/java/">java(1)</a>
+    </li>
+    
+    <li>
+        <a href="/categories/linux/">linux(2)</a>
+    </li>
+    
+    <li>
+        <a href="/categories/mysql/">mysql(1)</a>
+    </li>
+    
+    <li>
+        <a href="/categories/sysops/">sysops(1)</a>
+    </li>
+    
+    <li>
+        <a href="/categories/%E6%80%BB%E7%BB%93/">总结(3)</a>
+    </li>
+    
+    <li>
+        <a href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/">系统架构(1)</a>
     </li>
     
 </ul>
@@ -241,107 +233,107 @@
         <h3 class="widget-title">标签</h3>
 <div class="tagcloud">
     
-    <a href="https://127.0.0.1/tags/ajax/">ajax</a>
+    <a href="/tags/ajax/">ajax</a>
     
-    <a href="https://127.0.0.1/tags/aliyun/">aliyun</a>
+    <a href="/tags/aliyun/">aliyun</a>
     
-    <a href="https://127.0.0.1/tags/blog/">blog</a>
+    <a href="/tags/blog/">blog</a>
     
-    <a href="https://127.0.0.1/tags/cassandra/">cassandra</a>
+    <a href="/tags/cassandra/">cassandra</a>
     
-    <a href="https://127.0.0.1/tags/catcat/">catcat</a>
+    <a href="/tags/catcat/">catcat</a>
     
-    <a href="https://127.0.0.1/tags/cdn/">cdn</a>
+    <a href="/tags/cdn/">cdn</a>
     
-    <a href="https://127.0.0.1/tags/database/">database</a>
+    <a href="/tags/database/">database</a>
     
-    <a href="https://127.0.0.1/tags/dns/">dns</a>
+    <a href="/tags/dns/">dns</a>
     
-    <a href="https://127.0.0.1/tags/docker/">docker</a>
+    <a href="/tags/docker/">docker</a>
     
-    <a href="https://127.0.0.1/tags/easy_install/">easy_install</a>
+    <a href="/tags/easy_install/">easy_install</a>
     
-    <a href="https://127.0.0.1/tags/fackbook/">fackbook</a>
+    <a href="/tags/fackbook/">fackbook</a>
     
-    <a href="https://127.0.0.1/tags/fdisk/">fdisk</a>
+    <a href="/tags/fdisk/">fdisk</a>
     
-    <a href="https://127.0.0.1/tags/flume/">flume</a>
+    <a href="/tags/flume/">flume</a>
     
-    <a href="https://127.0.0.1/tags/github/">github</a>
+    <a href="/tags/github/">github</a>
     
-    <a href="https://127.0.0.1/tags/gitlab/">gitlab</a>
+    <a href="/tags/gitlab/">gitlab</a>
     
-    <a href="https://127.0.0.1/tags/idea/">idea</a>
+    <a href="/tags/idea/">idea</a>
     
-    <a href="https://127.0.0.1/tags/java/">java</a>
+    <a href="/tags/java/">java</a>
     
-    <a href="https://127.0.0.1/tags/jquery/">jquery</a>
+    <a href="/tags/jquery/">jquery</a>
     
-    <a href="https://127.0.0.1/tags/json/">json</a>
+    <a href="/tags/json/">json</a>
     
-    <a href="https://127.0.0.1/tags/kafka/">kafka</a>
+    <a href="/tags/kafka/">kafka</a>
     
-    <a href="https://127.0.0.1/tags/linux/">linux</a>
+    <a href="/tags/linux/">linux</a>
     
-    <a href="https://127.0.0.1/tags/log4j2/">log4j2</a>
+    <a href="/tags/log4j2/">log4j2</a>
     
-    <a href="https://127.0.0.1/tags/lvm/">lvm</a>
+    <a href="/tags/lvm/">lvm</a>
     
-    <a href="https://127.0.0.1/tags/mysql/">mysql</a>
+    <a href="/tags/mysql/">mysql</a>
     
-    <a href="https://127.0.0.1/tags/nginx/">nginx</a>
+    <a href="/tags/nginx/">nginx</a>
     
-    <a href="https://127.0.0.1/tags/performance/">performance</a>
+    <a href="/tags/performance/">performance</a>
     
-    <a href="https://127.0.0.1/tags/php/">php</a>
+    <a href="/tags/php/">php</a>
     
-    <a href="https://127.0.0.1/tags/pip/">pip</a>
+    <a href="/tags/pip/">pip</a>
     
-    <a href="https://127.0.0.1/tags/python/">python</a>
+    <a href="/tags/python/">python</a>
     
-    <a href="https://127.0.0.1/tags/resize2fs/">resize2fs</a>
+    <a href="/tags/resize2fs/">resize2fs</a>
     
-    <a href="https://127.0.0.1/tags/review/">review</a>
+    <a href="/tags/review/">review</a>
     
-    <a href="https://127.0.0.1/tags/rmbp/">rmbp</a>
+    <a href="/tags/rmbp/">rmbp</a>
     
-    <a href="https://127.0.0.1/tags/ssh/">ssh</a>
+    <a href="/tags/ssh/">ssh</a>
     
-    <a href="https://127.0.0.1/tags/tuning/">tuning</a>
+    <a href="/tags/tuning/">tuning</a>
     
-    <a href="https://127.0.0.1/tags/ucloud/">ucloud</a>
+    <a href="/tags/ucloud/">ucloud</a>
     
-    <a href="https://127.0.0.1/tags/vagrant/">vagrant</a>
+    <a href="/tags/vagrant/">vagrant</a>
     
-    <a href="https://127.0.0.1/tags/virtualbox/">virtualbox</a>
+    <a href="/tags/virtualbox/">virtualbox</a>
     
-    <a href="https://127.0.0.1/tags/virtualenv/">virtualenv</a>
+    <a href="/tags/virtualenv/">virtualenv</a>
     
-    <a href="https://127.0.0.1/tags/xtrabackup/">xtrabackup</a>
+    <a href="/tags/xtrabackup/">xtrabackup</a>
     
-    <a href="https://127.0.0.1/tags/%E4%B8%B4%E7%89%8C/">临牌</a>
+    <a href="/tags/%E4%B8%B4%E7%89%8C/">临牌</a>
     
-    <a href="https://127.0.0.1/tags/%E5%9B%9E%E5%BF%86/">回忆</a>
+    <a href="/tags/%E5%9B%9E%E5%BF%86/">回忆</a>
     
-    <a href="https://127.0.0.1/tags/%E5%B1%95%E6%9C%9B/">展望</a>
+    <a href="/tags/%E5%B1%95%E6%9C%9B/">展望</a>
     
-    <a href="https://127.0.0.1/tags/%E5%BF%83%E6%83%85/">心情</a>
+    <a href="/tags/%E5%BF%83%E6%83%85/">心情</a>
     
-    <a href="https://127.0.0.1/tags/%E6%80%9D%E8%80%83/">思考</a>
+    <a href="/tags/%E6%80%9D%E8%80%83/">思考</a>
     
-    <a href="https://127.0.0.1/tags/%E6%91%84%E5%BD%B1/">摄影</a>
+    <a href="/tags/%E6%91%84%E5%BD%B1/">摄影</a>
     
-    <a href="https://127.0.0.1/tags/%E6%95%99%E8%AE%AD/">教训</a>
+    <a href="/tags/%E6%95%99%E8%AE%AD/">教训</a>
     
-    <a href="https://127.0.0.1/tags/%E7%89%A9%E7%90%86/">物理</a>
+    <a href="/tags/%E7%89%A9%E7%90%86/">物理</a>
     
-    <a href="https://127.0.0.1/tags/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/">系统架构</a>
+    <a href="/tags/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/">系统架构</a>
     
-    <a href="https://127.0.0.1/tags/%E7%BB%8F%E9%AA%8C/">经验</a>
+    <a href="/tags/%E7%BB%8F%E9%AA%8C/">经验</a>
     
-    <a href="https://127.0.0.1/tags/%E9%A9%BE%E7%85%A7/">驾照</a>
+    <a href="/tags/%E9%A9%BE%E7%85%A7/">驾照</a>
     
-    <a href="https://127.0.0.1/tags/%E9%AD%94%E9%83%BD%E7%94%9F%E5%AD%98%E6%89%8B%E5%86%8C/">魔都生存手册</a>
+    <a href="/tags/%E9%AD%94%E9%83%BD%E7%94%9F%E5%AD%98%E6%89%8B%E5%86%8C/">魔都生存手册</a>
     
 </div>
     </section>
@@ -366,7 +358,7 @@
     <section class="widget">
         <h3 class="widget-title">其它</h3>
         <ul class="widget-list">
-            <li><a href="https://127.0.0.1/index.xml">文章 RSS</a></li>
+            <li><a href="index.xml">文章 RSS</a></li>
         </ul>
     </section>
 </div>
@@ -375,7 +367,7 @@
 </div>
 <footer id="footer">
     <div class="container">
-        &copy; 2018 <a href="https://127.0.0.1/">小码哥的博客 By 小码哥</a>.
+        &copy; 2018 <a href="">小码哥的博客 By 小码哥</a>.
         Powered by <a rel="nofollow noreferer noopener" href="https://gohugo.io" target="_blank">Hugo</a>.
         <a href="https://www.flysnow.org/" target="_blank">Theme</a> based on <a href="https://github.com/rujews/maupassant-hugo" target="_blank">maupassant</a>.
         

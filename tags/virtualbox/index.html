@@ -7,8 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Virtualbox | 小码哥的博客</title>
-    <meta property="og:title" content="Virtualbox - 小码哥的博客">
+    <title>Virtualbox | 小码哥的技术干货</title>
+    <meta property="og:title" content="Virtualbox - 小码哥的技术干货">
     <meta property="og:type" content="article">
         
         
@@ -16,13 +16,13 @@
     <meta name="description" content="Virtualbox">
         
     <meta name="author" content="小码哥">
-    <meta property="og:url" content="/tags/virtualbox/">
+    <meta property="og:url" content="//thisiswangle.com/tags/virtualbox/">
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 
     <link rel="stylesheet" href="/css/normalize.css">
     
     <link rel="stylesheet" href="/css/style.css">
-    <link rel="alternate" type="application/rss+xml" href="/tags/virtualbox/index.xml" title="小码哥的博客" />
+    <link rel="alternate" type="application/rss+xml" href="//thisiswangle.com/tags/virtualbox/index.xml" title="小码哥的技术干货" />
     <script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
 
     
@@ -39,21 +39,19 @@
         <div class="col-group">
             <div class="site-name ">
                 
-                    <a id="logo" href="">
-                        小码哥的博客
+                    <a id="logo" href="//thisiswangle.com">
+                        小码哥的技术干货
                     </a>
                 
                 <p class="description">Work hard, Play harder</p>
             </div>
             <div>
                 <nav id="nav-menu" class="clearfix">
-                    <a class="" href="">首页</a>
+                    <a class="" href="//thisiswangle.com">首页</a>
                     
-                    <a  href="/tags/" title="标签">标签</a>
+                    <a  href="//thisiswangle.com/archives/" title="归档">归档</a>
                     
-                    <a  href="/archives/" title="归档">归档</a>
-                    
-                    <a  href="/about/" title="关于">关于</a>
+                    <a  href="//thisiswangle.com/about/" title="关于">关于</a>
                     
                 </nav>
             </div>
@@ -80,7 +78,7 @@
                         <article class="post">
                             <header>
                                 <h1 class="post-title">
-                                    <a href="/posts/2014-03-03-building-devenv-by-vagrant/">使用 Vagrant 构建开发环境</a>
+                                    <a href="//thisiswangle.com/posts/2014-03-03-building-devenv-by-vagrant/">使用 Vagrant 构建开发环境</a>
                                 </h1>
                             </header>
                             <date class="post-meta meta-date">
@@ -88,15 +86,18 @@
                             </date>
                             
                             <div class="post-content">
-                                Vagrant 是一个构建虚拟开发环境的利器，它使得在团队中很容易共享开发环境，有了它，不必每个人都搭建一个自己的开发环境了。在没有使用 vagrant 之前，我在windows中安装了 virtualbox，然后在virtualbox中安装了一个ubuntu server。在 ubuntu 中安装了 mysql、jdk 等软件，并且设置了一个共享目录，以便于将工程代码直接共享给 ubuntu。在外部开发调试过程中（Java 项目），我需要在virtualbox中设置好几个端口映射，如 mysql，ssh等等。这样在 cygwin 里面就可以通过 ssh 登录 ubuntu server 了，为了使得ssh登录不用每次设置密码，还需要手动生成公钥私钥。换机器了，这一切我又得重新配置。新同事来了，他也得像我这样重新配置一遍。有可能他还会有问题说：为什么按照你的说明，代码在我这里却无法运行呢？
+                                 Vagrant 是一个构建虚拟开发环境的利器，它使得在团队中很容易共享开发环境，有了它，不必每个人都搭建一个自己的开发环境了。在没有使用 vagrant 之前，我在windows中安装了 virtualbox，然后在virtualbox中安装了一个ubuntu server。在 ubuntu 中安装了 mysql、jdk 等软件，并且设置了一个共享目录，以便于将工程代码直接共享给 ubuntu。在外部开发调试过程中（Java 项目），我需要在virtualbox中设置好几个端口映射，如 mysql，ssh等等。这样在 cygwin 里面就可以通过 ssh 登录 ubuntu server 了，为了使得ssh登录不用每次设置密码，还需要手动生成公钥私钥。换机器了，这一切我又得重新配置。新同事来了，他也得像我这样重新配置一遍。有可能他还会有问题说：为什么按照你的说明，代码在我这里却无法运行呢？
 一切都从 Yining 告诉了我 vagrant 之后发生了变化，原来一切都这么简单。
 安装 VirtualBox Vagrant 其实是对 virtualbox 做了一层包装，它让使用virtualbox作为虚拟机更为简单。当然也可以使用 vmware，使用vmware那得找一个license了。
 好吧，去这里 下载 VirtualBox。我使用的是 4.3.8 for OSX
 安装 Vagrant 下载vagrant
 添加虚拟机镜像到 Vagrant vagrant box add vdevenv ~/Workspace/vagrant/boxes/vdevenv-0.0.0.1.box  vagrant 的干净的镜像可以在这里下载:
  Ubuntu precise 32 VirtualBox Ubuntu precise 64 VirtualBox 更多镜像  在工作目录启动 Vagrant 进入自己的代码所在的目录，启动刚刚添加的虚拟机镜像
-vagrant init vdevenv vagrant up vagrant ssh # 登录到虚拟机  进入 /vagrant 目录，这里就是共享的目录，所有的代码都在这里。……
-                                <p class="readmore"><a href="/posts/2014-03-03-building-devenv-by-vagrant/">阅读全文</a></p>
+vagrant init vdevenv vagrant up vagrant ssh # 登录到虚拟机  进入 /vagrant 目录，这里就是共享的目录，所有的代码都在这里。
+Vagrant 设置 修改 Vagrantfile
+分享开发环境 vagrant package  执行之后在工作目录下面会生成一个*.bax的文件，把这个文件拷给别人就可以了
+常用 Vagrant 命令 vagrant ssh vagrant status vagrant halt vagrant up  ……
+                                <p class="readmore"><a href="//thisiswangle.com/posts/2014-03-03-building-devenv-by-vagrant/">阅读全文</a></p>
                             </div>
                         </article>
                     
@@ -114,7 +115,7 @@ vagrant init vdevenv vagrant up vagrant ssh # 登录到虚拟机  进入 /vagran
         <form id="search" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
       
       <input type="text" name="q" maxlength="20" placeholder="Search">
-      <input type="hidden" name="sitesearch" value="">
+      <input type="hidden" name="sitesearch" value="//thisiswangle.com">
       <button type="submit" class="submit icon-search"></button>
 </form>
     </section>
@@ -124,43 +125,43 @@ vagrant init vdevenv vagrant up vagrant ssh # 登录到虚拟机  进入 /vagran
 <ul class="widget-list">
     
     <li>
-        <a href="/posts/2019-03-06-keynotes-of-new-java/" title="Java 进阶要点">Java 进阶要点</a>
+        <a href="//thisiswangle.com/posts/2019-03-06-keynotes-of-new-java/" title="Java 进阶要点">Java 进阶要点</a>
     </li>
     
     <li>
-        <a href="/posts/2018-12-18-gitlab-docker-install/" title="使用 Docker 方式安装 Gitlab，没你想得那么简单">使用 Docker 方式安装 Gitlab，没你想得那么简单</a>
+        <a href="//thisiswangle.com/posts/2018-12-18-gitlab-docker-install/" title="使用 Docker 方式安装 Gitlab，没你想得那么简单">使用 Docker 方式安装 Gitlab，没你想得那么简单</a>
     </li>
     
     <li>
-        <a href="/posts/2017-12-31-year-end-reviews-of-2017/" title="有关 2017 流水账和胡思乱想的记录">有关 2017 流水账和胡思乱想的记录</a>
+        <a href="//thisiswangle.com/posts/2017-12-31-year-end-reviews-of-2017/" title="有关 2017 流水账和胡思乱想的记录">有关 2017 流水账和胡思乱想的记录</a>
     </li>
     
     <li>
-        <a href="/posts/2017-08-03-lvm-in-action/" title="LVM 实战记录">LVM 实战记录</a>
+        <a href="//thisiswangle.com/posts/2017-08-03-lvm-in-action/" title="LVM 实战记录">LVM 实战记录</a>
     </li>
     
     <li>
-        <a href="/posts/2017-07-23-log-processing-system/" title="日志收集和分析系统架构">日志收集和分析系统架构</a>
+        <a href="//thisiswangle.com/posts/2017-07-23-log-processing-system/" title="日志收集和分析系统架构">日志收集和分析系统架构</a>
     </li>
     
     <li>
-        <a href="/posts/2017-07-15-log4j2/" title="Log4j2 快速入门">Log4j2 快速入门</a>
+        <a href="//thisiswangle.com/posts/2017-07-15-log4j2/" title="Log4j2 快速入门">Log4j2 快速入门</a>
     </li>
     
     <li>
-        <a href="/posts/2017-06-06-xtrabackup/" title="MySQL 数据备份和不停机重新搭建主从同步">MySQL 数据备份和不停机重新搭建主从同步</a>
+        <a href="//thisiswangle.com/posts/2017-06-06-xtrabackup/" title="MySQL 数据备份和不停机重新搭建主从同步">MySQL 数据备份和不停机重新搭建主从同步</a>
     </li>
     
     <li>
-        <a href="/posts/2016-01-28-banlinpai/" title="办理机动车临牌">办理机动车临牌</a>
+        <a href="//thisiswangle.com/posts/2016-01-28-banlinpai/" title="办理机动车临牌">办理机动车临牌</a>
     </li>
     
     <li>
-        <a href="/posts/2015-10-15-huanzheng/" title="驾照转入换证">驾照转入换证</a>
+        <a href="//thisiswangle.com/posts/2015-10-15-huanzheng/" title="驾照转入换证">驾照转入换证</a>
     </li>
     
     <li>
-        <a href="/posts/2014-10-16-tuning-nginx/" title="Nginx 性能调优「译」">Nginx 性能调优「译」</a>
+        <a href="//thisiswangle.com/posts/2014-10-16-tuning-nginx/" title="Nginx 性能调优「译」">Nginx 性能调优「译」</a>
     </li>
     
 </ul>
@@ -173,31 +174,31 @@ vagrant init vdevenv vagrant up vagrant ssh # 登录到虚拟机  进入 /vagran
 <ul class="widget-list">
     
     <li>
-        <a href="/categories/docker/">docker(1)</a>
+        <a href="//thisiswangle.com/categories/Docker/">Docker(1)</a>
     </li>
     
     <li>
-        <a href="/categories/java/">java(1)</a>
+        <a href="//thisiswangle.com/categories/Java/">Java(1)</a>
     </li>
     
     <li>
-        <a href="/categories/linux/">linux(2)</a>
+        <a href="//thisiswangle.com/categories/Linux/">Linux(2)</a>
     </li>
     
     <li>
-        <a href="/categories/mysql/">mysql(1)</a>
+        <a href="//thisiswangle.com/categories/MySQL/">MySQL(1)</a>
     </li>
     
     <li>
-        <a href="/categories/sysops/">sysops(1)</a>
+        <a href="//thisiswangle.com/categories/Sysops/">Sysops(1)</a>
     </li>
     
     <li>
-        <a href="/categories/%E6%80%BB%E7%BB%93/">总结(3)</a>
+        <a href="//thisiswangle.com/categories/%E6%80%BB%E7%BB%93/">总结(3)</a>
     </li>
     
     <li>
-        <a href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/">系统架构(1)</a>
+        <a href="//thisiswangle.com/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/">系统架构(1)</a>
     </li>
     
 </ul>
@@ -207,107 +208,107 @@ vagrant init vdevenv vagrant up vagrant ssh # 登录到虚拟机  进入 /vagran
         <h3 class="widget-title">标签</h3>
 <div class="tagcloud">
     
-    <a href="/tags/ajax/">ajax</a>
+    <a href="//thisiswangle.com/tags/CDN/">CDN</a>
     
-    <a href="/tags/aliyun/">aliyun</a>
+    <a href="//thisiswangle.com/tags/Cassandra/">Cassandra</a>
     
-    <a href="/tags/blog/">blog</a>
+    <a href="//thisiswangle.com/tags/DNS/">DNS</a>
     
-    <a href="/tags/cassandra/">cassandra</a>
+    <a href="//thisiswangle.com/tags/Docker/">Docker</a>
     
-    <a href="/tags/catcat/">catcat</a>
+    <a href="//thisiswangle.com/tags/Flume/">Flume</a>
     
-    <a href="/tags/cdn/">cdn</a>
+    <a href="//thisiswangle.com/tags/Gitlab/">Gitlab</a>
     
-    <a href="/tags/database/">database</a>
+    <a href="//thisiswangle.com/tags/Java/">Java</a>
     
-    <a href="/tags/dns/">dns</a>
+    <a href="//thisiswangle.com/tags/Kafka/">Kafka</a>
     
-    <a href="/tags/docker/">docker</a>
+    <a href="//thisiswangle.com/tags/Linux/">Linux</a>
     
-    <a href="/tags/easy_install/">easy_install</a>
+    <a href="//thisiswangle.com/tags/Log4j2/">Log4j2</a>
     
-    <a href="/tags/fackbook/">fackbook</a>
+    <a href="//thisiswangle.com/tags/MySQL/">MySQL</a>
     
-    <a href="/tags/fdisk/">fdisk</a>
+    <a href="//thisiswangle.com/tags/Nginx/">Nginx</a>
     
-    <a href="/tags/flume/">flume</a>
+    <a href="//thisiswangle.com/tags/Review/">Review</a>
     
-    <a href="/tags/github/">github</a>
+    <a href="//thisiswangle.com/tags/SSH/">SSH</a>
     
-    <a href="/tags/gitlab/">gitlab</a>
+    <a href="//thisiswangle.com/tags/ajax/">ajax</a>
     
-    <a href="/tags/idea/">idea</a>
+    <a href="//thisiswangle.com/tags/aliyun/">aliyun</a>
     
-    <a href="/tags/java/">java</a>
+    <a href="//thisiswangle.com/tags/blog/">blog</a>
     
-    <a href="/tags/jquery/">jquery</a>
+    <a href="//thisiswangle.com/tags/catcat/">catcat</a>
     
-    <a href="/tags/json/">json</a>
+    <a href="//thisiswangle.com/tags/database/">database</a>
     
-    <a href="/tags/kafka/">kafka</a>
+    <a href="//thisiswangle.com/tags/easy_install/">easy_install</a>
     
-    <a href="/tags/linux/">linux</a>
+    <a href="//thisiswangle.com/tags/fackbook/">fackbook</a>
     
-    <a href="/tags/log4j2/">log4j2</a>
+    <a href="//thisiswangle.com/tags/fdisk/">fdisk</a>
     
-    <a href="/tags/lvm/">lvm</a>
+    <a href="//thisiswangle.com/tags/github/">github</a>
     
-    <a href="/tags/mysql/">mysql</a>
+    <a href="//thisiswangle.com/tags/idea/">idea</a>
     
-    <a href="/tags/nginx/">nginx</a>
+    <a href="//thisiswangle.com/tags/jquery/">jquery</a>
     
-    <a href="/tags/performance/">performance</a>
+    <a href="//thisiswangle.com/tags/json/">json</a>
     
-    <a href="/tags/php/">php</a>
+    <a href="//thisiswangle.com/tags/lvm/">lvm</a>
     
-    <a href="/tags/pip/">pip</a>
+    <a href="//thisiswangle.com/tags/performance/">performance</a>
     
-    <a href="/tags/python/">python</a>
+    <a href="//thisiswangle.com/tags/php/">php</a>
     
-    <a href="/tags/resize2fs/">resize2fs</a>
+    <a href="//thisiswangle.com/tags/pip/">pip</a>
     
-    <a href="/tags/review/">review</a>
+    <a href="//thisiswangle.com/tags/python/">python</a>
     
-    <a href="/tags/rmbp/">rmbp</a>
+    <a href="//thisiswangle.com/tags/rMBP/">rMBP</a>
     
-    <a href="/tags/ssh/">ssh</a>
+    <a href="//thisiswangle.com/tags/resize2fs/">resize2fs</a>
     
-    <a href="/tags/tuning/">tuning</a>
+    <a href="//thisiswangle.com/tags/tuning/">tuning</a>
     
-    <a href="/tags/ucloud/">ucloud</a>
+    <a href="//thisiswangle.com/tags/ucloud/">ucloud</a>
     
-    <a href="/tags/vagrant/">vagrant</a>
+    <a href="//thisiswangle.com/tags/vagrant/">vagrant</a>
     
-    <a href="/tags/virtualbox/">virtualbox</a>
+    <a href="//thisiswangle.com/tags/virtualbox/">virtualbox</a>
     
-    <a href="/tags/virtualenv/">virtualenv</a>
+    <a href="//thisiswangle.com/tags/virtualenv/">virtualenv</a>
     
-    <a href="/tags/xtrabackup/">xtrabackup</a>
+    <a href="//thisiswangle.com/tags/xtrabackup/">xtrabackup</a>
     
-    <a href="/tags/%E4%B8%B4%E7%89%8C/">临牌</a>
+    <a href="//thisiswangle.com/tags/%E4%B8%B4%E7%89%8C/">临牌</a>
     
-    <a href="/tags/%E5%9B%9E%E5%BF%86/">回忆</a>
+    <a href="//thisiswangle.com/tags/%E5%9B%9E%E5%BF%86/">回忆</a>
     
-    <a href="/tags/%E5%B1%95%E6%9C%9B/">展望</a>
+    <a href="//thisiswangle.com/tags/%E5%B1%95%E6%9C%9B/">展望</a>
     
-    <a href="/tags/%E5%BF%83%E6%83%85/">心情</a>
+    <a href="//thisiswangle.com/tags/%E5%BF%83%E6%83%85/">心情</a>
     
-    <a href="/tags/%E6%80%9D%E8%80%83/">思考</a>
+    <a href="//thisiswangle.com/tags/%E6%80%9D%E8%80%83/">思考</a>
     
-    <a href="/tags/%E6%91%84%E5%BD%B1/">摄影</a>
+    <a href="//thisiswangle.com/tags/%E6%91%84%E5%BD%B1/">摄影</a>
     
-    <a href="/tags/%E6%95%99%E8%AE%AD/">教训</a>
+    <a href="//thisiswangle.com/tags/%E6%95%99%E8%AE%AD/">教训</a>
     
-    <a href="/tags/%E7%89%A9%E7%90%86/">物理</a>
+    <a href="//thisiswangle.com/tags/%E7%89%A9%E7%90%86/">物理</a>
     
-    <a href="/tags/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/">系统架构</a>
+    <a href="//thisiswangle.com/tags/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/">系统架构</a>
     
-    <a href="/tags/%E7%BB%8F%E9%AA%8C/">经验</a>
+    <a href="//thisiswangle.com/tags/%E7%BB%8F%E9%AA%8C/">经验</a>
     
-    <a href="/tags/%E9%A9%BE%E7%85%A7/">驾照</a>
+    <a href="//thisiswangle.com/tags/%E9%A9%BE%E7%85%A7/">驾照</a>
     
-    <a href="/tags/%E9%AD%94%E9%83%BD%E7%94%9F%E5%AD%98%E6%89%8B%E5%86%8C/">魔都生存手册</a>
+    <a href="//thisiswangle.com/tags/%E9%AD%94%E9%83%BD%E7%94%9F%E5%AD%98%E6%89%8B%E5%86%8C/">魔都生存手册</a>
     
 </div>
     </section>
@@ -332,7 +333,7 @@ vagrant init vdevenv vagrant up vagrant ssh # 登录到虚拟机  进入 /vagran
     <section class="widget">
         <h3 class="widget-title">其它</h3>
         <ul class="widget-list">
-            <li><a href="index.xml">文章 RSS</a></li>
+            <li><a href="//thisiswangle.com/index.xml">文章 RSS</a></li>
         </ul>
     </section>
 </div>
@@ -341,9 +342,8 @@ vagrant init vdevenv vagrant up vagrant ssh # 登录到虚拟机  进入 /vagran
 </div>
 <footer id="footer">
     <div class="container">
-        &copy; 2018 <a href="">小码哥的博客 By 小码哥</a>.
+        &copy; 2018 <a href="//thisiswangle.com">小码哥的技术干货 By 小码哥</a>.
         Powered by <a rel="nofollow noreferer noopener" href="https://gohugo.io" target="_blank">Hugo</a>.
-        <a href="https://www.flysnow.org/" target="_blank">Theme</a> based on <a href="https://github.com/rujews/maupassant-hugo" target="_blank">maupassant</a>.
         
     </div>
 </footer>
@@ -351,6 +351,14 @@ vagrant init vdevenv vagrant up vagrant ssh # 登录到虚拟机  进入 /vagran
 
 <a id="rocket" href="#top"></a>
 <script type="text/javascript" src="/js/totop.js?v=0.0.0" async=""></script>
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-21746661-5', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
 
 
 

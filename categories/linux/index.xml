@@ -1,35 +1,37 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Linux on 小码哥的博客</title>
-    <link>/categories/linux/</link>
-    <description>Recent content in Linux on 小码哥的博客</description>
+    <title>Linux on 小码哥的技术干货</title>
+    <link>//thisiswangle.com/categories/Linux/</link>
+    <description>Recent content in Linux on 小码哥的技术干货</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <lastBuildDate>Thu, 03 Aug 2017 23:55:00 +0000</lastBuildDate>
     
-	<atom:link href="/categories/linux/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="//thisiswangle.com/categories/Linux/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>LVM 实战记录</title>
-      <link>/posts/2017-08-03-lvm-in-action/</link>
+      <link>//thisiswangle.com/posts/2017-08-03-lvm-in-action/</link>
       <pubDate>Thu, 03 Aug 2017 23:55:00 +0000</pubDate>
       
-      <guid>/posts/2017-08-03-lvm-in-action/</guid>
+      <guid>//thisiswangle.com/posts/2017-08-03-lvm-in-action/</guid>
       <description>背景 阿里云云主机两块 100G 的云盘合一个逻辑卷（LV）来使用，单个的 100G 磁盘不够用，需要合在一起使用，并且方便以后扩容
-基本知识  磁盘 /dev/xvdb /dev/xvdc 分区, 使用 fdisk 进行分区 fdisk &amp;gt; n &amp;gt; p &amp;gt; 1..4, 主分区最多只有4个 准备分区后，将分区类型变为 LVM 分区，fdisk &amp;gt; t &amp;gt; 8e, 8e 是 LVM 类型 ID 物理卷（PV），卷组（VG），逻辑卷（LV），从磁盘分区创建 PV，通过 PV 创建 VG 或者把 PV 加入已有的 VG，在 VG 上创建 LV，LV 看起来就是逻辑的上磁盘，使用和真实的磁盘没什么明显区别, 在 LV 上构建文件系统  创建  创建物理卷 pvcreate /dev/xvdb1，对分区进行操作 创建 vg0 卷组 vgcreate vg0 /dev/xvdb1 查看卷组 vgdisplay， 可以看到卷组有多大 在 vg0 上创建 data 逻辑卷 lvcreate -L 99G -n data vg0 或者 lvcreate -l 25556 -n data vg0 创建文件系统 mkfs.</description>
+基本知识  磁盘 /dev/xvdb /dev/xvdc 分区, 使用 fdisk 进行分区 fdisk &amp;gt; n &amp;gt; p &amp;gt; 1..4, 主分区最多只有4个 准备分区后，将分区类型变为 LVM 分区，fdisk &amp;gt; t &amp;gt; 8e, 8e 是 LVM 类型 ID 物理卷（PV），卷组（VG），逻辑卷（LV），从磁盘分区创建 PV，通过 PV 创建 VG 或者把 PV 加入已有的 VG，在 VG 上创建 LV，LV 看起来就是逻辑的上磁盘，使用和真实的磁盘没什么明显区别, 在 LV 上构建文件系统  创建  创建物理卷 pvcreate /dev/xvdb1，对分区进行操作 创建 vg0 卷组 vgcreate vg0 /dev/xvdb1 查看卷组 vgdisplay， 可以看到卷组有多大 在 vg0 上创建 data 逻辑卷 lvcreate -L 99G -n data vg0 或者 lvcreate -l 25556 -n data vg0 创建文件系统 mkfs.ext4 /dev/vg0/data 挂载到系统目录即可使用 mount /dev/vg0/data /mnt 或者在 /etc/fstab 添加一行，然后 mount -a  添加磁盘  创建物理卷 pvcreate /dev/xvdc1，对分区进行操作 添加到 vg0 卷组 vgextend vg0 /dev/xvdc1 扩容逻辑卷 lvextend -L +99G /dev/vg0/data, 可以通过 vgdispaly 查看卷组剩余空间有多少 扩容文件系统 resize2fs /dev/vg0/data, 不需要卸载逻辑卷，可以在线完成扩容  备注 过程中有一块磁盘已经在使用，需要 umount 后再加入 LVM，出现了 device is busy 的情况，系统提示使用 lsof 或者 fuser 查询哪些进程在使用这个磁盘或者目录，最后通过 fuser 查询到进程号后，kill -9 pid 后解决 fuser -m /mnt</description>
     </item>
     
     <item>
       <title>从域名和 CDN 来看网站架构</title>
-      <link>/posts/2014-03-06-arch-of-website-domain-cdn/</link>
+      <link>//thisiswangle.com/posts/2014-03-06-arch-of-website-domain-cdn/</link>
       <pubDate>Thu, 06 Mar 2014 00:40:00 +0000</pubDate>
       
-      <guid>/posts/2014-03-06-arch-of-website-domain-cdn/</guid>
+      <guid>//thisiswangle.com/posts/2014-03-06-arch-of-website-domain-cdn/</guid>
       <description>为了自己做好网站的架构，找了知乎，豆瓣，大众点评和百姓网来做参考。这里主要来看域名和CDN相关的部分，后台的架构也还是要边学便实践。
 大概情况 从前端分析了知乎的域名和 DNS 情况，同时对比了一下豆瓣、大众点评和百姓网。从域名、DNS、CDN等使用角度来说，他们之间大同小异。
-使用的分析工具  Chrome WHOIS DNSLookup  非 CDN 使用    记录 域名 用途 路径     A zhihu.com 使用 301 跳转到 www.zhuhu.com IP   A zhi.hu 使用 302 跳转到 www.zhihu.com IP   A www.zhihu.com  IP   A comet.zhihu.com WebSocket 推送消息 IP   A analytics.zhihu.com 知乎自己的统计分析，同时使用了 Google Analytics IP    大部分都是用了 301 或者 302 跳转，注意他们的区别：301 是永久跳转(浏览器会做客户端端缓存)，而 302 是临时跳转。此外 baidu.</description>
+使用的分析工具  Chrome WHOIS DNSLookup  非 CDN 使用    记录 域名 用途 路径     A zhihu.com 使用 301 跳转到 www.zhuhu.com IP   A zhi.hu 使用 302 跳转到 www.zhihu.com IP   A www.zhihu.com  IP   A comet.zhihu.com WebSocket 推送消息 IP   A analytics.zhihu.com 知乎自己的统计分析，同时使用了 Google Analytics IP    大部分都是用了 301 或者 302 跳转，注意他们的区别：301 是永久跳转(浏览器会做客户端端缓存)，而 302 是临时跳转。此外 baidu.com 到 www.baidu.com 并不是使用 301 或者 302 ，而是使用下面的一段 HTML 代码
+&amp;lt;html&amp;gt; &amp;lt;meta http-equiv=&amp;quot;refresh&amp;quot; content=&amp;quot;0;url=http://www.baidu.com/&amp;quot;&amp;gt; &amp;lt;/html&amp;gt;  相比而言，我觉得使用 301 更 Geek，更好一些。
+CDN 使用    记录 域名 用途 路径     CNAME static.analytics.zhihu.com CDN, 看 CNAME 以为是七牛CDN，其实用了 ChinaNetCenter 的 CDN d.qiniudn.com &amp;gt; wsall.36tr.com.wscdns.com &amp;gt; 08911.xdwscache.glb0.lxdns.com &amp;gt; IP   CNAME static.zhihu.com 网页资源文件cdn，包括css，js，image，不包括用户头像、用户发布的图片等 同上   CNAME p1.zhimg.com 用户头像，用户发布的图片, 这里使用又拍云CDN zhcdn-img.b0.aicdn.com &amp;gt; ctn.b9.aicdn.com &amp;gt; IP   CNAME p2.</description>
     </item>
     
   </channel>

@@ -1,34 +1,38 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>回忆 on 小码哥的博客</title>
-    <link>/tags/%E5%9B%9E%E5%BF%86/</link>
-    <description>Recent content in 回忆 on 小码哥的博客</description>
+    <title>回忆 on 小码哥的技术干货</title>
+    <link>//thisiswangle.com/tags/%E5%9B%9E%E5%BF%86/</link>
+    <description>Recent content in 回忆 on 小码哥的技术干货</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <lastBuildDate>Sun, 31 Dec 2017 00:08:25 +0000</lastBuildDate>
     
-	<atom:link href="/tags/%E5%9B%9E%E5%BF%86/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="//thisiswangle.com/tags/%E5%9B%9E%E5%BF%86/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>有关 2017 流水账和胡思乱想的记录</title>
-      <link>/posts/2017-12-31-year-end-reviews-of-2017/</link>
+      <link>//thisiswangle.com/posts/2017-12-31-year-end-reviews-of-2017/</link>
       <pubDate>Sun, 31 Dec 2017 00:08:25 +0000</pubDate>
       
-      <guid>/posts/2017-12-31-year-end-reviews-of-2017/</guid>
+      <guid>//thisiswangle.com/posts/2017-12-31-year-end-reviews-of-2017/</guid>
       <description>好久没有写过文字了，前几篇文也是自己从 Google Doc 中摘出来的工作日志，拿来凑凑数，刷新下 Github 的时间线，有点儿不太像话。看看自己书桌上叠起来超过一尺高的新书才知道，想看的还没来得及看完，想学的也还没来得及学会，想做的也没有做得很好，一年就过去了。2017 是我来魔都的第 5 年，回想这 5 年，自己的成长还是很多的，但 2017 这一年，好像与 2016 并没有什么大的不同，这让自己感到很担忧。
 在 2017 年的最后几天，终于离开了自己熟悉的工作环境，从自己的舒适空间加入了一个新的环境，我想这就是改变的开始，一个新的起点。
 2017 是平淡的，可能和未来的每一年也不会有太大差别，尽管我不希望这样。元旦假期这 3 天有空的时候都在回想，但是又想不起有那些特别印象深刻的事情，以至于总结都不太好写下去。我想那不如就回想几个和自己有关系的场景，做一个清单好了：
- Bye 2017 区块链和比特币 人工智能（AI） 物联网大数据 Insurtech 和 Fintech 关于个人职业发展的思考 Hello 2018  Bye 2017 编程语言学习  Golang：完成基本语法学习（官方文档和《Go 语言实战》），可以无障碍阅读 Golang 项目代码（《自己动手写 Java 虚拟机》），并且可手动完成简单 Golang 项目用 Python 重写，主要有 eureka client Kotlin：除协程外，完成官方文档中所有语言部分的学习内容，并使用 kotlin 开发了 2 个项目，其中一个是用 kotlin 重写了 Aprereo CAS 的核心功能 TypeScript：完成基本语法学习，目前没有实际应用的场景，希望从 2018 起，自己在需要写 JavaScript 的地方，全部用 TypeScript 来代替  书籍阅读 阅读量太少，希望在 2018 年里能增大阅读量。</description>
+ Bye 2017 区块链和比特币 人工智能（AI） 物联网大数据 Insurtech 和 Fintech 关于个人职业发展的思考 Hello 2018  Bye 2017 编程语言学习  Golang：完成基本语法学习（官方文档和《Go 语言实战》），可以无障碍阅读 Golang 项目代码（《自己动手写 Java 虚拟机》），并且可手动完成简单 Golang 项目用 Python 重写，主要有 eureka client Kotlin：除协程外，完成官方文档中所有语言部分的学习内容，并使用 kotlin 开发了 2 个项目，其中一个是用 kotlin 重写了 Aprereo CAS 的核心功能 TypeScript：完成基本语法学习，目前没有实际应用的场景，希望从 2018 起，自己在需要写 JavaScript 的地方，全部用 TypeScript 来代替  书籍阅读 阅读量太少，希望在 2018 年里能增大阅读量。
+ 技术类  《图说区块链》  严格讲不算技术类书籍  《自己动手写 Java 虚拟机》 《Go 语言实战》 《贝叶斯思维》未读完 《Spark 高级数据分析》未读完 《垃圾回收的算法和实现》未读完 《机器学习》未读完  文艺类
+ 《追风筝的人》  今年读到最长的一篇小说， 从作者笔下故事了解了阿富汗的人文历史，很是感动和惊讶。另外就是觉得译者也很厉害，从头读到尾，除了人名，没觉得是在读一本英文翻译过来的书  《灿烂千阳》未读完 《上帝掷骰子吗》  感觉写这本书的作者应该是个天才，搜了一下，很神秘的作者  《乡关何处》  看着也挺有意思的  《野火集》  读晚了，读的大陆删节版，我觉得每一个人都应该读下这本书  《自私的基因》 《创业者的窘境》
+ 看完觉得最该读这本书的人应该是我老婆 还有就是身边的亲密好友或同学   《人类简史》未读完
+ Kindle 版，用手机看的，亚马逊真牛逼，让我买了一个 kindle 放在家里吃灰    开源技术  计划搭建一个开源物联网平台，还没有想好具体要做的事情，所以没有什么进展 整理了常用的 docker templates，docker 和 python 一样成为自己不可或缺的工具  家庭网络  升级了硬件和软件，让家里无线网络有了更好的覆盖，并且让所有家庭联网设备都可以自由的访问互联网 儿子最喜欢的应用是 Youtube Kids  旅行  5 月份一家三口去了新加坡，见识了金沙的无边泳池 9 月份和老婆去了趟美国西海岸，1 号公路沿线（旧金山洛杉矶往返）自驾 1000 多公里，顺道去硅谷“朝圣”，体验了美式肌肉车 DODGE Charger（3.</description>
     </item>
     
     <item>
       <title>摆摊网</title>
-      <link>/posts/2011-09-28-hello-baigetan/</link>
+      <link>//thisiswangle.com/posts/2011-09-28-hello-baigetan/</link>
       <pubDate>Wed, 28 Sep 2011 03:40:00 +0000</pubDate>
       
-      <guid>/posts/2011-09-28-hello-baigetan/</guid>
+      <guid>//thisiswangle.com/posts/2011-09-28-hello-baigetan/</guid>
       <description>点评：留在这里，让自己可以看到以往无知的自己
  一转眼，20 年就过去了，终于要和自己 20 年的学生身份说拜拜了。
 那天去图书馆借书，回来的路上敬业湖桥边的那棵树的时候，心不由得感叹起来，这棵树，我已经拍下了它的春夏秋冬，它叶枯叶落，相似年年，只因它生根于此，我是要走的。

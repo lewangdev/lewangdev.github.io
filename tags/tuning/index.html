@@ -7,8 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Tuning | 小码哥的博客</title>
-    <meta property="og:title" content="Tuning - 小码哥的博客">
+    <title>Tuning | 小码哥的技术干货</title>
+    <meta property="og:title" content="Tuning - 小码哥的技术干货">
     <meta property="og:type" content="article">
         
         
@@ -16,13 +16,13 @@
     <meta name="description" content="Tuning">
         
     <meta name="author" content="小码哥">
-    <meta property="og:url" content="/tags/tuning/">
+    <meta property="og:url" content="//thisiswangle.com/tags/tuning/">
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 
     <link rel="stylesheet" href="/css/normalize.css">
     
     <link rel="stylesheet" href="/css/style.css">
-    <link rel="alternate" type="application/rss+xml" href="/tags/tuning/index.xml" title="小码哥的博客" />
+    <link rel="alternate" type="application/rss+xml" href="//thisiswangle.com/tags/tuning/index.xml" title="小码哥的技术干货" />
     <script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
 
     
@@ -39,21 +39,19 @@
         <div class="col-group">
             <div class="site-name ">
                 
-                    <a id="logo" href="">
-                        小码哥的博客
+                    <a id="logo" href="//thisiswangle.com">
+                        小码哥的技术干货
                     </a>
                 
                 <p class="description">Work hard, Play harder</p>
             </div>
             <div>
                 <nav id="nav-menu" class="clearfix">
-                    <a class="" href="">首页</a>
+                    <a class="" href="//thisiswangle.com">首页</a>
                     
-                    <a  href="/tags/" title="标签">标签</a>
+                    <a  href="//thisiswangle.com/archives/" title="归档">归档</a>
                     
-                    <a  href="/archives/" title="归档">归档</a>
-                    
-                    <a  href="/about/" title="关于">关于</a>
+                    <a  href="//thisiswangle.com/about/" title="关于">关于</a>
                     
                 </nav>
             </div>
@@ -80,7 +78,7 @@
                         <article class="post">
                             <header>
                                 <h1 class="post-title">
-                                    <a href="/posts/2014-10-16-tuning-nginx/">Nginx 性能调优「译」</a>
+                                    <a href="//thisiswangle.com/posts/2014-10-16-tuning-nginx/">Nginx 性能调优「译」</a>
                                 </h1>
                             </header>
                             <date class="post-meta meta-date">
@@ -90,7 +88,7 @@
                             <div class="post-meta meta-category">
                                 |
                                 
-                                    <a href="/categories/sysops">Sysops</a>
+                                    <a href="//thisiswangle.com/categories/Sysops">Sysops</a>
                                 
                             </div>
                             
@@ -102,8 +100,19 @@
 我们从 Linux 性能优化的讨论开始，因为 Linux 性能优化的一些值会影响到 Nginx 的一些配置。
 Linux 配置 尽管现代 Linux 内核（2.6+）在各种配置情况下都工作得很好，但也有一些配置是想要修改的。如果操作系统的配置设置的太低，那内核日志将会有错误信息，从而得知哪些配置需要调整。Linux 性能优化可能涉及的配置有很多，这里我们只讨论那些优化达到正常工作负载最有可能涉及到的那些配置。调整这些配置请参考详细的 Linux 文档。
 Backlog 队列 下面的配置选项与网络连接和其排队方法直接相关。如果连入率很高（译者注：客户端发起的连接很多）且系统性能配置不匹配，例如一些连接表现得有所停顿，那么修改下面得配置将可能有用。
- net.core.somaxconn: 设置等待 Nginx 接受的连接队列的大小。由于 Nginx 接受连接非常的快，这个值通常情况下不用设置得很大，但系统默认值可能比较小，所以对于流量比较大的站点，增大这个值是个不错的想法。如果这个值太小，在内核日志中应该会看到错误消息，那么就需要增大这个值，直到错误消失。注意：若将这个值设置为大于 512 的话，那么需要在 Nginx 配置中修改 listen 指令的 backlog 参数来匹配这个数字。……
-                                <p class="readmore"><a href="/posts/2014-10-16-tuning-nginx/">阅读全文</a></p>
+ net.core.somaxconn: 设置等待 Nginx 接受的连接队列的大小。由于 Nginx 接受连接非常的快，这个值通常情况下不用设置得很大，但系统默认值可能比较小，所以对于流量比较大的站点，增大这个值是个不错的想法。如果这个值太小，在内核日志中应该会看到错误消息，那么就需要增大这个值，直到错误消失。注意：若将这个值设置为大于 512 的话，那么需要在 Nginx 配置中修改 listen 指令的 backlog 参数来匹配这个数字。
+ net.core.netdev_max_backlog: 设置数据包在被发送到 CPU 前可被网卡缓存的速率。对于带宽很大的机器来说，这个值需要增大。可以查阅网卡关于这项设置的建议文档或者查看内核日志中此项设置相关的错误。
+  文件描述符 文件描述符是用于处理例如连接和打开的文件等的操作系统资源。Nginx 在一个连接中使用文件描述符可以达到两个，例如 Nginx 做代理，那文件描述符一个用于客户端连接，另外一个用于代理服务器，但如果开启 HTTP 保持连接，那这个比例将会很低。对于一个连接数量很大很大的系统来说，这个值可能需要调整：
+ sys.fs.file_max: 文件描述符的系统级限制。
+ nofile: 文件描述符用户级限制，可以在 /etc/security/limits.conf 文件中修改。
+  临时端口范围(Ephemeral ports) 当 Nginx 用作代理，每一个到后端服务器的连接都会短暂的、临时的使用一个端口。
+ net.ipv4.ip_local_port_range: 设置端口启始范围。如果观察到端口耗尽，那么需要增大这个范围。通常的端口范围设置是 1024 到 65000。
+ net.ipv4.tcp_fin_timeout: 设置端口停止使用后可再次被其它连接使用所需要的时间。通常默认值是 60 秒，但通常减少到 30 秒或者 15 秒都是安全的
+  Nginx 配置 下面是一些影响系统性能的 Nginx 指令。前面已经说过，本文只讨论一些推荐给大多数人调整的指令。其它没有提到的任何指令，若没有 Nginx 团队的建议，推荐不要修改。
+工作进程 Nginx 可以运行多个工作进程，每一个都可以处理大量的连接。通过下面的指令可以控制运行工作进程的数量和每个进程处理连接的数量：
+ worker_processes:控制 Nginx 运行工作进程的数量。多数情况下，每一个 CPU 核运行一个工作进程的方式可以很好的工作。可以通过设置指令的值为 &ldquo;auto&rdquo; 来达到这个效果。但也有需要增大这个数字的时候，例如工作进程需要做很多的磁盘 IO 操作。默认值是 1。
+ worker_connections:这个值表示每一个工作进程可以同时处理连接的最大数目。默认是 512，但是大多数系统可以处理一个大得多的数字。这个值应该被设置成多少依赖与服务器的大小和网络流量的特征。通过具体的测试可以找到具体的值。……
+                                <p class="readmore"><a href="//thisiswangle.com/posts/2014-10-16-tuning-nginx/">阅读全文</a></p>
                             </div>
                         </article>
                     
@@ -121,7 +130,7 @@ Backlog 队列 下面的配置选项与网络连接和其排队方法直接相�
         <form id="search" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
       
       <input type="text" name="q" maxlength="20" placeholder="Search">
-      <input type="hidden" name="sitesearch" value="">
+      <input type="hidden" name="sitesearch" value="//thisiswangle.com">
       <button type="submit" class="submit icon-search"></button>
 </form>
     </section>
@@ -131,43 +140,43 @@ Backlog 队列 下面的配置选项与网络连接和其排队方法直接相�
 <ul class="widget-list">
     
     <li>
-        <a href="/posts/2019-03-06-keynotes-of-new-java/" title="Java 进阶要点">Java 进阶要点</a>
+        <a href="//thisiswangle.com/posts/2019-03-06-keynotes-of-new-java/" title="Java 进阶要点">Java 进阶要点</a>
     </li>
     
     <li>
-        <a href="/posts/2018-12-18-gitlab-docker-install/" title="使用 Docker 方式安装 Gitlab，没你想得那么简单">使用 Docker 方式安装 Gitlab，没你想得那么简单</a>
+        <a href="//thisiswangle.com/posts/2018-12-18-gitlab-docker-install/" title="使用 Docker 方式安装 Gitlab，没你想得那么简单">使用 Docker 方式安装 Gitlab，没你想得那么简单</a>
     </li>
     
     <li>
-        <a href="/posts/2017-12-31-year-end-reviews-of-2017/" title="有关 2017 流水账和胡思乱想的记录">有关 2017 流水账和胡思乱想的记录</a>
+        <a href="//thisiswangle.com/posts/2017-12-31-year-end-reviews-of-2017/" title="有关 2017 流水账和胡思乱想的记录">有关 2017 流水账和胡思乱想的记录</a>
     </li>
     
     <li>
-        <a href="/posts/2017-08-03-lvm-in-action/" title="LVM 实战记录">LVM 实战记录</a>
+        <a href="//thisiswangle.com/posts/2017-08-03-lvm-in-action/" title="LVM 实战记录">LVM 实战记录</a>
     </li>
     
     <li>
-        <a href="/posts/2017-07-23-log-processing-system/" title="日志收集和分析系统架构">日志收集和分析系统架构</a>
+        <a href="//thisiswangle.com/posts/2017-07-23-log-processing-system/" title="日志收集和分析系统架构">日志收集和分析系统架构</a>
     </li>
     
     <li>
-        <a href="/posts/2017-07-15-log4j2/" title="Log4j2 快速入门">Log4j2 快速入门</a>
+        <a href="//thisiswangle.com/posts/2017-07-15-log4j2/" title="Log4j2 快速入门">Log4j2 快速入门</a>
     </li>
     
     <li>
-        <a href="/posts/2017-06-06-xtrabackup/" title="MySQL 数据备份和不停机重新搭建主从同步">MySQL 数据备份和不停机重新搭建主从同步</a>
+        <a href="//thisiswangle.com/posts/2017-06-06-xtrabackup/" title="MySQL 数据备份和不停机重新搭建主从同步">MySQL 数据备份和不停机重新搭建主从同步</a>
     </li>
     
     <li>
-        <a href="/posts/2016-01-28-banlinpai/" title="办理机动车临牌">办理机动车临牌</a>
+        <a href="//thisiswangle.com/posts/2016-01-28-banlinpai/" title="办理机动车临牌">办理机动车临牌</a>
     </li>
     
     <li>
-        <a href="/posts/2015-10-15-huanzheng/" title="驾照转入换证">驾照转入换证</a>
+        <a href="//thisiswangle.com/posts/2015-10-15-huanzheng/" title="驾照转入换证">驾照转入换证</a>
     </li>
     
     <li>
-        <a href="/posts/2014-10-16-tuning-nginx/" title="Nginx 性能调优「译」">Nginx 性能调优「译」</a>
+        <a href="//thisiswangle.com/posts/2014-10-16-tuning-nginx/" title="Nginx 性能调优「译」">Nginx 性能调优「译」</a>
     </li>
     
 </ul>
@@ -180,31 +189,31 @@ Backlog 队列 下面的配置选项与网络连接和其排队方法直接相�
 <ul class="widget-list">
     
     <li>
-        <a href="/categories/docker/">docker(1)</a>
+        <a href="//thisiswangle.com/categories/Docker/">Docker(1)</a>
     </li>
     
     <li>
-        <a href="/categories/java/">java(1)</a>
+        <a href="//thisiswangle.com/categories/Java/">Java(1)</a>
     </li>
     
     <li>
-        <a href="/categories/linux/">linux(2)</a>
+        <a href="//thisiswangle.com/categories/Linux/">Linux(2)</a>
     </li>
     
     <li>
-        <a href="/categories/mysql/">mysql(1)</a>
+        <a href="//thisiswangle.com/categories/MySQL/">MySQL(1)</a>
     </li>
     
     <li>
-        <a href="/categories/sysops/">sysops(1)</a>
+        <a href="//thisiswangle.com/categories/Sysops/">Sysops(1)</a>
     </li>
     
     <li>
-        <a href="/categories/%E6%80%BB%E7%BB%93/">总结(3)</a>
+        <a href="//thisiswangle.com/categories/%E6%80%BB%E7%BB%93/">总结(3)</a>
     </li>
     
     <li>
-        <a href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/">系统架构(1)</a>
+        <a href="//thisiswangle.com/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/">系统架构(1)</a>
     </li>
     
 </ul>
@@ -214,107 +223,107 @@ Backlog 队列 下面的配置选项与网络连接和其排队方法直接相�
         <h3 class="widget-title">标签</h3>
 <div class="tagcloud">
     
-    <a href="/tags/ajax/">ajax</a>
+    <a href="//thisiswangle.com/tags/CDN/">CDN</a>
     
-    <a href="/tags/aliyun/">aliyun</a>
+    <a href="//thisiswangle.com/tags/Cassandra/">Cassandra</a>
     
-    <a href="/tags/blog/">blog</a>
+    <a href="//thisiswangle.com/tags/DNS/">DNS</a>
     
-    <a href="/tags/cassandra/">cassandra</a>
+    <a href="//thisiswangle.com/tags/Docker/">Docker</a>
     
-    <a href="/tags/catcat/">catcat</a>
+    <a href="//thisiswangle.com/tags/Flume/">Flume</a>
     
-    <a href="/tags/cdn/">cdn</a>
+    <a href="//thisiswangle.com/tags/Gitlab/">Gitlab</a>
     
-    <a href="/tags/database/">database</a>
+    <a href="//thisiswangle.com/tags/Java/">Java</a>
     
-    <a href="/tags/dns/">dns</a>
+    <a href="//thisiswangle.com/tags/Kafka/">Kafka</a>
     
-    <a href="/tags/docker/">docker</a>
+    <a href="//thisiswangle.com/tags/Linux/">Linux</a>
     
-    <a href="/tags/easy_install/">easy_install</a>
+    <a href="//thisiswangle.com/tags/Log4j2/">Log4j2</a>
     
-    <a href="/tags/fackbook/">fackbook</a>
+    <a href="//thisiswangle.com/tags/MySQL/">MySQL</a>
     
-    <a href="/tags/fdisk/">fdisk</a>
+    <a href="//thisiswangle.com/tags/Nginx/">Nginx</a>
     
-    <a href="/tags/flume/">flume</a>
+    <a href="//thisiswangle.com/tags/Review/">Review</a>
     
-    <a href="/tags/github/">github</a>
+    <a href="//thisiswangle.com/tags/SSH/">SSH</a>
     
-    <a href="/tags/gitlab/">gitlab</a>
+    <a href="//thisiswangle.com/tags/ajax/">ajax</a>
     
-    <a href="/tags/idea/">idea</a>
+    <a href="//thisiswangle.com/tags/aliyun/">aliyun</a>
     
-    <a href="/tags/java/">java</a>
+    <a href="//thisiswangle.com/tags/blog/">blog</a>
     
-    <a href="/tags/jquery/">jquery</a>
+    <a href="//thisiswangle.com/tags/catcat/">catcat</a>
     
-    <a href="/tags/json/">json</a>
+    <a href="//thisiswangle.com/tags/database/">database</a>
     
-    <a href="/tags/kafka/">kafka</a>
+    <a href="//thisiswangle.com/tags/easy_install/">easy_install</a>
     
-    <a href="/tags/linux/">linux</a>
+    <a href="//thisiswangle.com/tags/fackbook/">fackbook</a>
     
-    <a href="/tags/log4j2/">log4j2</a>
+    <a href="//thisiswangle.com/tags/fdisk/">fdisk</a>
     
-    <a href="/tags/lvm/">lvm</a>
+    <a href="//thisiswangle.com/tags/github/">github</a>
     
-    <a href="/tags/mysql/">mysql</a>
+    <a href="//thisiswangle.com/tags/idea/">idea</a>
     
-    <a href="/tags/nginx/">nginx</a>
+    <a href="//thisiswangle.com/tags/jquery/">jquery</a>
     
-    <a href="/tags/performance/">performance</a>
+    <a href="//thisiswangle.com/tags/json/">json</a>
     
-    <a href="/tags/php/">php</a>
+    <a href="//thisiswangle.com/tags/lvm/">lvm</a>
     
-    <a href="/tags/pip/">pip</a>
+    <a href="//thisiswangle.com/tags/performance/">performance</a>
     
-    <a href="/tags/python/">python</a>
+    <a href="//thisiswangle.com/tags/php/">php</a>
     
-    <a href="/tags/resize2fs/">resize2fs</a>
+    <a href="//thisiswangle.com/tags/pip/">pip</a>
     
-    <a href="/tags/review/">review</a>
+    <a href="//thisiswangle.com/tags/python/">python</a>
     
-    <a href="/tags/rmbp/">rmbp</a>
+    <a href="//thisiswangle.com/tags/rMBP/">rMBP</a>
     
-    <a href="/tags/ssh/">ssh</a>
+    <a href="//thisiswangle.com/tags/resize2fs/">resize2fs</a>
     
-    <a href="/tags/tuning/">tuning</a>
+    <a href="//thisiswangle.com/tags/tuning/">tuning</a>
     
-    <a href="/tags/ucloud/">ucloud</a>
+    <a href="//thisiswangle.com/tags/ucloud/">ucloud</a>
     
-    <a href="/tags/vagrant/">vagrant</a>
+    <a href="//thisiswangle.com/tags/vagrant/">vagrant</a>
     
-    <a href="/tags/virtualbox/">virtualbox</a>
+    <a href="//thisiswangle.com/tags/virtualbox/">virtualbox</a>
     
-    <a href="/tags/virtualenv/">virtualenv</a>
+    <a href="//thisiswangle.com/tags/virtualenv/">virtualenv</a>
     
-    <a href="/tags/xtrabackup/">xtrabackup</a>
+    <a href="//thisiswangle.com/tags/xtrabackup/">xtrabackup</a>
     
-    <a href="/tags/%E4%B8%B4%E7%89%8C/">临牌</a>
+    <a href="//thisiswangle.com/tags/%E4%B8%B4%E7%89%8C/">临牌</a>
     
-    <a href="/tags/%E5%9B%9E%E5%BF%86/">回忆</a>
+    <a href="//thisiswangle.com/tags/%E5%9B%9E%E5%BF%86/">回忆</a>
     
-    <a href="/tags/%E5%B1%95%E6%9C%9B/">展望</a>
+    <a href="//thisiswangle.com/tags/%E5%B1%95%E6%9C%9B/">展望</a>
     
-    <a href="/tags/%E5%BF%83%E6%83%85/">心情</a>
+    <a href="//thisiswangle.com/tags/%E5%BF%83%E6%83%85/">心情</a>
     
-    <a href="/tags/%E6%80%9D%E8%80%83/">思考</a>
+    <a href="//thisiswangle.com/tags/%E6%80%9D%E8%80%83/">思考</a>
     
-    <a href="/tags/%E6%91%84%E5%BD%B1/">摄影</a>
+    <a href="//thisiswangle.com/tags/%E6%91%84%E5%BD%B1/">摄影</a>
     
-    <a href="/tags/%E6%95%99%E8%AE%AD/">教训</a>
+    <a href="//thisiswangle.com/tags/%E6%95%99%E8%AE%AD/">教训</a>
     
-    <a href="/tags/%E7%89%A9%E7%90%86/">物理</a>
+    <a href="//thisiswangle.com/tags/%E7%89%A9%E7%90%86/">物理</a>
     
-    <a href="/tags/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/">系统架构</a>
+    <a href="//thisiswangle.com/tags/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/">系统架构</a>
     
-    <a href="/tags/%E7%BB%8F%E9%AA%8C/">经验</a>
+    <a href="//thisiswangle.com/tags/%E7%BB%8F%E9%AA%8C/">经验</a>
     
-    <a href="/tags/%E9%A9%BE%E7%85%A7/">驾照</a>
+    <a href="//thisiswangle.com/tags/%E9%A9%BE%E7%85%A7/">驾照</a>
     
-    <a href="/tags/%E9%AD%94%E9%83%BD%E7%94%9F%E5%AD%98%E6%89%8B%E5%86%8C/">魔都生存手册</a>
+    <a href="//thisiswangle.com/tags/%E9%AD%94%E9%83%BD%E7%94%9F%E5%AD%98%E6%89%8B%E5%86%8C/">魔都生存手册</a>
     
 </div>
     </section>
@@ -339,7 +348,7 @@ Backlog 队列 下面的配置选项与网络连接和其排队方法直接相�
     <section class="widget">
         <h3 class="widget-title">其它</h3>
         <ul class="widget-list">
-            <li><a href="index.xml">文章 RSS</a></li>
+            <li><a href="//thisiswangle.com/index.xml">文章 RSS</a></li>
         </ul>
     </section>
 </div>
@@ -348,9 +357,8 @@ Backlog 队列 下面的配置选项与网络连接和其排队方法直接相�
 </div>
 <footer id="footer">
     <div class="container">
-        &copy; 2018 <a href="">小码哥的博客 By 小码哥</a>.
+        &copy; 2018 <a href="//thisiswangle.com">小码哥的技术干货 By 小码哥</a>.
         Powered by <a rel="nofollow noreferer noopener" href="https://gohugo.io" target="_blank">Hugo</a>.
-        <a href="https://www.flysnow.org/" target="_blank">Theme</a> based on <a href="https://github.com/rujews/maupassant-hugo" target="_blank">maupassant</a>.
         
     </div>
 </footer>
@@ -358,6 +366,14 @@ Backlog 队列 下面的配置选项与网络连接和其排队方法直接相�
 
 <a id="rocket" href="#top"></a>
 <script type="text/javascript" src="/js/totop.js?v=0.0.0" async=""></script>
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-21746661-5', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
 
 
 

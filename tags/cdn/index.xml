@@ -1,25 +1,27 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Cdn on 小码哥的博客</title>
-    <link>/tags/cdn/</link>
-    <description>Recent content in Cdn on 小码哥的博客</description>
+    <title>CDN on 小码哥的技术干货</title>
+    <link>//thisiswangle.com/tags/CDN/</link>
+    <description>Recent content in CDN on 小码哥的技术干货</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <lastBuildDate>Thu, 06 Mar 2014 00:40:00 +0000</lastBuildDate>
     
-	<atom:link href="/tags/cdn/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="//thisiswangle.com/tags/CDN/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>从域名和 CDN 来看网站架构</title>
-      <link>/posts/2014-03-06-arch-of-website-domain-cdn/</link>
+      <link>//thisiswangle.com/posts/2014-03-06-arch-of-website-domain-cdn/</link>
       <pubDate>Thu, 06 Mar 2014 00:40:00 +0000</pubDate>
       
-      <guid>/posts/2014-03-06-arch-of-website-domain-cdn/</guid>
+      <guid>//thisiswangle.com/posts/2014-03-06-arch-of-website-domain-cdn/</guid>
       <description>为了自己做好网站的架构，找了知乎，豆瓣，大众点评和百姓网来做参考。这里主要来看域名和CDN相关的部分，后台的架构也还是要边学便实践。
 大概情况 从前端分析了知乎的域名和 DNS 情况，同时对比了一下豆瓣、大众点评和百姓网。从域名、DNS、CDN等使用角度来说，他们之间大同小异。
-使用的分析工具  Chrome WHOIS DNSLookup  非 CDN 使用    记录 域名 用途 路径     A zhihu.com 使用 301 跳转到 www.zhuhu.com IP   A zhi.hu 使用 302 跳转到 www.zhihu.com IP   A www.zhihu.com  IP   A comet.zhihu.com WebSocket 推送消息 IP   A analytics.zhihu.com 知乎自己的统计分析，同时使用了 Google Analytics IP    大部分都是用了 301 或者 302 跳转，注意他们的区别：301 是永久跳转(浏览器会做客户端端缓存)，而 302 是临时跳转。此外 baidu.</description>
+使用的分析工具  Chrome WHOIS DNSLookup  非 CDN 使用    记录 域名 用途 路径     A zhihu.com 使用 301 跳转到 www.zhuhu.com IP   A zhi.hu 使用 302 跳转到 www.zhihu.com IP   A www.zhihu.com  IP   A comet.zhihu.com WebSocket 推送消息 IP   A analytics.zhihu.com 知乎自己的统计分析，同时使用了 Google Analytics IP    大部分都是用了 301 或者 302 跳转，注意他们的区别：301 是永久跳转(浏览器会做客户端端缓存)，而 302 是临时跳转。此外 baidu.com 到 www.baidu.com 并不是使用 301 或者 302 ，而是使用下面的一段 HTML 代码
+&amp;lt;html&amp;gt; &amp;lt;meta http-equiv=&amp;quot;refresh&amp;quot; content=&amp;quot;0;url=http://www.baidu.com/&amp;quot;&amp;gt; &amp;lt;/html&amp;gt;  相比而言，我觉得使用 301 更 Geek，更好一些。
+CDN 使用    记录 域名 用途 路径     CNAME static.analytics.zhihu.com CDN, 看 CNAME 以为是七牛CDN，其实用了 ChinaNetCenter 的 CDN d.qiniudn.com &amp;gt; wsall.36tr.com.wscdns.com &amp;gt; 08911.xdwscache.glb0.lxdns.com &amp;gt; IP   CNAME static.zhihu.com 网页资源文件cdn，包括css，js，image，不包括用户头像、用户发布的图片等 同上   CNAME p1.zhimg.com 用户头像，用户发布的图片, 这里使用又拍云CDN zhcdn-img.b0.aicdn.com &amp;gt; ctn.b9.aicdn.com &amp;gt; IP   CNAME p2.</description>
     </item>
     
   </channel>

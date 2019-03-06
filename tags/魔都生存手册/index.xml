@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>魔都生存手册 on 小码哥的博客</title>
-    <link>/tags/%E9%AD%94%E9%83%BD%E7%94%9F%E5%AD%98%E6%89%8B%E5%86%8C/</link>
-    <description>Recent content in 魔都生存手册 on 小码哥的博客</description>
+    <title>魔都生存手册 on 小码哥的技术干货</title>
+    <link>//thisiswangle.com/tags/%E9%AD%94%E9%83%BD%E7%94%9F%E5%AD%98%E6%89%8B%E5%86%8C/</link>
+    <description>Recent content in 魔都生存手册 on 小码哥的技术干货</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <lastBuildDate>Thu, 28 Jan 2016 11:55:00 +0000</lastBuildDate>
     
-	<atom:link href="/tags/%E9%AD%94%E9%83%BD%E7%94%9F%E5%AD%98%E6%89%8B%E5%86%8C/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="//thisiswangle.com/tags/%E9%AD%94%E9%83%BD%E7%94%9F%E5%AD%98%E6%89%8B%E5%86%8C/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>办理机动车临牌</title>
-      <link>/posts/2016-01-28-banlinpai/</link>
+      <link>//thisiswangle.com/posts/2016-01-28-banlinpai/</link>
       <pubDate>Thu, 28 Jan 2016 11:55:00 +0000</pubDate>
       
-      <guid>/posts/2016-01-28-banlinpai/</guid>
+      <guid>//thisiswangle.com/posts/2016-01-28-banlinpai/</guid>
       <description>  政策已变，目前只能办理有效期为 15 天的临牌，并且最多只能办理两次
  问题 外地户口，上海购车办理机动车(出省)临牌(出省和不出省的临牌办理方法一样,出省临牌有效期是30天，不出省的是15天)
 文档记录状态 可用
@@ -29,10 +29,10 @@
     
     <item>
       <title>驾照转入换证</title>
-      <link>/posts/2015-10-15-huanzheng/</link>
+      <link>//thisiswangle.com/posts/2015-10-15-huanzheng/</link>
       <pubDate>Thu, 15 Oct 2015 11:55:00 +0000</pubDate>
       
-      <guid>/posts/2015-10-15-huanzheng/</guid>
+      <guid>//thisiswangle.com/posts/2015-10-15-huanzheng/</guid>
       <description> 问题 外地户口＋上海居住证，外地驾照即将到期，需要将外地驾照转入上海并且进行驾照到期换证。
 可用状态 可用
 发生时间 2015年10月15日8:00至10:00

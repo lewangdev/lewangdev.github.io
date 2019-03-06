@@ -1,29 +1,30 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Ucloud on 小码哥的博客</title>
-    <link>/tags/ucloud/</link>
-    <description>Recent content in Ucloud on 小码哥的博客</description>
+    <title>Ucloud on 小码哥的技术干货</title>
+    <link>//thisiswangle.com/tags/ucloud/</link>
+    <description>Recent content in Ucloud on 小码哥的技术干货</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <lastBuildDate>Fri, 09 Aug 2013 00:40:00 +0000</lastBuildDate>
     
-	<atom:link href="/tags/ucloud/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="//thisiswangle.com/tags/ucloud/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>阿里云和 ucloud 云主机评测</title>
-      <link>/posts/2013-08-09-benchmark-of-aliyun-and-ucloud/</link>
+      <link>//thisiswangle.com/posts/2013-08-09-benchmark-of-aliyun-and-ucloud/</link>
       <pubDate>Fri, 09 Aug 2013 00:40:00 +0000</pubDate>
       
-      <guid>/posts/2013-08-09-benchmark-of-aliyun-and-ucloud/</guid>
+      <guid>//thisiswangle.com/posts/2013-08-09-benchmark-of-aliyun-and-ucloud/</guid>
       <description>总体说明 我使用联通10M光网，SSH在多个时间段登录两个主机都是非常的快，但是阿里云的SSH有时会断开连接，需要重新登录(一天遇到n次)，ucloud一次都没有断开连接过。两者总体操作上都很流畅。平时我比较习惯于使用ubuntu，于是在两个主机上都安装了Ubuntu 12.04_64的Server版本。在安装初始化系统过程中(测试过两次)，Ucloud的速度要快于阿里云主机，粗略估计都是在20s以内，因此差别不大。
 阿里云主机安装过程中不需要人为参与，选好主机配置即可，主机一旦创建完成，用户名和口令会发送到测试者手机上，而且直接发送的是root账户口令。Ucloud除了选择配置之外，还需要设置强登录密码，使用普通用户登录，感觉更geek一点。
 默认情况配置下，关闭重启服务器，Ucloud会发送主机变化短信到手机，阿里云不会。阿里云在系统负载预警方面比较全面，ucloud侧重于server上在线状态和相关服务的预警。
 在试用和测试过程中我主要偏向于静态的测试，后面还有一个好玩的 Super PI 测试。
 阿里云和ucloud都是主机，和实际的服务器使用上没有什么区别。另外阿里云有paas，需要单独购买，目前支持php和nodejs，一些基本的服务如memcached等都可直接使用。
 如果做互备，如果我们不使用这两个云平台各自特有的一些服务(主要是阿里云有一些如开放存储服务OSS等)，相互切换难度上应该是差不多的。
-主机概览    项目 阿里云 ucloud     按量付费 支持(不能升级或者调整主机配置*) 不支持   包年包月 支持 支持   操作系统 可重置 可重装   CPU升级 支持(需要关机) 支持(需要关机)   内存升级 支持(需要关机) 支持(需要关机)   磁盘扩容 支持，可以升级或者添加新的磁盘，最大为2000G 支持，可以扩容最大到1000G（与系统盘在同一个主机上），或者添加新的网络磁盘udisk   磁盘镜像 支持 支持   带宽升级 支持 支持    其它服务[需要单独购买]    项目 阿里云 ucloud     负载均衡服务 支持(目前免费)，需要两台主机以上 支持(目前免费)，需要两台主机以上   关系型数据库服务 支持，mysql和sqlserver 支持，mysql和percona   特有的服务 开放存储服务 OSS、开放数据处理服务 ODPS、开放结构化数据服务 OTS CDN、短信服务（可二次开发）、与又拍、DNSPod和搜狐SendCloud直接绑定    *按量付费不支持更换操作系统；不支持配置变更功能（包括带宽升级、CPU和内存升级、新增数据盘）;“包年包月“和”按量付费“不支持相互更换;1台云服务器只能选择1种，无法同时选择</description>
+主机概览    项目 阿里云 ucloud     按量付费 支持(不能升级或者调整主机配置*) 不支持   包年包月 支持 支持   操作系统 可重置 可重装   CPU升级 支持(需要关机) 支持(需要关机)   内存升级 支持(需要关机) 支持(需要关机)   磁盘扩容 支持，可以升级或者添加新的磁盘，最大为2000G 支持，可以扩容最大到1000G（与系统盘在同一个主机上），或者添加新的网络磁盘udisk   磁盘镜像 支持 支持   带宽升级 支持 支持    其它服务[需要单独购买]    项目 阿里云 ucloud     负载均衡服务 支持(目前免费)，需要两台主机以上 支持(目前免费)，需要两台主机以上   关系型数据库服务 支持，mysql和sqlserver 支持，mysql和percona   特有的服务 开放存储服务 OSS、开放数据处理服务 ODPS、开放结构化数据服务 OTS CDN、短信服务（可二次开发）、与又拍、DNSPod和搜狐SendCloud直接绑定    *按量付费不支持更换操作系统；不支持配置变更功能（包括带宽升级、CPU和内存升级、新增数据盘）;“包年包月“和”按量付费“不支持相互更换;1台云服务器只能选择1种，无法同时选择
+收费结构(参考)    项目 阿里云 ucloud     价格动态计算 http://buy.aliyun.com/ http://www.ucloud.cn/price   1核CPU/2GB内存/100G数据盘/10M带宽 8,620元/年 5,200元/年   2核CPU/4GB内存/100G数据盘/10M带宽 10,590元/年 6,900元/年   4核CPU/16GB内存/1000G数据盘/10M带宽 24,030元/年 19,800元/年   4核CPU/16GB内存/1000G数据盘/20M带宽 3,4030元/年 24,900元/年   2核CPU/4GB内存/100G数据盘/20M带宽 20,590元/年 11,400元/年   4核CPU/8GB内存/100G数据盘/20M带宽 24,530元/年 14,800元/年   …… …… ……    试用情况    项目 阿里云 ucloud     主机名 aliyun-s1 ucloud-s1   用户名 root ubuntu[默认普通用户权限]   登录口令 自动生成默认密码，弱密码 必须设置强密码   数据中心 华东青岛BGP 北京BGP(2M)，客服推荐使用北京BGP，另外还有华东双线可选   CPU 2核Intel&amp;reg; Xeon&amp;reg; CPU E5-2420 0 @ 1.</description>
     </item>
     
   </channel>

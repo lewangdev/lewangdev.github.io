@@ -7,8 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Flume | 小码哥的博客</title>
-    <meta property="og:title" content="Flume - 小码哥的博客">
+    <title>Flume | 小码哥的技术干货</title>
+    <meta property="og:title" content="Flume - 小码哥的技术干货">
     <meta property="og:type" content="article">
         
         
@@ -16,13 +16,13 @@
     <meta name="description" content="Flume">
         
     <meta name="author" content="小码哥">
-    <meta property="og:url" content="/tags/flume/">
+    <meta property="og:url" content="//thisiswangle.com/tags/Flume/">
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 
     <link rel="stylesheet" href="/css/normalize.css">
     
     <link rel="stylesheet" href="/css/style.css">
-    <link rel="alternate" type="application/rss+xml" href="/tags/flume/index.xml" title="小码哥的博客" />
+    <link rel="alternate" type="application/rss+xml" href="//thisiswangle.com/tags/Flume/index.xml" title="小码哥的技术干货" />
     <script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
 
     
@@ -39,21 +39,19 @@
         <div class="col-group">
             <div class="site-name ">
                 
-                    <a id="logo" href="">
-                        小码哥的博客
+                    <a id="logo" href="//thisiswangle.com">
+                        小码哥的技术干货
                     </a>
                 
                 <p class="description">Work hard, Play harder</p>
             </div>
             <div>
                 <nav id="nav-menu" class="clearfix">
-                    <a class="" href="">首页</a>
+                    <a class="" href="//thisiswangle.com">首页</a>
                     
-                    <a  href="/tags/" title="标签">标签</a>
+                    <a  href="//thisiswangle.com/archives/" title="归档">归档</a>
                     
-                    <a  href="/archives/" title="归档">归档</a>
-                    
-                    <a  href="/about/" title="关于">关于</a>
+                    <a  href="//thisiswangle.com/about/" title="关于">关于</a>
                     
                 </nav>
             </div>
@@ -71,7 +69,7 @@
                     
                     <h3 class="archive-title">
                         包含标签
-                        <span class="keyword">flume</span>
+                        <span class="keyword">Flume</span>
                         的文章
                     </h3>
                     
@@ -80,7 +78,7 @@
                         <article class="post">
                             <header>
                                 <h1 class="post-title">
-                                    <a href="/posts/2017-07-23-log-processing-system/">日志收集和分析系统架构</a>
+                                    <a href="//thisiswangle.com/posts/2017-07-23-log-processing-system/">日志收集和分析系统架构</a>
                                 </h1>
                             </header>
                             <date class="post-meta meta-date">
@@ -90,25 +88,27 @@
                             <div class="post-meta meta-category">
                                 |
                                 
-                                    <a href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84">系统架构</a>
+                                    <a href="//thisiswangle.com/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84">系统架构</a>
                                 
                             </div>
                             
                             <div class="post-content">
-                                背景 微服务，日志分散且种类多（php/java/python），用 docker 起应用，日志通过卷放在宿主机器指定目录下，服务有众多实例，metrics 数据也不仅相同，无论是日志还是 metrics 数据，都可以看作是时间序列数据
+                                 背景 微服务，日志分散且种类多（php/java/python），用 docker 起应用，日志通过卷放在宿主机器指定目录下，服务有众多实例，metrics 数据也不仅相同，无论是日志还是 metrics 数据，都可以看作是时间序列数据
 分散主要表现为：
  多个主机 多个目录下多个文件 应用开发所使用的技术栈不同日志格式不同 web log（主要是 nginx） 各类事件 一些其它事务性的日志  日志为时间序列数据，包括：
  系统日志: 各类系统产生的跟业务有关的日志或者与业务无关的日志 web 服务器日志：如 access.log/error.log 等有固定格式的日志 性能监控日志：打点记录各类服务的 metrics(全部为数值类型long/double/bool)  系统日志 由时间戳、一些枚举值以及日志内容(变长字符串)组成
  日志时间颗粒度：支持毫秒/秒 枚举值包括：  [必选]主机名/host [必选]服务名/service [必选]实例编号/instance [必选]日记级别/level：info/debug/warn/trace/error 等 [可选]异常名/exception: 如果是异常，把异常名作为枚举值记录 [可选]线程名/thread: [可选]方法名/method： [可选]文件名/file： [可选]行号/line：  日志内容(变长字符串): 为实际记录的内容以及异常堆栈信息  web 服务器日志 access log（nginx） 日志内容：主要是文本(string）或者一些系统 metrics 数据(数值类型long/double)
-日志存储和处理：  数据磁带（1周）：kafka 提供热数据检索（1个月）：solr(or lucence based on cassandra) 日志存储（永久）： kariosdb/cassandra: 支持 double/long/string类型，kariosdb 相当于在 cassandra 上面套了一个壳，这样简化了很多时间序列数据处理的操作 数据展示：grafana，官方支持 kariosdb 扩展：数据深度挖掘分析  系统架构 特点：……
-                                <p class="readmore"><a href="/posts/2017-07-23-log-processing-system/">阅读全文</a></p>
+日志存储和处理：  数据磁带（1周）：kafka 提供热数据检索（1个月）：solr(or lucence based on cassandra) 日志存储（永久）： kariosdb/cassandra: 支持 double/long/string类型，kariosdb 相当于在 cassandra 上面套了一个壳，这样简化了很多时间序列数据处理的操作 数据展示：grafana，官方支持 kariosdb 扩展：数据深度挖掘分析  系统架构 特点：
+ 服务现在，面向未来的架构（每层可单独升级或者替换技术栈） 低入侵，原有系统日志不需要改造，使用 flume agent 收集 整个系统无单点，保证可靠性 层次清晰，好扩展，无论 Flume，kafka 还是 cassandra 都方便扩容，存储层使用 kafka 滚动存储数据，cassandra 存储所有日志数据和 metrics 利用现有社区活跃的开源产品构建，除了 kalka 引入了 zk 外，没有其它依赖，整个存储层可以结合现有的资源  其它方案 ELK ELK 技术栈在整体架构上与前面的比较接近（几乎差不多），将会引入数个与目前系统没有太大联系的产品（E/L），前面的架构不仅用于日志的处理，并且可扩展支持处理所有的事件（数据流）处理，更符合目前业务。ELK 优点是拆箱可用，经过一段时间的试用，目前是放弃状态
+其它非 JVM 解决方案没有在考虑范围之类，包括但不限于：  scribe https://github.com/facebookarchive TICK Stack https://www.influxdata.com/time-series-platform/, 比较适合收集服务器和各类服务的 metrics 数据，配合 grafana，可以替代 zabbix 的工作，其中日志存储（output）默认使用 influxdb，influxdb 目前开源只有单机版，但 telegraf 官方支持 output 到 cassandra/kafka/rabbit 等，所以存储也不是问题。前端可以 grafana（支持 kariosdb/influxdb/mysql/opentsdb 等作为数据源）。 rsync 直接同步日志到指定机器，然后在机器上集中处理，使用 mysql/postgresql 等存储日志，目前的量是可以的，但是也需要做不少开发工作  ……
+                                <p class="readmore"><a href="//thisiswangle.com/posts/2017-07-23-log-processing-system/">阅读全文</a></p>
                             </div>
                         </article>
                     
                         <article class="post">
                             <header>
                                 <h1 class="post-title">
-                                    <a href="/posts/2017-07-15-log4j2/">Log4j2 快速入门</a>
+                                    <a href="//thisiswangle.com/posts/2017-07-15-log4j2/">Log4j2 快速入门</a>
                                 </h1>
                             </header>
                             <date class="post-meta meta-date">
@@ -120,8 +120,11 @@
 需要搞清楚
  如何设置哪些日志要记录下来 日志记录到哪里去  LEVEL 日志级别：  内置（有Fatal）：All &lt; Trace &lt; Debug &lt; Info &lt; Warn &lt; Error &lt; Fatal &lt; OFF 还可以自定义： https://logging.apache.org/log4j/2.0/manual/customloglevels.html  Appender: 日志输出的目的地 内置的目的地有：
  console, files（FIle/RollingFile）, remote socket servers, Apache Flume, JMS, remote UNIX Syslog daemons, various database APIs &hellip;  Appender 在接受到日志以后，可以通过级别过滤选择记录日志，具体配置： https://logging.apache.org/log4j/2.0/manual/appenders.html
-Logger 负责决定哪些日志要记录和发配日志 哪些需要记日志，设置什么级别，并且配置日志输出到哪些个 Appender 中去都在 Logger 中配置。Logger 有类似继承的关系，名为 Root 的的 Logger  为所有 Logger 的根，也就是说没有做特殊设置（additivity=false), 那么这个 Logger 的日志将会记录到自己指定的 Appender，并且也都会记录到自己所有“父” Logger 设置的 Appender 中去……
-                                <p class="readmore"><a href="/posts/2017-07-15-log4j2/">阅读全文</a></p>
+Logger 负责决定哪些日志要记录和发配日志 哪些需要记日志，设置什么级别，并且配置日志输出到哪些个 Appender 中去都在 Logger 中配置。Logger 有类似继承的关系，名为 Root 的的 Logger  为所有 Logger 的根，也就是说没有做特殊设置（additivity=false), 那么这个 Logger 的日志将会记录到自己指定的 Appender，并且也都会记录到自己所有“父” Logger 设置的 Appender 中去
+继承关系由 Logger 的名称推断出来，名称可以认为是 Logger 树的前序遍历打印的节点路径。
+Logger 定义
+   Logger Name 将会记录日志的 Logger     Root Root   X Root, X   X.Y Root, X, Y   X.Z Root, X,Z   M Root, M    Filter 日志过滤器 DENY,ACCEPT,NEUTRAL 三个选项，所有进入当前 Appender 的所有日志，Filter 可以设置来选择日志是否要记录……
+                                <p class="readmore"><a href="//thisiswangle.com/posts/2017-07-15-log4j2/">阅读全文</a></p>
                             </div>
                         </article>
                     
@@ -139,7 +142,7 @@ Logger 负责决定哪些日志要记录和发配日志 哪些需要记日志，
         <form id="search" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
       
       <input type="text" name="q" maxlength="20" placeholder="Search">
-      <input type="hidden" name="sitesearch" value="">
+      <input type="hidden" name="sitesearch" value="//thisiswangle.com">
       <button type="submit" class="submit icon-search"></button>
 </form>
     </section>
@@ -149,43 +152,43 @@ Logger 负责决定哪些日志要记录和发配日志 哪些需要记日志，
 <ul class="widget-list">
     
     <li>
-        <a href="/posts/2019-03-06-keynotes-of-new-java/" title="Java 进阶要点">Java 进阶要点</a>
+        <a href="//thisiswangle.com/posts/2019-03-06-keynotes-of-new-java/" title="Java 进阶要点">Java 进阶要点</a>
     </li>
     
     <li>
-        <a href="/posts/2018-12-18-gitlab-docker-install/" title="使用 Docker 方式安装 Gitlab，没你想得那么简单">使用 Docker 方式安装 Gitlab，没你想得那么简单</a>
+        <a href="//thisiswangle.com/posts/2018-12-18-gitlab-docker-install/" title="使用 Docker 方式安装 Gitlab，没你想得那么简单">使用 Docker 方式安装 Gitlab，没你想得那么简单</a>
     </li>
     
     <li>
-        <a href="/posts/2017-12-31-year-end-reviews-of-2017/" title="有关 2017 流水账和胡思乱想的记录">有关 2017 流水账和胡思乱想的记录</a>
+        <a href="//thisiswangle.com/posts/2017-12-31-year-end-reviews-of-2017/" title="有关 2017 流水账和胡思乱想的记录">有关 2017 流水账和胡思乱想的记录</a>
     </li>
     
     <li>
-        <a href="/posts/2017-08-03-lvm-in-action/" title="LVM 实战记录">LVM 实战记录</a>
+        <a href="//thisiswangle.com/posts/2017-08-03-lvm-in-action/" title="LVM 实战记录">LVM 实战记录</a>
     </li>
     
     <li>
-        <a href="/posts/2017-07-23-log-processing-system/" title="日志收集和分析系统架构">日志收集和分析系统架构</a>
+        <a href="//thisiswangle.com/posts/2017-07-23-log-processing-system/" title="日志收集和分析系统架构">日志收集和分析系统架构</a>
     </li>
     
     <li>
-        <a href="/posts/2017-07-15-log4j2/" title="Log4j2 快速入门">Log4j2 快速入门</a>
+        <a href="//thisiswangle.com/posts/2017-07-15-log4j2/" title="Log4j2 快速入门">Log4j2 快速入门</a>
     </li>
     
     <li>
-        <a href="/posts/2017-06-06-xtrabackup/" title="MySQL 数据备份和不停机重新搭建主从同步">MySQL 数据备份和不停机重新搭建主从同步</a>
+        <a href="//thisiswangle.com/posts/2017-06-06-xtrabackup/" title="MySQL 数据备份和不停机重新搭建主从同步">MySQL 数据备份和不停机重新搭建主从同步</a>
     </li>
     
     <li>
-        <a href="/posts/2016-01-28-banlinpai/" title="办理机动车临牌">办理机动车临牌</a>
+        <a href="//thisiswangle.com/posts/2016-01-28-banlinpai/" title="办理机动车临牌">办理机动车临牌</a>
     </li>
     
     <li>
-        <a href="/posts/2015-10-15-huanzheng/" title="驾照转入换证">驾照转入换证</a>
+        <a href="//thisiswangle.com/posts/2015-10-15-huanzheng/" title="驾照转入换证">驾照转入换证</a>
     </li>
     
     <li>
-        <a href="/posts/2014-10-16-tuning-nginx/" title="Nginx 性能调优「译」">Nginx 性能调优「译」</a>
+        <a href="//thisiswangle.com/posts/2014-10-16-tuning-nginx/" title="Nginx 性能调优「译」">Nginx 性能调优「译」</a>
     </li>
     
 </ul>
@@ -198,31 +201,31 @@ Logger 负责决定哪些日志要记录和发配日志 哪些需要记日志，
 <ul class="widget-list">
     
     <li>
-        <a href="/categories/docker/">docker(1)</a>
+        <a href="//thisiswangle.com/categories/Docker/">Docker(1)</a>
     </li>
     
     <li>
-        <a href="/categories/java/">java(1)</a>
+        <a href="//thisiswangle.com/categories/Java/">Java(1)</a>
     </li>
     
     <li>
-        <a href="/categories/linux/">linux(2)</a>
+        <a href="//thisiswangle.com/categories/Linux/">Linux(2)</a>
     </li>
     
     <li>
-        <a href="/categories/mysql/">mysql(1)</a>
+        <a href="//thisiswangle.com/categories/MySQL/">MySQL(1)</a>
     </li>
     
     <li>
-        <a href="/categories/sysops/">sysops(1)</a>
+        <a href="//thisiswangle.com/categories/Sysops/">Sysops(1)</a>
     </li>
     
     <li>
-        <a href="/categories/%E6%80%BB%E7%BB%93/">总结(3)</a>
+        <a href="//thisiswangle.com/categories/%E6%80%BB%E7%BB%93/">总结(3)</a>
     </li>
     
     <li>
-        <a href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/">系统架构(1)</a>
+        <a href="//thisiswangle.com/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/">系统架构(1)</a>
     </li>
     
 </ul>
@@ -232,107 +235,107 @@ Logger 负责决定哪些日志要记录和发配日志 哪些需要记日志，
         <h3 class="widget-title">标签</h3>
 <div class="tagcloud">
     
-    <a href="/tags/ajax/">ajax</a>
+    <a href="//thisiswangle.com/tags/CDN/">CDN</a>
     
-    <a href="/tags/aliyun/">aliyun</a>
+    <a href="//thisiswangle.com/tags/Cassandra/">Cassandra</a>
     
-    <a href="/tags/blog/">blog</a>
+    <a href="//thisiswangle.com/tags/DNS/">DNS</a>
     
-    <a href="/tags/cassandra/">cassandra</a>
+    <a href="//thisiswangle.com/tags/Docker/">Docker</a>
     
-    <a href="/tags/catcat/">catcat</a>
+    <a href="//thisiswangle.com/tags/Flume/">Flume</a>
     
-    <a href="/tags/cdn/">cdn</a>
+    <a href="//thisiswangle.com/tags/Gitlab/">Gitlab</a>
     
-    <a href="/tags/database/">database</a>
+    <a href="//thisiswangle.com/tags/Java/">Java</a>
     
-    <a href="/tags/dns/">dns</a>
+    <a href="//thisiswangle.com/tags/Kafka/">Kafka</a>
     
-    <a href="/tags/docker/">docker</a>
+    <a href="//thisiswangle.com/tags/Linux/">Linux</a>
     
-    <a href="/tags/easy_install/">easy_install</a>
+    <a href="//thisiswangle.com/tags/Log4j2/">Log4j2</a>
     
-    <a href="/tags/fackbook/">fackbook</a>
+    <a href="//thisiswangle.com/tags/MySQL/">MySQL</a>
     
-    <a href="/tags/fdisk/">fdisk</a>
+    <a href="//thisiswangle.com/tags/Nginx/">Nginx</a>
     
-    <a href="/tags/flume/">flume</a>
+    <a href="//thisiswangle.com/tags/Review/">Review</a>
     
-    <a href="/tags/github/">github</a>
+    <a href="//thisiswangle.com/tags/SSH/">SSH</a>
     
-    <a href="/tags/gitlab/">gitlab</a>
+    <a href="//thisiswangle.com/tags/ajax/">ajax</a>
     
-    <a href="/tags/idea/">idea</a>
+    <a href="//thisiswangle.com/tags/aliyun/">aliyun</a>
     
-    <a href="/tags/java/">java</a>
+    <a href="//thisiswangle.com/tags/blog/">blog</a>
     
-    <a href="/tags/jquery/">jquery</a>
+    <a href="//thisiswangle.com/tags/catcat/">catcat</a>
     
-    <a href="/tags/json/">json</a>
+    <a href="//thisiswangle.com/tags/database/">database</a>
     
-    <a href="/tags/kafka/">kafka</a>
+    <a href="//thisiswangle.com/tags/easy_install/">easy_install</a>
     
-    <a href="/tags/linux/">linux</a>
+    <a href="//thisiswangle.com/tags/fackbook/">fackbook</a>
     
-    <a href="/tags/log4j2/">log4j2</a>
+    <a href="//thisiswangle.com/tags/fdisk/">fdisk</a>
     
-    <a href="/tags/lvm/">lvm</a>
+    <a href="//thisiswangle.com/tags/github/">github</a>
     
-    <a href="/tags/mysql/">mysql</a>
+    <a href="//thisiswangle.com/tags/idea/">idea</a>
     
-    <a href="/tags/nginx/">nginx</a>
+    <a href="//thisiswangle.com/tags/jquery/">jquery</a>
     
-    <a href="/tags/performance/">performance</a>
+    <a href="//thisiswangle.com/tags/json/">json</a>
     
-    <a href="/tags/php/">php</a>
+    <a href="//thisiswangle.com/tags/lvm/">lvm</a>
     
-    <a href="/tags/pip/">pip</a>
+    <a href="//thisiswangle.com/tags/performance/">performance</a>
     
-    <a href="/tags/python/">python</a>
+    <a href="//thisiswangle.com/tags/php/">php</a>
     
-    <a href="/tags/resize2fs/">resize2fs</a>
+    <a href="//thisiswangle.com/tags/pip/">pip</a>
     
-    <a href="/tags/review/">review</a>
+    <a href="//thisiswangle.com/tags/python/">python</a>
     
-    <a href="/tags/rmbp/">rmbp</a>
+    <a href="//thisiswangle.com/tags/rMBP/">rMBP</a>
     
-    <a href="/tags/ssh/">ssh</a>
+    <a href="//thisiswangle.com/tags/resize2fs/">resize2fs</a>
     
-    <a href="/tags/tuning/">tuning</a>
+    <a href="//thisiswangle.com/tags/tuning/">tuning</a>
     
-    <a href="/tags/ucloud/">ucloud</a>
+    <a href="//thisiswangle.com/tags/ucloud/">ucloud</a>
     
-    <a href="/tags/vagrant/">vagrant</a>
+    <a href="//thisiswangle.com/tags/vagrant/">vagrant</a>
     
-    <a href="/tags/virtualbox/">virtualbox</a>
+    <a href="//thisiswangle.com/tags/virtualbox/">virtualbox</a>
     
-    <a href="/tags/virtualenv/">virtualenv</a>
+    <a href="//thisiswangle.com/tags/virtualenv/">virtualenv</a>
     
-    <a href="/tags/xtrabackup/">xtrabackup</a>
+    <a href="//thisiswangle.com/tags/xtrabackup/">xtrabackup</a>
     
-    <a href="/tags/%E4%B8%B4%E7%89%8C/">临牌</a>
+    <a href="//thisiswangle.com/tags/%E4%B8%B4%E7%89%8C/">临牌</a>
     
-    <a href="/tags/%E5%9B%9E%E5%BF%86/">回忆</a>
+    <a href="//thisiswangle.com/tags/%E5%9B%9E%E5%BF%86/">回忆</a>
     
-    <a href="/tags/%E5%B1%95%E6%9C%9B/">展望</a>
+    <a href="//thisiswangle.com/tags/%E5%B1%95%E6%9C%9B/">展望</a>
     
-    <a href="/tags/%E5%BF%83%E6%83%85/">心情</a>
+    <a href="//thisiswangle.com/tags/%E5%BF%83%E6%83%85/">心情</a>
     
-    <a href="/tags/%E6%80%9D%E8%80%83/">思考</a>
+    <a href="//thisiswangle.com/tags/%E6%80%9D%E8%80%83/">思考</a>
     
-    <a href="/tags/%E6%91%84%E5%BD%B1/">摄影</a>
+    <a href="//thisiswangle.com/tags/%E6%91%84%E5%BD%B1/">摄影</a>
     
-    <a href="/tags/%E6%95%99%E8%AE%AD/">教训</a>
+    <a href="//thisiswangle.com/tags/%E6%95%99%E8%AE%AD/">教训</a>
     
-    <a href="/tags/%E7%89%A9%E7%90%86/">物理</a>
+    <a href="//thisiswangle.com/tags/%E7%89%A9%E7%90%86/">物理</a>
     
-    <a href="/tags/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/">系统架构</a>
+    <a href="//thisiswangle.com/tags/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/">系统架构</a>
     
-    <a href="/tags/%E7%BB%8F%E9%AA%8C/">经验</a>
+    <a href="//thisiswangle.com/tags/%E7%BB%8F%E9%AA%8C/">经验</a>
     
-    <a href="/tags/%E9%A9%BE%E7%85%A7/">驾照</a>
+    <a href="//thisiswangle.com/tags/%E9%A9%BE%E7%85%A7/">驾照</a>
     
-    <a href="/tags/%E9%AD%94%E9%83%BD%E7%94%9F%E5%AD%98%E6%89%8B%E5%86%8C/">魔都生存手册</a>
+    <a href="//thisiswangle.com/tags/%E9%AD%94%E9%83%BD%E7%94%9F%E5%AD%98%E6%89%8B%E5%86%8C/">魔都生存手册</a>
     
 </div>
     </section>
@@ -357,7 +360,7 @@ Logger 负责决定哪些日志要记录和发配日志 哪些需要记日志，
     <section class="widget">
         <h3 class="widget-title">其它</h3>
         <ul class="widget-list">
-            <li><a href="index.xml">文章 RSS</a></li>
+            <li><a href="//thisiswangle.com/index.xml">文章 RSS</a></li>
         </ul>
     </section>
 </div>
@@ -366,9 +369,8 @@ Logger 负责决定哪些日志要记录和发配日志 哪些需要记日志，
 </div>
 <footer id="footer">
     <div class="container">
-        &copy; 2018 <a href="">小码哥的博客 By 小码哥</a>.
+        &copy; 2018 <a href="//thisiswangle.com">小码哥的技术干货 By 小码哥</a>.
         Powered by <a rel="nofollow noreferer noopener" href="https://gohugo.io" target="_blank">Hugo</a>.
-        <a href="https://www.flysnow.org/" target="_blank">Theme</a> based on <a href="https://github.com/rujews/maupassant-hugo" target="_blank">maupassant</a>.
         
     </div>
 </footer>
@@ -376,6 +378,14 @@ Logger 负责决定哪些日志要记录和发配日志 哪些需要记日志，
 
 <a id="rocket" href="#top"></a>
 <script type="text/javascript" src="/js/totop.js?v=0.0.0" async=""></script>
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-21746661-5', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
 
 
 

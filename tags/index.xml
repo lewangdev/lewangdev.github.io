@@ -1,472 +1,472 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tags on 小码哥的博客</title>
-    <link>/tags/</link>
-    <description>Recent content in Tags on 小码哥的博客</description>
+    <title>Tags on 小码哥的技术干货</title>
+    <link>//thisiswangle.com/tags/</link>
+    <description>Recent content in Tags on 小码哥的技术干货</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <lastBuildDate>Thu, 01 Dec 2011 00:40:00 +0000</lastBuildDate>
     
-	<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="//thisiswangle.com/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Ajax</title>
-      <link>/tags/ajax/</link>
+      <link>//thisiswangle.com/tags/ajax/</link>
       <pubDate>Thu, 01 Dec 2011 00:40:00 +0000</pubDate>
       
-      <guid>/tags/ajax/</guid>
+      <guid>//thisiswangle.com/tags/ajax/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Aliyun</title>
-      <link>/tags/aliyun/</link>
+      <link>//thisiswangle.com/tags/aliyun/</link>
       <pubDate>Fri, 09 Aug 2013 00:40:00 +0000</pubDate>
       
-      <guid>/tags/aliyun/</guid>
+      <guid>//thisiswangle.com/tags/aliyun/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Blog</title>
-      <link>/tags/blog/</link>
+      <link>//thisiswangle.com/tags/blog/</link>
       <pubDate>Tue, 06 May 2014 22:51:00 +0000</pubDate>
       
-      <guid>/tags/blog/</guid>
+      <guid>//thisiswangle.com/tags/blog/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>CDN</title>
+      <link>//thisiswangle.com/tags/CDN/</link>
+      <pubDate>Thu, 06 Mar 2014 00:40:00 +0000</pubDate>
+      
+      <guid>//thisiswangle.com/tags/CDN/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Cassandra</title>
-      <link>/tags/cassandra/</link>
+      <link>//thisiswangle.com/tags/Cassandra/</link>
       <pubDate>Sun, 23 Jul 2017 22:30:00 +0000</pubDate>
       
-      <guid>/tags/cassandra/</guid>
+      <guid>//thisiswangle.com/tags/Cassandra/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Catcat</title>
-      <link>/tags/catcat/</link>
+      <link>//thisiswangle.com/tags/catcat/</link>
       <pubDate>Tue, 06 May 2014 22:51:00 +0000</pubDate>
       
-      <guid>/tags/catcat/</guid>
+      <guid>//thisiswangle.com/tags/catcat/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Cdn</title>
-      <link>/tags/cdn/</link>
+      <title>DNS</title>
+      <link>//thisiswangle.com/tags/DNS/</link>
       <pubDate>Thu, 06 Mar 2014 00:40:00 +0000</pubDate>
       
-      <guid>/tags/cdn/</guid>
+      <guid>//thisiswangle.com/tags/DNS/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Database</title>
-      <link>/tags/database/</link>
+      <link>//thisiswangle.com/tags/database/</link>
       <pubDate>Mon, 07 Nov 2011 00:40:00 +0000</pubDate>
       
-      <guid>/tags/database/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Dns</title>
-      <link>/tags/dns/</link>
-      <pubDate>Thu, 06 Mar 2014 00:40:00 +0000</pubDate>
-      
-      <guid>/tags/dns/</guid>
+      <guid>//thisiswangle.com/tags/database/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Docker</title>
-      <link>/tags/docker/</link>
+      <link>//thisiswangle.com/tags/Docker/</link>
       <pubDate>Tue, 18 Dec 2018 23:25:20 +0000</pubDate>
       
-      <guid>/tags/docker/</guid>
+      <guid>//thisiswangle.com/tags/Docker/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Easy_install</title>
-      <link>/tags/easy_install/</link>
+      <link>//thisiswangle.com/tags/easy_install/</link>
       <pubDate>Sun, 02 Mar 2014 21:16:00 +0000</pubDate>
       
-      <guid>/tags/easy_install/</guid>
+      <guid>//thisiswangle.com/tags/easy_install/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Fackbook</title>
-      <link>/tags/fackbook/</link>
+      <link>//thisiswangle.com/tags/fackbook/</link>
       <pubDate>Tue, 13 Mar 2012 00:40:00 +0000</pubDate>
       
-      <guid>/tags/fackbook/</guid>
+      <guid>//thisiswangle.com/tags/fackbook/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Fdisk</title>
-      <link>/tags/fdisk/</link>
+      <link>//thisiswangle.com/tags/fdisk/</link>
       <pubDate>Thu, 03 Aug 2017 23:55:00 +0000</pubDate>
       
-      <guid>/tags/fdisk/</guid>
+      <guid>//thisiswangle.com/tags/fdisk/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Flume</title>
-      <link>/tags/flume/</link>
+      <link>//thisiswangle.com/tags/Flume/</link>
       <pubDate>Sun, 23 Jul 2017 22:30:00 +0000</pubDate>
       
-      <guid>/tags/flume/</guid>
+      <guid>//thisiswangle.com/tags/Flume/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Github</title>
-      <link>/tags/github/</link>
+      <link>//thisiswangle.com/tags/github/</link>
       <pubDate>Tue, 06 May 2014 22:51:00 +0000</pubDate>
       
-      <guid>/tags/github/</guid>
+      <guid>//thisiswangle.com/tags/github/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Gitlab</title>
-      <link>/tags/gitlab/</link>
+      <link>//thisiswangle.com/tags/Gitlab/</link>
       <pubDate>Tue, 18 Dec 2018 23:25:20 +0000</pubDate>
       
-      <guid>/tags/gitlab/</guid>
+      <guid>//thisiswangle.com/tags/Gitlab/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Idea</title>
-      <link>/tags/idea/</link>
+      <link>//thisiswangle.com/tags/idea/</link>
       <pubDate>Tue, 13 Mar 2012 00:40:00 +0000</pubDate>
       
-      <guid>/tags/idea/</guid>
+      <guid>//thisiswangle.com/tags/idea/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Java</title>
-      <link>/tags/java/</link>
+      <link>//thisiswangle.com/tags/Java/</link>
       <pubDate>Wed, 06 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>/tags/java/</guid>
+      <guid>//thisiswangle.com/tags/Java/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Jquery</title>
-      <link>/tags/jquery/</link>
+      <link>//thisiswangle.com/tags/jquery/</link>
       <pubDate>Thu, 01 Dec 2011 00:40:00 +0000</pubDate>
       
-      <guid>/tags/jquery/</guid>
+      <guid>//thisiswangle.com/tags/jquery/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Json</title>
-      <link>/tags/json/</link>
+      <link>//thisiswangle.com/tags/json/</link>
       <pubDate>Thu, 01 Dec 2011 00:40:00 +0000</pubDate>
       
-      <guid>/tags/json/</guid>
+      <guid>//thisiswangle.com/tags/json/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Kafka</title>
-      <link>/tags/kafka/</link>
+      <link>//thisiswangle.com/tags/Kafka/</link>
       <pubDate>Sun, 23 Jul 2017 22:30:00 +0000</pubDate>
       
-      <guid>/tags/kafka/</guid>
+      <guid>//thisiswangle.com/tags/Kafka/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Linux</title>
-      <link>/tags/linux/</link>
+      <link>//thisiswangle.com/tags/Linux/</link>
       <pubDate>Tue, 18 Dec 2018 23:25:20 +0000</pubDate>
       
-      <guid>/tags/linux/</guid>
+      <guid>//thisiswangle.com/tags/Linux/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Log4j2</title>
-      <link>/tags/log4j2/</link>
+      <link>//thisiswangle.com/tags/Log4j2/</link>
       <pubDate>Sat, 15 Jul 2017 23:31:00 +0000</pubDate>
       
-      <guid>/tags/log4j2/</guid>
+      <guid>//thisiswangle.com/tags/Log4j2/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Lvm</title>
-      <link>/tags/lvm/</link>
+      <link>//thisiswangle.com/tags/lvm/</link>
       <pubDate>Thu, 03 Aug 2017 23:55:00 +0000</pubDate>
       
-      <guid>/tags/lvm/</guid>
+      <guid>//thisiswangle.com/tags/lvm/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Mysql</title>
-      <link>/tags/mysql/</link>
+      <title>MySQL</title>
+      <link>//thisiswangle.com/tags/MySQL/</link>
       <pubDate>Tue, 06 Jun 2017 12:15:07 +0000</pubDate>
       
-      <guid>/tags/mysql/</guid>
+      <guid>//thisiswangle.com/tags/MySQL/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Nginx</title>
-      <link>/tags/nginx/</link>
+      <link>//thisiswangle.com/tags/Nginx/</link>
       <pubDate>Thu, 16 Oct 2014 15:27:00 +0000</pubDate>
       
-      <guid>/tags/nginx/</guid>
+      <guid>//thisiswangle.com/tags/Nginx/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Performance</title>
-      <link>/tags/performance/</link>
+      <link>//thisiswangle.com/tags/performance/</link>
       <pubDate>Thu, 16 Oct 2014 15:27:00 +0000</pubDate>
       
-      <guid>/tags/performance/</guid>
+      <guid>//thisiswangle.com/tags/performance/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Php</title>
-      <link>/tags/php/</link>
+      <link>//thisiswangle.com/tags/php/</link>
       <pubDate>Thu, 22 Mar 2012 00:40:00 +0000</pubDate>
       
-      <guid>/tags/php/</guid>
+      <guid>//thisiswangle.com/tags/php/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Pip</title>
-      <link>/tags/pip/</link>
+      <link>//thisiswangle.com/tags/pip/</link>
       <pubDate>Sun, 02 Mar 2014 21:16:00 +0000</pubDate>
       
-      <guid>/tags/pip/</guid>
+      <guid>//thisiswangle.com/tags/pip/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Python</title>
-      <link>/tags/python/</link>
+      <link>//thisiswangle.com/tags/python/</link>
       <pubDate>Sun, 02 Mar 2014 21:16:00 +0000</pubDate>
       
-      <guid>/tags/python/</guid>
+      <guid>//thisiswangle.com/tags/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>RMBP</title>
+      <link>//thisiswangle.com/tags/rMBP/</link>
+      <pubDate>Sun, 02 Mar 2014 21:16:00 +0000</pubDate>
+      
+      <guid>//thisiswangle.com/tags/rMBP/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Resize2fs</title>
-      <link>/tags/resize2fs/</link>
+      <link>//thisiswangle.com/tags/resize2fs/</link>
       <pubDate>Thu, 03 Aug 2017 23:55:00 +0000</pubDate>
       
-      <guid>/tags/resize2fs/</guid>
+      <guid>//thisiswangle.com/tags/resize2fs/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Review</title>
-      <link>/tags/review/</link>
+      <link>//thisiswangle.com/tags/Review/</link>
       <pubDate>Sun, 31 Dec 2017 00:08:25 +0000</pubDate>
       
-      <guid>/tags/review/</guid>
+      <guid>//thisiswangle.com/tags/Review/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Rmbp</title>
-      <link>/tags/rmbp/</link>
-      <pubDate>Sun, 02 Mar 2014 21:16:00 +0000</pubDate>
-      
-      <guid>/tags/rmbp/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Ssh</title>
-      <link>/tags/ssh/</link>
+      <title>SSH</title>
+      <link>//thisiswangle.com/tags/SSH/</link>
       <pubDate>Tue, 18 Dec 2018 23:25:20 +0000</pubDate>
       
-      <guid>/tags/ssh/</guid>
+      <guid>//thisiswangle.com/tags/SSH/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Tuning</title>
-      <link>/tags/tuning/</link>
+      <link>//thisiswangle.com/tags/tuning/</link>
       <pubDate>Thu, 16 Oct 2014 15:27:00 +0000</pubDate>
       
-      <guid>/tags/tuning/</guid>
+      <guid>//thisiswangle.com/tags/tuning/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Ucloud</title>
-      <link>/tags/ucloud/</link>
+      <link>//thisiswangle.com/tags/ucloud/</link>
       <pubDate>Fri, 09 Aug 2013 00:40:00 +0000</pubDate>
       
-      <guid>/tags/ucloud/</guid>
+      <guid>//thisiswangle.com/tags/ucloud/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Vagrant</title>
-      <link>/tags/vagrant/</link>
+      <link>//thisiswangle.com/tags/vagrant/</link>
       <pubDate>Mon, 03 Mar 2014 23:40:00 +0000</pubDate>
       
-      <guid>/tags/vagrant/</guid>
+      <guid>//thisiswangle.com/tags/vagrant/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Virtualbox</title>
-      <link>/tags/virtualbox/</link>
+      <link>//thisiswangle.com/tags/virtualbox/</link>
       <pubDate>Mon, 03 Mar 2014 23:40:00 +0000</pubDate>
       
-      <guid>/tags/virtualbox/</guid>
+      <guid>//thisiswangle.com/tags/virtualbox/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Virtualenv</title>
-      <link>/tags/virtualenv/</link>
+      <link>//thisiswangle.com/tags/virtualenv/</link>
       <pubDate>Sun, 02 Mar 2014 21:16:00 +0000</pubDate>
       
-      <guid>/tags/virtualenv/</guid>
+      <guid>//thisiswangle.com/tags/virtualenv/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Xtrabackup</title>
-      <link>/tags/xtrabackup/</link>
+      <link>//thisiswangle.com/tags/xtrabackup/</link>
       <pubDate>Tue, 06 Jun 2017 12:15:07 +0000</pubDate>
       
-      <guid>/tags/xtrabackup/</guid>
+      <guid>//thisiswangle.com/tags/xtrabackup/</guid>
       <description></description>
     </item>
     
     <item>
       <title>临牌</title>
-      <link>/tags/%E4%B8%B4%E7%89%8C/</link>
+      <link>//thisiswangle.com/tags/%E4%B8%B4%E7%89%8C/</link>
       <pubDate>Thu, 28 Jan 2016 11:55:00 +0000</pubDate>
       
-      <guid>/tags/%E4%B8%B4%E7%89%8C/</guid>
+      <guid>//thisiswangle.com/tags/%E4%B8%B4%E7%89%8C/</guid>
       <description></description>
     </item>
     
     <item>
       <title>回忆</title>
-      <link>/tags/%E5%9B%9E%E5%BF%86/</link>
+      <link>//thisiswangle.com/tags/%E5%9B%9E%E5%BF%86/</link>
       <pubDate>Sun, 31 Dec 2017 00:08:25 +0000</pubDate>
       
-      <guid>/tags/%E5%9B%9E%E5%BF%86/</guid>
+      <guid>//thisiswangle.com/tags/%E5%9B%9E%E5%BF%86/</guid>
       <description></description>
     </item>
     
     <item>
       <title>展望</title>
-      <link>/tags/%E5%B1%95%E6%9C%9B/</link>
+      <link>//thisiswangle.com/tags/%E5%B1%95%E6%9C%9B/</link>
       <pubDate>Sun, 31 Dec 2017 00:08:25 +0000</pubDate>
       
-      <guid>/tags/%E5%B1%95%E6%9C%9B/</guid>
+      <guid>//thisiswangle.com/tags/%E5%B1%95%E6%9C%9B/</guid>
       <description></description>
     </item>
     
     <item>
       <title>心情</title>
-      <link>/tags/%E5%BF%83%E6%83%85/</link>
+      <link>//thisiswangle.com/tags/%E5%BF%83%E6%83%85/</link>
       <pubDate>Fri, 25 Apr 2014 00:40:00 +0000</pubDate>
       
-      <guid>/tags/%E5%BF%83%E6%83%85/</guid>
+      <guid>//thisiswangle.com/tags/%E5%BF%83%E6%83%85/</guid>
       <description></description>
     </item>
     
     <item>
       <title>思考</title>
-      <link>/tags/%E6%80%9D%E8%80%83/</link>
+      <link>//thisiswangle.com/tags/%E6%80%9D%E8%80%83/</link>
       <pubDate>Sun, 31 Dec 2017 00:08:25 +0000</pubDate>
       
-      <guid>/tags/%E6%80%9D%E8%80%83/</guid>
+      <guid>//thisiswangle.com/tags/%E6%80%9D%E8%80%83/</guid>
       <description></description>
     </item>
     
     <item>
       <title>摄影</title>
-      <link>/tags/%E6%91%84%E5%BD%B1/</link>
+      <link>//thisiswangle.com/tags/%E6%91%84%E5%BD%B1/</link>
       <pubDate>Sat, 01 Oct 2011 00:40:00 +0000</pubDate>
       
-      <guid>/tags/%E6%91%84%E5%BD%B1/</guid>
+      <guid>//thisiswangle.com/tags/%E6%91%84%E5%BD%B1/</guid>
       <description></description>
     </item>
     
     <item>
       <title>教训</title>
-      <link>/tags/%E6%95%99%E8%AE%AD/</link>
+      <link>//thisiswangle.com/tags/%E6%95%99%E8%AE%AD/</link>
       <pubDate>Sun, 31 Dec 2017 00:08:25 +0000</pubDate>
       
-      <guid>/tags/%E6%95%99%E8%AE%AD/</guid>
+      <guid>//thisiswangle.com/tags/%E6%95%99%E8%AE%AD/</guid>
       <description></description>
     </item>
     
     <item>
       <title>物理</title>
-      <link>/tags/%E7%89%A9%E7%90%86/</link>
+      <link>//thisiswangle.com/tags/%E7%89%A9%E7%90%86/</link>
       <pubDate>Thu, 13 Mar 2014 21:16:00 +0000</pubDate>
       
-      <guid>/tags/%E7%89%A9%E7%90%86/</guid>
+      <guid>//thisiswangle.com/tags/%E7%89%A9%E7%90%86/</guid>
       <description></description>
     </item>
     
     <item>
       <title>系统架构</title>
-      <link>/tags/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/</link>
+      <link>//thisiswangle.com/tags/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/</link>
       <pubDate>Fri, 21 Oct 2011 13:11:00 +0000</pubDate>
       
-      <guid>/tags/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/</guid>
+      <guid>//thisiswangle.com/tags/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/</guid>
       <description></description>
     </item>
     
     <item>
       <title>经验</title>
-      <link>/tags/%E7%BB%8F%E9%AA%8C/</link>
+      <link>//thisiswangle.com/tags/%E7%BB%8F%E9%AA%8C/</link>
       <pubDate>Sun, 31 Dec 2017 00:08:25 +0000</pubDate>
       
-      <guid>/tags/%E7%BB%8F%E9%AA%8C/</guid>
+      <guid>//thisiswangle.com/tags/%E7%BB%8F%E9%AA%8C/</guid>
       <description></description>
     </item>
     
     <item>
       <title>驾照</title>
-      <link>/tags/%E9%A9%BE%E7%85%A7/</link>
+      <link>//thisiswangle.com/tags/%E9%A9%BE%E7%85%A7/</link>
       <pubDate>Thu, 15 Oct 2015 11:55:00 +0000</pubDate>
       
-      <guid>/tags/%E9%A9%BE%E7%85%A7/</guid>
+      <guid>//thisiswangle.com/tags/%E9%A9%BE%E7%85%A7/</guid>
       <description></description>
     </item>
     
     <item>
       <title>魔都生存手册</title>
-      <link>/tags/%E9%AD%94%E9%83%BD%E7%94%9F%E5%AD%98%E6%89%8B%E5%86%8C/</link>
+      <link>//thisiswangle.com/tags/%E9%AD%94%E9%83%BD%E7%94%9F%E5%AD%98%E6%89%8B%E5%86%8C/</link>
       <pubDate>Thu, 28 Jan 2016 11:55:00 +0000</pubDate>
       
-      <guid>/tags/%E9%AD%94%E9%83%BD%E7%94%9F%E5%AD%98%E6%89%8B%E5%86%8C/</guid>
+      <guid>//thisiswangle.com/tags/%E9%AD%94%E9%83%BD%E7%94%9F%E5%AD%98%E6%89%8B%E5%86%8C/</guid>
       <description></description>
     </item>
     

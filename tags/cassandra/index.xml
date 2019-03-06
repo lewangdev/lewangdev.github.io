@@ -1,28 +1,30 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Cassandra on 小码哥的博客</title>
-    <link>/tags/cassandra/</link>
-    <description>Recent content in Cassandra on 小码哥的博客</description>
+    <title>Cassandra on 小码哥的技术干货</title>
+    <link>//thisiswangle.com/tags/Cassandra/</link>
+    <description>Recent content in Cassandra on 小码哥的技术干货</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <lastBuildDate>Sun, 23 Jul 2017 22:30:00 +0000</lastBuildDate>
     
-	<atom:link href="/tags/cassandra/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="//thisiswangle.com/tags/Cassandra/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>日志收集和分析系统架构</title>
-      <link>/posts/2017-07-23-log-processing-system/</link>
+      <link>//thisiswangle.com/posts/2017-07-23-log-processing-system/</link>
       <pubDate>Sun, 23 Jul 2017 22:30:00 +0000</pubDate>
       
-      <guid>/posts/2017-07-23-log-processing-system/</guid>
-      <description>背景 微服务，日志分散且种类多（php/java/python），用 docker 起应用，日志通过卷放在宿主机器指定目录下，服务有众多实例，metrics 数据也不仅相同，无论是日志还是 metrics 数据，都可以看作是时间序列数据
+      <guid>//thisiswangle.com/posts/2017-07-23-log-processing-system/</guid>
+      <description> 背景 微服务，日志分散且种类多（php/java/python），用 docker 起应用，日志通过卷放在宿主机器指定目录下，服务有众多实例，metrics 数据也不仅相同，无论是日志还是 metrics 数据，都可以看作是时间序列数据
 分散主要表现为：
  多个主机 多个目录下多个文件 应用开发所使用的技术栈不同日志格式不同 web log（主要是 nginx） 各类事件 一些其它事务性的日志  日志为时间序列数据，包括：
  系统日志: 各类系统产生的跟业务有关的日志或者与业务无关的日志 web 服务器日志：如 access.log/error.log 等有固定格式的日志 性能监控日志：打点记录各类服务的 metrics(全部为数值类型long/double/bool)  系统日志 由时间戳、一些枚举值以及日志内容(变长字符串)组成
  日志时间颗粒度：支持毫秒/秒 枚举值包括：  [必选]主机名/host [必选]服务名/service [必选]实例编号/instance [必选]日记级别/level：info/debug/warn/trace/error 等 [可选]异常名/exception: 如果是异常，把异常名作为枚举值记录 [可选]线程名/thread: [可选]方法名/method： [可选]文件名/file： [可选]行号/line：  日志内容(变长字符串): 为实际记录的内容以及异常堆栈信息  web 服务器日志 access log（nginx） 日志内容：主要是文本(string）或者一些系统 metrics 数据(数值类型long/double)
-日志存储和处理：  数据磁带（1周）：kafka 提供热数据检索（1个月）：solr(or lucence based on cassandra) 日志存储（永久）： kariosdb/cassandra: 支持 double/long/string类型，kariosdb 相当于在 cassandra 上面套了一个壳，这样简化了很多时间序列数据处理的操作 数据展示：grafana，官方支持 kariosdb 扩展：数据深度挖掘分析  系统架构 特点：</description>
+日志存储和处理：  数据磁带（1周）：kafka 提供热数据检索（1个月）：solr(or lucence based on cassandra) 日志存储（永久）： kariosdb/cassandra: 支持 double/long/string类型，kariosdb 相当于在 cassandra 上面套了一个壳，这样简化了很多时间序列数据处理的操作 数据展示：grafana，官方支持 kariosdb 扩展：数据深度挖掘分析  系统架构 特点：
+ 服务现在，面向未来的架构（每层可单独升级或者替换技术栈） 低入侵，原有系统日志不需要改造，使用 flume agent 收集 整个系统无单点，保证可靠性 层次清晰，好扩展，无论 Flume，kafka 还是 cassandra 都方便扩容，存储层使用 kafka 滚动存储数据，cassandra 存储所有日志数据和 metrics 利用现有社区活跃的开源产品构建，除了 kalka 引入了 zk 外，没有其它依赖，整个存储层可以结合现有的资源  其它方案 ELK ELK 技术栈在整体架构上与前面的比较接近（几乎差不多），将会引入数个与目前系统没有太大联系的产品（E/L），前面的架构不仅用于日志的处理，并且可扩展支持处理所有的事件（数据流）处理，更符合目前业务。ELK 优点是拆箱可用，经过一段时间的试用，目前是放弃状态
+其它非 JVM 解决方案没有在考虑范围之类，包括但不限于：  scribe https://github.com/facebookarchive TICK Stack https://www.influxdata.com/time-series-platform/, 比较适合收集服务器和各类服务的 metrics 数据，配合 grafana，可以替代 zabbix 的工作，其中日志存储（output）默认使用 influxdb，influxdb 目前开源只有单机版，但 telegraf 官方支持 output 到 cassandra/kafka/rabbit 等，所以存储也不是问题。前端可以 grafana（支持 kariosdb/influxdb/mysql/opentsdb 等作为数据源）。 rsync 直接同步日志到指定机器，然后在机器上集中处理，使用 mysql/postgresql 等存储日志，目前的量是可以的，但是也需要做不少开发工作  </description>
     </item>
     
   </channel>

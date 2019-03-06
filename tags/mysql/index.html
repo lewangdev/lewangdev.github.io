@@ -39,7 +39,7 @@
         <div class="col-group">
             <div class="site-name ">
                 
-                    <a id="logo" href="//thisiswangle.com">
+                    <a id="logo" href="//thisiswangle.com/">
                         小码哥的技术干货
                     </a>
                 
@@ -47,7 +47,7 @@
             </div>
             <div>
                 <nav id="nav-menu" class="clearfix">
-                    <a class="" href="//thisiswangle.com">首页</a>
+                    <a class="" href="//thisiswangle.com/">首页</a>
                     
                     <a  href="//thisiswangle.com/archives/" title="归档">归档</a>
                     
@@ -88,19 +88,12 @@
                             <div class="post-meta meta-category">
                                 |
                                 
-                                    <a href="//thisiswangle.com/categories/MySQL">MySQL</a>
+                                    <a href="//thisiswangle.com/categories/DevOps">DevOps</a>
                                 
                             </div>
                             
                             <div class="post-content">
-                                 背景 目前公司主要服务都是直接使用 MySQL 主服务器，从服务主要给离线数据分析服务使用，由于前期弄得比较简单的粗暴，从服务上还有一两个数据库在做生产使用, 并且从服数据已经不能和主服进行进行同步了，有大量错误，忽略都没有办法进行。此外，主服仅配置了三个核心数据的 binlog，随着业务的变化，其它数据库不能走主从这条路来同步数据，于是希望不停机的情形下重新调整主服配置，记录所有的数据库的 binlog，同时添加新的从服务器来同步数据
-方案1 MySQL 的主从是通过同步 binlog 日志来实现数据同步的，于是需要想办法把从服数据先于主服同步，记录 binlog 的 pos 值，再配置从服从该 pos 处开始同步，考虑可以使用 mysqldump 导出所有 innodb 数据，使用 rsync 同步所有 myisam 数据文件，然后再开启主从同步。但是目前这种方案不适用，主服不能长时间停机
-方案2 使用 xtrabackup 来完成目标
-主从服务器上都需要安装 xtrabackup（实际使用 xtrabackupex）：
-yum install http://www.percona.com/downloads/percona-release/redhat/0.1-4/percona-release-0.1-4.noarch.rpm yum install -y percona-xtrabackup-24  主服： 备份数据 # 注意数据库名称的转义，例如 - 号是 @002d innobackupex --defaults-file=/etc/my.cnf --socket=/var/lib/mysql/mysql.sock --user=root --password=xxxx --parallel=2 --databases=&quot;db1 db2&quot; /data/backup/xtrabackup/  保持事务一致 innobackupex --apply-log /data/backup/xtrabackup/2017-06-06_13-16-21/  同步数据 rsync -avHz 2017-06-06_13-16-21 sysops@cow:/data/backup  从服： 修改 my.cnf 相关配置，恢复备份数据
-# 关闭 MySQL Servier 后恢复数据 innobackupex --defaults-file=/etc/my.cnf --copy-back /data/backup/2017-06-06_13-16-21  修改数据权限
-chown -R mysql.mysql mysql  开启从服，登录 msyql 添加主从配置，并开启同步
- # Master 上执行 GRANT REPLICATION SLAVE ON *.* TO 'repl'@'10.23.9.146' IDENTIFIED BY 'password'; # Slave 上执行 [root@bull data]# cat backup/2018-04-26_21-27-31/xtrabackup_binlog_info mysql-bin.000058 103394265 CHANGE MASTER TO MASTER_HOST='10.4.25.28', MASTER_USER='repl', MASTER_PASSWORD='password', MASTER_PORT=3306, MASTER_LOG_FILE='mysql-bin.000058', MASTER_LOG_POS=103394265;  检查主从状态 show master status; show slave status\G;  参考  percona-xtrabackup wsgzao.github.io/post/xtrabackup  ……
+                                背景 目前公司主要服务都是直接使用 MySQL 主服务器，从服务主要给离线数据分析服务使用，由于前期弄得比较简单的粗暴，从服务上还有一两个数据库在做生产使用, 并且从服数据已经不能和主服进行进行同步了，有大量错误，忽略都没有办法进行。此外，主服仅配置了三个核心数据的 binlog，随着业务的变化，……
                                 <p class="readmore"><a href="//thisiswangle.com/posts/2017-06-06-xtrabackup/">阅读全文</a></p>
                             </div>
                         </article>
@@ -119,7 +112,7 @@ chown -R mysql.mysql mysql  开启从服，登录 msyql 添加主从配置，并
         <form id="search" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
       
       <input type="text" name="q" maxlength="20" placeholder="Search">
-      <input type="hidden" name="sitesearch" value="//thisiswangle.com">
+      <input type="hidden" name="sitesearch" value="//thisiswangle.com/">
       <button type="submit" class="submit icon-search"></button>
 </form>
     </section>
@@ -178,31 +171,39 @@ chown -R mysql.mysql mysql  开启从服，登录 msyql 添加主从配置，并
 <ul class="widget-list">
     
     <li>
-        <a href="//thisiswangle.com/categories/Docker/">Docker(1)</a>
+        <a href="//thisiswangle.com/categories/Coding/">Coding(2)</a>
     </li>
     
     <li>
-        <a href="//thisiswangle.com/categories/Java/">Java(1)</a>
+        <a href="//thisiswangle.com/categories/DevOps/">DevOps(8)</a>
     </li>
     
     <li>
-        <a href="//thisiswangle.com/categories/Linux/">Linux(2)</a>
+        <a href="//thisiswangle.com/categories/Github/">Github(1)</a>
     </li>
     
     <li>
-        <a href="//thisiswangle.com/categories/MySQL/">MySQL(1)</a>
+        <a href="//thisiswangle.com/categories/Java/">Java(2)</a>
     </li>
     
     <li>
-        <a href="//thisiswangle.com/categories/Sysops/">Sysops(1)</a>
+        <a href="//thisiswangle.com/categories/Linux/">Linux(1)</a>
     </li>
     
     <li>
-        <a href="//thisiswangle.com/categories/%E6%80%BB%E7%BB%93/">总结(3)</a>
+        <a href="//thisiswangle.com/categories/%E6%80%BB%E7%BB%93/">总结(6)</a>
+    </li>
+    
+    <li>
+        <a href="//thisiswangle.com/categories/%E6%84%9F%E6%82%9F/">感悟(9)</a>
     </li>
     
     <li>
         <a href="//thisiswangle.com/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/">系统架构(1)</a>
+    </li>
+    
+    <li>
+        <a href="//thisiswangle.com/categories/%E8%B6%A3%E8%B0%88/">趣谈(1)</a>
     </li>
     
 </ul>
@@ -235,8 +236,6 @@ chown -R mysql.mysql mysql  开启从服，登录 msyql 添加主从配置，并
     <a href="//thisiswangle.com/tags/MySQL/">MySQL</a>
     
     <a href="//thisiswangle.com/tags/Nginx/">Nginx</a>
-    
-    <a href="//thisiswangle.com/tags/Review/">Review</a>
     
     <a href="//thisiswangle.com/tags/SSH/">SSH</a>
     
@@ -346,7 +345,7 @@ chown -R mysql.mysql mysql  开启从服，登录 msyql 添加主从配置，并
 </div>
 <footer id="footer">
     <div class="container">
-        &copy; 2018 <a href="//thisiswangle.com">小码哥的技术干货 By 小码哥</a>.
+        &copy; 2019 <a href="//thisiswangle.com/">小码哥的技术干货 By 小码哥</a>.
         Powered by <a rel="nofollow noreferer noopener" href="https://gohugo.io" target="_blank">Hugo</a>.
         
     </div>

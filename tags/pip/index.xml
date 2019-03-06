@@ -17,20 +17,7 @@
       <pubDate>Sun, 02 Mar 2014 21:16:00 +0000</pubDate>
       
       <guid>//thisiswangle.com/posts/2014-03-02-python-on-my-rmbp/</guid>
-      <description>前几天入手了一台 Macbook Pro Retina，把 BIG 提到了很爽的地步。经过几天的折腾，可以和 windows，ubuntu desktop 说 Byebye 了。之前整整用了一年的 Ubuntu 来工作，我用它来写 C、Java 和 Python, 要是 windows 没有 cygwin, 没有 MacType，那该多么恐怖。后来用了一段时间的 MBP，让我坚定了以后要自己买一个 MBP。
-ubuntu 那么的惹人爱，因为它有个还挺好用的 GUI，从 debian 那继承过来的 apt-get, 一下子把一个从 redhat 9 用到 fedora 4 的穷学生拉到了 ubuntu 的阵营，至此，deskop 就被 ubuntu 占领了。在此之前，我还用段时间的 debian 和 gentoo。
-不得不说，debian 太伟大太牛逼了，有一次要在一个 MIPS 的小设备上编译安装 erlang， openssl，libcurl 等做一些实验, 要跨平台编译这些软件安装到小设备上去，费了半天终于把这些都编好了，还写了一个编译脚步，结果 erlang 运行的时候虚拟机总是报错，也不知道怎么回事。后来注意到 debian 居然有 MIPS，ARM 的源，后来在 MIPS 设备上安装软件做实验，我再也没有遇到问题，一切都用 apt-get 搞定了。
-除了 apt-get, 我想最令我惊喜还有 ubuntu 自带了 python 2.7，让我很容易在两台电脑之间拷贝文件：
-python -m SimpleHTTPServer  是不是很爽，rMBP 也带了 Python。不过传文件也不用 python 了，有更好用 Airdrop 可以用。
-rMBP 刚到手的时候，我创建了第一个目录是 Workspace，小四同学问我为啥第一个字母要大写，输入多不方便，我说我 home 目录下都是大写的，这样我 ls 会比较漂亮。
-其实我不想把我的系统变得很乱，我喜欢保持某些一致，让自己的心里觉得有点舒服。就像上学的时候，看到黑板上有点粉笔的字迹没有擦干净，就想伸手过去摸一下把它擦掉。
-我想，nodejs，ruby，python的粉丝里不少都是这样的吧，不然怎么会有 nvm，rvm，virtualenv。
-如果你也在用 python，而且还经常在 github 上面拉别人的代码过来玩，或者安装一些python lib, 我推荐你用 virtualenv:
-sudo easy_install pip sudo pip install virtualenv  接下来就可以在虚拟的环境里面随便折腾了，而且你的系统还会保持干干净净。
-virtualenv venv  每次使用 venv 这个虚拟环境时都要记得激活它，所以可以 alias 到 .bash_profile 里面去。
-. venv/bin/activate  上面那个点(dot/period) 是 source 的代名词, 相当于
-source venv/bin/activate  接下来通过 pip 安装的东西都会在这个虚拟环境中了，是不是很好玩。
-Love my rMBP, Love my python.</description>
+      <description>前几天入手了一台 Macbook Pro Retina，把 BIG 提到了很爽的地步。经过几天的折腾，可以和 windows，ubuntu desktop 说 Byebye 了。之前整整用了一年的 Ubuntu 来工作，我用它来写 C、Java 和 Python, 要是 windows 没有 cygwin, 没有 MacType，那该多么恐怖。后来用了一段时间的 MBP，让我坚定了以后要自己买一个 MBP。 ubuntu 那</description>
     </item>
     
   </channel>

@@ -17,14 +17,7 @@
       <pubDate>Sat, 15 Jul 2017 23:31:00 +0000</pubDate>
       
       <guid>//thisiswangle.com/posts/2017-07-15-log4j2/</guid>
-      <description>背景 Java 生态下的日志库太多，配置也不同，大多数情况下会使用 SLF4j (又引入了一个库)来抽象日志接口。在使用 Log4j2 后，发现可以不使用 SLF4j 了，并且配置变得更简单，可以使用 lombok 的 log4j2 注解等。
-需要搞清楚
- 如何设置哪些日志要记录下来 日志记录到哪里去  LEVEL 日志级别：  内置（有Fatal）：All &amp;lt; Trace &amp;lt; Debug &amp;lt; Info &amp;lt; Warn &amp;lt; Error &amp;lt; Fatal &amp;lt; OFF 还可以自定义： https://logging.apache.org/log4j/2.0/manual/customloglevels.html  Appender: 日志输出的目的地 内置的目的地有：
- console, files（FIle/RollingFile）, remote socket servers, Apache Flume, JMS, remote UNIX Syslog daemons, various database APIs &amp;hellip;  Appender 在接受到日志以后，可以通过级别过滤选择记录日志，具体配置： https://logging.apache.org/log4j/2.0/manual/appenders.html
-Logger 负责决定哪些日志要记录和发配日志 哪些需要记日志，设置什么级别，并且配置日志输出到哪些个 Appender 中去都在 Logger 中配置。Logger 有类似继承的关系，名为 Root 的的 Logger  为所有 Logger 的根，也就是说没有做特殊设置（additivity=false), 那么这个 Logger 的日志将会记录到自己指定的 Appender，并且也都会记录到自己所有“父” Logger 设置的 Appender 中去
-继承关系由 Logger 的名称推断出来，名称可以认为是 Logger 树的前序遍历打印的节点路径。
-Logger 定义
-   Logger Name 将会记录日志的 Logger     Root Root   X Root, X   X.Y Root, X, Y   X.Z Root, X,Z   M Root, M    Filter 日志过滤器 DENY,ACCEPT,NEUTRAL 三个选项，所有进入当前 Appender 的所有日志，Filter 可以设置来选择日志是否要记录</description>
+      <description>背景 Java 生态下的日志库太多，配置也不同，大多数情况下会使用 SLF4j (又引入了一个库)来抽象日志接口。在使用 Log4j2 后，发现可以不使用 SLF4j 了，并且配置变得更简单，可以使用 lombok 的 log4j2 注解等。 需要搞清楚 如何设置哪些日志要记录下来 日志记录到哪里去 LEVEL 日志级别： 内置（有Fatal）：All &amp;lt; Trace &amp;lt; Debug &amp;lt; Info &amp;lt; Warn &amp;lt; Error &amp;lt;</description>
     </item>
     
   </channel>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>趣谈 on 小码哥的技术干货</title>
+    <link>//thisiswangle.com/categories/%E8%B6%A3%E8%B0%88/</link>
+    <description>Recent content in 趣谈 on 小码哥的技术干货</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Thu, 13 Mar 2014 21:16:00 +0000</lastBuildDate>
+    
+	<atom:link href="//thisiswangle.com/categories/%E8%B6%A3%E8%B0%88/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>谁是德布罗意</title>
+      <link>//thisiswangle.com/posts/2014-03-13-who-is-De-Broglie/</link>
+      <pubDate>Thu, 13 Mar 2014 21:16:00 +0000</pubDate>
+      
+      <guid>//thisiswangle.com/posts/2014-03-13-who-is-De-Broglie/</guid>
+      <description>这张照片很多人应该都见过，名副其实的二十世纪最伟大科学家们的合影。爱因斯坦占据了最明显的位置，德布罗意也在其中。 这里是摘自百度百科的一些内容： 在光具有波粒二象性的启发下，法国物理学家德布罗意（1892～1987）在 1924 年提出一个假说，指出波粒二象性不只是光子才有，一切微观粒子，包括</description>
+    </item>
+    
+  </channel>
+</rss>

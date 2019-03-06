@@ -39,7 +39,7 @@
         <div class="col-group">
             <div class="site-name ">
                 
-                    <a id="logo" href="//thisiswangle.com">
+                    <a id="logo" href="//thisiswangle.com/">
                         小码哥的技术干货
                     </a>
                 
@@ -47,7 +47,7 @@
             </div>
             <div>
                 <nav id="nav-menu" class="clearfix">
-                    <a class="" href="//thisiswangle.com">首页</a>
+                    <a class="" href="//thisiswangle.com/">首页</a>
                     
                     <a  href="//thisiswangle.com/archives/" title="归档">归档</a>
                     
@@ -85,15 +85,15 @@
                                 2017年7月15日
                             </date>
                             
+                            <div class="post-meta meta-category">
+                                |
+                                
+                                    <a href="//thisiswangle.com/categories/Java">Java</a>
+                                
+                            </div>
+                            
                             <div class="post-content">
-                                背景 Java 生态下的日志库太多，配置也不同，大多数情况下会使用 SLF4j (又引入了一个库)来抽象日志接口。在使用 Log4j2 后，发现可以不使用 SLF4j 了，并且配置变得更简单，可以使用 lombok 的 log4j2 注解等。
-需要搞清楚
- 如何设置哪些日志要记录下来 日志记录到哪里去  LEVEL 日志级别：  内置（有Fatal）：All &lt; Trace &lt; Debug &lt; Info &lt; Warn &lt; Error &lt; Fatal &lt; OFF 还可以自定义： https://logging.apache.org/log4j/2.0/manual/customloglevels.html  Appender: 日志输出的目的地 内置的目的地有：
- console, files（FIle/RollingFile）, remote socket servers, Apache Flume, JMS, remote UNIX Syslog daemons, various database APIs &hellip;  Appender 在接受到日志以后，可以通过级别过滤选择记录日志，具体配置： https://logging.apache.org/log4j/2.0/manual/appenders.html
-Logger 负责决定哪些日志要记录和发配日志 哪些需要记日志，设置什么级别，并且配置日志输出到哪些个 Appender 中去都在 Logger 中配置。Logger 有类似继承的关系，名为 Root 的的 Logger  为所有 Logger 的根，也就是说没有做特殊设置（additivity=false), 那么这个 Logger 的日志将会记录到自己指定的 Appender，并且也都会记录到自己所有“父” Logger 设置的 Appender 中去
-继承关系由 Logger 的名称推断出来，名称可以认为是 Logger 树的前序遍历打印的节点路径。
-Logger 定义
-   Logger Name 将会记录日志的 Logger     Root Root   X Root, X   X.Y Root, X, Y   X.Z Root, X,Z   M Root, M    Filter 日志过滤器 DENY,ACCEPT,NEUTRAL 三个选项，所有进入当前 Appender 的所有日志，Filter 可以设置来选择日志是否要记录……
+                                背景 Java 生态下的日志库太多，配置也不同，大多数情况下会使用 SLF4j (又引入了一个库)来抽象日志接口。在使用 Log4j2 后，发现可以不使用 SLF4j 了，并且配置变得更简单，可以使用 lombok 的 log4j2 注解等。 需要搞清楚 如何设置哪些日志要记录下来 日志记录到哪里去 LEVEL 日志级别： 内置（有Fatal）：All &lt; Trace &lt; Debug &lt; Info &lt; Warn &lt; Error &lt;……
                                 <p class="readmore"><a href="//thisiswangle.com/posts/2017-07-15-log4j2/">阅读全文</a></p>
                             </div>
                         </article>
@@ -112,7 +112,7 @@ Logger 定义
         <form id="search" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
       
       <input type="text" name="q" maxlength="20" placeholder="Search">
-      <input type="hidden" name="sitesearch" value="//thisiswangle.com">
+      <input type="hidden" name="sitesearch" value="//thisiswangle.com/">
       <button type="submit" class="submit icon-search"></button>
 </form>
     </section>
@@ -171,31 +171,39 @@ Logger 定义
 <ul class="widget-list">
     
     <li>
-        <a href="//thisiswangle.com/categories/Docker/">Docker(1)</a>
+        <a href="//thisiswangle.com/categories/Coding/">Coding(2)</a>
     </li>
     
     <li>
-        <a href="//thisiswangle.com/categories/Java/">Java(1)</a>
+        <a href="//thisiswangle.com/categories/DevOps/">DevOps(8)</a>
     </li>
     
     <li>
-        <a href="//thisiswangle.com/categories/Linux/">Linux(2)</a>
+        <a href="//thisiswangle.com/categories/Github/">Github(1)</a>
     </li>
     
     <li>
-        <a href="//thisiswangle.com/categories/MySQL/">MySQL(1)</a>
+        <a href="//thisiswangle.com/categories/Java/">Java(2)</a>
     </li>
     
     <li>
-        <a href="//thisiswangle.com/categories/Sysops/">Sysops(1)</a>
+        <a href="//thisiswangle.com/categories/Linux/">Linux(1)</a>
     </li>
     
     <li>
-        <a href="//thisiswangle.com/categories/%E6%80%BB%E7%BB%93/">总结(3)</a>
+        <a href="//thisiswangle.com/categories/%E6%80%BB%E7%BB%93/">总结(6)</a>
+    </li>
+    
+    <li>
+        <a href="//thisiswangle.com/categories/%E6%84%9F%E6%82%9F/">感悟(9)</a>
     </li>
     
     <li>
         <a href="//thisiswangle.com/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/">系统架构(1)</a>
+    </li>
+    
+    <li>
+        <a href="//thisiswangle.com/categories/%E8%B6%A3%E8%B0%88/">趣谈(1)</a>
     </li>
     
 </ul>
@@ -228,8 +236,6 @@ Logger 定义
     <a href="//thisiswangle.com/tags/MySQL/">MySQL</a>
     
     <a href="//thisiswangle.com/tags/Nginx/">Nginx</a>
-    
-    <a href="//thisiswangle.com/tags/Review/">Review</a>
     
     <a href="//thisiswangle.com/tags/SSH/">SSH</a>
     
@@ -339,7 +345,7 @@ Logger 定义
 </div>
 <footer id="footer">
     <div class="container">
-        &copy; 2018 <a href="//thisiswangle.com">小码哥的技术干货 By 小码哥</a>.
+        &copy; 2019 <a href="//thisiswangle.com/">小码哥的技术干货 By 小码哥</a>.
         Powered by <a rel="nofollow noreferer noopener" href="https://gohugo.io" target="_blank">Hugo</a>.
         
     </div>

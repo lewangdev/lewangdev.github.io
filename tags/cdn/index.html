@@ -39,7 +39,7 @@
         <div class="col-group">
             <div class="site-name ">
                 
-                    <a id="logo" href="//thisiswangle.com">
+                    <a id="logo" href="//thisiswangle.com/">
                         小码哥的技术干货
                     </a>
                 
@@ -47,7 +47,7 @@
             </div>
             <div>
                 <nav id="nav-menu" class="clearfix">
-                    <a class="" href="//thisiswangle.com">首页</a>
+                    <a class="" href="//thisiswangle.com/">首页</a>
                     
                     <a  href="//thisiswangle.com/archives/" title="归档">归档</a>
                     
@@ -88,16 +88,12 @@
                             <div class="post-meta meta-category">
                                 |
                                 
-                                    <a href="//thisiswangle.com/categories/Linux">Linux</a>
+                                    <a href="//thisiswangle.com/categories/DevOps">DevOps</a>
                                 
                             </div>
                             
                             <div class="post-content">
-                                为了自己做好网站的架构，找了知乎，豆瓣，大众点评和百姓网来做参考。这里主要来看域名和CDN相关的部分，后台的架构也还是要边学便实践。
-大概情况 从前端分析了知乎的域名和 DNS 情况，同时对比了一下豆瓣、大众点评和百姓网。从域名、DNS、CDN等使用角度来说，他们之间大同小异。
-使用的分析工具  Chrome WHOIS DNSLookup  非 CDN 使用    记录 域名 用途 路径     A zhihu.com 使用 301 跳转到 www.zhuhu.com IP   A zhi.hu 使用 302 跳转到 www.zhihu.com IP   A www.zhihu.com  IP   A comet.zhihu.com WebSocket 推送消息 IP   A analytics.zhihu.com 知乎自己的统计分析，同时使用了 Google Analytics IP    大部分都是用了 301 或者 302 跳转，注意他们的区别：301 是永久跳转(浏览器会做客户端端缓存)，而 302 是临时跳转。此外 baidu.com 到 www.baidu.com 并不是使用 301 或者 302 ，而是使用下面的一段 HTML 代码
-&lt;html&gt; &lt;meta http-equiv=&quot;refresh&quot; content=&quot;0;url=http://www.baidu.com/&quot;&gt; &lt;/html&gt;  相比而言，我觉得使用 301 更 Geek，更好一些。
-CDN 使用    记录 域名 用途 路径     CNAME static.analytics.zhihu.com CDN, 看 CNAME 以为是七牛CDN，其实用了 ChinaNetCenter 的 CDN d.qiniudn.com &gt; wsall.36tr.com.wscdns.com &gt; 08911.xdwscache.glb0.lxdns.com &gt; IP   CNAME static.zhihu.com 网页资源文件cdn，包括css，js，image，不包括用户头像、用户发布的图片等 同上   CNAME p1.zhimg.com 用户头像，用户发布的图片, 这里使用又拍云CDN zhcdn-img.b0.aicdn.com &gt; ctn.b9.aicdn.com &gt; IP   CNAME p2.……
+                                为了自己做好网站的架构，找了知乎，豆瓣，大众点评和百姓网来做参考。这里主要来看域名和CDN相关的部分，后台的架构也还是要边学便实践。 大概情况 从前端分析了知乎的域名和 DNS 情况，同时对比了一下豆瓣、大众点评和百姓网。从域名、DNS、CDN等使用角度来说，他们之间大同小异。 使用的分析工具……
                                 <p class="readmore"><a href="//thisiswangle.com/posts/2014-03-06-arch-of-website-domain-cdn/">阅读全文</a></p>
                             </div>
                         </article>
@@ -116,7 +112,7 @@ CDN 使用    记录 域名 用途 路径     CNAME static.analytics.zhihu.com C
         <form id="search" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
       
       <input type="text" name="q" maxlength="20" placeholder="Search">
-      <input type="hidden" name="sitesearch" value="//thisiswangle.com">
+      <input type="hidden" name="sitesearch" value="//thisiswangle.com/">
       <button type="submit" class="submit icon-search"></button>
 </form>
     </section>
@@ -175,31 +171,39 @@ CDN 使用    记录 域名 用途 路径     CNAME static.analytics.zhihu.com C
 <ul class="widget-list">
     
     <li>
-        <a href="//thisiswangle.com/categories/Docker/">Docker(1)</a>
+        <a href="//thisiswangle.com/categories/Coding/">Coding(2)</a>
     </li>
     
     <li>
-        <a href="//thisiswangle.com/categories/Java/">Java(1)</a>
+        <a href="//thisiswangle.com/categories/DevOps/">DevOps(8)</a>
     </li>
     
     <li>
-        <a href="//thisiswangle.com/categories/Linux/">Linux(2)</a>
+        <a href="//thisiswangle.com/categories/Github/">Github(1)</a>
     </li>
     
     <li>
-        <a href="//thisiswangle.com/categories/MySQL/">MySQL(1)</a>
+        <a href="//thisiswangle.com/categories/Java/">Java(2)</a>
     </li>
     
     <li>
-        <a href="//thisiswangle.com/categories/Sysops/">Sysops(1)</a>
+        <a href="//thisiswangle.com/categories/Linux/">Linux(1)</a>
     </li>
     
     <li>
-        <a href="//thisiswangle.com/categories/%E6%80%BB%E7%BB%93/">总结(3)</a>
+        <a href="//thisiswangle.com/categories/%E6%80%BB%E7%BB%93/">总结(6)</a>
+    </li>
+    
+    <li>
+        <a href="//thisiswangle.com/categories/%E6%84%9F%E6%82%9F/">感悟(9)</a>
     </li>
     
     <li>
         <a href="//thisiswangle.com/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/">系统架构(1)</a>
+    </li>
+    
+    <li>
+        <a href="//thisiswangle.com/categories/%E8%B6%A3%E8%B0%88/">趣谈(1)</a>
     </li>
     
 </ul>
@@ -232,8 +236,6 @@ CDN 使用    记录 域名 用途 路径     CNAME static.analytics.zhihu.com C
     <a href="//thisiswangle.com/tags/MySQL/">MySQL</a>
     
     <a href="//thisiswangle.com/tags/Nginx/">Nginx</a>
-    
-    <a href="//thisiswangle.com/tags/Review/">Review</a>
     
     <a href="//thisiswangle.com/tags/SSH/">SSH</a>
     
@@ -343,7 +345,7 @@ CDN 使用    记录 域名 用途 路径     CNAME static.analytics.zhihu.com C
 </div>
 <footer id="footer">
     <div class="container">
-        &copy; 2018 <a href="//thisiswangle.com">小码哥的技术干货 By 小码哥</a>.
+        &copy; 2019 <a href="//thisiswangle.com/">小码哥的技术干货 By 小码哥</a>.
         Powered by <a rel="nofollow noreferer noopener" href="https://gohugo.io" target="_blank">Hugo</a>.
         
     </div>

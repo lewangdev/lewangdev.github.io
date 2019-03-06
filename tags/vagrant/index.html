@@ -39,7 +39,7 @@
         <div class="col-group">
             <div class="site-name ">
                 
-                    <a id="logo" href="//thisiswangle.com">
+                    <a id="logo" href="//thisiswangle.com/">
                         小码哥的技术干货
                     </a>
                 
@@ -47,7 +47,7 @@
             </div>
             <div>
                 <nav id="nav-menu" class="clearfix">
-                    <a class="" href="//thisiswangle.com">首页</a>
+                    <a class="" href="//thisiswangle.com/">首页</a>
                     
                     <a  href="//thisiswangle.com/archives/" title="归档">归档</a>
                     
@@ -86,17 +86,7 @@
                             </date>
                             
                             <div class="post-content">
-                                 Vagrant 是一个构建虚拟开发环境的利器，它使得在团队中很容易共享开发环境，有了它，不必每个人都搭建一个自己的开发环境了。在没有使用 vagrant 之前，我在windows中安装了 virtualbox，然后在virtualbox中安装了一个ubuntu server。在 ubuntu 中安装了 mysql、jdk 等软件，并且设置了一个共享目录，以便于将工程代码直接共享给 ubuntu。在外部开发调试过程中（Java 项目），我需要在virtualbox中设置好几个端口映射，如 mysql，ssh等等。这样在 cygwin 里面就可以通过 ssh 登录 ubuntu server 了，为了使得ssh登录不用每次设置密码，还需要手动生成公钥私钥。换机器了，这一切我又得重新配置。新同事来了，他也得像我这样重新配置一遍。有可能他还会有问题说：为什么按照你的说明，代码在我这里却无法运行呢？
-一切都从 Yining 告诉了我 vagrant 之后发生了变化，原来一切都这么简单。
-安装 VirtualBox Vagrant 其实是对 virtualbox 做了一层包装，它让使用virtualbox作为虚拟机更为简单。当然也可以使用 vmware，使用vmware那得找一个license了。
-好吧，去这里 下载 VirtualBox。我使用的是 4.3.8 for OSX
-安装 Vagrant 下载vagrant
-添加虚拟机镜像到 Vagrant vagrant box add vdevenv ~/Workspace/vagrant/boxes/vdevenv-0.0.0.1.box  vagrant 的干净的镜像可以在这里下载:
- Ubuntu precise 32 VirtualBox Ubuntu precise 64 VirtualBox 更多镜像  在工作目录启动 Vagrant 进入自己的代码所在的目录，启动刚刚添加的虚拟机镜像
-vagrant init vdevenv vagrant up vagrant ssh # 登录到虚拟机  进入 /vagrant 目录，这里就是共享的目录，所有的代码都在这里。
-Vagrant 设置 修改 Vagrantfile
-分享开发环境 vagrant package  执行之后在工作目录下面会生成一个*.bax的文件，把这个文件拷给别人就可以了
-常用 Vagrant 命令 vagrant ssh vagrant status vagrant halt vagrant up  ……
+                                Vagrant 是一个构建虚拟开发环境的利器，它使得在团队中很容易共享开发环境，有了它，不必每个人都搭建一个自己的开发环境了。在没有使用 vagrant 之前，我在windows中安装了 virtualbox，然后在virtualbox中安装了一个ubuntu server。在 ubuntu 中安装了 mysql、jdk 等软件，……
                                 <p class="readmore"><a href="//thisiswangle.com/posts/2014-03-03-building-devenv-by-vagrant/">阅读全文</a></p>
                             </div>
                         </article>
@@ -115,7 +105,7 @@ Vagrant 设置 修改 Vagrantfile
         <form id="search" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
       
       <input type="text" name="q" maxlength="20" placeholder="Search">
-      <input type="hidden" name="sitesearch" value="//thisiswangle.com">
+      <input type="hidden" name="sitesearch" value="//thisiswangle.com/">
       <button type="submit" class="submit icon-search"></button>
 </form>
     </section>
@@ -174,31 +164,39 @@ Vagrant 设置 修改 Vagrantfile
 <ul class="widget-list">
     
     <li>
-        <a href="//thisiswangle.com/categories/Docker/">Docker(1)</a>
+        <a href="//thisiswangle.com/categories/Coding/">Coding(2)</a>
     </li>
     
     <li>
-        <a href="//thisiswangle.com/categories/Java/">Java(1)</a>
+        <a href="//thisiswangle.com/categories/DevOps/">DevOps(8)</a>
     </li>
     
     <li>
-        <a href="//thisiswangle.com/categories/Linux/">Linux(2)</a>
+        <a href="//thisiswangle.com/categories/Github/">Github(1)</a>
     </li>
     
     <li>
-        <a href="//thisiswangle.com/categories/MySQL/">MySQL(1)</a>
+        <a href="//thisiswangle.com/categories/Java/">Java(2)</a>
     </li>
     
     <li>
-        <a href="//thisiswangle.com/categories/Sysops/">Sysops(1)</a>
+        <a href="//thisiswangle.com/categories/Linux/">Linux(1)</a>
     </li>
     
     <li>
-        <a href="//thisiswangle.com/categories/%E6%80%BB%E7%BB%93/">总结(3)</a>
+        <a href="//thisiswangle.com/categories/%E6%80%BB%E7%BB%93/">总结(6)</a>
+    </li>
+    
+    <li>
+        <a href="//thisiswangle.com/categories/%E6%84%9F%E6%82%9F/">感悟(9)</a>
     </li>
     
     <li>
         <a href="//thisiswangle.com/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/">系统架构(1)</a>
+    </li>
+    
+    <li>
+        <a href="//thisiswangle.com/categories/%E8%B6%A3%E8%B0%88/">趣谈(1)</a>
     </li>
     
 </ul>
@@ -231,8 +229,6 @@ Vagrant 设置 修改 Vagrantfile
     <a href="//thisiswangle.com/tags/MySQL/">MySQL</a>
     
     <a href="//thisiswangle.com/tags/Nginx/">Nginx</a>
-    
-    <a href="//thisiswangle.com/tags/Review/">Review</a>
     
     <a href="//thisiswangle.com/tags/SSH/">SSH</a>
     
@@ -342,7 +338,7 @@ Vagrant 设置 修改 Vagrantfile
 </div>
 <footer id="footer">
     <div class="container">
-        &copy; 2018 <a href="//thisiswangle.com">小码哥的技术干货 By 小码哥</a>.
+        &copy; 2019 <a href="//thisiswangle.com/">小码哥的技术干货 By 小码哥</a>.
         Powered by <a rel="nofollow noreferer noopener" href="https://gohugo.io" target="_blank">Hugo</a>.
         
     </div>

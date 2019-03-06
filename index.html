@@ -36,7 +36,7 @@
             <div class="site-name ">
                 
                     <h1>
-                        <a id="logo" href="//thisiswangle.com">
+                        <a id="logo" href="//thisiswangle.com/">
                             小码哥的技术干货
                         </a>
                     </h1>
@@ -45,7 +45,7 @@
             </div>
             <div>
                 <nav id="nav-menu" class="clearfix">
-                    <a class="current" href="//thisiswangle.com">首页</a>
+                    <a class="current" href="//thisiswangle.com/">首页</a>
                     
                     <a  href="//thisiswangle.com/archives/" title="归档">归档</a>
                     
@@ -83,8 +83,7 @@
                             </div>
                             
                             <div class="post-content">
-                                [填坑]自己学习 Java 和用 Java 过程中的理解和备忘的主要的点, 后续会准备一些列文章来说明。
-JDK 11  Oracle 不在免费提供 LTS 版本了，包括 JDK 8 ZGC, 可伸缩的、低延迟的垃圾收集器，STW 时间不超过 10ms Nashorn 标记为 Deprecate 了  JDK 9  module try-catch 简化 _ 为保留关键字 var 将在 JDK 10 中作为关键字, 作为本地变量类型推断关键字 字符串相关，主要是 Compact String, 用 byte[] 替换了 char[], char 在 Java 中占两个字节 G1 作为默认垃圾回收器  JVM  启动 JVM 相关的命令行参数 G1 垃圾回收器  内存  JVM(Hotspot) 内存结构 制造各种 OutOfMemery 和 StackOverflow 各种 JVM 相关工具(jstat/jmap/jstack/jps 等) 解决 FullGC 的问题 引用：WeakRefrence/PhantomReference/SoftRefrence/FinalRefrence 等 ClassLoader/URLClassLoader Spring Boot 的 ClassLoader 自定义 ClassLoader  多线程和并发  JVM 的线程模型 1:1 协程 创建线程的方法 线程同步 synchronzied/对象锁/类锁/锁方法/锁锁代码块 线程池 锁相关（Lock 接口和实现类） Condition volatile ThreadLocal 用途和实现 并发（CAS/乐观锁/无锁/无等待/无阻塞）  字节码  基本结构 操作字节码的工具 Javassist/ASM AOP  集合  Collection,List,ArrayList,Vector,LinkedList, SkipList, Stack Queue HashMap/HashTable HashMap 扩容死循环问题 LinkedHashMap TreeMap HashSet,TreeSet WeakHashMap 并发相关的集合  ConcurrentHashMap CopyOnWriteArrayList   IO  IO 模型 NIO Non-blocking IO Java 8 IO 相关的接口和类 Netty Vert.……
+                                [填坑]自己学习 Java 和用 Java 过程中的理解和备忘的主要的点, 后续会准备一些列文章来说明。 JDK 11 Oracle 不在免费提供 LTS 版本了，包括 JDK 8 ZGC, 可伸缩的、低延迟的垃圾收集器，STW 时间不超过 10ms Nashorn 标记为 Deprecate 了 JDK 9 module try-catch 简化 _ 为保留关键字 var 将在 JDK 10 中作为关键字, 作为本地变量类型推断关键字 字符串相关，主要是 Compact String, 用……
                             </div>
                             <p class="readmore"><a href="//thisiswangle.com/posts/2019-03-06-keynotes-of-new-java/">阅读全文</a></p>
                         </article>
@@ -102,15 +101,12 @@ JDK 11  Oracle 不在免费提供 LTS 版本了，包括 JDK 8 ZGC, 可伸缩的
                             <div class="post-meta">
                                 <span>|</span>
                                 
-                                <span class="meta-category"><a href="//thisiswangle.com/categories/Docker">Docker</a></span>
+                                <span class="meta-category"><a href="//thisiswangle.com/categories/DevOps">DevOps</a></span>
                                 
                             </div>
                             
                             <div class="post-content">
-                                为什么要写这篇文章？ 曾经几年前在 Docker 还没有广泛应用的时候，在公司使用过源码的方式安装和升级过 Gitlab，虽远没有 Docker 方便，因为自己对 Linux 系统的理解，所以整体上感觉还是挺简单的。这几年随着 Docker 的普及，使得安装 Gitlab 更加的容易，不仅方便了我这样的老鸟，也更方便了小白用户们。但是 Gitlab 官方的 Docker 安装文档并没有写得很完善, 除了官方文档之外，检索出来的安装文档也是人云亦云，东拼西凑，结果也就是能运行起来，凑合着能用而已。
-我希望每做一件小事的时候也都能抱着“知其然知其所以然”的心态对待，用 Docker 方式安装 Gitlab，说简单来说就是一行命令的事儿，但是这样就够了吗？我看是不够的，所以就有了这篇文档。
-本文需要达成的事项  在 CentOS 7 系统中安装 Docker 使用 Docker 方式安装中文版 Gitlab 和宿主机器共用 22(SSH) 端口 支持 SSH(22)/HTTPS(443) 方式推拉仓库 使用 SMTP 方式配置通知邮箱(腾讯企业邮箱) 改写默认的项目标签(Labels)  在 CentOS 7 系统中安装 Docker 这部分参考 Docker 的官方文档, 罗列一下安装步骤, 细节请看 Docker 的官方文档。如果使用 root 用户安装，sudo 可以去掉。
-1. 删除老版本 Docker $ sudo yum remove docker \ docker-client \ docker-client-latest \ docker-common \ docker-latest \ docker-latest-logrotate \ docker-logrotate \ docker-selinux \ docker-engine-selinux \ docker-engine  2. 安装 Docker CE 的仓库配置 $ sudo yum install -y yum-utils \ device-mapper-persistent-data \ lvm2 $ sudo yum-config-manager \ --add-repo \ https://download.docker.com/linux/centos/docker-ce.repo  3. 安装仓库中最高版本 Docker CE $ sudo yum install -y docker-ce  4. 启动 Docker $ sudo systemctl start docker  5. 验证 Docker 是否安装成功 $ sudo docker run hello-world  使用 Docker 方式安装中文版 Gitlab 目前我的团队习惯使用中文版的 Gitlab 的，并且使用的版本是 beginor/gitlab-ce:10.……
+                                为什么要写这篇文章？ 曾经几年前在 Docker 还没有广泛应用的时候，在公司使用过源码的方式安装和升级过 Gitlab，虽远没有 Docker 方便，因为自己对 Linux 系统的理解，所以整体上感觉还是挺简单的。这几年随着 Docker 的普及，使得安装 Gitlab 更加的容易，不仅方便了我这样的老鸟，也更方便了小白用户们。但是 Gitlab 官方的 Docker 安装文……
                             </div>
                             <p class="readmore"><a href="//thisiswangle.com/posts/2018-12-18-gitlab-docker-install/">阅读全文</a></p>
                         </article>
@@ -133,14 +129,7 @@ JDK 11  Oracle 不在免费提供 LTS 版本了，包括 JDK 8 ZGC, 可伸缩的
                             </div>
                             
                             <div class="post-content">
-                                好久没有写过文字了，前几篇文也是自己从 Google Doc 中摘出来的工作日志，拿来凑凑数，刷新下 Github 的时间线，有点儿不太像话。看看自己书桌上叠起来超过一尺高的新书才知道，想看的还没来得及看完，想学的也还没来得及学会，想做的也没有做得很好，一年就过去了。2017 是我来魔都的第 5 年，回想这 5 年，自己的成长还是很多的，但 2017 这一年，好像与 2016 并没有什么大的不同，这让自己感到很担忧。
-在 2017 年的最后几天，终于离开了自己熟悉的工作环境，从自己的舒适空间加入了一个新的环境，我想这就是改变的开始，一个新的起点。
-2017 是平淡的，可能和未来的每一年也不会有太大差别，尽管我不希望这样。元旦假期这 3 天有空的时候都在回想，但是又想不起有那些特别印象深刻的事情，以至于总结都不太好写下去。我想那不如就回想几个和自己有关系的场景，做一个清单好了：
- Bye 2017 区块链和比特币 人工智能（AI） 物联网大数据 Insurtech 和 Fintech 关于个人职业发展的思考 Hello 2018  Bye 2017 编程语言学习  Golang：完成基本语法学习（官方文档和《Go 语言实战》），可以无障碍阅读 Golang 项目代码（《自己动手写 Java 虚拟机》），并且可手动完成简单 Golang 项目用 Python 重写，主要有 eureka client Kotlin：除协程外，完成官方文档中所有语言部分的学习内容，并使用 kotlin 开发了 2 个项目，其中一个是用 kotlin 重写了 Aprereo CAS 的核心功能 TypeScript：完成基本语法学习，目前没有实际应用的场景，希望从 2018 起，自己在需要写 JavaScript 的地方，全部用 TypeScript 来代替  书籍阅读 阅读量太少，希望在 2018 年里能增大阅读量。
- 技术类  《图说区块链》  严格讲不算技术类书籍  《自己动手写 Java 虚拟机》 《Go 语言实战》 《贝叶斯思维》未读完 《Spark 高级数据分析》未读完 《垃圾回收的算法和实现》未读完 《机器学习》未读完  文艺类
- 《追风筝的人》  今年读到最长的一篇小说， 从作者笔下故事了解了阿富汗的人文历史，很是感动和惊讶。另外就是觉得译者也很厉害，从头读到尾，除了人名，没觉得是在读一本英文翻译过来的书  《灿烂千阳》未读完 《上帝掷骰子吗》  感觉写这本书的作者应该是个天才，搜了一下，很神秘的作者  《乡关何处》  看着也挺有意思的  《野火集》  读晚了，读的大陆删节版，我觉得每一个人都应该读下这本书  《自私的基因》 《创业者的窘境》
- 看完觉得最该读这本书的人应该是我老婆 还有就是身边的亲密好友或同学   《人类简史》未读完
- Kindle 版，用手机看的，亚马逊真牛逼，让我买了一个 kindle 放在家里吃灰    开源技术  计划搭建一个开源物联网平台，还没有想好具体要做的事情，所以没有什么进展 整理了常用的 docker templates，docker 和 python 一样成为自己不可或缺的工具  家庭网络  升级了硬件和软件，让家里无线网络有了更好的覆盖，并且让所有家庭联网设备都可以自由的访问互联网 儿子最喜欢的应用是 Youtube Kids  旅行  5 月份一家三口去了新加坡，见识了金沙的无边泳池 9 月份和老婆去了趟美国西海岸，1 号公路沿线（旧金山洛杉矶往返）自驾 1000 多公里，顺道去硅谷“朝圣”，体验了美式肌肉车 DODGE Charger（3.……
+                                好久没有写过文字了，前几篇文也是自己从 Google Doc 中摘出来的工作日志，拿来凑凑数，刷新下 Github 的时间线，有点儿不太像话。看看自己书桌上叠起来超过一尺高的新书才知道，想看的还没来得及看完，想学的也还没来得及学会，想做的也没有做得很好，一年就过去了。2017 是我来魔都的第 5 年，回想这 5 年，自己的……
                             </div>
                             <p class="readmore"><a href="//thisiswangle.com/posts/2017-12-31-year-end-reviews-of-2017/">阅读全文</a></p>
                         </article>
@@ -163,8 +152,7 @@ JDK 11  Oracle 不在免费提供 LTS 版本了，包括 JDK 8 ZGC, 可伸缩的
                             </div>
                             
                             <div class="post-content">
-                                背景 阿里云云主机两块 100G 的云盘合一个逻辑卷（LV）来使用，单个的 100G 磁盘不够用，需要合在一起使用，并且方便以后扩容
-基本知识  磁盘 /dev/xvdb /dev/xvdc 分区, 使用 fdisk 进行分区 fdisk &gt; n &gt; p &gt; 1..4, 主分区最多只有4个 准备分区后，将分区类型变为 LVM 分区，fdisk &gt; t &gt; 8e, 8e 是 LVM 类型 ID 物理卷（PV），卷组（VG），逻辑卷（LV），从磁盘分区创建 PV，通过 PV 创建 VG 或者把 PV 加入已有的 VG，在 VG 上创建 LV，LV 看起来就是逻辑的上磁盘，使用和真实的磁盘没什么明显区别, 在 LV 上构建文件系统  创建  创建物理卷 pvcreate /dev/xvdb1，对分区进行操作 创建 vg0 卷组 vgcreate vg0 /dev/xvdb1 查看卷组 vgdisplay， 可以看到卷组有多大 在 vg0 上创建 data 逻辑卷 lvcreate -L 99G -n data vg0 或者 lvcreate -l 25556 -n data vg0 创建文件系统 mkfs.ext4 /dev/vg0/data 挂载到系统目录即可使用 mount /dev/vg0/data /mnt 或者在 /etc/fstab 添加一行，然后 mount -a  添加磁盘  创建物理卷 pvcreate /dev/xvdc1，对分区进行操作 添加到 vg0 卷组 vgextend vg0 /dev/xvdc1 扩容逻辑卷 lvextend -L +99G /dev/vg0/data, 可以通过 vgdispaly 查看卷组剩余空间有多少 扩容文件系统 resize2fs /dev/vg0/data, 不需要卸载逻辑卷，可以在线完成扩容  备注 过程中有一块磁盘已经在使用，需要 umount 后再加入 LVM，出现了 device is busy 的情况，系统提示使用 lsof 或者 fuser 查询哪些进程在使用这个磁盘或者目录，最后通过 fuser 查询到进程号后，kill -9 pid 后解决 fuser -m /mnt……
+                                背景 阿里云云主机两块 100G 的云盘合一个逻辑卷（LV）来使用，单个的 100G 磁盘不够用，需要合在一起使用，并且方便以后扩容 基本知识 磁盘 /dev/xvdb /dev/xvdc 分区, 使用 fdisk 进行分区 fdisk &gt; n &gt; p &gt; 1..4, 主分区最多只有4个 准备分区后，将分区类型变为 LVM 分区，fdisk &gt; t &gt; 8e, 8e 是 LVM 类型 ID 物理卷（PV），卷组（VG），逻辑卷（……
                             </div>
                             <p class="readmore"><a href="//thisiswangle.com/posts/2017-08-03-lvm-in-action/">阅读全文</a></p>
                         </article>
@@ -187,14 +175,7 @@ JDK 11  Oracle 不在免费提供 LTS 版本了，包括 JDK 8 ZGC, 可伸缩的
                             </div>
                             
                             <div class="post-content">
-                                 背景 微服务，日志分散且种类多（php/java/python），用 docker 起应用，日志通过卷放在宿主机器指定目录下，服务有众多实例，metrics 数据也不仅相同，无论是日志还是 metrics 数据，都可以看作是时间序列数据
-分散主要表现为：
- 多个主机 多个目录下多个文件 应用开发所使用的技术栈不同日志格式不同 web log（主要是 nginx） 各类事件 一些其它事务性的日志  日志为时间序列数据，包括：
- 系统日志: 各类系统产生的跟业务有关的日志或者与业务无关的日志 web 服务器日志：如 access.log/error.log 等有固定格式的日志 性能监控日志：打点记录各类服务的 metrics(全部为数值类型long/double/bool)  系统日志 由时间戳、一些枚举值以及日志内容(变长字符串)组成
- 日志时间颗粒度：支持毫秒/秒 枚举值包括：  [必选]主机名/host [必选]服务名/service [必选]实例编号/instance [必选]日记级别/level：info/debug/warn/trace/error 等 [可选]异常名/exception: 如果是异常，把异常名作为枚举值记录 [可选]线程名/thread: [可选]方法名/method： [可选]文件名/file： [可选]行号/line：  日志内容(变长字符串): 为实际记录的内容以及异常堆栈信息  web 服务器日志 access log（nginx） 日志内容：主要是文本(string）或者一些系统 metrics 数据(数值类型long/double)
-日志存储和处理：  数据磁带（1周）：kafka 提供热数据检索（1个月）：solr(or lucence based on cassandra) 日志存储（永久）： kariosdb/cassandra: 支持 double/long/string类型，kariosdb 相当于在 cassandra 上面套了一个壳，这样简化了很多时间序列数据处理的操作 数据展示：grafana，官方支持 kariosdb 扩展：数据深度挖掘分析  系统架构 特点：
- 服务现在，面向未来的架构（每层可单独升级或者替换技术栈） 低入侵，原有系统日志不需要改造，使用 flume agent 收集 整个系统无单点，保证可靠性 层次清晰，好扩展，无论 Flume，kafka 还是 cassandra 都方便扩容，存储层使用 kafka 滚动存储数据，cassandra 存储所有日志数据和 metrics 利用现有社区活跃的开源产品构建，除了 kalka 引入了 zk 外，没有其它依赖，整个存储层可以结合现有的资源  其它方案 ELK ELK 技术栈在整体架构上与前面的比较接近（几乎差不多），将会引入数个与目前系统没有太大联系的产品（E/L），前面的架构不仅用于日志的处理，并且可扩展支持处理所有的事件（数据流）处理，更符合目前业务。ELK 优点是拆箱可用，经过一段时间的试用，目前是放弃状态
-其它非 JVM 解决方案没有在考虑范围之类，包括但不限于：  scribe https://github.com/facebookarchive TICK Stack https://www.influxdata.com/time-series-platform/, 比较适合收集服务器和各类服务的 metrics 数据，配合 grafana，可以替代 zabbix 的工作，其中日志存储（output）默认使用 influxdb，influxdb 目前开源只有单机版，但 telegraf 官方支持 output 到 cassandra/kafka/rabbit 等，所以存储也不是问题。前端可以 grafana（支持 kariosdb/influxdb/mysql/opentsdb 等作为数据源）。 rsync 直接同步日志到指定机器，然后在机器上集中处理，使用 mysql/postgresql 等存储日志，目前的量是可以的，但是也需要做不少开发工作  ……
+                                背景 微服务，日志分散且种类多（php/java/python），用 docker 起应用，日志通过卷放在宿主机器指定目录下，服务有众多实例，metrics 数据也不仅相同，无论是日志还是 metrics 数据，都可以看作是时间序列数据 分散主要表现为： 多个主机 多个目录下多个文件 应用开发所使用的技术栈不同日志格式不……
                             </div>
                             <p class="readmore"><a href="//thisiswangle.com/posts/2017-07-23-log-processing-system/">阅读全文</a></p>
                         </article>
@@ -209,15 +190,15 @@ JDK 11  Oracle 不在免费提供 LTS 版本了，包括 JDK 8 ZGC, 可伸缩的
                                 2017年7月15日
                             </date>
                             
+                            <div class="post-meta">
+                                <span>|</span>
+                                
+                                <span class="meta-category"><a href="//thisiswangle.com/categories/Java">Java</a></span>
+                                
+                            </div>
+                            
                             <div class="post-content">
-                                背景 Java 生态下的日志库太多，配置也不同，大多数情况下会使用 SLF4j (又引入了一个库)来抽象日志接口。在使用 Log4j2 后，发现可以不使用 SLF4j 了，并且配置变得更简单，可以使用 lombok 的 log4j2 注解等。
-需要搞清楚
- 如何设置哪些日志要记录下来 日志记录到哪里去  LEVEL 日志级别：  内置（有Fatal）：All &lt; Trace &lt; Debug &lt; Info &lt; Warn &lt; Error &lt; Fatal &lt; OFF 还可以自定义： https://logging.apache.org/log4j/2.0/manual/customloglevels.html  Appender: 日志输出的目的地 内置的目的地有：
- console, files（FIle/RollingFile）, remote socket servers, Apache Flume, JMS, remote UNIX Syslog daemons, various database APIs &hellip;  Appender 在接受到日志以后，可以通过级别过滤选择记录日志，具体配置： https://logging.apache.org/log4j/2.0/manual/appenders.html
-Logger 负责决定哪些日志要记录和发配日志 哪些需要记日志，设置什么级别，并且配置日志输出到哪些个 Appender 中去都在 Logger 中配置。Logger 有类似继承的关系，名为 Root 的的 Logger  为所有 Logger 的根，也就是说没有做特殊设置（additivity=false), 那么这个 Logger 的日志将会记录到自己指定的 Appender，并且也都会记录到自己所有“父” Logger 设置的 Appender 中去
-继承关系由 Logger 的名称推断出来，名称可以认为是 Logger 树的前序遍历打印的节点路径。
-Logger 定义
-   Logger Name 将会记录日志的 Logger     Root Root   X Root, X   X.Y Root, X, Y   X.Z Root, X,Z   M Root, M    Filter 日志过滤器 DENY,ACCEPT,NEUTRAL 三个选项，所有进入当前 Appender 的所有日志，Filter 可以设置来选择日志是否要记录……
+                                背景 Java 生态下的日志库太多，配置也不同，大多数情况下会使用 SLF4j (又引入了一个库)来抽象日志接口。在使用 Log4j2 后，发现可以不使用 SLF4j 了，并且配置变得更简单，可以使用 lombok 的 log4j2 注解等。 需要搞清楚 如何设置哪些日志要记录下来 日志记录到哪里去 LEVEL 日志级别： 内置（有Fatal）：All &lt; Trace &lt; Debug &lt; Info &lt; Warn &lt; Error &lt;……
                             </div>
                             <p class="readmore"><a href="//thisiswangle.com/posts/2017-07-15-log4j2/">阅读全文</a></p>
                         </article>
@@ -235,19 +216,12 @@ Logger 定义
                             <div class="post-meta">
                                 <span>|</span>
                                 
-                                <span class="meta-category"><a href="//thisiswangle.com/categories/MySQL">MySQL</a></span>
+                                <span class="meta-category"><a href="//thisiswangle.com/categories/DevOps">DevOps</a></span>
                                 
                             </div>
                             
                             <div class="post-content">
-                                 背景 目前公司主要服务都是直接使用 MySQL 主服务器，从服务主要给离线数据分析服务使用，由于前期弄得比较简单的粗暴，从服务上还有一两个数据库在做生产使用, 并且从服数据已经不能和主服进行进行同步了，有大量错误，忽略都没有办法进行。此外，主服仅配置了三个核心数据的 binlog，随着业务的变化，其它数据库不能走主从这条路来同步数据，于是希望不停机的情形下重新调整主服配置，记录所有的数据库的 binlog，同时添加新的从服务器来同步数据
-方案1 MySQL 的主从是通过同步 binlog 日志来实现数据同步的，于是需要想办法把从服数据先于主服同步，记录 binlog 的 pos 值，再配置从服从该 pos 处开始同步，考虑可以使用 mysqldump 导出所有 innodb 数据，使用 rsync 同步所有 myisam 数据文件，然后再开启主从同步。但是目前这种方案不适用，主服不能长时间停机
-方案2 使用 xtrabackup 来完成目标
-主从服务器上都需要安装 xtrabackup（实际使用 xtrabackupex）：
-yum install http://www.percona.com/downloads/percona-release/redhat/0.1-4/percona-release-0.1-4.noarch.rpm yum install -y percona-xtrabackup-24  主服： 备份数据 # 注意数据库名称的转义，例如 - 号是 @002d innobackupex --defaults-file=/etc/my.cnf --socket=/var/lib/mysql/mysql.sock --user=root --password=xxxx --parallel=2 --databases=&quot;db1 db2&quot; /data/backup/xtrabackup/  保持事务一致 innobackupex --apply-log /data/backup/xtrabackup/2017-06-06_13-16-21/  同步数据 rsync -avHz 2017-06-06_13-16-21 sysops@cow:/data/backup  从服： 修改 my.cnf 相关配置，恢复备份数据
-# 关闭 MySQL Servier 后恢复数据 innobackupex --defaults-file=/etc/my.cnf --copy-back /data/backup/2017-06-06_13-16-21  修改数据权限
-chown -R mysql.mysql mysql  开启从服，登录 msyql 添加主从配置，并开启同步
- # Master 上执行 GRANT REPLICATION SLAVE ON *.* TO 'repl'@'10.23.9.146' IDENTIFIED BY 'password'; # Slave 上执行 [root@bull data]# cat backup/2018-04-26_21-27-31/xtrabackup_binlog_info mysql-bin.000058 103394265 CHANGE MASTER TO MASTER_HOST='10.4.25.28', MASTER_USER='repl', MASTER_PASSWORD='password', MASTER_PORT=3306, MASTER_LOG_FILE='mysql-bin.000058', MASTER_LOG_POS=103394265;  检查主从状态 show master status; show slave status\G;  参考  percona-xtrabackup wsgzao.github.io/post/xtrabackup  ……
+                                背景 目前公司主要服务都是直接使用 MySQL 主服务器，从服务主要给离线数据分析服务使用，由于前期弄得比较简单的粗暴，从服务上还有一两个数据库在做生产使用, 并且从服数据已经不能和主服进行进行同步了，有大量错误，忽略都没有办法进行。此外，主服仅配置了三个核心数据的 binlog，随着业务的变化，……
                             </div>
                             <p class="readmore"><a href="//thisiswangle.com/posts/2017-06-06-xtrabackup/">阅读全文</a></p>
                         </article>
@@ -270,14 +244,7 @@ chown -R mysql.mysql mysql  开启从服，登录 msyql 添加主从配置，并
                             </div>
                             
                             <div class="post-content">
-                                  政策已变，目前只能办理有效期为 15 天的临牌，并且最多只能办理两次
- 问题 外地户口，上海购车办理机动车(出省)临牌(出省和不出省的临牌办理方法一样,出省临牌有效期是30天，不出省的是15天)
-文档记录状态 可用
-发生时间 2016年01月28日9:00至9:30
-体验得分 90
-办理地点 黄浦公安分局交警支队，地址上海黄浦区陆家浜路88号（地铁4号线南浦大桥站1号出口200米处）
-可办理时间 周一至周六 8:30-17:00
-需要材料  车辆合格证原件和复印件 购车发票原件和复印件 交强险保单原件和复印件 身份证原件和正反面复印件 零钱5元  办理流程记录  进入大厅后跟保安说办理机动车临牌，拿一张《申请办理机动车临时号牌单》，然后坐在椅子上排队并填好临时号牌单 等待办理, 交警会打印两张临牌出来 恭喜你，没有第3步，可以拿着临牌走了  提高效率的小提示  自带黑色签字笔一支 原件和复印件分开成两份  ……
+                                政策已变，目前只能办理有效期为 15 天的临牌，并且最多只能办理两次 问题 外地户口，上海购车办理机动车(出省)临牌(出省和不出省的临牌办理方法一样,出省临牌有效期是30天，不出省的是15天) 文档记录状态 可用 发生时间 2016年01月28日9:00至9:30 体验得分 90 办理地点 黄浦公安分局交警……
                             </div>
                             <p class="readmore"><a href="//thisiswangle.com/posts/2016-01-28-banlinpai/">阅读全文</a></p>
                         </article>
@@ -300,13 +267,7 @@ chown -R mysql.mysql mysql  开启从服，登录 msyql 添加主从配置，并
                             </div>
                             
                             <div class="post-content">
-                                 问题 外地户口＋上海居住证，外地驾照即将到期，需要将外地驾照转入上海并且进行驾照到期换证。
-可用状态 可用
-发生时间 2015年10月15日8:00至10:00
-体验得分 90
-办理地点 车辆管理所三分所，地址浦东新区沪南公路2638 号
-可办理时间 周一至周五 9:00-17:00
-办理流程记录  前往4号楼的3层填表缴费并拍照，缴费需要排队，人较多，费用 25 元 拍好照片并拿到照片和表格后前往4号楼2层填表缴费并体检，缴费需要排队，人较多，费用 60 元  缴完体检费进去之后，需要填表并且贴好照片，体检项都是分开进行，主要体检内容包括视力，听力，身高体重，色盲等检测，其他项都是医生随手填上去的，哪个人少就先去体检哪个。我体检的顺序依次是视力，听力，身高体重，色盲检测。 每项体检完，看下体检表格，看看体检项有没有空的，如果没有就直接去出口处，把表格交上去，然后等报告 拿到体检报告后，直接去1号楼一层大厅门口右手处工作人员拿号，号码那张纸要保存好，最后一步领证还需要使用。  叫号后前往柜台管理，跟工作人员确认下需要办理的内容。我这里是办理转入和到期换证。这里会使用照片一张，工作人员会提供剪刀。办理过程大约需要5分钟 前往缴费处缴费，注意看下缴费窗口的号码，缴费处在大厅另外一侧，费用 10 元 前往发证处等待叫号领证  提高效率的小提示  8点30之前到达4号楼3层排队, 尽管 9 点才开始 自带黑色签字笔一支 身份证复印件和居住证复印件各一份  ……
+                                问题 外地户口＋上海居住证，外地驾照即将到期，需要将外地驾照转入上海并且进行驾照到期换证。 可用状态 可用 发生时间 2015年10月15日8:00至10:00 体验得分 90 办理地点 车辆管理所三分所，地址浦东新区沪南公路2638 号 可办理时间 周一至周五 9:00-17:00 办理流程记录 前往4号楼的3层填表缴费并拍照……
                             </div>
                             <p class="readmore"><a href="//thisiswangle.com/posts/2015-10-15-huanzheng/">阅读全文</a></p>
                         </article>
@@ -324,30 +285,12 @@ chown -R mysql.mysql mysql  开启从服，登录 msyql 添加主从配置，并
                             <div class="post-meta">
                                 <span>|</span>
                                 
-                                <span class="meta-category"><a href="//thisiswangle.com/categories/Sysops">Sysops</a></span>
+                                <span class="meta-category"><a href="//thisiswangle.com/categories/DevOps">DevOps</a></span>
                                 
                             </div>
                             
                             <div class="post-content">
-                                这是一篇译文，原文链接：Tuning NGINX for Performance
- Nginx 为人熟知的是在负载均衡、静态缓存和 WEB 服务器等方面的高性能，目前世界上最繁忙的站点中大约有 40% 在使用 Nginx。绝大多数情况下，大多数默认的 Nginx 和 Linux 配置都可以工作得非常好，但也需要做一些优化以获得最好的性能。本文将讨论在优化系统时需要考虑的 Nginx 和 Linux 的部分配置。可配置的选项有很多，但是本文只涵盖推荐大多数用户调整的配置选项。本文没有涵盖的配置选项，只有那些对 Nginx 和 Linux 有了深入的理解的人或者获得了 Nginx 技术支持和专业的服务团队的推荐建议后，才可以考虑调整。Nginx 专业服务器团队已经为世界上一些最繁忙的站点通过优化 Nginx 获得了最高水平的性能，并且可以为任何需要获得自己系统最大产出的客户服务。
-简介 本文假设读者对 Nginx 架构和配置的概念已有了基本的了解。Nginx 的文档内容将不会在本文中重复，但本文会提供各项配置简要的介绍和相关文档的链接。
-在性能调优时，要遵循一个好的规则：一次只修改一个配置选项，如果这个修改没有在性能方面带来优化，那么要再改回默认值。
-我们从 Linux 性能优化的讨论开始，因为 Linux 性能优化的一些值会影响到 Nginx 的一些配置。
-Linux 配置 尽管现代 Linux 内核（2.6+）在各种配置情况下都工作得很好，但也有一些配置是想要修改的。如果操作系统的配置设置的太低，那内核日志将会有错误信息，从而得知哪些配置需要调整。Linux 性能优化可能涉及的配置有很多，这里我们只讨论那些优化达到正常工作负载最有可能涉及到的那些配置。调整这些配置请参考详细的 Linux 文档。
-Backlog 队列 下面的配置选项与网络连接和其排队方法直接相关。如果连入率很高（译者注：客户端发起的连接很多）且系统性能配置不匹配，例如一些连接表现得有所停顿，那么修改下面得配置将可能有用。
- net.core.somaxconn: 设置等待 Nginx 接受的连接队列的大小。由于 Nginx 接受连接非常的快，这个值通常情况下不用设置得很大，但系统默认值可能比较小，所以对于流量比较大的站点，增大这个值是个不错的想法。如果这个值太小，在内核日志中应该会看到错误消息，那么就需要增大这个值，直到错误消失。注意：若将这个值设置为大于 512 的话，那么需要在 Nginx 配置中修改 listen 指令的 backlog 参数来匹配这个数字。
- net.core.netdev_max_backlog: 设置数据包在被发送到 CPU 前可被网卡缓存的速率。对于带宽很大的机器来说，这个值需要增大。可以查阅网卡关于这项设置的建议文档或者查看内核日志中此项设置相关的错误。
-  文件描述符 文件描述符是用于处理例如连接和打开的文件等的操作系统资源。Nginx 在一个连接中使用文件描述符可以达到两个，例如 Nginx 做代理，那文件描述符一个用于客户端连接，另外一个用于代理服务器，但如果开启 HTTP 保持连接，那这个比例将会很低。对于一个连接数量很大很大的系统来说，这个值可能需要调整：
- sys.fs.file_max: 文件描述符的系统级限制。
- nofile: 文件描述符用户级限制，可以在 /etc/security/limits.conf 文件中修改。
-  临时端口范围(Ephemeral ports) 当 Nginx 用作代理，每一个到后端服务器的连接都会短暂的、临时的使用一个端口。
- net.ipv4.ip_local_port_range: 设置端口启始范围。如果观察到端口耗尽，那么需要增大这个范围。通常的端口范围设置是 1024 到 65000。
- net.ipv4.tcp_fin_timeout: 设置端口停止使用后可再次被其它连接使用所需要的时间。通常默认值是 60 秒，但通常减少到 30 秒或者 15 秒都是安全的
-  Nginx 配置 下面是一些影响系统性能的 Nginx 指令。前面已经说过，本文只讨论一些推荐给大多数人调整的指令。其它没有提到的任何指令，若没有 Nginx 团队的建议，推荐不要修改。
-工作进程 Nginx 可以运行多个工作进程，每一个都可以处理大量的连接。通过下面的指令可以控制运行工作进程的数量和每个进程处理连接的数量：
- worker_processes:控制 Nginx 运行工作进程的数量。多数情况下，每一个 CPU 核运行一个工作进程的方式可以很好的工作。可以通过设置指令的值为 &ldquo;auto&rdquo; 来达到这个效果。但也有需要增大这个数字的时候，例如工作进程需要做很多的磁盘 IO 操作。默认值是 1。
- worker_connections:这个值表示每一个工作进程可以同时处理连接的最大数目。默认是 512，但是大多数系统可以处理一个大得多的数字。这个值应该被设置成多少依赖与服务器的大小和网络流量的特征。通过具体的测试可以找到具体的值。……
+                                这是一篇译文，原文链接：Tuning NGINX for Performance Nginx 为人熟知的是在负载均衡、静态缓存和 WEB 服务器等方面的高性能，目前世界上最繁忙的站点中大约有 40% 在使用 Nginx。绝大多数情况下，大多数默认的 Nginx 和 Linux 配置都可以工作得非常好，但也需要做一些优化以获得最好的性能。本文将讨论在优化系统时需要考虑的 Nginx……
                             </div>
                             <p class="readmore"><a href="//thisiswangle.com/posts/2014-10-16-tuning-nginx/">阅读全文</a></p>
                         </article>
@@ -394,7 +337,7 @@ Backlog 队列 下面的配置选项与网络连接和其排队方法直接相�
         <form id="search" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
       
       <input type="text" name="q" maxlength="20" placeholder="Search">
-      <input type="hidden" name="sitesearch" value="//thisiswangle.com">
+      <input type="hidden" name="sitesearch" value="//thisiswangle.com/">
       <button type="submit" class="submit icon-search"></button>
 </form>
     </section>
@@ -453,31 +396,39 @@ Backlog 队列 下面的配置选项与网络连接和其排队方法直接相�
 <ul class="widget-list">
     
     <li>
-        <a href="//thisiswangle.com/categories/Docker/">Docker(1)</a>
+        <a href="//thisiswangle.com/categories/Coding/">Coding(2)</a>
     </li>
     
     <li>
-        <a href="//thisiswangle.com/categories/Java/">Java(1)</a>
+        <a href="//thisiswangle.com/categories/DevOps/">DevOps(8)</a>
     </li>
     
     <li>
-        <a href="//thisiswangle.com/categories/Linux/">Linux(2)</a>
+        <a href="//thisiswangle.com/categories/Github/">Github(1)</a>
     </li>
     
     <li>
-        <a href="//thisiswangle.com/categories/MySQL/">MySQL(1)</a>
+        <a href="//thisiswangle.com/categories/Java/">Java(2)</a>
     </li>
     
     <li>
-        <a href="//thisiswangle.com/categories/Sysops/">Sysops(1)</a>
+        <a href="//thisiswangle.com/categories/Linux/">Linux(1)</a>
     </li>
     
     <li>
-        <a href="//thisiswangle.com/categories/%E6%80%BB%E7%BB%93/">总结(3)</a>
+        <a href="//thisiswangle.com/categories/%E6%80%BB%E7%BB%93/">总结(6)</a>
+    </li>
+    
+    <li>
+        <a href="//thisiswangle.com/categories/%E6%84%9F%E6%82%9F/">感悟(9)</a>
     </li>
     
     <li>
         <a href="//thisiswangle.com/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/">系统架构(1)</a>
+    </li>
+    
+    <li>
+        <a href="//thisiswangle.com/categories/%E8%B6%A3%E8%B0%88/">趣谈(1)</a>
     </li>
     
 </ul>
@@ -510,8 +461,6 @@ Backlog 队列 下面的配置选项与网络连接和其排队方法直接相�
     <a href="//thisiswangle.com/tags/MySQL/">MySQL</a>
     
     <a href="//thisiswangle.com/tags/Nginx/">Nginx</a>
-    
-    <a href="//thisiswangle.com/tags/Review/">Review</a>
     
     <a href="//thisiswangle.com/tags/SSH/">SSH</a>
     
@@ -621,7 +570,7 @@ Backlog 队列 下面的配置选项与网络连接和其排队方法直接相�
 </div>
 <footer id="footer">
     <div class="container">
-        &copy; 2018 <a href="//thisiswangle.com">小码哥的技术干货 By 小码哥</a>.
+        &copy; 2019 <a href="//thisiswangle.com/">小码哥的技术干货 By 小码哥</a>.
         Powered by <a rel="nofollow noreferer noopener" href="https://gohugo.io" target="_blank">Hugo</a>.
         
     </div>

@@ -17,13 +17,7 @@
       <pubDate>Thu, 22 Mar 2012 00:40:00 +0000</pubDate>
       
       <guid>//thisiswangle.com/posts/2012-03-22-a-short-discuss-of-SimpleXML-of-php/</guid>
-      <description>前一篇帖子使用了xpath，后来了解到xpath的性能可能比较差，而且在遇到有命名空间的时候还有点小麻烦。这里都已豆瓣提供的API返回的xml为例。豆瓣返回的xml不是rss格式的，而是Atom格式，有很多的命名空间，如果习惯于操作rss格式的xml，那么可以直接把xml里面的命名空间的字符串都replace掉，这个方法貌似很简单很暴力，就不会遇到命名空间的问题了。
-从豆瓣API开始，点击这个链接 http://api.douban.com/book/subjects?q=java 你就可以看到xml格式，由于返回的是Atom格式的xml，浏览器会自动帮你解析，所以应该这样
-# 这样就可以得到一个java.xml文件。 $ wget -O java.xml http://api.douban.com/book/subjects?q=java  这样就可以得到一个 java.xml 文件，接下来使用 SimplePHP 处理这个文件。
-首先要创建一个SimpleXML对象
-//$content为xml的内容 $xml = new SimpleXMLElement($content);  现在要获取opensearch命名空间下的totalResults节点的文本，代码如下：
-$children = $xml-&amp;gt;children(&#39;http://a9.com/-/spec/opensearchrss/1.0/&#39;); $totalResults = $children-&amp;gt;totalResults;  处理所有xml文档中所有的entry节点
-//处理所有找到的记录 $entries = $xml-&amp;gt;entry; foreach($entries as $entry){ //取命名空间下的孩子节点 $entryChildren = $entry-&amp;gt;children(&#39;http://www.douban.com/xmlns/&#39;); //... }  好了，这里只是抛砖引玉，其它具体的操作还得参考 SimpleXML 的文档。</description>
+      <description>前一篇帖子使用了xpath，后来了解到xpath的性能可能比较差，而且在遇到有命名空间的时候还有点小麻烦。这里都已豆瓣提供的API返回的xml为例。豆瓣返回的xml不是rss格式的，而是Atom格式，有很多的命名空间，如果习惯于操作rss格式的xml，那么可以直接把xml里面的命</description>
     </item>
     
     <item>
@@ -32,14 +26,7 @@ $children = $xml-&amp;gt;children(&#39;http://a9.com/-/spec/opensearchrss/1.0/&#
       <pubDate>Thu, 01 Dec 2011 13:09:00 +0000</pubDate>
       
       <guid>//thisiswangle.com/posts/2011-12-01-how-to-use-simplexml-of-php/</guid>
-      <description>这几天没心情看论文，于是开始写写摆摊网的代码。摆摊主要做高校二手书籍信息的分享，于是需要从豆瓣上获取图书信息，豆瓣提供了一个完整的xml来描述一本书，例如http://api.douban.com/book/subject/isbn/9787543639136，于是需要处理这个xml来获取相应信息，这里小码哥采用的是直接使用xpath来获取xml文档中相应的信息。摆摊使用了sae，于是使用SimpleXML来处理xml，加上自己还只是PHP的初学者，于是出现了一些问题。
-这里是一些学习资料：
- xpath:http://www.w3school.com.cn/xpath/ simplexml:http://cn2.php.net/manual/en/simplexmlelement.xpath.php  新建SimpleXMLElement对象，xml文件内容在$content中
-$bookFromDouban = new SimpleXMLElement($content);  直接查询，在命名空间db下的所有attribute，且有name属性，以下xpath查询是没有问题的，
-$result = $bookFromDouban-&amp;gt;xpath(&amp;quot;//db:attribute[@name]&amp;quot;);  但是，这条查询就有问题了，如下，
-$result = $bookFromDouban-&amp;gt;xpath(&amp;quot;//link[@rel=&#39;self&#39;]|//link[@rel=&#39;image&#39;]&amp;quot;);  上面的代码表示在默认的命名空间里面查询link节点，但是在php 5.0以上却不能查出数据。需要这样操作
-//获取这个xml的所有的命名空间 $namespaces = $bookFromDouban-&amp;gt;getNamespaces(); //注册默认的命名空间为&#39;d&#39; $bookFromDouban-&amp;gt;registerXPathNamespace(&#39;d&#39;, $namespaces[&#39;&#39;]); //现在这个查询就ok了 $result = $bookFromDouban-&amp;gt;xpath(&amp;quot;//d:link[@rel=&#39;self&#39;]|//d:link[@rel=&#39;image&#39;]&amp;quot;);  对$result遍历就简单了，这里也给出一个简单的例子，遍历完，变量就初始化了。PS：代码写的不优雅，欢迎拍砖。
-translator = array(); $author = array(); $i = $j = 0; foreach($result as $item) { foreach($item-&amp;gt;attributes() as $val) { $val = str_replace(&#39;-&#39;,&#39;_&#39;,$val); if($val == &#39;author&#39;) { $author[$i++] = &#39;&#39;.$item; } else if($val == &#39;translator&#39;) translator[$j++] = &#39;&#39;.$item; else $$val = $item; } }  </description>
+      <description>这几天没心情看论文，于是开始写写摆摊网的代码。摆摊主要做高校二手书籍信息的分享，于是需要从豆瓣上获取图书信息，豆瓣提供了一个完整的xml来描述一本书，例如http://api.douban.com/book/subject/isbn/9787543639136，于是需要处理这个x</description>
     </item>
     
     <item>
@@ -48,10 +35,7 @@ translator = array(); $author = array(); $i = $j = 0; foreach($result as $item) 
       <pubDate>Mon, 07 Nov 2011 00:40:00 +0000</pubDate>
       
       <guid>//thisiswangle.com/posts/2011-11-07-design-of-baigetan/</guid>
-      <description>从泰山回来这几天，抽得空把摆摊网的页面做了出来，包括css和html的编写等，现在可以从baitan.sinaapp.com看到页面效果了，目前兼容ie8、ff、chrome、safari等。
-baitan001.com也在备案之中，应该很快就可以使用baitan001.com域名访问了。
-有同学想练习js，php等web技术的，不妨联系我，我肯定能让你参与进来！
-我是小码哥</description>
+      <description>从泰山回来这几天，抽得空把摆摊网的页面做了出来，包括css和html的编写等，现在可以从baitan.sinaapp.com看到页面效果了，目前兼容ie8、ff、chrome、safari等。 baitan001.com也在备案之中，应该很快就可以使用baitan001.com域名</description>
     </item>
     
   </channel>

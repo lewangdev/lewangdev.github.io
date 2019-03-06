@@ -39,7 +39,7 @@
         <div class="col-group">
             <div class="site-name ">
                 
-                    <a id="logo" href="//thisiswangle.com">
+                    <a id="logo" href="//thisiswangle.com/">
                         小码哥的技术干货
                     </a>
                 
@@ -47,7 +47,7 @@
             </div>
             <div>
                 <nav id="nav-menu" class="clearfix">
-                    <a class="" href="//thisiswangle.com">首页</a>
+                    <a class="" href="//thisiswangle.com/">首页</a>
                     
                     <a  href="//thisiswangle.com/archives/" title="归档">归档</a>
                     
@@ -85,13 +85,15 @@
                                 2011年12月1日
                             </date>
                             
+                            <div class="post-meta meta-category">
+                                |
+                                
+                                    <a href="//thisiswangle.com/categories/Coding">Coding</a>
+                                
+                            </div>
+                            
                             <div class="post-content">
-                                最近在为摆摊写点前端 js 的时候，在使用 jquery 的 $.ajax()这个方法的时候，当datatype设置为json时，总是不执行success回调，而是执行error回调。而将datatype设置成text，就可以执行success回调了，摆摊使用的是jQuery JavaScript Library v1.6.2，查看jQuery文档可知：
- “json”: Evaluates the response as JSON and returns a JavaScript object. In jQuery 1.4 the JSON data is parsed in a strict manner; any malformed JSON is rejected and a parse error is thrown. (See json.org for more information on proper JSON formatting.)
- 我用php产生的字符串是
-{‘isbn’:'ISBN号码格式不正确，应为10位或者13位的字符串’}  很明显，json.org规则使用的是双引号，而不是单引号，jQuery1.4 以后都要求更为严格的 json 格式
-对于以上单引号的字符串，可以使用datatype为text，然后使用
-//content = {‘isbn’:'ISBN号码格式不正确，应为10位或者13位的字符串’} var json = eval(‘(‘+ content +’)')  ……
+                                最近在为摆摊写点前端 js 的时候，在使用 jquery 的 $.ajax()这个方法的时候，当datatype设置为json时，总是不执行success回调，而是执行error回调。而将datatype设置成text，就可以执行success回调了，摆摊使用的是jQuery JavaScript Library v1.6.2，查看jQ……
                                 <p class="readmore"><a href="//thisiswangle.com/posts/2011-12-01-when-datatype-is-json/">阅读全文</a></p>
                             </div>
                         </article>
@@ -110,7 +112,7 @@
         <form id="search" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
       
       <input type="text" name="q" maxlength="20" placeholder="Search">
-      <input type="hidden" name="sitesearch" value="//thisiswangle.com">
+      <input type="hidden" name="sitesearch" value="//thisiswangle.com/">
       <button type="submit" class="submit icon-search"></button>
 </form>
     </section>
@@ -169,31 +171,39 @@
 <ul class="widget-list">
     
     <li>
-        <a href="//thisiswangle.com/categories/Docker/">Docker(1)</a>
+        <a href="//thisiswangle.com/categories/Coding/">Coding(2)</a>
     </li>
     
     <li>
-        <a href="//thisiswangle.com/categories/Java/">Java(1)</a>
+        <a href="//thisiswangle.com/categories/DevOps/">DevOps(8)</a>
     </li>
     
     <li>
-        <a href="//thisiswangle.com/categories/Linux/">Linux(2)</a>
+        <a href="//thisiswangle.com/categories/Github/">Github(1)</a>
     </li>
     
     <li>
-        <a href="//thisiswangle.com/categories/MySQL/">MySQL(1)</a>
+        <a href="//thisiswangle.com/categories/Java/">Java(2)</a>
     </li>
     
     <li>
-        <a href="//thisiswangle.com/categories/Sysops/">Sysops(1)</a>
+        <a href="//thisiswangle.com/categories/Linux/">Linux(1)</a>
     </li>
     
     <li>
-        <a href="//thisiswangle.com/categories/%E6%80%BB%E7%BB%93/">总结(3)</a>
+        <a href="//thisiswangle.com/categories/%E6%80%BB%E7%BB%93/">总结(6)</a>
+    </li>
+    
+    <li>
+        <a href="//thisiswangle.com/categories/%E6%84%9F%E6%82%9F/">感悟(9)</a>
     </li>
     
     <li>
         <a href="//thisiswangle.com/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/">系统架构(1)</a>
+    </li>
+    
+    <li>
+        <a href="//thisiswangle.com/categories/%E8%B6%A3%E8%B0%88/">趣谈(1)</a>
     </li>
     
 </ul>
@@ -226,8 +236,6 @@
     <a href="//thisiswangle.com/tags/MySQL/">MySQL</a>
     
     <a href="//thisiswangle.com/tags/Nginx/">Nginx</a>
-    
-    <a href="//thisiswangle.com/tags/Review/">Review</a>
     
     <a href="//thisiswangle.com/tags/SSH/">SSH</a>
     
@@ -337,7 +345,7 @@
 </div>
 <footer id="footer">
     <div class="container">
-        &copy; 2018 <a href="//thisiswangle.com">小码哥的技术干货 By 小码哥</a>.
+        &copy; 2019 <a href="//thisiswangle.com/">小码哥的技术干货 By 小码哥</a>.
         Powered by <a rel="nofollow noreferer noopener" href="https://gohugo.io" target="_blank">Hugo</a>.
         
     </div>

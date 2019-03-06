@@ -39,7 +39,7 @@
         <div class="col-group">
             <div class="site-name ">
                 
-                    <a id="logo" href="//thisiswangle.com">
+                    <a id="logo" href="//thisiswangle.com/">
                         小码哥的技术干货
                     </a>
                 
@@ -47,7 +47,7 @@
             </div>
             <div>
                 <nav id="nav-menu" class="clearfix">
-                    <a class="" href="//thisiswangle.com">首页</a>
+                    <a class="" href="//thisiswangle.com/">首页</a>
                     
                     <a  href="//thisiswangle.com/archives/" title="归档">归档</a>
                     
@@ -93,9 +93,31 @@
                             </div>
                             
                             <div class="post-content">
-                                [填坑]自己学习 Java 和用 Java 过程中的理解和备忘的主要的点, 后续会准备一些列文章来说明。
-JDK 11  Oracle 不在免费提供 LTS 版本了，包括 JDK 8 ZGC, 可伸缩的、低延迟的垃圾收集器，STW 时间不超过 10ms Nashorn 标记为 Deprecate 了  JDK 9  module try-catch 简化 _ 为保留关键字 var 将在 JDK 10 中作为关键字, 作为本地变量类型推断关键字 字符串相关，主要是 Compact String, 用 byte[] 替换了 char[], char 在 Java 中占两个字节 G1 作为默认垃圾回收器  JVM  启动 JVM 相关的命令行参数 G1 垃圾回收器  内存  JVM(Hotspot) 内存结构 制造各种 OutOfMemery 和 StackOverflow 各种 JVM 相关工具(jstat/jmap/jstack/jps 等) 解决 FullGC 的问题 引用：WeakRefrence/PhantomReference/SoftRefrence/FinalRefrence 等 ClassLoader/URLClassLoader Spring Boot 的 ClassLoader 自定义 ClassLoader  多线程和并发  JVM 的线程模型 1:1 协程 创建线程的方法 线程同步 synchronzied/对象锁/类锁/锁方法/锁锁代码块 线程池 锁相关（Lock 接口和实现类） Condition volatile ThreadLocal 用途和实现 并发（CAS/乐观锁/无锁/无等待/无阻塞）  字节码  基本结构 操作字节码的工具 Javassist/ASM AOP  集合  Collection,List,ArrayList,Vector,LinkedList, SkipList, Stack Queue HashMap/HashTable HashMap 扩容死循环问题 LinkedHashMap TreeMap HashSet,TreeSet WeakHashMap 并发相关的集合  ConcurrentHashMap CopyOnWriteArrayList   IO  IO 模型 NIO Non-blocking IO Java 8 IO 相关的接口和类 Netty Vert.……
+                                [填坑]自己学习 Java 和用 Java 过程中的理解和备忘的主要的点, 后续会准备一些列文章来说明。 JDK 11 Oracle 不在免费提供 LTS 版本了，包括 JDK 8 ZGC, 可伸缩的、低延迟的垃圾收集器，STW 时间不超过 10ms Nashorn 标记为 Deprecate 了 JDK 9 module try-catch 简化 _ 为保留关键字 var 将在 JDK 10 中作为关键字, 作为本地变量类型推断关键字 字符串相关，主要是 Compact String, 用……
                                 <p class="readmore"><a href="//thisiswangle.com/posts/2019-03-06-keynotes-of-new-java/">阅读全文</a></p>
+                            </div>
+                        </article>
+                    
+                        <article class="post">
+                            <header>
+                                <h1 class="post-title">
+                                    <a href="//thisiswangle.com/posts/2017-07-15-log4j2/">Log4j2 快速入门</a>
+                                </h1>
+                            </header>
+                            <date class="post-meta meta-date">
+                                2017年7月15日
+                            </date>
+                            
+                            <div class="post-meta meta-category">
+                                |
+                                
+                                    <a href="//thisiswangle.com/categories/Java">Java</a>
+                                
+                            </div>
+                            
+                            <div class="post-content">
+                                背景 Java 生态下的日志库太多，配置也不同，大多数情况下会使用 SLF4j (又引入了一个库)来抽象日志接口。在使用 Log4j2 后，发现可以不使用 SLF4j 了，并且配置变得更简单，可以使用 lombok 的 log4j2 注解等。 需要搞清楚 如何设置哪些日志要记录下来 日志记录到哪里去 LEVEL 日志级别： 内置（有Fatal）：All &lt; Trace &lt; Debug &lt; Info &lt; Warn &lt; Error &lt;……
+                                <p class="readmore"><a href="//thisiswangle.com/posts/2017-07-15-log4j2/">阅读全文</a></p>
                             </div>
                         </article>
                     
@@ -113,7 +135,7 @@ JDK 11  Oracle 不在免费提供 LTS 版本了，包括 JDK 8 ZGC, 可伸缩的
         <form id="search" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
       
       <input type="text" name="q" maxlength="20" placeholder="Search">
-      <input type="hidden" name="sitesearch" value="//thisiswangle.com">
+      <input type="hidden" name="sitesearch" value="//thisiswangle.com/">
       <button type="submit" class="submit icon-search"></button>
 </form>
     </section>
@@ -172,31 +194,39 @@ JDK 11  Oracle 不在免费提供 LTS 版本了，包括 JDK 8 ZGC, 可伸缩的
 <ul class="widget-list">
     
     <li>
-        <a href="//thisiswangle.com/categories/Docker/">Docker(1)</a>
+        <a href="//thisiswangle.com/categories/Coding/">Coding(2)</a>
     </li>
     
     <li>
-        <a href="//thisiswangle.com/categories/Java/">Java(1)</a>
+        <a href="//thisiswangle.com/categories/DevOps/">DevOps(8)</a>
     </li>
     
     <li>
-        <a href="//thisiswangle.com/categories/Linux/">Linux(2)</a>
+        <a href="//thisiswangle.com/categories/Github/">Github(1)</a>
     </li>
     
     <li>
-        <a href="//thisiswangle.com/categories/MySQL/">MySQL(1)</a>
+        <a href="//thisiswangle.com/categories/Java/">Java(2)</a>
     </li>
     
     <li>
-        <a href="//thisiswangle.com/categories/Sysops/">Sysops(1)</a>
+        <a href="//thisiswangle.com/categories/Linux/">Linux(1)</a>
     </li>
     
     <li>
-        <a href="//thisiswangle.com/categories/%E6%80%BB%E7%BB%93/">总结(3)</a>
+        <a href="//thisiswangle.com/categories/%E6%80%BB%E7%BB%93/">总结(6)</a>
+    </li>
+    
+    <li>
+        <a href="//thisiswangle.com/categories/%E6%84%9F%E6%82%9F/">感悟(9)</a>
     </li>
     
     <li>
         <a href="//thisiswangle.com/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/">系统架构(1)</a>
+    </li>
+    
+    <li>
+        <a href="//thisiswangle.com/categories/%E8%B6%A3%E8%B0%88/">趣谈(1)</a>
     </li>
     
 </ul>
@@ -229,8 +259,6 @@ JDK 11  Oracle 不在免费提供 LTS 版本了，包括 JDK 8 ZGC, 可伸缩的
     <a href="//thisiswangle.com/tags/MySQL/">MySQL</a>
     
     <a href="//thisiswangle.com/tags/Nginx/">Nginx</a>
-    
-    <a href="//thisiswangle.com/tags/Review/">Review</a>
     
     <a href="//thisiswangle.com/tags/SSH/">SSH</a>
     
@@ -340,7 +368,7 @@ JDK 11  Oracle 不在免费提供 LTS 版本了，包括 JDK 8 ZGC, 可伸缩的
 </div>
 <footer id="footer">
     <div class="container">
-        &copy; 2018 <a href="//thisiswangle.com">小码哥的技术干货 By 小码哥</a>.
+        &copy; 2019 <a href="//thisiswangle.com/">小码哥的技术干货 By 小码哥</a>.
         Powered by <a rel="nofollow noreferer noopener" href="https://gohugo.io" target="_blank">Hugo</a>.
         
     </div>

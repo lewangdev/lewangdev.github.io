@@ -709,6 +709,11 @@ img.alignright {
     text-align: center;
     width: 100%;
 }
+.info404 .post-archive {
+    text-align: left;
+    width: 50%;
+    margin: 40px auto;
+}
 #footer404{
     margin-top:30px;
 }

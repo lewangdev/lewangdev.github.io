@@ -168,24 +168,6 @@
   </url>
   
   <url>
-    <loc>//thisiswangle.com/tags/ajax/</loc>
-    <lastmod>2011-12-01T00:40:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>//thisiswangle.com/tags/aliyun/</loc>
-    <lastmod>2013-08-09T00:40:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>//thisiswangle.com/tags/blog/</loc>
-    <lastmod>2014-05-06T22:51:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>//thisiswangle.com/tags/CDN/</loc>
     <lastmod>2014-03-06T00:40:00+00:00</lastmod>
     <priority>0</priority>
@@ -194,12 +176,6 @@
   <url>
     <loc>//thisiswangle.com/tags/Cassandra/</loc>
     <lastmod>2017-07-23T22:30:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>//thisiswangle.com/tags/catcat/</loc>
-    <lastmod>2014-05-06T22:51:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -221,12 +197,6 @@
   </url>
   
   <url>
-    <loc>//thisiswangle.com/tags/database/</loc>
-    <lastmod>2011-11-07T00:40:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>//thisiswangle.com/categories/DevOps/</loc>
     <lastmod>2018-12-18T23:25:20+00:00</lastmod>
     <priority>0</priority>
@@ -235,6 +205,120 @@
   <url>
     <loc>//thisiswangle.com/tags/Docker/</loc>
     <lastmod>2018-12-18T23:25:20+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>//thisiswangle.com/tags/Flume/</loc>
+    <lastmod>2017-07-23T22:30:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>//thisiswangle.com/categories/Github/</loc>
+    <lastmod>2014-05-06T22:51:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>//thisiswangle.com/tags/Gitlab/</loc>
+    <lastmod>2018-12-18T23:25:20+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>//thisiswangle.com/tags/Java/</loc>
+    <lastmod>2019-03-06T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>//thisiswangle.com/categories/Java/</loc>
+    <lastmod>2019-03-06T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>//thisiswangle.com/tags/Kafka/</loc>
+    <lastmod>2017-07-23T22:30:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>//thisiswangle.com/tags/Linux/</loc>
+    <lastmod>2018-12-18T23:25:20+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>//thisiswangle.com/categories/Linux/</loc>
+    <lastmod>2017-08-03T23:55:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>//thisiswangle.com/tags/Log4j2/</loc>
+    <lastmod>2017-07-15T23:31:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>//thisiswangle.com/tags/MySQL/</loc>
+    <lastmod>2017-06-06T12:15:07+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>//thisiswangle.com/tags/Nginx/</loc>
+    <lastmod>2014-10-16T15:27:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>//thisiswangle.com/posts/</loc>
+    <lastmod>2019-03-06T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>//thisiswangle.com/tags/SSH/</loc>
+    <lastmod>2018-12-18T23:25:20+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>//thisiswangle.com/tags/</loc>
+    <lastmod>2014-03-06T00:40:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>//thisiswangle.com/tags/ajax/</loc>
+    <lastmod>2011-12-01T00:40:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>//thisiswangle.com/tags/aliyun/</loc>
+    <lastmod>2013-08-09T00:40:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>//thisiswangle.com/tags/blog/</loc>
+    <lastmod>2014-05-06T22:51:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>//thisiswangle.com/tags/catcat/</loc>
+    <lastmod>2014-05-06T22:51:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>//thisiswangle.com/tags/database/</loc>
+    <lastmod>2011-11-07T00:40:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -257,44 +341,14 @@
   </url>
   
   <url>
-    <loc>//thisiswangle.com/tags/Flume/</loc>
-    <lastmod>2017-07-23T22:30:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>//thisiswangle.com/categories/Github/</loc>
-    <lastmod>2014-05-06T22:51:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>//thisiswangle.com/tags/github/</loc>
     <lastmod>2014-05-06T22:51:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>//thisiswangle.com/tags/Gitlab/</loc>
-    <lastmod>2018-12-18T23:25:20+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>//thisiswangle.com/tags/idea/</loc>
     <lastmod>2012-03-13T00:40:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>//thisiswangle.com/categories/Java/</loc>
-    <lastmod>2019-03-06T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>//thisiswangle.com/tags/Java/</loc>
-    <lastmod>2019-03-06T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -311,44 +365,8 @@
   </url>
   
   <url>
-    <loc>//thisiswangle.com/tags/Kafka/</loc>
-    <lastmod>2017-07-23T22:30:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>//thisiswangle.com/categories/Linux/</loc>
-    <lastmod>2017-08-03T23:55:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>//thisiswangle.com/tags/Linux/</loc>
-    <lastmod>2018-12-18T23:25:20+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>//thisiswangle.com/tags/Log4j2/</loc>
-    <lastmod>2017-07-15T23:31:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>//thisiswangle.com/tags/lvm/</loc>
     <lastmod>2017-08-03T23:55:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>//thisiswangle.com/tags/MySQL/</loc>
-    <lastmod>2017-06-06T12:15:07+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>//thisiswangle.com/tags/Nginx/</loc>
-    <lastmod>2014-10-16T15:27:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -371,12 +389,6 @@
   </url>
   
   <url>
-    <loc>//thisiswangle.com/posts/</loc>
-    <lastmod>2019-03-06T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>//thisiswangle.com/tags/python/</loc>
     <lastmod>2014-03-02T21:16:00+00:00</lastmod>
     <priority>0</priority>
@@ -391,18 +403,6 @@
   <url>
     <loc>//thisiswangle.com/tags/resize2fs/</loc>
     <lastmod>2017-08-03T23:55:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>//thisiswangle.com/tags/SSH/</loc>
-    <lastmod>2018-12-18T23:25:20+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>//thisiswangle.com/tags/</loc>
-    <lastmod>2011-12-01T00:40:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -513,14 +513,14 @@
   </url>
   
   <url>
-    <loc>//thisiswangle.com/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/</loc>
-    <lastmod>2017-07-23T22:30:00+00:00</lastmod>
+    <loc>//thisiswangle.com/tags/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/</loc>
+    <lastmod>2011-10-21T13:11:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>//thisiswangle.com/tags/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/</loc>
-    <lastmod>2011-10-21T13:11:00+00:00</lastmod>
+    <loc>//thisiswangle.com/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/</loc>
+    <lastmod>2017-07-23T22:30:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   

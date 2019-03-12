@@ -3,7 +3,7 @@
 <head>
 
     <meta charset="utf-8">
-    <meta name="generator" content="Hugo 0.40.1" />
+    <meta name="generator" content="Hugo 0.54.0" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -88,9 +88,11 @@
                         
                         <div class="post-content">
                             
+                            
                             <p class="warning">
                                 本文写于 6 个月之前，如果这是一篇关于计算机技术的文章，那本文内容很有可能已经过期了。
                             </p>
+                            
                             
                             <p>这几天没心情看论文，于是开始写写摆摊网的代码。摆摊主要做高校二手书籍信息的分享，于是需要从豆瓣上获取图书信息，豆瓣提供了一个完整的xml来描述一本书，例如<a href="http://api.douban.com/book/subject/isbn/9787543639136">http://api.douban.com/book/subject/isbn/9787543639136</a>，于是需要处理这个xml来获取相应信息，这里小码哥采用的是直接使用xpath来获取xml文档中相应的信息。摆摊使用了sae，于是使用SimpleXML来处理xml，加上自己还只是PHP的初学者，于是出现了一些问题。</p>
 
@@ -468,12 +470,16 @@ foreach($result as $item)
 <a id="rocket" href="#top"></a>
 <script type="text/javascript" src="/js/totop.js?v=0.0.0" async=""></script>
 
-<script>
-window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-ga('create', 'UA-21746661-5', 'auto');
-ga('send', 'pageview');
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-21746661-5', 'auto');
+	
+	ga('send', 'pageview');
+}
 </script>
-<script async src='//www.google-analytics.com/analytics.js'></script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
 
 
 

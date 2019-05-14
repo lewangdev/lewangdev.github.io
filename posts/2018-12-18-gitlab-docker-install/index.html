@@ -3,12 +3,12 @@
 <head>
 
     <meta charset="utf-8">
-    <meta name="generator" content="Hugo 0.54.0" />
+    <meta name="generator" content="Hugo 0.55.3" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>使用 Docker 方式安装 Gitlab，没你想得那么简单 | 小码哥的干货</title>
-    <meta property="og:title" content="使用 Docker 方式安装 Gitlab，没你想得那么简单 - 小码哥的干货">
+    <title>使用 Docker 方式安装 Gitlab，没你想得那么简单 | 小碼哥的干貨</title>
+    <meta property="og:title" content="使用 Docker 方式安装 Gitlab，没你想得那么简单 - 小碼哥的干貨">
     <meta property="og:type" content="article">
         
     <meta property="article:published_time" content="2018-12-18T23:25:20&#43;08:00">
@@ -19,7 +19,7 @@
     <meta name="Keywords" content="IoT, 物联网, 智能硬件，工业互联网方案，智能家居, 智慧工厂, 智慧建筑, Golang, Java, JVM, Python, 树莓派, Linux 玩家，果粉，系统架构，技术管理">
     <meta name="description" content="使用 Docker 方式安装 Gitlab，没你想得那么简单">
         
-    <meta name="author" content="小码哥">
+    <meta name="author" content="小碼哥">
     <meta property="og:url" content="//thisiswangle.com/posts/2018-12-18-gitlab-docker-install/">
     
     <link rel="shortcut icon" href="/favicon.ico">
@@ -58,7 +58,7 @@
             <div class="site-name ">
                 
                     <a id="logo" href="//thisiswangle.com/">
-                       <img src="/images/logo.png" alt="小码哥的干货">
+                       <img src="/images/logo.png" alt="小碼哥的干貨">
                     </a>
                 
                 <p class="description">Work hard, Play harder</p>
@@ -171,7 +171,7 @@ $ sudo yum-config-manager \
 
 <p>目前我的团队习惯使用中文版的 Gitlab 的，并且使用的版本是 <code>beginor/gitlab-ce:10.3.1-ce.0</code>，所以还是以这个版本来说明安装配置过程。</p>
 
-<p>在起动 Gitlab 之前，创建几个目录作为 Docker 的卷，这样的配置或者升级 gitlab 的时候可以保留配置和数据。</p>
+<p>在启动 Gitlab 之前，创建几个目录作为 Docker 的卷，这样的配置或者升级 gitlab 的时候可以保留配置和数据。</p>
 
 <pre><code class="language-sh">$ sudo mkdir -p /data/var/lib/gitlab/etc
 $ sudo mkdir -p /data/var/lib/gitlab/log
@@ -260,9 +260,9 @@ $ sudo docker run \
 
 <p>下面来讲如何解决这两个问题。</p>
 
-<h2 id="使用-宿主机器上的-nginx-配置-http-和-https">使用宿主机器上的 Nginx 配置 HTTP 和 HTTPS</h2>
+<h2 id="使用宿主机器上的-nginx-配置-http-和-https">使用宿主机器上的 Nginx 配置 HTTP 和 HTTPS</h2>
 
-<p>使用宿主机器上的 Nginx 使得我们安装 Gitlab 更加灵活。先停用 Gitlab 容器中的 HTTPS 服务, 需要这样改写配置文件, 需要编辑
+<p>使用宿主机器上的 Nginx 使得我们安装 Gitlab 更加灵活。先停用 Gitlab 容器中的 HTTPS 服务, 需要这样改写配置文件, 需要编辑
 <code>/data/var/lib/gitlab/etc/gitlab.rb</code> 文件相应的行，<a href="https://docs.gitlab.com/omnibus/settings/nginx.html#using-a-non-bundled-web-server">具体配置可以参考这里</a></p>
 
 <pre><code class="language-ruby">external_url &quot;https://gitlab.example.com&quot;
@@ -675,7 +675,7 @@ gitlab_rails['smtp_domain'] = &quot;exmail.qq.com&quot;
 </div>
 <footer id="footer">
     <div class="container">
-        &copy; 2019 <a href="//thisiswangle.com/">小码哥的干货 By 小码哥</a>.
+        &copy; 2019 <a href="//thisiswangle.com/">小碼哥的干貨 By 小碼哥</a>.
         Powered by <a rel="nofollow noreferer noopener" href="https://gohugo.io" target="_blank">Hugo</a>.
         
     </div>

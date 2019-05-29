@@ -82,6 +82,29 @@
                         <article class="post">
                             <header>
                                 <h1 class="post-title">
+                                    <a href="//thisiswangle.com/posts/2019-05-29-centos7-pyenv-install-python-3/" title="CentOS 7 上使用 pyenv 安装 Python 3.7.3" >CentOS 7 上使用 pyenv 安装 Python 3.7.3</a>
+                                </h1>
+                            </header>
+                            <date class="post-meta meta-date">
+                                2019年5月29日
+                            </date>
+                            
+                            <div class="post-meta">
+                                <span>|</span>
+                                
+                                <span class="meta-category"><a href="//thisiswangle.com/categories/DevOps">DevOps</a></span>
+                                
+                            </div>
+                            
+                            <div class="post-content">
+                                概要 本文记录了在 CentOS 7.6 系统上通过 pyenv 安装 Python 3.7.3 的过程。 环境 CentOS Linux release 7.6.1810 (Core) Kernel 3 3.10.0-957.el7.x86_64 Pyenv 1.2.11 安装 pyenv $ curl https://pyenv.run | bash 然后根据提示把以下内容放到 ~/.bashrc 文件末尾 # Load pyenv automatically by adding # the following to ~/.bashrc: export PATH=&quot;/root/.pyenv/bin:$PATH&quot; eval &quot;$(pyenv init -)&quot; eval &quot;$(pyenv virtualenv-init -)&quot; 安装 Python 3.7.3 准备 $ sudo yum -y install xz bzip2 bzip2-devel sqlite-devel gcc openssl-devel readline-devel zlib-devel libffi-devel 安装 pyenv install 3.7.3 验证 $ pyenv versions * system (set by /root/.pyenv/version) 3.7.3 参考 https://github.com/pyenv/pyenv/issues/1183 https://github.com/pyenv/pyenv-installer https://github.com/pyenv/pyenv……
+                            </div>
+                            <p class="readmore"><a href="//thisiswangle.com/posts/2019-05-29-centos7-pyenv-install-python-3/">阅读全文</a></p>
+                        </article>
+                    
+                        <article class="post">
+                            <header>
+                                <h1 class="post-title">
                                     <a href="//thisiswangle.com/posts/2019-03-06-keynotes-of-new-java/" title="Java 进阶要点" >Java 进阶要点</a>
                                 </h1>
                             </header>
@@ -286,29 +309,6 @@
                             <p class="readmore"><a href="//thisiswangle.com/posts/2015-10-15-huanzheng/">阅读全文</a></p>
                         </article>
                     
-                        <article class="post">
-                            <header>
-                                <h1 class="post-title">
-                                    <a href="//thisiswangle.com/posts/2014-10-16-tuning-nginx/" title="Nginx 性能调优「译」" >Nginx 性能调优「译」</a>
-                                </h1>
-                            </header>
-                            <date class="post-meta meta-date">
-                                2014年10月16日
-                            </date>
-                            
-                            <div class="post-meta">
-                                <span>|</span>
-                                
-                                <span class="meta-category"><a href="//thisiswangle.com/categories/DevOps">DevOps</a></span>
-                                
-                            </div>
-                            
-                            <div class="post-content">
-                                这是一篇译文，原文链接：Tuning NGINX for Performance Nginx 为人熟知的是在负载均衡、静态缓存和 WEB 服务器等方面的高性能，目前世界上最繁忙的站点中大约有 40% 在使用 Nginx。绝大多数情况下，大多数默认的 Nginx 和 Linux 配置都可以工作得非常好，但也需要做一些优化以获得最好的性能。本文将讨论在优化系统时需要考虑的 Nginx……
-                            </div>
-                            <p class="readmore"><a href="//thisiswangle.com/posts/2014-10-16-tuning-nginx/">阅读全文</a></p>
-                        </article>
-                    
 
                     
 
@@ -361,6 +361,10 @@
 <ul class="widget-list">
     
     <li>
+        <a href="//thisiswangle.com/posts/2019-05-29-centos7-pyenv-install-python-3/" title="CentOS 7 上使用 pyenv 安装 Python 3.7.3">CentOS 7 上使用 pyenv 安装 Python 3.7.3</a>
+    </li>
+    
+    <li>
         <a href="//thisiswangle.com/posts/2019-03-06-keynotes-of-new-java/" title="Java 进阶要点">Java 进阶要点</a>
     </li>
     
@@ -396,10 +400,6 @@
         <a href="//thisiswangle.com/posts/2015-10-15-huanzheng/" title="驾照转入换证">驾照转入换证</a>
     </li>
     
-    <li>
-        <a href="//thisiswangle.com/posts/2014-10-16-tuning-nginx/" title="Nginx 性能调优「译」">Nginx 性能调优「译」</a>
-    </li>
-    
 </ul>
     </section>
 
@@ -414,7 +414,7 @@
     </li>
     
     <li>
-        <a href="//thisiswangle.com/categories/DevOps/">DevOps(8)</a>
+        <a href="//thisiswangle.com/categories/DevOps/">DevOps(9)</a>
     </li>
     
     <li>
@@ -475,6 +475,10 @@
     <a href="//thisiswangle.com/tags/MySQL/">MySQL</a>
     
     <a href="//thisiswangle.com/tags/Nginx/">Nginx</a>
+    
+    <a href="//thisiswangle.com/tags/Pyenv/">Pyenv</a>
+    
+    <a href="//thisiswangle.com/tags/Python/">Python</a>
     
     <a href="//thisiswangle.com/tags/SSH/">SSH</a>
     

@@ -6,10 +6,19 @@
     <description>Recent content in Categories on 小碼哥的干貨</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Wed, 06 Mar 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 29 May 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="//thisiswangle.com/categories/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>DevOps</title>
+      <link>//thisiswangle.com/categories/DevOps/</link>
+      <pubDate>Wed, 29 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>//thisiswangle.com/categories/DevOps/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Java</title>
@@ -17,15 +26,6 @@
       <pubDate>Wed, 06 Mar 2019 00:00:00 +0000</pubDate>
       
       <guid>//thisiswangle.com/categories/Java/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>DevOps</title>
-      <link>//thisiswangle.com/categories/DevOps/</link>
-      <pubDate>Tue, 18 Dec 2018 23:25:20 +0000</pubDate>
-      
-      <guid>//thisiswangle.com/categories/DevOps/</guid>
       <description></description>
     </item>
     

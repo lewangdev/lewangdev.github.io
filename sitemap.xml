@@ -4,6 +4,65 @@
   
   <url>
     <loc>//thisiswangle.com/categories/</loc>
+    <lastmod>2019-05-29T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>//thisiswangle.com/posts/2019-05-29-centos7-pyenv-install-python-3/</loc>
+    <lastmod>2019-05-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>//thisiswangle.com/categories/DevOps/</loc>
+    <lastmod>2019-05-29T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>//thisiswangle.com/tags/Linux/</loc>
+    <lastmod>2019-05-29T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>//thisiswangle.com/posts/</loc>
+    <lastmod>2019-05-29T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>//thisiswangle.com/tags/Pyenv/</loc>
+    <lastmod>2019-05-29T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>//thisiswangle.com/tags/Python/</loc>
+    <lastmod>2019-05-29T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>//thisiswangle.com/tags/SSH/</loc>
+    <lastmod>2019-05-29T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>//thisiswangle.com/tags/</loc>
+    <lastmod>2019-05-29T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>//thisiswangle.com/</loc>
+    <lastmod>2019-05-29T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>//thisiswangle.com/tags/Java/</loc>
     <lastmod>2019-03-06T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
@@ -15,38 +74,8 @@
   </url>
   
   <url>
-    <loc>//thisiswangle.com/tags/Java/</loc>
-    <lastmod>2019-03-06T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>//thisiswangle.com/posts/2019-03-06-keynotes-of-new-java/</loc>
     <lastmod>2019-03-06T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>//thisiswangle.com/posts/</loc>
-    <lastmod>2019-03-06T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>//thisiswangle.com/tags/</loc>
-    <lastmod>2019-03-06T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>//thisiswangle.com/</loc>
-    <lastmod>2019-03-06T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>//thisiswangle.com/categories/DevOps/</loc>
-    <lastmod>2018-12-18T23:25:20+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -57,18 +86,6 @@
   
   <url>
     <loc>//thisiswangle.com/tags/Gitlab/</loc>
-    <lastmod>2018-12-18T23:25:20+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>//thisiswangle.com/tags/Linux/</loc>
-    <lastmod>2018-12-18T23:25:20+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>//thisiswangle.com/tags/SSH/</loc>
     <lastmod>2018-12-18T23:25:20+00:00</lastmod>
     <priority>0</priority>
   </url>

@@ -6,10 +6,19 @@
     <description>Recent content in Linux on 小碼哥的干貨</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Tue, 18 Dec 2018 23:25:20 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 29 May 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="//thisiswangle.com/tags/Linux/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>CentOS 7 上使用 pyenv 安装 Python 3.7.3</title>
+      <link>//thisiswangle.com/posts/2019-05-29-centos7-pyenv-install-python-3/</link>
+      <pubDate>Wed, 29 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>//thisiswangle.com/posts/2019-05-29-centos7-pyenv-install-python-3/</guid>
+      <description>概要 本文记录了在 CentOS 7.6 系统上通过 pyenv 安装 Python 3.7.3 的过程。 环境 CentOS Linux release 7.6.1810 (Core) Kernel 3 3.10.0-957.el7.x86_64 Pyenv 1.2.11 安装 pyenv $ curl https://pyenv.run | bash 然后根据提示把以下内容放到 ~/.bashrc 文件末尾 # Load pyenv automatically by adding # the following to ~/.bashrc: export PATH=&amp;quot;/root/.pyenv/bin:$PATH&amp;quot; eval &amp;quot;$(pyenv init -)&amp;quot; eval &amp;quot;$(pyenv virtualenv-init -)&amp;quot; 安装 Python 3.7.3 准备 $ sudo yum -y install xz bzip2 bzip2-devel sqlite-devel gcc openssl-devel readline-devel zlib-devel libffi-devel 安装 pyenv install 3.7.3 验证 $ pyenv versions * system (set by /root/.pyenv/version) 3.7.3 参考 https://github.com/pyenv/pyenv/issues/1183 https://github.com/pyenv/pyenv-installer https://github.com/pyenv/pyenv</description>
+    </item>
     
     <item>
       <title>使用 Docker 方式安装 Gitlab，没你想得那么简单</title>

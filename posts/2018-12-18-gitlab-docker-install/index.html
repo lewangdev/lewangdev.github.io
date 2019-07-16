@@ -360,21 +360,22 @@ gitlab_rails['smtp_domain'] = &quot;exmail.qq.com&quot;
 <p>添加丰富的标准，方便进行项目管理。修改 <code>issues_labels.rb</code> 文件</p>
 
 <pre><code class="language-ruby">labels = [
-  {&quot;title&quot;: &quot;优先级:低&quot;, &quot;color&quot;: &quot;#E99695&quot;, &quot;description&quot;: &quot;低优先级&quot;},
-  {&quot;title&quot;: &quot;优先级:紧急&quot;, &quot;color&quot;: &quot;#E99695&quot;, &quot;description&quot;: &quot;需要立即处理&quot;},
-  {&quot;title&quot;: &quot;优先级:高&quot;, &quot;color&quot;: &quot;#E99695&quot;, &quot;description&quot;: &quot;优先处理&quot;},
-  {&quot;title&quot;: &quot;分类:BUG&quot;, &quot;color&quot;: &quot;#D4C5F9&quot;, &quot;description&quot;: &quot;发现的BUG&quot;},
-  {&quot;title&quot;: &quot;分类:功能增强&quot;, &quot;color&quot;: &quot;#D4C5F9&quot;, &quot;description&quot;: &quot;增强已有的功能，属于优化的环节&quot;},
-  {&quot;title&quot;: &quot;分类:功能完善&quot;, &quot;color&quot;: &quot;#D4C5F9&quot;, &quot;description&quot;: &quot;完善功能&quot;},
-  {&quot;title&quot;: &quot;分类:文档修改&quot;, &quot;color&quot;: &quot;#D4C5F9&quot;, &quot;description&quot;: &quot;只是做文档修改&quot;},
-  {&quot;title&quot;: &quot;分类:新功能&quot;, &quot;color&quot;: &quot;#D4C5F9&quot;, &quot;description&quot;: &quot;新的功能和需求&quot;},
-  {&quot;title&quot;: &quot;项目:已上线&quot;, &quot;color&quot;: &quot;#C5DEF5&quot;, &quot;description&quot;: &quot;已发布上线&quot;},
-  {&quot;title&quot;: &quot;项目:已排期&quot;, &quot;color&quot;: &quot;#C5DEF5&quot;, &quot;description&quot;: &quot;已经安排了开发时间milestone&quot;},
-  {&quot;title&quot;: &quot;项目:已确认&quot;, &quot;color&quot;: &quot;#C5DEF5&quot;, &quot;description&quot;: &quot;功能已经确认，后续进行排期&quot;},
-  {&quot;title&quot;: &quot;项目:延后&quot;, &quot;color&quot;: &quot;#C5DEF5&quot;, &quot;description&quot;: &quot;功能无法确定是否开发，延期处理&quot;},
-  {&quot;title&quot;: &quot;项目:开发中&quot;, &quot;color&quot;: &quot;#C5DEF5&quot;, &quot;description&quot;: &quot;功能正在开发&quot;},
-  {&quot;title&quot;: &quot;项目:待讨论&quot;, &quot;color&quot;: &quot;#C5DEF5&quot;, &quot;description&quot;: &quot;需求已经提出，但是需要讨论是否需要开发&quot;},
-  {&quot;title&quot;: &quot;项目:测试中&quot;, &quot;color&quot;: &quot;#C5DEF5&quot;, &quot;description&quot;: &quot;功能已经完成开发，正在测试&quot;}
+{&quot;title&quot;: &quot;优先级:P1(低)&quot;, &quot;color&quot;: &quot;#E99695&quot;, &quot;description&quot;: &quot;暂不处理&quot;},
+{&quot;title&quot;: &quot;优先级:P2(中)&quot;, &quot;color&quot;: &quot;#E99695&quot;, &quot;description&quot;: &quot;有时间再处理&quot;},
+{&quot;title&quot;: &quot;优先级:P3(高)&quot;, &quot;color&quot;: &quot;#E99695&quot;, &quot;description&quot;: &quot;优先处理&quot;},
+{&quot;title&quot;: &quot;优先级:P4(紧急)&quot;, &quot;color&quot;: &quot;#E99695&quot;, &quot;description&quot;: &quot;立即处理&quot;},
+{&quot;title&quot;: &quot;分类:BUG&quot;, &quot;color&quot;: &quot;#D4C5F9&quot;, &quot;description&quot;: &quot;发现的BUG&quot;},
+{&quot;title&quot;: &quot;分类:功能增强&quot;, &quot;color&quot;: &quot;#D4C5F9&quot;, &quot;description&quot;: &quot;增强已有的功能，属于优化的环节&quot;},
+{&quot;title&quot;: &quot;分类:功能完善&quot;, &quot;color&quot;: &quot;#D4C5F9&quot;, &quot;description&quot;: &quot;完善功能&quot;},
+{&quot;title&quot;: &quot;分类:文档修改&quot;, &quot;color&quot;: &quot;#D4C5F9&quot;, &quot;description&quot;: &quot;只是做文档修改&quot;},
+{&quot;title&quot;: &quot;分类:新功能&quot;, &quot;color&quot;: &quot;#D4C5F9&quot;, &quot;description&quot;: &quot;新的功能和需求&quot;},
+{&quot;title&quot;: &quot;项目:已上线&quot;, &quot;color&quot;: &quot;#C5DEF5&quot;, &quot;description&quot;: &quot;已发布上线&quot;},
+{&quot;title&quot;: &quot;项目:已排期&quot;, &quot;color&quot;: &quot;#C5DEF5&quot;, &quot;description&quot;: &quot;已经安排了开发时间milestone&quot;},
+{&quot;title&quot;: &quot;项目:已确认&quot;, &quot;color&quot;: &quot;#C5DEF5&quot;, &quot;description&quot;: &quot;功能已经确认，后续进行排期&quot;},
+{&quot;title&quot;: &quot;项目:延后&quot;, &quot;color&quot;: &quot;#C5DEF5&quot;, &quot;description&quot;: &quot;功能无法确定是否开发，延期处理&quot;},
+{&quot;title&quot;: &quot;项目:开发中&quot;, &quot;color&quot;: &quot;#C5DEF5&quot;, &quot;description&quot;: &quot;功能正在开发&quot;},
+{&quot;title&quot;: &quot;项目:待讨论&quot;, &quot;color&quot;: &quot;#C5DEF5&quot;, &quot;description&quot;: &quot;需求已经提出，但是需要讨论是否需要开发&quot;},
+{&quot;title&quot;: &quot;项目:测试中&quot;, &quot;color&quot;: &quot;#C5DEF5&quot;, &quot;description&quot;: &quot;功能已经完成开发，正在测试&quot;}
 ]
 </code></pre>
 

@@ -7,16 +7,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>系统架构 | 小碼哥的干貨</title>
-    <meta property="og:title" content="系统架构 - 小碼哥的干貨">
+    <title>如何修改 Linux 用户的 UID 和组的 GID | 小碼哥的干貨</title>
+    <meta property="og:title" content="如何修改 Linux 用户的 UID 和组的 GID - 小碼哥的干貨">
     <meta property="og:type" content="article">
         
+    <meta property="article:published_time" content="2019-07-16T00:00:00&#43;08:00">
+        
+        
+    <meta property="article:modified_time" content="2019-07-16T00:00:00&#43;08:00">
         
     <meta name="Keywords" content="IoT, 物联网, 智能硬件，工业互联网方案，智能家居, 智慧工厂, 智慧建筑, Golang, Java, JVM, Python, 树莓派, Linux 玩家，果粉，系统架构，技术管理">
-    <meta name="description" content="系统架构">
+    <meta name="description" content="如何修改 Linux 用户的 UID 和组的 GID">
         
     <meta name="author" content="小碼哥">
-    <meta property="og:url" content="//thisiswangle.com/tags/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/">
+    <meta property="og:url" content="//thisiswangle.com/posts/2019-07-16-change-uid-gid-in-linux/">
     
     <link rel="shortcut icon" href="/favicon.ico">
 
@@ -35,8 +39,9 @@
 
     <link rel="stylesheet" href="/css/normalize.css">
     
+        <link rel="stylesheet" href="/css/prism.css">
+    
     <link rel="stylesheet" href="/css/style.css">
-    <link rel="alternate" type="application/rss+xml+xml" href="//thisiswangle.com/tags/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/index.xml" title="小碼哥的干貨" />
     <script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
 
     
@@ -45,7 +50,6 @@
     
     
 </head>
-
 
 <body>
 <header id="header" class="clearfix">
@@ -80,47 +84,146 @@
 
             <div class="col-8" id="main">
                 <div class="res-cons">
-                    
-                    <h3 class="archive-title">
-                        包含标签
-                        <span class="keyword">系统架构</span>
-                        的文章
-                    </h3>
-                    
-
-                    
-                        <article class="post">
-                            <header>
-                                <h1 class="post-title">
-                                    <a href="//thisiswangle.com/posts/2011-10-21-process-of-baigetan/">摆摊的一些进展</a>
-                                </h1>
-                            </header>
-                            <date class="post-meta meta-date">
-                                2011年10月21日
-                            </date>
+                    <article class="post">
+                        <header>
+                            <h1 class="post-title">如何修改 Linux 用户的 UID 和组的 GID</h1>
+                        </header>
+                        <date class="post-meta meta-date">
+                            2019年7月16日
+                        </date>
+                        
+                        <div class="post-meta">
+                            <span>|</span>
                             
-                            <div class="post-meta meta-category">
-                                |
-                                
-                                    <a href="//thisiswangle.com/categories/%E6%84%9F%E6%82%9F">感悟</a>
-                                
-                            </div>
+                                <span class="meta-category"><a href="//thisiswangle.com/categories/%E6%AF%8F%E6%97%A5%E6%8A%80%E5%B7%A7">每日技巧</a></span>
                             
-                            <div class="post-content">
-                                这段时间都在进行密集的笔试面试，但还是没有停下摆摊网的开发进程。目前摆摊网已经由吴江川同学设计好了产品的原型，我也在原型的基础上做好了全部页面的设计工作，接下来就是开始后台逻辑的开发。 目前后台数据库部分已经设计完毕。 加油！ 我是小码哥……
-                                <p class="readmore"><a href="//thisiswangle.com/posts/2011-10-21-process-of-baigetan/">阅读全文</a></p>
-                            </div>
-                        </article>
+                        </div>
+                        
+                        
+                        <div class="post-content">
+                            
+                            
+                            
+                            
+
+<h2 id="问题">问题</h2>
+
+<p>在使用 Docker 或者 NFS 的时候，需要文件系统挂在到不同的系统中拥有正确的读写权限，需要指定文件所属用户和组的 uid 和 gid。在创建用户和组的时候，系统会自动分配对应的值，这导致在不同的系统中很容易造成 uid 和 gid 不一样而造成读写权限混乱。</p>
+
+<p>例如在系统 A 中，用户 git 的 uid 和组 git 的gid 如下:</p>
+
+<pre><code class="language-shell">[sysops@cn-bj-aliyun-3 ~]$ id git
+uid=1001(git) gid=1001(git) groups=1001(git)
+</code></pre>
+
+<p>而系统 B 中的值如下:</p>
+
+<pre><code class="language-shell">[sysops@cn-bj-aliyun-3 ~]$ id git
+uid=998(git) gid=998(git) groups=998(git)
+</code></pre>
+
+<p>我们在系统 A 以 git 用户创建目录或者文件:</p>
+
+<pre><code class="language-shell">[git@cn-bj-aliyun-3 data]$ ls -lh
+total 60K
+-rw-r--r-- 1 git git  100 Jul  5 23:22 file1
+-rw-r--r-- 1 git git  400 Dec 18  2018 file2
+-rw-r--r-- 1 git git  349 Dec 18  2018 file3
+</code></pre>
+
+<p>将这个目录挂在到 B 系统中时，将会出现这种情况:</p>
+
+<pre><code class="language-shell">[git@cn-bj-aliyun-3 data]$ ls -lh
+total 60K
+-rw-r--r-- 1 1001 1001  100 Jul  5 23:22 file1
+-rw-r--r-- 1 1001 1001  400 Dec 18  2018 file2
+-rw-r--r-- 1 1001 1001  349 Dec 18  2018 file3
+</code></pre>
+
+<p>这样就会导致在 B 系统中文件权限混乱，因为 B 系统中没有对应 uid 和 gid 的用户和组。接下来我们来修改 uid 和 gid，以下以修改系统 A 中的 git 为例。</p>
+
+<h1 id="修改命令">修改命令</h1>
+
+<h3 id="修改-uid">修改 UID</h3>
+
+<pre><code class="language-shell">sudo usermod -u 998 git
+</code></pre>
+
+<h3 id="修改文件的所属用户">修改文件的所属用户</h3>
+
+<pre><code class="language-shell">find / -user 1001 -exec chown -h git {} \;
+</code></pre>
+
+<h3 id="修改-gid">修改 GID</h3>
+
+<pre><code class="language-shell">sudo groupmod -g 998 git
+</code></pre>
+
+<h3 id="修改文件的所属用户-1">修改文件的所属用户</h3>
+
+<pre><code class="language-shell">find / -group 1001 -exec chgrp -h git {} \;
+</code></pre>
+
+<h3 id="其它说明">其它说明</h3>
+
+<p>另外在修改之前可以查看 <code>/etc/passwd</code> 和 <code>/etc/group</code> 文件，以便选取一个没有被使用的 uid 和 gid</p>
+
+                            <p>(完)</p>
+                            
+                            <blockquote>
+                                <p>本文为原创文章，转载需注明出处，欢迎扫码关注公众号<code>小码哥的干货</code>或者网站 <a href="https://thisiswangle.com">https://thisiswangle.com</a>，第一时间看后续精彩文章。觉得好的话，顺手分享到朋友圈吧，感谢支持。</p>
+                            </blockquote>
+                            <p><img src="/images/qrcode_for_weixin.jpeg" alt="扫码关注"></p>
+                            
+                        </div>
+
+                        
+
+<div class="post-archive">
+    <h2>See Also</h2>
+    <ul class="listing">
+        
+        <li><a href="/posts/2019-05-29-centos7-pyenv-install-python-3/">CentOS 7 上使用 pyenv 安装 Python 3.7.3</a></li>
+        
+        <li><a href="/posts/2018-12-18-gitlab-docker-install/">使用 Docker 方式安装 Gitlab，没你想得那么简单</a></li>
+        
+        <li><a href="/posts/2017-08-03-lvm-in-action/">LVM 实战记录</a></li>
+        
+        <li><a href="/posts/2014-10-16-tuning-nginx/">Nginx 性能调优「译」</a></li>
+        
+        <li><a href="/posts/2013-03-04-so-load-path-in-linux/">Linux 共享库（动态链接库）相关的一些记录</a></li>
+        
+    </ul>
+</div>
+
+
+                        <div class="post-meta meta-tags">
+                            
+                            <ul class="clearfix">
+                                
+                                <li><a href="//thisiswangle.com/tags/Linux">Linux</a></li>
+                                
+                            </ul>
+                            
+                        </div>
+                    </article>
                     
+    
 
-                    
-
-
-
-
+    
+    
+    <div class="post bg-white">
+      <script src="https://utteranc.es/client.js"
+            repo= "thisiswangle/thisiswangle.github.io"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+      </script>
+    </div>
+    
                 </div>
             </div>
-
             <div id="secondary">
     <section class="widget">
         <form id="search" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
@@ -374,6 +477,22 @@
 </footer>
 
 
+    <script type="text/javascript">
+    
+    (function(){
+        $("pre code").parent().addClass("line-numbers")
+    }())
+
+    window.MathJax = {
+        tex2jax: {
+            inlineMath: [ ['$','$'] ],
+            processEscapes: true
+        }
+    };
+    </script>
+    <script type="text/javascript" src="/js/prism.js" async="true"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
 <a id="rocket" href="#top"></a>
 <script type="text/javascript" src="/js/totop.js?v=0.0.0" async=""></script>
 
@@ -387,7 +506,6 @@ if (!doNotTrack) {
 }
 </script>
 <script async src='https://www.google-analytics.com/analytics.js'></script>
-
 
 
 

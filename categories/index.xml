@@ -6,10 +6,19 @@
     <description>Recent content in Categories on 小碼哥的干貨</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Wed, 29 May 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 16 Jul 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="//thisiswangle.com/categories/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>每日技巧</title>
+      <link>//thisiswangle.com/categories/%E6%AF%8F%E6%97%A5%E6%8A%80%E5%B7%A7/</link>
+      <pubDate>Tue, 16 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>//thisiswangle.com/categories/%E6%AF%8F%E6%97%A5%E6%8A%80%E5%B7%A7/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>DevOps</title>

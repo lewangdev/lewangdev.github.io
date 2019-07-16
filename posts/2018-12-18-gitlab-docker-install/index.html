@@ -112,7 +112,8 @@
 
 <h2 id="为什么要写这篇文章">为什么要写这篇文章？</h2>
 
-<p>曾经几年前在 Docker 还没有广泛应用的时候，在公司使用过源码的方式安装和升级过 Gitlab，虽远没有 Docker 方便，因为自己对 Linux 系统的理解，所以整体上感觉还是挺简单的。这几年随着 Docker 的普及，使得安装 Gitlab 更加的容易，不仅方便了我这样的老鸟，也更方便了小白用户们。但是 Gitlab 官方的 <a href="https://docs.gitlab.com/omnibus/docker/">Docker 安装文档</a>并没有写得很完善, 除了官方文档之外，检索出来的安装文档也是人云亦云，东拼西凑，结果也就是能运行起来，凑合着能用而已。</p>
+<p>曾经几年前在 Docker 还没有广泛应用的时候，在公司使用过源码的方式安装和升级过 Gitlab，虽远没有 Docker 方便，因为自己对 Linux 系统的理解，所以整体上感觉还是挺简单的。这几年随着 Docker 的普及，使得安装 Gitlab 更加的容易，不仅方便了我这样的老鸟，也更方便了小白用户们。但是 Gitlab 官方的 <a href="https://docs.gitlab.com/omnibus/docker/">Docker 安装文档</a>并没有写得很完善,
+除了官方文档之外，检索出来的安装文档也是人云亦云，东拼西凑，结果也就是能运行起来，凑合着能用而已。避免出现下图中“我已经用 Docker 部署好啦”，其实已经翻车的情形。</p>
 
 <p><img src="/images/posts/docker-deployment.jpeg" alt="docker-deployment" /></p>
 
@@ -282,17 +283,17 @@ nginx['listen_https'] = false
 
 <p>Gitlab Docker 镜像中默认使用的 SSH 账户是 git，那能不能在宿主机器上也建一个账户 git，只是当 git 帐号进行操作的时候，我们转发命令到 gitlab 容器呢？答案是肯定的，宿主机器上非 git 帐号就不受影响了，还可以正常使用。</p>
 
-<p>我们在宿主机器上创建 git 账户，并且获取他的 uid 和 gid</p>
+<p>我们在宿主机器上创建 git 账户，并且使他的 uid 和 gid 和容器中的值完全一样，Gitlab 容器中 uid 和 gid 都是 998, 修改宿主机器中的值，将便于未来容器的升级。</p>
 
 <pre><code class="language-sh">adduser git
 id git
-uid=1001(git) gid=1001(git) groups=1001(git)
+uid=998(git) gid=998(git) groups=998(git)
 </code></pre>
 
-<p>要完成共享22端口，要求 gitlab 容器中的 git 账户的 uid 和 gid 和宿主机器上完全相同，这样读取 SSH Key 时就不会有权限问题。关于如何修改两个系统中 git 账户的 uid 和 gid，可以通过手动的方式修改这两个文件：<code>/etc/passwd</code> 和 <code>/etc/group</code>, 找到对应的行进行修改。获取通过编辑 <code>/data/var/lib/gitlab/etc/gitlab.rb</code> 这个配置文件，修改其中的行，<a href="https://docs.gitlab.com/omnibus/settings/configuration.html#specify-numeric-user-and-group-identifiers">具体请参考这里</a>:</p>
+<p>要完成共享22端口，要求 gitlab 容器中的 git 账户的 uid 和 gid 和宿主机器上完全相同，这样读取 SSH Key 时就不会有权限问题。关于如何修改两个系统中 git 账户的 uid 和 gid，可以通过命令 <code>usermod</code> 和 <code>groupmod</code> 手动修改 git 用户的 uid 和 gid<a href="/posts/2019-07-16-change-uid-gid-in-linux">参考文档</a>。或者通过编辑 <code>/data/var/lib/gitlab/etc/gitlab.rb</code> 这个配置文件，修改其中的行，来使用其他的用户<a href="https://docs.gitlab.com/omnibus/settings/configuration.html#specify-numeric-user-and-group-identifiers">具体请参考这里</a>:</p>
 
-<pre><code class="language-ruby">user['username'] = 'git'
-user['group'] = 'git'
+<pre><code class="language-ruby">user['username'] = 'other-git'
+user['group'] = 'other-git'
 user['uid'] = 1001
 user['gid'] = 1001
 </code></pre>
@@ -458,6 +459,10 @@ gitlab_rails['smtp_domain'] = &quot;exmail.qq.com&quot;
 <ul class="widget-list">
     
     <li>
+        <a href="//thisiswangle.com/posts/2019-07-16-change-uid-gid-in-linux/" title="如何修改 Linux 用户的 UID 和组的 GID">如何修改 Linux 用户的 UID 和组的 GID</a>
+    </li>
+    
+    <li>
         <a href="//thisiswangle.com/posts/2019-05-29-centos7-pyenv-install-python-3/" title="CentOS 7 上使用 pyenv 安装 Python 3.7.3">CentOS 7 上使用 pyenv 安装 Python 3.7.3</a>
     </li>
     
@@ -491,10 +496,6 @@ gitlab_rails['smtp_domain'] = &quot;exmail.qq.com&quot;
     
     <li>
         <a href="//thisiswangle.com/posts/2016-01-28-banlinpai/" title="办理机动车临牌">办理机动车临牌</a>
-    </li>
-    
-    <li>
-        <a href="//thisiswangle.com/posts/2015-10-15-huanzheng/" title="驾照转入换证">驾照转入换证</a>
     </li>
     
 </ul>
@@ -532,6 +533,10 @@ gitlab_rails['smtp_domain'] = &quot;exmail.qq.com&quot;
     
     <li>
         <a href="//thisiswangle.com/categories/%E6%84%9F%E6%82%9F/">感悟(9)</a>
+    </li>
+    
+    <li>
+        <a href="//thisiswangle.com/categories/%E6%AF%8F%E6%97%A5%E6%8A%80%E5%B7%A7/">每日技巧(1)</a>
     </li>
     
     <li>

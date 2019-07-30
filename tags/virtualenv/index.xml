@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>virtualenv on 小碼哥的干貨</title>
+    <title>virtualenv on 小碼哥</title>
     <link>//thisiswangle.com/tags/virtualenv/</link>
-    <description>Recent content in virtualenv on 小碼哥的干貨</description>
+    <description>Recent content in virtualenv on 小碼哥</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <lastBuildDate>Sun, 02 Mar 2014 21:16:00 +0000</lastBuildDate>

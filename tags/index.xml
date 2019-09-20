@@ -6,7 +6,7 @@
     <description>Recent content in Tags on 小碼哥</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Tue, 16 Jul 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 19 Sep 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="//thisiswangle.com/tags/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,9 +14,27 @@
     <item>
       <title>Linux</title>
       <link>//thisiswangle.com/tags/Linux/</link>
-      <pubDate>Tue, 16 Jul 2019 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 19 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>//thisiswangle.com/tags/Linux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Raspberry</title>
+      <link>//thisiswangle.com/tags/Raspberry/</link>
+      <pubDate>Thu, 19 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>//thisiswangle.com/tags/Raspberry/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Raspbian</title>
+      <link>//thisiswangle.com/tags/Raspbian/</link>
+      <pubDate>Thu, 19 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>//thisiswangle.com/tags/Raspbian/</guid>
       <description></description>
     </item>
     

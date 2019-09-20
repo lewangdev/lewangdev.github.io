@@ -4,43 +4,60 @@
   
   <url>
     <loc>//thisiswangle.com/categories/</loc>
-    <lastmod>2019-07-16T00:00:00+00:00</lastmod>
+    <lastmod>2019-09-19T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>//thisiswangle.com/tags/Linux/</loc>
-    <lastmod>2019-07-16T00:00:00+00:00</lastmod>
+    <lastmod>2019-09-19T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>//thisiswangle.com/posts/</loc>
-    <lastmod>2019-07-16T00:00:00+00:00</lastmod>
+    <lastmod>2019-09-19T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>//thisiswangle.com/tags/Raspberry/</loc>
+    <lastmod>2019-09-19T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>//thisiswangle.com/tags/Raspbian/</loc>
+    <lastmod>2019-09-19T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>//thisiswangle.com/tags/</loc>
-    <lastmod>2019-07-16T00:00:00+00:00</lastmod>
+    <lastmod>2019-09-19T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>//thisiswangle.com/</loc>
+    <lastmod>2019-09-19T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>//thisiswangle.com/posts/2019-09-19-rpi-log-config/</loc>
+    <lastmod>2019-09-19T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>//thisiswangle.com/categories/%E6%AF%8F%E6%97%A5%E6%8A%80%E5%B7%A7/</loc>
+    <lastmod>2019-09-19T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>//thisiswangle.com/posts/2019-07-16-change-uid-gid-in-linux/</loc>
     <lastmod>2019-07-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>//thisiswangle.com/</loc>
-    <lastmod>2019-07-16T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>//thisiswangle.com/categories/%E6%AF%8F%E6%97%A5%E6%8A%80%E5%B7%A7/</loc>
-    <lastmod>2019-07-16T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -73,13 +90,13 @@
   </url>
   
   <url>
-    <loc>//thisiswangle.com/categories/Java/</loc>
+    <loc>//thisiswangle.com/tags/Java/</loc>
     <lastmod>2019-03-06T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>//thisiswangle.com/tags/Java/</loc>
+    <loc>//thisiswangle.com/categories/Java/</loc>
     <lastmod>2019-03-06T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
@@ -87,6 +104,11 @@
   <url>
     <loc>//thisiswangle.com/posts/2019-03-06-keynotes-of-new-java/</loc>
     <lastmod>2019-03-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>//thisiswangle.com/posts/2019-03-01-rpi-cm3-emmc-flashing/</loc>
+    <lastmod>2019-03-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>

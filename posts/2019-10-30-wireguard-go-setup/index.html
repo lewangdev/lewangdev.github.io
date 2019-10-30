@@ -1,0 +1,572 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8">
+    <meta name="generator" content="Hugo 0.55.3" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>使用 wireguard-go 搭建 VPN | 小碼哥</title>
+    <meta property="og:title" content="使用 wireguard-go 搭建 VPN - 小碼哥">
+    <meta property="og:type" content="article">
+        
+    <meta property="article:published_time" content="2019-10-30T00:00:00&#43;08:00">
+        
+        
+    <meta property="article:modified_time" content="2019-10-30T00:00:00&#43;08:00">
+        
+    <meta name="Keywords" content="IoT, 物联网, 智能硬件，工业互联网方案，智能家居, 智慧工厂, 智慧建筑, Golang, Java, JVM, Python, 树莓派, Linux 玩家，果粉，系统架构，技术管理">
+    <meta name="description" content="使用 wireguard-go 搭建 VPN">
+        
+    <meta name="author" content="小碼哥">
+    <meta property="og:url" content="//thisiswangle.com/posts/2019-10-30-wireguard-go-setup/">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+
+    
+    <link rel="icon" type="image/x-icon" sizes="16x16 32x32" href="/favicon.ico">
+
+    
+    <link rel="icon" sizes="192x192" href="/images/favicon-192x192.png">
+
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-180x180-precomposed.png">
+
+    
+    <meta name="msapplication-TileColor" content="#FFFFFF">
+    <meta name="msapplication-TileImage" content="/images/favicon-144x144.png">
+
+    <link rel="stylesheet" href="/css/normalize.css">
+    
+        <link rel="stylesheet" href="/css/prism.css">
+    
+    <link rel="stylesheet" href="/css/style.css">
+    <script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+
+    
+
+
+    
+    
+</head>
+
+<body>
+<header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="//thisiswangle.com/">
+                       <img src="/images/logo-2x.png" alt="小碼哥">
+                    </a>
+                
+                <p class="description">Be Yourself.</p>
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="" href="//thisiswangle.com/">首页</a>
+                    
+                    <a  href="//thisiswangle.com/archives/" title="归档">归档</a>
+                    
+                    <a  href="//thisiswangle.com/about/" title="关于">关于</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+<div id="body">
+    <div class="container">
+        <div class="col-group">
+
+            <div class="col-8" id="main">
+                <div class="res-cons">
+                    <article class="post">
+                        <header>
+                            <h1 class="post-title">使用 wireguard-go 搭建 VPN</h1>
+                        </header>
+                        <date class="post-meta meta-date">
+                            2019年10月30日
+                        </date>
+                        
+                        <div class="post-meta">
+                            <span>|</span>
+                            
+                                <span class="meta-category"><a href="//thisiswangle.com/categories/%E6%AF%8F%E6%97%A5%E6%8A%80%E5%B7%A7N">每日技巧N</a></span>
+                            
+                        </div>
+                        
+                        
+                        <div class="post-content">
+                            
+                            
+                            
+                            
+
+<h2 id="背景">背景</h2>
+
+<p>搭建 VPN 方便连接无公网云主机进行开发，wireguard 配置比 openvpn 要简单很多，wireguard 是通过 Linux 内核的方式实现的，这样性能最好，但是只能用 Linux，这里使用的  wireguard-go 是用 golang 实现的 wireguard 协议，属于用户空间的实现，性能没有内核模块方式好，但好处就是更简单易用。</p>
+
+<p>VPN 的用处非常的多，不想 FRP 之类的端口穿透，他直接建立虚拟的网络，每个客户端也都可以拥有自己独立的 IP，测试调试就没有了端口的限制，非常的方便。</p>
+
+<p>除了方便安全连接云端的服务器，还可以通过 VPN 搭建工业设备的远程部署和维护的解决方案。</p>
+
+<h2 id="编译-wireguard-go">编译 wireguard-go</h2>
+
+<pre><code class="language-sh"># 使用 GitHub 的源码镜像，速度会快一些
+git clone git@github.com:WireGuard/wireguard-go.git
+
+# 在 MacOS 下交叉编译
+CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -v -o &quot;wireguard-go&quot;
+
+# Linux 环境下直接编译
+
+go build -v -o &quot;wireguard-go&quot;
+
+cp wireguard-go /usr/sbin/
+</code></pre>
+
+<h2 id="编译-wireguard-tools">编译 wireguard tools</h2>
+
+<pre><code class="language-sh">git clone git@github.com:WireGuard/WireGuard.git
+
+# 安装依赖
+
+## debian&amp;ubuntu
+sudo apt-get install libmnl-dev libelf-dev
+
+## centos
+sudo yum install libmnl-devel elfutils-libelf-devel
+
+cd Wireguard/src/tools
+make 
+sudo make install
+</code></pre>
+
+<h2 id="配置-wireguard">配置 wireguard</h2>
+
+<p>生成密钥</p>
+
+<pre><code>cd /etc/wireguard
+wg genkey | tee server_privatekey | wg pubkey &gt; server_publickey
+wg genkey | tee client_privatekey | wg pubkey &gt; client_publickey
+</code></pre>
+
+<p>生成服务器端配置文件 wg0.conf</p>
+
+<pre><code>echo &quot;[Interface]
+PrivateKey = $(cat server_privatekey)
+Address = 10.0.0.1/24 
+PostUp   = iptables -A FORWARD -i wg0 -j ACCEPT; iptables -A FORWARD -o wg0 -j ACCEPT; iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+PostDown = iptables -D FORWARD -i wg0 -j ACCEPT; iptables -D FORWARD -o wg0 -j ACCEPT; iptables -t nat -D POSTROUTING -o eth0 -j MASQUERADE
+ListenPort = 1194
+MTU = 1420
+
+[Peer]
+PublicKey = $(cat client_publickey)
+AllowedIPs = 10.0.0.2/32&quot; | sed '/^#/d;/^\s*$/d' &gt; wg0.conf
+</code></pre>
+
+<p>生成客户端配置文件 client-wg0.conf</p>
+
+<pre><code>echo &quot;[Interface]
+PrivateKey = $(cat client_privatekey)
+Address = 10.0.0.2/24
+DNS = 8.8.8.8
+MTU = 1420
+
+[Peer]
+PublicKey = $(cat server_publickey)
+Endpoint = ${server_ip}:1194
+AllowedIPs = 0.0.0.0/0, ::0/0
+PersistentKeepalive = 30&quot; | sed '/^#/d;/^\s*$/d' &gt; client-wg0.conf
+</code></pre>
+
+<p>在服务器端开启数据包转发</p>
+
+<pre><code>echo 1 &gt; /proc/sys/net/ipv4/ip_forward
+echo &quot;net.ipv4.ip_forward = 1&quot; &gt;&gt; /etc/sysctl.conf
+sysctl -p
+</code></pre>
+
+<p>最后在服务器端启动 wireguard</p>
+
+<pre><code>wg-quick up wg0
+</code></pre>
+
+<p>客户端需要根据前面生成的配置文件进行配置</p>
+
+                            <p>(完)</p>
+                            
+                            <blockquote>
+                                <p>本文为原创文章，转载需注明出处，欢迎扫码关注公众号<code>小码哥的干货</code>或者网站 <a href="https://thisiswangle.com">https://thisiswangle.com</a>，第一时间看后续精彩文章。觉得好的话，顺手分享到朋友圈吧，感谢支持。</p>
+                            </blockquote>
+                            <p><img src="/images/qrcode_for_weixin.jpeg" alt="扫码关注"></p>
+                            
+                        </div>
+
+                        
+
+<div class="post-archive">
+    <h2>See Also</h2>
+    <ul class="listing">
+        
+        <li><a href="/posts/2019-09-19-rpi-log-config/">树莓派系统日志配置</a></li>
+        
+        <li><a href="/posts/2019-07-16-change-uid-gid-in-linux/">如何修改 Linux 用户的 UID 和组的 GID</a></li>
+        
+        <li><a href="/posts/2019-05-29-centos7-pyenv-install-python-3/">CentOS 7 上使用 pyenv 安装 Python 3.7.3</a></li>
+        
+        <li><a href="/posts/2019-03-01-rpi-cm3-emmc-flashing/">树莓派 CM3/CM3&#43; 刷写系统</a></li>
+        
+        <li><a href="/posts/2018-12-18-gitlab-docker-install/">使用 Docker 方式安装 Gitlab，没你想得那么简单</a></li>
+        
+    </ul>
+</div>
+
+
+                        <div class="post-meta meta-tags">
+                            
+                            <ul class="clearfix">
+                                
+                                <li><a href="//thisiswangle.com/tags/Wireguard">Wireguard</a></li>
+                                
+                                <li><a href="//thisiswangle.com/tags/Linux">Linux</a></li>
+                                
+                                <li><a href="//thisiswangle.com/tags/VPN">VPN</a></li>
+                                
+                            </ul>
+                            
+                        </div>
+                    </article>
+                    
+    
+
+    
+    
+    <div class="post bg-white">
+      <script src="https://utteranc.es/client.js"
+            repo= "thisiswangle/thisiswangle.github.io"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+      </script>
+    </div>
+    
+                </div>
+            </div>
+            <div id="secondary">
+    <section class="widget">
+        <form id="search" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="//thisiswangle.com/">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="//thisiswangle.com/posts/2019-10-30-wireguard-go-setup/" title="使用 wireguard-go 搭建 VPN">使用 wireguard-go 搭建 VPN</a>
+    </li>
+    
+    <li>
+        <a href="//thisiswangle.com/posts/2019-10-13-sons-paintings/" title="儿子的画">儿子的画</a>
+    </li>
+    
+    <li>
+        <a href="//thisiswangle.com/posts/2019-09-19-rpi-log-config/" title="树莓派系统日志配置">树莓派系统日志配置</a>
+    </li>
+    
+    <li>
+        <a href="//thisiswangle.com/posts/2019-07-16-change-uid-gid-in-linux/" title="如何修改 Linux 用户的 UID 和组的 GID">如何修改 Linux 用户的 UID 和组的 GID</a>
+    </li>
+    
+    <li>
+        <a href="//thisiswangle.com/posts/2019-05-29-centos7-pyenv-install-python-3/" title="CentOS 7 上使用 pyenv 安装 Python 3.7.3">CentOS 7 上使用 pyenv 安装 Python 3.7.3</a>
+    </li>
+    
+    <li>
+        <a href="//thisiswangle.com/posts/2019-03-06-keynotes-of-new-java/" title="Java 进阶要点">Java 进阶要点</a>
+    </li>
+    
+    <li>
+        <a href="//thisiswangle.com/posts/2019-03-01-rpi-cm3-emmc-flashing/" title="树莓派 CM3/CM3&#43; 刷写系统">树莓派 CM3/CM3&#43; 刷写系统</a>
+    </li>
+    
+    <li>
+        <a href="//thisiswangle.com/posts/2018-12-18-gitlab-docker-install/" title="使用 Docker 方式安装 Gitlab，没你想得那么简单">使用 Docker 方式安装 Gitlab，没你想得那么简单</a>
+    </li>
+    
+    <li>
+        <a href="//thisiswangle.com/posts/2017-12-31-year-end-reviews-of-2017/" title="有关 2017 流水账和胡思乱想的记录">有关 2017 流水账和胡思乱想的记录</a>
+    </li>
+    
+    <li>
+        <a href="//thisiswangle.com/posts/2017-08-03-lvm-in-action/" title="LVM 实战记录">LVM 实战记录</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">分类</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="//thisiswangle.com/categories/Coding/">Coding(2)</a>
+    </li>
+    
+    <li>
+        <a href="//thisiswangle.com/categories/DevOps/">DevOps(9)</a>
+    </li>
+    
+    <li>
+        <a href="//thisiswangle.com/categories/Github/">Github(1)</a>
+    </li>
+    
+    <li>
+        <a href="//thisiswangle.com/categories/Java/">Java(2)</a>
+    </li>
+    
+    <li>
+        <a href="//thisiswangle.com/categories/Linux/">Linux(1)</a>
+    </li>
+    
+    <li>
+        <a href="//thisiswangle.com/categories/%E6%80%BB%E7%BB%93/">总结(6)</a>
+    </li>
+    
+    <li>
+        <a href="//thisiswangle.com/categories/%E6%84%9F%E6%82%9F/">感悟(9)</a>
+    </li>
+    
+    <li>
+        <a href="//thisiswangle.com/categories/%E6%AF%8F%E6%97%A5%E6%8A%80%E5%B7%A7/">每日技巧(3)</a>
+    </li>
+    
+    <li>
+        <a href="//thisiswangle.com/categories/%E6%AF%8F%E6%97%A5%E6%8A%80%E5%B7%A7N/">每日技巧N(1)</a>
+    </li>
+    
+    <li>
+        <a href="//thisiswangle.com/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/">系统架构(1)</a>
+    </li>
+    
+    <li>
+        <a href="//thisiswangle.com/categories/%E8%B6%A3%E8%B0%88/">趣谈(1)</a>
+    </li>
+    
+    <li>
+        <a href="//thisiswangle.com/categories/%E9%9A%8F%E6%89%8B%E8%AE%B0/">随手记(1)</a>
+    </li>
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title">标签</h3>
+<div class="tagcloud">
+    
+    <a href="//thisiswangle.com/tags/CDN/">CDN</a>
+    
+    <a href="//thisiswangle.com/tags/Cassandra/">Cassandra</a>
+    
+    <a href="//thisiswangle.com/tags/DNS/">DNS</a>
+    
+    <a href="//thisiswangle.com/tags/Docker/">Docker</a>
+    
+    <a href="//thisiswangle.com/tags/Flume/">Flume</a>
+    
+    <a href="//thisiswangle.com/tags/Gitlab/">Gitlab</a>
+    
+    <a href="//thisiswangle.com/tags/Java/">Java</a>
+    
+    <a href="//thisiswangle.com/tags/Kafka/">Kafka</a>
+    
+    <a href="//thisiswangle.com/tags/Linux/">Linux</a>
+    
+    <a href="//thisiswangle.com/tags/Log4j2/">Log4j2</a>
+    
+    <a href="//thisiswangle.com/tags/MySQL/">MySQL</a>
+    
+    <a href="//thisiswangle.com/tags/Nginx/">Nginx</a>
+    
+    <a href="//thisiswangle.com/tags/Pyenv/">Pyenv</a>
+    
+    <a href="//thisiswangle.com/tags/Python/">Python</a>
+    
+    <a href="//thisiswangle.com/tags/Raspberry/">Raspberry</a>
+    
+    <a href="//thisiswangle.com/tags/Raspbian/">Raspbian</a>
+    
+    <a href="//thisiswangle.com/tags/SSH/">SSH</a>
+    
+    <a href="//thisiswangle.com/tags/VPN/">VPN</a>
+    
+    <a href="//thisiswangle.com/tags/Wireguard/">Wireguard</a>
+    
+    <a href="//thisiswangle.com/tags/ajax/">ajax</a>
+    
+    <a href="//thisiswangle.com/tags/aliyun/">aliyun</a>
+    
+    <a href="//thisiswangle.com/tags/blog/">blog</a>
+    
+    <a href="//thisiswangle.com/tags/catcat/">catcat</a>
+    
+    <a href="//thisiswangle.com/tags/database/">database</a>
+    
+    <a href="//thisiswangle.com/tags/easy_install/">easy_install</a>
+    
+    <a href="//thisiswangle.com/tags/fackbook/">fackbook</a>
+    
+    <a href="//thisiswangle.com/tags/fdisk/">fdisk</a>
+    
+    <a href="//thisiswangle.com/tags/github/">github</a>
+    
+    <a href="//thisiswangle.com/tags/idea/">idea</a>
+    
+    <a href="//thisiswangle.com/tags/jquery/">jquery</a>
+    
+    <a href="//thisiswangle.com/tags/json/">json</a>
+    
+    <a href="//thisiswangle.com/tags/lvm/">lvm</a>
+    
+    <a href="//thisiswangle.com/tags/performance/">performance</a>
+    
+    <a href="//thisiswangle.com/tags/php/">php</a>
+    
+    <a href="//thisiswangle.com/tags/pip/">pip</a>
+    
+    <a href="//thisiswangle.com/tags/python/">python</a>
+    
+    <a href="//thisiswangle.com/tags/rMBP/">rMBP</a>
+    
+    <a href="//thisiswangle.com/tags/resize2fs/">resize2fs</a>
+    
+    <a href="//thisiswangle.com/tags/tuning/">tuning</a>
+    
+    <a href="//thisiswangle.com/tags/ucloud/">ucloud</a>
+    
+    <a href="//thisiswangle.com/tags/vagrant/">vagrant</a>
+    
+    <a href="//thisiswangle.com/tags/virtualbox/">virtualbox</a>
+    
+    <a href="//thisiswangle.com/tags/virtualenv/">virtualenv</a>
+    
+    <a href="//thisiswangle.com/tags/xtrabackup/">xtrabackup</a>
+    
+    <a href="//thisiswangle.com/tags/%E4%B8%B4%E7%89%8C/">临牌</a>
+    
+    <a href="//thisiswangle.com/tags/%E5%9B%9E%E5%BF%86/">回忆</a>
+    
+    <a href="//thisiswangle.com/tags/%E5%B1%95%E6%9C%9B/">展望</a>
+    
+    <a href="//thisiswangle.com/tags/%E5%BF%83%E6%83%85/">心情</a>
+    
+    <a href="//thisiswangle.com/tags/%E6%80%9D%E8%80%83/">思考</a>
+    
+    <a href="//thisiswangle.com/tags/%E6%91%84%E5%BD%B1/">摄影</a>
+    
+    <a href="//thisiswangle.com/tags/%E6%95%99%E8%AE%AD/">教训</a>
+    
+    <a href="//thisiswangle.com/tags/%E7%89%A9%E7%90%86/">物理</a>
+    
+    <a href="//thisiswangle.com/tags/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/">系统架构</a>
+    
+    <a href="//thisiswangle.com/tags/%E7%BB%8F%E9%AA%8C/">经验</a>
+    
+    <a href="//thisiswangle.com/tags/%E7%BB%98%E7%94%BB/">绘画</a>
+    
+    <a href="//thisiswangle.com/tags/%E8%82%B2%E5%84%BF/">育儿</a>
+    
+    <a href="//thisiswangle.com/tags/%E9%A9%BE%E7%85%A7/">驾照</a>
+    
+    <a href="//thisiswangle.com/tags/%E9%AD%94%E9%83%BD%E7%94%9F%E5%AD%98%E6%89%8B%E5%86%8C/">魔都生存手册</a>
+    
+</div>
+    </section>
+
+    
+<section class="widget">
+    <h3 class="widget-title">友情链接</h3>
+    <ul class="widget-list">
+        
+        <li>
+            <a target="_blank" href="https://microservices.io/" title="Microservice Architecture">Microservice Architecture</a>
+        </li>
+        
+        <li>
+            <a target="_blank" href="http://stuff-gil-says.blogspot.com/" title="Stuff Gil Says">Stuff Gil Says</a>
+        </li>
+        
+    </ul>
+</section>
+
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="//thisiswangle.com/index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+        </div>
+    </div>
+</div>
+<footer id="footer">
+    <div class="container">
+        &copy; 2019 <a href="//thisiswangle.com/">小碼哥</a>.
+        Powered by <a rel="nofollow noreferer noopener" href="https://gohugo.io" target="_blank">Hugo</a>.
+        
+    </div>
+</footer>
+
+
+    <script type="text/javascript">
+    
+    (function(){
+        $("pre code").parent().addClass("line-numbers")
+    }())
+
+    window.MathJax = {
+        tex2jax: {
+            inlineMath: [ ['$','$'] ],
+            processEscapes: true
+        }
+    };
+    </script>
+    <script type="text/javascript" src="/js/prism.js" async="true"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src="/js/totop.js?v=0.0.0" async=""></script>
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-21746661-5', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>

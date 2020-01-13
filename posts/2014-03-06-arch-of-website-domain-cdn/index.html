@@ -3,7 +3,7 @@
 <head>
 
     <meta charset="utf-8">
-    <meta name="generator" content="Hugo 0.55.3" />
+    <meta name="generator" content="Hugo 0.62.2" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -108,24 +108,16 @@
                             </p>
                             
                             
-                            
-
-<p>为了自己做好网站的架构，找了知乎，豆瓣，大众点评和百姓网来做参考。这里主要来看域名和CDN相关的部分，后台的架构也还是要边学便实践。</p>
-
+                            <p>为了自己做好网站的架构，找了知乎，豆瓣，大众点评和百姓网来做参考。这里主要来看域名和CDN相关的部分，后台的架构也还是要边学便实践。</p>
 <h2 id="大概情况">大概情况</h2>
-
 <p>从前端分析了知乎的域名和 DNS 情况，同时对比了一下豆瓣、大众点评和百姓网。从域名、DNS、CDN等使用角度来说，他们之间大同小异。</p>
-
 <h2 id="使用的分析工具">使用的分析工具</h2>
-
 <ul>
 <li>Chrome</li>
 <li><a href="http://whois.chinaz.com/">WHOIS</a></li>
 <li><a href="http://webscan.360.cn/tools/dnslookup">DNSLookup</a></li>
 </ul>
-
 <h2 id="非-cdn-使用">非 CDN 使用</h2>
-
 <table>
 <thead>
 <tr>
@@ -135,36 +127,31 @@
 <th>路径</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>A</td>
 <td>zhihu.com</td>
-<td>使用 301 跳转到 www.zhuhu.com</td>
+<td>使用 301 跳转到 <a href="http://www.zhuhu.com">www.zhuhu.com</a></td>
 <td>IP</td>
 </tr>
-
 <tr>
 <td>A</td>
 <td>zhi.hu</td>
-<td>使用 302 跳转到 www.zhihu.com</td>
+<td>使用 302 跳转到 <a href="http://www.zhihu.com">www.zhihu.com</a></td>
 <td>IP</td>
 </tr>
-
 <tr>
 <td>A</td>
-<td>www.zhihu.com</td>
+<td><a href="http://www.zhihu.com">www.zhihu.com</a></td>
 <td></td>
 <td>IP</td>
 </tr>
-
 <tr>
 <td>A</td>
 <td>comet.zhihu.com</td>
 <td>WebSocket 推送消息</td>
 <td>IP</td>
 </tr>
-
 <tr>
 <td>A</td>
 <td>analytics.zhihu.com</td>
@@ -173,18 +160,12 @@
 </tr>
 </tbody>
 </table>
-
-<p>大部分都是用了 301 或者 302 跳转，注意他们的区别：301 是永久跳转(浏览器会做客户端端缓存)，而 302 是临时跳转。此外 baidu.com 到 www.baidu.com 并不是使用 301 或者 302 ，而是使用下面的一段 HTML 代码</p>
-
-<pre><code class="language-html">&lt;html&gt;
-&lt;meta http-equiv=&quot;refresh&quot; content=&quot;0;url=http://www.baidu.com/&quot;&gt;
-&lt;/html&gt;
-</code></pre>
-
-<p>相比而言，我觉得使用 301 更 Geek，更好一些。</p>
-
+<p>大部分都是用了 301 或者 302 跳转，注意他们的区别：301 是永久跳转(浏览器会做客户端端缓存)，而 302 是临时跳转。此外 baidu.com 到 <a href="http://www.baidu.com">www.baidu.com</a> 并不是使用 301 或者 302 ，而是使用下面的一段 HTML 代码</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">html</span>&gt;
+&lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">http-equiv</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;refresh&#34;</span> <span style="color:#a6e22e">content</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;0;url=http://www.baidu.com/&#34;</span>&gt;
+&lt;/<span style="color:#f92672">html</span>&gt;
+</code></pre></div><p>相比而言，我觉得使用 301 更 Geek，更好一些。</p>
 <h2 id="cdn-使用">CDN 使用</h2>
-
 <table>
 <thead>
 <tr>
@@ -194,7 +175,6 @@
 <th>路径</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>CNAME</td>
@@ -202,63 +182,54 @@
 <td>CDN, 看 CNAME 以为是七牛CDN，其实用了 ChinaNetCenter 的 CDN</td>
 <td>d.qiniudn.com &gt; wsall.36tr.com.wscdns.com &gt; 08911.xdwscache.glb0.lxdns.com &gt; IP</td>
 </tr>
-
 <tr>
 <td>CNAME</td>
 <td>static.zhihu.com</td>
 <td>网页资源文件cdn，包括css，js，image，不包括用户头像、用户发布的图片等</td>
 <td>同上</td>
 </tr>
-
 <tr>
 <td>CNAME</td>
 <td>p1.zhimg.com</td>
 <td>用户头像，用户发布的图片, 这里使用又拍云CDN</td>
 <td>zhcdn-img.b0.aicdn.com &gt; ctn.b9.aicdn.com &gt; IP</td>
 </tr>
-
 <tr>
 <td>CNAME</td>
 <td>p2.zhimg.com</td>
 <td>用户头像，用户发布的图片，这里使用了七牛CDN</td>
 <td>zhimg0.qiniudn.com &gt; 其它非七牛CDN</td>
 </tr>
-
 <tr>
 <td>CNAME</td>
 <td>p3.zhimg.com</td>
 <td>与p1.zhimg.com相同</td>
 <td></td>
 </tr>
-
 <tr>
 <td>CNAME</td>
 <td>p4.zhimg.com</td>
 <td>与p1.zhimg.com相同</td>
 <td></td>
 </tr>
-
 <tr>
 <td>CNAME</td>
 <td>s1.zhimg.com</td>
 <td>视频片段等</td>
 <td>这里使用了七牛CDN</td>
 </tr>
-
 <tr>
 <td>CNAME</td>
 <td>s2.zhimg.com</td>
 <td></td>
 <td>这里使用了七牛CDN</td>
 </tr>
-
 <tr>
 <td>CNAME</td>
 <td>s3.zhimg.com</td>
 <td></td>
 <td>这里使用了七牛CDN</td>
 </tr>
-
 <tr>
 <td>CNAME</td>
 <td>s4.zhimg.com</td>
@@ -267,13 +238,9 @@
 </tr>
 </tbody>
 </table>
-
 <p>p1-p4， s1-s4  由知乎服务器端按照一定算法选择（有可能就是等概率随机）</p>
-
 <p>不得不有点疑问？为什么七牛CDN最后都直到别人的CDN服务器上去了，而又拍云全部是A记录到自己的服务器。又拍强调的自建机房就是这个意思？</p>
-
 <h2 id="静态资源版本控制">静态资源版本控制</h2>
-
 <table>
 <thead>
 <tr>
@@ -281,34 +248,27 @@
 <th>方法</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>知乎</td>
 <td>在文件名前添加类似 md5 的字符串，如 app.js, 发布版本为f853b06af5428ff5f78f66e3d09397e2.app.js</td>
 </tr>
-
 <tr>
 <td>百姓网</td>
 <td>如gallery.js 发布版本为 gallery.f07b79d6.js</td>
 </tr>
-
 <tr>
 <td>豆瓣</td>
-<td>将类似md5值放在路径中，如<a href="http://img3.douban.com/f/shire/55c9fe0e9ecb5725037e9839fc515504008dae74/js/ad.js">http://img3.douban.com/f/shire/55c9fe0e9ecb5725037e9839fc515504008dae74/js/ad.js</a></td>
+<td>将类似md5值放在路径中，如http://img3.douban.com/f/shire/55c9fe0e9ecb5725037e9839fc515504008dae74/js/ad.js</td>
 </tr>
-
 <tr>
 <td>大众点评</td>
 <td>和百姓网类似，如发布版本为ga2.min.acd5dfe89e87135b4eef62dcf81ef849.js</td>
 </tr>
 </tbody>
 </table>
-
 <p>由于CDN使用简单镜像＋缓存的功能，每一个缓存的文件有一定的时效性，而且基本都是静态文件，不支持 Query String （如 ?ver=201413），于是需要在源头控制将要被分发到 CDN 中文件的版本。最为简单的做法就是对开发人员透明，在发布项目的时候，通过计算文件的 hash 签名或者 md5 签名来做类 HTML 等文本代码的重构。</p>
-
 <h2 id="dns-选择">DNS 选择</h2>
-
 <table>
 <thead>
 <tr>
@@ -316,33 +276,27 @@
 <th>DNS 服务商</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>zhihu.com</td>
 <td>DNSPOD 企业版</td>
 </tr>
-
 <tr>
 <td>zhimg.com</td>
 <td>DNSPOD 免费版</td>
 </tr>
-
 <tr>
 <td>baixing.com</td>
 <td>DNSPOD 企业版</td>
 </tr>
-
 <tr>
 <td>baixing.net</td>
 <td>DNSPOD 企业版</td>
 </tr>
-
 <tr>
 <td>dianping.com</td>
 <td>自建</td>
 </tr>
-
 <tr>
 <td>douban.com</td>
 <td>自建</td>
@@ -670,7 +624,7 @@
 </div>
 <footer id="footer">
     <div class="container">
-        &copy; 2019 <a href="//thisiswangle.com/">小碼哥</a>.
+        &copy; 2020 <a href="//thisiswangle.com/">小碼哥</a>.
         Powered by <a rel="nofollow noreferer noopener" href="https://gohugo.io" target="_blank">Hugo</a>.
         
     </div>

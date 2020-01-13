@@ -3,7 +3,7 @@
 <head>
 
     <meta charset="utf-8">
-    <meta name="generator" content="Hugo 0.55.3" />
+    <meta name="generator" content="Hugo 0.62.2" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -108,59 +108,30 @@
                             </p>
                             
                             
-                            
-
-<h2 id="背景">背景</h2>
-
+                            <h2 id="背景">背景</h2>
 <p>目前公司主要服务都是直接使用 MySQL 主服务器，从服务主要给离线数据分析服务使用，由于前期弄得比较简单的粗暴，从服务上还有一两个数据库在做生产使用, 并且从服数据已经不能和主服进行进行同步了，有大量错误，忽略都没有办法进行。此外，主服仅配置了三个核心数据的 binlog，随着业务的变化，其它数据库不能走主从这条路来同步数据，于是希望不停机的情形下重新调整主服配置，记录所有的数据库的 binlog，同时添加新的从服务器来同步数据</p>
-
 <h2 id="方案1">方案1</h2>
-
 <p>MySQL 的主从是通过同步 binlog 日志来实现数据同步的，于是需要想办法把从服数据先于主服同步，记录 binlog 的 pos 值，再配置从服从该 pos 处开始同步，考虑可以使用 mysqldump 导出所有 innodb 数据，使用 rsync 同步所有 myisam 数据文件，然后再开启主从同步。但是目前这种方案不适用，主服不能长时间停机</p>
-
 <h2 id="方案2">方案2</h2>
-
 <p>使用 xtrabackup 来完成目标</p>
-
 <p>主从服务器上都需要安装 xtrabackup（实际使用 xtrabackupex）：</p>
-
 <pre><code>yum install http://www.percona.com/downloads/percona-release/redhat/0.1-4/percona-release-0.1-4.noarch.rpm
 yum install -y percona-xtrabackup-24
-</code></pre>
-
-<h3 id="主服">主服：</h3>
-
+</code></pre><h3 id="主服">主服：</h3>
 <h4 id="备份数据">备份数据</h4>
-
 <pre><code># 注意数据库名称的转义，例如 - 号是 @002d
 innobackupex --defaults-file=/etc/my.cnf --socket=/var/lib/mysql/mysql.sock --user=root --password=xxxx  --parallel=2 --databases=&quot;db1 db2&quot; /data/backup/xtrabackup/
-</code></pre>
-
-<h4 id="保持事务一致">保持事务一致</h4>
-
+</code></pre><h4 id="保持事务一致">保持事务一致</h4>
 <pre><code>innobackupex --apply-log /data/backup/xtrabackup/2017-06-06_13-16-21/
-</code></pre>
-
-<h4 id="同步数据">同步数据</h4>
-
+</code></pre><h4 id="同步数据">同步数据</h4>
 <pre><code>rsync -avHz 2017-06-06_13-16-21 sysops@cow:/data/backup
-</code></pre>
-
-<h3 id="从服">从服：</h3>
-
+</code></pre><h3 id="从服">从服：</h3>
 <p>修改 my.cnf 相关配置，恢复备份数据</p>
-
 <pre><code># 关闭 MySQL Servier 后恢复数据
 innobackupex --defaults-file=/etc/my.cnf --copy-back /data/backup/2017-06-06_13-16-21
-</code></pre>
-
-<p>修改数据权限</p>
-
+</code></pre><p>修改数据权限</p>
 <pre><code>chown -R mysql.mysql mysql
-</code></pre>
-
-<p>开启从服，登录 msyql 添加主从配置，并开启同步</p>
-
+</code></pre><p>开启从服，登录 msyql 添加主从配置，并开启同步</p>
 <pre><code>
 # Master 上执行
 GRANT REPLICATION SLAVE ON *.* TO 'repl'@'10.23.9.146' IDENTIFIED BY 'password';
@@ -177,19 +148,13 @@ MASTER_PASSWORD='password',
 MASTER_PORT=3306,
 MASTER_LOG_FILE='mysql-bin.000058',
 MASTER_LOG_POS=103394265;
-</code></pre>
-
-<h2 id="检查主从状态">检查主从状态</h2>
-
+</code></pre><h2 id="检查主从状态">检查主从状态</h2>
 <pre><code>show master status;
 show slave status\G;
-</code></pre>
-
-<h2 id="参考">参考</h2>
-
+</code></pre><h2 id="参考">参考</h2>
 <ul>
-<li><a href="https://www.percona.com/doc/percona-xtrabackup/LATEST/index.html">percona-xtrabackup</a></li>
-<li><a href="https://wsgzao.github.io/post/xtrabackup/">wsgzao.github.io/post/xtrabackup</a></li>
+<li>[percona-xtrabackup] (<a href="https://www.percona.com/doc/percona-xtrabackup/LATEST/index.html">https://www.percona.com/doc/percona-xtrabackup/LATEST/index.html</a>)</li>
+<li>[wsgzao.github.io/post/xtrabackup] (<a href="https://wsgzao.github.io/post/xtrabackup/">https://wsgzao.github.io/post/xtrabackup/</a>)</li>
 </ul>
 
                             <p>(完)</p>
@@ -512,7 +477,7 @@ show slave status\G;
 </div>
 <footer id="footer">
     <div class="container">
-        &copy; 2019 <a href="//thisiswangle.com/">小碼哥</a>.
+        &copy; 2020 <a href="//thisiswangle.com/">小碼哥</a>.
         Powered by <a rel="nofollow noreferer noopener" href="https://gohugo.io" target="_blank">Hugo</a>.
         
     </div>

@@ -3,7 +3,7 @@
 <head>
 
     <meta charset="utf-8">
-    <meta name="generator" content="Hugo 0.55.3" />
+    <meta name="generator" content="Hugo 0.62.2" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -108,24 +108,14 @@
                             </p>
                             
                             
-                            
-
-<h2 id="总体说明">总体说明</h2>
-
+                            <h2 id="总体说明">总体说明</h2>
 <p>我使用联通10M光网，SSH在多个时间段登录两个主机都是非常的快，但是阿里云的SSH有时会断开连接，需要重新登录(<em>一天遇到n次</em>)，ucloud一次都没有断开连接过。两者总体操作上都很流畅。平时我比较习惯于使用ubuntu，于是在两个主机上都安装了Ubuntu 12.04_64的Server版本。在安装初始化系统过程中(测试过两次)，Ucloud的速度要快于阿里云主机，粗略估计都是在20s以内，因此差别不大。</p>
-
 <p>阿里云主机安装过程中不需要人为参与，选好主机配置即可，主机一旦创建完成，用户名和口令会发送到测试者手机上，而且直接发送的是root账户口令。Ucloud除了选择配置之外，还需要设置强登录密码，使用普通用户登录，感觉更geek一点。</p>
-
 <p>默认情况配置下，关闭重启服务器，Ucloud会发送主机变化短信到手机，阿里云不会。阿里云在系统负载预警方面比较全面，ucloud侧重于server上在线状态和相关服务的预警。</p>
-
 <p>在试用和测试过程中我主要偏向于静态的测试，后面还有一个好玩的 Super PI 测试。</p>
-
 <p>阿里云和ucloud都是主机，和实际的服务器使用上没有什么区别。另外阿里云有paas，需要单独购买，目前支持php和nodejs，一些基本的服务如memcached等都可直接使用。</p>
-
 <p>如果做互备，如果我们不使用这两个云平台各自特有的一些服务(主要是阿里云有一些如开放存储服务OSS等)，相互切换难度上应该是差不多的。</p>
-
 <h2 id="主机概览">主机概览</h2>
-
 <table>
 <thead>
 <tr>
@@ -134,50 +124,42 @@
 <th align="left">ucloud</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td align="left">按量付费</td>
-<td align="left">支持(不能升级或者调整主机配置<sup>*</sup>)</td>
+<td align="left">支持(不能升级或者调整主机配置<!-- raw HTML omitted -->*<!-- raw HTML omitted -->)</td>
 <td align="left">不支持</td>
 </tr>
-
 <tr>
 <td align="left">包年包月</td>
 <td align="left">支持</td>
 <td align="left">支持</td>
 </tr>
-
 <tr>
 <td align="left">操作系统</td>
 <td align="left">可重置</td>
 <td align="left">可重装</td>
 </tr>
-
 <tr>
 <td align="left">CPU升级</td>
 <td align="left">支持(需要关机)</td>
 <td align="left">支持(需要关机)</td>
 </tr>
-
 <tr>
 <td align="left">内存升级</td>
 <td align="left">支持(需要关机)</td>
 <td align="left">支持(需要关机)</td>
 </tr>
-
 <tr>
 <td align="left">磁盘扩容</td>
 <td align="left">支持，可以升级或者添加新的磁盘，最大为2000G</td>
-<td align="left">支持，可以扩容最大到1000G（与系统盘在同一个主机上），</br/>或者添加新的网络磁盘udisk</td>
+<td align="left">支持，可以扩容最大到1000G（与系统盘在同一个主机上），&lt;/br/&gt;或者添加新的网络磁盘udisk</td>
 </tr>
-
 <tr>
 <td align="left">磁盘镜像</td>
 <td align="left">支持</td>
 <td align="left">支持</td>
 </tr>
-
 <tr>
 <td align="left">带宽升级</td>
 <td align="left">支持</td>
@@ -185,9 +167,7 @@
 </tr>
 </tbody>
 </table>
-
-<h2 id="其它服务-需要单独购买">其它服务[需要单独购买]</h2>
-
+<h2 id="其它服务需要单独购买">其它服务[需要单独购买]</h2>
 <table>
 <thead>
 <tr>
@@ -196,20 +176,17 @@
 <th align="left">ucloud</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td align="left">负载均衡服务</td>
 <td align="left">支持(目前免费)，需要两台主机以上</td>
 <td align="left">支持(目前免费)，需要两台主机以上</td>
 </tr>
-
 <tr>
 <td align="left">关系型数据库服务</td>
 <td align="left">支持，mysql和sqlserver</td>
 <td align="left">支持，mysql和percona</td>
 </tr>
-
 <tr>
 <td align="left">特有的服务</td>
 <td align="left">开放存储服务 OSS、开放数据处理服务 ODPS、开放结构化数据服务 OTS</td>
@@ -217,11 +194,8 @@
 </tr>
 </tbody>
 </table>
-
-<p><em><sup>*</sup>按量付费不支持更换操作系统；不支持配置变更功能（包括带宽升级、CPU和内存升级、新增数据盘）;“包年包月“和”按量付费“不支持相互更换;1台云服务器只能选择1种，无法同时选择</em></p>
-
-<h2 id="收费结构-参考">收费结构(参考)</h2>
-
+<p><em><!-- raw HTML omitted -->*<!-- raw HTML omitted -->按量付费不支持更换操作系统；不支持配置变更功能（包括带宽升级、CPU和内存升级、新增数据盘）;“包年包月“和”按量付费“不支持相互更换;1台云服务器只能选择1种，无法同时选择</em></p>
+<h2 id="收费结构参考">收费结构(参考)</h2>
 <table>
 <thead>
 <tr>
@@ -230,50 +204,42 @@
 <th align="left">ucloud</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td align="left">价格动态计算</td>
 <td align="left"><a href="http://buy.aliyun.com/">http://buy.aliyun.com/</a></td>
 <td align="left"><a href="http://www.ucloud.cn/price">http://www.ucloud.cn/price</a></td>
 </tr>
-
 <tr>
 <td align="left">1核CPU/2GB内存/100G数据盘/10M带宽</td>
 <td align="left">8,620元/年</td>
 <td align="left">5,200元/年</td>
 </tr>
-
 <tr>
 <td align="left">2核CPU/4GB内存/100G数据盘/10M带宽</td>
 <td align="left">10,590元/年</td>
 <td align="left">6,900元/年</td>
 </tr>
-
 <tr>
 <td align="left">4核CPU/16GB内存/1000G数据盘/10M带宽</td>
 <td align="left">24,030元/年</td>
 <td align="left">19,800元/年</td>
 </tr>
-
 <tr>
 <td align="left">4核CPU/16GB内存/1000G数据盘/20M带宽</td>
 <td align="left">3,4030元/年</td>
 <td align="left">24,900元/年</td>
 </tr>
-
 <tr>
 <td align="left">2核CPU/4GB内存/100G数据盘/20M带宽</td>
 <td align="left">20,590元/年</td>
 <td align="left">11,400元/年</td>
 </tr>
-
 <tr>
 <td align="left">4核CPU/8GB内存/100G数据盘/20M带宽</td>
 <td align="left">24,530元/年</td>
 <td align="left">14,800元/年</td>
 </tr>
-
 <tr>
 <td align="left">……</td>
 <td align="left">……</td>
@@ -281,9 +247,7 @@
 </tr>
 </tbody>
 </table>
-
 <h2 id="试用情况">试用情况</h2>
-
 <table>
 <thead>
 <tr>
@@ -292,62 +256,52 @@
 <th align="left">ucloud</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td align="left">主机名</td>
 <td align="left">aliyun-s1</td>
 <td align="left">ucloud-s1</td>
 </tr>
-
 <tr>
 <td align="left">用户名</td>
 <td align="left">root</td>
 <td align="left">ubuntu[默认普通用户权限]</td>
 </tr>
-
 <tr>
 <td align="left">登录口令</td>
 <td align="left">自动生成默认密码，弱密码</td>
 <td align="left">必须设置强密码</td>
 </tr>
-
 <tr>
 <td align="left">数据中心</td>
 <td align="left">华东青岛BGP</td>
 <td align="left">北京BGP(2M)，客服推荐使用北京BGP，另外还有华东双线可选</td>
 </tr>
-
 <tr>
 <td align="left">CPU</td>
-<td align="left">2核Intel&reg; Xeon&reg; CPU E5-2420 0 @ 1.90GHz</td>
+<td align="left">2核Intel(R) Xeon(R) CPU E5-2420 0 @ 1.90GHz</td>
 <td align="left">2核QEMU Virtual CPU version (cpu64-rhel6)</td>
 </tr>
-
 <tr>
 <td align="left">内存</td>
 <td align="left">1.5GB</td>
 <td align="left">2GB</td>
 </tr>
-
 <tr>
 <td align="left">系统盘[ 免费]</td>
 <td align="left">20GB</td>
 <td align="left">20GB</td>
 </tr>
-
 <tr>
 <td align="left">OS</td>
 <td align="left">Ubuntu 12.04 64位[只有64位]，支持Centos(5.7,5.8,6.3)、Debian 6.06、Ubuntu 12.04, RHEL(5.4,5.7)、Windows(2003,2008r2)等64位版本</td>
 <td align="left">Ubuntu 12.04 64位，比阿里云支持更多的OS，并且都有32位版本可选</td>
 </tr>
-
 <tr>
 <td align="left">uptime</td>
 <td align="left">10:44:11 up 54 min, 1 user, load average: 0.00, 0.01, 0.04</td>
 <td align="left">10:44:11 up 54 min, 1 user, load average: 0.00, 0.01, 0.04</td>
 </tr>
-
 <tr>
 <td align="left">监控</td>
 <td align="left">默认没有发送短信</td>
@@ -355,11 +309,8 @@
 </tr>
 </tbody>
 </table>
-
 <p>##监控和预警</p>
-
 <p>###站点可用性监控</p>
-
 <table>
 <thead>
 <tr>
@@ -368,20 +319,17 @@
 <th align="left">ucloud</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td align="left">ping</td>
 <td align="left">支持</td>
 <td align="left">支持</td>
 </tr>
-
 <tr>
 <td align="left">端口或协议</td>
 <td align="left">支持，傻瓜式，预制好了一些常用的，如HTTP监控、TCP端口监控、UDP监控、DNS监控、POP3监控、SMTP监控、FTP监控</td>
 <td align="left">需要自己定义端口和监控策略</td>
 </tr>
-
 <tr>
 <td align="left">预警</td>
 <td align="left">短信或者邮件</td>
@@ -389,9 +337,7 @@
 </tr>
 </tbody>
 </table>
-
 <p>###服务器监控</p>
-
 <table>
 <thead>
 <tr>
@@ -400,7 +346,6 @@
 <th align="left">ucloud</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td align="left">内容</td>
@@ -409,19 +354,13 @@
 </tr>
 </tbody>
 </table>
-
 <h2 id="ping测试">ping测试</h2>
-
 <h3 id="测试工具">测试工具</h3>
-
 <ul>
 <li><a href="http://ping.chinaz.com/">http://ping.chinaz.com/</a></li>
 </ul>
-
 <h3 id="测试结果">测试结果</h3>
-
 <p><strong>阿里云(IP:115.28.3.138)</strong></p>
-
 <table>
 <thead>
 <tr>
@@ -433,7 +372,6 @@
 <th align="left">平均响应</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td align="left">所有线路</td>
@@ -443,7 +381,6 @@
 <td align="left">311 毫秒</td>
 <td align="left">73毫秒</td>
 </tr>
-
 <tr>
 <td align="left">电信</td>
 <td align="left">上海[电信]</td>
@@ -452,7 +389,6 @@
 <td align="left">187 毫秒</td>
 <td align="left">62 毫秒</td>
 </tr>
-
 <tr>
 <td align="left">多线</td>
 <td align="left">上海[多线]</td>
@@ -461,7 +397,6 @@
 <td align="left">39 毫秒</td>
 <td align="left">30 毫秒</td>
 </tr>
-
 <tr>
 <td align="left">联通</td>
 <td align="left">北京[联通]</td>
@@ -470,7 +405,6 @@
 <td align="left">65 毫秒</td>
 <td align="left">38 毫秒</td>
 </tr>
-
 <tr>
 <td align="left">移动</td>
 <td align="left">上海[移动]</td>
@@ -479,7 +413,6 @@
 <td align="left">68 毫秒</td>
 <td align="left">38毫秒</td>
 </tr>
-
 <tr>
 <td align="left">海外</td>
 <td align="left">香港[海外]</td>
@@ -490,9 +423,7 @@
 </tr>
 </tbody>
 </table>
-
 <p><strong>ucloud(IP:42.62.56.129)</strong></p>
-
 <table>
 <thead>
 <tr>
@@ -504,7 +435,6 @@
 <th align="left">平均响应</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td align="left">所有线路</td>
@@ -514,7 +444,6 @@
 <td align="left">403 毫秒</td>
 <td align="left">64 毫秒</td>
 </tr>
-
 <tr>
 <td align="left">电信</td>
 <td align="left">陕西西安[电信]</td>
@@ -523,7 +452,6 @@
 <td align="left">53 毫秒</td>
 <td align="left">35 毫秒</td>
 </tr>
-
 <tr>
 <td align="left">多线</td>
 <td align="left">北京[多线]</td>
@@ -532,7 +460,6 @@
 <td align="left">53 毫秒</td>
 <td align="left">28 毫秒</td>
 </tr>
-
 <tr>
 <td align="left">联通</td>
 <td align="left">北京[联通]</td>
@@ -541,7 +468,6 @@
 <td align="left">73 毫秒</td>
 <td align="left">33 毫秒</td>
 </tr>
-
 <tr>
 <td align="left">移动</td>
 <td align="left">河北[移动]</td>
@@ -550,7 +476,6 @@
 <td align="left">45 毫秒</td>
 <td align="left">35 毫秒</td>
 </tr>
-
 <tr>
 <td align="left">海外</td>
 <td align="left">韩国[海外]</td>
@@ -561,13 +486,9 @@
 </tr>
 </tbody>
 </table>
-
 <p>经过多次ping测试，ucloud要比阿里云快一些。这里使用的客服推荐的各自的BGP网络：阿里云华东青岛机房和ucloud北京BGP机房。</p>
-
 <h2 id="下载测试">下载测试</h2>
-
-<p>在各自主机上使用wget下载<a href="http://mirrors.163.com/ubuntu-releases/13.04/ubuntu-13.04-server-i386.iso">http://mirrors.163.com/ubuntu-releases/13.04/ubuntu-13.04-server-i386.iso</a></p>
-
+<p>在各自主机上使用wget下载http://mirrors.163.com/ubuntu-releases/13.04/ubuntu-13.04-server-i386.iso</p>
 <table>
 <thead>
 <tr>
@@ -576,14 +497,12 @@
 <th align="left">ucloud</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td align="left">解析后IP</td>
 <td align="left">123.58.173.106</td>
 <td align="left">123.58.173.106</td>
 </tr>
-
 <tr>
 <td align="left">平均速度</td>
 <td align="left">913K/s</td>
@@ -591,11 +510,9 @@
 </tr>
 </tbody>
 </table>
-
 <p>ucloud下载速度达到了5.41M/s，可能它和网易的镜像比较近吧。好吧，那来测试一下scp吧。
 在各自服务器上都dd一个100M文件出来，然后分别使用scp上传和下载。之后搭建一个Niginx Server来测试一下HTTP。
 新建的20G数据盘情况(tune2fs -l /dev/vdb |grep Block)</p>
-
 <table>
 <thead>
 <tr>
@@ -604,7 +521,6 @@
 <th align="left">ucloud</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td align="left">Block Size</td>
@@ -613,18 +529,11 @@
 </tr>
 </tbody>
 </table>
-
 <p>使用dd创建2000M文件，block大小为8K</p>
-
 <pre><code>dd if=/dev/zero of=file_8k bs=8k count=250k
-</code></pre>
-
-<p>使用dd创建2000M文件，block大小为4K</p>
-
+</code></pre><p>使用dd创建2000M文件，block大小为4K</p>
 <pre><code>dd if=/dev/zero of=file_4k bs=4k count=500k
-</code></pre>
-
-<table>
+</code></pre><table>
 <thead>
 <tr>
 <th align="left">项目</th>
@@ -632,14 +541,12 @@
 <th align="left">ucloud</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td align="left">file_8k</td>
 <td align="left">79.3401 s, 26.4 MB/s</td>
 <td align="left">6.84755 s, 306 MB/s</td>
 </tr>
-
 <tr>
 <td align="left">file_4k</td>
 <td align="left">77.6012 s, 27.0 MB/s</td>
@@ -647,10 +554,8 @@
 </tr>
 </tbody>
 </table>
-
 <p><em>ucloud数据盘是和系统盘在一起的，应该不是那种分布式存储，它的udisk估计和阿里云的数据盘比较类似，udisk没有测。</em>
 <strong>使用scp主动拷贝文件</strong></p>
-
 <table>
 <thead>
 <tr>
@@ -659,14 +564,12 @@
 <th align="left">ucloud -&gt;阿里云</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td align="left">file_8k</td>
 <td align="left">277.7KB/s</td>
 <td align="left">234.5KB/s</td>
 </tr>
-
 <tr>
 <td align="left">file_4k</td>
 <td align="left">288.8KB/s</td>
@@ -674,9 +577,7 @@
 </tr>
 </tbody>
 </table>
-
 <p><strong>阿里云ab测试(n=1000, 4.1k大小html文件)</strong></p>
-
 <table>
 <thead>
 <tr>
@@ -686,7 +587,6 @@
 <th align="left">平均处理时间</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td align="left">1</td>
@@ -694,49 +594,42 @@
 <td align="left">0.267 ms</td>
 <td align="left">0.267 ms</td>
 </tr>
-
 <tr>
 <td align="left">10</td>
 <td align="left">8809.25</td>
 <td align="left">1.135 ms</td>
 <td align="left">0.114 ms</td>
 </tr>
-
 <tr>
 <td align="left">20</td>
 <td align="left">9596.84</td>
 <td align="left">2.084 ms</td>
 <td align="left">0.104 ms</td>
 </tr>
-
 <tr>
 <td align="left"><strong>50</strong></td>
 <td align="left"><strong>9851.63</strong></td>
 <td align="left"><strong>5.075 ms</strong></td>
 <td align="left"><strong>0.102 ms</strong></td>
 </tr>
-
 <tr>
 <td align="left">100</td>
 <td align="left">9382.89</td>
 <td align="left">10.658 ms</td>
 <td align="left">0.107 ms</td>
 </tr>
-
 <tr>
 <td align="left">150</td>
 <td align="left">8800.88</td>
 <td align="left">17.044 ms</td>
 <td align="left">0.114 ms</td>
 </tr>
-
 <tr>
 <td align="left">200</td>
 <td align="left">6666.13</td>
 <td align="left">30.002 ms</td>
 <td align="left">0.150 ms</td>
 </tr>
-
 <tr>
 <td align="left">500</td>
 <td align="left">3740.30</td>
@@ -745,9 +638,7 @@
 </tr>
 </tbody>
 </table>
-
 <p><strong>ucloud ab测试(n=1000, 4.1k大小html文件)</strong></p>
-
 <table>
 <thead>
 <tr>
@@ -757,7 +648,6 @@
 <th align="left">平均处理时间</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td align="left">1</td>
@@ -765,49 +655,42 @@
 <td align="left">0.163 ms</td>
 <td align="left">0.163 ms</td>
 </tr>
-
 <tr>
 <td align="left">10</td>
 <td align="left">10202.83</td>
 <td align="left">0.980 ms</td>
 <td align="left">0.098 ms</td>
 </tr>
-
 <tr>
 <td align="left">20</td>
 <td align="left">15624.27</td>
 <td align="left">1.280 ms</td>
 <td align="left">0.064 ms</td>
 </tr>
-
 <tr>
 <td align="left"><strong>50</strong></td>
 <td align="left"><strong>16508.19</strong></td>
 <td align="left"><strong>3.029 ms</strong></td>
 <td align="left"><strong>0.061 ms</strong></td>
 </tr>
-
 <tr>
 <td align="left">100</td>
 <td align="left">14707.14</td>
 <td align="left">6.799 ms</td>
 <td align="left">0.068 ms</td>
 </tr>
-
 <tr>
 <td align="left">150</td>
 <td align="left">14320.49</td>
 <td align="left">10.475 ms</td>
 <td align="left">0.070 ms</td>
 </tr>
-
 <tr>
 <td align="left">200</td>
 <td align="left">10312.57</td>
 <td align="left">19.394 ms</td>
 <td align="left">0.097 ms</td>
 </tr>
-
 <tr>
 <td align="left">500</td>
 <td align="left">3805.55</td>
@@ -816,9 +699,7 @@
 </tr>
 </tbody>
 </table>
-
-<h2 id="unixbench-分数越高越好">UnixBench(分数越高越好)</h2>
-
+<h2 id="unixbench分数越高越好">UnixBench(分数越高越好)</h2>
 <table>
 <thead>
 <tr>
@@ -827,14 +708,12 @@
 <th align="left">ucloud</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td align="left">running 1 copy of tests</td>
 <td align="left">731.3</td>
 <td align="left">1150.5</td>
 </tr>
-
 <tr>
 <td align="left">running 2 parallel copies of tests</td>
 <td align="left">1401.4</td>
@@ -842,7 +721,6 @@
 </tr>
 </tbody>
 </table>
-
 <p>分值上两个主机的差别还是很明显，从报告的细节上来看，磁盘IO、CPU等方面差别也很明显。
 <a href="http://www.github.com/thisiswangle/">查看阿里云主机UnixBench报告</a>、
 <a href="http://www.github.com/thisiswangle/">查看ucloud主机UnixBench报告</a></p>
@@ -1167,7 +1045,7 @@
 </div>
 <footer id="footer">
     <div class="container">
-        &copy; 2019 <a href="//thisiswangle.com/">小碼哥</a>.
+        &copy; 2020 <a href="//thisiswangle.com/">小碼哥</a>.
         Powered by <a rel="nofollow noreferer noopener" href="https://gohugo.io" target="_blank">Hugo</a>.
         
     </div>

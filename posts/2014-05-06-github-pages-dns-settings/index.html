@@ -3,7 +3,7 @@
 <head>
 
     <meta charset="utf-8">
-    <meta name="generator" content="Hugo 0.55.3" />
+    <meta name="generator" content="Hugo 0.62.2" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -109,38 +109,26 @@
                             
                             
                             <p>这几天每次 Push 博客到 Github Pages 时总会收到一封邮件：</p>
-
 <blockquote>
 <p>The page build completed successfully, but returned the following warning:</p>
-
-<p>GitHub Pages recently underwent some improvements (<a href="https://github.com/blog/1715-faster-more-awesome-github-pages">https://github.com/blog/1715-faster-more-awesome-github-pages</a>) to make your site faster and more awesome, but we&rsquo;ve noticed that iforget.info isn&rsquo;t properly configured to take advantage of these new features. While your site will continue to work just fine, updating your domain&rsquo;s configuration offers some additional speed and performance benefits. Instructions on updating your site&rsquo;s IP address can be found at
-<a href="https://help.github.com/articles/setting-up-a-custom-domain-with-github-pages#step-2-configure-dns-records">https://help.github.com/articles/setting-up-a-custom-domain-with-github-pages#step-2-configure-dns-records</a>, and of course, you can always get in touch with a human at support@github.com. For the more technical minded folks who want to skip the help docs: your site&rsquo;s DNS records are pointed to a deprecated IP address.</p>
-
+<p>GitHub Pages recently underwent some improvements (<a href="https://github.com/blog/1715-faster-more-awesome-github-pages">https://github.com/blog/1715-faster-more-awesome-github-pages</a>) to make your site faster and more awesome, but we've noticed that iforget.info isn't properly configured to take advantage of these new features. While your site will continue to work just fine, updating your domain's configuration offers some additional speed and performance benefits. Instructions on updating your site's IP address can be found at
+<a href="https://help.github.com/articles/setting-up-a-custom-domain-with-github-pages#step-2-configure-dns-records,">https://help.github.com/articles/setting-up-a-custom-domain-with-github-pages#step-2-configure-dns-records,</a> and of course, you can always get in touch with a human at <a href="mailto:support@github.com">support@github.com</a>. For the more technical minded folks who want to skip the help docs: your site's DNS records are pointed to a deprecated IP address.</p>
 <p>For information on troubleshooting Jekyll see:</p>
-
 <p><a href="https://help.github.com/articles/using-jekyll-with-pages#troubleshooting">https://help.github.com/articles/using-jekyll-with-pages#troubleshooting</a></p>
-
 <p>If you have any questions please contact us at <a href="https://github.com/contact">https://github.com/contact</a>.</p>
 </blockquote>
-
 <p>大概意思就是我们 Github Pages 服务最近做了升级，这个升级将会使你的博客访问起来快到碉堡了，赶快来配置(修改域名记录就可以)一下用上吧。</p>
-
 <p>之前 iforget.info 这个域名有两条记录：</p>
-
 <ul>
 <li>A 记录： iforget.info 到 207.97.227.245</li>
 <li>CNAME(Alias) 记录：www.iforget.info  到  iforget.info</li>
 </ul>
-
 <p>207.97.227.245 是个美帝的 IP，所以速度比较慢。我还想着给 iforget.info 备个案，从此用上七牛的 CND 来加速了。好消息来了，Github Pages 支持全球 CDN 了，赶紧修改一下 DNS 记录(把之前的记录都删掉吧)：</p>
-
 <ul>
 <li>CNAME 记录: iforget.info 到 thisiswangle.github.io</li>
-<li>CNAME 记录: www.iforget.info 到 thisiswangle.github.io</li>
+<li>CNAME 记录: <a href="http://www.iforget.info">www.iforget.info</a> 到 thisiswangle.github.io</li>
 </ul>
-
 <p>好了，静候 DNS 生效。</p>
-
 <pre><code>➜  ~  dig iforget.info +nostats +nocomments +nocmd
 
 ; &lt;&lt;&gt;&gt; DiG 9.8.3-P1 &lt;&lt;&gt;&gt; iforget.info +nostats +nocomments +nocmd
@@ -157,20 +145,13 @@ ns1.p04.dynect.net.     74973   IN      A       208.78.70.4
 ns2.p04.dynect.net.     74756   IN      A       204.13.250.4
 ns3.p04.dynect.net.     74789   IN      A       208.78.71.4
 ns4.p04.dynect.net.     153     IN      A       204.13.251.4
-</code></pre>
-
-<p>IP 变成了 103.245.222.133, 澳大利亚 IP ，进入亚洲组了。</p>
-
-<p>当同时设置了 iforget.info 和 www.iforget.info, 再添加一个 CNAME 文件到自己的博客根目录下。</p>
-
+</code></pre><p>IP 变成了 103.245.222.133, 澳大利亚 IP ，进入亚洲组了。</p>
+<p>当同时设置了 iforget.info 和 <a href="http://www.iforget.info,">www.iforget.info,</a> 再添加一个 CNAME 文件到自己的博客根目录下。</p>
 <p>如果 CNAME 的内容是</p>
-
 <blockquote>
 <p>iforget.info</p>
 </blockquote>
-
-<p>浏览器中输入 www.iforget.info 时，Github Pages 将会永久跳转(301)到 iforget.info, 反之亦然。</p>
-
+<p>浏览器中输入 <a href="http://www.iforget.info">www.iforget.info</a> 时，Github Pages 将会永久跳转(301)到 iforget.info, 反之亦然。</p>
 <p>如果你能看到本页，说明本站已经拿到了 GFW 认证。</p>
 
                             <p>(完)</p>
@@ -495,7 +476,7 @@ ns4.p04.dynect.net.     153     IN      A       204.13.251.4
 </div>
 <footer id="footer">
     <div class="container">
-        &copy; 2019 <a href="//thisiswangle.com/">小碼哥</a>.
+        &copy; 2020 <a href="//thisiswangle.com/">小碼哥</a>.
         Powered by <a rel="nofollow noreferer noopener" href="https://gohugo.io" target="_blank">Hugo</a>.
         
     </div>

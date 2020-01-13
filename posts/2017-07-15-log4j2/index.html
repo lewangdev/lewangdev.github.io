@@ -3,7 +3,7 @@
 <head>
 
     <meta charset="utf-8">
-    <meta name="generator" content="Hugo 0.55.3" />
+    <meta name="generator" content="Hugo 0.62.2" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -108,30 +108,20 @@
                             </p>
                             
                             
-                            
-
-<h2 id="背景">背景</h2>
-
+                            <h2 id="背景">背景</h2>
 <p>Java 生态下的日志库太多，配置也不同，大多数情况下会使用  SLF4j (又引入了一个库)来抽象日志接口。在使用 Log4j2 后，发现可以不使用 SLF4j 了，并且配置变得更简单，可以使用 lombok 的 log4j2 注解等。</p>
-
 <p>需要搞清楚</p>
-
 <ul>
 <li>如何设置哪些日志要记录下来</li>
 <li>日志记录到哪里去</li>
 </ul>
-
 <h2 id="level-日志级别">LEVEL 日志级别：</h2>
-
 <ul>
 <li>内置（有Fatal）：All &lt; Trace &lt; Debug &lt; Info &lt; Warn &lt; Error &lt; Fatal &lt; OFF</li>
 <li>还可以自定义： <a href="https://logging.apache.org/log4j/2.0/manual/customloglevels.html">https://logging.apache.org/log4j/2.0/manual/customloglevels.html</a></li>
 </ul>
-
 <h2 id="appender-日志输出的目的地">Appender: 日志输出的目的地</h2>
-
 <p>内置的目的地有：</p>
-
 <ul>
 <li>console,</li>
 <li>files（FIle/RollingFile）,</li>
@@ -142,19 +132,12 @@
 <li>various database APIs</li>
 <li>&hellip;</li>
 </ul>
-
 <p>Appender 在接受到日志以后，可以通过级别过滤选择记录日志，具体配置： <a href="https://logging.apache.org/log4j/2.0/manual/appenders.html">https://logging.apache.org/log4j/2.0/manual/appenders.html</a></p>
-
 <h2 id="logger-负责决定哪些日志要记录和发配日志">Logger 负责决定哪些日志要记录和发配日志</h2>
-
-<p>哪些需要记日志，设置什么级别，并且配置日志输出到哪些个 Appender 中去都在 Logger 中配置。Logger 有类似继承的关系，名为 Root 的的 Logger <Root></Root> 为所有 Logger 的根，也就是说没有做特殊设置（additivity=false), 那么这个 Logger 的日志将会记录到自己指定的 Appender，并且也都会记录到自己所有“父” Logger 设置的 Appender 中去</p>
-
+<p>哪些需要记日志，设置什么级别，并且配置日志输出到哪些个 Appender 中去都在 Logger 中配置。Logger 有类似继承的关系，名为 Root 的的 Logger <!-- raw HTML omitted --><!-- raw HTML omitted --> 为所有 Logger 的根，也就是说没有做特殊设置（additivity=false), 那么这个 Logger 的日志将会记录到自己指定的 Appender，并且也都会记录到自己所有“父” Logger 设置的 Appender 中去</p>
 <p>继承关系由 Logger 的名称推断出来，名称可以认为是 Logger 树的前序遍历打印的节点路径。</p>
-
-<p><img src="/images/old/logger-tree-view.svg" alt="Logger Tree View" /></p>
-
+<p><img src="/images/old/logger-tree-view.svg" alt="Logger Tree View"></p>
 <p>Logger 定义</p>
-
 <table>
 <thead>
 <tr>
@@ -162,37 +145,30 @@
 <th align="left">将会记录日志的 Logger</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td align="left">Root</td>
 <td align="left">Root</td>
 </tr>
-
 <tr>
 <td align="left">X</td>
 <td align="left">Root, X</td>
 </tr>
-
 <tr>
 <td align="left">X.Y</td>
 <td align="left">Root, X, Y</td>
 </tr>
-
 <tr>
 <td align="left">X.Z</td>
 <td align="left">Root, X,Z</td>
 </tr>
-
 <tr>
 <td align="left">M</td>
 <td align="left">Root, M</td>
 </tr>
 </tbody>
 </table>
-
 <h2 id="filter-日志过滤器">Filter 日志过滤器</h2>
-
 <p>DENY,ACCEPT,NEUTRAL 三个选项，所有进入当前 Appender 的所有日志，Filter 可以设置来选择日志是否要记录</p>
 
                             <p>(完)</p>
@@ -517,7 +493,7 @@
 </div>
 <footer id="footer">
     <div class="container">
-        &copy; 2019 <a href="//thisiswangle.com/">小碼哥</a>.
+        &copy; 2020 <a href="//thisiswangle.com/">小碼哥</a>.
         Powered by <a rel="nofollow noreferer noopener" href="https://gohugo.io" target="_blank">Hugo</a>.
         
     </div>

@@ -3,7 +3,7 @@
 <head>
 
     <meta charset="utf-8">
-    <meta name="generator" content="Hugo 0.55.3" />
+    <meta name="generator" content="Hugo 0.62.2" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -101,65 +101,38 @@
                             </p>
                             
                             
-                            
-
-<p><a href="http://www.vagrantup.com/">Vagrant</a> 是一个构建虚拟开发环境的利器，它使得在团队中很容易共享开发环境，有了它，不必每个人都搭建一个自己的开发环境了。在没有使用 vagrant 之前，我在windows中安装了 virtualbox，然后在virtualbox中安装了一个ubuntu server。在 ubuntu 中安装了 mysql、jdk 等软件，并且设置了一个共享目录，以便于将工程代码直接共享给 ubuntu。在外部开发调试过程中（Java 项目），我需要在virtualbox中设置好几个端口映射，如 mysql，ssh等等。这样在 cygwin 里面就可以通过 ssh 登录 ubuntu server 了，为了使得ssh登录不用每次设置密码，还需要手动生成公钥私钥。换机器了，这一切我又得重新配置。新同事来了，他也得像我这样重新配置一遍。有可能他还会有问题说：为什么按照你的说明，代码在我这里却无法运行呢？</p>
-
+                            <p><a href="http://www.vagrantup.com/">Vagrant</a> 是一个构建虚拟开发环境的利器，它使得在团队中很容易共享开发环境，有了它，不必每个人都搭建一个自己的开发环境了。在没有使用 vagrant 之前，我在windows中安装了 virtualbox，然后在virtualbox中安装了一个ubuntu server。在 ubuntu 中安装了 mysql、jdk 等软件，并且设置了一个共享目录，以便于将工程代码直接共享给 ubuntu。在外部开发调试过程中（Java 项目），我需要在virtualbox中设置好几个端口映射，如 mysql，ssh等等。这样在 cygwin 里面就可以通过 ssh 登录 ubuntu server 了，为了使得ssh登录不用每次设置密码，还需要手动生成公钥私钥。换机器了，这一切我又得重新配置。新同事来了，他也得像我这样重新配置一遍。有可能他还会有问题说：为什么按照你的说明，代码在我这里却无法运行呢？</p>
 <p>一切都从 <a href="http://yining.org">Yining</a> 告诉了我 vagrant 之后发生了变化，原来一切都这么简单。</p>
-
 <h2 id="安装-virtualbox">安装 VirtualBox</h2>
-
 <p>Vagrant 其实是对 virtualbox 做了一层包装，它让使用virtualbox作为虚拟机更为简单。当然也可以使用 vmware，使用vmware那得找一个license了。</p>
-
 <p>好吧，去<a href="https://www.virtualbox.org/wiki/Downloads">这里</a> 下载 VirtualBox。我使用的是 4.3.8 for OSX</p>
-
 <h2 id="安装-vagrant">安装 Vagrant</h2>
-
 <p><a href="http://www.vagrantup.com/downloads.html">下载vagrant</a></p>
-
 <h2 id="添加虚拟机镜像到-vagrant">添加虚拟机镜像到 Vagrant</h2>
-
 <pre><code>vagrant box add vdevenv ~/Workspace/vagrant/boxes/vdevenv-0.0.0.1.box
-</code></pre>
-
-<p>vagrant 的干净的镜像可以在这里下载:</p>
-
+</code></pre><p>vagrant 的干净的镜像可以在这里下载:</p>
 <ul>
 <li><a href="http://files.vagrantup.com/precise32.box">Ubuntu precise 32 VirtualBox</a></li>
 <li><a href="http://files.vagrantup.com/precise64.box">Ubuntu precise 64 VirtualBox</a></li>
 <li><a href="http://www.vagrantbox.es/">更多镜像</a></li>
 </ul>
-
 <h2 id="在工作目录启动-vagrant">在工作目录启动 Vagrant</h2>
-
 <p>进入自己的代码所在的目录，启动刚刚添加的虚拟机镜像</p>
-
 <pre><code>vagrant init vdevenv
 vagrant up
 vagrant ssh  # 登录到虚拟机
-</code></pre>
-
-<p>进入 /vagrant 目录，这里就是共享的目录，所有的代码都在这里。</p>
-
+</code></pre><p>进入 /vagrant 目录，这里就是共享的目录，所有的代码都在这里。</p>
 <h2 id="vagrant-设置">Vagrant 设置</h2>
-
 <p>修改 Vagrantfile</p>
-
 <h2 id="分享开发环境">分享开发环境</h2>
-
 <pre><code>vagrant package
-</code></pre>
-
-<p>执行之后在工作目录下面会生成一个*.bax的文件，把这个文件拷给别人就可以了</p>
-
+</code></pre><p>执行之后在工作目录下面会生成一个*.bax的文件，把这个文件拷给别人就可以了</p>
 <h2 id="常用-vagrant-命令">常用 Vagrant 命令</h2>
-
 <pre><code>vagrant ssh
 vagrant status
 vagrant halt
 vagrant up
 </code></pre>
-
                             <p>(完)</p>
                             
                             <blockquote>
@@ -480,7 +453,7 @@ vagrant up
 </div>
 <footer id="footer">
     <div class="container">
-        &copy; 2019 <a href="//thisiswangle.com/">小碼哥</a>.
+        &copy; 2020 <a href="//thisiswangle.com/">小碼哥</a>.
         Powered by <a rel="nofollow noreferer noopener" href="https://gohugo.io" target="_blank">Hugo</a>.
         
     </div>

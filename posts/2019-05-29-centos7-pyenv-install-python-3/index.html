@@ -3,7 +3,7 @@
 <head>
 
     <meta charset="utf-8">
-    <meta name="generator" content="Hugo 0.55.3" />
+    <meta name="generator" content="Hugo 0.62.2" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -103,57 +103,38 @@
                         <div class="post-content">
                             
                             
+                            <p class="warning">
+                                本文写于 6 个月之前，如果这是一篇关于计算机技术的文章，那本文内容很有可能已经过期了。
+                            </p>
                             
                             
-
-<h2 id="概要">概要</h2>
-
+                            <h2 id="概要">概要</h2>
 <p>本文记录了在 CentOS 7.6 系统上通过 pyenv 安装 Python 3.7.3 的过程。</p>
-
 <h2 id="环境">环境</h2>
-
 <ul>
 <li>CentOS Linux release 7.6.1810 (Core)</li>
 <li>Kernel 3 3.10.0-957.el7.x86_64</li>
 <li>Pyenv 1.2.11</li>
 </ul>
-
 <h2 id="安装-pyenv">安装 pyenv</h2>
-
 <pre><code>$ curl https://pyenv.run | bash
-</code></pre>
-
-<p>然后根据提示把以下内容放到 <code>~/.bashrc</code> 文件末尾</p>
-
+</code></pre><p>然后根据提示把以下内容放到 <code>~/.bashrc</code> 文件末尾</p>
 <pre><code># Load pyenv automatically by adding
 # the following to ~/.bashrc:
 
 export PATH=&quot;/root/.pyenv/bin:$PATH&quot;
 eval &quot;$(pyenv init -)&quot;
 eval &quot;$(pyenv virtualenv-init -)&quot;
-</code></pre>
-
-<h2 id="安装-python-3-7-3">安装 Python 3.7.3</h2>
-
+</code></pre><h2 id="安装-python-373">安装 Python 3.7.3</h2>
 <p>准备</p>
-
 <pre><code>$ sudo yum -y install xz bzip2 bzip2-devel sqlite-devel gcc openssl-devel readline-devel zlib-devel libffi-devel
-</code></pre>
-
-<p>安装</p>
-
+</code></pre><p>安装</p>
 <pre><code>pyenv install 3.7.3
-</code></pre>
-
-<p>验证</p>
-
+</code></pre><p>验证</p>
 <pre><code>$ pyenv versions
 * system (set by /root/.pyenv/version)
   3.7.3
-</code></pre>
-
-<h2 id="参考">参考</h2>
-
+</code></pre><h2 id="参考">参考</h2>
 <ul>
 <li><a href="https://github.com/pyenv/pyenv/issues/1183">https://github.com/pyenv/pyenv/issues/1183</a></li>
 <li><a href="https://github.com/pyenv/pyenv-installer">https://github.com/pyenv/pyenv-installer</a></li>
@@ -484,7 +465,7 @@ eval &quot;$(pyenv virtualenv-init -)&quot;
 </div>
 <footer id="footer">
     <div class="container">
-        &copy; 2019 <a href="//thisiswangle.com/">小碼哥</a>.
+        &copy; 2020 <a href="//thisiswangle.com/">小碼哥</a>.
         Powered by <a rel="nofollow noreferer noopener" href="https://gohugo.io" target="_blank">Hugo</a>.
         
     </div>

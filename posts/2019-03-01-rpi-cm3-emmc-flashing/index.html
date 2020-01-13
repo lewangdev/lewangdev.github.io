@@ -3,7 +3,7 @@
 <head>
 
     <meta charset="utf-8">
-    <meta name="generator" content="Hugo 0.55.3" />
+    <meta name="generator" content="Hugo 0.62.2" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -108,36 +108,29 @@
                             </p>
                             
                             
-                            
-
-<h2 id="准备">准备</h2>
-
+                            <h2 id="准备">准备</h2>
 <ul>
 <li>阅读<a href="https://www.raspberrypi.org/documentation/hardware/computemodule/cm-emmc-flashing.md">Flashing the Compute Module eMMC</a></li>
 <li>准备一个可以刷系统的底板，我用的是微雪<a href="http://www.waveshare.net/shop/Compute-Module-IO-Board-Plus.htm">Compute-Module-IO-Board-Plus</a></li>
 </ul>
-
-<h2 id="步骤-linux-系统下刷系统-可以使用树莓派来刷机">步骤(Linux 系统下刷系统，可以使用树莓派来刷机)</h2>
-
+<h2 id="步骤linux-系统下刷系统可以使用树莓派来刷机">步骤(Linux 系统下刷系统，可以使用树莓派来刷机)</h2>
 <ol>
 <li><code>sudo apt install git libusb-1.0-0-dev</code></li>
 <li><code>git clone --depth=1 https://github.com/raspberrypi/usbboot &amp;&amp; cd usbboot &amp;&amp; make</code></li>
 <li><code>sudo ./rpiboot</code></li>
 <li>连好线，跳线部分见各自底板的手册
-
 <ul>
 <li>拔掉 USB SLAVE 1/2/3/4</li>
 <li>拔掉 SELECT 跳线帽</li>
 <li>将 BOOT ENABLE USB SLAVE 跳线帽接到 EN 端</li>
-</ul></li>
+</ul>
+</li>
 <li><code>sudo fdisk -l</code> 查看磁盘名称，这里是 <code>/dev/sda</code></li>
 <li><code>sudo dd if=raspbian-lite.img of=/dev/sda bs=4MiB</code></li>
 <li>刷入系统后，挂在启动分区，添加 <code>SSH</code> 来开启 SSH 服务，<code>sudo mount /dev/sda1 /media</code></li>
 <li><code>cd /media &amp;&amp; touch SSH</code></li>
 </ol>
-
-<h2 id="使用-慧通科技-https-huitong-tech-出品的-huibox-700-底板">使用<a href="https://huitong.tech">慧通科技</a>出品的 HuiBox-700 底板</h2>
-
+<h2 id="使用慧通科技httpshuitongtech出品的-huibox-700-底板">使用<a href="https://huitong.tech">慧通科技</a>出品的 HuiBox-700 底板</h2>
 <p>省略上述的第4步，其它步骤完全一样</p>
 
                             <p>(完)</p>
@@ -462,7 +455,7 @@
 </div>
 <footer id="footer">
     <div class="container">
-        &copy; 2019 <a href="//thisiswangle.com/">小碼哥</a>.
+        &copy; 2020 <a href="//thisiswangle.com/">小碼哥</a>.
         Powered by <a rel="nofollow noreferer noopener" href="https://gohugo.io" target="_blank">Hugo</a>.
         
     </div>

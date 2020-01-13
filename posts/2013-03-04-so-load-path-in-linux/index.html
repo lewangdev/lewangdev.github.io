@@ -3,7 +3,7 @@
 <head>
 
     <meta charset="utf-8">
-    <meta name="generator" content="Hugo 0.55.3" />
+    <meta name="generator" content="Hugo 0.62.2" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -108,53 +108,33 @@
                             </p>
                             
                             
-                            
-
-<h2 id="相关的环境变量">相关的环境变量</h2>
-
+                            <h2 id="相关的环境变量">相关的环境变量</h2>
 <ul>
 <li><strong>LD_LIBRARY_PATH</strong> ld-linux.so寻找shared object的路径，优先加载出现在路径前面的shared object。如，export LD_LIBRARY_PATH=/home/user/lib:$LD_LIBRARY_PATH</li>
 <li><strong>LD_PRELOAD</strong> 指定优先供ld-linux.so加载的shared object。如，export LD_PRELAOD=/home/user/lib/glibc.so，可以使用这个变量来改变加载顺序，例如我们自定义的glibc.so中实现了新的strcmp之类的函数，那么可以使用这个变量来实现函数的替换，实现注入</li>
 <li><strong>LD_DEBUG</strong> 使用这个环境变量来debug载入shared object的情况。如，export LD_DEBUG=files,这样会打印所有所有加载shared object的记录</li>
 </ul>
-
 <h2 id="一些工具">一些工具</h2>
-
 <ul>
 <li>如何查看一个程序或者shared object加载哪些shared object</li>
 </ul>
-
 <p>ldd，可以查看程序或者.so，如，</p>
-
 <pre><code>$ ldd ./foo_test
 $ ldd ./libfoo.so
-</code></pre>
-
-<ul>
+</code></pre><ul>
 <li>对于已经运行的程序，可以这样</li>
 </ul>
-
 <pre><code>$ cat /proc/PID/maps | awk '{print $6}'| grep '\.so'| sort | uniq
 $ lsof -p PID | awk '{print $9}' | grep '\.so'
-</code></pre>
-
-<ul>
+</code></pre><ul>
 <li>没有启动的程序可以这样</li>
 </ul>
-
 <pre><code>$ strace ./foo_test 2&gt;&amp;1 | grep '^open(&quot;.*\.so'
-</code></pre>
-
-<p>也可以用上面提到的环境变量来看shared object的加载顺序</p>
-
+</code></pre><p>也可以用上面提到的环境变量来看shared object的加载顺序</p>
 <pre><code>$ export LD_DEBUG=files
 $ ./foo_test
-</code></pre>
-
-<h2 id="顺便介绍下lsof">顺便介绍下lsof</h2>
-
+</code></pre><h2 id="顺便介绍下lsof">顺便介绍下lsof</h2>
 <p>查看占用端口的进程</p>
-
 <pre><code>le@SH:~$ sudo lsof -i TCP:80
 COMMAND PID USER FD TYPE DEVICE SIZE/OFF NODE NAME
 nginx 1309 root 7u IPv4 8740 0t0 TCP *:http (LISTEN)
@@ -163,27 +143,18 @@ nginx 1311 www-data 7u IPv4 8740 0t0 TCP *:http (LISTEN)
 nginx 1312 www-data 7u IPv4 8740 0t0 TCP *:http (LISTEN)
 nginx 1313 www-data 7u IPv4 8740 0t0 TCP *:http (LISTEN)
 
-</code></pre>
-
-<p>具体的请<strong>man lsof</strong></p>
-
+</code></pre><p>具体的请<strong>man lsof</strong></p>
 <h2 id="objdump-和-readelf">objdump 和 readelf</h2>
-
 <ul>
 <li><strong>objdump</strong> 查看object的信息</li>
 </ul>
-
 <pre><code>$ objdump -t libfoo.so
 $ objdump -s -j .rodata -t libfoo.so
-</code></pre>
-
-<ul>
+</code></pre><ul>
 <li><strong>readelf</strong> 读elf的信息</li>
 </ul>
-
 <pre><code>readelf -r  libfoo.so
 </code></pre>
-
                             <p>(完)</p>
                             
                             <blockquote>
@@ -502,7 +473,7 @@ $ objdump -s -j .rodata -t libfoo.so
 </div>
 <footer id="footer">
     <div class="container">
-        &copy; 2019 <a href="//thisiswangle.com/">小碼哥</a>.
+        &copy; 2020 <a href="//thisiswangle.com/">小碼哥</a>.
         Powered by <a rel="nofollow noreferer noopener" href="https://gohugo.io" target="_blank">Hugo</a>.
         
     </div>

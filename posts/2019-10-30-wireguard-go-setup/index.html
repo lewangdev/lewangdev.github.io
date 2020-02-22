@@ -136,40 +136,40 @@ make
 sudo make install
 </code></pre></div><h2 id="配置-wireguard">配置 wireguard</h2>
 <p>生成密钥</p>
-<pre><code>cd /etc/wireguard
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">cd /etc/wireguard
 wg genkey | tee server_privatekey | wg pubkey &gt; server_publickey
 wg genkey | tee client_privatekey | wg pubkey &gt; client_publickey
-</code></pre><p>生成服务器端配置文件 wg0.conf</p>
-<pre><code>echo &quot;[Interface]
-PrivateKey = $(cat server_privatekey)
-Address = 10.0.0.1/24 
-PostUp   = iptables -A FORWARD -i wg0 -j ACCEPT; iptables -A FORWARD -o wg0 -j ACCEPT; iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
-PostDown = iptables -D FORWARD -i wg0 -j ACCEPT; iptables -D FORWARD -o wg0 -j ACCEPT; iptables -t nat -D POSTROUTING -o eth0 -j MASQUERADE
-ListenPort = 1194
-MTU = 1420
-
-[Peer]
-PublicKey = $(cat client_publickey)
-AllowedIPs = 10.0.0.2/32&quot; | sed '/^#/d;/^\s*$/d' &gt; wg0.conf
-</code></pre><p>生成客户端配置文件 client-wg0.conf</p>
-<pre><code>echo &quot;[Interface]
-PrivateKey = $(cat client_privatekey)
-Address = 10.0.0.2/24
-DNS = 8.8.8.8
-MTU = 1420
-
-[Peer]
-PublicKey = $(cat server_publickey)
-Endpoint = ${server_ip}:1194
-AllowedIPs = 0.0.0.0/0, ::0/0
-PersistentKeepalive = 30&quot; | sed '/^#/d;/^\s*$/d' &gt; client-wg0.conf
-</code></pre><p>在服务器端开启数据包转发</p>
-<pre><code>echo 1 &gt; /proc/sys/net/ipv4/ip_forward
-echo &quot;net.ipv4.ip_forward = 1&quot; &gt;&gt; /etc/sysctl.conf
+</code></pre></div><p>生成服务器端配置文件 wg0.conf</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">echo <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">[Interface]
+</span><span style="color:#e6db74">PrivateKey = </span><span style="color:#66d9ef">$(</span>cat server_privatekey<span style="color:#66d9ef">)</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">Address = 10.0.0.1/24 
+</span><span style="color:#e6db74">PostUp   = iptables -A FORWARD -i wg0 -j ACCEPT; iptables -A FORWARD -o wg0 -j ACCEPT; iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+</span><span style="color:#e6db74">PostDown = iptables -D FORWARD -i wg0 -j ACCEPT; iptables -D FORWARD -o wg0 -j ACCEPT; iptables -t nat -D POSTROUTING -o eth0 -j MASQUERADE
+</span><span style="color:#e6db74">ListenPort = 1194
+</span><span style="color:#e6db74">MTU = 1420
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">[Peer]
+</span><span style="color:#e6db74">PublicKey = </span><span style="color:#66d9ef">$(</span>cat client_publickey<span style="color:#66d9ef">)</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">AllowedIPs = 10.0.0.2/32</span><span style="color:#e6db74">&#34;</span> | sed <span style="color:#e6db74">&#39;/^#/d;/^\s*$/d&#39;</span> &gt; wg0.conf
+</code></pre></div><p>生成客户端配置文件 client-wg0.conf</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">echo <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">[Interface]
+</span><span style="color:#e6db74">PrivateKey = </span><span style="color:#66d9ef">$(</span>cat client_privatekey<span style="color:#66d9ef">)</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">Address = 10.0.0.2/24
+</span><span style="color:#e6db74">DNS = 8.8.8.8
+</span><span style="color:#e6db74">MTU = 1420
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">[Peer]
+</span><span style="color:#e6db74">PublicKey = </span><span style="color:#66d9ef">$(</span>cat server_publickey<span style="color:#66d9ef">)</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">Endpoint = </span><span style="color:#e6db74">${</span>server_ip<span style="color:#e6db74">}</span><span style="color:#e6db74">:1194
+</span><span style="color:#e6db74">AllowedIPs = 0.0.0.0/0, ::0/0
+</span><span style="color:#e6db74">PersistentKeepalive = 30</span><span style="color:#e6db74">&#34;</span> | sed <span style="color:#e6db74">&#39;/^#/d;/^\s*$/d&#39;</span> &gt; client-wg0.conf
+</code></pre></div><p>在服务器端开启数据包转发</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">echo <span style="color:#ae81ff">1</span> &gt; /proc/sys/net/ipv4/ip_forward
+echo <span style="color:#e6db74">&#34;net.ipv4.ip_forward = 1&#34;</span> &gt;&gt; /etc/sysctl.conf
 sysctl -p
-</code></pre><p>最后在服务器端启动 wireguard</p>
-<pre><code>wg-quick up wg0
-</code></pre><p>客户端需要根据前面生成的配置文件进行配置</p>
+</code></pre></div><p>最后在服务器端启动 wireguard</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">wg-quick up wg0
+</code></pre></div><p>客户端需要根据前面生成的配置文件进行配置</p>
 <h2 id="参考">参考</h2>
 <ul>
 <li><a href="https://www.wireguard.com">https://www.wireguard.com</a></li>
@@ -252,6 +252,10 @@ sysctl -p
 <ul class="widget-list">
     
     <li>
+        <a href="//thisiswangle.com/posts/2020-02-22-gradle-study-1/" title="与 Gradle 一见如故">与 Gradle 一见如故</a>
+    </li>
+    
+    <li>
         <a href="//thisiswangle.com/posts/2019-11-02-fangta-paintings/" title="游方塔园">游方塔园</a>
     </li>
     
@@ -287,10 +291,6 @@ sysctl -p
         <a href="//thisiswangle.com/posts/2018-12-18-gitlab-docker-install/" title="使用 Docker 方式安装 Gitlab，没你想得那么简单">使用 Docker 方式安装 Gitlab，没你想得那么简单</a>
     </li>
     
-    <li>
-        <a href="//thisiswangle.com/posts/2017-12-31-year-end-reviews-of-2017/" title="有关 2017 流水账和胡思乱想的记录">有关 2017 流水账和胡思乱想的记录</a>
-    </li>
-    
 </ul>
     </section>
 
@@ -310,6 +310,10 @@ sysctl -p
     
     <li>
         <a href="//thisiswangle.com/categories/Github/">Github(1)</a>
+    </li>
+    
+    <li>
+        <a href="//thisiswangle.com/categories/Gradle/">Gradle(1)</a>
     </li>
     
     <li>
@@ -363,9 +367,13 @@ sysctl -p
     
     <a href="//thisiswangle.com/tags/Gitlab/">Gitlab</a>
     
+    <a href="//thisiswangle.com/tags/Groovy/">Groovy</a>
+    
     <a href="//thisiswangle.com/tags/Java/">Java</a>
     
     <a href="//thisiswangle.com/tags/Kafka/">Kafka</a>
+    
+    <a href="//thisiswangle.com/tags/Kotlin/">Kotlin</a>
     
     <a href="//thisiswangle.com/tags/Linux/">Linux</a>
     

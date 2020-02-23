@@ -146,17 +146,54 @@ repositories <span style="color:#f92672">{</span>
 dependencies <span style="color:#f92672">{</span>
     testCompile group: <span style="color:#e6db74">&#39;junit&#39;</span><span style="color:#f92672">,</span> name: <span style="color:#e6db74">&#39;junit&#39;</span><span style="color:#f92672">,</span> version: <span style="color:#e6db74">&#39;4.12&#39;</span>
 <span style="color:#f92672">}</span>
-</code></pre></div><p>小码哥插话：“settings.gradle 很好懂，但是 build.gradle 里面写的是什么啊？”</p>
+</code></pre></div><p>小码哥插话：“settings.gradle 很好懂，给 rootProject.name 这个变量赋了一个值，但是 build.gradle 里面写的是什么啊？”</p>
 <p>大象：“gradle 的魔法确实就在 build.gradle 之中。build.gradle 是使用 Groovy 编写的脚本，我先介绍一下 Groovy 同学吧。”</p>
 <h2 id="你好groovy-同学">你好，Groovy 同学</h2>
 <p>Gradle 的构建脚本可以使用 Groovy 编写（Kotlin 也可以）。Groovy 也是一种 JVM 语言，并且与 Java 比较相似，写起来比 Java 要简洁得多 (Kotlin也是)，Groovy 是 Java 的超集，也就是说 Java 代码可以当成是 Groovy 代码运行。我们来了解一下 Groovy，以便更容易读懂和修改 build.gradle。</p>
+<h3 id="初识-groovy">初识 Groovy</h3>
 <p>在 idea 中打开 Groovy 控制台（Tools &gt; Groovy Console&hellip;）</p>
 <p><img src="/images/hello-gradle/tools-groovy-console-1.png" alt="tools-groovy-console-1"></p>
 <p>接着在控制台里输入一些 Java 代码</p>
 <p><img src="/images/hello-gradle/tools-groovy-console-2.png" alt="tools-groovy-console-2"></p>
-<p>点击绿色三角形来运行这段代码</p>
+<p>点击绿色三角形来运行这段代码，可以在下面的窗口看到输出</p>
 <p><img src="/images/hello-gradle/tools-groovy-console-3.png" alt="tools-groovy-console-3"></p>
-<p>小码哥：“大象，你说这是 Java 代码，为什么没有 class 定义和 main 函数呢？”</p>
+<p>小码哥：“大象，你说这是 Java 代码，为什么没有定义 class 和 main 函数呢？”
+大象：“只是看起来是 Java，其实这个就是 Groovy 了，Grovvy 脚本不需要定义 class 和 main 函数就可以执行的，我们继续把它变得更 Groovy 一些吧。”</p>
+<p>由于 Groovy 会自动导入 System.out，我们可以把代码简写成这样</p>
+<p><img src="/images/hello-gradle/tools-groovy-console-4.png" alt="tools-groovy-console-4"></p>
+<p>是不是看起来与 Java 里面函数静态导入写起来一样，我们可以更进一步：</p>
+<ul>
+<li>在 Groovy 里面如果函数只有一个参数，那么可以括弧可以省略;</li>
+<li>语句末尾的分号也省略</li>
+<li>单引号和双引号是（大部分）可以替换（推荐用双引号，方便迁移到 Kotlin DSL）</li>
+</ul>
+<p><img src="/images/hello-gradle/tools-groovy-console-5.png" alt="tools-groovy-console-5"></p>
+<p>现在很清楚了：原来 println 是一个函数，在代码里面调用了它，并且给它的参数传了一个值 <code>my project</code>。</p>
+<h3 id="groovy-闭包groovy-closure">Groovy 闭包(Groovy Closure)</h3>
+<p>提到闭包，应该或多或少都听说过，Gradle 的 build.gradle 脚本中大量使用了闭包，我们还是用一段代码来说明。</p>
+<p>先定义一个类</p>
+<p><img src="/images/hello-gradle/tools-groovy-console-6.png" alt="tools-groovy-console-6"></p>
+<p>这个类看起来和 Java 没什么区别，我们再添加一个可以接受 Closure 类型参数的函数</p>
+<p><img src="/images/hello-gradle/tools-groovy-console-7.png" alt="tools-groovy-console-7"></p>
+<p>大象：“是不是看起来与 Java 8 的 Lambda 非常的像，比如 Functon 接口？”</p>
+<p>小码哥：“是的，难道是一样的东西，只是不同语言写法不同？那在 Groovy 里面如何来使用闭包呢？”</p>
+<p>大象：“正是如此，我们来看下如何在 Groovy 里面来使用闭包吧。”</p>
+<p>首先需要创建一个 MyProject 实例，然后再调用 doTask 方法。</p>
+<p><img src="/images/hello-gradle/tools-groovy-console-8.png" alt="tools-groovy-console-8"></p>
+<p>同样点击绿色三角形，运行这段代码</p>
+<p><img src="/images/hello-gradle/tools-groovy-console-9.png" alt="tools-groovy-console-9"></p>
+<p>我们再回过头来看看 build.gradle, 比如这段代码</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">dependencies <span style="color:#f92672">{</span>
+    testCompile group: <span style="color:#e6db74">&#39;junit&#39;</span><span style="color:#f92672">,</span> name: <span style="color:#e6db74">&#39;junit&#39;</span><span style="color:#f92672">,</span> version: <span style="color:#e6db74">&#39;4.12&#39;</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>是不是很好理解：脚本调用了 dependencies 方法，它的参数是一个闭包，在这个闭包里面又调用了 testCompile 方法，并传入了一个字典（Map）参数 <code>group: 'junit', name: 'junit', version: '4.12'</code></p>
+<p>好了，Groovy 同学暂时就介绍到这里，我要继续介绍我自己了。</p>
+<h2 id="gradle-的-project-和-task">Gradle 的 Project 和 Task</h2>
+<p>Gradle 世界里最为重要的大概就是 Project 和 Task 了 ，build.gradle 可以直接操控 Project 对象（org.gradle.api.Project 的实例)，遵循“代码即配置”的基本原则。</p>
+<h3 id="project">Project</h3>
+<p>todo</p>
+<h3 id="task">Task</h3>
+<p>todo</p>
 <h2 id="参考资料">参考资料</h2>
 <ol>
 <li><a href="https://docs.gradle.org/current/userguide/userguide.html">Gradle Docs Home</a></li>

@@ -104,19 +104,59 @@
                             
                             
                             
-                            <p>小码哥：“与 Gradle 一见如故？你就是 <a href="https://gradle.org/">Gradle</a>？”</p>
+                            <p><img src="/images/hello-gradle/gradle.png" alt="gralde"></p>
+<p>小码哥：“与 Gradle 一见如故？你就是 <a href="https://gradle.org/">Gradle</a>？”</p>
 <p>大象：“对，我就是那个用来构建 Java 项目的 Gradle 大象。 ”</p>
 <p>小码哥：“我好像天天都在用你啊。看，我的项目都是用你构建的。”</p>
 <p>大象：“但你不一定真的认识我，你每次修改点构建代码时是不是都要问下谷哥哥（<a href="https://www.google.com">Google</a>）或溢栈哥哥（<a href="https://stackoverflow.com/questions/tagged/gradle">StackOverflow</a>）？”</p>
 <p>小码哥：“额。。。”</p>
-<p>大象：“我是你的老朋友了，不要天天如初见哦，咱们得多聊聊，我爸妈给我写了<a href="https://docs.gradle.org/6.2/userguide/userguide.html">传记</a>，估计你也懒得细看，不如我给你做个自我介绍吧。”</p>
+<p>大象：“我是你的老朋友了，不要天天如初见哦，咱们得多聊聊，我爸妈给我写了<a href="https://docs.gradle.org/6.2/userguide/userguide.html">传记</a>（<del>文档</del>），估计你也懒得细看，不如我给你做个自我介绍吧。”</p>
 <p>小码哥：“👌ok”</p>
 <p>大象：“你有用 InteliJ IDEA 吗？ ”</p>
 <p>小码哥：“对，用的社区版。”</p>
-<p>大象：“那我就要 InteliJ IDEA CE 版来给你介绍自己”。</p>
+<p>大象：“那我就用 InteliJ IDEA CE 版来给你介绍自己”。</p>
 <h2 id="你好我是-gradle">你好，我是 Gradle！</h2>
-<p><img src="/images/hello-gradle/gradle-org-hero.png" alt="gralde-org-hero"></p>
 <p>Gradle 是一个用来自动化构建项目的的工具，可以用来构建你常用的 Java、Kotlin 等 JVM 语言开发的项目。我的配置文件可以使用 Gvoovy 或者 Kotlin 来编写，不像隔壁前辈 Maven 那样，要写一大段 XML，你可以很开心的像写代码一样来调整我的配置。</p>
+<p><img src="/images/hello-gradle/gradle-org-hero.png" alt="gralde-org-hero"></p>
+<p>其实我就是你的代码自动化产线，产线有几个工序（Task），你负责喂我代码，我负责打包（Jar/War/JavaDoc/Test）。是不是觉得与科幻片里面的工厂很像？</p>
+<h2 id="创建项目">创建项目</h2>
+<p>请打开你的 InteliJ IDEA CE，使用 idea 可以很方便的创建一个由我构建的项目(File &gt; New &gt; Project&hellip;)。</p>
+<p><img src="/images/hello-gradle/new-project-with-intelij-1.png" alt="new-project-with-intelij-1"></p>
+<p>这里在对话框的左边栏选择 Gradle，右边选择 Java 项目。</p>
+<p><img src="/images/hello-gradle/new-project-with-intelij-2.png" alt="new-project-with-intelij-2"></p>
+<p>输入好项目名之后点击 Finish 就可以啦。</p>
+<h2 id="探索项目">探索项目</h2>
+<p>idea 帮我们创建了一个 Java 项目，浏览项目很容易发现两个以 gradle 为结尾的文件： build.gradle 和 settings.gradle。我们来看一下它们俩的内容。</p>
+<p>settings.gradle</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">rootProject<span style="color:#f92672">.</span><span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;MyProject&#39;</span>
+</code></pre></div><p>build.gradle</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">plugins <span style="color:#f92672">{</span>
+    id <span style="color:#e6db74">&#39;java&#39;</span>
+<span style="color:#f92672">}</span>
+
+group <span style="color:#e6db74">&#39;org.example&#39;</span>
+version <span style="color:#e6db74">&#39;1.0-SNAPSHOT&#39;</span>
+
+sourceCompatibility <span style="color:#f92672">=</span> <span style="color:#ae81ff">1.8</span>
+
+repositories <span style="color:#f92672">{</span>
+    mavenCentral<span style="color:#f92672">(</span><span style="color:#f92672">)</span>
+<span style="color:#f92672">}</span>
+
+dependencies <span style="color:#f92672">{</span>
+    testCompile group: <span style="color:#e6db74">&#39;junit&#39;</span><span style="color:#f92672">,</span> name: <span style="color:#e6db74">&#39;junit&#39;</span><span style="color:#f92672">,</span> version: <span style="color:#e6db74">&#39;4.12&#39;</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>小码哥插话：“settings.gradle 很好懂，但是 build.gradle 里面写的是什么啊？”</p>
+<p>大象：“gradle 的魔法确实就在 build.gradle 之中。build.gradle 是使用 Groovy 编写的脚本，我先介绍一下 Groovy 同学吧。”</p>
+<h2 id="你好groovy-同学">你好，Groovy 同学</h2>
+<p>Gradle 的构建脚本可以使用 Groovy 编写（Kotlin 也可以）。Groovy 也是一种 JVM 语言，并且与 Java 比较相似，写起来比 Java 要简洁得多 (Kotlin也是)，Groovy 是 Java 的超集，也就是说 Java 代码可以当成是 Groovy 代码运行。我们来了解一下 Groovy，以便更容易读懂和修改 build.gradle。</p>
+<p>在 idea 中打开 Groovy 控制台（Tools &gt; Groovy Console&hellip;）</p>
+<p><img src="/images/hello-gradle/tools-groovy-console-1.png" alt="tools-groovy-console-1"></p>
+<p>接着在控制台里输入一些 Java 代码</p>
+<p><img src="/images/hello-gradle/tools-groovy-console-2.png" alt="tools-groovy-console-2"></p>
+<p>点击绿色三角形来运行这段代码</p>
+<p><img src="/images/hello-gradle/tools-groovy-console-3.png" alt="tools-groovy-console-3"></p>
+<p>小码哥：“大象，你说这是 Java 代码，为什么没有 class 定义和 main 函数呢？”</p>
 <h2 id="参考资料">参考资料</h2>
 <ol>
 <li><a href="https://docs.gradle.org/current/userguide/userguide.html">Gradle Docs Home</a></li>

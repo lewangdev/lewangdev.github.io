@@ -1,0 +1,500 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8">
+    <meta name="generator" content="Hugo 0.62.2" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>与 Gradle 一见如故 | 小碼哥</title>
+    <meta property="og:title" content="与 Gradle 一见如故 - 小碼哥">
+    <meta property="og:type" content="article">
+        
+    <meta property="article:published_time" content="2020-02-22T00:00:00&#43;08:00">
+        
+        
+    <meta property="article:modified_time" content="2020-02-22T00:00:00&#43;08:00">
+        
+    <meta name="Keywords" content="IoT, 物联网, 智能硬件，工业互联网方案，智能家居, 智慧工厂, 智慧建筑, Golang, Java, JVM, Python, 树莓派, Linux 玩家，果粉，系统架构，技术管理">
+    <meta name="description" content="与 Gradle 一见如故">
+        
+    <meta name="author" content="小碼哥">
+    <meta property="og:url" content="//thisiswangle.com/posts/2020-02-22-hello-gradle-1/">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+
+    
+    <link rel="icon" type="image/x-icon" sizes="16x16 32x32" href="/favicon.ico">
+
+    
+    <link rel="icon" sizes="192x192" href="/images/favicon-192x192.png">
+
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-180x180-precomposed.png">
+
+    
+    <meta name="msapplication-TileColor" content="#FFFFFF">
+    <meta name="msapplication-TileImage" content="/images/favicon-144x144.png">
+
+    <link rel="stylesheet" href="/css/normalize.css">
+    
+        <link rel="stylesheet" href="/css/prism.css">
+    
+    <link rel="stylesheet" href="/css/style.css">
+    <script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+
+    
+
+
+    
+    
+</head>
+
+<body>
+<header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="//thisiswangle.com/">
+                       <img src="/images/logo-2x.png" alt="小碼哥">
+                    </a>
+                
+                <p class="description">Be Yourself.</p>
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="" href="//thisiswangle.com/">首页</a>
+                    
+                    <a  href="//thisiswangle.com/archives/" title="归档">归档</a>
+                    
+                    <a  href="//thisiswangle.com/about/" title="关于">关于</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+<div id="body">
+    <div class="container">
+        <div class="col-group">
+
+            <div class="col-8" id="main">
+                <div class="res-cons">
+                    <article class="post">
+                        <header>
+                            <h1 class="post-title">与 Gradle 一见如故</h1>
+                        </header>
+                        <date class="post-meta meta-date">
+                            2020年2月22日
+                        </date>
+                        
+                        <div class="post-meta">
+                            <span>|</span>
+                            
+                                <span class="meta-category"><a href="//thisiswangle.com/categories/Gradle">Gradle</a></span>
+                            
+                        </div>
+                        
+                        
+                        <div class="post-content">
+                            
+                            
+                            
+                            <p>小码哥：“与 Gradle 一见如故？你就是 <a href="https://gradle.org/">Gradle</a>？”</p>
+<p>大象：“对，我就是那个用来构建 Java 项目的 Gradle 大象。 ”</p>
+<p>小码哥：“我好像天天都在用你啊。看，我的项目都是用你构建的。”</p>
+<p>大象：“但你不一定真的认识我，你每次修改点构建代码时是不是都要问下谷哥哥（<a href="https://www.google.com">Google</a>）或溢栈哥哥（<a href="https://stackoverflow.com/questions/tagged/gradle">StackOverflow</a>）？”</p>
+<p>小码哥：“额。。。”</p>
+<p>大象：“我是你的老朋友了，不要天天如初见哦，咱们得多聊聊，我爸妈给我写了<a href="https://docs.gradle.org/6.2/userguide/userguide.html">传记</a>，估计你也懒得细看，不如我给你做个自我介绍吧。”</p>
+<p>小码哥：“👌ok”</p>
+<p>大象：“你有用 InteliJ IDEA 吗？ ”</p>
+<p>小码哥：“对，用的社区版。”</p>
+<p>大象：“那我就要 InteliJ IDEA CE 版来给你介绍自己”。</p>
+<h2 id="你好我是-gradle">你好，我是 Gradle！</h2>
+<p><img src="/images/hello-gradle/gradle-org-hero.png" alt="gralde-org-hero"></p>
+<p>Gradle 是一个用来自动化构建项目的的工具，可以用来构建你常用的 Java、Kotlin 等 JVM 语言开发的项目。我的配置文件可以使用 Gvoovy 或者 Kotlin 来编写，不像隔壁前辈 Maven 那样，要写一大段 XML，你可以很开心的像写代码一样来调整我的配置。</p>
+<h2 id="参考资料">参考资料</h2>
+<ol>
+<li><a href="https://docs.gradle.org/current/userguide/userguide.html">Gradle Docs Home</a></li>
+<li><a href="https://docs.gradle.org/current/userguide/java_plugin.html#sec:java_usage">The Java Plugin</a></li>
+</ol>
+
+                            <p>(完)</p>
+                            
+                            <blockquote>
+                                <p>本文为原创文章，转载需注明出处，欢迎扫码关注公众号<code>小码哥PRO</code>或者网站 <a href="https://thisiswangle.com">https://thisiswangle.com</a>，第一时间看后续精彩文章。觉得好的话，顺手分享到朋友圈吧，感谢支持。</p>
+                            </blockquote>
+                            <p><img src="/images/qrcode_for_weixin.jpeg" alt="扫码关注"></p>
+                            
+                        </div>
+
+                        
+
+<div class="post-archive">
+    <h2>See Also</h2>
+    <ul class="listing">
+        
+        <li><a href="/posts/2019-03-06-keynotes-of-new-java/">Java 进阶要点</a></li>
+        
+        <li><a href="/posts/2017-07-23-log-processing-system/">日志收集和分析系统架构</a></li>
+        
+        <li><a href="/posts/2017-07-15-log4j2/">Log4j2 快速入门</a></li>
+        
+        <li><a href="/posts/2019-11-02-fangta-paintings/">游方塔园</a></li>
+        
+        <li><a href="/posts/2019-10-30-wireguard-go-setup/">使用 wireguard-go 搭建 VPN</a></li>
+        
+    </ul>
+</div>
+
+
+                        <div class="post-meta meta-tags">
+                            
+                            <ul class="clearfix">
+                                
+                                <li><a href="//thisiswangle.com/tags/Java">Java</a></li>
+                                
+                                <li><a href="//thisiswangle.com/tags/Groovy">Groovy</a></li>
+                                
+                                <li><a href="//thisiswangle.com/tags/Kotlin">Kotlin</a></li>
+                                
+                            </ul>
+                            
+                        </div>
+                    </article>
+                    
+    
+
+    
+    
+    <div class="post bg-white">
+      <script src="https://utteranc.es/client.js"
+            repo= "thisiswangle/thisiswangle.github.io"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+      </script>
+    </div>
+    
+                </div>
+            </div>
+            <div id="secondary">
+    <section class="widget">
+        <form id="search" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="//thisiswangle.com/">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="//thisiswangle.com/posts/2020-02-22-hello-gradle-1/" title="与 Gradle 一见如故">与 Gradle 一见如故</a>
+    </li>
+    
+    <li>
+        <a href="//thisiswangle.com/posts/2019-11-02-fangta-paintings/" title="游方塔园">游方塔园</a>
+    </li>
+    
+    <li>
+        <a href="//thisiswangle.com/posts/2019-10-30-wireguard-go-setup/" title="使用 wireguard-go 搭建 VPN">使用 wireguard-go 搭建 VPN</a>
+    </li>
+    
+    <li>
+        <a href="//thisiswangle.com/posts/2019-10-13-sons-paintings/" title="儿子的画">儿子的画</a>
+    </li>
+    
+    <li>
+        <a href="//thisiswangle.com/posts/2019-09-19-rpi-log-config/" title="树莓派系统日志配置">树莓派系统日志配置</a>
+    </li>
+    
+    <li>
+        <a href="//thisiswangle.com/posts/2019-07-16-change-uid-gid-in-linux/" title="如何修改 Linux 用户的 UID 和组的 GID">如何修改 Linux 用户的 UID 和组的 GID</a>
+    </li>
+    
+    <li>
+        <a href="//thisiswangle.com/posts/2019-05-29-centos7-pyenv-install-python-3/" title="CentOS 7 上使用 pyenv 安装 Python 3.7.3">CentOS 7 上使用 pyenv 安装 Python 3.7.3</a>
+    </li>
+    
+    <li>
+        <a href="//thisiswangle.com/posts/2019-03-06-keynotes-of-new-java/" title="Java 进阶要点">Java 进阶要点</a>
+    </li>
+    
+    <li>
+        <a href="//thisiswangle.com/posts/2019-03-01-rpi-cm3-emmc-flashing/" title="树莓派 CM3/CM3&#43; 刷写系统">树莓派 CM3/CM3&#43; 刷写系统</a>
+    </li>
+    
+    <li>
+        <a href="//thisiswangle.com/posts/2018-12-18-gitlab-docker-install/" title="使用 Docker 方式安装 Gitlab，没你想得那么简单">使用 Docker 方式安装 Gitlab，没你想得那么简单</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">分类</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="//thisiswangle.com/categories/Coding/">Coding(2)</a>
+    </li>
+    
+    <li>
+        <a href="//thisiswangle.com/categories/DevOps/">DevOps(9)</a>
+    </li>
+    
+    <li>
+        <a href="//thisiswangle.com/categories/Github/">Github(1)</a>
+    </li>
+    
+    <li>
+        <a href="//thisiswangle.com/categories/Gradle/">Gradle(1)</a>
+    </li>
+    
+    <li>
+        <a href="//thisiswangle.com/categories/Java/">Java(2)</a>
+    </li>
+    
+    <li>
+        <a href="//thisiswangle.com/categories/Linux/">Linux(1)</a>
+    </li>
+    
+    <li>
+        <a href="//thisiswangle.com/categories/%E6%80%BB%E7%BB%93/">总结(6)</a>
+    </li>
+    
+    <li>
+        <a href="//thisiswangle.com/categories/%E6%84%9F%E6%82%9F/">感悟(9)</a>
+    </li>
+    
+    <li>
+        <a href="//thisiswangle.com/categories/%E6%AF%8F%E6%97%A5%E6%8A%80%E5%B7%A7/">每日技巧(4)</a>
+    </li>
+    
+    <li>
+        <a href="//thisiswangle.com/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/">系统架构(1)</a>
+    </li>
+    
+    <li>
+        <a href="//thisiswangle.com/categories/%E8%B6%A3%E8%B0%88/">趣谈(1)</a>
+    </li>
+    
+    <li>
+        <a href="//thisiswangle.com/categories/%E9%9A%8F%E6%89%8B%E8%AE%B0/">随手记(2)</a>
+    </li>
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title">标签</h3>
+<div class="tagcloud">
+    
+    <a href="//thisiswangle.com/tags/CDN/">CDN</a>
+    
+    <a href="//thisiswangle.com/tags/Cassandra/">Cassandra</a>
+    
+    <a href="//thisiswangle.com/tags/DNS/">DNS</a>
+    
+    <a href="//thisiswangle.com/tags/Docker/">Docker</a>
+    
+    <a href="//thisiswangle.com/tags/Flume/">Flume</a>
+    
+    <a href="//thisiswangle.com/tags/Gitlab/">Gitlab</a>
+    
+    <a href="//thisiswangle.com/tags/Groovy/">Groovy</a>
+    
+    <a href="//thisiswangle.com/tags/Java/">Java</a>
+    
+    <a href="//thisiswangle.com/tags/Kafka/">Kafka</a>
+    
+    <a href="//thisiswangle.com/tags/Kotlin/">Kotlin</a>
+    
+    <a href="//thisiswangle.com/tags/Linux/">Linux</a>
+    
+    <a href="//thisiswangle.com/tags/Log4j2/">Log4j2</a>
+    
+    <a href="//thisiswangle.com/tags/MySQL/">MySQL</a>
+    
+    <a href="//thisiswangle.com/tags/Nginx/">Nginx</a>
+    
+    <a href="//thisiswangle.com/tags/Pyenv/">Pyenv</a>
+    
+    <a href="//thisiswangle.com/tags/Python/">Python</a>
+    
+    <a href="//thisiswangle.com/tags/Raspberry/">Raspberry</a>
+    
+    <a href="//thisiswangle.com/tags/Raspbian/">Raspbian</a>
+    
+    <a href="//thisiswangle.com/tags/SSH/">SSH</a>
+    
+    <a href="//thisiswangle.com/tags/VPN/">VPN</a>
+    
+    <a href="//thisiswangle.com/tags/Wireguard/">Wireguard</a>
+    
+    <a href="//thisiswangle.com/tags/ajax/">ajax</a>
+    
+    <a href="//thisiswangle.com/tags/aliyun/">aliyun</a>
+    
+    <a href="//thisiswangle.com/tags/blog/">blog</a>
+    
+    <a href="//thisiswangle.com/tags/catcat/">catcat</a>
+    
+    <a href="//thisiswangle.com/tags/database/">database</a>
+    
+    <a href="//thisiswangle.com/tags/easy_install/">easy_install</a>
+    
+    <a href="//thisiswangle.com/tags/fackbook/">fackbook</a>
+    
+    <a href="//thisiswangle.com/tags/fdisk/">fdisk</a>
+    
+    <a href="//thisiswangle.com/tags/github/">github</a>
+    
+    <a href="//thisiswangle.com/tags/idea/">idea</a>
+    
+    <a href="//thisiswangle.com/tags/jquery/">jquery</a>
+    
+    <a href="//thisiswangle.com/tags/json/">json</a>
+    
+    <a href="//thisiswangle.com/tags/lvm/">lvm</a>
+    
+    <a href="//thisiswangle.com/tags/performance/">performance</a>
+    
+    <a href="//thisiswangle.com/tags/php/">php</a>
+    
+    <a href="//thisiswangle.com/tags/pip/">pip</a>
+    
+    <a href="//thisiswangle.com/tags/python/">python</a>
+    
+    <a href="//thisiswangle.com/tags/rMBP/">rMBP</a>
+    
+    <a href="//thisiswangle.com/tags/resize2fs/">resize2fs</a>
+    
+    <a href="//thisiswangle.com/tags/tuning/">tuning</a>
+    
+    <a href="//thisiswangle.com/tags/ucloud/">ucloud</a>
+    
+    <a href="//thisiswangle.com/tags/vagrant/">vagrant</a>
+    
+    <a href="//thisiswangle.com/tags/virtualbox/">virtualbox</a>
+    
+    <a href="//thisiswangle.com/tags/virtualenv/">virtualenv</a>
+    
+    <a href="//thisiswangle.com/tags/xtrabackup/">xtrabackup</a>
+    
+    <a href="//thisiswangle.com/tags/%E4%B8%B4%E7%89%8C/">临牌</a>
+    
+    <a href="//thisiswangle.com/tags/%E5%9B%9E%E5%BF%86/">回忆</a>
+    
+    <a href="//thisiswangle.com/tags/%E5%B1%95%E6%9C%9B/">展望</a>
+    
+    <a href="//thisiswangle.com/tags/%E5%BF%83%E6%83%85/">心情</a>
+    
+    <a href="//thisiswangle.com/tags/%E6%80%9D%E8%80%83/">思考</a>
+    
+    <a href="//thisiswangle.com/tags/%E6%91%84%E5%BD%B1/">摄影</a>
+    
+    <a href="//thisiswangle.com/tags/%E6%95%99%E8%AE%AD/">教训</a>
+    
+    <a href="//thisiswangle.com/tags/%E7%89%A9%E7%90%86/">物理</a>
+    
+    <a href="//thisiswangle.com/tags/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/">系统架构</a>
+    
+    <a href="//thisiswangle.com/tags/%E7%BB%8F%E9%AA%8C/">经验</a>
+    
+    <a href="//thisiswangle.com/tags/%E7%BB%98%E7%94%BB/">绘画</a>
+    
+    <a href="//thisiswangle.com/tags/%E8%82%B2%E5%84%BF/">育儿</a>
+    
+    <a href="//thisiswangle.com/tags/%E9%A9%BE%E7%85%A7/">驾照</a>
+    
+    <a href="//thisiswangle.com/tags/%E9%AD%94%E9%83%BD%E7%94%9F%E5%AD%98%E6%89%8B%E5%86%8C/">魔都生存手册</a>
+    
+</div>
+    </section>
+
+    
+<section class="widget">
+    <h3 class="widget-title">友情链接</h3>
+    <ul class="widget-list">
+        
+        <li>
+            <a target="_blank" href="https://microservices.io/" title="Microservice Architecture">Microservice Architecture</a>
+        </li>
+        
+        <li>
+            <a target="_blank" href="http://stuff-gil-says.blogspot.com/" title="Stuff Gil Says">Stuff Gil Says</a>
+        </li>
+        
+    </ul>
+</section>
+
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="//thisiswangle.com/index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+        </div>
+    </div>
+</div>
+<footer id="footer">
+    <div class="container">
+        &copy; 2020 <a href="//thisiswangle.com/">小碼哥</a>.
+        Powered by <a rel="nofollow noreferer noopener" href="https://gohugo.io" target="_blank">Hugo</a>.
+        
+    </div>
+</footer>
+
+
+    <script type="text/javascript">
+    
+    (function(){
+        $("pre code").parent().addClass("line-numbers")
+    }())
+
+    window.MathJax = {
+        tex2jax: {
+            inlineMath: [ ['$','$'] ],
+            processEscapes: true
+        }
+    };
+    </script>
+    <script type="text/javascript" src="/js/prism.js" async="true"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src="/js/totop.js?v=0.0.0" async=""></script>
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-21746661-5', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>

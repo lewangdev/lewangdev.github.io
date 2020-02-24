@@ -163,12 +163,12 @@ dependencies <span style="color:#f92672">{</span>
 <p><img src="/images/hello-gradle/tools-groovy-console-4.png" alt="tools-groovy-console-4"></p>
 <p>是不是看起来与 Java 里面函数静态导入写起来一样，我们可以更进一步：</p>
 <ul>
-<li>在 Groovy 里面如果函数只有一个参数，那么可以括弧可以省略;</li>
-<li>语句末尾的分号也省略</li>
-<li>单引号和双引号是（大部分）可以替换（推荐用双引号，方便迁移到 Kotlin DSL）</li>
+<li>在 Groovy 里面如果函数只有一个参数，那么括弧可以省略;</li>
+<li>语句末尾的分号也可以省略；</li>
+<li>单引号和双引号是（大部分情况下）可以替换（推荐用双引号，方便迁移到 Kotlin DSL）</li>
 </ul>
 <p><img src="/images/hello-gradle/tools-groovy-console-5.png" alt="tools-groovy-console-5"></p>
-<p>现在很清楚了：原来 println 是一个函数，在代码里面调用了它，并且给它传了一个参数值  my project。</p>
+<p>现在很清楚了：原来 println 是一个函数，在代码里面调用了它，并且给它参数传了一个字符串 my project。</p>
 <h3 id="groovy-闭包groovy-closure">Groovy 闭包(Groovy Closure)</h3>
 <p>提到闭包，应该或多或少都听说过，Gradle 的 build.gradle 脚本中大量使用了闭包，我们还是用一段代码来说明。</p>
 <p>先定义一个类</p>

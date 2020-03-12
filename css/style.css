@@ -73,7 +73,7 @@ body {
     /**
     font-family:"TIBch", "Classic Grotesque W01", "Helvetica Neue", Arial, "Hiragino Sans GB", "STHeiti", "Microsoft YaHei", "WenQuanYi Micro Hei", SimSun, sans-serif;
     **/
-    font-family: "Iowan Old Style", "Ovo", "Hoefler Text", Georgia, "Times New Roman", "TIBch", "Source Han Sans", "PingFangSC-Regular", "Hiragino Sans GB", "STHeiti", "Microsoft Yahei", "Droid Sans Fallback", "WenQuanYi Micro Hei", sans-serif;
+    font-family: "Helvetica Neue","Helvetica","Arial","PingFang SC","Hiragino Sans GB","Droid Sans Fallback","Microsoft YaHei",sans-serif;
     /**-webkit-font-smoothing: antialiased;**/
     -moz-osx-font-smoothing: grayscale;
 }
@@ -92,7 +92,13 @@ a, button.submit {
     transition:all .1s ease-in;
 }
 a:hover, a:active {
-    color:#6E7173;
+    color:#555;
+    -moz-text-decoration-color:rgba(0,0,0,0.6);
+    text-decoration-color:rgba(0,0,0,0.6);
+}
+
+a {
+    transition: all .25s ease-in;
 }
 mark {
     padding: 3px 3px 3px 5px;
@@ -171,20 +177,22 @@ textarea {
 .clearfix:after, .col-group:after {
     clear:both;
 }
-.post-content a, .comment-content a {
-    color: #0789e0;
-    border-bottom:1px solid #ddd;
+.post-content a, .comment-content a, .post-summary a {
+    color: #111;
 }
-.post-meta a:hover, .post-content a:hover, .widget a:hover, .comment-content a {
+.post-title a:hover, .post-meta a:hover, .post-content a:hover, .post-summary a:hover, .widget a:hover, .comment-content a {
     border-bottom-color:transparent;
+    color:rgb(161, 160, 160);
+    -moz-text-decoration-color:rgba(0,0,0,0.6);
+    text-decoration-color:rgba(0,0,0,0.6);
 }
 #header {
-    padding:58px 0 0;
+    padding:20px 0;
+    border-bottom: 1px solid #f9f9f9;
     text-align:left;
+
 }
-#header .col-group {
-    border-bottom: 1px solid #ddd;
-}
+
 .site-name h1{
     padding: 0;
     margin:0;
@@ -224,15 +232,16 @@ textarea {
     line-height:32px;
     color:#444;
 }
-#nav-menu a:first-child {
-    border:none;
-}
+
+
 #nav-menu a:hover {
+    color:#777;
 }
-#nav-menu a.current {
-    border:1px solid #ddd;
-    border-bottom:1px solid #fff;
+
+.site-name {
+    float: left;
 }
+
 .site-search {
     display:none;
 }
@@ -264,8 +273,8 @@ textarea {
     width: 100%;
 }
 .container {
-    width:1150px;
-    padding:0 60px;
+    width:784px;
+    padding:0 16px;
     margin:0 auto;
 }
 #secondary {
@@ -286,14 +295,15 @@ textarea {
 }
 .post-title {
     margin:0;
-    color:#555;
+    color:#111;
     text-align:left;
     /**font:bold 25px/1.1 "ff-tisa-web-pro", Cambria, "Times New Roman", Georgia, Times, sans-serif;**/
-    font-size: 1.5em;
+    font-size: 1.6em;
     font-weight: bold;
 }
 .post-title a, .keyword {
-    color:#555;
+    color:#111;
+    text-decoration: none;
 }
 .post-meta {
     padding:0;
@@ -301,6 +311,7 @@ textarea {
     color:#999;
     text-align:left;
     display: inline-block;
+    font-size: 12px;
 }
 .meta-category a {
     position: relative;
@@ -325,7 +336,7 @@ textarea {
 .meta-tags ul a {
     margin-left: 24px;
     padding: 0 10px 0 14px;
-    background: #0089e0;
+    background: #111;
     color: #fff;
     text-decoration: none;
     border-radius: 2px;
@@ -338,7 +349,7 @@ textarea {
     left: -7px;
     width: 0;
     height: 0;
-    border-color: transparent #0089e0 transparent transparent;
+    border-color: transparent #111 transparent transparent;
     border-style: solid;
     border-width: 12px 12px 12px 0;
     transition: all .1s ease-in;
@@ -361,21 +372,25 @@ textarea {
 .meta-tags ul a:hover:before {
     border-color: transparent #555 transparent transparent;
 }
-.post-content {
+.post-content, .post-summary {
     font-size: 1em;
     line-height: 1.7;
-    color:#444;
+    color:#111;
     padding-top:27px;
 }
 .post-content h2,.post-content h3,.post-content h4,.post-content h5,.post-content h6 {
-    color: #ba3925;
+    color: #111;
 }
 .page-content{
     padding-top: 40px;
 }
+.post-content a {
+    text-decoration: none;
+    padding-bottom: 2px;
+    border-bottom: 1px solid #111;
+}
 .post-content h3,.post-content h2{
     margin: 1.4em 0 1.1em;
-    border-bottom: 1px solid #eee;
     overflow: hidden;
 }
 /* .post-content pre, .comment-content pre {
@@ -444,11 +459,11 @@ textarea {
 }
 .page-navigator a:hover {
     background:#F8F8F8;
-    border-bottom-color:#D26911;
+    border-bottom-color:#111;
 }
 .page-navigator .current a {
     background:#F8F8F8;
-    border-bottom-color:#D26911;
+    border-bottom-color:#111;
 }
 .comment-list, .comment-list ol {
     list-style:none;
@@ -792,7 +807,7 @@ img.alignright {
         padding-top:5px;
     }
     .post-content {
-        font-size: 14px;
+        font-size: 16px;
     }
 }
 @media print, screen and (max-width:860px) {
@@ -802,9 +817,6 @@ img.alignright {
     #main {
         width:100%;
         margin-right:0;
-    }
-    #nav-menu {
-        margin:35px 0 -1px;
     }
     .res-cons {
         width:auto;
@@ -819,7 +831,7 @@ img.alignright {
         padding:0 20px;
     }
     .post-title {
-        font-size:22px;
+        font-size:24px;
     }
     .page-navigator {
         padding:15px 0 0;

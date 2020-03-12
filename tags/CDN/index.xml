@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>CDN on 小碼哥</title>
+    <link>//thisiswangle.com/tags/CDN/</link>
+    <description>Recent content in CDN on 小碼哥</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Thu, 06 Mar 2014 00:40:00 +0000</lastBuildDate>
+    
+	<atom:link href="//thisiswangle.com/tags/CDN/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>从域名和 CDN 来看网站架构</title>
+      <link>//thisiswangle.com/posts/2014-03-06-arch-of-website-domain-cdn/</link>
+      <pubDate>Thu, 06 Mar 2014 00:40:00 +0000</pubDate>
+      
+      <guid>//thisiswangle.com/posts/2014-03-06-arch-of-website-domain-cdn/</guid>
+      <description>为了自己做好网站的架构，找了知乎，豆瓣，大众点评和百姓网来做参考。这里主要来看域名和CDN相关的部分，后台的架构也还是要边学便实践。 大概情况 从前端分析了知乎的域名和 DNS 情况，同时对比了一下豆瓣、大众点评和百姓网。从域名、DNS、CDN等使用角度来说，他们之间大同小异。 使用的分析工具</description>
+    </item>
+    
+  </channel>
+</rss>

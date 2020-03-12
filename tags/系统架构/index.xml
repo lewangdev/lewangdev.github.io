@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>系统架构 on 小碼哥</title>
+    <link>//thisiswangle.com/tags/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/</link>
+    <description>Recent content in 系统架构 on 小碼哥</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Fri, 21 Oct 2011 13:11:00 +0000</lastBuildDate>
+    
+	<atom:link href="//thisiswangle.com/tags/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>摆摊的一些进展</title>
+      <link>//thisiswangle.com/posts/2011-10-21-process-of-baigetan/</link>
+      <pubDate>Fri, 21 Oct 2011 13:11:00 +0000</pubDate>
+      
+      <guid>//thisiswangle.com/posts/2011-10-21-process-of-baigetan/</guid>
+      <description>这段时间都在进行密集的笔试面试，但还是没有停下摆摊网的开发进程。目前摆摊网已经由吴江川同学设计好了产品的原型，我也在原型的基础上做好了全部页面的设计工作，接下来就是开始后台逻辑的开发。 目前后台数据库部分已经设计完毕。 加油！ 我是小码哥</description>
+    </item>
+    
+  </channel>
+</rss>

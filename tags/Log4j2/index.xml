@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Log4j2 on 小碼哥</title>
+    <link>//thisiswangle.com/tags/Log4j2/</link>
+    <description>Recent content in Log4j2 on 小碼哥</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sat, 15 Jul 2017 23:31:00 +0000</lastBuildDate>
+    
+	<atom:link href="//thisiswangle.com/tags/Log4j2/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Log4j2 快速入门</title>
+      <link>//thisiswangle.com/posts/2017-07-15-log4j2/</link>
+      <pubDate>Sat, 15 Jul 2017 23:31:00 +0000</pubDate>
+      
+      <guid>//thisiswangle.com/posts/2017-07-15-log4j2/</guid>
+      <description>背景 Java 生态下的日志库太多，配置也不同，大多数情况下会使用 SLF4j (又引入了一个库)来抽象日志接口。在使用 Log4j2 后，发现可以不使用 SLF4j 了，并且配置变得更简单，可以使用 lombok 的 log4j2 注解等。 需要搞清楚 如何设置哪些日志要记录下来 日志记录到哪里去 LEVEL 日志级别： 内置（有Fatal）：All &amp;lt; Trace &amp;lt; Debug &amp;lt; Info &amp;lt; Warn &amp;lt; Error &amp;lt;</description>
+    </item>
+    
+  </channel>
+</rss>

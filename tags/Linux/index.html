@@ -1,0 +1,343 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8">
+    <meta name="generator" content="Hugo 0.62.2" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Linux | 小碼哥</title>
+    <meta property="og:title" content="Linux - 小碼哥">
+    <meta property="og:type" content="article">
+        
+        
+    <meta name="Keywords" content="IoT, 物联网, 智能硬件，工业互联网方案，智能家居, 智慧工厂, 智慧建筑, Golang, Java, JVM, Python, 树莓派, Linux 玩家，果粉，系统架构，技术管理">
+    <meta name="description" content="Linux">
+        
+    <meta name="author" content="小碼哥">
+    <meta property="og:url" content="//thisiswangle.com/tags/Linux/">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+
+    
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+
+    
+    <link rel="icon" sizes="192x192" href="/images/favicon-192x192.png">
+
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-180x180-precomposed.png">
+
+    
+    <meta name="msapplication-TileColor" content="#FFFFFF">
+    <meta name="msapplication-TileImage" content="/images/favicon-144x144.png">
+
+    <link rel="stylesheet" href="/css/normalize.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="alternate" type="application/rss+xml+xml" href="//thisiswangle.com/tags/Linux/index.xml" title="小碼哥" />
+    <script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+
+    
+
+
+    
+    
+</head>
+
+
+<body>
+<header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                <a id="logo" href="//thisiswangle.com/">
+                   <img src="/images/logo-2x.png" alt="小碼哥">
+                </a>
+            </div>
+            <nav id="nav-menu" class="clearfix">
+                <a class="" href="//thisiswangle.com/">首页</a>
+                
+                <a  href="//thisiswangle.com/archives/" title="归档">归档</a>
+                
+                <a  href="//thisiswangle.com/about/" title="关于">关于</a>
+                
+            </nav>
+        </div>
+    </div>
+</header>
+
+
+<div id="body">
+    <div class="container">
+        <div class="col-group">
+
+            <div class="col-8" id="main">
+                <div class="res-cons">
+                    
+                    <h3 class="archive-title">
+                        包含标签
+                        <span class="keyword">Linux</span>
+                        的文章
+                    </h3>
+                    
+
+                    
+                        <article class="post">
+                            <header>
+                                <h1 class="post-title">
+                                    <a href="//thisiswangle.com/posts/2019-10-30-wireguard-go-setup/">使用 wireguard-go 搭建 VPN</a>
+                                </h1>
+                            </header>
+                            <date class="post-meta meta-date">
+                                Oct 30, 2019
+                            </date>
+                            
+                            <div class="post-meta meta-category">
+                                |
+                                
+                                    <a href="//thisiswangle.com/categories/%E6%AF%8F%E6%97%A5%E6%8A%80%E5%B7%A7">每日技巧</a>
+                                
+                            </div>
+                            
+                            <div class="post-summary">
+                                <a href="//thisiswangle.com/posts/2019-10-30-wireguard-go-setup/">
+                                    背景 搭建 VPN 方便连接无公网 IP 云主机进行开发，wireguard 配置比 openvpn 要简单很多，wireguard 是通过 Linux 内核模块的方式实现的，这样性能最好，但是只能用在 Linux 系统上。本文使用的 wireguard-go， 则是使用 golang 实现的 wireguard 协议，属于用户空间的实现，性能没有内核模块方式好，但好处就是更...
+                                </a>
+                            </div>
+                        </article>
+                    
+                        <article class="post">
+                            <header>
+                                <h1 class="post-title">
+                                    <a href="//thisiswangle.com/posts/2019-09-19-rpi-log-config/">树莓派系统日志配置</a>
+                                </h1>
+                            </header>
+                            <date class="post-meta meta-date">
+                                Sep 19, 2019
+                            </date>
+                            
+                            <div class="post-meta meta-category">
+                                |
+                                
+                                    <a href="//thisiswangle.com/categories/%E6%AF%8F%E6%97%A5%E6%8A%80%E5%B7%A7">每日技巧</a>
+                                
+                            </div>
+                            
+                            <div class="post-summary">
+                                <a href="//thisiswangle.com/posts/2019-09-19-rpi-log-config/">
+                                    背景 树莓派 raspbian 系统日志默认的配置会导致日志过大而占用太多的存储空间，并且频繁写日志也可能减短 EMMC 和 SD 卡的寿命，需要重新配置来满足项目的需求。 日志位置 1 2 3 4 5 6 7 8 9 10 11 12 13 14 /var/log /var/log/syslog /var/log/daemon.log /var/log/mail.info /var/log/mail.warn /var/log/mail.err /var/log/mail.log /var/log/kern.log /var/log/auth.log /var/log/user.log /var/log/lpr.log /var/log/cron.log /var/log/debug /var/log/messages 配置 rsyslog 与 logrotate rsyslog 的配置文件为 /etc/rsyslog.conf, 找到其中 RULES 段 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 ############### #### RULES #### ############### #...
+                                </a>
+                            </div>
+                        </article>
+                    
+                        <article class="post">
+                            <header>
+                                <h1 class="post-title">
+                                    <a href="//thisiswangle.com/posts/2019-07-16-change-uid-gid-in-linux/">如何修改 Linux 用户的 UID 和组的 GID</a>
+                                </h1>
+                            </header>
+                            <date class="post-meta meta-date">
+                                Jul 16, 2019
+                            </date>
+                            
+                            <div class="post-meta meta-category">
+                                |
+                                
+                                    <a href="//thisiswangle.com/categories/%E6%AF%8F%E6%97%A5%E6%8A%80%E5%B7%A7">每日技巧</a>
+                                
+                            </div>
+                            
+                            <div class="post-summary">
+                                <a href="//thisiswangle.com/posts/2019-07-16-change-uid-gid-in-linux/">
+                                    问题 在使用 Docker 或者 NFS 的时候，需要文件系统挂在到不同的系统中拥有正确的读写权限，需要指定文件所属用户和组的 uid 和 gid。在创建用户和组的时候，系统会自动分配对应的值，这导致在不同的系统中很容易造成 uid 和 gid 不一样而造成读写权限混乱。 例如在系统 A 中，用户 git 的 uid 和组 git 的gid 如下: 1 2 [sysops@cn-bj-aliyun-3 ~]$ id git...
+                                </a>
+                            </div>
+                        </article>
+                    
+                        <article class="post">
+                            <header>
+                                <h1 class="post-title">
+                                    <a href="//thisiswangle.com/posts/2019-05-29-centos7-pyenv-install-python-3/">CentOS 7 上使用 pyenv 安装 Python 3.7.3</a>
+                                </h1>
+                            </header>
+                            <date class="post-meta meta-date">
+                                May 29, 2019
+                            </date>
+                            
+                            <div class="post-meta meta-category">
+                                |
+                                
+                                    <a href="//thisiswangle.com/categories/DevOps">DevOps</a>
+                                
+                            </div>
+                            
+                            <div class="post-summary">
+                                <a href="//thisiswangle.com/posts/2019-05-29-centos7-pyenv-install-python-3/">
+                                    概要 本文记录了在 CentOS 7.6 系统上通过 pyenv 安装 Python 3.7.3 的过程。 环境 CentOS Linux release 7.6.1810 (Core) Kernel 3 3.10.0-957.el7.x86_64 Pyenv 1.2.11 安装 pyenv 1 $ curl https://pyenv.run | bash 然后根据提示把以下内容放到 ~/.bashrc 文件末尾 1 2 3 4 5 6 # Load pyenv automatically by adding # the following to ~/.bashrc: export PATH=&#34;/root/.pyenv/bin:$PATH&#34; eval &#34;$(pyenv init -)&#34; eval &#34;$(pyenv virtualenv-init -)&#34; 安装 Python 3.7.3 准备 1 $ sudo yum -y install xz bzip2 bzip2-devel sqlite-devel gcc openssl-devel readline-devel zlib-devel libffi-devel 安装 1 pyenv install 3.7.3 验证 1 2 3 $ pyenv versions * system (set by /root/.pyenv/version) 3.7.3 参考 https://github.com/pyenv/pyenv/issues/1183 https://github.com/pyenv/pyenv-installer https://github.com/pyenv/pyenv...
+                                </a>
+                            </div>
+                        </article>
+                    
+                        <article class="post">
+                            <header>
+                                <h1 class="post-title">
+                                    <a href="//thisiswangle.com/posts/2019-03-01-rpi-cm3-emmc-flashing/">树莓派 CM3/CM3&#43; 刷写系统</a>
+                                </h1>
+                            </header>
+                            <date class="post-meta meta-date">
+                                Mar 1, 2019
+                            </date>
+                            
+                            <div class="post-meta meta-category">
+                                |
+                                
+                                    <a href="//thisiswangle.com/categories/%E6%AF%8F%E6%97%A5%E6%8A%80%E5%B7%A7">每日技巧</a>
+                                
+                            </div>
+                            
+                            <div class="post-summary">
+                                <a href="//thisiswangle.com/posts/2019-03-01-rpi-cm3-emmc-flashing/">
+                                    准备 阅读Flashing the Compute Module eMMC 准备一个可以刷系统的底板，我用的是微雪Compute-Module-IO-Board-Plus 步骤(Linux 系统下刷系统，可以使用树莓派来刷机) sudo apt install git libusb-1.0-0-dev git clone --depth=1 https://github.com/raspberrypi/usbboot &amp;&amp; cd usbboot &amp;&amp; make sudo ./rpiboot 连好线，跳线部分见各自底板的手册 拔掉 USB SLAVE 1/2/3/4 拔掉 SELECT 跳线帽 将 BOOT ENABLE USB SLAVE 跳线帽...
+                                </a>
+                            </div>
+                        </article>
+                    
+                        <article class="post">
+                            <header>
+                                <h1 class="post-title">
+                                    <a href="//thisiswangle.com/posts/2018-12-18-gitlab-docker-install/">使用 Docker 方式安装 Gitlab，没你想得那么简单</a>
+                                </h1>
+                            </header>
+                            <date class="post-meta meta-date">
+                                Dec 18, 2018
+                            </date>
+                            
+                            <div class="post-meta meta-category">
+                                |
+                                
+                                    <a href="//thisiswangle.com/categories/DevOps">DevOps</a>
+                                
+                            </div>
+                            
+                            <div class="post-summary">
+                                <a href="//thisiswangle.com/posts/2018-12-18-gitlab-docker-install/">
+                                    为什么要写这篇文章？ 曾经几年前在 Docker 还没有广泛应用的时候，在公司使用过源码的方式安装和升级过 Gitlab，虽远没有 Docker 方便，因为自己对 Linux 系统的理解，所以整体上感觉还是挺简单的。这几年随着 Docker 的普及，使得安装 Gitlab 更加的容易，不仅方便了我这样的老鸟，也更方便了小白用户们。但是 Gitlab 官方的 Docker 安装文...
+                                </a>
+                            </div>
+                        </article>
+                    
+                        <article class="post">
+                            <header>
+                                <h1 class="post-title">
+                                    <a href="//thisiswangle.com/posts/2017-08-03-lvm-in-action/">LVM 实战记录</a>
+                                </h1>
+                            </header>
+                            <date class="post-meta meta-date">
+                                Aug 3, 2017
+                            </date>
+                            
+                            <div class="post-meta meta-category">
+                                |
+                                
+                                    <a href="//thisiswangle.com/categories/Linux">Linux</a>
+                                
+                            </div>
+                            
+                            <div class="post-summary">
+                                <a href="//thisiswangle.com/posts/2017-08-03-lvm-in-action/">
+                                    背景 阿里云云主机两块 100G 的云盘合一个逻辑卷（LV）来使用，单个的 100G 磁盘不够用，需要合在一起使用，并且方便以后扩容 基本知识 磁盘 /dev/xvdb /dev/xvdc 分区, 使用 fdisk 进行分区 fdisk &gt; n &gt; p &gt; 1..4, 主分区最多只有4个 准备分区后，将分区类型变为 LVM 分区，fdisk &gt; t &gt; 8e, 8e 是 LVM 类型 ID 物理卷（PV），卷组（VG），逻辑卷（...
+                                </a>
+                            </div>
+                        </article>
+                    
+                        <article class="post">
+                            <header>
+                                <h1 class="post-title">
+                                    <a href="//thisiswangle.com/posts/2014-10-16-tuning-nginx/">Nginx 性能调优「译」</a>
+                                </h1>
+                            </header>
+                            <date class="post-meta meta-date">
+                                Oct 16, 2014
+                            </date>
+                            
+                            <div class="post-meta meta-category">
+                                |
+                                
+                                    <a href="//thisiswangle.com/categories/DevOps">DevOps</a>
+                                
+                            </div>
+                            
+                            <div class="post-summary">
+                                <a href="//thisiswangle.com/posts/2014-10-16-tuning-nginx/">
+                                    这是一篇译文，原文链接：Tuning NGINX for Performance Nginx 为人熟知的是在负载均衡、静态缓存和 WEB 服务器等方面的高性能，目前世界上最繁忙的站点中大约有 40% 在使用 Nginx。绝大多数情况下，大多数默认的 Nginx 和 Linux 配置都可以工作得非常好，但也需要做一些优化以获得最好的性能。本文将讨论在优化系统时需要考虑的 Nginx...
+                                </a>
+                            </div>
+                        </article>
+                    
+                        <article class="post">
+                            <header>
+                                <h1 class="post-title">
+                                    <a href="//thisiswangle.com/posts/2013-03-04-so-load-path-in-linux/">Linux 共享库（动态链接库）相关的一些记录</a>
+                                </h1>
+                            </header>
+                            <date class="post-meta meta-date">
+                                Mar 4, 2013
+                            </date>
+                            
+                            <div class="post-meta meta-category">
+                                |
+                                
+                                    <a href="//thisiswangle.com/categories/DevOps">DevOps</a>
+                                
+                            </div>
+                            
+                            <div class="post-summary">
+                                <a href="//thisiswangle.com/posts/2013-03-04-so-load-path-in-linux/">
+                                    相关的环境变量 LD_LIBRARY_PATH ld-linux.so寻找shared object的路径，优先加载出现在路径前面的shared object。如，export LD_LIBRARY_PATH=/home/user/lib:$LD_LIBRARY_PATH LD_PRELOAD 指定优先供ld-linux.so加载的shared object。如，export LD_PRELAOD=/home/user/lib/gl...
+                                </a>
+                            </div>
+                        </article>
+                    
+
+                    
+
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<footer id="footer">
+    <div class="container">
+        &copy; 2011-2020 <a href="//thisiswangle.com/">小碼哥</a>.
+        <a href="//thisiswangle.com/index.xml">订阅 RSS</a>
+    </div>
+</footer>
+
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src="/js/totop.js?v=0.0.0" async=""></script>
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-21746661-5', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

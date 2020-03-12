@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>系统架构 on 小碼哥</title>
+    <link>//thisiswangle.com/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/</link>
+    <description>Recent content in 系统架构 on 小碼哥</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sun, 23 Jul 2017 22:30:00 +0000</lastBuildDate>
+    
+	<atom:link href="//thisiswangle.com/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>日志收集和分析系统架构</title>
+      <link>//thisiswangle.com/posts/2017-07-23-log-processing-system/</link>
+      <pubDate>Sun, 23 Jul 2017 22:30:00 +0000</pubDate>
+      
+      <guid>//thisiswangle.com/posts/2017-07-23-log-processing-system/</guid>
+      <description>背景 微服务，日志分散且种类多（php/java/python），用 docker 起应用，日志通过卷放在宿主机器指定目录下，服务有众多实例，metrics 数据也不仅相同，无论是日志还是 metrics 数据，都可以看作是时间序列数据 分散主要表现为： 多个主机 多个目录下多个文件 应用开发所使用的技术栈不同日志格式不</description>
+    </item>
+    
+  </channel>
+</rss>

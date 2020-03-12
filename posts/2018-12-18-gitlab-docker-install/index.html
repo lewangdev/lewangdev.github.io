@@ -25,7 +25,7 @@
     <link rel="shortcut icon" href="/favicon.ico">
 
     
-    <link rel="icon" type="image/x-icon" sizes="16x16 32x32" href="/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
 
     
     <link rel="icon" sizes="192x192" href="/images/favicon-192x192.png">
@@ -38,9 +38,6 @@
     <meta name="msapplication-TileImage" content="/images/favicon-144x144.png">
 
     <link rel="stylesheet" href="/css/normalize.css">
-    
-        <link rel="stylesheet" href="/css/prism.css">
-    
     <link rel="stylesheet" href="/css/style.css">
     <script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
 
@@ -77,8 +74,9 @@
     <div class="container">
         <div class="col-group">
 
-            <div class="col-8" id="main">
+            <div id="main">
                 <div class="res-cons">
+                    
                     <article class="post">
                         <header>
                             <h1 class="post-title">使用 Docker 方式安装 Gitlab，没你想得那么简单</h1>
@@ -121,49 +119,125 @@
 <h2 id="在-centos-7-系统中安装-docker">在 CentOS 7 系统中安装 Docker</h2>
 <p>这部分参考 <a href="https://docs.docker.com/install/linux/docker-ce/centos/">Docker 的官方文档</a>, 罗列一下安装步骤, 细节请看 <a href="https://docs.docker.com/install/linux/docker-ce/centos/">Docker 的官方文档</a>。如果使用 root 用户安装，sudo 可以去掉。</p>
 <h3 id="1-删除老版本-docker">1. 删除老版本 Docker</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ sudo yum remove docker <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>                  docker-client <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>                  docker-client-latest <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>                  docker-common <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>                  docker-latest <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>                  docker-latest-logrotate <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>                  docker-logrotate <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>                  docker-selinux <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>                  docker-engine-selinux <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>                  docker-engine
-</code></pre></div><h3 id="2-安装-docker-ce-的仓库配置">2. 安装 Docker CE 的仓库配置</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ sudo yum install -y yum-utils <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  device-mapper-persistent-data <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  lvm2
-$ sudo yum-config-manager <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    --add-repo <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    https://download.docker.com/linux/centos/docker-ce.repo
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ sudo yum remove docker <span style="color:#d14">\
+</span><span style="color:#d14"></span>                  docker-client <span style="color:#d14">\
+</span><span style="color:#d14"></span>                  docker-client-latest <span style="color:#d14">\
+</span><span style="color:#d14"></span>                  docker-common <span style="color:#d14">\
+</span><span style="color:#d14"></span>                  docker-latest <span style="color:#d14">\
+</span><span style="color:#d14"></span>                  docker-latest-logrotate <span style="color:#d14">\
+</span><span style="color:#d14"></span>                  docker-logrotate <span style="color:#d14">\
+</span><span style="color:#d14"></span>                  docker-selinux <span style="color:#d14">\
+</span><span style="color:#d14"></span>                  docker-engine-selinux <span style="color:#d14">\
+</span><span style="color:#d14"></span>                  docker-engine
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="2-安装-docker-ce-的仓库配置">2. 安装 Docker CE 的仓库配置</h3>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ sudo yum install -y yum-utils <span style="color:#d14">\
+</span><span style="color:#d14"></span>  device-mapper-persistent-data <span style="color:#d14">\
+</span><span style="color:#d14"></span>  lvm2
+$ sudo yum-config-manager <span style="color:#d14">\
+</span><span style="color:#d14"></span>    --add-repo <span style="color:#d14">\
+</span><span style="color:#d14"></span>    https://download.docker.com/linux/centos/docker-ce.repo
 
-</code></pre></div><h3 id="3-安装仓库中最高版本-docker-ce">3. 安装仓库中最高版本 Docker CE</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ sudo yum install -y docker-ce
-</code></pre></div><h3 id="4-启动-docker">4. 启动 Docker</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ sudo systemctl start docker
-</code></pre></div><h3 id="5-验证-docker-是否安装成功">5. 验证 Docker 是否安装成功</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ sudo docker run hello-world
-</code></pre></div><h2 id="使用-docker-方式安装中文版-gitlab">使用 Docker 方式安装中文版 Gitlab</h2>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="3-安装仓库中最高版本-docker-ce">3. 安装仓库中最高版本 Docker CE</h3>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ sudo yum install -y docker-ce
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="4-启动-docker">4. 启动 Docker</h3>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ sudo systemctl start docker
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="5-验证-docker-是否安装成功">5. 验证 Docker 是否安装成功</h3>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ sudo docker run hello-world
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="使用-docker-方式安装中文版-gitlab">使用 Docker 方式安装中文版 Gitlab</h2>
 <p>目前我的团队习惯使用中文版的 Gitlab 的，并且使用的版本是 <code>beginor/gitlab-ce:10.3.1-ce.0</code>，所以还是以这个版本来说明安装配置过程。</p>
 <p>在启动 Gitlab 之前，创建几个目录作为 Docker 的卷，这样的配置或者升级 gitlab 的时候可以保留配置和数据。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ sudo mkdir -p /data/var/lib/gitlab/etc
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ sudo mkdir -p /data/var/lib/gitlab/etc
 $ sudo mkdir -p /data/var/lib/gitlab/log
 $ sudo mkdir -p /data/var/lib/gitlab/data
-</code></pre></div><p>启动 Gitlab</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ sudo docker run <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    --detach <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    --sysctl net.core.somaxconn<span style="color:#f92672">=</span><span style="color:#ae81ff">1024</span> <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    --publish 8080:80 <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    --publish 8022:22 <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    --name gitlab <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    --restart unless-stopped <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    --volume /data/var/lib/gitlab/etc:/etc/gitlab <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    --volume /data/var/lib/gitlab/log:/var/log/gitlab <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    --volume /data/var/lib/gitlab/data:/var/opt/gitlab <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    beginor/gitlab-ce:10.3.1-ce.0
-</code></pre></div><p>这个 Gitlab 的 Docker 镜像是基于  Ubuntu 16.04.3 LTS 这个版本来构建的，所以在 <code>docker exec -it gitlab /bin/bash</code> 进入 Docker 容器之后跟使用 Ubuntu 就没有什么差别了。</p>
+</code></pre></td></tr></table>
+</div>
+</div><p>启动 Gitlab</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ sudo docker run <span style="color:#d14">\
+</span><span style="color:#d14"></span>    --detach <span style="color:#d14">\
+</span><span style="color:#d14"></span>    --sysctl net.core.somaxconn<span style="color:#000;font-weight:bold">=</span><span style="color:#099">1024</span> <span style="color:#d14">\
+</span><span style="color:#d14"></span>    --publish 8080:80 <span style="color:#d14">\
+</span><span style="color:#d14"></span>    --publish 8022:22 <span style="color:#d14">\
+</span><span style="color:#d14"></span>    --name gitlab <span style="color:#d14">\
+</span><span style="color:#d14"></span>    --restart unless-stopped <span style="color:#d14">\
+</span><span style="color:#d14"></span>    --volume /data/var/lib/gitlab/etc:/etc/gitlab <span style="color:#d14">\
+</span><span style="color:#d14"></span>    --volume /data/var/lib/gitlab/log:/var/log/gitlab <span style="color:#d14">\
+</span><span style="color:#d14"></span>    --volume /data/var/lib/gitlab/data:/var/opt/gitlab <span style="color:#d14">\
+</span><span style="color:#d14"></span>    beginor/gitlab-ce:10.3.1-ce.0
+</code></pre></td></tr></table>
+</div>
+</div><p>这个 Gitlab 的 Docker 镜像是基于  Ubuntu 16.04.3 LTS 这个版本来构建的，所以在 <code>docker exec -it gitlab /bin/bash</code> 进入 Docker 容器之后跟使用 Ubuntu 就没有什么差别了。</p>
 <p>gitlab 容器中启动了很多服务，主要包括：</p>
 <ul>
 <li>gitlab</li>
@@ -175,40 +249,79 @@ $ sudo mkdir -p /data/var/lib/gitlab/data
 <p>通过查看 Dockerfile 发现，除了可以使用 <code>docker exec -it gitlab /bin/bash</code> 进入容器之外，还可以直接使用 SSH 登录到容器中。其实 Gitlab 这个镜像，并不符合 <a href="https://docs.docker.com/develop/develop-images/dockerfile_best-practices/#decouple-applications">Dockerfile 最佳实践规范</a>, 因为将会有太多的服务在这个镜像构建的容器之中，不利于服务的扩容和重用。不过通过这种超级包的方式确实大大降低了用户的使用门槛，对于高段位选手，自然也会自己去拆分去解耦，进而去构建自己的镜像。</p>
 <p>讲到这里，gitlab 服务已经在运行了，大多数人也认为自己任务完成了，一切到此为止。但是对于有些许强迫症的人来说，是无法接受 HTTP 得用 8080 端口， SSH 得用 8022 端口，这样 Git 的 URL 就不太美观了。</p>
 <p>偷懒的人有个很简单的方法来解决这个端口的问题， 可以使用这样的命令启动 Docker</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ sudo docker stop gitlab
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ sudo docker stop gitlab
 $ sudo docker rm gitlab
-$ sudo docker run <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    --detach <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    --sysctl net.core.somaxconn<span style="color:#f92672">=</span><span style="color:#ae81ff">1024</span> <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    --publish 443:443 <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    --publish 80:80 <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    --publish 22:22 <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    --name gitlab <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    --restart unless-stopped <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    --volume /data/var/lib/gitlab/etc:/etc/gitlab <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    --volume /data/var/lib/gitlab/log:/var/log/gitlab <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    --volume /data/var/lib/gitlab/data:/var/opt/gitlab <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    beginor/gitlab-ce:10.3.1-ce.0
-</code></pre></div><p>这样有带来了新问题:</p>
+$ sudo docker run <span style="color:#d14">\
+</span><span style="color:#d14"></span>    --detach <span style="color:#d14">\
+</span><span style="color:#d14"></span>    --sysctl net.core.somaxconn<span style="color:#000;font-weight:bold">=</span><span style="color:#099">1024</span> <span style="color:#d14">\
+</span><span style="color:#d14"></span>    --publish 443:443 <span style="color:#d14">\
+</span><span style="color:#d14"></span>    --publish 80:80 <span style="color:#d14">\
+</span><span style="color:#d14"></span>    --publish 22:22 <span style="color:#d14">\
+</span><span style="color:#d14"></span>    --name gitlab <span style="color:#d14">\
+</span><span style="color:#d14"></span>    --restart unless-stopped <span style="color:#d14">\
+</span><span style="color:#d14"></span>    --volume /data/var/lib/gitlab/etc:/etc/gitlab <span style="color:#d14">\
+</span><span style="color:#d14"></span>    --volume /data/var/lib/gitlab/log:/var/log/gitlab <span style="color:#d14">\
+</span><span style="color:#d14"></span>    --volume /data/var/lib/gitlab/data:/var/opt/gitlab <span style="color:#d14">\
+</span><span style="color:#d14"></span>    beginor/gitlab-ce:10.3.1-ce.0
+</code></pre></td></tr></table>
+</div>
+</div><p>这样有带来了新问题:</p>
 <ol>
 <li>80/443 将会被 gitlab 独占，宿主机器上 Nginx 等 HTTP/HTTPS 服务将无法使用 80/443</li>
 <li>22 将会被 gitlab 独占，那么宿主机器上的 SSHD 服务需要改为其它端口</li>
 </ol>
 <p>这两个新问题大概对于有些许强迫症的人来说也是无法接受的。 我们还是回到这样的方式启动 Gitlab</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ sudo docker stop gitlab
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ sudo docker stop gitlab
 $ sudo docker rm gitlab
-$ sudo docker run <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    --detach <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    --sysctl net.core.somaxconn<span style="color:#f92672">=</span><span style="color:#ae81ff">1024</span> <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    --publish 8080:80 <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    --publish 8022:22 <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    --name gitlab <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    --restart unless-stopped <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    --volume /data/var/lib/gitlab/etc:/etc/gitlab <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    --volume /data/var/lib/gitlab/log:/var/log/gitlab <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    --volume /data/var/lib/gitlab/data:/var/opt/gitlab <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    beginor/gitlab-ce:10.3.1-ce.0
-</code></pre></div><p>然后寻找其它更好的解决方案：</p>
+$ sudo docker run <span style="color:#d14">\
+</span><span style="color:#d14"></span>    --detach <span style="color:#d14">\
+</span><span style="color:#d14"></span>    --sysctl net.core.somaxconn<span style="color:#000;font-weight:bold">=</span><span style="color:#099">1024</span> <span style="color:#d14">\
+</span><span style="color:#d14"></span>    --publish 8080:80 <span style="color:#d14">\
+</span><span style="color:#d14"></span>    --publish 8022:22 <span style="color:#d14">\
+</span><span style="color:#d14"></span>    --name gitlab <span style="color:#d14">\
+</span><span style="color:#d14"></span>    --restart unless-stopped <span style="color:#d14">\
+</span><span style="color:#d14"></span>    --volume /data/var/lib/gitlab/etc:/etc/gitlab <span style="color:#d14">\
+</span><span style="color:#d14"></span>    --volume /data/var/lib/gitlab/log:/var/log/gitlab <span style="color:#d14">\
+</span><span style="color:#d14"></span>    --volume /data/var/lib/gitlab/data:/var/opt/gitlab <span style="color:#d14">\
+</span><span style="color:#d14"></span>    beginor/gitlab-ce:10.3.1-ce.0
+</code></pre></td></tr></table>
+</div>
+</div><p>然后寻找其它更好的解决方案：</p>
 <ol>
 <li>使用 Nginx 代理 8080 端口，这样很容易实现 HTTP(80)/HTTPS(443) 端口共用</li>
 <li>共享宿主机器的 SSH(22) 端口，如果使用 git 这个账号登录，则转发 SSH 到 gitlab 的容器中</li>
@@ -217,74 +330,190 @@ $ sudo docker run <span style="color:#ae81ff">\
 <h2 id="使用宿主机器上的-nginx-配置-http-和-https">使用宿主机器上的 Nginx 配置 HTTP 和 HTTPS</h2>
 <p>使用宿主机器上的 Nginx 使得我们安装 Gitlab 更加灵活。先停用 Gitlab 容器中的 HTTPS 服务, 需要这样改写配置文件, 需要编辑
 <code>/data/var/lib/gitlab/etc/gitlab.rb</code> 文件相应的行，<a href="https://docs.gitlab.com/omnibus/settings/nginx.html#using-a-non-bundled-web-server">具体配置可以参考这里</a></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">external_url <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">https://gitlab.example.com</span><span style="color:#e6db74">&#34;</span>
-nginx<span style="color:#f92672">[</span><span style="color:#e6db74">&#39;listen_port&#39;</span><span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">80</span>
-<span style="color:#f92672"></span>nginx<span style="color:#f92672">[</span><span style="color:#e6db74">&#39;listen_https&#39;</span><span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>
-</code></pre></div><p>修改完成之后，可以在 Docker 容器中执行 <code>gitlab-ctl reconfigure</code> 来使之生效。这样配置以后，容器中讲只提供 HTTP 服务，不会根据 <code>external_url</code> 解析来自动启动 HTTPS 而导致日志中出现大量的缺少证书的日志。现在只需要配置宿主机器的 Nginx 就可以了。关于如何获取免费的 SSL 证书，这里就不在赘述了，读者可以自行搜索 Let's Encrypt + Nginx 相关文章，如果没有域名，只有 IP，那可以试试 <a href="https://www.trustocean.com/">TrustOcean</a>。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">external_url <span style="color:#d14">&#34;</span><span style="color:#d14">https://gitlab.example.com</span><span style="color:#d14">&#34;</span>
+nginx<span style="color:#000;font-weight:bold">[</span><span style="color:#d14">&#39;listen_port&#39;</span><span style="color:#000;font-weight:bold">]</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#099">80</span>
+<span style="color:#000;font-weight:bold"></span>nginx<span style="color:#000;font-weight:bold">[</span><span style="color:#d14">&#39;listen_https&#39;</span><span style="color:#000;font-weight:bold">]</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">false</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>修改完成之后，可以在 Docker 容器中执行 <code>gitlab-ctl reconfigure</code> 来使之生效。这样配置以后，容器中讲只提供 HTTP 服务，不会根据 <code>external_url</code> 解析来自动启动 HTTPS 而导致日志中出现大量的缺少证书的日志。现在只需要配置宿主机器的 Nginx 就可以了。关于如何获取免费的 SSL 证书，这里就不在赘述了，读者可以自行搜索 Let's Encrypt + Nginx 相关文章，如果没有域名，只有 IP，那可以试试 <a href="https://www.trustocean.com/">TrustOcean</a>。</p>
 <h2 id="gitlab-docker-和宿主服务器共享-ssh22-端口">Gitlab Docker 和宿主服务器共享 SSH(22) 端口</h2>
 <p>Gitlab Docker 镜像中默认使用的 SSH 账户是 git，那能不能在宿主机器上也建一个账户 git，只是当 git 帐号进行操作的时候，我们转发命令到 gitlab 容器呢？答案是肯定的，宿主机器上非 git 帐号就不受影响了，还可以正常使用。</p>
 <p>我们在宿主机器上创建 git 账户，并且使他的 uid 和 gid 和容器中的值完全一样，Gitlab 容器中 uid 和 gid 都是 998, 修改宿主机器中的值，将便于未来容器的升级。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">adduser git
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">adduser git
 id git
-uid<span style="color:#f92672">=</span>998<span style="color:#f92672">(</span>git<span style="color:#f92672">)</span> gid<span style="color:#f92672">=</span>998<span style="color:#f92672">(</span>git<span style="color:#f92672">)</span> groups<span style="color:#f92672">=</span>998<span style="color:#f92672">(</span>git<span style="color:#f92672">)</span>
-</code></pre></div><p>要完成共享22端口，要求 gitlab 容器中的 git 账户的 uid 和 gid 和宿主机器上完全相同，这样读取 SSH Key 时就不会有权限问题。关于如何修改两个系统中 git 账户的 uid 和 gid，可以通过命令 <code>usermod</code> 和 <code>groupmod</code> 手动修改 git 用户的 uid 和 gid<a href="/posts/2019-07-16-change-uid-gid-in-linux">参考文档</a>。或者通过编辑 <code>/data/var/lib/gitlab/etc/gitlab.rb</code> 这个配置文件，修改其中的行，来使用其他的用户<a href="https://docs.gitlab.com/omnibus/settings/configuration.html#specify-numeric-user-and-group-identifiers">具体请参考这里</a>:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">user<span style="color:#f92672">[</span><span style="color:#e6db74">&#39;username&#39;</span><span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;other-git&#39;</span>
-user<span style="color:#f92672">[</span><span style="color:#e6db74">&#39;group&#39;</span><span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;other-git&#39;</span>
-user<span style="color:#f92672">[</span><span style="color:#e6db74">&#39;uid&#39;</span><span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1001</span>
-<span style="color:#f92672"></span>user<span style="color:#f92672">[</span><span style="color:#e6db74">&#39;gid&#39;</span><span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1001</span>
-<span style="color:#f92672"></span></code></pre></div><p>修改完成之后，可以在 Docker 容器中执行 <code>gitlab-ctl reconfigure</code> 来使之生效.</p>
+<span style="color:#008080">uid</span><span style="color:#000;font-weight:bold">=</span>998<span style="color:#000;font-weight:bold">(</span>git<span style="color:#000;font-weight:bold">)</span> <span style="color:#008080">gid</span><span style="color:#000;font-weight:bold">=</span>998<span style="color:#000;font-weight:bold">(</span>git<span style="color:#000;font-weight:bold">)</span> <span style="color:#008080">groups</span><span style="color:#000;font-weight:bold">=</span>998<span style="color:#000;font-weight:bold">(</span>git<span style="color:#000;font-weight:bold">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>要完成共享22端口，要求 gitlab 容器中的 git 账户的 uid 和 gid 和宿主机器上完全相同，这样读取 SSH Key 时就不会有权限问题。关于如何修改两个系统中 git 账户的 uid 和 gid，可以通过命令 <code>usermod</code> 和 <code>groupmod</code> 手动修改 git 用户的 uid 和 gid<a href="/posts/2019-07-16-change-uid-gid-in-linux">参考文档</a>。或者通过编辑 <code>/data/var/lib/gitlab/etc/gitlab.rb</code> 这个配置文件，修改其中的行，来使用其他的用户<a href="https://docs.gitlab.com/omnibus/settings/configuration.html#specify-numeric-user-and-group-identifiers">具体请参考这里</a>:</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">user<span style="color:#000;font-weight:bold">[</span><span style="color:#d14">&#39;username&#39;</span><span style="color:#000;font-weight:bold">]</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#39;other-git&#39;</span>
+user<span style="color:#000;font-weight:bold">[</span><span style="color:#d14">&#39;group&#39;</span><span style="color:#000;font-weight:bold">]</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#39;other-git&#39;</span>
+user<span style="color:#000;font-weight:bold">[</span><span style="color:#d14">&#39;uid&#39;</span><span style="color:#000;font-weight:bold">]</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#099">1001</span>
+<span style="color:#000;font-weight:bold"></span>user<span style="color:#000;font-weight:bold">[</span><span style="color:#d14">&#39;gid&#39;</span><span style="color:#000;font-weight:bold">]</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#099">1001</span>
+<span style="color:#000;font-weight:bold"></span></code></pre></td></tr></table>
+</div>
+</div><p>修改完成之后，可以在 Docker 容器中执行 <code>gitlab-ctl reconfigure</code> 来使之生效.</p>
 <p>在宿主机器上切换到 git 账户：<code>su - git</code> 然后执行 <code>ln -s /data/var/lib/gitlab/data/.ssh .ssh</code> 与 gitlab 容器共享 .ssh 下面的内容。为了在宿主机器上可以使用 git 账户无密码登录到 gitlab 容器中，需要创建在 .ssh 目录中添加一组密钥，并且把公钥加到 .ssh/authorized_keys 文件中去。</p>
 <p>在宿主机器上执行:</p>
-<pre><code class="language-ssh" data-lang="ssh">ssh-keygen -t rsa -P ''
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">ssh-keygen -t rsa -P &#39;&#39;
 cat ~/.ssh/id_rsa.pub &gt;&gt; ~/.ssh/authorized_keys
-</code></pre><p>添加 <code>no-port-forwarding,no-X11-forwarding,no-agent-forwarding,no-pty</code> 到 <code>~/.ssh/authorized_keys</code> 所在的行首，结果看起来是这样的：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">no-port-forwarding,no-X11-forwarding,no-agent-forwarding,no-pty ssh-rsa AAAAB3NzaC1yc2EAAA......CzGuj git@cn-bj-aliyun-3
-</code></pre></div><p>登录测试一下</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">ssh -p <span style="color:#ae81ff">8022</span> 127.0.0.1
-</code></pre></div><p>观察到 <code>~/.ssh/authorized_keys</code> 其它行都是这样</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">command<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/opt/gitlab/embedded/service/gitlab-shell/bin/gitlab-shell key-32&#34;</span>,no-port-forwarding,no-X11-forwarding,no-agent-forwarding,no-pty ssh-rsa AAAAB3NzaC1yc2EAA......hOtpAl7J
-</code></pre></div><p>在宿主机看来，每次git账户进行操作是都会执行 <code>/opt/gitlab/embedded/service/gitlab-shell/bin/gitlab-shell</code>, 我们恰好可以使用这个脚本来实现转发。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">mkdir -p /opt/gitlab/embedded/service/gitlab-shell/bin/
+</code></pre></td></tr></table>
+</div>
+</div><p>添加 <code>no-port-forwarding,no-X11-forwarding,no-agent-forwarding,no-pty</code> 到 <code>~/.ssh/authorized_keys</code> 所在的行首，结果看起来是这样的：</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">no-port-forwarding,no-X11-forwarding,no-agent-forwarding,no-pty ssh-rsa AAAAB3NzaC1yc2EAAA......CzGuj git@cn-bj-aliyun-3
+</code></pre></td></tr></table>
+</div>
+</div><p>登录测试一下</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">ssh -p <span style="color:#099">8022</span> 127.0.0.1
+</code></pre></td></tr></table>
+</div>
+</div><p>观察到 <code>~/.ssh/authorized_keys</code> 其它行都是这样</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#008080">command</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;/opt/gitlab/embedded/service/gitlab-shell/bin/gitlab-shell key-32&#34;</span>,no-port-forwarding,no-X11-forwarding,no-agent-forwarding,no-pty ssh-rsa AAAAB3NzaC1yc2EAA......hOtpAl7J
+</code></pre></td></tr></table>
+</div>
+</div><p>在宿主机看来，每次git账户进行操作是都会执行 <code>/opt/gitlab/embedded/service/gitlab-shell/bin/gitlab-shell</code>, 我们恰好可以使用这个脚本来实现转发。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">mkdir -p /opt/gitlab/embedded/service/gitlab-shell/bin/
 touch gitlab-shell
 chmod +x gitlab-shell
-</code></pre></div><p>并且输入以下内容到 <code>/opt/gitlab/embedded/service/gitlab-shell/bin/gitlab-shell</code> 中</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e">#!/bin/sh
-</span><span style="color:#75715e"></span>
-ssh -p <span style="color:#ae81ff">8022</span> -o StrictHostKeyChecking<span style="color:#f92672">=</span>no git@127.0.0.1 <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">SSH_ORIGINAL_COMMAND=\&#34;</span>$SSH_ORIGINAL_COMMAND<span style="color:#e6db74">\&#34; </span>$0<span style="color:#e6db74"> </span>$@<span style="color:#e6db74">&#34;</span>
-</code></pre></div><p>一切就绪了， 可以使用 <code>https://gitlab.example.com/repo.git</code> 或者 <code>git@gitlab.example.com:repo.git</code> 这样的 URL 了。</p>
+</code></pre></td></tr></table>
+</div>
+</div><p>并且输入以下内容到 <code>/opt/gitlab/embedded/service/gitlab-shell/bin/gitlab-shell</code> 中</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#999;font-weight:bold;font-style:italic">#!/bin/sh
+</span><span style="color:#999;font-weight:bold;font-style:italic"></span>
+ssh -p <span style="color:#099">8022</span> -o <span style="color:#008080">StrictHostKeyChecking</span><span style="color:#000;font-weight:bold">=</span>no git@127.0.0.1 <span style="color:#d14">&#34;</span><span style="color:#d14">SSH_ORIGINAL_COMMAND=\&#34;</span><span style="color:#008080">$SSH_ORIGINAL_COMMAND</span><span style="color:#d14">\&#34; </span><span style="color:#008080">$0</span><span style="color:#d14"> </span><span style="color:#008080">$@</span><span style="color:#d14">&#34;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>一切就绪了， 可以使用 <code>https://gitlab.example.com/repo.git</code> 或者 <code>git@gitlab.example.com:repo.git</code> 这样的 URL 了。</p>
 <h2 id="使用-smtp-方式配置通知邮箱腾讯企业邮箱">使用 SMTP 方式配置通知邮箱(腾讯企业邮箱)</h2>
 <p><a href="https://docs.gitlab.com/omnibus/settings/smtp.html">Gitlab SMTP 文档参考这里</a></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">gitlab_rails<span style="color:#f92672">[</span><span style="color:#e6db74">&#39;smtp_enable&#39;</span><span style="color:#f92672">]</span> <span style="color:#f92672">=</span> true
-gitlab_rails<span style="color:#f92672">[</span><span style="color:#e6db74">&#39;smtp_address&#39;</span><span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;smtp.exmail.qq.com&#34;</span>
-gitlab_rails<span style="color:#f92672">[</span><span style="color:#e6db74">&#39;smtp_port&#39;</span><span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">465</span>
-gitlab_rails<span style="color:#f92672">[</span><span style="color:#e6db74">&#39;smtp_user_name&#39;</span><span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;xxxx@xx.com&#34;</span>
-gitlab_rails<span style="color:#f92672">[</span><span style="color:#e6db74">&#39;smtp_password&#39;</span><span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;password&#34;</span>
-gitlab_rails<span style="color:#f92672">[</span><span style="color:#e6db74">&#39;smtp_authentication&#39;</span><span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;login&#34;</span>
-gitlab_rails<span style="color:#f92672">[</span><span style="color:#e6db74">&#39;smtp_enable_starttls_auto&#39;</span><span style="color:#f92672">]</span> <span style="color:#f92672">=</span> true
-gitlab_rails<span style="color:#f92672">[</span><span style="color:#e6db74">&#39;smtp_tls&#39;</span><span style="color:#f92672">]</span> <span style="color:#f92672">=</span> true
-gitlab_rails<span style="color:#f92672">[</span><span style="color:#e6db74">&#39;gitlab_email_from&#39;</span><span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;xxxx@xx.com&#39;</span>
-gitlab_rails<span style="color:#f92672">[</span><span style="color:#e6db74">&#39;smtp_domain&#39;</span><span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;exmail.qq.com&#34;</span>
-</code></pre></div><h2 id="改写默认的项目标签labels">改写默认的项目标签(Labels)</h2>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">gitlab_rails<span style="color:#000;font-weight:bold">[</span><span style="color:#d14">&#39;smtp_enable&#39;</span><span style="color:#000;font-weight:bold">]</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#0086b3">true</span>
+gitlab_rails<span style="color:#000;font-weight:bold">[</span><span style="color:#d14">&#39;smtp_address&#39;</span><span style="color:#000;font-weight:bold">]</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#34;smtp.exmail.qq.com&#34;</span>
+gitlab_rails<span style="color:#000;font-weight:bold">[</span><span style="color:#d14">&#39;smtp_port&#39;</span><span style="color:#000;font-weight:bold">]</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#099">465</span>
+gitlab_rails<span style="color:#000;font-weight:bold">[</span><span style="color:#d14">&#39;smtp_user_name&#39;</span><span style="color:#000;font-weight:bold">]</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#34;xxxx@xx.com&#34;</span>
+gitlab_rails<span style="color:#000;font-weight:bold">[</span><span style="color:#d14">&#39;smtp_password&#39;</span><span style="color:#000;font-weight:bold">]</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#34;password&#34;</span>
+gitlab_rails<span style="color:#000;font-weight:bold">[</span><span style="color:#d14">&#39;smtp_authentication&#39;</span><span style="color:#000;font-weight:bold">]</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#34;login&#34;</span>
+gitlab_rails<span style="color:#000;font-weight:bold">[</span><span style="color:#d14">&#39;smtp_enable_starttls_auto&#39;</span><span style="color:#000;font-weight:bold">]</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#0086b3">true</span>
+gitlab_rails<span style="color:#000;font-weight:bold">[</span><span style="color:#d14">&#39;smtp_tls&#39;</span><span style="color:#000;font-weight:bold">]</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#0086b3">true</span>
+gitlab_rails<span style="color:#000;font-weight:bold">[</span><span style="color:#d14">&#39;gitlab_email_from&#39;</span><span style="color:#000;font-weight:bold">]</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#39;xxxx@xx.com&#39;</span>
+gitlab_rails<span style="color:#000;font-weight:bold">[</span><span style="color:#d14">&#39;smtp_domain&#39;</span><span style="color:#000;font-weight:bold">]</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#34;exmail.qq.com&#34;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="改写默认的项目标签labels">改写默认的项目标签(Labels)</h2>
 <p>添加丰富的标准，方便进行项目管理。修改 <code>issues_labels.rb</code> 文件</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">labels <span style="color:#f92672">=</span> <span style="color:#f92672">[</span>
-{<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">title</span><span style="color:#e6db74">&#34;</span>: <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">优先级:P0(紧急)</span><span style="color:#e6db74">&#34;</span>, <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">color</span><span style="color:#e6db74">&#34;</span>: <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">#</span><span style="color:#e6db74">E99695</span><span style="color:#e6db74">&#34;</span>, <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">description</span><span style="color:#e6db74">&#34;</span>: <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">立即处理</span><span style="color:#e6db74">&#34;</span>},
-{<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">title</span><span style="color:#e6db74">&#34;</span>: <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">优先级:P1(高)</span><span style="color:#e6db74">&#34;</span>, <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">color</span><span style="color:#e6db74">&#34;</span>: <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">#</span><span style="color:#e6db74">E99695</span><span style="color:#e6db74">&#34;</span>, <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">description</span><span style="color:#e6db74">&#34;</span>: <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">优先处理</span><span style="color:#e6db74">&#34;</span>},
-{<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">title</span><span style="color:#e6db74">&#34;</span>: <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">优先级:P2(中)</span><span style="color:#e6db74">&#34;</span>, <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">color</span><span style="color:#e6db74">&#34;</span>: <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">#</span><span style="color:#e6db74">E99695</span><span style="color:#e6db74">&#34;</span>, <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">description</span><span style="color:#e6db74">&#34;</span>: <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">有时间再处理</span><span style="color:#e6db74">&#34;</span>},
-{<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">title</span><span style="color:#e6db74">&#34;</span>: <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">优先级:P3(低)</span><span style="color:#e6db74">&#34;</span>, <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">color</span><span style="color:#e6db74">&#34;</span>: <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">#</span><span style="color:#e6db74">E99695</span><span style="color:#e6db74">&#34;</span>, <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">description</span><span style="color:#e6db74">&#34;</span>: <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">暂不处理</span><span style="color:#e6db74">&#34;</span>},
-{<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">title</span><span style="color:#e6db74">&#34;</span>: <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">分类:BUG</span><span style="color:#e6db74">&#34;</span>, <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">color</span><span style="color:#e6db74">&#34;</span>: <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">#</span><span style="color:#e6db74">D4C5F9</span><span style="color:#e6db74">&#34;</span>, <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">description</span><span style="color:#e6db74">&#34;</span>: <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">发现的BUG</span><span style="color:#e6db74">&#34;</span>},
-{<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">title</span><span style="color:#e6db74">&#34;</span>: <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">分类:功能增强</span><span style="color:#e6db74">&#34;</span>, <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">color</span><span style="color:#e6db74">&#34;</span>: <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">#</span><span style="color:#e6db74">D4C5F9</span><span style="color:#e6db74">&#34;</span>, <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">description</span><span style="color:#e6db74">&#34;</span>: <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">增强已有的功能，属于优化的环节</span><span style="color:#e6db74">&#34;</span>},
-{<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">title</span><span style="color:#e6db74">&#34;</span>: <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">分类:功能完善</span><span style="color:#e6db74">&#34;</span>, <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">color</span><span style="color:#e6db74">&#34;</span>: <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">#</span><span style="color:#e6db74">D4C5F9</span><span style="color:#e6db74">&#34;</span>, <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">description</span><span style="color:#e6db74">&#34;</span>: <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">完善功能</span><span style="color:#e6db74">&#34;</span>},
-{<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">title</span><span style="color:#e6db74">&#34;</span>: <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">分类:文档修改</span><span style="color:#e6db74">&#34;</span>, <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">color</span><span style="color:#e6db74">&#34;</span>: <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">#</span><span style="color:#e6db74">D4C5F9</span><span style="color:#e6db74">&#34;</span>, <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">description</span><span style="color:#e6db74">&#34;</span>: <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">只是做文档修改</span><span style="color:#e6db74">&#34;</span>},
-{<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">title</span><span style="color:#e6db74">&#34;</span>: <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">分类:新功能</span><span style="color:#e6db74">&#34;</span>, <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">color</span><span style="color:#e6db74">&#34;</span>: <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">#</span><span style="color:#e6db74">D4C5F9</span><span style="color:#e6db74">&#34;</span>, <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">description</span><span style="color:#e6db74">&#34;</span>: <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">新的功能和需求</span><span style="color:#e6db74">&#34;</span>},
-{<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">title</span><span style="color:#e6db74">&#34;</span>: <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">项目:已上线</span><span style="color:#e6db74">&#34;</span>, <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">color</span><span style="color:#e6db74">&#34;</span>: <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">#</span><span style="color:#e6db74">C5DEF5</span><span style="color:#e6db74">&#34;</span>, <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">description</span><span style="color:#e6db74">&#34;</span>: <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">已发布上线</span><span style="color:#e6db74">&#34;</span>},
-{<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">title</span><span style="color:#e6db74">&#34;</span>: <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">项目:已排期</span><span style="color:#e6db74">&#34;</span>, <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">color</span><span style="color:#e6db74">&#34;</span>: <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">#</span><span style="color:#e6db74">C5DEF5</span><span style="color:#e6db74">&#34;</span>, <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">description</span><span style="color:#e6db74">&#34;</span>: <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">已经安排了开发时间milestone</span><span style="color:#e6db74">&#34;</span>},
-{<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">title</span><span style="color:#e6db74">&#34;</span>: <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">项目:已确认</span><span style="color:#e6db74">&#34;</span>, <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">color</span><span style="color:#e6db74">&#34;</span>: <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">#</span><span style="color:#e6db74">C5DEF5</span><span style="color:#e6db74">&#34;</span>, <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">description</span><span style="color:#e6db74">&#34;</span>: <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">功能已经确认，后续进行排期</span><span style="color:#e6db74">&#34;</span>},
-{<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">title</span><span style="color:#e6db74">&#34;</span>: <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">项目:延后</span><span style="color:#e6db74">&#34;</span>, <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">color</span><span style="color:#e6db74">&#34;</span>: <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">#</span><span style="color:#e6db74">C5DEF5</span><span style="color:#e6db74">&#34;</span>, <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">description</span><span style="color:#e6db74">&#34;</span>: <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">功能无法确定是否开发，延期处理</span><span style="color:#e6db74">&#34;</span>},
-{<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">title</span><span style="color:#e6db74">&#34;</span>: <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">项目:开发中</span><span style="color:#e6db74">&#34;</span>, <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">color</span><span style="color:#e6db74">&#34;</span>: <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">#</span><span style="color:#e6db74">C5DEF5</span><span style="color:#e6db74">&#34;</span>, <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">description</span><span style="color:#e6db74">&#34;</span>: <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">功能正在开发</span><span style="color:#e6db74">&#34;</span>},
-{<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">title</span><span style="color:#e6db74">&#34;</span>: <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">项目:待讨论</span><span style="color:#e6db74">&#34;</span>, <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">color</span><span style="color:#e6db74">&#34;</span>: <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">#</span><span style="color:#e6db74">C5DEF5</span><span style="color:#e6db74">&#34;</span>, <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">description</span><span style="color:#e6db74">&#34;</span>: <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">需求已经提出，但是需要讨论是否需要开发</span><span style="color:#e6db74">&#34;</span>},
-{<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">title</span><span style="color:#e6db74">&#34;</span>: <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">项目:测试中</span><span style="color:#e6db74">&#34;</span>, <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">color</span><span style="color:#e6db74">&#34;</span>: <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">#</span><span style="color:#e6db74">C5DEF5</span><span style="color:#e6db74">&#34;</span>, <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">description</span><span style="color:#e6db74">&#34;</span>: <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">功能已经完成开发，正在测试</span><span style="color:#e6db74">&#34;</span>}
-<span style="color:#f92672">]</span>
-</code></pre></div><h2 id="总结">总结</h2>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">labels <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">[</span>
+{<span style="color:#d14">&#34;</span><span style="color:#d14">title</span><span style="color:#d14">&#34;</span>: <span style="color:#d14">&#34;</span><span style="color:#d14">优先级:P0(紧急)</span><span style="color:#d14">&#34;</span>, <span style="color:#d14">&#34;</span><span style="color:#d14">color</span><span style="color:#d14">&#34;</span>: <span style="color:#d14">&#34;</span><span style="color:#d14">#</span><span style="color:#d14">E99695</span><span style="color:#d14">&#34;</span>, <span style="color:#d14">&#34;</span><span style="color:#d14">description</span><span style="color:#d14">&#34;</span>: <span style="color:#d14">&#34;</span><span style="color:#d14">立即处理</span><span style="color:#d14">&#34;</span>},
+{<span style="color:#d14">&#34;</span><span style="color:#d14">title</span><span style="color:#d14">&#34;</span>: <span style="color:#d14">&#34;</span><span style="color:#d14">优先级:P1(高)</span><span style="color:#d14">&#34;</span>, <span style="color:#d14">&#34;</span><span style="color:#d14">color</span><span style="color:#d14">&#34;</span>: <span style="color:#d14">&#34;</span><span style="color:#d14">#</span><span style="color:#d14">E99695</span><span style="color:#d14">&#34;</span>, <span style="color:#d14">&#34;</span><span style="color:#d14">description</span><span style="color:#d14">&#34;</span>: <span style="color:#d14">&#34;</span><span style="color:#d14">优先处理</span><span style="color:#d14">&#34;</span>},
+{<span style="color:#d14">&#34;</span><span style="color:#d14">title</span><span style="color:#d14">&#34;</span>: <span style="color:#d14">&#34;</span><span style="color:#d14">优先级:P2(中)</span><span style="color:#d14">&#34;</span>, <span style="color:#d14">&#34;</span><span style="color:#d14">color</span><span style="color:#d14">&#34;</span>: <span style="color:#d14">&#34;</span><span style="color:#d14">#</span><span style="color:#d14">E99695</span><span style="color:#d14">&#34;</span>, <span style="color:#d14">&#34;</span><span style="color:#d14">description</span><span style="color:#d14">&#34;</span>: <span style="color:#d14">&#34;</span><span style="color:#d14">有时间再处理</span><span style="color:#d14">&#34;</span>},
+{<span style="color:#d14">&#34;</span><span style="color:#d14">title</span><span style="color:#d14">&#34;</span>: <span style="color:#d14">&#34;</span><span style="color:#d14">优先级:P3(低)</span><span style="color:#d14">&#34;</span>, <span style="color:#d14">&#34;</span><span style="color:#d14">color</span><span style="color:#d14">&#34;</span>: <span style="color:#d14">&#34;</span><span style="color:#d14">#</span><span style="color:#d14">E99695</span><span style="color:#d14">&#34;</span>, <span style="color:#d14">&#34;</span><span style="color:#d14">description</span><span style="color:#d14">&#34;</span>: <span style="color:#d14">&#34;</span><span style="color:#d14">暂不处理</span><span style="color:#d14">&#34;</span>},
+{<span style="color:#d14">&#34;</span><span style="color:#d14">title</span><span style="color:#d14">&#34;</span>: <span style="color:#d14">&#34;</span><span style="color:#d14">分类:BUG</span><span style="color:#d14">&#34;</span>, <span style="color:#d14">&#34;</span><span style="color:#d14">color</span><span style="color:#d14">&#34;</span>: <span style="color:#d14">&#34;</span><span style="color:#d14">#</span><span style="color:#d14">D4C5F9</span><span style="color:#d14">&#34;</span>, <span style="color:#d14">&#34;</span><span style="color:#d14">description</span><span style="color:#d14">&#34;</span>: <span style="color:#d14">&#34;</span><span style="color:#d14">发现的BUG</span><span style="color:#d14">&#34;</span>},
+{<span style="color:#d14">&#34;</span><span style="color:#d14">title</span><span style="color:#d14">&#34;</span>: <span style="color:#d14">&#34;</span><span style="color:#d14">分类:功能增强</span><span style="color:#d14">&#34;</span>, <span style="color:#d14">&#34;</span><span style="color:#d14">color</span><span style="color:#d14">&#34;</span>: <span style="color:#d14">&#34;</span><span style="color:#d14">#</span><span style="color:#d14">D4C5F9</span><span style="color:#d14">&#34;</span>, <span style="color:#d14">&#34;</span><span style="color:#d14">description</span><span style="color:#d14">&#34;</span>: <span style="color:#d14">&#34;</span><span style="color:#d14">增强已有的功能，属于优化的环节</span><span style="color:#d14">&#34;</span>},
+{<span style="color:#d14">&#34;</span><span style="color:#d14">title</span><span style="color:#d14">&#34;</span>: <span style="color:#d14">&#34;</span><span style="color:#d14">分类:功能完善</span><span style="color:#d14">&#34;</span>, <span style="color:#d14">&#34;</span><span style="color:#d14">color</span><span style="color:#d14">&#34;</span>: <span style="color:#d14">&#34;</span><span style="color:#d14">#</span><span style="color:#d14">D4C5F9</span><span style="color:#d14">&#34;</span>, <span style="color:#d14">&#34;</span><span style="color:#d14">description</span><span style="color:#d14">&#34;</span>: <span style="color:#d14">&#34;</span><span style="color:#d14">完善功能</span><span style="color:#d14">&#34;</span>},
+{<span style="color:#d14">&#34;</span><span style="color:#d14">title</span><span style="color:#d14">&#34;</span>: <span style="color:#d14">&#34;</span><span style="color:#d14">分类:文档修改</span><span style="color:#d14">&#34;</span>, <span style="color:#d14">&#34;</span><span style="color:#d14">color</span><span style="color:#d14">&#34;</span>: <span style="color:#d14">&#34;</span><span style="color:#d14">#</span><span style="color:#d14">D4C5F9</span><span style="color:#d14">&#34;</span>, <span style="color:#d14">&#34;</span><span style="color:#d14">description</span><span style="color:#d14">&#34;</span>: <span style="color:#d14">&#34;</span><span style="color:#d14">只是做文档修改</span><span style="color:#d14">&#34;</span>},
+{<span style="color:#d14">&#34;</span><span style="color:#d14">title</span><span style="color:#d14">&#34;</span>: <span style="color:#d14">&#34;</span><span style="color:#d14">分类:新功能</span><span style="color:#d14">&#34;</span>, <span style="color:#d14">&#34;</span><span style="color:#d14">color</span><span style="color:#d14">&#34;</span>: <span style="color:#d14">&#34;</span><span style="color:#d14">#</span><span style="color:#d14">D4C5F9</span><span style="color:#d14">&#34;</span>, <span style="color:#d14">&#34;</span><span style="color:#d14">description</span><span style="color:#d14">&#34;</span>: <span style="color:#d14">&#34;</span><span style="color:#d14">新的功能和需求</span><span style="color:#d14">&#34;</span>},
+{<span style="color:#d14">&#34;</span><span style="color:#d14">title</span><span style="color:#d14">&#34;</span>: <span style="color:#d14">&#34;</span><span style="color:#d14">项目:已上线</span><span style="color:#d14">&#34;</span>, <span style="color:#d14">&#34;</span><span style="color:#d14">color</span><span style="color:#d14">&#34;</span>: <span style="color:#d14">&#34;</span><span style="color:#d14">#</span><span style="color:#d14">C5DEF5</span><span style="color:#d14">&#34;</span>, <span style="color:#d14">&#34;</span><span style="color:#d14">description</span><span style="color:#d14">&#34;</span>: <span style="color:#d14">&#34;</span><span style="color:#d14">已发布上线</span><span style="color:#d14">&#34;</span>},
+{<span style="color:#d14">&#34;</span><span style="color:#d14">title</span><span style="color:#d14">&#34;</span>: <span style="color:#d14">&#34;</span><span style="color:#d14">项目:已排期</span><span style="color:#d14">&#34;</span>, <span style="color:#d14">&#34;</span><span style="color:#d14">color</span><span style="color:#d14">&#34;</span>: <span style="color:#d14">&#34;</span><span style="color:#d14">#</span><span style="color:#d14">C5DEF5</span><span style="color:#d14">&#34;</span>, <span style="color:#d14">&#34;</span><span style="color:#d14">description</span><span style="color:#d14">&#34;</span>: <span style="color:#d14">&#34;</span><span style="color:#d14">已经安排了开发时间milestone</span><span style="color:#d14">&#34;</span>},
+{<span style="color:#d14">&#34;</span><span style="color:#d14">title</span><span style="color:#d14">&#34;</span>: <span style="color:#d14">&#34;</span><span style="color:#d14">项目:已确认</span><span style="color:#d14">&#34;</span>, <span style="color:#d14">&#34;</span><span style="color:#d14">color</span><span style="color:#d14">&#34;</span>: <span style="color:#d14">&#34;</span><span style="color:#d14">#</span><span style="color:#d14">C5DEF5</span><span style="color:#d14">&#34;</span>, <span style="color:#d14">&#34;</span><span style="color:#d14">description</span><span style="color:#d14">&#34;</span>: <span style="color:#d14">&#34;</span><span style="color:#d14">功能已经确认，后续进行排期</span><span style="color:#d14">&#34;</span>},
+{<span style="color:#d14">&#34;</span><span style="color:#d14">title</span><span style="color:#d14">&#34;</span>: <span style="color:#d14">&#34;</span><span style="color:#d14">项目:延后</span><span style="color:#d14">&#34;</span>, <span style="color:#d14">&#34;</span><span style="color:#d14">color</span><span style="color:#d14">&#34;</span>: <span style="color:#d14">&#34;</span><span style="color:#d14">#</span><span style="color:#d14">C5DEF5</span><span style="color:#d14">&#34;</span>, <span style="color:#d14">&#34;</span><span style="color:#d14">description</span><span style="color:#d14">&#34;</span>: <span style="color:#d14">&#34;</span><span style="color:#d14">功能无法确定是否开发，延期处理</span><span style="color:#d14">&#34;</span>},
+{<span style="color:#d14">&#34;</span><span style="color:#d14">title</span><span style="color:#d14">&#34;</span>: <span style="color:#d14">&#34;</span><span style="color:#d14">项目:开发中</span><span style="color:#d14">&#34;</span>, <span style="color:#d14">&#34;</span><span style="color:#d14">color</span><span style="color:#d14">&#34;</span>: <span style="color:#d14">&#34;</span><span style="color:#d14">#</span><span style="color:#d14">C5DEF5</span><span style="color:#d14">&#34;</span>, <span style="color:#d14">&#34;</span><span style="color:#d14">description</span><span style="color:#d14">&#34;</span>: <span style="color:#d14">&#34;</span><span style="color:#d14">功能正在开发</span><span style="color:#d14">&#34;</span>},
+{<span style="color:#d14">&#34;</span><span style="color:#d14">title</span><span style="color:#d14">&#34;</span>: <span style="color:#d14">&#34;</span><span style="color:#d14">项目:待讨论</span><span style="color:#d14">&#34;</span>, <span style="color:#d14">&#34;</span><span style="color:#d14">color</span><span style="color:#d14">&#34;</span>: <span style="color:#d14">&#34;</span><span style="color:#d14">#</span><span style="color:#d14">C5DEF5</span><span style="color:#d14">&#34;</span>, <span style="color:#d14">&#34;</span><span style="color:#d14">description</span><span style="color:#d14">&#34;</span>: <span style="color:#d14">&#34;</span><span style="color:#d14">需求已经提出，但是需要讨论是否需要开发</span><span style="color:#d14">&#34;</span>},
+{<span style="color:#d14">&#34;</span><span style="color:#d14">title</span><span style="color:#d14">&#34;</span>: <span style="color:#d14">&#34;</span><span style="color:#d14">项目:测试中</span><span style="color:#d14">&#34;</span>, <span style="color:#d14">&#34;</span><span style="color:#d14">color</span><span style="color:#d14">&#34;</span>: <span style="color:#d14">&#34;</span><span style="color:#d14">#</span><span style="color:#d14">C5DEF5</span><span style="color:#d14">&#34;</span>, <span style="color:#d14">&#34;</span><span style="color:#d14">description</span><span style="color:#d14">&#34;</span>: <span style="color:#d14">&#34;</span><span style="color:#d14">功能已经完成开发，正在测试</span><span style="color:#d14">&#34;</span>}
+<span style="color:#000;font-weight:bold">]</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="总结">总结</h2>
 <p>使用 Docker 方式安装 Gitlab 部署过程很简单，但是想达到一个理想的配置状况还是挺繁琐的，Docker 并不是治疗百病的良药，打铁还得自身硬。</p>
 
                             <p>(完)</p>
@@ -361,11 +590,6 @@ gitlab_rails<span style="color:#f92672">[</span><span style="color:#e6db74">&#39
 
 
     <script type="text/javascript">
-    
-    (function(){
-        $("pre code").parent().addClass("line-numbers")
-    }())
-
     window.MathJax = {
         tex2jax: {
             inlineMath: [ ['$','$'] ],
@@ -373,7 +597,6 @@ gitlab_rails<span style="color:#f92672">[</span><span style="color:#e6db74">&#39
         }
     };
     </script>
-    <script type="text/javascript" src="/js/prism.js" async="true"></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
 
 <a id="rocket" href="#top"></a>

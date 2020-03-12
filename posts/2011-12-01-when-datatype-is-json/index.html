@@ -25,7 +25,7 @@
     <link rel="shortcut icon" href="/favicon.ico">
 
     
-    <link rel="icon" type="image/x-icon" sizes="16x16 32x32" href="/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
 
     
     <link rel="icon" sizes="192x192" href="/images/favicon-192x192.png">
@@ -38,9 +38,6 @@
     <meta name="msapplication-TileImage" content="/images/favicon-144x144.png">
 
     <link rel="stylesheet" href="/css/normalize.css">
-    
-        <link rel="stylesheet" href="/css/prism.css">
-    
     <link rel="stylesheet" href="/css/style.css">
     <script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
 
@@ -77,8 +74,9 @@
     <div class="container">
         <div class="col-group">
 
-            <div class="col-8" id="main">
+            <div id="main">
                 <div class="res-cons">
+                    
                     <article class="post">
                         <header>
                             <h1 class="post-title">jquery $.ajax() 中 datatype 为 json 时的问题</h1>
@@ -109,16 +107,35 @@
 <p>“json”: Evaluates the response as JSON and returns a JavaScript object. In jQuery 1.4 the JSON data is parsed in a strict manner; any malformed JSON is rejected and a parse error is thrown. (See json.org for more information on proper JSON formatting.)</p>
 </blockquote>
 <p>我用php产生的字符串是</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">
 {‘isbn’:&#39;ISBN号码格式不正确，应为10位或者13位的字符串’}
 
-</code></pre></div><p>很明显，json.org规则使用的是双引号，而不是单引号，jQuery1.4 以后都要求更为严格的 json 格式</p>
+</code></pre></td></tr></table>
+</div>
+</div><p>很明显，json.org规则使用的是双引号，而不是单引号，jQuery1.4 以后都要求更为严格的 json 格式</p>
 <p>对于以上单引号的字符串，可以使用datatype为text，然后使用</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">
 //content = {‘isbn’:&#39;ISBN号码格式不正确，应为10位或者13位的字符串’}
 var json = eval(‘(‘+ content +’)&#39;)
 
-</code></pre></div>
+</code></pre></td></tr></table>
+</div>
+</div>
                             <p>(完)</p>
                             
                             <blockquote>
@@ -191,11 +208,6 @@ var json = eval(‘(‘+ content +’)&#39;)
 
 
     <script type="text/javascript">
-    
-    (function(){
-        $("pre code").parent().addClass("line-numbers")
-    }())
-
     window.MathJax = {
         tex2jax: {
             inlineMath: [ ['$','$'] ],
@@ -203,7 +215,6 @@ var json = eval(‘(‘+ content +’)&#39;)
         }
     };
     </script>
-    <script type="text/javascript" src="/js/prism.js" async="true"></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
 
 <a id="rocket" href="#top"></a>

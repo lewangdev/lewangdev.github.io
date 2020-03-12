@@ -25,7 +25,7 @@
     <link rel="shortcut icon" href="/favicon.ico">
 
     
-    <link rel="icon" type="image/x-icon" sizes="16x16 32x32" href="/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
 
     
     <link rel="icon" sizes="192x192" href="/images/favicon-192x192.png">
@@ -38,9 +38,6 @@
     <meta name="msapplication-TileImage" content="/images/favicon-144x144.png">
 
     <link rel="stylesheet" href="/css/normalize.css">
-    
-        <link rel="stylesheet" href="/css/prism.css">
-    
     <link rel="stylesheet" href="/css/style.css">
     <script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
 
@@ -77,8 +74,9 @@
     <div class="container">
         <div class="col-group">
 
-            <div class="col-8" id="main">
+            <div id="main">
                 <div class="res-cons">
+                    
                     <article class="post">
                         <header>
                             <h1 class="post-title">Github Pages 服务的域名设置</h1>
@@ -125,7 +123,27 @@
 <li>CNAME 记录: <a href="http://www.iforget.info">www.iforget.info</a> 到 thisiswangle.github.io</li>
 </ul>
 <p>好了，静候 DNS 生效。</p>
-<pre><code>➜  ~  dig iforget.info +nostats +nocomments +nocmd
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">➜  ~  dig iforget.info +nostats +nocomments +nocmd
 
 ; &lt;&lt;&gt;&gt; DiG 9.8.3-P1 &lt;&lt;&gt;&gt; iforget.info +nostats +nocomments +nocmd
 ;; global options: +cmd
@@ -141,7 +159,9 @@ ns1.p04.dynect.net.     74973   IN      A       208.78.70.4
 ns2.p04.dynect.net.     74756   IN      A       204.13.250.4
 ns3.p04.dynect.net.     74789   IN      A       208.78.71.4
 ns4.p04.dynect.net.     153     IN      A       204.13.251.4
-</code></pre><p>IP 变成了 103.245.222.133, 澳大利亚 IP ，进入亚洲组了。</p>
+</code></pre></td></tr></table>
+</div>
+</div><p>IP 变成了 103.245.222.133, 澳大利亚 IP ，进入亚洲组了。</p>
 <p>当同时设置了 iforget.info 和 <a href="http://www.iforget.info,">www.iforget.info,</a> 再添加一个 CNAME 文件到自己的博客根目录下。</p>
 <p>如果 CNAME 的内容是</p>
 <blockquote>
@@ -222,11 +242,6 @@ ns4.p04.dynect.net.     153     IN      A       204.13.251.4
 
 
     <script type="text/javascript">
-    
-    (function(){
-        $("pre code").parent().addClass("line-numbers")
-    }())
-
     window.MathJax = {
         tex2jax: {
             inlineMath: [ ['$','$'] ],
@@ -234,7 +249,6 @@ ns4.p04.dynect.net.     153     IN      A       204.13.251.4
         }
     };
     </script>
-    <script type="text/javascript" src="/js/prism.js" async="true"></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
 
 <a id="rocket" href="#top"></a>

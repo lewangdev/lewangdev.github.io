@@ -25,7 +25,7 @@
     <link rel="shortcut icon" href="/favicon.ico">
 
     
-    <link rel="icon" type="image/x-icon" sizes="16x16 32x32" href="/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
 
     
     <link rel="icon" sizes="192x192" href="/images/favicon-192x192.png">
@@ -38,9 +38,6 @@
     <meta name="msapplication-TileImage" content="/images/favicon-144x144.png">
 
     <link rel="stylesheet" href="/css/normalize.css">
-    
-        <link rel="stylesheet" href="/css/prism.css">
-    
     <link rel="stylesheet" href="/css/style.css">
     <script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
 
@@ -77,8 +74,9 @@
     <div class="container">
         <div class="col-group">
 
-            <div class="col-8" id="main">
+            <div id="main">
                 <div class="res-cons">
+                    
                     <article class="post">
                         <header>
                             <h1 class="post-title">MySQL 数据备份和不停机重新搭建主从同步</h1>
@@ -111,26 +109,91 @@
 <h2 id="方案2">方案2</h2>
 <p>使用 xtrabackup 来完成目标</p>
 <p>主从服务器上都需要安装 xtrabackup（实际使用 xtrabackupex）：</p>
-<pre><code>yum install http://www.percona.com/downloads/percona-release/redhat/0.1-4/percona-release-0.1-4.noarch.rpm
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">yum install http://www.percona.com/downloads/percona-release/redhat/0.1-4/percona-release-0.1-4.noarch.rpm
 yum install -y percona-xtrabackup-24
-</code></pre><h3 id="主服">主服：</h3>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="主服">主服：</h3>
 <h4 id="备份数据">备份数据</h4>
-<pre><code># 注意数据库名称的转义，例如 - 号是 @002d
-innobackupex --defaults-file=/etc/my.cnf --socket=/var/lib/mysql/mysql.sock --user=root --password=xxxx  --parallel=2 --databases=&quot;db1 db2&quot; /data/backup/xtrabackup/
-</code></pre><h4 id="保持事务一致">保持事务一致</h4>
-<pre><code>innobackupex --apply-log /data/backup/xtrabackup/2017-06-06_13-16-21/
-</code></pre><h4 id="同步数据">同步数据</h4>
-<pre><code>rsync -avHz 2017-06-06_13-16-21 sysops@cow:/data/backup
-</code></pre><h3 id="从服">从服：</h3>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback"># 注意数据库名称的转义，例如 - 号是 @002d
+innobackupex --defaults-file=/etc/my.cnf --socket=/var/lib/mysql/mysql.sock --user=root --password=xxxx  --parallel=2 --databases=&#34;db1 db2&#34; /data/backup/xtrabackup/
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="保持事务一致">保持事务一致</h4>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">innobackupex --apply-log /data/backup/xtrabackup/2017-06-06_13-16-21/
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="同步数据">同步数据</h4>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">rsync -avHz 2017-06-06_13-16-21 sysops@cow:/data/backup
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="从服">从服：</h3>
 <p>修改 my.cnf 相关配置，恢复备份数据</p>
-<pre><code># 关闭 MySQL Servier 后恢复数据
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback"># 关闭 MySQL Servier 后恢复数据
 innobackupex --defaults-file=/etc/my.cnf --copy-back /data/backup/2017-06-06_13-16-21
-</code></pre><p>修改数据权限</p>
-<pre><code>chown -R mysql.mysql mysql
-</code></pre><p>开启从服，登录 msyql 添加主从配置，并开启同步</p>
-<pre><code>
+</code></pre></td></tr></table>
+</div>
+</div><p>修改数据权限</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">chown -R mysql.mysql mysql
+</code></pre></td></tr></table>
+</div>
+</div><p>开启从服，登录 msyql 添加主从配置，并开启同步</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">
 # Master 上执行
-GRANT REPLICATION SLAVE ON *.* TO 'repl'@'10.23.9.146' IDENTIFIED BY 'password';
+GRANT REPLICATION SLAVE ON *.* TO &#39;repl&#39;@&#39;10.23.9.146&#39; IDENTIFIED BY &#39;password&#39;;
 
 # Slave 上执行
 [root@bull data]# cat backup/2018-04-26_21-27-31/xtrabackup_binlog_info
@@ -138,16 +201,26 @@ mysql-bin.000058        103394265
 
 
 CHANGE MASTER TO
-MASTER_HOST='10.4.25.28',
-MASTER_USER='repl',
-MASTER_PASSWORD='password',
+MASTER_HOST=&#39;10.4.25.28&#39;,
+MASTER_USER=&#39;repl&#39;,
+MASTER_PASSWORD=&#39;password&#39;,
 MASTER_PORT=3306,
-MASTER_LOG_FILE='mysql-bin.000058',
+MASTER_LOG_FILE=&#39;mysql-bin.000058&#39;,
 MASTER_LOG_POS=103394265;
-</code></pre><h2 id="检查主从状态">检查主从状态</h2>
-<pre><code>show master status;
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="检查主从状态">检查主从状态</h2>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">show master status;
 show slave status\G;
-</code></pre><h2 id="参考">参考</h2>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="参考">参考</h2>
 <ul>
 <li>[percona-xtrabackup] (<a href="https://www.percona.com/doc/percona-xtrabackup/LATEST/index.html">https://www.percona.com/doc/percona-xtrabackup/LATEST/index.html</a>)</li>
 <li>[wsgzao.github.io/post/xtrabackup] (<a href="https://wsgzao.github.io/post/xtrabackup/">https://wsgzao.github.io/post/xtrabackup/</a>)</li>
@@ -223,11 +296,6 @@ show slave status\G;
 
 
     <script type="text/javascript">
-    
-    (function(){
-        $("pre code").parent().addClass("line-numbers")
-    }())
-
     window.MathJax = {
         tex2jax: {
             inlineMath: [ ['$','$'] ],
@@ -235,7 +303,6 @@ show slave status\G;
         }
     };
     </script>
-    <script type="text/javascript" src="/js/prism.js" async="true"></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
 
 <a id="rocket" href="#top"></a>

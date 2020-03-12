@@ -25,7 +25,7 @@
     <link rel="shortcut icon" href="/favicon.ico">
 
     
-    <link rel="icon" type="image/x-icon" sizes="16x16 32x32" href="/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
 
     
     <link rel="icon" sizes="192x192" href="/images/favicon-192x192.png">
@@ -38,9 +38,6 @@
     <meta name="msapplication-TileImage" content="/images/favicon-144x144.png">
 
     <link rel="stylesheet" href="/css/normalize.css">
-    
-        <link rel="stylesheet" href="/css/prism.css">
-    
     <link rel="stylesheet" href="/css/style.css">
     <script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
 
@@ -77,8 +74,9 @@
     <div class="container">
         <div class="col-group">
 
-            <div class="col-8" id="main">
+            <div id="main">
                 <div class="res-cons">
+                    
                     <article class="post">
                         <header>
                             <h1 class="post-title">使用 wireguard-go 搭建 VPN</h1>
@@ -105,67 +103,162 @@
 <p>VPN 的用处非常的多，不像 frp 之类的端口穿透应用，它是直接建立虚拟的网络，网络中的每个客户端也都可以拥有自己独立的 IP，于是测试调试就没有了端口的限制，非常的方便。</p>
 <p>除了方便安全连接云服务器，还可以通过 VPN 搭建工业设备的远程部署和维护的解决方案。</p>
 <h2 id="编译-wireguard-go">编译 wireguard-go</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e"># 使用 GitHub 的源码镜像，速度会快一些</span>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#998;font-style:italic"># 使用 GitHub 的源码镜像，速度会快一些</span>
 git clone git@github.com:WireGuard/wireguard-go.git
 
-<span style="color:#75715e"># 在 MacOS 下交叉编译</span>
-CGO_ENABLED<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span> GOOS<span style="color:#f92672">=</span>linux GOARCH<span style="color:#f92672">=</span>amd64 go build -v -o <span style="color:#e6db74">&#34;wireguard-go&#34;</span>
+<span style="color:#998;font-style:italic"># 在 MacOS 下交叉编译</span>
+<span style="color:#008080">CGO_ENABLED</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">0</span> <span style="color:#008080">GOOS</span><span style="color:#000;font-weight:bold">=</span>linux <span style="color:#008080">GOARCH</span><span style="color:#000;font-weight:bold">=</span>amd64 go build -v -o <span style="color:#d14">&#34;wireguard-go&#34;</span>
 
-<span style="color:#75715e"># Linux 环境下直接编译</span>
+<span style="color:#998;font-style:italic"># Linux 环境下直接编译</span>
 
-go build -v -o <span style="color:#e6db74">&#34;wireguard-go&#34;</span>
+go build -v -o <span style="color:#d14">&#34;wireguard-go&#34;</span>
 
 cp wireguard-go /usr/sbin/
-</code></pre></div><h2 id="编译-wireguard-tools">编译 wireguard tools</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">git clone git@github.com:WireGuard/WireGuard.git
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="编译-wireguard-tools">编译 wireguard tools</h2>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">git clone git@github.com:WireGuard/WireGuard.git
 
-<span style="color:#75715e"># 安装依赖</span>
+<span style="color:#998;font-style:italic"># 安装依赖</span>
 
-<span style="color:#75715e">## debian&amp;ubuntu</span>
+<span style="color:#998;font-style:italic">## debian&amp;ubuntu</span>
 sudo apt-get install libmnl-dev libelf-dev
 
-<span style="color:#75715e">## centos</span>
+<span style="color:#998;font-style:italic">## centos</span>
 sudo yum install libmnl-devel elfutils-libelf-devel
 
-cd Wireguard/src/tools
+<span style="color:#0086b3">cd</span> Wireguard/src/tools
 make 
 sudo make install
-</code></pre></div><h2 id="配置-wireguard">配置 wireguard</h2>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="配置-wireguard">配置 wireguard</h2>
 <p>生成密钥</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">cd /etc/wireguard
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#0086b3">cd</span> /etc/wireguard
 wg genkey | tee server_privatekey | wg pubkey &gt; server_publickey
 wg genkey | tee client_privatekey | wg pubkey &gt; client_publickey
-</code></pre></div><p>生成服务器端配置文件 wg0.conf</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">echo <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">[Interface]
-</span><span style="color:#e6db74">PrivateKey = </span><span style="color:#66d9ef">$(</span>cat server_privatekey<span style="color:#66d9ef">)</span><span style="color:#e6db74">
-</span><span style="color:#e6db74">Address = 10.0.0.1/24 
-</span><span style="color:#e6db74">PostUp   = iptables -A FORWARD -i wg0 -j ACCEPT; iptables -A FORWARD -o wg0 -j ACCEPT; iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
-</span><span style="color:#e6db74">PostDown = iptables -D FORWARD -i wg0 -j ACCEPT; iptables -D FORWARD -o wg0 -j ACCEPT; iptables -t nat -D POSTROUTING -o eth0 -j MASQUERADE
-</span><span style="color:#e6db74">ListenPort = 1194
-</span><span style="color:#e6db74">MTU = 1420
-</span><span style="color:#e6db74">
-</span><span style="color:#e6db74">[Peer]
-</span><span style="color:#e6db74">PublicKey = </span><span style="color:#66d9ef">$(</span>cat client_publickey<span style="color:#66d9ef">)</span><span style="color:#e6db74">
-</span><span style="color:#e6db74">AllowedIPs = 10.0.0.2/32</span><span style="color:#e6db74">&#34;</span> | sed <span style="color:#e6db74">&#39;/^#/d;/^\s*$/d&#39;</span> &gt; wg0.conf
-</code></pre></div><p>生成客户端配置文件 client-wg0.conf</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">echo <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">[Interface]
-</span><span style="color:#e6db74">PrivateKey = </span><span style="color:#66d9ef">$(</span>cat client_privatekey<span style="color:#66d9ef">)</span><span style="color:#e6db74">
-</span><span style="color:#e6db74">Address = 10.0.0.2/24
-</span><span style="color:#e6db74">DNS = 8.8.8.8
-</span><span style="color:#e6db74">MTU = 1420
-</span><span style="color:#e6db74">
-</span><span style="color:#e6db74">[Peer]
-</span><span style="color:#e6db74">PublicKey = </span><span style="color:#66d9ef">$(</span>cat server_publickey<span style="color:#66d9ef">)</span><span style="color:#e6db74">
-</span><span style="color:#e6db74">Endpoint = </span><span style="color:#e6db74">${</span>server_ip<span style="color:#e6db74">}</span><span style="color:#e6db74">:1194
-</span><span style="color:#e6db74">AllowedIPs = 0.0.0.0/0, ::0/0
-</span><span style="color:#e6db74">PersistentKeepalive = 30</span><span style="color:#e6db74">&#34;</span> | sed <span style="color:#e6db74">&#39;/^#/d;/^\s*$/d&#39;</span> &gt; client-wg0.conf
-</code></pre></div><p>在服务器端开启数据包转发</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">echo <span style="color:#ae81ff">1</span> &gt; /proc/sys/net/ipv4/ip_forward
-echo <span style="color:#e6db74">&#34;net.ipv4.ip_forward = 1&#34;</span> &gt;&gt; /etc/sysctl.conf
+</code></pre></td></tr></table>
+</div>
+</div><p>生成服务器端配置文件 wg0.conf</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#0086b3">echo</span> <span style="color:#d14">&#34;</span><span style="color:#d14">[Interface]
+</span><span style="color:#d14">PrivateKey = </span><span style="color:#000;font-weight:bold">$(</span>cat server_privatekey<span style="color:#000;font-weight:bold">)</span><span style="color:#d14">
+</span><span style="color:#d14">Address = 10.0.0.1/24 
+</span><span style="color:#d14">PostUp   = iptables -A FORWARD -i wg0 -j ACCEPT; iptables -A FORWARD -o wg0 -j ACCEPT; iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+</span><span style="color:#d14">PostDown = iptables -D FORWARD -i wg0 -j ACCEPT; iptables -D FORWARD -o wg0 -j ACCEPT; iptables -t nat -D POSTROUTING -o eth0 -j MASQUERADE
+</span><span style="color:#d14">ListenPort = 1194
+</span><span style="color:#d14">MTU = 1420
+</span><span style="color:#d14">
+</span><span style="color:#d14">[Peer]
+</span><span style="color:#d14">PublicKey = </span><span style="color:#000;font-weight:bold">$(</span>cat client_publickey<span style="color:#000;font-weight:bold">)</span><span style="color:#d14">
+</span><span style="color:#d14">AllowedIPs = 10.0.0.2/32</span><span style="color:#d14">&#34;</span> | sed <span style="color:#d14">&#39;/^#/d;/^\s*$/d&#39;</span> &gt; wg0.conf
+</code></pre></td></tr></table>
+</div>
+</div><p>生成客户端配置文件 client-wg0.conf</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#0086b3">echo</span> <span style="color:#d14">&#34;</span><span style="color:#d14">[Interface]
+</span><span style="color:#d14">PrivateKey = </span><span style="color:#000;font-weight:bold">$(</span>cat client_privatekey<span style="color:#000;font-weight:bold">)</span><span style="color:#d14">
+</span><span style="color:#d14">Address = 10.0.0.2/24
+</span><span style="color:#d14">DNS = 8.8.8.8
+</span><span style="color:#d14">MTU = 1420
+</span><span style="color:#d14">
+</span><span style="color:#d14">[Peer]
+</span><span style="color:#d14">PublicKey = </span><span style="color:#000;font-weight:bold">$(</span>cat server_publickey<span style="color:#000;font-weight:bold">)</span><span style="color:#d14">
+</span><span style="color:#d14">Endpoint = </span><span style="color:#d14">${</span><span style="color:#008080">server_ip</span><span style="color:#d14">}</span><span style="color:#d14">:1194
+</span><span style="color:#d14">AllowedIPs = 0.0.0.0/0, ::0/0
+</span><span style="color:#d14">PersistentKeepalive = 30</span><span style="color:#d14">&#34;</span> | sed <span style="color:#d14">&#39;/^#/d;/^\s*$/d&#39;</span> &gt; client-wg0.conf
+</code></pre></td></tr></table>
+</div>
+</div><p>在服务器端开启数据包转发</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#0086b3">echo</span> <span style="color:#099">1</span> &gt; /proc/sys/net/ipv4/ip_forward
+<span style="color:#0086b3">echo</span> <span style="color:#d14">&#34;net.ipv4.ip_forward = 1&#34;</span> &gt;&gt; /etc/sysctl.conf
 sysctl -p
-</code></pre></div><p>最后在服务器端启动 wireguard</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">wg-quick up wg0
-</code></pre></div><p>客户端需要根据前面生成的配置文件进行配置</p>
+</code></pre></td></tr></table>
+</div>
+</div><p>最后在服务器端启动 wireguard</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">wg-quick up wg0
+</code></pre></td></tr></table>
+</div>
+</div><p>客户端需要根据前面生成的配置文件进行配置</p>
 <h2 id="参考">参考</h2>
 <ul>
 <li><a href="https://www.wireguard.com">https://www.wireguard.com</a></li>
@@ -245,11 +338,6 @@ sysctl -p
 
 
     <script type="text/javascript">
-    
-    (function(){
-        $("pre code").parent().addClass("line-numbers")
-    }())
-
     window.MathJax = {
         tex2jax: {
             inlineMath: [ ['$','$'] ],
@@ -257,7 +345,6 @@ sysctl -p
         }
     };
     </script>
-    <script type="text/javascript" src="/js/prism.js" async="true"></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
 
 <a id="rocket" href="#top"></a>

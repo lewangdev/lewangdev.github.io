@@ -133,7 +133,7 @@
     }
 
     @media print,
-    screen and (max-width:1057px) {
+    screen and (max-width:800px) {
         .post-toc {
             display: none;
         }
@@ -166,13 +166,15 @@
 </div>
 <script type="text/javascript">
     $(document).ready(function () {
-        var postToc = $(".post-toc");
-        if (postToc.length) {
-            var leftPos = $("#main").offset().left;
-            if(leftPos<220){
-                postToc.css({"width":leftPos-10,"margin-left":(0-leftPos)})
-            }
+        var postToc = $(".post-toc"),
+            leftPos = $("#main").offset().left,
+            max_margin = 220;
 
+        if(leftPos < max_margin){
+            postToc.css({"display":"none"});
+        }
+
+        if (postToc.length) {
             var t = postToc.offset().top + 20,
                 a = {
                     start: {
@@ -187,6 +189,10 @@
                     },
                 };
             $(window).scroll(function () {
+                if(leftPos < 220){
+                    postToc.css({"display":"none"});
+                    return;
+                }
                 var e = $(window).scrollTop() - 220;
                 e > t ? postToc.css(a.start) : postToc.css(a.process)
             })
@@ -512,6 +518,7 @@ task task3 <span style="color:#000;font-weight:bold">{</span>
 
 
                         <div class="post-meta meta-tags">
+                            <h3>标签</h3>
                             
                             <ul class="clearfix">
                                 

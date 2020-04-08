@@ -38,7 +38,8 @@
     <meta name="msapplication-TileImage" content="/images/favicon-144x144.png">
 
     <link rel="stylesheet" href="/css/normalize.css">
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/markdown.css">
+    <link rel="stylesheet" href="/css/main.css">
     <script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
 
     
@@ -47,61 +48,54 @@
     
 </head>
 
+
 <body>
-<header id="header" class="clearfix">
-    <div class="container">
-        <div class="col-group">
-            <div class="site-name ">
-                <a id="logo" href="//thisiswangle.com/">
-                   <img src="/images/logo-2x.png" alt="小碼哥">
-                </a>
-            </div>
-            <nav id="nav-menu" class="clearfix">
-                <a class="" href="//thisiswangle.com/">首页</a>
-                
-                <a  href="//thisiswangle.com/archives/" title="归档">归档</a>
-                
-                <a  href="//thisiswangle.com/about/" title="关于">关于</a>
-                
-            </nav>
+    <header id="header">
+    <div class="container clearfix">
+        <div class="site-name ">
+            <a id="logo" href="//thisiswangle.com/">
+                <img src="/images/logo-2x.png" alt="小碼哥">
+            </a>
         </div>
+        <nav id="nav-menu" class="clearfix">
+            <a class=""
+                href="//thisiswangle.com/">首页</a>
+            
+            <a  href="//thisiswangle.com/archives/"
+                title="归档">归档</a>
+            
+            <a  href="//thisiswangle.com/about/"
+                title="关于">关于</a>
+            
+        </nav>
     </div>
 </header>
 
-
-<div id="body">
-    <div class="container">
-        <div class="col-group">
-
-            <div id="main">
-                <div class="res-cons">
+    <div id="body">
+        <div class="container">
+            <article class="post">
+                <h1 class="post-title">Linux 共享库（动态链接库）相关的一些记录</h1>
+                <div class="post-meta">
+                    <span>Mar 4, 2013</span>
+                
+                    <span>/</span>
                     
-                    <article class="post">
-                        <header>
-                            <h1 class="post-title">Linux 共享库（动态链接库）相关的一些记录</h1>
-                        </header>
-                        <date class="post-meta meta-date">
-                            Mar 4, 2013
-                        </date>
-                        
-                        <div class="post-meta">
-                            <span>/</span>
-                            
-                                <span class="meta-category"><a href="//thisiswangle.com/categories/DevOps">DevOps</a></span>
-                            
-                        </div>
-                        
-                        
-                        <div style="height: 1px; border-top: 1px #eee solid; margin-top: 16px;"></div>
-                        <div class="post-content">
-                            
-                            
-                            <p class="warning">
-                                本文写于 6 个月之前，如果这是一篇关于计算机技术的文章，那本文内容很有可能已经过期了。
-                            </p>
-                            
-                            
-                            <h2 id="相关的环境变量">相关的环境变量</h2>
+                    <span class="meta-category"><a
+                            href="//thisiswangle.com/categories/DevOps">DevOps</a></span>
+                    
+                
+                
+                </div>
+                <div style="height: 1px; border-top: 1px #eee solid; margin-top: 16px;"></div>
+                <div class="post-content markdown-body">
+                    
+                    
+                    <blockquote>
+                        本文写于 6 个月之前，如果这是一篇关于计算机技术的文章，那本文内容很有可能已经过期了。
+                    </blockquote>
+                    
+                    
+                    <h2 id="相关的环境变量">相关的环境变量</h2>
 <ul>
 <li><strong>LD_LIBRARY_PATH</strong> ld-linux.so寻找shared object的路径，优先加载出现在路径前面的shared object。如，export LD_LIBRARY_PATH=/home/user/lib:$LD_LIBRARY_PATH</li>
 <li><strong>LD_PRELOAD</strong> 指定优先供ld-linux.so加载的shared object。如，export LD_PRELAOD=/home/user/lib/glibc.so，可以使用这个变量来改变加载顺序，例如我们自定义的glibc.so中实现了新的strcmp之类的函数，那么可以使用这个变量来实现函数的替换，实现注入</li>
@@ -208,20 +202,22 @@ $ objdump -s -j .rodata -t libfoo.so
 </code></pre></td></tr></table>
 </div>
 </div>
-                            <p>(完)</p>
-                            
-                            <blockquote>
-                                <p>本文为原创文章，转载需注明出处，欢迎扫码关注公众号<code>小码哥PRO</code>或者网站 <a href="https://thisiswangle.com">https://thisiswangle.com</a>，第一时间看后续精彩文章。觉得好的话，顺手分享到朋友圈吧，感谢支持。</p>
-                            </blockquote>
-                            <p><img src="/images/qrcode_for_weixin.jpeg" alt="扫码关注"></p>
-                            
-                        </div>
+                    <p>(完)</p>
+                    
+                    <blockquote>
+                        <p>本文为原创文章，转载需注明出处，欢迎扫码关注公众号<code>小码哥PRO</code>或者网站 <a
+                                href="https://thisiswangle.com">https://thisiswangle.com</a>，第一时间看后续精彩文章。觉得好的话，顺手分享到朋友圈吧，感谢支持。
+                        </p>
+                    </blockquote>
+                    <p><img src="/images/qrcode_for_weixin.jpeg" alt="扫码关注"></p>
+                    
+                </div>
 
-                        
+                
 
 <div class="post-archive">
     <h2>See Also</h2>
-    <ul class="listing">
+    <ul>
         
         <li><a href="/posts/2012-03-22-a-short-discuss-of-SimpleXML-of-php/">再说 PHP 中 SimpleXML</a></li>
         
@@ -237,23 +233,23 @@ $ objdump -s -j .rodata -t libfoo.so
 </div>
 
 
-                        <div class="post-meta meta-tags">
-                            <h3>标签</h3>
-                            
-                            <ul class="clearfix">
-                                
-                                <li><a href="//thisiswangle.com/tags/Linux">Linux</a></li>
-                                
-                            </ul>
-                            
-                        </div>
-                    </article>
+                <div class="post-meta">
+                    <h3>标签</h3>
                     
+                    <ul class="clearfix">
+                        
+                        <li><a href="//thisiswangle.com/tags/Linux">Linux</a></li>
+                        
+                    </ul>
+                    
+                </div>
+            </article>
+            
     
 
     
     
-    <div class="post bg-white">
+    <div class="post markdown-body">
       <script src="https://utteranc.es/client.js"
             repo= "thisiswangle/thisiswangle.github.io"
             issue-term="pathname"
@@ -263,12 +259,9 @@ $ objdump -s -j .rodata -t libfoo.so
       </script>
     </div>
     
-                </div>
-            </div>
         </div>
     </div>
-</div>
-<footer id="footer">
+    <footer id="footer">
     <div class="container">
         &copy; 2011-2020 <a href="//thisiswangle.com/">小碼哥</a>.
         <a href="//thisiswangle.com/index.xml">订阅 RSS</a>
@@ -286,8 +279,6 @@ $ objdump -s -j .rodata -t libfoo.so
     </script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
 
-<a id="rocket" href="#top"></a>
-<script type="text/javascript" src="/js/totop.js?v=0.0.0" async=""></script>
 
 <script type="application/javascript">
 var doNotTrack = false;
@@ -307,4 +298,5 @@ if (!doNotTrack) {
 
 
 </body>
+
 </html>

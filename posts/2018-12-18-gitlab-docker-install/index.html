@@ -38,7 +38,8 @@
     <meta name="msapplication-TileImage" content="/images/favicon-144x144.png">
 
     <link rel="stylesheet" href="/css/normalize.css">
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/markdown.css">
+    <link rel="stylesheet" href="/css/main.css">
     <script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
 
     
@@ -47,61 +48,54 @@
     
 </head>
 
+
 <body>
-<header id="header" class="clearfix">
-    <div class="container">
-        <div class="col-group">
-            <div class="site-name ">
-                <a id="logo" href="//thisiswangle.com/">
-                   <img src="/images/logo-2x.png" alt="小碼哥">
-                </a>
-            </div>
-            <nav id="nav-menu" class="clearfix">
-                <a class="" href="//thisiswangle.com/">首页</a>
-                
-                <a  href="//thisiswangle.com/archives/" title="归档">归档</a>
-                
-                <a  href="//thisiswangle.com/about/" title="关于">关于</a>
-                
-            </nav>
+    <header id="header">
+    <div class="container clearfix">
+        <div class="site-name ">
+            <a id="logo" href="//thisiswangle.com/">
+                <img src="/images/logo-2x.png" alt="小碼哥">
+            </a>
         </div>
+        <nav id="nav-menu" class="clearfix">
+            <a class=""
+                href="//thisiswangle.com/">首页</a>
+            
+            <a  href="//thisiswangle.com/archives/"
+                title="归档">归档</a>
+            
+            <a  href="//thisiswangle.com/about/"
+                title="关于">关于</a>
+            
+        </nav>
     </div>
 </header>
 
-
-<div id="body">
-    <div class="container">
-        <div class="col-group">
-
-            <div id="main">
-                <div class="res-cons">
+    <div id="body">
+        <div class="container">
+            <article class="post">
+                <h1 class="post-title">使用 Docker 方式安装 Gitlab，没你想得那么简单</h1>
+                <div class="post-meta">
+                    <span>Dec 18, 2018</span>
+                
+                    <span>/</span>
                     
-                    <article class="post">
-                        <header>
-                            <h1 class="post-title">使用 Docker 方式安装 Gitlab，没你想得那么简单</h1>
-                        </header>
-                        <date class="post-meta meta-date">
-                            Dec 18, 2018
-                        </date>
-                        
-                        <div class="post-meta">
-                            <span>/</span>
-                            
-                                <span class="meta-category"><a href="//thisiswangle.com/categories/DevOps">DevOps</a></span>
-                            
-                        </div>
-                        
-                        
-                        <div style="height: 1px; border-top: 1px #eee solid; margin-top: 16px;"></div>
-                        <div class="post-content">
-                            
-                            
-                            <p class="warning">
-                                本文写于 6 个月之前，如果这是一篇关于计算机技术的文章，那本文内容很有可能已经过期了。
-                            </p>
-                            
-                            
-                            <h2 id="为什么要写这篇文章">为什么要写这篇文章？</h2>
+                    <span class="meta-category"><a
+                            href="//thisiswangle.com/categories/DevOps">DevOps</a></span>
+                    
+                
+                
+                </div>
+                <div style="height: 1px; border-top: 1px #eee solid; margin-top: 16px;"></div>
+                <div class="post-content markdown-body">
+                    
+                    
+                    <blockquote>
+                        本文写于 6 个月之前，如果这是一篇关于计算机技术的文章，那本文内容很有可能已经过期了。
+                    </blockquote>
+                    
+                    
+                    <h2 id="为什么要写这篇文章">为什么要写这篇文章？</h2>
 <p>曾经几年前在 Docker 还没有广泛应用的时候，在公司使用过源码的方式安装和升级过 Gitlab，虽远没有 Docker 方便，因为自己对 Linux 系统的理解，所以整体上感觉还是挺简单的。这几年随着 Docker 的普及，使得安装 Gitlab 更加的容易，不仅方便了我这样的老鸟，也更方便了小白用户们。但是 Gitlab 官方的 <a href="https://docs.gitlab.com/omnibus/docker/">Docker 安装文档</a>并没有写得很完善,
 除了官方文档之外，检索出来的安装文档也是人云亦云，东拼西凑，结果也就是能运行起来，凑合着能用而已。避免出现下图中“我已经用 Docker 部署好啦”，其实已经翻车的情形。</p>
 <p><img src="/images/posts/docker-deployment.jpeg" alt="docker-deployment"></p>
@@ -515,20 +509,22 @@ gitlab_rails<span style="color:#000;font-weight:bold">[</span><span style="color
 </div><h2 id="总结">总结</h2>
 <p>使用 Docker 方式安装 Gitlab 部署过程很简单，但是想达到一个理想的配置状况还是挺繁琐的，Docker 并不是治疗百病的良药，打铁还得自身硬。</p>
 
-                            <p>(完)</p>
-                            
-                            <blockquote>
-                                <p>本文为原创文章，转载需注明出处，欢迎扫码关注公众号<code>小码哥PRO</code>或者网站 <a href="https://thisiswangle.com">https://thisiswangle.com</a>，第一时间看后续精彩文章。觉得好的话，顺手分享到朋友圈吧，感谢支持。</p>
-                            </blockquote>
-                            <p><img src="/images/qrcode_for_weixin.jpeg" alt="扫码关注"></p>
-                            
-                        </div>
+                    <p>(完)</p>
+                    
+                    <blockquote>
+                        <p>本文为原创文章，转载需注明出处，欢迎扫码关注公众号<code>小码哥PRO</code>或者网站 <a
+                                href="https://thisiswangle.com">https://thisiswangle.com</a>，第一时间看后续精彩文章。觉得好的话，顺手分享到朋友圈吧，感谢支持。
+                        </p>
+                    </blockquote>
+                    <p><img src="/images/qrcode_for_weixin.jpeg" alt="扫码关注"></p>
+                    
+                </div>
 
-                        
+                
 
 <div class="post-archive">
     <h2>See Also</h2>
-    <ul class="listing">
+    <ul>
         
         <li><a href="/posts/2017-08-03-lvm-in-action/">LVM 实战记录</a></li>
         
@@ -544,29 +540,29 @@ gitlab_rails<span style="color:#000;font-weight:bold">[</span><span style="color
 </div>
 
 
-                        <div class="post-meta meta-tags">
-                            <h3>标签</h3>
-                            
-                            <ul class="clearfix">
-                                
-                                <li><a href="//thisiswangle.com/tags/Docker">Docker</a></li>
-                                
-                                <li><a href="//thisiswangle.com/tags/Gitlab">Gitlab</a></li>
-                                
-                                <li><a href="//thisiswangle.com/tags/SSH">SSH</a></li>
-                                
-                                <li><a href="//thisiswangle.com/tags/Linux">Linux</a></li>
-                                
-                            </ul>
-                            
-                        </div>
-                    </article>
+                <div class="post-meta">
+                    <h3>标签</h3>
                     
+                    <ul class="clearfix">
+                        
+                        <li><a href="//thisiswangle.com/tags/Docker">Docker</a></li>
+                        
+                        <li><a href="//thisiswangle.com/tags/Gitlab">Gitlab</a></li>
+                        
+                        <li><a href="//thisiswangle.com/tags/SSH">SSH</a></li>
+                        
+                        <li><a href="//thisiswangle.com/tags/Linux">Linux</a></li>
+                        
+                    </ul>
+                    
+                </div>
+            </article>
+            
     
 
     
     
-    <div class="post bg-white">
+    <div class="post markdown-body">
       <script src="https://utteranc.es/client.js"
             repo= "thisiswangle/thisiswangle.github.io"
             issue-term="pathname"
@@ -576,12 +572,9 @@ gitlab_rails<span style="color:#000;font-weight:bold">[</span><span style="color
       </script>
     </div>
     
-                </div>
-            </div>
         </div>
     </div>
-</div>
-<footer id="footer">
+    <footer id="footer">
     <div class="container">
         &copy; 2011-2020 <a href="//thisiswangle.com/">小碼哥</a>.
         <a href="//thisiswangle.com/index.xml">订阅 RSS</a>
@@ -599,8 +592,6 @@ gitlab_rails<span style="color:#000;font-weight:bold">[</span><span style="color
     </script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
 
-<a id="rocket" href="#top"></a>
-<script type="text/javascript" src="/js/totop.js?v=0.0.0" async=""></script>
 
 <script type="application/javascript">
 var doNotTrack = false;
@@ -620,4 +611,5 @@ if (!doNotTrack) {
 
 
 </body>
+
 </html>

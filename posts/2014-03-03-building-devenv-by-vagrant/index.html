@@ -38,7 +38,8 @@
     <meta name="msapplication-TileImage" content="/images/favicon-144x144.png">
 
     <link rel="stylesheet" href="/css/normalize.css">
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/markdown.css">
+    <link rel="stylesheet" href="/css/main.css">
     <script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
 
     
@@ -47,54 +48,48 @@
     
 </head>
 
+
 <body>
-<header id="header" class="clearfix">
-    <div class="container">
-        <div class="col-group">
-            <div class="site-name ">
-                <a id="logo" href="//thisiswangle.com/">
-                   <img src="/images/logo-2x.png" alt="小碼哥">
-                </a>
-            </div>
-            <nav id="nav-menu" class="clearfix">
-                <a class="" href="//thisiswangle.com/">首页</a>
-                
-                <a  href="//thisiswangle.com/archives/" title="归档">归档</a>
-                
-                <a  href="//thisiswangle.com/about/" title="关于">关于</a>
-                
-            </nav>
+    <header id="header">
+    <div class="container clearfix">
+        <div class="site-name ">
+            <a id="logo" href="//thisiswangle.com/">
+                <img src="/images/logo-2x.png" alt="小碼哥">
+            </a>
         </div>
+        <nav id="nav-menu" class="clearfix">
+            <a class=""
+                href="//thisiswangle.com/">首页</a>
+            
+            <a  href="//thisiswangle.com/archives/"
+                title="归档">归档</a>
+            
+            <a  href="//thisiswangle.com/about/"
+                title="关于">关于</a>
+            
+        </nav>
     </div>
 </header>
 
-
-<div id="body">
-    <div class="container">
-        <div class="col-group">
-
-            <div id="main">
-                <div class="res-cons">
+    <div id="body">
+        <div class="container">
+            <article class="post">
+                <h1 class="post-title">使用 Vagrant 构建开发环境</h1>
+                <div class="post-meta">
+                    <span>Mar 3, 2014</span>
+                
+                
+                </div>
+                <div style="height: 1px; border-top: 1px #eee solid; margin-top: 16px;"></div>
+                <div class="post-content markdown-body">
                     
-                    <article class="post">
-                        <header>
-                            <h1 class="post-title">使用 Vagrant 构建开发环境</h1>
-                        </header>
-                        <date class="post-meta meta-date">
-                            Mar 3, 2014
-                        </date>
-                        
-                        
-                        <div style="height: 1px; border-top: 1px #eee solid; margin-top: 16px;"></div>
-                        <div class="post-content">
-                            
-                            
-                            <p class="warning">
-                                本文写于 6 个月之前，如果这是一篇关于计算机技术的文章，那本文内容很有可能已经过期了。
-                            </p>
-                            
-                            
-                            <p><a href="http://www.vagrantup.com/">Vagrant</a> 是一个构建虚拟开发环境的利器，它使得在团队中很容易共享开发环境，有了它，不必每个人都搭建一个自己的开发环境了。在没有使用 vagrant 之前，我在windows中安装了 virtualbox，然后在virtualbox中安装了一个ubuntu server。在 ubuntu 中安装了 mysql、jdk 等软件，并且设置了一个共享目录，以便于将工程代码直接共享给 ubuntu。在外部开发调试过程中（Java 项目），我需要在virtualbox中设置好几个端口映射，如 mysql，ssh等等。这样在 cygwin 里面就可以通过 ssh 登录 ubuntu server 了，为了使得ssh登录不用每次设置密码，还需要手动生成公钥私钥。换机器了，这一切我又得重新配置。新同事来了，他也得像我这样重新配置一遍。有可能他还会有问题说：为什么按照你的说明，代码在我这里却无法运行呢？</p>
+                    
+                    <blockquote>
+                        本文写于 6 个月之前，如果这是一篇关于计算机技术的文章，那本文内容很有可能已经过期了。
+                    </blockquote>
+                    
+                    
+                    <p><a href="http://www.vagrantup.com/">Vagrant</a> 是一个构建虚拟开发环境的利器，它使得在团队中很容易共享开发环境，有了它，不必每个人都搭建一个自己的开发环境了。在没有使用 vagrant 之前，我在windows中安装了 virtualbox，然后在virtualbox中安装了一个ubuntu server。在 ubuntu 中安装了 mysql、jdk 等软件，并且设置了一个共享目录，以便于将工程代码直接共享给 ubuntu。在外部开发调试过程中（Java 项目），我需要在virtualbox中设置好几个端口映射，如 mysql，ssh等等。这样在 cygwin 里面就可以通过 ssh 登录 ubuntu server 了，为了使得ssh登录不用每次设置密码，还需要手动生成公钥私钥。换机器了，这一切我又得重新配置。新同事来了，他也得像我这样重新配置一遍。有可能他还会有问题说：为什么按照你的说明，代码在我这里却无法运行呢？</p>
 <p>一切都从 <a href="http://yining.org">Yining</a> 告诉了我 vagrant 之后发生了变化，原来一切都这么简单。</p>
 <h2 id="安装-virtualbox">安装 VirtualBox</h2>
 <p>Vagrant 其实是对 virtualbox 做了一层包装，它让使用virtualbox作为虚拟机更为简单。当然也可以使用 vmware，使用vmware那得找一个license了。</p>
@@ -159,20 +154,22 @@ vagrant up
 </code></pre></td></tr></table>
 </div>
 </div>
-                            <p>(完)</p>
-                            
-                            <blockquote>
-                                <p>本文为原创文章，转载需注明出处，欢迎扫码关注公众号<code>小码哥PRO</code>或者网站 <a href="https://thisiswangle.com">https://thisiswangle.com</a>，第一时间看后续精彩文章。觉得好的话，顺手分享到朋友圈吧，感谢支持。</p>
-                            </blockquote>
-                            <p><img src="/images/qrcode_for_weixin.jpeg" alt="扫码关注"></p>
-                            
-                        </div>
+                    <p>(完)</p>
+                    
+                    <blockquote>
+                        <p>本文为原创文章，转载需注明出处，欢迎扫码关注公众号<code>小码哥PRO</code>或者网站 <a
+                                href="https://thisiswangle.com">https://thisiswangle.com</a>，第一时间看后续精彩文章。觉得好的话，顺手分享到朋友圈吧，感谢支持。
+                        </p>
+                    </blockquote>
+                    <p><img src="/images/qrcode_for_weixin.jpeg" alt="扫码关注"></p>
+                    
+                </div>
 
-                        
+                
 
 <div class="post-archive">
     <h2>See Also</h2>
-    <ul class="listing">
+    <ul>
         
         <li><a href="/posts/2014-03-02-python-on-my-rmbp/">Python on My rMBP</a></li>
         
@@ -188,25 +185,25 @@ vagrant up
 </div>
 
 
-                        <div class="post-meta meta-tags">
-                            <h3>标签</h3>
-                            
-                            <ul class="clearfix">
-                                
-                                <li><a href="//thisiswangle.com/tags/virtualbox">virtualbox</a></li>
-                                
-                                <li><a href="//thisiswangle.com/tags/vagrant">vagrant</a></li>
-                                
-                            </ul>
-                            
-                        </div>
-                    </article>
+                <div class="post-meta">
+                    <h3>标签</h3>
                     
+                    <ul class="clearfix">
+                        
+                        <li><a href="//thisiswangle.com/tags/virtualbox">virtualbox</a></li>
+                        
+                        <li><a href="//thisiswangle.com/tags/vagrant">vagrant</a></li>
+                        
+                    </ul>
+                    
+                </div>
+            </article>
+            
     
 
     
     
-    <div class="post bg-white">
+    <div class="post markdown-body">
       <script src="https://utteranc.es/client.js"
             repo= "thisiswangle/thisiswangle.github.io"
             issue-term="pathname"
@@ -216,12 +213,9 @@ vagrant up
       </script>
     </div>
     
-                </div>
-            </div>
         </div>
     </div>
-</div>
-<footer id="footer">
+    <footer id="footer">
     <div class="container">
         &copy; 2011-2020 <a href="//thisiswangle.com/">小碼哥</a>.
         <a href="//thisiswangle.com/index.xml">订阅 RSS</a>
@@ -239,8 +233,6 @@ vagrant up
     </script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
 
-<a id="rocket" href="#top"></a>
-<script type="text/javascript" src="/js/totop.js?v=0.0.0" async=""></script>
 
 <script type="application/javascript">
 var doNotTrack = false;
@@ -260,4 +252,5 @@ if (!doNotTrack) {
 
 
 </body>
+
 </html>

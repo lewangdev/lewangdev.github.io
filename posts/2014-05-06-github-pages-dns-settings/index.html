@@ -38,7 +38,8 @@
     <meta name="msapplication-TileImage" content="/images/favicon-144x144.png">
 
     <link rel="stylesheet" href="/css/normalize.css">
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/markdown.css">
+    <link rel="stylesheet" href="/css/main.css">
     <script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
 
     
@@ -47,61 +48,54 @@
     
 </head>
 
+
 <body>
-<header id="header" class="clearfix">
-    <div class="container">
-        <div class="col-group">
-            <div class="site-name ">
-                <a id="logo" href="//thisiswangle.com/">
-                   <img src="/images/logo-2x.png" alt="小碼哥">
-                </a>
-            </div>
-            <nav id="nav-menu" class="clearfix">
-                <a class="" href="//thisiswangle.com/">首页</a>
-                
-                <a  href="//thisiswangle.com/archives/" title="归档">归档</a>
-                
-                <a  href="//thisiswangle.com/about/" title="关于">关于</a>
-                
-            </nav>
+    <header id="header">
+    <div class="container clearfix">
+        <div class="site-name ">
+            <a id="logo" href="//thisiswangle.com/">
+                <img src="/images/logo-2x.png" alt="小碼哥">
+            </a>
         </div>
+        <nav id="nav-menu" class="clearfix">
+            <a class=""
+                href="//thisiswangle.com/">首页</a>
+            
+            <a  href="//thisiswangle.com/archives/"
+                title="归档">归档</a>
+            
+            <a  href="//thisiswangle.com/about/"
+                title="关于">关于</a>
+            
+        </nav>
     </div>
 </header>
 
-
-<div id="body">
-    <div class="container">
-        <div class="col-group">
-
-            <div id="main">
-                <div class="res-cons">
+    <div id="body">
+        <div class="container">
+            <article class="post">
+                <h1 class="post-title">Github Pages 服务的域名设置</h1>
+                <div class="post-meta">
+                    <span>May 6, 2014</span>
+                
+                    <span>/</span>
                     
-                    <article class="post">
-                        <header>
-                            <h1 class="post-title">Github Pages 服务的域名设置</h1>
-                        </header>
-                        <date class="post-meta meta-date">
-                            May 6, 2014
-                        </date>
-                        
-                        <div class="post-meta">
-                            <span>/</span>
-                            
-                                <span class="meta-category"><a href="//thisiswangle.com/categories/Github">Github</a></span>
-                            
-                        </div>
-                        
-                        
-                        <div style="height: 1px; border-top: 1px #eee solid; margin-top: 16px;"></div>
-                        <div class="post-content">
-                            
-                            
-                            <p class="warning">
-                                本文写于 6 个月之前，如果这是一篇关于计算机技术的文章，那本文内容很有可能已经过期了。
-                            </p>
-                            
-                            
-                            <p>这几天每次 Push 博客到 Github Pages 时总会收到一封邮件：</p>
+                    <span class="meta-category"><a
+                            href="//thisiswangle.com/categories/Github">Github</a></span>
+                    
+                
+                
+                </div>
+                <div style="height: 1px; border-top: 1px #eee solid; margin-top: 16px;"></div>
+                <div class="post-content markdown-body">
+                    
+                    
+                    <blockquote>
+                        本文写于 6 个月之前，如果这是一篇关于计算机技术的文章，那本文内容很有可能已经过期了。
+                    </blockquote>
+                    
+                    
+                    <p>这几天每次 Push 博客到 Github Pages 时总会收到一封邮件：</p>
 <blockquote>
 <p>The page build completed successfully, but returned the following warning:</p>
 <p>GitHub Pages recently underwent some improvements (<a href="https://github.com/blog/1715-faster-more-awesome-github-pages">https://github.com/blog/1715-faster-more-awesome-github-pages</a>) to make your site faster and more awesome, but we've noticed that iforget.info isn't properly configured to take advantage of these new features. While your site will continue to work just fine, updating your domain's configuration offers some additional speed and performance benefits. Instructions on updating your site's IP address can be found at
@@ -169,20 +163,22 @@ ns4.p04.dynect.net.     153     IN      A       204.13.251.4
 <p>浏览器中输入 <a href="http://www.iforget.info">www.iforget.info</a> 时，Github Pages 将会永久跳转(301)到 iforget.info, 反之亦然。</p>
 <p>如果你能看到本页，说明本站已经拿到了 GFW 认证。</p>
 
-                            <p>(完)</p>
-                            
-                            <blockquote>
-                                <p>本文为原创文章，转载需注明出处，欢迎扫码关注公众号<code>小码哥PRO</code>或者网站 <a href="https://thisiswangle.com">https://thisiswangle.com</a>，第一时间看后续精彩文章。觉得好的话，顺手分享到朋友圈吧，感谢支持。</p>
-                            </blockquote>
-                            <p><img src="/images/qrcode_for_weixin.jpeg" alt="扫码关注"></p>
-                            
-                        </div>
+                    <p>(完)</p>
+                    
+                    <blockquote>
+                        <p>本文为原创文章，转载需注明出处，欢迎扫码关注公众号<code>小码哥PRO</code>或者网站 <a
+                                href="https://thisiswangle.com">https://thisiswangle.com</a>，第一时间看后续精彩文章。觉得好的话，顺手分享到朋友圈吧，感谢支持。
+                        </p>
+                    </blockquote>
+                    <p><img src="/images/qrcode_for_weixin.jpeg" alt="扫码关注"></p>
+                    
+                </div>
 
-                        
+                
 
 <div class="post-archive">
     <h2>See Also</h2>
-    <ul class="listing">
+    <ul>
         
         <li><a href="/posts/2014-04-26-power-of-understanding/">悟性</a></li>
         
@@ -198,27 +194,27 @@ ns4.p04.dynect.net.     153     IN      A       204.13.251.4
 </div>
 
 
-                        <div class="post-meta meta-tags">
-                            <h3>标签</h3>
-                            
-                            <ul class="clearfix">
-                                
-                                <li><a href="//thisiswangle.com/tags/github">github</a></li>
-                                
-                                <li><a href="//thisiswangle.com/tags/catcat">catcat</a></li>
-                                
-                                <li><a href="//thisiswangle.com/tags/blog">blog</a></li>
-                                
-                            </ul>
-                            
-                        </div>
-                    </article>
+                <div class="post-meta">
+                    <h3>标签</h3>
                     
+                    <ul class="clearfix">
+                        
+                        <li><a href="//thisiswangle.com/tags/github">github</a></li>
+                        
+                        <li><a href="//thisiswangle.com/tags/catcat">catcat</a></li>
+                        
+                        <li><a href="//thisiswangle.com/tags/blog">blog</a></li>
+                        
+                    </ul>
+                    
+                </div>
+            </article>
+            
     
 
     
     
-    <div class="post bg-white">
+    <div class="post markdown-body">
       <script src="https://utteranc.es/client.js"
             repo= "thisiswangle/thisiswangle.github.io"
             issue-term="pathname"
@@ -228,12 +224,9 @@ ns4.p04.dynect.net.     153     IN      A       204.13.251.4
       </script>
     </div>
     
-                </div>
-            </div>
         </div>
     </div>
-</div>
-<footer id="footer">
+    <footer id="footer">
     <div class="container">
         &copy; 2011-2020 <a href="//thisiswangle.com/">小碼哥</a>.
         <a href="//thisiswangle.com/index.xml">订阅 RSS</a>
@@ -251,8 +244,6 @@ ns4.p04.dynect.net.     153     IN      A       204.13.251.4
     </script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
 
-<a id="rocket" href="#top"></a>
-<script type="text/javascript" src="/js/totop.js?v=0.0.0" async=""></script>
 
 <script type="application/javascript">
 var doNotTrack = false;
@@ -272,4 +263,5 @@ if (!doNotTrack) {
 
 
 </body>
+
 </html>

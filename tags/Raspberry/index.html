@@ -34,7 +34,8 @@
     <meta name="msapplication-TileImage" content="/images/favicon-144x144.png">
 
     <link rel="stylesheet" href="/css/normalize.css">
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/markdown.css">
+    <link rel="stylesheet" href="/css/main.css">
     <link rel="alternate" type="application/rss+xml+xml" href="//thisiswangle.com/tags/Raspberry/index.xml" title="小碼哥" />
     <script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
 
@@ -46,102 +47,96 @@
 
 
 <body>
-<header id="header" class="clearfix">
-    <div class="container">
-        <div class="col-group">
-            <div class="site-name ">
-                <a id="logo" href="//thisiswangle.com/">
-                   <img src="/images/logo-2x.png" alt="小碼哥">
-                </a>
-            </div>
-            <nav id="nav-menu" class="clearfix">
-                <a class="" href="//thisiswangle.com/">首页</a>
-                
-                <a  href="//thisiswangle.com/archives/" title="归档">归档</a>
-                
-                <a  href="//thisiswangle.com/about/" title="关于">关于</a>
-                
-            </nav>
+    <header id="header">
+    <div class="container clearfix">
+        <div class="site-name ">
+            <a id="logo" href="//thisiswangle.com/">
+                <img src="/images/logo-2x.png" alt="小碼哥">
+            </a>
         </div>
+        <nav id="nav-menu" class="clearfix">
+            <a class=""
+                href="//thisiswangle.com/">首页</a>
+            
+            <a  href="//thisiswangle.com/archives/"
+                title="归档">归档</a>
+            
+            <a  href="//thisiswangle.com/about/"
+                title="关于">关于</a>
+            
+        </nav>
     </div>
 </header>
 
 
-<div id="body">
-    <div class="container">
-        <div class="col-group">
+    <div id="body">
+        <div class="container">
+            
+            <h3 class="archive-title">
+                包含标签
+                <span class="keyword">Raspberry</span>
+                的文章
+            </h3>
+            
 
-            <div class="col-8" id="main">
-                <div class="res-cons">
+            
+            <article class="post">
+                <header>
+                    <h1 class="post-title">
+                        <a href="//thisiswangle.com/posts/2019-09-19-rpi-log-config/">树莓派系统日志配置</a>
+                    </h1>
+                </header>
+                <date class="post-meta meta-date">
+                    Sep 19, 2019
+                </date>
+                
+                <div class="post-meta meta-category">
+                    |
                     
-                    <h3 class="archive-title">
-                        包含标签
-                        <span class="keyword">Raspberry</span>
-                        的文章
-                    </h3>
+                    <a href="//thisiswangle.com/categories/%E6%AF%8F%E6%97%A5%E6%8A%80%E5%B7%A7">每日技巧</a>
                     
-
-                    
-                        <article class="post">
-                            <header>
-                                <h1 class="post-title">
-                                    <a href="//thisiswangle.com/posts/2019-09-19-rpi-log-config/">树莓派系统日志配置</a>
-                                </h1>
-                            </header>
-                            <date class="post-meta meta-date">
-                                Sep 19, 2019
-                            </date>
-                            
-                            <div class="post-meta meta-category">
-                                |
-                                
-                                    <a href="//thisiswangle.com/categories/%E6%AF%8F%E6%97%A5%E6%8A%80%E5%B7%A7">每日技巧</a>
-                                
-                            </div>
-                            
-                            <div class="post-summary">
-                                <a href="//thisiswangle.com/posts/2019-09-19-rpi-log-config/">
-                                    背景 树莓派 raspbian 系统日志默认的配置会导致日志过大而占用太多的存储空间，并且频繁写日志也可能减短 EMMC 和 SD 卡的寿命，需要重新配置来满足项目的需求。 日志位置 1 2 3 4 5 6 7 8 9 10 11 12 13 14 /var/log /var/log/syslog /var/log/daemon.log /var/log/mail.info /var/log/mail.warn /var/log/mail.err /var/log/mail.log /var/log/kern.log /var/log/auth.log /var/log/user.log /var/log/lpr.log /var/log/cron.log /var/log/debug /var/log/messages 配置 rsyslog 与 logrotate rsyslog 的配置文件为 /etc/rsyslog.conf, 找到其中 RULES 段 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 ############### #### RULES #### ############### #...
-                                </a>
-                            </div>
-                        </article>
-                    
-                        <article class="post">
-                            <header>
-                                <h1 class="post-title">
-                                    <a href="//thisiswangle.com/posts/2019-03-01-rpi-cm3-emmc-flashing/">树莓派 CM3/CM3&#43; 刷写系统</a>
-                                </h1>
-                            </header>
-                            <date class="post-meta meta-date">
-                                Mar 1, 2019
-                            </date>
-                            
-                            <div class="post-meta meta-category">
-                                |
-                                
-                                    <a href="//thisiswangle.com/categories/%E6%AF%8F%E6%97%A5%E6%8A%80%E5%B7%A7">每日技巧</a>
-                                
-                            </div>
-                            
-                            <div class="post-summary">
-                                <a href="//thisiswangle.com/posts/2019-03-01-rpi-cm3-emmc-flashing/">
-                                    准备 阅读Flashing the Compute Module eMMC 准备一个可以刷系统的底板，我用的是微雪Compute-Module-IO-Board-Plus 步骤(Linux 系统下刷系统，可以使用树莓派来刷机) sudo apt install git libusb-1.0-0-dev git clone --depth=1 https://github.com/raspberrypi/usbboot &amp;&amp; cd usbboot &amp;&amp; make sudo ./rpiboot 连好线，跳线部分见各自底板的手册 拔掉 USB SLAVE 1/2/3/4 拔掉 SELECT 跳线帽 将 BOOT ENABLE USB SLAVE 跳线帽...
-                                </a>
-                            </div>
-                        </article>
-                    
-
-                    
-
-
-
-
                 </div>
-            </div>
+                
+                <div class="post-summary">
+                    <a href="//thisiswangle.com/posts/2019-09-19-rpi-log-config/">
+                        背景 树莓派 raspbian 系统日志默认的配置会导致日志过大而占用太多的存储空间，并且频繁写日志也可能减短 EMMC 和 SD 卡的寿命，需要重新配置来满足项目的需求。 日志位置 1 2 3 4 5 6 7 8 9 10 11 12 13 14 /var/log /var/log/syslog /var/log/daemon.log /var/log/mail.info /var/log/mail.warn /var/log/mail.err /var/log/mail.log /var/log/kern.log /var/log/auth.log /var/log/user.log /var/log/lpr.log /var/log/cron.log /var/log/debug /var/log/messages 配置 rsyslog 与 logrotate rsyslog 的配置文件为 /etc/rsyslog.conf, 找到其中 RULES 段 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 ############### #### RULES #### ############### #...
+                    </a>
+                </div>
+            </article>
+            
+            <article class="post">
+                <header>
+                    <h1 class="post-title">
+                        <a href="//thisiswangle.com/posts/2019-03-01-rpi-cm3-emmc-flashing/">树莓派 CM3/CM3&#43; 刷写系统</a>
+                    </h1>
+                </header>
+                <date class="post-meta meta-date">
+                    Mar 1, 2019
+                </date>
+                
+                <div class="post-meta meta-category">
+                    |
+                    
+                    <a href="//thisiswangle.com/categories/%E6%AF%8F%E6%97%A5%E6%8A%80%E5%B7%A7">每日技巧</a>
+                    
+                </div>
+                
+                <div class="post-summary">
+                    <a href="//thisiswangle.com/posts/2019-03-01-rpi-cm3-emmc-flashing/">
+                        准备 阅读Flashing the Compute Module eMMC 准备一个可以刷系统的底板，我用的是微雪Compute-Module-IO-Board-Plus 步骤(Linux 系统下刷系统，可以使用树莓派来刷机) sudo apt install git libusb-1.0-0-dev git clone --depth=1 https://github.com/raspberrypi/usbboot &amp;&amp; cd usbboot &amp;&amp; make sudo ./rpiboot 连好线，跳线部分见各自底板的手册 拔掉 USB SLAVE 1/2/3/4 拔掉 SELECT 跳线帽 将 BOOT ENABLE USB SLAVE 跳线帽...
+                    </a>
+                </div>
+            </article>
+            
+
+            
+
+
+
+
         </div>
     </div>
-</div>
-<footer id="footer">
+    <footer id="footer">
     <div class="container">
         &copy; 2011-2020 <a href="//thisiswangle.com/">小碼哥</a>.
         <a href="//thisiswangle.com/index.xml">订阅 RSS</a>
@@ -149,8 +144,6 @@
 </footer>
 
 
-<a id="rocket" href="#top"></a>
-<script type="text/javascript" src="/js/totop.js?v=0.0.0" async=""></script>
 
 <script type="application/javascript">
 var doNotTrack = false;
@@ -171,4 +164,5 @@ if (!doNotTrack) {
 
 
 </body>
+
 </html>

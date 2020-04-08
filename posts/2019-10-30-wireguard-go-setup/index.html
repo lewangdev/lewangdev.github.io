@@ -38,7 +38,8 @@
     <meta name="msapplication-TileImage" content="/images/favicon-144x144.png">
 
     <link rel="stylesheet" href="/css/normalize.css">
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/markdown.css">
+    <link rel="stylesheet" href="/css/main.css">
     <script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
 
     
@@ -47,57 +48,50 @@
     
 </head>
 
+
 <body>
-<header id="header" class="clearfix">
-    <div class="container">
-        <div class="col-group">
-            <div class="site-name ">
-                <a id="logo" href="//thisiswangle.com/">
-                   <img src="/images/logo-2x.png" alt="小碼哥">
-                </a>
-            </div>
-            <nav id="nav-menu" class="clearfix">
-                <a class="" href="//thisiswangle.com/">首页</a>
-                
-                <a  href="//thisiswangle.com/archives/" title="归档">归档</a>
-                
-                <a  href="//thisiswangle.com/about/" title="关于">关于</a>
-                
-            </nav>
+    <header id="header">
+    <div class="container clearfix">
+        <div class="site-name ">
+            <a id="logo" href="//thisiswangle.com/">
+                <img src="/images/logo-2x.png" alt="小碼哥">
+            </a>
         </div>
+        <nav id="nav-menu" class="clearfix">
+            <a class=""
+                href="//thisiswangle.com/">首页</a>
+            
+            <a  href="//thisiswangle.com/archives/"
+                title="归档">归档</a>
+            
+            <a  href="//thisiswangle.com/about/"
+                title="关于">关于</a>
+            
+        </nav>
     </div>
 </header>
 
-
-<div id="body">
-    <div class="container">
-        <div class="col-group">
-
-            <div id="main">
-                <div class="res-cons">
+    <div id="body">
+        <div class="container">
+            <article class="post">
+                <h1 class="post-title">使用 wireguard-go 搭建 VPN</h1>
+                <div class="post-meta">
+                    <span>Oct 30, 2019</span>
+                
+                    <span>/</span>
                     
-                    <article class="post">
-                        <header>
-                            <h1 class="post-title">使用 wireguard-go 搭建 VPN</h1>
-                        </header>
-                        <date class="post-meta meta-date">
-                            Oct 30, 2019
-                        </date>
-                        
-                        <div class="post-meta">
-                            <span>/</span>
-                            
-                                <span class="meta-category"><a href="//thisiswangle.com/categories/%E6%AF%8F%E6%97%A5%E6%8A%80%E5%B7%A7">每日技巧</a></span>
-                            
-                        </div>
-                        
-                        
-                        <div style="height: 1px; border-top: 1px #eee solid; margin-top: 16px;"></div>
-                        <div class="post-content">
-                            
-                            
-                            
-                            <h2 id="背景">背景</h2>
+                    <span class="meta-category"><a
+                            href="//thisiswangle.com/categories/%E6%AF%8F%E6%97%A5%E6%8A%80%E5%B7%A7">每日技巧</a></span>
+                    
+                
+                
+                </div>
+                <div style="height: 1px; border-top: 1px #eee solid; margin-top: 16px;"></div>
+                <div class="post-content markdown-body">
+                    
+                    
+                    
+                    <h2 id="背景">背景</h2>
 <p>搭建 VPN 方便连接无公网 IP 云主机进行开发，wireguard 配置比 openvpn 要简单很多，wireguard 是通过 Linux 内核模块的方式实现的，这样性能最好，但是只能用在 Linux 系统上。本文使用的  wireguard-go， 则是使用 golang 实现的 wireguard 协议，属于用户空间的实现，性能没有内核模块方式好，但好处就是更简单易用。</p>
 <p>VPN 的用处非常的多，不像 frp 之类的端口穿透应用，它是直接建立虚拟的网络，网络中的每个客户端也都可以拥有自己独立的 IP，于是测试调试就没有了端口的限制，非常的方便。</p>
 <p>除了方便安全连接云服务器，还可以通过 VPN 搭建工业设备的远程部署和维护的解决方案。</p>
@@ -265,20 +259,22 @@ sysctl -p
 <li><a href="https://www.linode.com/docs/networking/vpn/set-up-wireguard-vpn-on-ubuntu/">https://www.linode.com/docs</a></li>
 </ul>
 
-                            <p>(完)</p>
-                            
-                            <blockquote>
-                                <p>本文为原创文章，转载需注明出处，欢迎扫码关注公众号<code>小码哥PRO</code>或者网站 <a href="https://thisiswangle.com">https://thisiswangle.com</a>，第一时间看后续精彩文章。觉得好的话，顺手分享到朋友圈吧，感谢支持。</p>
-                            </blockquote>
-                            <p><img src="/images/qrcode_for_weixin.jpeg" alt="扫码关注"></p>
-                            
-                        </div>
+                    <p>(完)</p>
+                    
+                    <blockquote>
+                        <p>本文为原创文章，转载需注明出处，欢迎扫码关注公众号<code>小码哥PRO</code>或者网站 <a
+                                href="https://thisiswangle.com">https://thisiswangle.com</a>，第一时间看后续精彩文章。觉得好的话，顺手分享到朋友圈吧，感谢支持。
+                        </p>
+                    </blockquote>
+                    <p><img src="/images/qrcode_for_weixin.jpeg" alt="扫码关注"></p>
+                    
+                </div>
 
-                        
+                
 
 <div class="post-archive">
     <h2>See Also</h2>
-    <ul class="listing">
+    <ul>
         
         <li><a href="/posts/2019-09-19-rpi-log-config/">树莓派系统日志配置</a></li>
         
@@ -294,27 +290,27 @@ sysctl -p
 </div>
 
 
-                        <div class="post-meta meta-tags">
-                            <h3>标签</h3>
-                            
-                            <ul class="clearfix">
-                                
-                                <li><a href="//thisiswangle.com/tags/Wireguard">Wireguard</a></li>
-                                
-                                <li><a href="//thisiswangle.com/tags/Linux">Linux</a></li>
-                                
-                                <li><a href="//thisiswangle.com/tags/VPN">VPN</a></li>
-                                
-                            </ul>
-                            
-                        </div>
-                    </article>
+                <div class="post-meta">
+                    <h3>标签</h3>
                     
+                    <ul class="clearfix">
+                        
+                        <li><a href="//thisiswangle.com/tags/Wireguard">Wireguard</a></li>
+                        
+                        <li><a href="//thisiswangle.com/tags/Linux">Linux</a></li>
+                        
+                        <li><a href="//thisiswangle.com/tags/VPN">VPN</a></li>
+                        
+                    </ul>
+                    
+                </div>
+            </article>
+            
     
 
     
     
-    <div class="post bg-white">
+    <div class="post markdown-body">
       <script src="https://utteranc.es/client.js"
             repo= "thisiswangle/thisiswangle.github.io"
             issue-term="pathname"
@@ -324,12 +320,9 @@ sysctl -p
       </script>
     </div>
     
-                </div>
-            </div>
         </div>
     </div>
-</div>
-<footer id="footer">
+    <footer id="footer">
     <div class="container">
         &copy; 2011-2020 <a href="//thisiswangle.com/">小碼哥</a>.
         <a href="//thisiswangle.com/index.xml">订阅 RSS</a>
@@ -347,8 +340,6 @@ sysctl -p
     </script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
 
-<a id="rocket" href="#top"></a>
-<script type="text/javascript" src="/js/totop.js?v=0.0.0" async=""></script>
 
 <script type="application/javascript">
 var doNotTrack = false;
@@ -368,4 +359,5 @@ if (!doNotTrack) {
 
 
 </body>
+
 </html>

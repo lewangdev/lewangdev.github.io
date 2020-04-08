@@ -34,7 +34,8 @@
     <meta name="msapplication-TileImage" content="/images/favicon-144x144.png">
 
     <link rel="stylesheet" href="/css/normalize.css">
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/markdown.css">
+    <link rel="stylesheet" href="/css/main.css">
     <link rel="alternate" type="application/rss+xml+xml" href="//thisiswangle.com/tags/Kafka/index.xml" title="小碼哥" />
     <script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
 
@@ -46,78 +47,72 @@
 
 
 <body>
-<header id="header" class="clearfix">
-    <div class="container">
-        <div class="col-group">
-            <div class="site-name ">
-                <a id="logo" href="//thisiswangle.com/">
-                   <img src="/images/logo-2x.png" alt="小碼哥">
-                </a>
-            </div>
-            <nav id="nav-menu" class="clearfix">
-                <a class="" href="//thisiswangle.com/">首页</a>
-                
-                <a  href="//thisiswangle.com/archives/" title="归档">归档</a>
-                
-                <a  href="//thisiswangle.com/about/" title="关于">关于</a>
-                
-            </nav>
+    <header id="header">
+    <div class="container clearfix">
+        <div class="site-name ">
+            <a id="logo" href="//thisiswangle.com/">
+                <img src="/images/logo-2x.png" alt="小碼哥">
+            </a>
         </div>
+        <nav id="nav-menu" class="clearfix">
+            <a class=""
+                href="//thisiswangle.com/">首页</a>
+            
+            <a  href="//thisiswangle.com/archives/"
+                title="归档">归档</a>
+            
+            <a  href="//thisiswangle.com/about/"
+                title="关于">关于</a>
+            
+        </nav>
     </div>
 </header>
 
 
-<div id="body">
-    <div class="container">
-        <div class="col-group">
+    <div id="body">
+        <div class="container">
+            
+            <h3 class="archive-title">
+                包含标签
+                <span class="keyword">Kafka</span>
+                的文章
+            </h3>
+            
 
-            <div class="col-8" id="main">
-                <div class="res-cons">
+            
+            <article class="post">
+                <header>
+                    <h1 class="post-title">
+                        <a href="//thisiswangle.com/posts/2017-07-23-log-processing-system/">日志收集和分析系统架构</a>
+                    </h1>
+                </header>
+                <date class="post-meta meta-date">
+                    Jul 23, 2017
+                </date>
+                
+                <div class="post-meta meta-category">
+                    |
                     
-                    <h3 class="archive-title">
-                        包含标签
-                        <span class="keyword">Kafka</span>
-                        的文章
-                    </h3>
+                    <a href="//thisiswangle.com/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84">系统架构</a>
                     
-
-                    
-                        <article class="post">
-                            <header>
-                                <h1 class="post-title">
-                                    <a href="//thisiswangle.com/posts/2017-07-23-log-processing-system/">日志收集和分析系统架构</a>
-                                </h1>
-                            </header>
-                            <date class="post-meta meta-date">
-                                Jul 23, 2017
-                            </date>
-                            
-                            <div class="post-meta meta-category">
-                                |
-                                
-                                    <a href="//thisiswangle.com/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84">系统架构</a>
-                                
-                            </div>
-                            
-                            <div class="post-summary">
-                                <a href="//thisiswangle.com/posts/2017-07-23-log-processing-system/">
-                                    背景 微服务，日志分散且种类多（php/java/python），用 docker 起应用，日志通过卷放在宿主机器指定目录下，服务有众多实例，metrics 数据也不仅相同，无论是日志还是 metrics 数据，都可以看作是时间序列数据 分散主要表现为： 多个主机 多个目录下多个文件 应用开发所使用的技术栈不同日志格式不...
-                                </a>
-                            </div>
-                        </article>
-                    
-
-                    
-
-
-
-
                 </div>
-            </div>
+                
+                <div class="post-summary">
+                    <a href="//thisiswangle.com/posts/2017-07-23-log-processing-system/">
+                        背景 微服务，日志分散且种类多（php/java/python），用 docker 起应用，日志通过卷放在宿主机器指定目录下，服务有众多实例，metrics 数据也不仅相同，无论是日志还是 metrics 数据，都可以看作是时间序列数据 分散主要表现为： 多个主机 多个目录下多个文件 应用开发所使用的技术栈不同日志格式不...
+                    </a>
+                </div>
+            </article>
+            
+
+            
+
+
+
+
         </div>
     </div>
-</div>
-<footer id="footer">
+    <footer id="footer">
     <div class="container">
         &copy; 2011-2020 <a href="//thisiswangle.com/">小碼哥</a>.
         <a href="//thisiswangle.com/index.xml">订阅 RSS</a>
@@ -125,8 +120,6 @@
 </footer>
 
 
-<a id="rocket" href="#top"></a>
-<script type="text/javascript" src="/js/totop.js?v=0.0.0" async=""></script>
 
 <script type="application/javascript">
 var doNotTrack = false;
@@ -147,4 +140,5 @@ if (!doNotTrack) {
 
 
 </body>
+
 </html>

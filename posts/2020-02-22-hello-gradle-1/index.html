@@ -38,7 +38,8 @@
     <meta name="msapplication-TileImage" content="/images/favicon-144x144.png">
 
     <link rel="stylesheet" href="/css/normalize.css">
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/markdown.css">
+    <link rel="stylesheet" href="/css/main.css">
     <script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
 
     
@@ -47,179 +48,50 @@
     
 </head>
 
+
 <body>
-<header id="header" class="clearfix">
-    <div class="container">
-        <div class="col-group">
-            <div class="site-name ">
-                <a id="logo" href="//thisiswangle.com/">
-                   <img src="/images/logo-2x.png" alt="小碼哥">
-                </a>
-            </div>
-            <nav id="nav-menu" class="clearfix">
-                <a class="" href="//thisiswangle.com/">首页</a>
-                
-                <a  href="//thisiswangle.com/archives/" title="归档">归档</a>
-                
-                <a  href="//thisiswangle.com/about/" title="关于">关于</a>
-                
-            </nav>
+    <header id="header">
+    <div class="container clearfix">
+        <div class="site-name ">
+            <a id="logo" href="//thisiswangle.com/">
+                <img src="/images/logo-2x.png" alt="小碼哥">
+            </a>
         </div>
+        <nav id="nav-menu" class="clearfix">
+            <a class=""
+                href="//thisiswangle.com/">首页</a>
+            
+            <a  href="//thisiswangle.com/archives/"
+                title="归档">归档</a>
+            
+            <a  href="//thisiswangle.com/about/"
+                title="关于">关于</a>
+            
+        </nav>
     </div>
 </header>
 
-
-<div id="body">
-    <div class="container">
-        <div class="col-group">
-
-            <div id="main">
-                <div class="res-cons">
-                    <style type="text/css">
-    .post-toc {
-        position: absolute;
-        top: 230px;
-        width: 200px;
-        margin-left: 800px;
-        padding: 10px;
-        font-family: Athelas, STHeiti, Microsoft Yahei, serif;
-        font-size: 14px;
-        border: 1px solid rgba(0, 0, 0, .07);
-        border-radius: 5px;
-        background-color: rgba(255, 255, 255, 0.98);
-        background-clip: padding-box;
-        -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
-        box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
-        word-wrap: break-word;
-        white-space: nowrap;
-        -webkit-box-sizing: border-box;
-        box-sizing: border-box;
-        z-index: 999;
-        cursor: pointer;
-        max-height: 70%;
-        overflow-y: auto;
-        overflow-x: hidden;
-        display: none;
-    }
-
-    .post-toc .post-toc-title {
-        width: 100%;
-        margin: 0 auto;
-        font-size: 20px;
-        font-weight: 400;
-        text-transform: uppercase;
-        text-align: center;
-    }
-
-    .post-toc .post-toc-content {
-        font-size: 15px;
-    }
-
-    .post-toc .post-toc-content>nav>ul {
-        margin: 10px 0;
-    }
-
-    .post-toc .post-toc-content ul {
-        padding-left: 20px;
-        list-style: square;
-        margin: 0.5em;
-        line-height: 1.8em;
-    }
-
-    .post-toc .post-toc-content ul ul {
-        padding-left: 15px;
-        display: none;
-    }
-
-    @media print,
-    screen and (max-width:800px) {
-        .post-toc {
-            display: none;
-        }
-    }
-</style>
-<div class="post-toc">
-    <h2 class="post-toc-title">文章目录</h2>
-    <div class="post-toc-content">
-        <nav id="TableOfContents">
-  <ul>
-    <li><a href="#你好我是-gradle">你好，我是 Gradle！</a></li>
-    <li><a href="#创建项目">创建项目</a></li>
-    <li><a href="#探索项目">探索项目</a></li>
-    <li><a href="#你好groovy-同学">你好，Groovy 同学</a>
-      <ul>
-        <li><a href="#初识-groovy">初识 Groovy</a></li>
-        <li><a href="#groovy-闭包groovy-closure">Groovy 闭包(Groovy Closure)</a></li>
-      </ul>
-    </li>
-    <li><a href="#探索-buildgradle">探索 build.gradle</a>
-      <ul>
-        <li><a href="#自定义-task">自定义 Task</a></li>
-      </ul>
-    </li>
-    <li><a href="#老朋友你好">老朋友，你好</a></li>
-    <li><a href="#参考资料">参考资料</a></li>
-  </ul>
-</nav>
-    </div>
-</div>
-<script type="text/javascript">
-    $(document).ready(function () {
-        var postToc = $(".post-toc"),
-            leftPos = $("#main").offset().left,
-            max_margin = 220;
-
-        if(leftPos < max_margin){
-            postToc.css({"display":"none"});
-        }
-
-        if (postToc.length) {
-            var t = postToc.offset().top + 20,
-                a = {
-                    start: {
-                        position: "fixed",
-                        top: t,
-                        display: "inherit"
-                    },
-                    process: {
-                        position: "absolute",
-                        top: 20,
-                        display: "none"
-                    },
-                };
-            $(window).scroll(function () {
-                if(leftPos < 220){
-                    postToc.css({"display":"none"});
-                    return;
-                }
-                var e = $(window).scrollTop() - 220;
-                e > t ? postToc.css(a.start) : postToc.css(a.process)
-            })
-        }
-    })
-</script>
-                    <article class="post">
-                        <header>
-                            <h1 class="post-title">大象（Gradle）的故事：一见如故</h1>
-                        </header>
-                        <date class="post-meta meta-date">
-                            Feb 22, 2020
-                        </date>
-                        
-                        <div class="post-meta">
-                            <span>/</span>
-                            
-                                <span class="meta-category"><a href="//thisiswangle.com/categories/Gradle">Gradle</a></span>
-                            
-                        </div>
-                        
-                        
-                        <div style="height: 1px; border-top: 1px #eee solid; margin-top: 16px;"></div>
-                        <div class="post-content">
-                            
-                            
-                            
-                            <p><img src="/images/hello-gradle/gradle.png" alt="gralde"></p>
+    <div id="body">
+        <div class="container">
+            <article class="post">
+                <h1 class="post-title">大象（Gradle）的故事：一见如故</h1>
+                <div class="post-meta">
+                    <span>Feb 22, 2020</span>
+                
+                    <span>/</span>
+                    
+                    <span class="meta-category"><a
+                            href="//thisiswangle.com/categories/Gradle">Gradle</a></span>
+                    
+                
+                
+                </div>
+                <div style="height: 1px; border-top: 1px #eee solid; margin-top: 16px;"></div>
+                <div class="post-content markdown-body">
+                    
+                    
+                    
+                    <p><img src="/images/hello-gradle/gradle.png" alt="gralde"></p>
 <p>小码哥：“与大象（Gradle）一见如故？你就是 <a href="https://gradle.org/">Gradle</a>？”<br>
 大象：“对，我就是那个用来构建 Java 项目的 Gradle 大象。 ”<br>
 小码哥：“我好像天天都在用你啊。看，我的项目都是用你构建的。”<br>
@@ -487,20 +359,22 @@ task task3 <span style="color:#000;font-weight:bold">{</span>
 <li><a href="https://docs.gradle.org/current/userguide/java_plugin.html#sec:java_usage">The Java Plugin</a></li>
 </ol>
 
-                            <p>(完)</p>
-                            
-                            <blockquote>
-                                <p>本文为原创文章，转载需注明出处，欢迎扫码关注公众号<code>小码哥PRO</code>或者网站 <a href="https://thisiswangle.com">https://thisiswangle.com</a>，第一时间看后续精彩文章。觉得好的话，顺手分享到朋友圈吧，感谢支持。</p>
-                            </blockquote>
-                            <p><img src="/images/qrcode_for_weixin.jpeg" alt="扫码关注"></p>
-                            
-                        </div>
+                    <p>(完)</p>
+                    
+                    <blockquote>
+                        <p>本文为原创文章，转载需注明出处，欢迎扫码关注公众号<code>小码哥PRO</code>或者网站 <a
+                                href="https://thisiswangle.com">https://thisiswangle.com</a>，第一时间看后续精彩文章。觉得好的话，顺手分享到朋友圈吧，感谢支持。
+                        </p>
+                    </blockquote>
+                    <p><img src="/images/qrcode_for_weixin.jpeg" alt="扫码关注"></p>
+                    
+                </div>
 
-                        
+                
 
 <div class="post-archive">
     <h2>See Also</h2>
-    <ul class="listing">
+    <ul>
         
         <li><a href="/posts/2019-03-06-keynotes-of-new-java/">Java 进阶要点</a></li>
         
@@ -516,27 +390,27 @@ task task3 <span style="color:#000;font-weight:bold">{</span>
 </div>
 
 
-                        <div class="post-meta meta-tags">
-                            <h3>标签</h3>
-                            
-                            <ul class="clearfix">
-                                
-                                <li><a href="//thisiswangle.com/tags/Java">Java</a></li>
-                                
-                                <li><a href="//thisiswangle.com/tags/Groovy">Groovy</a></li>
-                                
-                                <li><a href="//thisiswangle.com/tags/Kotlin">Kotlin</a></li>
-                                
-                            </ul>
-                            
-                        </div>
-                    </article>
+                <div class="post-meta">
+                    <h3>标签</h3>
                     
+                    <ul class="clearfix">
+                        
+                        <li><a href="//thisiswangle.com/tags/Java">Java</a></li>
+                        
+                        <li><a href="//thisiswangle.com/tags/Groovy">Groovy</a></li>
+                        
+                        <li><a href="//thisiswangle.com/tags/Kotlin">Kotlin</a></li>
+                        
+                    </ul>
+                    
+                </div>
+            </article>
+            
     
 
     
     
-    <div class="post bg-white">
+    <div class="post markdown-body">
       <script src="https://utteranc.es/client.js"
             repo= "thisiswangle/thisiswangle.github.io"
             issue-term="pathname"
@@ -546,12 +420,9 @@ task task3 <span style="color:#000;font-weight:bold">{</span>
       </script>
     </div>
     
-                </div>
-            </div>
         </div>
     </div>
-</div>
-<footer id="footer">
+    <footer id="footer">
     <div class="container">
         &copy; 2011-2020 <a href="//thisiswangle.com/">小碼哥</a>.
         <a href="//thisiswangle.com/index.xml">订阅 RSS</a>
@@ -569,8 +440,6 @@ task task3 <span style="color:#000;font-weight:bold">{</span>
     </script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
 
-<a id="rocket" href="#top"></a>
-<script type="text/javascript" src="/js/totop.js?v=0.0.0" async=""></script>
 
 <script type="application/javascript">
 var doNotTrack = false;
@@ -590,4 +459,5 @@ if (!doNotTrack) {
 
 
 </body>
+
 </html>

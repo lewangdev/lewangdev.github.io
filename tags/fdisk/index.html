@@ -34,7 +34,8 @@
     <meta name="msapplication-TileImage" content="/images/favicon-144x144.png">
 
     <link rel="stylesheet" href="/css/normalize.css">
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/markdown.css">
+    <link rel="stylesheet" href="/css/main.css">
     <link rel="alternate" type="application/rss+xml+xml" href="//thisiswangle.com/tags/fdisk/index.xml" title="小碼哥" />
     <script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
 
@@ -46,78 +47,72 @@
 
 
 <body>
-<header id="header" class="clearfix">
-    <div class="container">
-        <div class="col-group">
-            <div class="site-name ">
-                <a id="logo" href="//thisiswangle.com/">
-                   <img src="/images/logo-2x.png" alt="小碼哥">
-                </a>
-            </div>
-            <nav id="nav-menu" class="clearfix">
-                <a class="" href="//thisiswangle.com/">首页</a>
-                
-                <a  href="//thisiswangle.com/archives/" title="归档">归档</a>
-                
-                <a  href="//thisiswangle.com/about/" title="关于">关于</a>
-                
-            </nav>
+    <header id="header">
+    <div class="container clearfix">
+        <div class="site-name ">
+            <a id="logo" href="//thisiswangle.com/">
+                <img src="/images/logo-2x.png" alt="小碼哥">
+            </a>
         </div>
+        <nav id="nav-menu" class="clearfix">
+            <a class=""
+                href="//thisiswangle.com/">首页</a>
+            
+            <a  href="//thisiswangle.com/archives/"
+                title="归档">归档</a>
+            
+            <a  href="//thisiswangle.com/about/"
+                title="关于">关于</a>
+            
+        </nav>
     </div>
 </header>
 
 
-<div id="body">
-    <div class="container">
-        <div class="col-group">
+    <div id="body">
+        <div class="container">
+            
+            <h3 class="archive-title">
+                包含标签
+                <span class="keyword">fdisk</span>
+                的文章
+            </h3>
+            
 
-            <div class="col-8" id="main">
-                <div class="res-cons">
+            
+            <article class="post">
+                <header>
+                    <h1 class="post-title">
+                        <a href="//thisiswangle.com/posts/2017-08-03-lvm-in-action/">LVM 实战记录</a>
+                    </h1>
+                </header>
+                <date class="post-meta meta-date">
+                    Aug 3, 2017
+                </date>
+                
+                <div class="post-meta meta-category">
+                    |
                     
-                    <h3 class="archive-title">
-                        包含标签
-                        <span class="keyword">fdisk</span>
-                        的文章
-                    </h3>
+                    <a href="//thisiswangle.com/categories/Linux">Linux</a>
                     
-
-                    
-                        <article class="post">
-                            <header>
-                                <h1 class="post-title">
-                                    <a href="//thisiswangle.com/posts/2017-08-03-lvm-in-action/">LVM 实战记录</a>
-                                </h1>
-                            </header>
-                            <date class="post-meta meta-date">
-                                Aug 3, 2017
-                            </date>
-                            
-                            <div class="post-meta meta-category">
-                                |
-                                
-                                    <a href="//thisiswangle.com/categories/Linux">Linux</a>
-                                
-                            </div>
-                            
-                            <div class="post-summary">
-                                <a href="//thisiswangle.com/posts/2017-08-03-lvm-in-action/">
-                                    背景 阿里云云主机两块 100G 的云盘合一个逻辑卷（LV）来使用，单个的 100G 磁盘不够用，需要合在一起使用，并且方便以后扩容 基本知识 磁盘 /dev/xvdb /dev/xvdc 分区, 使用 fdisk 进行分区 fdisk &gt; n &gt; p &gt; 1..4, 主分区最多只有4个 准备分区后，将分区类型变为 LVM 分区，fdisk &gt; t &gt; 8e, 8e 是 LVM 类型 ID 物理卷（PV），卷组（VG），逻辑卷（...
-                                </a>
-                            </div>
-                        </article>
-                    
-
-                    
-
-
-
-
                 </div>
-            </div>
+                
+                <div class="post-summary">
+                    <a href="//thisiswangle.com/posts/2017-08-03-lvm-in-action/">
+                        背景 阿里云云主机两块 100G 的云盘合一个逻辑卷（LV）来使用，单个的 100G 磁盘不够用，需要合在一起使用，并且方便以后扩容 基本知识 磁盘 /dev/xvdb /dev/xvdc 分区, 使用 fdisk 进行分区 fdisk &gt; n &gt; p &gt; 1..4, 主分区最多只有4个 准备分区后，将分区类型变为 LVM 分区，fdisk &gt; t &gt; 8e, 8e 是 LVM 类型 ID 物理卷（PV），卷组（VG），逻辑卷（...
+                    </a>
+                </div>
+            </article>
+            
+
+            
+
+
+
+
         </div>
     </div>
-</div>
-<footer id="footer">
+    <footer id="footer">
     <div class="container">
         &copy; 2011-2020 <a href="//thisiswangle.com/">小碼哥</a>.
         <a href="//thisiswangle.com/index.xml">订阅 RSS</a>
@@ -125,8 +120,6 @@
 </footer>
 
 
-<a id="rocket" href="#top"></a>
-<script type="text/javascript" src="/js/totop.js?v=0.0.0" async=""></script>
 
 <script type="application/javascript">
 var doNotTrack = false;
@@ -147,4 +140,5 @@ if (!doNotTrack) {
 
 
 </body>
+
 </html>

@@ -38,7 +38,8 @@
     <meta name="msapplication-TileImage" content="/images/favicon-144x144.png">
 
     <link rel="stylesheet" href="/css/normalize.css">
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/markdown.css">
+    <link rel="stylesheet" href="/css/main.css">
     <script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
 
     
@@ -47,61 +48,54 @@
     
 </head>
 
+
 <body>
-<header id="header" class="clearfix">
-    <div class="container">
-        <div class="col-group">
-            <div class="site-name ">
-                <a id="logo" href="//thisiswangle.com/">
-                   <img src="/images/logo-2x.png" alt="小碼哥">
-                </a>
-            </div>
-            <nav id="nav-menu" class="clearfix">
-                <a class="" href="//thisiswangle.com/">首页</a>
-                
-                <a  href="//thisiswangle.com/archives/" title="归档">归档</a>
-                
-                <a  href="//thisiswangle.com/about/" title="关于">关于</a>
-                
-            </nav>
+    <header id="header">
+    <div class="container clearfix">
+        <div class="site-name ">
+            <a id="logo" href="//thisiswangle.com/">
+                <img src="/images/logo-2x.png" alt="小碼哥">
+            </a>
         </div>
+        <nav id="nav-menu" class="clearfix">
+            <a class=""
+                href="//thisiswangle.com/">首页</a>
+            
+            <a  href="//thisiswangle.com/archives/"
+                title="归档">归档</a>
+            
+            <a  href="//thisiswangle.com/about/"
+                title="关于">关于</a>
+            
+        </nav>
     </div>
 </header>
 
-
-<div id="body">
-    <div class="container">
-        <div class="col-group">
-
-            <div id="main">
-                <div class="res-cons">
+    <div id="body">
+        <div class="container">
+            <article class="post">
+                <h1 class="post-title">Python on My rMBP</h1>
+                <div class="post-meta">
+                    <span>Mar 2, 2014</span>
+                
+                    <span>/</span>
                     
-                    <article class="post">
-                        <header>
-                            <h1 class="post-title">Python on My rMBP</h1>
-                        </header>
-                        <date class="post-meta meta-date">
-                            Mar 2, 2014
-                        </date>
-                        
-                        <div class="post-meta">
-                            <span>/</span>
-                            
-                                <span class="meta-category"><a href="//thisiswangle.com/categories/DevOps">DevOps</a></span>
-                            
-                        </div>
-                        
-                        
-                        <div style="height: 1px; border-top: 1px #eee solid; margin-top: 16px;"></div>
-                        <div class="post-content">
-                            
-                            
-                            <p class="warning">
-                                本文写于 6 个月之前，如果这是一篇关于计算机技术的文章，那本文内容很有可能已经过期了。
-                            </p>
-                            
-                            
-                            <p>前几天入手了一台 Macbook Pro Retina，把 BIG 提到了很爽的地步。经过几天的折腾，可以和 windows，ubuntu desktop 说 Byebye 了。之前整整用了一年的 Ubuntu 来工作，我用它来写 C、Java 和 Python, 要是 windows 没有 cygwin, 没有 MacType，那该多么恐怖。后来用了一段时间的 MBP，让我坚定了以后要自己买一个 MBP。</p>
+                    <span class="meta-category"><a
+                            href="//thisiswangle.com/categories/DevOps">DevOps</a></span>
+                    
+                
+                
+                </div>
+                <div style="height: 1px; border-top: 1px #eee solid; margin-top: 16px;"></div>
+                <div class="post-content markdown-body">
+                    
+                    
+                    <blockquote>
+                        本文写于 6 个月之前，如果这是一篇关于计算机技术的文章，那本文内容很有可能已经过期了。
+                    </blockquote>
+                    
+                    
+                    <p>前几天入手了一台 Macbook Pro Retina，把 BIG 提到了很爽的地步。经过几天的折腾，可以和 windows，ubuntu desktop 说 Byebye 了。之前整整用了一年的 Ubuntu 来工作，我用它来写 C、Java 和 Python, 要是 windows 没有 cygwin, 没有 MacType，那该多么恐怖。后来用了一段时间的 MBP，让我坚定了以后要自己买一个 MBP。</p>
 <p>ubuntu 那么的惹人爱，因为它有个还挺好用的 GUI，从 debian 那继承过来的 apt-get, 一下子把一个从 redhat 9 用到 fedora 4 的穷学生拉到了 ubuntu 的阵营，至此，deskop 就被 ubuntu 占领了。在此之前，我还用段时间的 debian 和 gentoo。</p>
 <p>不得不说，debian 太伟大太牛逼了，有一次要在一个 MIPS 的小设备上编译安装 erlang， openssl，libcurl 等做一些实验, 要跨平台编译这些软件安装到小设备上去，费了半天终于把这些都编好了，还写了一个编译脚步，结果 erlang 运行的时候虚拟机总是报错，也不知道怎么回事。后来注意到 debian 居然有 MIPS，ARM 的源，后来在 MIPS 设备上安装软件做实验，我再也没有遇到问题，一切都用 apt-get 搞定了。</p>
 <p>除了 apt-get, 我想最令我惊喜还有 ubuntu 自带了 python 2.7，让我很容易在两台电脑之间拷贝文件：</p>
@@ -162,20 +156,22 @@ sudo pip install virtualenv
 </div><p>接下来通过 pip 安装的东西都会在这个虚拟环境中了，是不是很好玩。</p>
 <p>Love my rMBP, Love my python.</p>
 
-                            <p>(完)</p>
-                            
-                            <blockquote>
-                                <p>本文为原创文章，转载需注明出处，欢迎扫码关注公众号<code>小码哥PRO</code>或者网站 <a href="https://thisiswangle.com">https://thisiswangle.com</a>，第一时间看后续精彩文章。觉得好的话，顺手分享到朋友圈吧，感谢支持。</p>
-                            </blockquote>
-                            <p><img src="/images/qrcode_for_weixin.jpeg" alt="扫码关注"></p>
-                            
-                        </div>
+                    <p>(完)</p>
+                    
+                    <blockquote>
+                        <p>本文为原创文章，转载需注明出处，欢迎扫码关注公众号<code>小码哥PRO</code>或者网站 <a
+                                href="https://thisiswangle.com">https://thisiswangle.com</a>，第一时间看后续精彩文章。觉得好的话，顺手分享到朋友圈吧，感谢支持。
+                        </p>
+                    </blockquote>
+                    <p><img src="/images/qrcode_for_weixin.jpeg" alt="扫码关注"></p>
+                    
+                </div>
 
-                        
+                
 
 <div class="post-archive">
     <h2>See Also</h2>
-    <ul class="listing">
+    <ul>
         
         <li><a href="/posts/2013-08-09-benchmark-of-aliyun-and-ucloud/">阿里云和 ucloud 云主机评测</a></li>
         
@@ -191,31 +187,31 @@ sudo pip install virtualenv
 </div>
 
 
-                        <div class="post-meta meta-tags">
-                            <h3>标签</h3>
-                            
-                            <ul class="clearfix">
-                                
-                                <li><a href="//thisiswangle.com/tags/python">python</a></li>
-                                
-                                <li><a href="//thisiswangle.com/tags/virtualenv">virtualenv</a></li>
-                                
-                                <li><a href="//thisiswangle.com/tags/pip">pip</a></li>
-                                
-                                <li><a href="//thisiswangle.com/tags/easy_install">easy_install</a></li>
-                                
-                                <li><a href="//thisiswangle.com/tags/rMBP">rMBP</a></li>
-                                
-                            </ul>
-                            
-                        </div>
-                    </article>
+                <div class="post-meta">
+                    <h3>标签</h3>
                     
+                    <ul class="clearfix">
+                        
+                        <li><a href="//thisiswangle.com/tags/python">python</a></li>
+                        
+                        <li><a href="//thisiswangle.com/tags/virtualenv">virtualenv</a></li>
+                        
+                        <li><a href="//thisiswangle.com/tags/pip">pip</a></li>
+                        
+                        <li><a href="//thisiswangle.com/tags/easy_install">easy_install</a></li>
+                        
+                        <li><a href="//thisiswangle.com/tags/rMBP">rMBP</a></li>
+                        
+                    </ul>
+                    
+                </div>
+            </article>
+            
     
 
     
     
-    <div class="post bg-white">
+    <div class="post markdown-body">
       <script src="https://utteranc.es/client.js"
             repo= "thisiswangle/thisiswangle.github.io"
             issue-term="pathname"
@@ -225,12 +221,9 @@ sudo pip install virtualenv
       </script>
     </div>
     
-                </div>
-            </div>
         </div>
     </div>
-</div>
-<footer id="footer">
+    <footer id="footer">
     <div class="container">
         &copy; 2011-2020 <a href="//thisiswangle.com/">小碼哥</a>.
         <a href="//thisiswangle.com/index.xml">订阅 RSS</a>
@@ -248,8 +241,6 @@ sudo pip install virtualenv
     </script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
 
-<a id="rocket" href="#top"></a>
-<script type="text/javascript" src="/js/totop.js?v=0.0.0" async=""></script>
 
 <script type="application/javascript">
 var doNotTrack = false;
@@ -269,4 +260,5 @@ if (!doNotTrack) {
 
 
 </body>
+
 </html>

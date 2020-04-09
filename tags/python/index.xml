@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>python on 小碼哥</title>
-    <link>//thisiswangle.com/tags/python/</link>
-    <description>Recent content in python on 小碼哥</description>
+    <title>Python on 小碼哥</title>
+    <link>//thisiswangle.com/tags/Python/</link>
+    <description>Recent content in Python on 小碼哥</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 02 Mar 2014 21:16:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 29 May 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="//thisiswangle.com/tags/python/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="//thisiswangle.com/tags/Python/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Python on My rMBP</title>
-      <link>//thisiswangle.com/posts/2014-03-02-python-on-my-rmbp/</link>
-      <pubDate>Sun, 02 Mar 2014 21:16:00 +0000</pubDate>
+      <title>CentOS 7 上使用 pyenv 安装 Python 3.7.3</title>
+      <link>//thisiswangle.com/posts/2019-05-29-centos7-pyenv-install-python-3/</link>
+      <pubDate>Wed, 29 May 2019 00:00:00 +0000</pubDate>
       
-      <guid>//thisiswangle.com/posts/2014-03-02-python-on-my-rmbp/</guid>
-      <description>前几天入手了一台 Macbook Pro Retina，把 BIG 提到了很爽的地步。经过几天的折腾，可以和 windows，ubuntu desktop 说 Byebye 了。之前整整用了一年的 Ubuntu 来工作，我用它来写 C、Java 和 Python, 要是 windows 没有 cygwin, 没有 MacType，那该多么恐怖。后来用了一段时间的 MBP，让我坚定了以后要自己买一个 MBP。 ubuntu 那</description>
+      <guid>//thisiswangle.com/posts/2019-05-29-centos7-pyenv-install-python-3/</guid>
+      <description>概要 本文记录了在 CentOS 7.6 系统上通过 pyenv 安装 Python 3.7.3 的过程。 环境 CentOS Linux release 7.6.1810 (Core) Kernel 3 3.10.0-957.el7.x86_64 Pyenv 1.2.11 安装 pyenv 1 $ curl https://pyenv.run | bash 然后根据提示把以下内容放到 ~/.bashrc 文件末尾 1 2 3 4 5 6 # Load pyenv automatically by adding # the following to ~/.bashrc: export PATH=&amp;#34;/root/.pyenv/bin:$PATH&amp;#34; eval &amp;#34;$(pyenv init -)&amp;#34; eval &amp;#34;$(pyenv virtualenv-init -)&amp;#34; 安装 Python 3.7.3 准备 1 $ sudo yum -y install xz bzip2 bzip2-devel sqlite-devel gcc openssl-devel readline-devel zlib-devel libffi-devel 安装 1 pyenv install 3.7.3 验证 1 2 3 $ pyenv versions * system (set by /root/.pyenv/version) 3.7.3 参考 https://github.com/pyenv/pyenv/issues/1183 https://github.com/pyenv/pyenv-installer https://github.com/pyenv/pyenv</description>
     </item>
     
   </channel>

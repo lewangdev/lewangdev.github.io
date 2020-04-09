@@ -6,10 +6,19 @@
     <description>Recent content on 小碼哥</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 22 Feb 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 09 Apr 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="//thisiswangle.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>疫情与舆情：新冠肺炎时间线 「转」</title>
+      <link>//thisiswangle.com/posts/2020-02-22-coronavirus-2019/</link>
+      <pubDate>Thu, 09 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>//thisiswangle.com/posts/2020-02-22-coronavirus-2019/</guid>
+      <description>原文链接：疫情与舆情：武汉新冠肺炎时间线 TIMELINE，点击原文链接查看最新内容。 2019年12月1日 出现第一位武汉市民有不明原因肺炎症状（事后确诊，当时未知是不明原因肺炎，且尚无医生发现和报告）。据金银潭医院的重症监护病房（ICU）主任吴文娟透露，该病患是一名年过七旬的男子，</description>
+    </item>
     
     <item>
       <title>大象（Gradle）的故事：一见如故</title>

@@ -450,5 +450,6 @@ a:active {
 @media (max-width: 767px) {
     .container {
         padding: 0 20px;
+        width: auto;
     }
 }

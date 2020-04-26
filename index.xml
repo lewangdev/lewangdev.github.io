@@ -6,19 +6,10 @@
     <description>Recent content on 小碼哥</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Thu, 09 Apr 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 28 Sep 2011 03:40:00 +0000</lastBuildDate>
     
 	<atom:link href="//thisiswangle.com/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>疫情与舆情：新冠肺炎时间线 「转」</title>
-      <link>//thisiswangle.com/posts/2020-04-09-coronavirus-2019/</link>
-      <pubDate>Thu, 09 Apr 2020 00:00:00 +0000</pubDate>
-      
-      <guid>//thisiswangle.com/posts/2020-04-09-coronavirus-2019/</guid>
-      <description>原文链接：疫情与舆情：武汉新冠肺炎时间线 TIMELINE，点击原文链接查看最新内容。 2019年12月1日 出现第一位武汉市民有不明原因肺炎症状（事后确诊，当时未知是不明原因肺炎，且尚无医生发现和报告）。据金银潭医院的重症监护病房（ICU）主任吴文娟透露，该病患是一名年过七旬的男子，</description>
-    </item>
     
     <item>
       <title>大象（Gradle）的故事：一见如故</title>
@@ -188,7 +179,7 @@
       <pubDate>Tue, 06 May 2014 22:51:00 +0000</pubDate>
       
       <guid>//thisiswangle.com/posts/2014-05-06-github-pages-dns-settings/</guid>
-      <description>这几天每次 Push 博客到 Github Pages 时总会收到一封邮件： The page build completed successfully, but returned the following warning: GitHub Pages recently underwent some improvements (https://github.com/blog/1715-faster-more-awesome-github-pages) to make your site faster and more awesome, but we&#39;ve noticed that iforget.info isn&#39;t properly configured to take advantage of these new features. While your site will continue to work just fine, updating your domain&#39;s configuration offers some additional speed and performance benefits. Instructions on updating your site&#39;s IP address can be found at https://help.github.com/articles/setting-up-a-custom-domain-with-github-pages#step-2-configure-dns-records, and of course, you can always get in touch with a human at support@github.com. For the more technical minded folks who want to skip the help docs: your site&#39;s DNS records are pointed to a deprecated IP address. For information on troubleshooting Jekyll see: https://help.github.com/articles/using-jekyll-with-pages#troubleshooting If you</description>
+      <description>这几天每次 Push 博客到 Github Pages 时总会收到一封邮件： The page build completed successfully, but returned the following warning: GitHub Pages recently underwent some improvements (https://github.com/blog/1715-faster-more-awesome-github-pages) to make your site faster and more awesome, but we&amp;rsquo;ve noticed that iforget.info isn&amp;rsquo;t properly configured to take advantage of these new features. While your site will continue to work just fine, updating your domain&amp;rsquo;s configuration offers some additional speed and performance benefits. Instructions on updating your site&amp;rsquo;s IP address can be found at https://help.github.com/articles/setting-up-a-custom-domain-with-github-pages#step-2-configure-dns-records, and of course, you can always get in touch with a human at support@github.com. For the more technical minded folks who want to skip the help docs: your site&amp;rsquo;s DNS records are pointed to a deprecated IP address. For information on troubleshooting Jekyll see: https://help.github.com/articles/using-jekyll-with-pages#troubleshooting If you</description>
     </item>
     
     <item>

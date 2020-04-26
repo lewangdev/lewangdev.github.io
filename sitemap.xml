@@ -3,31 +3,6 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>//thisiswangle.com/tags/COVID-19/</loc>
-    <lastmod>2020-04-09T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>//thisiswangle.com/</loc>
-    <lastmod>2020-04-09T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>//thisiswangle.com/tags/%E6%96%B0%E5%86%A0%E8%82%BA%E7%82%8E/</loc>
-    <lastmod>2020-04-09T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>//thisiswangle.com/posts/2020-04-09-coronavirus-2019/</loc>
-    <lastmod>2020-04-09T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>//thisiswangle.com/categories/%E7%A4%BE%E4%BC%9A/</loc>
-    <lastmod>2020-04-09T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>//thisiswangle.com/categories/Gradle/</loc>
     <lastmod>2020-02-22T00:00:00+00:00</lastmod>
   </url>
@@ -138,7 +113,7 @@
   </url>
   
   <url>
-    <loc>//thisiswangle.com/tags/Python/</loc>
+    <loc>//thisiswangle.com/tags/python/</loc>
     <lastmod>2019-05-29T00:00:00+00:00</lastmod>
   </url>
   
@@ -579,6 +554,11 @@
   
   <url>
     <loc>//thisiswangle.com/about/</loc>
+    <lastmod>2011-09-28T03:40:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>//thisiswangle.com/</loc>
     <lastmod>2011-09-28T03:40:00+00:00</lastmod>
   </url>
   

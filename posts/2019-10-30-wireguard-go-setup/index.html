@@ -3,7 +3,7 @@
 <head>
 
     <meta charset="utf-8">
-    <meta name="generator" content="Hugo 0.62.2" />
+    <meta name="generator" content="Hugo 0.68.3" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -189,7 +189,7 @@ wg genkey | tee client_privatekey | wg pubkey &gt; client_publickey
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#0086b3">echo</span> <span style="color:#d14">&#34;</span><span style="color:#d14">[Interface]
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#0086b3">echo</span> <span style="color:#d14">&#34;[Interface]
 </span><span style="color:#d14">PrivateKey = </span><span style="color:#000;font-weight:bold">$(</span>cat server_privatekey<span style="color:#000;font-weight:bold">)</span><span style="color:#d14">
 </span><span style="color:#d14">Address = 10.0.0.1/24 
 </span><span style="color:#d14">PostUp   = iptables -A FORWARD -i wg0 -j ACCEPT; iptables -A FORWARD -o wg0 -j ACCEPT; iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
@@ -199,7 +199,7 @@ wg genkey | tee client_privatekey | wg pubkey &gt; client_publickey
 </span><span style="color:#d14">
 </span><span style="color:#d14">[Peer]
 </span><span style="color:#d14">PublicKey = </span><span style="color:#000;font-weight:bold">$(</span>cat client_publickey<span style="color:#000;font-weight:bold">)</span><span style="color:#d14">
-</span><span style="color:#d14">AllowedIPs = 10.0.0.2/32</span><span style="color:#d14">&#34;</span> | sed <span style="color:#d14">&#39;/^#/d;/^\s*$/d&#39;</span> &gt; wg0.conf
+</span><span style="color:#d14">AllowedIPs = 10.0.0.2/32&#34;</span> | sed <span style="color:#d14">&#39;/^#/d;/^\s*$/d&#39;</span> &gt; wg0.conf
 </code></pre></td></tr></table>
 </div>
 </div><p>生成客户端配置文件 client-wg0.conf</p>
@@ -218,7 +218,7 @@ wg genkey | tee client_privatekey | wg pubkey &gt; client_publickey
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#0086b3">echo</span> <span style="color:#d14">&#34;</span><span style="color:#d14">[Interface]
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#0086b3">echo</span> <span style="color:#d14">&#34;[Interface]
 </span><span style="color:#d14">PrivateKey = </span><span style="color:#000;font-weight:bold">$(</span>cat client_privatekey<span style="color:#000;font-weight:bold">)</span><span style="color:#d14">
 </span><span style="color:#d14">Address = 10.0.0.2/24
 </span><span style="color:#d14">DNS = 8.8.8.8
@@ -228,7 +228,7 @@ wg genkey | tee client_privatekey | wg pubkey &gt; client_publickey
 </span><span style="color:#d14">PublicKey = </span><span style="color:#000;font-weight:bold">$(</span>cat server_publickey<span style="color:#000;font-weight:bold">)</span><span style="color:#d14">
 </span><span style="color:#d14">Endpoint = </span><span style="color:#d14">${</span><span style="color:#008080">server_ip</span><span style="color:#d14">}</span><span style="color:#d14">:1194
 </span><span style="color:#d14">AllowedIPs = 0.0.0.0/0, ::0/0
-</span><span style="color:#d14">PersistentKeepalive = 30</span><span style="color:#d14">&#34;</span> | sed <span style="color:#d14">&#39;/^#/d;/^\s*$/d&#39;</span> &gt; client-wg0.conf
+</span><span style="color:#d14">PersistentKeepalive = 30&#34;</span> | sed <span style="color:#d14">&#39;/^#/d;/^\s*$/d&#39;</span> &gt; client-wg0.conf
 </code></pre></td></tr></table>
 </div>
 </div><p>在服务器端开启数据包转发</p>

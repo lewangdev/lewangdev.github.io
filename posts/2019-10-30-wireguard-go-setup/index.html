@@ -94,8 +94,8 @@
                     
                     
                     <h2 id="背景">背景</h2>
-<p>搭建 VPN 方便连接无公网 IP 云主机进行开发，wireguard 配置比 openvpn 要简单很多，wireguard 是通过 Linux 内核模块的方式实现的，这样性能最好，但是只能用在 Linux 系统上。本文使用的  wireguard-go， 则是使用 golang 实现的 wireguard 协议，属于用户空间的实现，性能没有内核模块方式好，但好处就是更简单易用。</p>
-<p>VPN 的用处非常的多，不像 frp 之类的端口穿透应用，它是直接建立虚拟的网络，网络中的每个客户端也都可以拥有自己独立的 IP，于是测试调试就没有了端口的限制，非常的方便。</p>
+<p>搭建 VPN 方便连接无公网 IP 云主机进行开发，WireGuard 配置比 OpenVPN 要简单很多，WireGuard 是通过 Linux 内核模块的方式实现的，这样性能最好，但是只能用在 Linux 系统上。本文使用的  wireguard-go， 则是使用 Golang 实现的 WireGuard 协议，属于用户空间(User Space)的实现，性能没有内核模块方式好，但好处就是跨平台且更简单易用。</p>
+<p>VPN 的用处非常的多，不像 <a href="https://github.com/fatedier/frp">frp</a> 之类的端口穿透应用，它是直接建立虚拟的网络，网络中的每个客户端也都可以拥有自己独立的 IP，于是测试调试就没有了端口的限制，非常的方便。</p>
 <p>除了方便安全连接云服务器，还可以通过 VPN 搭建工业设备的远程部署和维护的解决方案。</p>
 <h2 id="编译-wireguard-go">编译 wireguard-go</h2>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
@@ -114,7 +114,7 @@
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
 <pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#998;font-style:italic"># 使用 GitHub 的源码镜像，速度会快一些</span>
-git clone git@github.com:WireGuard/wireguard-go.git
+git clone git@github.com:wireguard/wireguard-go.git
 
 <span style="color:#998;font-style:italic"># 在 MacOS 下交叉编译</span>
 <span style="color:#008080">CGO_ENABLED</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">0</span> <span style="color:#008080">GOOS</span><span style="color:#000;font-weight:bold">=</span>linux <span style="color:#008080">GOARCH</span><span style="color:#000;font-weight:bold">=</span>amd64 go build -v -o <span style="color:#d14">&#34;wireguard-go&#34;</span>
@@ -126,7 +126,7 @@ go build -v -o <span style="color:#d14">&#34;wireguard-go&#34;</span>
 cp wireguard-go /usr/sbin/
 </code></pre></td></tr></table>
 </div>
-</div><h2 id="编译-wireguard-tools">编译 wireguard tools</h2>
+</div><h2 id="编译-wireguard-tools">编译 WireGuard tools</h2>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
 <pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
@@ -144,7 +144,7 @@ cp wireguard-go /usr/sbin/
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">git clone git@github.com:WireGuard/WireGuard.git
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">git clone git@github.com:wireguard/wireguard.git
 
 <span style="color:#998;font-style:italic"># 安装依赖</span>
 
@@ -154,12 +154,12 @@ sudo apt-get install libmnl-dev libelf-dev
 <span style="color:#998;font-style:italic">## centos</span>
 sudo yum install libmnl-devel elfutils-libelf-devel
 
-<span style="color:#0086b3">cd</span> Wireguard/src/tools
+<span style="color:#0086b3">cd</span> wireguard/src/tools
 make 
 sudo make install
 </code></pre></td></tr></table>
 </div>
-</div><h2 id="配置-wireguard">配置 wireguard</h2>
+</div><h2 id="配置-wireguard">配置 WireGuard</h2>
 <p>生成密钥</p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
@@ -244,7 +244,7 @@ wg genkey | tee client_privatekey | wg pubkey &gt; client_publickey
 sysctl -p
 </code></pre></td></tr></table>
 </div>
-</div><p>最后在服务器端启动 wireguard</p>
+</div><p>最后在服务器端启动 WireGuard</p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
 <pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
@@ -300,7 +300,7 @@ sysctl -p
                     <h3>标签</h3>
                     <ul class="clearfix">
                         
-                        <li><a href="//thisiswangle.com/tags/Wireguard"># Wireguard</a></li>
+                        <li><a href="//thisiswangle.com/tags/WireGuard"># WireGuard</a></li>
                         
                         <li><a href="//thisiswangle.com/tags/Linux"># Linux</a></li>
                         

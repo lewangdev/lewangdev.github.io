@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>WireGuard on 小碼哥</title>
-    <link>//thisiswangle.com/tags/WireGuard/</link>
+    <link>//lewang.dev/tags/WireGuard/</link>
     <description>Recent content in WireGuard on 小碼哥</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <lastBuildDate>Wed, 30 Oct 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="//thisiswangle.com/tags/WireGuard/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="//lewang.dev/tags/WireGuard/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>使用 wireguard-go 搭建 VPN</title>
-      <link>//thisiswangle.com/posts/2019-10-30-wireguard-go-setup/</link>
+      <link>//lewang.dev/posts/2019-10-30-wireguard-go-setup/</link>
       <pubDate>Wed, 30 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>//thisiswangle.com/posts/2019-10-30-wireguard-go-setup/</guid>
+      <guid>//lewang.dev/posts/2019-10-30-wireguard-go-setup/</guid>
       <description>背景 搭建 VPN 方便连接无公网 IP 云主机进行开发，WireGuard 配置比 OpenVPN 要简单很多，WireGuard 是通过 Linux 内核模块的方式实现的，这样性能最好，但是只能用在 Linux 系统上。本文使用的 wireguard-go， 则是使用 Golang 实现的 WireGuard 协议，属于用户空间(User Space)的实现，性能没有内核模</description>
     </item>
     

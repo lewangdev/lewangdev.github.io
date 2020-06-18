@@ -2,48 +2,48 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>每日技巧 on 小碼哥</title>
-    <link>//thisiswangle.com/categories/%E6%AF%8F%E6%97%A5%E6%8A%80%E5%B7%A7/</link>
+    <link>//lewang.dev/categories/%E6%AF%8F%E6%97%A5%E6%8A%80%E5%B7%A7/</link>
     <description>Recent content in 每日技巧 on 小碼哥</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <lastBuildDate>Wed, 30 Oct 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="//thisiswangle.com/categories/%E6%AF%8F%E6%97%A5%E6%8A%80%E5%B7%A7/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="//lewang.dev/categories/%E6%AF%8F%E6%97%A5%E6%8A%80%E5%B7%A7/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>使用 wireguard-go 搭建 VPN</title>
-      <link>//thisiswangle.com/posts/2019-10-30-wireguard-go-setup/</link>
+      <link>//lewang.dev/posts/2019-10-30-wireguard-go-setup/</link>
       <pubDate>Wed, 30 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>//thisiswangle.com/posts/2019-10-30-wireguard-go-setup/</guid>
+      <guid>//lewang.dev/posts/2019-10-30-wireguard-go-setup/</guid>
       <description>背景 搭建 VPN 方便连接无公网 IP 云主机进行开发，WireGuard 配置比 OpenVPN 要简单很多，WireGuard 是通过 Linux 内核模块的方式实现的，这样性能最好，但是只能用在 Linux 系统上。本文使用的 wireguard-go， 则是使用 Golang 实现的 WireGuard 协议，属于用户空间(User Space)的实现，性能没有内核模</description>
     </item>
     
     <item>
       <title>树莓派系统日志配置</title>
-      <link>//thisiswangle.com/posts/2019-09-19-rpi-log-config/</link>
+      <link>//lewang.dev/posts/2019-09-19-rpi-log-config/</link>
       <pubDate>Thu, 19 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>//thisiswangle.com/posts/2019-09-19-rpi-log-config/</guid>
+      <guid>//lewang.dev/posts/2019-09-19-rpi-log-config/</guid>
       <description>背景 树莓派 raspbian 系统日志默认的配置会导致日志过大而占用太多的存储空间，并且频繁写日志也可能减短 EMMC 和 SD 卡的寿命，需要重新配置来满足项目的需求。 日志位置 1 2 3 4 5 6 7 8 9 10 11 12 13 14 /var/log /var/log/syslog /var/log/daemon.log /var/log/mail.info /var/log/mail.warn /var/log/mail.err /var/log/mail.log /var/log/kern.log /var/log/auth.log /var/log/user.log /var/log/lpr.log /var/log/cron.log /var/log/debug /var/log/messages 配置 rsyslog 与 logrotate rsyslog 的配置文件为 /etc/rsyslog.conf, 找到其中 RULES 段 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 ############### #### RULES #### ############### #</description>
     </item>
     
     <item>
       <title>如何修改 Linux 用户的 UID 和组的 GID</title>
-      <link>//thisiswangle.com/posts/2019-07-16-change-uid-gid-in-linux/</link>
+      <link>//lewang.dev/posts/2019-07-16-change-uid-gid-in-linux/</link>
       <pubDate>Tue, 16 Jul 2019 00:00:00 +0000</pubDate>
       
-      <guid>//thisiswangle.com/posts/2019-07-16-change-uid-gid-in-linux/</guid>
+      <guid>//lewang.dev/posts/2019-07-16-change-uid-gid-in-linux/</guid>
       <description>问题 在使用 Docker 或者 NFS 的时候，需要文件系统挂在到不同的系统中拥有正确的读写权限，需要指定文件所属用户和组的 uid 和 gid。在创建用户和组的时候，系统会自动分配对应的值，这导致在不同的系统中很容易造成 uid 和 gid 不一样而造成读写权限混乱。 例如在系统 A 中，用户 git 的 uid 和组 git 的gid 如下: 1 2 [sysops@cn-bj-aliyun-3 ~]$ id git</description>
     </item>
     
     <item>
       <title>树莓派 CM3/CM3&#43; 刷写系统</title>
-      <link>//thisiswangle.com/posts/2019-03-01-rpi-cm3-emmc-flashing/</link>
+      <link>//lewang.dev/posts/2019-03-01-rpi-cm3-emmc-flashing/</link>
       <pubDate>Fri, 01 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>//thisiswangle.com/posts/2019-03-01-rpi-cm3-emmc-flashing/</guid>
+      <guid>//lewang.dev/posts/2019-03-01-rpi-cm3-emmc-flashing/</guid>
       <description>准备 阅读Flashing the Compute Module eMMC 准备一个可以刷系统的底板，我用的是微雪Compute-Module-IO-Board-Plus 步骤(Linux 系统下刷系统，可以使用树莓派来刷机) sudo apt install git libusb-1.0-0-dev git clone --depth=1 https://github.com/raspberrypi/usbboot &amp;amp;&amp;amp; cd usbboot &amp;amp;&amp;amp; make sudo ./rpiboot 连好线，跳线部分见各自底板的手册 拔掉 USB SLAVE 1/2/3/4 拔掉 SELECT 跳线帽 将 BOOT ENABLE USB SLAVE 跳线帽</description>
     </item>
     

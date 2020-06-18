@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>database on 小碼哥</title>
-    <link>//thisiswangle.com/tags/database/</link>
+    <link>//lewang.dev/tags/database/</link>
     <description>Recent content in database on 小碼哥</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <lastBuildDate>Mon, 07 Nov 2011 00:40:00 +0000</lastBuildDate>
     
-	<atom:link href="//thisiswangle.com/tags/database/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="//lewang.dev/tags/database/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>摆摊网页面设计</title>
-      <link>//thisiswangle.com/posts/2011-11-07-design-of-baigetan/</link>
+      <link>//lewang.dev/posts/2011-11-07-design-of-baigetan/</link>
       <pubDate>Mon, 07 Nov 2011 00:40:00 +0000</pubDate>
       
-      <guid>//thisiswangle.com/posts/2011-11-07-design-of-baigetan/</guid>
+      <guid>//lewang.dev/posts/2011-11-07-design-of-baigetan/</guid>
       <description>从泰山回来这几天，抽得空把摆摊网的页面做了出来，包括css和html的编写等，现在可以从baitan.sinaapp.com看到页面效果了，目前兼容ie8、ff、chrome、safari等。 baitan001.com也在备案之中，应该很快就可以使用baitan001.com域名</description>
     </item>
     

@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Nginx on 小碼哥</title>
-    <link>//thisiswangle.com/tags/Nginx/</link>
+    <link>//lewang.dev/tags/Nginx/</link>
     <description>Recent content in Nginx on 小碼哥</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <lastBuildDate>Thu, 16 Oct 2014 15:27:00 +0000</lastBuildDate>
     
-	<atom:link href="//thisiswangle.com/tags/Nginx/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="//lewang.dev/tags/Nginx/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Nginx 性能调优「译」</title>
-      <link>//thisiswangle.com/posts/2014-10-16-tuning-nginx/</link>
+      <link>//lewang.dev/posts/2014-10-16-tuning-nginx/</link>
       <pubDate>Thu, 16 Oct 2014 15:27:00 +0000</pubDate>
       
-      <guid>//thisiswangle.com/posts/2014-10-16-tuning-nginx/</guid>
+      <guid>//lewang.dev/posts/2014-10-16-tuning-nginx/</guid>
       <description>这是一篇译文，原文链接：Tuning NGINX for Performance Nginx 为人熟知的是在负载均衡、静态缓存和 WEB 服务器等方面的高性能，目前世界上最繁忙的站点中大约有 40% 在使用 Nginx。绝大多数情况下，大多数默认的 Nginx 和 Linux 配置都可以工作得非常好，但也需要做一些优化以获得最好的性能。本文将讨论在优化系统时需要考虑的 Nginx</description>
     </item>
     

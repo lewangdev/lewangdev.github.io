@@ -762,12 +762,10 @@
   .markdown-body table td,
   .markdown-body table th {
     padding: 6px 13px;
-    border: 1px solid #dfe2e5;
   }
   
   .markdown-body table tr {
     background-color: #fff;
-    border-top: 1px solid #c6cbd1;
   }
   
   .markdown-body table tr:nth-child(2n) {
@@ -812,6 +810,9 @@
   
   .markdown-body .highlight {
     margin-bottom: 16px;
+    border: 1px solid #e7eaed !important;
+    border-radius: 3px;
+    background-color: #f8f8f8 !important;
   }
   
   .markdown-body .highlight pre {
@@ -821,11 +822,11 @@
   
   .markdown-body .highlight pre,
   .markdown-body pre {
-    padding: 16px;
+    padding: 8px;
     overflow: auto;
     font-size: 85%;
     line-height: 1.45;
-    background-color: #f6f8fa;
+    background-color: #f8f8f8 !important;
     border-radius: 3px;
   }
   

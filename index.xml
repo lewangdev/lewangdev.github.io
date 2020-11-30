@@ -6,10 +6,15 @@
     <description>Recent content on 小碼哥</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Wed, 28 Sep 2011 03:40:00 +0000</lastBuildDate>
-    
-	<atom:link href="//lewang.dev/index.xml" rel="self" type="application/rss+xml" />
-    
+    <lastBuildDate>Fri, 27 Nov 2020 00:00:00 +0000</lastBuildDate><atom:link href="//lewang.dev/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>机房不能访问互联网，轻松搞定系统部署</title>
+      <link>//lewang.dev/posts/2020-11-27-go-through-the-system-firewall/</link>
+      <pubDate>Fri, 27 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>//lewang.dev/posts/2020-11-27-go-through-the-system-firewall/</guid>
+      <description>创业这段时间以来，我们的 IoT 系统已经在不少客户的机房做了私有化部署，客户大多都是机加工厂、商业大楼、医院和大学实验室等，客户的机房都有一个相同的特点：私有云，与外网隔离，不能访问互联网。或者更为准确的说，是我们部署的服务器不能访问互联网，在没有互联网访问权限的情况下，系统的包管理工</description>
+    </item>
     
     <item>
       <title>大象（Gradle）的故事：一见如故</title>
@@ -30,7 +35,7 @@
     </item>
     
     <item>
-      <title>使用 wireguard-go 搭建 VPN</title>
+      <title>WireGuard 使用简介</title>
       <link>//lewang.dev/posts/2019-10-30-wireguard-go-setup/</link>
       <pubDate>Wed, 30 Oct 2019 00:00:00 +0000</pubDate>
       

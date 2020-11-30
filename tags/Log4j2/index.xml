@@ -6,11 +6,7 @@
     <description>Recent content in Log4j2 on 小碼哥</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 15 Jul 2017 23:31:00 +0000</lastBuildDate>
-    
-	<atom:link href="//lewang.dev/tags/Log4j2/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sat, 15 Jul 2017 23:31:00 +0000</lastBuildDate><atom:link href="//lewang.dev/tags/Log4j2/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Log4j2 快速入门</title>
       <link>//lewang.dev/posts/2017-07-15-log4j2/</link>

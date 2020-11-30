@@ -6,11 +6,7 @@
     <description>Recent content in Nginx on 小碼哥</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Thu, 16 Oct 2014 15:27:00 +0000</lastBuildDate>
-    
-	<atom:link href="//lewang.dev/tags/Nginx/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Thu, 16 Oct 2014 15:27:00 +0000</lastBuildDate><atom:link href="//lewang.dev/tags/Nginx/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Nginx 性能调优「译」</title>
       <link>//lewang.dev/posts/2014-10-16-tuning-nginx/</link>

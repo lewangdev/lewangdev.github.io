@@ -6,11 +6,7 @@
     <description>Recent content in easy_install on 小碼哥</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 02 Mar 2014 21:16:00 +0000</lastBuildDate>
-    
-	<atom:link href="//lewang.dev/tags/easy_install/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sun, 02 Mar 2014 21:16:00 +0000</lastBuildDate><atom:link href="//lewang.dev/tags/easy_install/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Python on My rMBP</title>
       <link>//lewang.dev/posts/2014-03-02-python-on-my-rmbp/</link>

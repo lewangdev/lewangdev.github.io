@@ -6,11 +6,7 @@
     <description>Recent content in json on 小碼哥</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Thu, 01 Dec 2011 00:40:00 +0000</lastBuildDate>
-    
-	<atom:link href="//lewang.dev/tags/json/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Thu, 01 Dec 2011 00:40:00 +0000</lastBuildDate><atom:link href="//lewang.dev/tags/json/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>jquery $.ajax() 中 datatype 为 json 时的问题</title>
       <link>//lewang.dev/posts/2011-12-01-when-datatype-is-json/</link>

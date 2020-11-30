@@ -3,7 +3,7 @@
 <head>
 
     <meta charset="utf-8">
-    <meta name="generator" content="Hugo 0.68.3" />
+    <meta name="generator" content="Hugo 0.76.5" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -96,7 +96,7 @@
 <pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">$bookFromDouban = new SimpleXMLElement($content);
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#008080">$bookFromDouban</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">new</span> SimpleXMLElement(<span style="color:#008080">$content</span>);
 </code></pre></td></tr></table>
 </div>
 </div><p>直接查询，在命名空间db下的所有attribute，且有name属性，以下xpath查询是没有问题的，</p>
@@ -105,7 +105,7 @@
 <pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">$result = $bookFromDouban-&gt;xpath(&#34;//db:attribute[@name]&#34;);
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#008080">$result</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#008080">$bookFromDouban</span><span style="color:#000;font-weight:bold">-&gt;</span><span style="color:#008080">xpath</span>(<span style="color:#d14">&#34;//db:attribute[@name]&#34;</span>);
 </code></pre></td></tr></table>
 </div>
 </div><p>但是，这条查询就有问题了，如下，</p>
@@ -114,7 +114,7 @@
 <pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">$result = $bookFromDouban-&gt;xpath(&#34;//link[@rel=&#39;self&#39;]|//link[@rel=&#39;image&#39;]&#34;);
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#008080">$result</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#008080">$bookFromDouban</span><span style="color:#000;font-weight:bold">-&gt;</span><span style="color:#008080">xpath</span>(<span style="color:#d14">&#34;//link[@rel=&#39;self&#39;]|//link[@rel=&#39;image&#39;]&#34;</span>);
 </code></pre></td></tr></table>
 </div>
 </div><p>上面的代码表示在默认的命名空间里面查询link节点，但是在php 5.0以上却不能查出数据。需要这样操作</p>
@@ -128,12 +128,12 @@
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">//获取这个xml的所有的命名空间
-$namespaces = $bookFromDouban-&gt;getNamespaces();
-//注册默认的命名空间为&#39;d&#39;
-$bookFromDouban-&gt;registerXPathNamespace(&#39;d&#39;, $namespaces[&#39;&#39;]);
-//现在这个查询就ok了
-$result = $bookFromDouban-&gt;xpath(&#34;//d:link[@rel=&#39;self&#39;]|//d:link[@rel=&#39;image&#39;]&#34;);
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#998;font-style:italic">//获取这个xml的所有的命名空间
+</span><span style="color:#998;font-style:italic"></span><span style="color:#008080">$namespaces</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#008080">$bookFromDouban</span><span style="color:#000;font-weight:bold">-&gt;</span><span style="color:#008080">getNamespaces</span>();
+<span style="color:#998;font-style:italic">//注册默认的命名空间为&#39;d&#39;
+</span><span style="color:#998;font-style:italic"></span><span style="color:#008080">$bookFromDouban</span><span style="color:#000;font-weight:bold">-&gt;</span><span style="color:#008080">registerXPathNamespace</span>(<span style="color:#d14">&#39;d&#39;</span>, <span style="color:#008080">$namespaces</span>[<span style="color:#d14">&#39;&#39;</span>]);
+<span style="color:#998;font-style:italic">//现在这个查询就ok了
+</span><span style="color:#998;font-style:italic"></span><span style="color:#008080">$result</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#008080">$bookFromDouban</span><span style="color:#000;font-weight:bold">-&gt;</span><span style="color:#008080">xpath</span>(<span style="color:#d14">&#34;//d:link[@rel=&#39;self&#39;]|//d:link[@rel=&#39;image&#39;]&#34;</span>);
 </code></pre></td></tr></table>
 </div>
 </div><p>对$result遍历就简单了，这里也给出一个简单的例子，遍历完，变量就初始化了。PS：代码写的不优雅，欢迎拍砖。</p>
@@ -159,22 +159,22 @@ $result = $bookFromDouban-&gt;xpath(&#34;//d:link[@rel=&#39;self&#39;]|//d:link[
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">translator = array();
-$author = array();
-$i = $j = 0;
-foreach($result as $item)
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">translator <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">array</span>();
+<span style="color:#008080">$author</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">array</span>();
+<span style="color:#008080">$i</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#008080">$j</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#099">0</span>;
+<span style="color:#000;font-weight:bold">foreach</span>(<span style="color:#008080">$result</span> <span style="color:#000;font-weight:bold">as</span> <span style="color:#008080">$item</span>)
 {
-    foreach($item-&gt;attributes() as $val)
+    <span style="color:#000;font-weight:bold">foreach</span>(<span style="color:#008080">$item</span><span style="color:#000;font-weight:bold">-&gt;</span><span style="color:#008080">attributes</span>() <span style="color:#000;font-weight:bold">as</span> <span style="color:#008080">$val</span>)
     {
-        $val = str_replace(&#39;-&#39;,&#39;_&#39;,$val);
-        if($val == &#39;author&#39;)
+        <span style="color:#008080">$val</span> <span style="color:#000;font-weight:bold">=</span> str_replace(<span style="color:#d14">&#39;-&#39;</span>,<span style="color:#d14">&#39;_&#39;</span>,<span style="color:#008080">$val</span>);
+        <span style="color:#000;font-weight:bold">if</span>(<span style="color:#008080">$val</span> <span style="color:#000;font-weight:bold">==</span> <span style="color:#d14">&#39;author&#39;</span>)
         {
-            $author[$i++] = &#39;&#39;.$item;
+            <span style="color:#008080">$author</span>[<span style="color:#008080">$i</span><span style="color:#000;font-weight:bold">++</span>] <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#39;&#39;</span><span style="color:#000;font-weight:bold">.</span><span style="color:#008080">$item</span>;
         }
-        else if($val == &#39;translator&#39;)
-            translator[$j++] = &#39;&#39;.$item;
-        else
-            $$val = $item;
+        <span style="color:#000;font-weight:bold">else</span> <span style="color:#000;font-weight:bold">if</span>(<span style="color:#008080">$val</span> <span style="color:#000;font-weight:bold">==</span> <span style="color:#d14">&#39;translator&#39;</span>)
+            translator[<span style="color:#008080">$j</span><span style="color:#000;font-weight:bold">++</span>] <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#39;&#39;</span><span style="color:#000;font-weight:bold">.</span><span style="color:#008080">$item</span>;
+        <span style="color:#000;font-weight:bold">else</span>
+            <span style="color:#008080">$$val</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#008080">$item</span>;
     }
 }
 </code></pre></td></tr></table>

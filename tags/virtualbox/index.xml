@@ -6,11 +6,7 @@
     <description>Recent content in virtualbox on 小碼哥</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Mon, 03 Mar 2014 23:40:00 +0000</lastBuildDate>
-    
-	<atom:link href="//lewang.dev/tags/virtualbox/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Mon, 03 Mar 2014 23:40:00 +0000</lastBuildDate><atom:link href="//lewang.dev/tags/virtualbox/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>使用 Vagrant 构建开发环境</title>
       <link>//lewang.dev/posts/2014-03-03-building-devenv-by-vagrant/</link>

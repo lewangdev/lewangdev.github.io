@@ -6,11 +6,7 @@
     <description>Recent content in python on 小碼哥</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Wed, 29 May 2019 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="//lewang.dev/tags/python/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Wed, 29 May 2019 00:00:00 +0000</lastBuildDate><atom:link href="//lewang.dev/tags/python/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>CentOS 7 上使用 pyenv 安装 Python 3.7.3</title>
       <link>//lewang.dev/posts/2019-05-29-centos7-pyenv-install-python-3/</link>

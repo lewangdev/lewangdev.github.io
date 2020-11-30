@@ -6,11 +6,7 @@
     <description>Recent content in Docker on 小碼哥</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Tue, 18 Dec 2018 23:25:20 +0000</lastBuildDate>
-    
-	<atom:link href="//lewang.dev/tags/Docker/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Tue, 18 Dec 2018 23:25:20 +0000</lastBuildDate><atom:link href="//lewang.dev/tags/Docker/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>使用 Docker 方式安装 Gitlab，没你想得那么简单</title>
       <link>//lewang.dev/posts/2018-12-18-gitlab-docker-install/</link>

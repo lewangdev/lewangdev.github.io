@@ -3,6 +3,36 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>//lewang.dev/tags/IoT/</loc>
+    <lastmod>2020-11-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>//lewang.dev/categories/Linux/</loc>
+    <lastmod>2020-11-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>//lewang.dev/</loc>
+    <lastmod>2020-11-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>//lewang.dev/posts/2020-11-27-go-through-the-system-firewall/</loc>
+    <lastmod>2020-11-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>//lewang.dev/tags/%E7%BD%91%E7%BB%9C%E6%8B%93%E6%89%91/</loc>
+    <lastmod>2020-11-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>//lewang.dev/tags/%E9%83%A8%E7%BD%B2/</loc>
+    <lastmod>2020-11-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>//lewang.dev/categories/Gradle/</loc>
     <lastmod>2020-02-22T00:00:00+00:00</lastmod>
   </url>
@@ -189,11 +219,6 @@
   
   <url>
     <loc>//lewang.dev/tags/fdisk/</loc>
-    <lastmod>2017-08-03T23:55:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>//lewang.dev/categories/Linux/</loc>
     <lastmod>2017-08-03T23:55:00+00:00</lastmod>
   </url>
   
@@ -554,11 +579,6 @@
   
   <url>
     <loc>//lewang.dev/about/</loc>
-    <lastmod>2011-09-28T03:40:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>//lewang.dev/</loc>
     <lastmod>2011-09-28T03:40:00+00:00</lastmod>
   </url>
   

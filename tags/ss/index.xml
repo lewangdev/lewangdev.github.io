@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ss on 小碼哥</title>
+    <link>//lewang.dev/tags/ss/</link>
+    <description>Recent content in ss on 小碼哥</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Wed, 02 Dec 2020 00:00:00 +0000</lastBuildDate><atom:link href="//lewang.dev/tags/ss/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>几行脚本的小插件，打造专属的查资料上网工具</title>
+      <link>//lewang.dev/posts/2020-12-02-add-gost-plugin-for-shadowsocks-ng/</link>
+      <pubDate>Wed, 02 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>//lewang.dev/posts/2020-12-02-add-gost-plugin-for-shadowsocks-ng/</guid>
+      <description>gost 是一个非常有用的网络工具，可以在 ShadowsocksX-NG 中安装 gost 插件，方便在 ShadowsocksX-NG 中使用 gost。 原由 自从查资料上网工具换成 gost 之后，由于 MacOS 上没有 gost 专用的智能代理（也就是该翻的时候翻，不用翻的时候不翻）桌面客户端，所以需要用 gost 在本地把 https 代理转成 ss 后再继续使用 ShadowsocksX-NG。 虽然可以用 launchctl 启动</description>
+    </item>
+    
+  </channel>
+</rss>

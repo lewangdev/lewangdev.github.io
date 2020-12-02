@@ -3,17 +3,37 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>//lewang.dev/tags/gost/</loc>
+    <lastmod>2020-12-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>//lewang.dev/tags/ss/</loc>
+    <lastmod>2020-12-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>//lewang.dev/posts/2020-12-02-add-gost-plugin-for-shadowsocks-ng/</loc>
+    <lastmod>2020-12-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>//lewang.dev/</loc>
+    <lastmod>2020-12-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>//lewang.dev/categories/%E6%AF%8F%E6%97%A5%E6%8A%80%E5%B7%A7/</loc>
+    <lastmod>2020-12-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>//lewang.dev/tags/IoT/</loc>
     <lastmod>2020-11-27T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>//lewang.dev/categories/Linux/</loc>
-    <lastmod>2020-11-27T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>//lewang.dev/</loc>
     <lastmod>2020-11-27T00:00:00+00:00</lastmod>
   </url>
   
@@ -94,11 +114,6 @@
   
   <url>
     <loc>//lewang.dev/posts/2019-10-30-wireguard-go-setup/</loc>
-    <lastmod>2019-10-30T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>//lewang.dev/categories/%E6%AF%8F%E6%97%A5%E6%8A%80%E5%B7%A7/</loc>
     <lastmod>2019-10-30T00:00:00+00:00</lastmod>
   </url>
   

@@ -1,24 +1,25 @@
 <!doctype html>
 <html lang="zh-CN">
+
 <head>
 
     <meta charset="utf-8">
-    <meta name="generator" content="Hugo 0.76.5" />
+    <meta name="generator" content="Hugo 0.89.2" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>日志收集和分析系统架构 - 小碼哥</title>
     <meta property="og:title" content="日志收集和分析系统架构 - 小碼哥">
     <meta property="og:type" content="article">
-        
-    <meta property="article:published_time" content="2017-07-23T22:30:00&#43;08:00">
-        
-        
-    <meta property="article:modified_time" content="2017-07-23T22:30:00&#43;08:00">
-        
+    
+    <meta property="article:published_time" content=" 2017-07-23T22:30:00&#43;08:00">
+    
+    
+    <meta property="article:modified_time" content=" 2017-07-23T22:30:00&#43;08:00">
+    
     <meta name="Keywords" content="IoT, 物联网, 智能硬件，工业互联网方案，智能家居, 智慧工厂, 智慧建筑, Golang, Java, JVM, Python, 树莓派, Linux 玩家，果粉，系统架构，技术管理">
     <meta name="description" content="日志收集和分析系统架构">
-        
+    
     <meta name="author" content="小碼哥">
     <meta property="og:url" content="//lewang.dev/posts/2017-07-23-log-processing-system/">
     
@@ -37,9 +38,9 @@
     <meta name="msapplication-TileColor" content="#FFFFFF">
     <meta name="msapplication-TileImage" content="/images/favicon-144x144.png">
 
-    <link rel="stylesheet" href="/css/normalize.css">
-    <link rel="stylesheet" href="/css/markdown.css">
-    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/%20css/normalize.css">
+    <link rel="stylesheet" href="/%20css/markdown.css">
+    <link rel="stylesheet" href="/%20css/main.css">
     <script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
 
     
@@ -47,7 +48,6 @@
     
     
 </head>
-
 
 <body>
     <header id="header">
@@ -161,7 +161,7 @@
 <h3 id="其它非-jvm-解决方案没有在考虑范围之类包括但不限于">其它非 JVM 解决方案没有在考虑范围之类，包括但不限于：</h3>
 <ul>
 <li>scribe <a href="https://github.com/facebookarchive">https://github.com/facebookarchive</a></li>
-<li>TICK Stack <a href="https://www.influxdata.com/time-series-platform/,">https://www.influxdata.com/time-series-platform/,</a> 比较适合收集服务器和各类服务的 metrics 数据，配合 grafana，可以替代 zabbix 的工作，其中日志存储（output）默认使用 influxdb，influxdb 目前开源只有单机版，但 telegraf 官方支持 output 到 cassandra/kafka/rabbit 等，所以存储也不是问题。前端可以 grafana（支持 kariosdb/influxdb/mysql/opentsdb 等作为数据源）。</li>
+<li>TICK Stack <a href="https://www.influxdata.com/time-series-platform/">https://www.influxdata.com/time-series-platform/</a>, 比较适合收集服务器和各类服务的 metrics 数据，配合 grafana，可以替代 zabbix 的工作，其中日志存储（output）默认使用 influxdb，influxdb 目前开源只有单机版，但 telegraf 官方支持 output 到 cassandra/kafka/rabbit 等，所以存储也不是问题。前端可以 grafana（支持 kariosdb/influxdb/mysql/opentsdb 等作为数据源）。</li>
 <li>rsync 直接同步日志到指定机器，然后在机器上集中处理，使用 mysql/postgresql 等存储日志，目前的量是可以的，但是也需要做不少开发工作</li>
 </ul>
 
@@ -236,7 +236,7 @@
     </div>
     <footer id="footer">
     <div class="container">
-        &copy; 2011-2020 <a href="//lewang.dev/">小碼哥</a>.
+        &copy; 2011-2022 <a href="//lewang.dev/">小碼哥</a>.
         <a href="//lewang.dev/index.xml">订阅 RSS</a>
     </div>
 </footer>

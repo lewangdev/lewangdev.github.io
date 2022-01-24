@@ -6,16 +6,7 @@
     <description>Recent content on 小碼哥</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Wed, 02 Dec 2020 00:00:00 +0000</lastBuildDate><atom:link href="//lewang.dev/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>一个有点用的 gost 插件</title>
-      <link>//lewang.dev/posts/2020-12-02-add-gost-plugin-for-shadowsocks-ng/</link>
-      <pubDate>Wed, 02 Dec 2020 00:00:00 +0000</pubDate>
-      
-      <guid>//lewang.dev/posts/2020-12-02-add-gost-plugin-for-shadowsocks-ng/</guid>
-      <description>gost 是一个非常有用的网络工具，可以在 ShadowsocksX-NG 中安装 gost 插件，方便在 ShadowsocksX-NG 中使用 gost。 原由 自从查资料上网工具换成 gost 之后，由于 MacOS 上没有 gost 专用的智能代理（也就是该翻的时候翻，不用翻的时候不翻）桌面客户端，所以需要用 gost 在本地把 https 代理转成 ss 后再继续使用 ShadowsocksX-NG。 虽然可以用 launchctl 启动</description>
-    </item>
-    
+    <lastBuildDate>Fri, 27 Nov 2020 00:00:00 +0000</lastBuildDate><atom:link href="//lewang.dev/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>机房不能访问互联网，轻松搞定系统部署</title>
       <link>//lewang.dev/posts/2020-11-27-go-through-the-system-firewall/</link>
@@ -382,7 +373,7 @@
       <pubDate>Wed, 28 Sep 2011 03:40:00 +0000</pubDate>
       
       <guid>//lewang.dev/about/</guid>
-      <description>小碼哥，或樂哥 过往与向往 兲朝哏都七里台职业技术学院相声专业(CS)硕士毕业 混迹六七八三个里台八年，走了一条学生、老师、学生曲折漫长的校园之路，除了一纸文凭之外，更是收获了爱情、友情和师生情 喜折腾，瞎折腾，机缘巧合来到魔都并定居在此 技校授得一技之长，努力成为一名匠人 联系方式 Email: thisiswangle{{at}}gmail.com 微博</description>
+      <description>小碼哥，或樂哥 过往与向往 兲朝哏都七里台职业技术学院相声专业(CS)硕士毕业 混迹六七八三个里台八年，走了一条学生、老师、学生曲折漫长的校园之路，除了一纸文凭之外，更是收获了爱情、友情和师生情 喜折腾，瞎折腾，机缘巧合来到魔都并定居在此 技校授得一技之长，努力成为一名匠人 联系方式 Email: lewang.dev{{at}}gmail.com 微博</description>
     </item>
     
     <item>

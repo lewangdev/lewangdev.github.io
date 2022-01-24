@@ -1,25 +1,26 @@
 <!doctype html>
 <html lang="zh-CN">
+
 <head>
 
     <meta charset="utf-8">
-    <meta name="generator" content="Hugo 0.76.5" />
+    <meta name="generator" content="Hugo 0.89.2" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>使用 Vagrant 构建开发环境 - 小碼哥</title>
     <meta property="og:title" content="使用 Vagrant 构建开发环境 - 小碼哥">
     <meta property="og:type" content="article">
-        
-    <meta property="article:published_time" content="2014-03-03T23:40:00&#43;08:00">
-        
-        
-    <meta property="article:modified_time" content="2014-03-03T23:40:00&#43;08:00">
-        
+    
+    <meta property="article:published_time" content=" 2014-03-03T23:40:00&#43;08:00">
+    
+    
+    <meta property="article:modified_time" content=" 2014-03-03T23:40:00&#43;08:00">
+    
     <meta name="Keywords" content="IoT, 物联网, 智能硬件，工业互联网方案，智能家居, 智慧工厂, 智慧建筑, Golang, Java, JVM, Python, 树莓派, Linux 玩家，果粉，系统架构，技术管理">
     <meta name="description" content="使用 Vagrant 构建开发环境">
-        <meta name="author" content="Le">
-        
+    <meta name="author" content="Le">
+    
     <meta property="og:url" content="//lewang.dev/posts/2014-03-03-building-devenv-by-vagrant/">
     
     <link rel="shortcut icon" href="/favicon.ico">
@@ -37,9 +38,9 @@
     <meta name="msapplication-TileColor" content="#FFFFFF">
     <meta name="msapplication-TileImage" content="/images/favicon-144x144.png">
 
-    <link rel="stylesheet" href="/css/normalize.css">
-    <link rel="stylesheet" href="/css/markdown.css">
-    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/%20css/normalize.css">
+    <link rel="stylesheet" href="/%20css/markdown.css">
+    <link rel="stylesheet" href="/%20css/main.css">
     <script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
 
     
@@ -47,7 +48,6 @@
     
     
 </head>
-
 
 <body>
     <header id="header">
@@ -88,10 +88,10 @@
 <h2 id="添加虚拟机镜像到-vagrant">添加虚拟机镜像到 Vagrant</h2>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">vagrant box add vdevenv ~/Workspace/vagrant/boxes/vdevenv-0.0.0.1.box
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">vagrant box add vdevenv ~/Workspace/vagrant/boxes/vdevenv-0.0.0.1.box
 </code></pre></td></tr></table>
 </div>
 </div><p>vagrant 的干净的镜像可以在这里下载:</p>
@@ -104,12 +104,12 @@
 <p>进入自己的代码所在的目录，启动刚刚添加的虚拟机镜像</p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">vagrant init vdevenv
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">vagrant init vdevenv
 vagrant up
 vagrant ssh  # 登录到虚拟机
 </code></pre></td></tr></table>
@@ -120,23 +120,23 @@ vagrant ssh  # 登录到虚拟机
 <h2 id="分享开发环境">分享开发环境</h2>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">vagrant package
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">vagrant package
 </code></pre></td></tr></table>
 </div>
 </div><p>执行之后在工作目录下面会生成一个*.bax的文件，把这个文件拷给别人就可以了</p>
 <h2 id="常用-vagrant-命令">常用 Vagrant 命令</h2>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">vagrant ssh
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">vagrant ssh
 vagrant status
 vagrant halt
 vagrant up
@@ -210,7 +210,7 @@ vagrant up
     </div>
     <footer id="footer">
     <div class="container">
-        &copy; 2011-2020 <a href="//lewang.dev/">小碼哥</a>.
+        &copy; 2011-2022 <a href="//lewang.dev/">小碼哥</a>.
         <a href="//lewang.dev/index.xml">订阅 RSS</a>
     </div>
 </footer>

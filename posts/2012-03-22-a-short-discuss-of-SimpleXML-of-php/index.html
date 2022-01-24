@@ -1,25 +1,26 @@
 <!doctype html>
 <html lang="zh-CN">
+
 <head>
 
     <meta charset="utf-8">
-    <meta name="generator" content="Hugo 0.76.5" />
+    <meta name="generator" content="Hugo 0.89.2" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>再说 PHP 中 SimpleXML - 小碼哥</title>
     <meta property="og:title" content="再说 PHP 中 SimpleXML - 小碼哥">
     <meta property="og:type" content="article">
-        
-    <meta property="article:published_time" content="2012-03-22T00:40:00&#43;08:00">
-        
-        
-    <meta property="article:modified_time" content="2012-03-22T00:40:00&#43;08:00">
-        
+    
+    <meta property="article:published_time" content=" 2012-03-22T00:40:00&#43;08:00">
+    
+    
+    <meta property="article:modified_time" content=" 2012-03-22T00:40:00&#43;08:00">
+    
     <meta name="Keywords" content="IoT, 物联网, 智能硬件，工业互联网方案，智能家居, 智慧工厂, 智慧建筑, Golang, Java, JVM, Python, 树莓派, Linux 玩家，果粉，系统架构，技术管理">
     <meta name="description" content="再说 PHP 中 SimpleXML">
-        <meta name="author" content="Le">
-        
+    <meta name="author" content="Le">
+    
     <meta property="og:url" content="//lewang.dev/posts/2012-03-22-a-short-discuss-of-SimpleXML-of-php/">
     
     <link rel="shortcut icon" href="/favicon.ico">
@@ -37,9 +38,9 @@
     <meta name="msapplication-TileColor" content="#FFFFFF">
     <meta name="msapplication-TileImage" content="/images/favicon-144x144.png">
 
-    <link rel="stylesheet" href="/css/normalize.css">
-    <link rel="stylesheet" href="/css/markdown.css">
-    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/%20css/normalize.css">
+    <link rel="stylesheet" href="/%20css/markdown.css">
+    <link rel="stylesheet" href="/%20css/main.css">
     <script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
 
     
@@ -47,7 +48,6 @@
     
     
 </head>
-
 
 <body>
     <header id="header">
@@ -88,11 +88,11 @@
 <p>从豆瓣API开始，点击这个链接 <a href="http://api.douban.com/book/subjects?q=java">http://api.douban.com/book/subjects?q=java</a> 你就可以看到xml格式，由于返回的是Atom格式的xml，浏览器会自动帮你解析，所以应该这样</p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#998;font-style:italic"># 这样就可以得到一个java.xml文件。</span>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#998;font-style:italic"># 这样就可以得到一个java.xml文件。</span>
 $ wget -O java.xml http://api.douban.com/book/subjects?q<span style="color:#000;font-weight:bold">=</span>java
 </code></pre></td></tr></table>
 </div>
@@ -100,29 +100,29 @@ $ wget -O java.xml http://api.douban.com/book/subjects?q<span style="color:#000;
 <p>首先要创建一个SimpleXML对象</p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">//$content为xml的内容
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">//$content为xml的内容
 $xml = new SimpleXMLElement($content);
 </code></pre></td></tr></table>
 </div>
 </div><p>现在要获取opensearch命名空间下的totalResults节点的文本，代码如下：</p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$children = $xml-&gt;children(&#39;http://a9.com/-/spec/opensearchrss/1.0/&#39;);
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$children = $xml-&gt;children(&#39;http://a9.com/-/spec/opensearchrss/1.0/&#39;);
 $totalResults = $children-&gt;totalResults;
 </code></pre></td></tr></table>
 </div>
 </div><p>处理所有xml文档中所有的entry节点</p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
@@ -131,7 +131,7 @@ $totalResults = $children-&gt;totalResults;
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">//处理所有找到的记录
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">//处理所有找到的记录
 $entries = $xml-&gt;entry;
 foreach($entries as $entry){
 //取命名空间下的孩子节点
@@ -207,7 +207,7 @@ $entryChildren = $entry-&gt;children(&#39;http://www.douban.com/xmlns/&#39;);
     </div>
     <footer id="footer">
     <div class="container">
-        &copy; 2011-2020 <a href="//lewang.dev/">小碼哥</a>.
+        &copy; 2011-2022 <a href="//lewang.dev/">小碼哥</a>.
         <a href="//lewang.dev/index.xml">订阅 RSS</a>
     </div>
 </footer>

@@ -1,24 +1,25 @@
 <!doctype html>
 <html lang="zh-CN">
+
 <head>
 
     <meta charset="utf-8">
-    <meta name="generator" content="Hugo 0.76.5" />
+    <meta name="generator" content="Hugo 0.89.2" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>大象（Gradle）的故事：一见如故 - 小碼哥</title>
     <meta property="og:title" content="大象（Gradle）的故事：一见如故 - 小碼哥">
     <meta property="og:type" content="article">
-        
-    <meta property="article:published_time" content="2020-02-22T00:00:00&#43;08:00">
-        
-        
-    <meta property="article:modified_time" content="2020-02-22T00:00:00&#43;08:00">
-        
+    
+    <meta property="article:published_time" content=" 2020-02-22T00:00:00&#43;08:00">
+    
+    
+    <meta property="article:modified_time" content=" 2020-02-22T00:00:00&#43;08:00">
+    
     <meta name="Keywords" content="IoT, 物联网, 智能硬件，工业互联网方案，智能家居, 智慧工厂, 智慧建筑, Golang, Java, JVM, Python, 树莓派, Linux 玩家，果粉，系统架构，技术管理">
     <meta name="description" content="大象（Gradle）的故事：一见如故">
-        
+    
     <meta name="author" content="小碼哥">
     <meta property="og:url" content="//lewang.dev/posts/2020-02-22-hello-gradle-1/">
     
@@ -37,9 +38,9 @@
     <meta name="msapplication-TileColor" content="#FFFFFF">
     <meta name="msapplication-TileImage" content="/images/favicon-144x144.png">
 
-    <link rel="stylesheet" href="/css/normalize.css">
-    <link rel="stylesheet" href="/css/markdown.css">
-    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/%20css/normalize.css">
+    <link rel="stylesheet" href="/%20css/markdown.css">
+    <link rel="stylesheet" href="/%20css/main.css">
     <script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
 
     
@@ -47,7 +48,6 @@
     
     
 </head>
-
 
 <body>
     <header id="header">
@@ -123,16 +123,16 @@
 <p>settings.gradle</p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">rootProject<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">name</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#39;MyProject&#39;</span>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">rootProject<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">name</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#39;MyProject&#39;</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>build.gradle</p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
@@ -150,7 +150,7 @@
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">plugins <span style="color:#000;font-weight:bold">{</span>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">plugins <span style="color:#000;font-weight:bold">{</span>
     id <span style="color:#d14">&#39;java&#39;</span>
 <span style="color:#000;font-weight:bold">}</span>
 
@@ -207,12 +207,12 @@ dependencies <span style="color:#000;font-weight:bold">{</span>
 <p>我们再回过头来看看 build.gradle, 比如这段代码</p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">dependencies <span style="color:#000;font-weight:bold">{</span>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">dependencies <span style="color:#000;font-weight:bold">{</span>
     testCompile <span style="color:#900;font-weight:bold">group:</span> <span style="color:#d14">&#39;junit&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#900;font-weight:bold">name:</span> <span style="color:#d14">&#39;junit&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#900;font-weight:bold">version:</span> <span style="color:#d14">&#39;4.12&#39;</span>
 <span style="color:#000;font-weight:bold">}</span>
 </code></pre></td></tr></table>
@@ -225,10 +225,10 @@ dependencies <span style="color:#000;font-weight:bold">{</span>
 <p>也就是说，Gradle 的 Project 构建过程是由一系列 Task 组成的，我们可以通过这个命令查看项目默认的有哪些 Task。好，我们把 idea 创建的 build.gradle 清空，然后执行下面的命令。</p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">gradle tasks
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">gradle tasks
 </code></pre></td></tr></table>
 </div>
 </div><p>可以看到所有默认的 Task。</p>
@@ -236,12 +236,12 @@ dependencies <span style="color:#000;font-weight:bold">{</span>
 <p>接着一步步恢复 idea 默认创建的 build.gradle，先往空的 build.gradle 文件中添加：</p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">plugins <span style="color:#000;font-weight:bold">{</span>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">plugins <span style="color:#000;font-weight:bold">{</span>
     id <span style="color:#d14">&#39;java&#39;</span>
 <span style="color:#000;font-weight:bold">}</span>
 </code></pre></td></tr></table>
@@ -253,13 +253,13 @@ dependencies <span style="color:#000;font-weight:bold">{</span>
 <p>每一个 Project 包括一系列的 Task，同样，每个 Project 也有很多的属性，例如添加这里代码来修改属性：</p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">group <span style="color:#d14">&#39;org.example&#39;</span>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">group <span style="color:#d14">&#39;org.example&#39;</span>
 version <span style="color:#d14">&#39;1.0-SNAPSHOT&#39;</span>
 
 sourceCompatibility <span style="color:#000;font-weight:bold">=</span> <span style="color:#099">1.8</span>
@@ -268,10 +268,10 @@ sourceCompatibility <span style="color:#000;font-weight:bold">=</span> <span sty
 </div><p>我们可以在 build.gradle 中对 Project 的属性进行修改，也可以像查看 Task 一样来查看 Project 所有的属性：</p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">gradle properties
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">gradle properties
 </code></pre></td></tr></table>
 </div>
 </div><p>哇，Project 的属性还真不少（只截取了部分属性）。</p>
@@ -280,7 +280,7 @@ sourceCompatibility <span style="color:#000;font-weight:bold">=</span> <span sty
 <p>Gradle 的构建过程包括三个阶段：初始化（Initialization）、配置（Configuration）和执行（Execution），为了弄清楚这三个阶段，我们在 build.gradle 中添加这样代码：</p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
@@ -306,7 +306,7 @@ sourceCompatibility <span style="color:#000;font-weight:bold">=</span> <span sty
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">println <span style="color:#d14">&#34;config&#34;</span>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">println <span style="color:#d14">&#34;config&#34;</span>
 
 task task1 <span style="color:#000;font-weight:bold">{</span>
     println <span style="color:#d14">&#34;config in task1&#34;</span>
@@ -335,19 +335,19 @@ task task3 <span style="color:#000;font-weight:bold">{</span>
 </div><p>在 settings.gradle 中添加：</p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">println <span style="color:#d14">&#34;init&#34;</span>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">println <span style="color:#d14">&#34;init&#34;</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>然后执行：</p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">gradle task2 task3
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">gradle task2 task3
 </code></pre></td></tr></table>
 </div>
 </div><p>可以看到这样的输出：</p>
@@ -434,7 +434,7 @@ task task3 <span style="color:#000;font-weight:bold">{</span>
     </div>
     <footer id="footer">
     <div class="container">
-        &copy; 2011-2020 <a href="//lewang.dev/">小碼哥</a>.
+        &copy; 2011-2022 <a href="//lewang.dev/">小碼哥</a>.
         <a href="//lewang.dev/index.xml">订阅 RSS</a>
     </div>
 </footer>

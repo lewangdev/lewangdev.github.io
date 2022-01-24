@@ -1,25 +1,26 @@
 <!doctype html>
 <html lang="zh-CN">
+
 <head>
 
     <meta charset="utf-8">
-    <meta name="generator" content="Hugo 0.76.5" />
+    <meta name="generator" content="Hugo 0.89.2" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Github Pages 服务的域名设置 - 小碼哥</title>
     <meta property="og:title" content="Github Pages 服务的域名设置 - 小碼哥">
     <meta property="og:type" content="article">
-        
-    <meta property="article:published_time" content="2014-05-06T22:51:00&#43;08:00">
-        
-        
-    <meta property="article:modified_time" content="2014-05-06T22:51:00&#43;08:00">
-        
+    
+    <meta property="article:published_time" content=" 2014-05-06T22:51:00&#43;08:00">
+    
+    
+    <meta property="article:modified_time" content=" 2014-05-06T22:51:00&#43;08:00">
+    
     <meta name="Keywords" content="IoT, 物联网, 智能硬件，工业互联网方案，智能家居, 智慧工厂, 智慧建筑, Golang, Java, JVM, Python, 树莓派, Linux 玩家，果粉，系统架构，技术管理">
     <meta name="description" content="Github Pages 服务的域名设置">
-        <meta name="author" content="Le">
-        
+    <meta name="author" content="Le">
+    
     <meta property="og:url" content="//lewang.dev/posts/2014-05-06-github-pages-dns-settings/">
     
     <link rel="shortcut icon" href="/favicon.ico">
@@ -37,9 +38,9 @@
     <meta name="msapplication-TileColor" content="#FFFFFF">
     <meta name="msapplication-TileImage" content="/images/favicon-144x144.png">
 
-    <link rel="stylesheet" href="/css/normalize.css">
-    <link rel="stylesheet" href="/css/markdown.css">
-    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/%20css/normalize.css">
+    <link rel="stylesheet" href="/%20css/markdown.css">
+    <link rel="stylesheet" href="/%20css/main.css">
     <script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
 
     
@@ -47,7 +48,6 @@
     
     
 </head>
-
 
 <body>
     <header id="header">
@@ -88,7 +88,7 @@
 <blockquote>
 <p>The page build completed successfully, but returned the following warning:</p>
 <p>GitHub Pages recently underwent some improvements (<a href="https://github.com/blog/1715-faster-more-awesome-github-pages">https://github.com/blog/1715-faster-more-awesome-github-pages</a>) to make your site faster and more awesome, but we&rsquo;ve noticed that iforget.info isn&rsquo;t properly configured to take advantage of these new features. While your site will continue to work just fine, updating your domain&rsquo;s configuration offers some additional speed and performance benefits. Instructions on updating your site&rsquo;s IP address can be found at
-<a href="https://help.github.com/articles/setting-up-a-custom-domain-with-github-pages#step-2-configure-dns-records,">https://help.github.com/articles/setting-up-a-custom-domain-with-github-pages#step-2-configure-dns-records,</a> and of course, you can always get in touch with a human at <a href="mailto:support@github.com">support@github.com</a>. For the more technical minded folks who want to skip the help docs: your site&rsquo;s DNS records are pointed to a deprecated IP address.</p>
+<a href="https://help.github.com/articles/setting-up-a-custom-domain-with-github-pages#step-2-configure-dns-records">https://help.github.com/articles/setting-up-a-custom-domain-with-github-pages#step-2-configure-dns-records</a>, and of course, you can always get in touch with a human at <a href="mailto:support@github.com">support@github.com</a>. For the more technical minded folks who want to skip the help docs: your site&rsquo;s DNS records are pointed to a deprecated IP address.</p>
 <p>For information on troubleshooting Jekyll see:</p>
 <p><a href="https://help.github.com/articles/using-jekyll-with-pages#troubleshooting">https://help.github.com/articles/using-jekyll-with-pages#troubleshooting</a></p>
 <p>If you have any questions please contact us at <a href="https://github.com/contact">https://github.com/contact</a>.</p>
@@ -107,7 +107,7 @@
 <p>好了，静候 DNS 生效。</p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
@@ -125,7 +125,7 @@
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">➜  ~  dig iforget.info +nostats +nocomments +nocmd
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">➜  ~  dig iforget.info +nostats +nocomments +nocmd
 
 ; &lt;&lt;&gt;&gt; DiG 9.8.3-P1 &lt;&lt;&gt;&gt; iforget.info +nostats +nocomments +nocmd
 ;; global options: +cmd
@@ -221,7 +221,7 @@ ns4.p04.dynect.net.     153     IN      A       204.13.251.4
     </div>
     <footer id="footer">
     <div class="container">
-        &copy; 2011-2020 <a href="//lewang.dev/">小碼哥</a>.
+        &copy; 2011-2022 <a href="//lewang.dev/">小碼哥</a>.
         <a href="//lewang.dev/index.xml">订阅 RSS</a>
     </div>
 </footer>

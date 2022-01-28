@@ -370,6 +370,10 @@ a:active {
     margin-bottom: 0px !important;
 }
 
+.post h1 {
+    font-size: 1.8em;
+}
+
 .post-meta {
     padding: 0;
     margin: 8px 0 0;
@@ -439,8 +443,11 @@ a:active {
     border-bottom-color: #111;
 }
 
-#footer {
+#footer,
+#footer a {
     margin: 24px 0;
+    color: #999;
+    font-size: 13px;
 }
 
 

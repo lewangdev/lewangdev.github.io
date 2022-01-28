@@ -38,9 +38,9 @@
     <meta name="msapplication-TileColor" content="#FFFFFF">
     <meta name="msapplication-TileImage" content="/images/favicon-144x144.png">
 
-    <link rel="stylesheet" href="/%20css/normalize.css">
-    <link rel="stylesheet" href="/%20css/markdown.css">
-    <link rel="stylesheet" href="/%20css/main.css">
+    <link rel="stylesheet" href="/css/normalize.css">
+    <link rel="stylesheet" href="/css/markdown.css">
+    <link rel="stylesheet" href="/css/main.css">
     <script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
 
     
@@ -53,9 +53,22 @@
     <header id="header">
     <div class="container clearfix">
     
-        <div class="header-image">
-            <img src="/images/aboutme.png" >
+        <div class="site-name ">
+            <a id="logo" href="//lewang.dev/">
+                <img src="/images/logo-2x.png" alt="小碼哥">
+            </a>
         </div>
+        <nav id="nav-menu" class="clearfix">
+            <a class=""
+                href="//lewang.dev/">首页</a>
+            
+            <a  href="//lewang.dev/archives/"
+                title="归档">归档</a>
+            
+            <a class="current"  href="//lewang.dev/about/"
+                title="关于">关于</a>
+            
+        </nav>
     
     </div>
 </header>
@@ -64,12 +77,8 @@
         <div class="container">
             <article class="post">
                 <h1 class="post-title">关于我</h1>
-                <div class="post-meta">
-                    <span>Sep 28, 2011</span>
                 
                 
-                </div>
-                <div style="height: 1px; border-top: 1px #eee solid; margin-top: 16px;"></div>
                 <div class="post-content markdown-body">
                     
                     <p>小碼哥，或樂哥</p>
@@ -109,21 +118,22 @@
     </div>
     <footer id="footer">
     <div class="container">
-        &copy; 2011-2022 <a href="//lewang.dev/">小碼哥</a>.
-        <a href="//lewang.dev/index.xml">订阅 RSS</a>
+        Copyright &copy; 2011-2022 <a href="//lewang.dev/">小碼哥</a>, All
+        rights reserved.
+        <a href="//lewang.dev/%20index.xml">订阅 RSS</a>
     </div>
 </footer>
 
 
-    <script type="text/javascript">
+<script type="text/javascript">
     window.MathJax = {
         tex2jax: {
-            inlineMath: [ ['$','$'] ],
+            inlineMath: [['$', '$']],
             processEscapes: true
         }
     };
-    </script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+</script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
 
 
 <script type="application/javascript">
@@ -136,7 +146,6 @@ if (!doNotTrack) {
 }
 </script>
 <script async src='https://www.google-analytics.com/analytics.js'></script>
-
 
 
 

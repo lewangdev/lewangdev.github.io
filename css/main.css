@@ -413,7 +413,7 @@ a:active {
 }
 
 .page-navigator {
-    border-top: 1px solid #ddd;
+    border-top: 1px solid #f9f9f9;
     list-style: none;
     padding: 25px 0 0;
     font-size: 16px;
@@ -426,21 +426,21 @@ a:active {
 
 .page-navigator a {
     display: inline-block;
-    padding: 0 10px;
     height: 25px;
     line-height: 25px;
-    padding: 5px 9px;
+    padding: 5px 10px;
     border: 1px solid #DDD;
+    border-radius: 10px;
 }
 
 .page-navigator a:hover {
     background: #F8F8F8;
-    border-bottom-color: #111;
+    border-color: #111;
 }
 
 .page-navigator .current a {
     background: #F8F8F8;
-    border-bottom-color: #111;
+    border-color: #111;
 }
 
 #footer,

@@ -4,7 +4,7 @@
 <head>
 
     <meta charset="utf-8">
-    <meta name="generator" content="Hugo 0.89.2" />
+    <meta name="generator" content="Hugo 0.96.0" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -170,7 +170,7 @@
 <p>为了启用 Nginx 到后端服务器的持久化连接，需要添加一下指令：</p>
 <ul>
 <li>proxy_http_version 1.1;</li>
-<li>proxy_set_header Connection &ldquo;&quot;;</li>
+<li>proxy_set_header Connection &ldquo;&rdquo;;</li>
 </ul>
 <h3 id="访问日志">访问日志</h3>
 <p>记录每个请求的访问日志会占用 CPU 和 I/O 周期，启用访问日志缓冲可以减小影响。启动访问日志缓冲会使得 Nginx 缓存一些列日志记录到缓存中，然后在同一时间将他们写到文件中，而不是分开的执行每一个写操作。启用访问日志缓存功能需要在 Nginx 配置文件的 access_log 指令中使用 &ldquo;buffer=size&rdquo; 选项。这个是设置将要使用的缓存大小。也可以设置 &ldquo;flush=time&rdquo; 选项来告诉 Nginx
@@ -233,11 +233,11 @@ Nginx 可以利用它通过 socket 发送缓存的或者磁盘上的内容，并
         
         <li><a href="/posts/2014-05-06-github-pages-dns-settings/">Github Pages 服务的域名设置</a></li>
         
-        <li><a href="/posts/2014-04-26-power-of-understanding/">悟性</a></li>
+        <li><a href="/posts/archvied/2014-04-26-power-of-understanding/">悟性</a></li>
         
-        <li><a href="/posts/2014-04-25-grow-up/">成长</a></li>
+        <li><a href="/posts/archvied/2014-04-25-grow-up/">成长</a></li>
         
-        <li><a href="/posts/2014-03-13-who-is-De-Broglie/">谁是德布罗意</a></li>
+        <li><a href="/posts/archvied/2014-03-13-who-is-De-Broglie/">谁是德布罗意</a></li>
         
     </ul>
 </div>

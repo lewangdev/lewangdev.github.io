@@ -4,7 +4,7 @@
 <head>
 
     <meta charset="utf-8">
-    <meta name="generator" content="Hugo 0.89.2" />
+    <meta name="generator" content="Hugo 0.96.0" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -123,18 +123,18 @@
 <tr>
 <td>A</td>
 <td>zhihu.com</td>
-<td>使用 301 跳转到 <a href="http://www.zhuhu.com">www.zhuhu.com</a></td>
+<td>使用 301 跳转到 <a href="https://www.zhuhu.com">www.zhuhu.com</a></td>
 <td>IP</td>
 </tr>
 <tr>
 <td>A</td>
 <td>zhi.hu</td>
-<td>使用 302 跳转到 <a href="http://www.zhihu.com">www.zhihu.com</a></td>
+<td>使用 302 跳转到 <a href="https://www.zhihu.com">www.zhihu.com</a></td>
 <td>IP</td>
 </tr>
 <tr>
 <td>A</td>
-<td><a href="http://www.zhihu.com">www.zhihu.com</a></td>
+<td><a href="https://www.zhihu.com">www.zhihu.com</a></td>
 <td></td>
 <td>IP</td>
 </tr>
@@ -152,18 +152,18 @@
 </tr>
 </tbody>
 </table>
-<p>大部分都是用了 301 或者 302 跳转，注意他们的区别：301 是永久跳转(浏览器会做客户端端缓存)，而 302 是临时跳转。此外 baidu.com 到 <a href="http://www.baidu.com">www.baidu.com</a> 并不是使用 301 或者 302 ，而是使用下面的一段 HTML 代码</p>
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+<p>大部分都是用了 301 或者 302 跳转，注意他们的区别：301 是永久跳转(浏览器会做客户端端缓存)，而 302 是临时跳转。此外 baidu.com 到 <a href="https://www.baidu.com">www.baidu.com</a> 并不是使用 301 或者 302 ，而是使用下面的一段 HTML 代码</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#000080">html</span>&gt;
-&lt;<span style="color:#000080">meta</span> <span style="color:#008080">http-equiv</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;refresh&#34;</span> <span style="color:#008080">content</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;0;url=http://www.baidu.com/&#34;</span>&gt;
-&lt;/<span style="color:#000080">html</span>&gt;
-</code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#000080">html</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#000080">meta</span> <span style="color:#008080">http-equiv</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;refresh&#34;</span> <span style="color:#008080">content</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;0;url=http://www.baidu.com/&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#000080">html</span>&gt;
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>相比而言，我觉得使用 301 更 Geek，更好一些。</p>
 <h2 id="cdn-使用">CDN 使用</h2>

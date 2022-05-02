@@ -35,18 +35,6 @@
     <loc>//lewang.dev/posts/2020-02-22-hello-gradle-1/</loc>
     <lastmod>2020-02-22T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>//lewang.dev/categories/%E5%B0%8F%E7%B3%8D%E7%B2%91/</loc>
-    <lastmod>2019-11-02T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>//lewang.dev/posts/archvied/2019-11-02-fangta-paintings/</loc>
-    <lastmod>2019-11-02T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>//lewang.dev/tags/%E7%BB%98%E7%94%BB/</loc>
-    <lastmod>2019-11-02T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>//lewang.dev/tags/%E8%82%B2%E5%84%BF/</loc>
-    <lastmod>2019-11-02T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>//lewang.dev/tags/Linux/</loc>
     <lastmod>2019-10-30T00:00:00+00:00</lastmod>
   </url><url>
@@ -61,9 +49,6 @@
   </url><url>
     <loc>//lewang.dev/categories/%E6%AF%8F%E6%97%A5%E6%8A%80%E5%B7%A7/</loc>
     <lastmod>2019-10-30T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>//lewang.dev/posts/archvied/2019-10-13-sons-paintings/</loc>
-    <lastmod>2019-10-13T00:00:00+00:00</lastmod>
   </url><url>
     <loc>//lewang.dev/tags/Raspberry/</loc>
     <lastmod>2019-09-19T00:00:00+00:00</lastmod>
@@ -173,21 +158,6 @@
     <loc>//lewang.dev/tags/xtrabackup/</loc>
     <lastmod>2017-06-06T12:15:07+00:00</lastmod>
   </url><url>
-    <loc>//lewang.dev/tags/%E4%B8%B4%E7%89%8C/</loc>
-    <lastmod>2016-01-28T11:55:00+00:00</lastmod>
-  </url><url>
-    <loc>//lewang.dev/posts/archvied/2016-01-28-banlinpai/</loc>
-    <lastmod>2016-01-28T11:55:00+00:00</lastmod>
-  </url><url>
-    <loc>//lewang.dev/tags/%E9%AD%94%E9%83%BD%E7%94%9F%E5%AD%98%E6%89%8B%E5%86%8C/</loc>
-    <lastmod>2016-01-28T11:55:00+00:00</lastmod>
-  </url><url>
-    <loc>//lewang.dev/tags/%E9%A9%BE%E7%85%A7/</loc>
-    <lastmod>2015-10-15T11:55:00+00:00</lastmod>
-  </url><url>
-    <loc>//lewang.dev/posts/archvied/2015-10-15-huanzheng/</loc>
-    <lastmod>2015-10-15T11:55:00+00:00</lastmod>
-  </url><url>
     <loc>//lewang.dev/tags/Nginx/</loc>
     <lastmod>2014-10-16T15:27:00+00:00</lastmod>
   </url><url>
@@ -214,27 +184,6 @@
   </url><url>
     <loc>//lewang.dev/posts/2014-05-06-github-pages-dns-settings/</loc>
     <lastmod>2014-05-06T22:51:00+00:00</lastmod>
-  </url><url>
-    <loc>//lewang.dev/posts/archvied/2014-04-26-power-of-understanding/</loc>
-    <lastmod>2014-04-26T01:11:00+00:00</lastmod>
-  </url><url>
-    <loc>//lewang.dev/categories/%E6%84%9F%E6%82%9F/</loc>
-    <lastmod>2014-04-26T01:11:00+00:00</lastmod>
-  </url><url>
-    <loc>//lewang.dev/tags/%E5%BF%83%E6%83%85/</loc>
-    <lastmod>2014-04-25T00:40:00+00:00</lastmod>
-  </url><url>
-    <loc>//lewang.dev/posts/archvied/2014-04-25-grow-up/</loc>
-    <lastmod>2014-04-25T00:40:00+00:00</lastmod>
-  </url><url>
-    <loc>//lewang.dev/tags/%E7%89%A9%E7%90%86/</loc>
-    <lastmod>2014-03-13T21:16:00+00:00</lastmod>
-  </url><url>
-    <loc>//lewang.dev/posts/archvied/2014-03-13-who-is-De-Broglie/</loc>
-    <lastmod>2014-03-13T21:16:00+00:00</lastmod>
-  </url><url>
-    <loc>//lewang.dev/categories/%E8%B6%A3%E8%B0%88/</loc>
-    <lastmod>2014-03-13T21:16:00+00:00</lastmod>
   </url><url>
     <loc>//lewang.dev/tags/CDN/</loc>
     <lastmod>2014-03-06T00:40:00+00:00</lastmod>
@@ -293,13 +242,16 @@
     <loc>//lewang.dev/tags/idea/</loc>
     <lastmod>2012-03-13T00:40:00+00:00</lastmod>
   </url><url>
+    <loc>//lewang.dev/categories/%E6%84%9F%E6%82%9F/</loc>
+    <lastmod>2012-03-13T00:40:00+00:00</lastmod>
+  </url><url>
     <loc>//lewang.dev/posts/2012-03-13-things-i-create-must-be-cool/</loc>
     <lastmod>2012-03-13T00:40:00+00:00</lastmod>
   </url><url>
-    <loc>//lewang.dev/posts/archvied/2012-03-10-at-a-late-night/</loc>
-    <lastmod>2012-03-10T00:40:00+00:00</lastmod>
-  </url><url>
     <loc>//lewang.dev/posts/2012-01-09-for-baigetan-2012/</loc>
+    <lastmod>2012-01-09T00:40:00+00:00</lastmod>
+  </url><url>
+    <loc>//lewang.dev/tags/%E5%BF%83%E6%83%85/</loc>
     <lastmod>2012-01-09T00:40:00+00:00</lastmod>
   </url><url>
     <loc>//lewang.dev/categories/Coding/</loc>
@@ -320,9 +272,6 @@
     <loc>//lewang.dev/tags/json/</loc>
     <lastmod>2011-12-01T00:40:00+00:00</lastmod>
   </url><url>
-    <loc>//lewang.dev/posts/archvied/2011-11-09-future-is-unknown/</loc>
-    <lastmod>2011-11-09T13:09:00+00:00</lastmod>
-  </url><url>
     <loc>//lewang.dev/posts/2011-11-08-think-of-baigetan/</loc>
     <lastmod>2011-11-08T00:40:00+00:00</lastmod>
   </url><url>
@@ -332,20 +281,11 @@
     <loc>//lewang.dev/posts/2011-11-07-design-of-baigetan/</loc>
     <lastmod>2011-11-07T00:40:00+00:00</lastmod>
   </url><url>
-    <loc>//lewang.dev/posts/archvied/2011-10-27-winter-is-coming/</loc>
-    <lastmod>2011-10-27T13:10:00+00:00</lastmod>
-  </url><url>
     <loc>//lewang.dev/posts/2011-10-21-process-of-baigetan/</loc>
     <lastmod>2011-10-21T13:11:00+00:00</lastmod>
   </url><url>
     <loc>//lewang.dev/tags/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/</loc>
     <lastmod>2011-10-21T13:11:00+00:00</lastmod>
-  </url><url>
-    <loc>//lewang.dev/posts/archvied/2011-10-01-snapshot-of-10-1/</loc>
-    <lastmod>2011-10-01T00:40:00+00:00</lastmod>
-  </url><url>
-    <loc>//lewang.dev/tags/%E6%91%84%E5%BD%B1/</loc>
-    <lastmod>2011-10-01T00:40:00+00:00</lastmod>
   </url><url>
     <loc>//lewang.dev/about/</loc>
     <lastmod>2011-09-28T03:40:00+00:00</lastmod>

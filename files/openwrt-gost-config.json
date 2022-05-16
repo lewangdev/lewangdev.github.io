@@ -1,0 +1,40 @@
+{
+	"Retries": 1,
+	"ServeNodes": [
+		"ss://chacha20:123456@:8338"
+	],
+	"ChainNodes": [
+		"https://gost:gost@1.2.3.4:8443"
+	],
+	"Routes": [
+		{
+			"Retries": 1,
+			"ServeNodes": [
+				"udp://:8338/127.0.0.1:8338?ttl=60s"
+			],
+			"ChainNodes": [
+				"https://gost:gost@1.2.3.4:8443",
+				"socks5://127.0.0.1:1080"
+			]
+		},
+		{
+			"Retries": 1,
+			"ServeNodes": [
+				"ss://chacha20:123456@:8339"
+			],
+			"ChainNodes": [
+				"https://gost:gost@5.6.7.8:8443"
+			]
+		},
+		{
+			"Retries": 1,
+			"ServeNodes": [
+				"udp://:8339/127.0.0.1:8338?ttl=60s"
+			],
+			"ChainNodes": [
+				"https://gost:gost@5.6.7.8:8443",
+				"socks5://127.0.0.1:1080"
+			]
+		}
+	]
+}

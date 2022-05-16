@@ -2,13 +2,22 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>//lewang.dev/tags/IoT/</loc>
-    <lastmod>2020-11-27T00:00:00+00:00</lastmod>
+    <loc>//lewang.dev/tags/cndevnet/</loc>
+    <lastmod>2022-05-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>//lewang.dev/tags/Debian/</loc>
+    <lastmod>2022-05-16T00:00:00+00:00</lastmod>
   </url><url>
     <loc>//lewang.dev/categories/Linux/</loc>
-    <lastmod>2020-11-27T00:00:00+00:00</lastmod>
+    <lastmod>2022-05-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>//lewang.dev/posts/2022-05-16-cndevnet-intro/</loc>
+    <lastmod>2022-05-16T00:00:00+00:00</lastmod>
   </url><url>
     <loc>//lewang.dev/</loc>
+    <lastmod>2022-05-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>//lewang.dev/tags/IoT/</loc>
     <lastmod>2020-11-27T00:00:00+00:00</lastmod>
   </url><url>
     <loc>//lewang.dev/posts/2020-11-27-go-through-the-system-firewall/</loc>
@@ -176,10 +185,10 @@
     <loc>//lewang.dev/tags/catcat/</loc>
     <lastmod>2014-05-06T22:51:00+00:00</lastmod>
   </url><url>
-    <loc>//lewang.dev/categories/Github/</loc>
+    <loc>//lewang.dev/tags/github/</loc>
     <lastmod>2014-05-06T22:51:00+00:00</lastmod>
   </url><url>
-    <loc>//lewang.dev/tags/github/</loc>
+    <loc>//lewang.dev/categories/Github/</loc>
     <lastmod>2014-05-06T22:51:00+00:00</lastmod>
   </url><url>
     <loc>//lewang.dev/posts/2014-05-06-github-pages-dns-settings/</loc>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>cndevnet on 小碼哥</title>
+    <link>//lewang.dev/tags/cndevnet/</link>
+    <description>Recent content in cndevnet on 小碼哥</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Mon, 16 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="//lewang.dev/tags/cndevnet/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>一个方便在国内做开发的网 cndevnet</title>
+      <link>//lewang.dev/posts/2022-05-16-cndevnet-intro/</link>
+      <pubDate>Mon, 16 May 2022 00:00:00 +0000</pubDate>
+      
+      <guid>//lewang.dev/posts/2022-05-16-cndevnet-intro/</guid>
+      <description>由于某些原因，国内开发者需要的不少技术站点或者镜像源都无法直接访问，这使得在开发者在日常工作中会消耗额外的时间，去设置各种代理或者寻找国内的可替代的镜像源来使用。 在开源软件的世界里，几乎所有的知名项目，原本只要把代码 clone 回来，不需要做额外任何配置，只需要按照它的说明就可以直接编译源</description>
+    </item>
+    
+  </channel>
+</rss>

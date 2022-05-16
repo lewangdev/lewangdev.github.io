@@ -6,7 +6,16 @@
     <description>Recent content on 小碼哥</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 27 Nov 2020 00:00:00 +0000</lastBuildDate><atom:link href="//lewang.dev/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 16 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="//lewang.dev/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>一个方便在国内做开发的网 cndevnet</title>
+      <link>//lewang.dev/posts/2022-05-16-cndevnet-intro/</link>
+      <pubDate>Mon, 16 May 2022 00:00:00 +0000</pubDate>
+      
+      <guid>//lewang.dev/posts/2022-05-16-cndevnet-intro/</guid>
+      <description>由于某些原因，国内开发者需要的不少技术站点或者镜像源都无法直接访问，这使得在开发者在日常工作中会消耗额外的时间，去设置各种代理或者寻找国内的可替代的镜像源来使用。 在开源软件的世界里，几乎所有的知名项目，原本只要把代码 clone 回来，不需要做额外任何配置，只需要按照它的说明就可以直接编译源</description>
+    </item>
+    
     <item>
       <title>机房不能访问互联网，轻松搞定系统部署</title>
       <link>//lewang.dev/posts/2020-11-27-go-through-the-system-firewall/</link>
@@ -67,7 +76,7 @@
       <pubDate>Wed, 06 Mar 2019 00:00:00 +0000</pubDate>
       
       <guid>//lewang.dev/posts/2019-03-06-keynotes-of-new-java/</guid>
-      <description>[填坑]自己学习 Java 和用 Java 过程中的理解和备忘的主要的点, 后续会准备一些列文章来说明。 JDK 11 Oracle 不在免费提供 LTS 版本了，包括 JDK 8 ZGC, 可伸缩的、低延迟的垃圾收集器，STW 时间不超过 10ms Nashorn 标记为 Deprecate 了 JDK 9 module try-catch 简化 _ 为保留关键字 var 将在 JDK 10 中作为关键字, 作为本地变量类型推断关键字 字符串相关，主要是 Compact String, 用</description>
+      <description>自己学习 Java 和用 Java 过程中的理解和备忘的知识点。 JDK 11 Oracle 不在免费提供 LTS 版本了，包括 JDK 8 ZGC, 可伸缩的、低延迟的垃圾收集器，STW 时间不超过 10ms Nashorn 标记为 Deprecate 了 JDK 9 module try-catch 简化 _ 为保留关键字 var 将在 JDK 10 中作为关键字, 作为本地变量类型推断关键字 字符串相关，主要是 Compact String, 用 byte[] 替换了 char[], char 在 Java 中占两个字节 G1 作为默认</description>
     </item>
     
     <item>
@@ -184,7 +193,7 @@
       <pubDate>Fri, 09 Aug 2013 00:40:00 +0000</pubDate>
       
       <guid>//lewang.dev/posts/2013-08-09-benchmark-of-aliyun-and-ucloud/</guid>
-      <description>总体说明 我使用联通10M光网，SSH在多个时间段登录两个主机都是非常的快，但是阿里云的SSH有时会断开连接，需要重新登录(一天遇到n次)，ucloud一次都没有断开连接过。两者总体操作上都很流畅。平时我比较习惯于使用ubuntu，于是在两个主机上都安装了Ubuntu 12.04_6</description>
+      <description>总体说明 我使用联通 10M 光网，SSH 在多个时间段登录两个主机都是非常的快，但是阿里云的 SSH 有时会断开连接，需要重新登录(一天遇到 n 次)，ucloud 一次都没有断开连接过。两者总体操作上都很流畅。平时我比较习惯于使用 ubuntu，于是在两个主机上都安装了 Ubuntu 12.04_64 的 Server 版本。在安装初始化系统过程</description>
     </item>
     
     <item>

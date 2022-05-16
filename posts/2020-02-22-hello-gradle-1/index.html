@@ -4,7 +4,7 @@
 <head>
 
     <meta charset="utf-8">
-    <meta name="generator" content="Hugo 0.96.0" />
+    <meta name="generator" content="Hugo 0.98.0" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -174,7 +174,7 @@
 </div><p>小码哥插话：“settings.gradle 很好懂，给 rootProject.name 这个变量赋了一个值，但是 build.gradle 里面写的是什么啊？”<br>
 大象：“gradle 的魔法确实就在 build.gradle 之中。build.gradle 是使用 Groovy 编写的脚本，我先介绍一下 Groovy 同学吧。”</p>
 <h2 id="你好groovy-同学">你好，Groovy 同学</h2>
-<p>Gradle 的构建脚本可以使用 Groovy 编写（Kotlin 也可以）。Groovy 也是一种 JVM 语言，并且与 Java 比较相似，写起来比 Java 要简洁得多 (Kotlin也是)，Groovy 是 Java 的超集，也就是说 Java 代码可以当成是 Groovy 代码运行。我们来了解一下 Groovy，以便更容易读懂和修改 build.gradle。</p>
+<p>Gradle 的构建脚本可以使用 Groovy 编写（Kotlin 也可以）。Groovy 也是一种 JVM 语言，并且与 Java 比较相似，写起来比 Java 要简洁得多 (Kotlin 也是)，Groovy 是 Java 的超集，也就是说 Java 代码可以当成是 Groovy 代码运行。我们来了解一下 Groovy，以便更容易读懂和修改 build.gradle。</p>
 <h3 id="初识-groovy">初识 Groovy</h3>
 <p>在 idea 中打开 Groovy 控制台（Tools &gt; Groovy Console&hellip;）</p>
 <p><img src="/images/hello-gradle/tools-groovy-console-1.png" alt="tools-groovy-console-1"></p>
@@ -223,7 +223,7 @@
 </div><p>是不是很好理解：脚本调用了 dependencies 方法，它的参数是一个闭包，在这个闭包里面又调用了 testCompile 方法，并传入了一个字典（Map）参数： group: &lsquo;junit&rsquo;, name: &lsquo;junit&rsquo;, version: &lsquo;4.12&rsquo;</p>
 <p>好了，Groovy 同学暂时就介绍到这里，我要继续介绍我自己了。</p>
 <h2 id="探索-buildgradle">探索 build.gradle</h2>
-<p>Gradle 最核心的部分就是 Project 和 Task 了 ，build.gradle 可以直接操控 Project 对象（org.gradle.api.Project 的实例) ，遵循“代码即配置”的基本原则。项目代码可以包括多个 build.gradle,  多个 Project 需要在 settings.gradle 定义。每一个 build.gradle 文件都会对应一个 Project 对象，我们每一个项目的构建信息都会存在对应的 Project  对象中。</p>
+<p>Gradle 最核心的部分就是 Project 和 Task 了 ，build.gradle 可以直接操控 Project 对象（org.gradle.api.Project 的实例) ，遵循“代码即配置”的基本原则。项目代码可以包括多个 build.gradle, 多个 Project 需要在 settings.gradle 定义。每一个 build.gradle 文件都会对应一个 Project 对象，我们每一个项目的构建信息都会存在对应的 Project 对象中。</p>
 <p>站在写代码的角度上可以这样来理解，Gradle 会根据 settings.gradle 定义为每个 Project 创建 org.gradle.api.Project 对象，之后会根据 build.gradle 的配置执行相应的任务（Task）。除了“代码即配置”这个原则之外，还有“约定即配置”这个原则。比如 Gradle 会有默认约定的 Java 项目结构（<a href="https://docs.gradle.org/current/userguide/java_plugin.html#sec:java_project_layout">Java Plugin Project Layout</a>），每一个 Gradle 项目也会约定一些默认的 Task 等。</p>
 <p>也就是说，Gradle 的 Project 构建过程是由一系列 Task 组成的，我们可以通过这个命令查看项目默认的有哪些 Task。好，我们把 idea 创建的 build.gradle 清空，然后执行下面的命令。</p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
@@ -364,8 +364,9 @@
 大象：“呃，gradlew 我也不知道它是啥啊，你自己查查去吧。”</p>
 <h2 id="参考资料">参考资料</h2>
 <ol>
-<li><a href="https://docs.gradle.org/current/userguide/userguide.html">Gradle Docs Home</a></li>
-<li><a href="https://docs.gradle.org/current/userguide/java_plugin.html#sec:java_usage">The Java Plugin</a></li>
+<li><a href="https://pyscript.net/">PyScript 官网</a></li>
+<li><a href="https://anaconda.cloud/pyscript-python-in-the-browser"></a></li>
+<li><a href="https://pyodide.org/en/stable/">Pyodide - 基于 WebAssembly 的 Python</a></li>
 </ol>
 
                     <p>(完)</p>

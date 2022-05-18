@@ -22,7 +22,7 @@
       <pubDate>Thu, 19 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>//lewang.dev/posts/2019-09-19-rpi-log-config/</guid>
-      <description>背景 树莓派 raspbian 系统日志默认的配置会导致日志过大而占用太多的存储空间，并且频繁写日志也可能减短 EMMC 和 SD 卡的寿命，需要重新配置来满足项目的需求。 日志位置 1 2 3 4 5 6 7 8 9 10 11 12 13 14 /var/log /var/log/syslog /var/log/daemon.log /var/log/mail.info /var/log/mail.warn /var/log/mail.err /var/log/mail.log /var/log/kern.log /var/log/auth.log /var/log/user.log /var/log/lpr.log /var/log/cron.log /var/log/debug /var/log/messages 配置 rsyslog 与 logrotate rsyslog 的配置文件为 /etc/rsyslog.conf, 找到其中 RULES 段 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 ############### #### RULES #### ############### #</description>
+      <description>背景 树莓派 raspbian 系统日志默认的配置会导致日志过大而占用太多的存储空间，并且频繁写日志也可能减短 EMMC 和 SD 卡的寿命，需要重新配置来满足项目的需求。 日志位置 /var/log /var/log/syslog /var/log/daemon.log /var/log/mail.info /var/log/mail.warn /var/log/mail.err /var/log/mail.log /var/log/kern.log /var/log/auth.log /var/log/user.log /var/log/lpr.log /var/log/cron.log /var/log/debug /var/log/messages 配置 rsyslog 与 logrotate rsyslog 的配置文件为 /etc/rsyslog.conf, 找到其中 RULES 段 ############### #### RULES #### ############### # # First some standard log files. Log by facility. # auth,authpriv.* /var/log/auth.log *.*;auth,authpriv.none -/var/log/syslog #cron.* /var/log/cron.log #daemon.* -/var/log/daemon.log kern.* -/var/log/kern.log lpr.* -/var/log/lpr.log mail.* -/var/log/mail.log user.* -/var/log/user.log 将其中</description>
     </item>
     
     <item>
@@ -31,7 +31,7 @@
       <pubDate>Tue, 16 Jul 2019 00:00:00 +0000</pubDate>
       
       <guid>//lewang.dev/posts/2019-07-16-change-uid-gid-in-linux/</guid>
-      <description>问题 在使用 Docker 或者 NFS 的时候，需要文件系统挂在到不同的系统中拥有正确的读写权限，需要指定文件所属用户和组的 uid 和 gid。在创建用户和组的时候，系统会自动分配对应的值，这导致在不同的系统中很容易造成 uid 和 gid 不一样而造成读写权限混乱。 例如在系统 A 中，用户 git 的 uid 和组 git 的gid 如下: 1 2 [sysops@cn-bj-aliyun-3 ~]$ id git</description>
+      <description>问题 在使用 Docker 或者 NFS 的时候，需要文件系统挂在到不同的系统中拥有正确的读写权限，需要指定文件所属用户和组的 uid 和 gid。在创建用户和组的时候，系统会自动分配对应的值，这导致在不同的系统中很容易造成 uid 和 gid 不一样而造成读写权限混乱。 例如在系统 A 中，用户 git 的 uid 和组 git 的gid 如下: [sysops@cn-bj-aliyun-3 ~]$ id git uid=1001(git) gid=1001(git)</description>
     </item>
     
     <item>
@@ -40,7 +40,7 @@
       <pubDate>Wed, 29 May 2019 00:00:00 +0000</pubDate>
       
       <guid>//lewang.dev/posts/2019-05-29-centos7-pyenv-install-python-3/</guid>
-      <description>概要 本文记录了在 CentOS 7.6 系统上通过 pyenv 安装 Python 3.7.3 的过程。 环境 CentOS Linux release 7.6.1810 (Core) Kernel 3 3.10.0-957.el7.x86_64 Pyenv 1.2.11 安装 pyenv 1 $ curl https://pyenv.run | bash 然后根据提示把以下内容放到 ~/.bashrc 文件末尾 1 2 3 4 5 6 # Load pyenv automatically by adding # the following to ~/.bashrc: export PATH=&amp;#34;/root/.pyenv/bin:$PATH&amp;#34; eval &amp;#34;$(pyenv init -)&amp;#34; eval &amp;#34;$(pyenv virtualenv-init -)&amp;#34; 安装 Python 3.7.3 准备 1 $ sudo yum -y install xz bzip2 bzip2-devel sqlite-devel gcc openssl-devel readline-devel zlib-devel libffi-devel 安装 1 pyenv install 3.7.3 验证 1 2 3 $ pyenv versions * system (set by /root/.pyenv/version) 3.7.3 参考 https://github.com/pyenv/pyenv/issues/1183 https://github.com/pyenv/pyenv-installer https://github.com/pyenv/pyenv</description>
+      <description>概要 本文记录了在 CentOS 7.6 系统上通过 pyenv 安装 Python 3.7.3 的过程。 环境 CentOS Linux release 7.6.1810 (Core) Kernel 3 3.10.0-957.el7.x86_64 Pyenv 1.2.11 安装 pyenv $ curl https://pyenv.run | bash 然后根据提示把以下内容放到 ~/.bashrc 文件末尾 # Load pyenv automatically by adding # the following to ~/.bashrc: export PATH=&amp;#34;/root/.pyenv/bin:$PATH&amp;#34; eval &amp;#34;$(pyenv init -)&amp;#34; eval &amp;#34;$(pyenv virtualenv-init -)&amp;#34; 安装 Python 3.7.3 准备 $ sudo yum -y install xz bzip2 bzip2-devel sqlite-devel gcc openssl-devel readline-devel zlib-devel libffi-devel 安装 pyenv install 3.7.3 验证 $ pyenv versions * system (set by /root/.pyenv/version) 3.7.3 参考 https://github.com/pyenv/pyenv/issues/1183 https://github.com/pyenv/pyenv-installer https://github.com/pyenv/pyenv</description>
     </item>
     
     <item>

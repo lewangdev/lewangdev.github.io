@@ -13,7 +13,7 @@
       <pubDate>Thu, 19 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>//lewang.dev/posts/2019-09-19-rpi-log-config/</guid>
-      <description>背景 树莓派 raspbian 系统日志默认的配置会导致日志过大而占用太多的存储空间，并且频繁写日志也可能减短 EMMC 和 SD 卡的寿命，需要重新配置来满足项目的需求。 日志位置 1 2 3 4 5 6 7 8 9 10 11 12 13 14 /var/log /var/log/syslog /var/log/daemon.log /var/log/mail.info /var/log/mail.warn /var/log/mail.err /var/log/mail.log /var/log/kern.log /var/log/auth.log /var/log/user.log /var/log/lpr.log /var/log/cron.log /var/log/debug /var/log/messages 配置 rsyslog 与 logrotate rsyslog 的配置文件为 /etc/rsyslog.conf, 找到其中 RULES 段 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 ############### #### RULES #### ############### #</description>
+      <description>背景 树莓派 raspbian 系统日志默认的配置会导致日志过大而占用太多的存储空间，并且频繁写日志也可能减短 EMMC 和 SD 卡的寿命，需要重新配置来满足项目的需求。 日志位置 /var/log /var/log/syslog /var/log/daemon.log /var/log/mail.info /var/log/mail.warn /var/log/mail.err /var/log/mail.log /var/log/kern.log /var/log/auth.log /var/log/user.log /var/log/lpr.log /var/log/cron.log /var/log/debug /var/log/messages 配置 rsyslog 与 logrotate rsyslog 的配置文件为 /etc/rsyslog.conf, 找到其中 RULES 段 ############### #### RULES #### ############### # # First some standard log files. Log by facility. # auth,authpriv.* /var/log/auth.log *.*;auth,authpriv.none -/var/log/syslog #cron.* /var/log/cron.log #daemon.* -/var/log/daemon.log kern.* -/var/log/kern.log lpr.* -/var/log/lpr.log mail.* -/var/log/mail.log user.* -/var/log/user.log 将其中</description>
     </item>
     
     <item>

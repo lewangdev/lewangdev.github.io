@@ -29,14 +29,14 @@
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
 
     
-    <link rel="icon" sizes="192x192" href="/images/favicon-192x192.png">
+    <link rel="icon" sizes="192x192" href="https://raw.githubusercontent.com/lewangdev/picb0/main/oh-my-blog/favicon-192x192.png">
 
     
-    <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-180x180-precomposed.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://raw.githubusercontent.com/lewangdev/picb0/main/oh-my-blog/favicon-180x180-precomposed.png">
 
     
     <meta name="msapplication-TileColor" content="#FFFFFF">
-    <meta name="msapplication-TileImage" content="/images/favicon-144x144.png">
+    <meta name="msapplication-TileImage" content="https://raw.githubusercontent.com/lewangdev/picb0/main/oh-my-blog/favicon-144x144.png">
 
     <link rel="stylesheet" href="/css/normalize.css">
     <link rel="stylesheet" href="/css/markdown.css">
@@ -55,7 +55,7 @@
     
         <div class="site-name ">
             <a id="logo" href="//lewang.dev/">
-                <img src="/images/logo-2x.png" alt="小碼哥">
+                <img src="https://raw.githubusercontent.com/lewangdev/picb0/main/oh-my-blog/logo-2x.png" alt="小碼哥">
             </a>
         </div>
         <nav id="nav-menu" class="clearfix">
@@ -103,100 +103,34 @@
                     <h2 id="问题">问题</h2>
 <p>在使用 Docker 或者 NFS 的时候，需要文件系统挂在到不同的系统中拥有正确的读写权限，需要指定文件所属用户和组的 uid 和 gid。在创建用户和组的时候，系统会自动分配对应的值，这导致在不同的系统中很容易造成 uid 和 gid 不一样而造成读写权限混乱。</p>
 <p>例如在系统 A 中，用户 git 的 uid 和组 git 的gid 如下:</p>
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>sysops@cn-bj-aliyun-3 ~<span style="color:#000;font-weight:bold">]</span>$ id git
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>sysops@cn-bj-aliyun-3 ~<span style="color:#000;font-weight:bold">]</span>$ id git
 </span></span><span style="display:flex;"><span><span style="color:#008080">uid</span><span style="color:#000;font-weight:bold">=</span>1001<span style="color:#000;font-weight:bold">(</span>git<span style="color:#000;font-weight:bold">)</span> <span style="color:#008080">gid</span><span style="color:#000;font-weight:bold">=</span>1001<span style="color:#000;font-weight:bold">(</span>git<span style="color:#000;font-weight:bold">)</span> <span style="color:#008080">groups</span><span style="color:#000;font-weight:bold">=</span>1001<span style="color:#000;font-weight:bold">(</span>git<span style="color:#000;font-weight:bold">)</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>而系统 B 中的值如下:</p>
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>sysops@cn-bj-aliyun-3 ~<span style="color:#000;font-weight:bold">]</span>$ id git
+</span></span></code></pre></div><p>而系统 B 中的值如下:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>sysops@cn-bj-aliyun-3 ~<span style="color:#000;font-weight:bold">]</span>$ id git
 </span></span><span style="display:flex;"><span><span style="color:#008080">uid</span><span style="color:#000;font-weight:bold">=</span>998<span style="color:#000;font-weight:bold">(</span>git<span style="color:#000;font-weight:bold">)</span> <span style="color:#008080">gid</span><span style="color:#000;font-weight:bold">=</span>998<span style="color:#000;font-weight:bold">(</span>git<span style="color:#000;font-weight:bold">)</span> <span style="color:#008080">groups</span><span style="color:#000;font-weight:bold">=</span>998<span style="color:#000;font-weight:bold">(</span>git<span style="color:#000;font-weight:bold">)</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>我们在系统 A 以 git 用户创建目录或者文件:</p>
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>git@cn-bj-aliyun-3 data<span style="color:#000;font-weight:bold">]</span>$ ls -lh
+</span></span></code></pre></div><p>我们在系统 A 以 git 用户创建目录或者文件:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>git@cn-bj-aliyun-3 data<span style="color:#000;font-weight:bold">]</span>$ ls -lh
 </span></span><span style="display:flex;"><span>total 60K
 </span></span><span style="display:flex;"><span>-rw-r--r-- <span style="color:#099">1</span> git git  <span style="color:#099">100</span> Jul  <span style="color:#099">5</span> 23:22 file1
 </span></span><span style="display:flex;"><span>-rw-r--r-- <span style="color:#099">1</span> git git  <span style="color:#099">400</span> Dec <span style="color:#099">18</span>  <span style="color:#099">2018</span> file2
 </span></span><span style="display:flex;"><span>-rw-r--r-- <span style="color:#099">1</span> git git  <span style="color:#099">349</span> Dec <span style="color:#099">18</span>  <span style="color:#099">2018</span> file3
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>将这个目录挂在到 B 系统中时，将会出现这种情况:</p>
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>git@cn-bj-aliyun-3 data<span style="color:#000;font-weight:bold">]</span>$ ls -lh
+</span></span></code></pre></div><p>将这个目录挂在到 B 系统中时，将会出现这种情况:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>git@cn-bj-aliyun-3 data<span style="color:#000;font-weight:bold">]</span>$ ls -lh
 </span></span><span style="display:flex;"><span>total 60K
 </span></span><span style="display:flex;"><span>-rw-r--r-- <span style="color:#099">1</span> <span style="color:#099">1001</span> <span style="color:#099">1001</span>  <span style="color:#099">100</span> Jul  <span style="color:#099">5</span> 23:22 file1
 </span></span><span style="display:flex;"><span>-rw-r--r-- <span style="color:#099">1</span> <span style="color:#099">1001</span> <span style="color:#099">1001</span>  <span style="color:#099">400</span> Dec <span style="color:#099">18</span>  <span style="color:#099">2018</span> file2
 </span></span><span style="display:flex;"><span>-rw-r--r-- <span style="color:#099">1</span> <span style="color:#099">1001</span> <span style="color:#099">1001</span>  <span style="color:#099">349</span> Dec <span style="color:#099">18</span>  <span style="color:#099">2018</span> file3
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>这样就会导致在 B 系统中文件权限混乱，因为 B 系统中没有对应 uid 和 gid 的用户和组。接下来我们来修改 uid 和 gid，以下以修改系统 A 中的 git 为例。</p>
+</span></span></code></pre></div><p>这样就会导致在 B 系统中文件权限混乱，因为 B 系统中没有对应 uid 和 gid 的用户和组。接下来我们来修改 uid 和 gid，以下以修改系统 A 中的 git 为例。</p>
 <h1 id="修改命令">修改命令</h1>
 <h3 id="修改-uid">修改 UID</h3>
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo usermod -u <span style="color:#099">998</span> git
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h3 id="修改文件的所属用户">修改文件的所属用户</h3>
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>find / -user <span style="color:#099">1001</span> -exec chown -h git <span style="color:#000;font-weight:bold">{}</span> <span style="color:#d14">\;</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h3 id="修改-gid">修改 GID</h3>
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo groupmod -g <span style="color:#099">998</span> git
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h3 id="修改文件的所属用户-1">修改文件的所属用户</h3>
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>find / -group <span style="color:#099">1001</span> -exec chgrp -h git <span style="color:#000;font-weight:bold">{}</span> <span style="color:#d14">\;</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h3 id="其它说明">其它说明</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo usermod -u <span style="color:#099">998</span> git
+</span></span></code></pre></div><h3 id="修改文件的所属用户">修改文件的所属用户</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>find / -user <span style="color:#099">1001</span> -exec chown -h git <span style="color:#000;font-weight:bold">{}</span> <span style="color:#d14">\;</span>
+</span></span></code></pre></div><h3 id="修改-gid">修改 GID</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo groupmod -g <span style="color:#099">998</span> git
+</span></span></code></pre></div><h3 id="修改文件的所属用户-1">修改文件的所属用户</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>find / -group <span style="color:#099">1001</span> -exec chgrp -h git <span style="color:#000;font-weight:bold">{}</span> <span style="color:#d14">\;</span>
+</span></span></code></pre></div><h3 id="其它说明">其它说明</h3>
 <p>另外在修改之前可以查看 <code>/etc/passwd</code> 和 <code>/etc/group</code> 文件，以便选取一个没有被使用的 uid 和 gid</p>
 
                     <p>(完)</p>

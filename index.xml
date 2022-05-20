@@ -6,7 +6,41 @@
     <description>Recent content on 小碼哥</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Mon, 16 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="//lewang.dev/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 20 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="//lewang.dev/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>命令行格式化 JSON</title>
+      <link>//lewang.dev/posts/2022-05-20-format-json-in-command-line/</link>
+      <pubDate>Fri, 20 May 2022 00:00:00 +0000</pubDate>
+      
+      <guid>//lewang.dev/posts/2022-05-20-format-json-in-command-line/</guid>
+      <description>&lt;p&gt;今天要改 Docker 的两个配置 hostconfig.json 和 config.v2.json，打开一看，这个文件是单行的，在编辑器里面显示这是这样的：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/lewangdev/picb0/main/oh-my-blog/2022-05-20-format-json-in-command-line/format-json-1.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;代码都堆在一起，用 vim 格式化也没啥效果，编辑起来不是很方便。&lt;/p&gt;
+&lt;h2 id=&#34;python-自带模块格式化-json&#34;&gt;Python 自带模块格式化 JSON&lt;/h2&gt;
+&lt;p&gt;格式化 JSON 文件有很多方法，我最常用的就是 Python 自带的 json.tool 这个模块，只要安装了 Python 的电脑，都可以直接使用，这样就可以了：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;python -m json.tool hostconfig.json &amp;gt; hostconfig-formatted.json
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;格式化以后再打开看一看：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/lewangdev/picb0/main/oh-my-blog/2022-05-20-format-json-in-command-line/format-json-2.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;这样编辑文件就方便多了。&lt;/p&gt;
+&lt;h2 id=&#34;与管道符一起使用&#34;&gt;与管道符一起使用&lt;/h2&gt;
+&lt;p&gt;前面的例子我们还可以使用管道符(|)来实现，例如:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cat hostconfig.json | python -m json.tool &amp;gt; hostconfig-formatted.json
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;从 RESTful 接口直接获取数据并且格式化:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;curl -s https://api.github.com/users/lewangdev | python -m json.tool
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;其它本地格式化工具&#34;&gt;其它本地格式化工具&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/ObuchiYuki/DevToysMac&#34;&gt;DevToysMac&lt;/a&gt;: MacOS 版的 &lt;a href=&#34;https://github.com/veler/DevToys&#34;&gt;DevToys or Windows&lt;/a&gt;，我是用 Windows 11 时候看到这个软件的，于是顺手搜了一下 MacOS 版的，也挺好用的。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/lewangdev/picb0/main/oh-my-blog/2022-05-20-format-json-in-command-line/devtoysmac-preview.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/stedolan/jq&#34;&gt;jq&lt;/a&gt;: 除了像 sed 一样的处理 JSON 以外，还能把输出的 JSON 变成彩色的。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;curl &lt;span style=&#34;color:#d14&#34;&gt;&amp;#39;https://api.github.com/users/lewangdev&amp;#39;&lt;/span&gt; | jq &lt;span style=&#34;color:#d14&#34;&gt;&amp;#39;.&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;输出这样效果：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/lewangdev/picb0/main/oh-my-blog/2022-05-20-format-json-in-command-line/jq.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+</description>
+    </item>
+    
     <item>
       <title>国内开发者可能有点用的网络工具 cndevnet</title>
       <link>//lewang.dev/posts/2022-05-16-cndevnet-intro/</link>

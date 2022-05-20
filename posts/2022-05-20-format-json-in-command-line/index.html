@@ -97,13 +97,13 @@
                     
                     
                     <p>今天要改 Docker 的两个配置 hostconfig.json 和 config.v2.json，打开一看，这个文件是单行的，在编辑器里面显示这是这样的：</p>
-<p><img src="https://raw.githubusercontent.com/lewangdev/picb0/main/oh-my-blog/2022-05-20-format-json-in-command-line/format-json-1.jpg" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/lewangdev/picb0/main/oh-my-blog/2022-05-20-format-json-in-command-line/format-json-1-mac.png" alt=""></p>
 <p>代码都堆在一起，用 vim 格式化也没啥效果，编辑起来不是很方便。</p>
 <h2 id="python-自带模块格式化-json">Python 自带模块格式化 JSON</h2>
 <p>格式化 JSON 文件有很多方法，我最常用的就是 Python 自带的 json.tool 这个模块，只要安装了 Python 的电脑，都可以直接使用，这样就可以了：</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>python -m json.tool hostconfig.json &gt; hostconfig-formatted.json
 </span></span></code></pre></div><p>格式化以后再打开看一看：</p>
-<p><img src="https://raw.githubusercontent.com/lewangdev/picb0/main/oh-my-blog/2022-05-20-format-json-in-command-line/format-json-2.jpg" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/lewangdev/picb0/main/oh-my-blog/2022-05-20-format-json-in-command-line/format-json-2-mac.png" alt=""></p>
 <p>这样编辑文件就方便多了。</p>
 <h2 id="与管道符一起使用">与管道符一起使用</h2>
 <p>前面的例子我们还可以使用管道符(|)来实现，例如:</p>
@@ -120,7 +120,7 @@
 </ul>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>curl <span style="color:#d14">&#39;https://api.github.com/users/lewangdev&#39;</span> | jq <span style="color:#d14">&#39;.&#39;</span>
 </span></span></code></pre></div><p>输出这样效果：</p>
-<p><img src="https://raw.githubusercontent.com/lewangdev/picb0/main/oh-my-blog/2022-05-20-format-json-in-command-line/jq.jpg" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/lewangdev/picb0/main/oh-my-blog/2022-05-20-format-json-in-command-line/jq-mac.png" alt=""></p>
 
                     <p>(完)</p>
                     

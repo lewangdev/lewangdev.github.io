@@ -6,13 +6,88 @@
     <description>Recent content on 小碼哥</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 20 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="//lewang.dev/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 21 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="//lewang.dev/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>使用 grep，xargs 和 sed 命令批量替换所有 Markdown 文件中的链接</title>
+      <link>//lewang.dev/posts/2022-05-21-replace-strings-in-all-files/</link>
+      <pubDate>Sat, 21 May 2022 00:00:00 +0000</pubDate>
+      
+      <guid>//lewang.dev/posts/2022-05-21-replace-strings-in-all-files/</guid>
+      <description>&lt;p&gt;趁着周末空隙把自己年久失修博客整理了一下，用到了 grep，xargs 和 sed 命令，使用 grep，xargs 和 sed 这 3 个命令组合批量替换所有 Markdown 文件中的图片链接。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;我的博客从我的学生时代就开始了，不断折腾自己的博客，所以学会了 HTML/CSS/JS，下次和大家分享一下我的博客旅程。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;这里不详细讲解这 3 个命令的使用，如果希望详细的了解这些命令，可以在 Linux 的终端下输入这样的命令查看文档，例如查看 grep 如何使用：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;man grep
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;man 命令的常用操作:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;退出: 按 q 键&lt;/li&gt;
+&lt;li&gt;查找：按 / 后输入查找关键字&lt;/li&gt;
+&lt;li&gt;下一页: 按 ctrl + d 或者 ctrl + f，&lt;strong&gt;tips: 这里的 d 大概是 down，f 大概是 forward&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;上一页: 按 ctrl + u 或者 ctrl + b，&lt;strong&gt;tips: 这里的 d 大概是 up，b 大概是 backward&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;查看其它命令的手册也是类似的。&lt;/p&gt;
+&lt;h2 id=&#34;我博客的问题&#34;&gt;我博客的问题&lt;/h2&gt;
+&lt;p&gt;我的博客是用 hugo 构建的，所有的文章都放在 post 下面的目录里，图片则需要放在 static 的 images 下面，这样在用 vscode 写博客 Markdown 的时候无法在预览里面看到图片。于是我在 hugo 项目的根目录下添加了的一个 images 的符号链接到 static 目录下的 images， 才能解决图片预览的问题。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/lewangdev/picb0/main/oh-my-blog/2022-05-21-replace-strings-in-all-files/hugo-images-links.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;另外博客里面的图片越来越多也导致博客的 Git 仓库的体积越来越大，会导致上传下载都变得较慢，于是决定把博客里面的图片二进制文件单独放到一个 GitHub 仓库里面去，这个存放图片等二进制文件的仓库地址是 &lt;a href=&#34;https://github.com/lewangdev/picb0&#34;&gt;picb0&lt;/a&gt;，让博客仓库本身只保留一些主题文件和文章的 Markdown。&lt;/p&gt;
+&lt;h2 id=&#34;开始替换&#34;&gt;开始替换&lt;/h2&gt;
+&lt;h3 id=&#34;grep&#34;&gt;grep&lt;/h3&gt;
+&lt;p&gt;使用 grep 命令查找出所有包括图片的文件，并且显示将要被替换的文件内容&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;grep -nr &lt;span style=&#34;color:#d14&#34;&gt;&amp;#39;/images&amp;#39;&lt;/span&gt; .
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;其中：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;-n: 表示查找文件的名字并且显示匹配的文件行号和内容&lt;/li&gt;
+&lt;li&gt;-r: 表示递归查找当前目录下的所有目录&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;输入结果是这样的：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/lewangdev/picb0/main/oh-my-blog/2022-05-21-replace-strings-in-all-files/grep-nr.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;sed&#34;&gt;sed&lt;/h3&gt;
+&lt;p&gt;我常用的 sed 是这样替换文件内容，一般处理单个文件内容的替换，我会直接用 vim 来进行，替换的语法和 sed 也是差不多的。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sed -i &lt;span style=&#34;color:#d14&#34;&gt;&amp;#39;s/oldstr/newstr/g&amp;#39;&lt;/span&gt; filename
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;其中：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;-i: 表示修改文件后保持到原文件名，并且创建一个 .bak 结尾的备份&lt;/li&gt;
+&lt;li&gt;oldstr：为需要被替换的字符串&lt;/li&gt;
+&lt;li&gt;newstr：为替换后的字符串&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;为了修改博客 Markdown 文件的图片链接，需要这样来修改&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sed -i &lt;span style=&#34;color:#d14&#34;&gt;&amp;#39;s/\/images/https:\/\/raw.githubusercontent.com\/lewangdev\/picb0\/main\/oh-my-blog/g&amp;#39;&lt;/span&gt; 2013-03-04-so-load-path-in-linux.markdown
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;注意如果 oldstr 或者 newstr 中有 &lt;code&gt;/&lt;/code&gt; 符号，需要进行转义为 &lt;code&gt;\/&lt;/code&gt;, 所以这里:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;oldstr&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;\/images
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;newstr&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;https:\/\/raw.githubusercontent.com\/lewangdev\/picb0\/main\/oh-my-blog
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;xargs&#34;&gt;xargs&lt;/h3&gt;
+&lt;p&gt;弄清楚 grep 和 sed 之后，在使用 xargs 和|(管道符)把这几个命令连起来&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;grep -rl  &amp;#34;oldstr&amp;#34; .| xargs sed -i &amp;#39;s/oldstr/newstr/g&amp;#39;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;grep 的 n 参数换成了 l，因为我只需要文件名&lt;/li&gt;
+&lt;li&gt;xargs 命令可以使用分割标准输入的内容作为另外一个命令的参数&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;替换为我博客的实际需要替换的内容：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;grep -rl  &amp;#34;/images&amp;#34; .| xargs sed -i &amp;#39;s/\/images/https:\/\/raw.githubusercontent.com\/lewangdev\/picb0\/main\/oh-my-blog/g&amp;#39;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;使用 &lt;code&gt;git log -p&lt;/code&gt; 查看一下是否替换成功&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/lewangdev/picb0/main/oh-my-blog/2022-05-21-replace-strings-in-all-files/grep-sed-replaced.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;其它的替换方法&#34;&gt;其它的替换方法&lt;/h2&gt;
+&lt;p&gt;除了命令行，我们使用 ide 或者编辑器也很容易进行替换，比如 vscode 和 idea 系列的。&lt;/p&gt;
+&lt;h3 id=&#34;vscode&#34;&gt;vscode&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/lewangdev/picb0/main/oh-my-blog/2022-05-21-replace-strings-in-all-files/hugo-images-links.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;idea&#34;&gt;idea&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/lewangdev/picb0/main/oh-my-blog/2022-05-21-replace-strings-in-all-files/idea-replace-in-files.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+</description>
+    </item>
+    
     <item>
       <title>命令行格式化 JSON</title>
-      <link>//lewang.dev/posts/2022-05-20-format-json-in-command-line/</link>
+      <link>//lewang.dev/posts/2022-05-20-format-json-in-command-line-copy/</link>
       <pubDate>Fri, 20 May 2022 00:00:00 +0000</pubDate>
       
-      <guid>//lewang.dev/posts/2022-05-20-format-json-in-command-line/</guid>
+      <guid>//lewang.dev/posts/2022-05-20-format-json-in-command-line-copy/</guid>
       <description>&lt;p&gt;今天要改 Docker 的两个配置 hostconfig.json 和 config.v2.json，打开一看，这个文件是单行的，在编辑器里面显示这是这样的：&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/lewangdev/picb0/main/oh-my-blog/2022-05-20-format-json-in-command-line/format-json-1-mac.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;代码都堆在一起，用 vim 格式化也没啥效果，编辑起来不是很方便。&lt;/p&gt;

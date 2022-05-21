@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="zh-CN">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="generator" content="Hugo 0.98.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>使用 grep，xargs 和 sed 命令批量替换所有 Markdown 文件中的链接 - 小碼哥</title>
+    <meta property="og:title" content="使用 grep，xargs 和 sed 命令批量替换所有 Markdown 文件中的链接 - 小碼哥">
+    <meta property="og:type" content="article">
+    
+    <meta property="article:published_time" content=" 2022-05-21T00:00:00&#43;08:00">
+    
+    
+    <meta property="article:modified_time" content=" 2022-05-21T00:00:00&#43;08:00">
+    
+    <meta name="Keywords" content="IoT, 物联网, 智能硬件，工业互联网方案，智能家居, 智慧工厂, 智慧建筑, Golang, Java, JVM, Python, 树莓派, Linux 玩家，果粉，系统架构，技术管理">
+    <meta name="description" content="使用 grep，xargs 和 sed 命令批量替换所有 Markdown 文件中的链接">
+    
+    <meta name="author" content="小碼哥">
+    <meta property="og:url" content="//lewang.dev/posts/2022-05-21-replace-strings-in-all-files/">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+
+    
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+
+    
+    <link rel="icon" sizes="192x192" href="https://raw.githubusercontent.com/lewangdev/picb0/main/oh-my-blog/favicon-192x192.png">
+
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="https://raw.githubusercontent.com/lewangdev/picb0/main/oh-my-blog/favicon-180x180-precomposed.png">
+
+    
+    <meta name="msapplication-TileColor" content="#FFFFFF">
+    <meta name="msapplication-TileImage" content="https://raw.githubusercontent.com/lewangdev/picb0/main/oh-my-blog/favicon-144x144.png">
+
+    <link rel="stylesheet" href="/css/normalize.css">
+    <link rel="stylesheet" href="/css/markdown.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+
+    
+
+    
+    
+</head>
+
+<body>
+    <header id="header">
+    <div class="container clearfix">
+    
+        <div class="site-name ">
+            <a id="logo" href="//lewang.dev/">
+                <img src="https://raw.githubusercontent.com/lewangdev/picb0/main/oh-my-blog/logo-2x.png" alt="小碼哥">
+            </a>
+        </div>
+        <nav id="nav-menu" class="clearfix">
+            <a class=""
+                href="//lewang.dev/">首页</a>
+            
+            <a  href="//lewang.dev/archives/"
+                title="归档">归档</a>
+            
+            <a  href="//lewang.dev/about/"
+                title="关于">关于</a>
+            
+        </nav>
+    
+    </div>
+</header>
+
+    <div id="body">
+        <div class="container">
+            <article class="post">
+                <h1 class="post-title">使用 grep，xargs 和 sed 命令批量替换所有 Markdown 文件中的链接</h1>
+                
+                <div class="post-meta">
+                    <span>May 21, 2022</span>
+                    
+                    <span>/</span>
+                    
+                    <span class="meta-category"><a href="//lewang.dev/categories/%E6%AF%8F%E6%97%A5%E6%8A%80%E5%B7%A7">每日技巧</a></span>
+                    
+                    
+                    
+                </div>
+                
+                
+                <div style="height: 1px; border-top: 1px #eee solid; margin-top: 16px;"></div>
+                
+                <div class="post-content markdown-body">
+                    
+                    
+                    
+                    <p>趁着周末空隙把自己年久失修博客整理了一下，用到了 grep，xargs 和 sed 命令，使用 grep，xargs 和 sed 这 3 个命令组合批量替换所有 Markdown 文件中的图片链接。</p>
+<blockquote>
+<p>我的博客从我的学生时代就开始了，不断折腾自己的博客，所以学会了 HTML/CSS/JS，下次和大家分享一下我的博客旅程。</p>
+</blockquote>
+<p>这里不详细讲解这 3 个命令的使用，如果希望详细的了解这些命令，可以在 Linux 的终端下输入这样的命令查看文档，例如查看 grep 如何使用：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>man grep
+</span></span></code></pre></div><p>man 命令的常用操作:</p>
+<ul>
+<li>退出: 按 q 键</li>
+<li>查找：按 / 后输入查找关键字</li>
+<li>下一页: 按 ctrl + d 或者 ctrl + f，<strong>tips: 这里的 d 大概是 down，f 大概是 forward</strong></li>
+<li>上一页: 按 ctrl + u 或者 ctrl + b，<strong>tips: 这里的 d 大概是 up，b 大概是 backward</strong></li>
+</ul>
+<p>查看其它命令的手册也是类似的。</p>
+<h2 id="我博客的问题">我博客的问题</h2>
+<p>我的博客是用 hugo 构建的，所有的文章都放在 post 下面的目录里，图片则需要放在 static 的 images 下面，这样在用 vscode 写博客 Markdown 的时候无法在预览里面看到图片。于是我在 hugo 项目的根目录下添加了的一个 images 的符号链接到 static 目录下的 images， 才能解决图片预览的问题。</p>
+<p><img src="https://raw.githubusercontent.com/lewangdev/picb0/main/oh-my-blog/2022-05-21-replace-strings-in-all-files/hugo-images-links.jpg" alt=""></p>
+<p>另外博客里面的图片越来越多也导致博客的 Git 仓库的体积越来越大，会导致上传下载都变得较慢，于是决定把博客里面的图片二进制文件单独放到一个 GitHub 仓库里面去，这个存放图片等二进制文件的仓库地址是 <a href="https://github.com/lewangdev/picb0">picb0</a>，让博客仓库本身只保留一些主题文件和文章的 Markdown。</p>
+<h2 id="开始替换">开始替换</h2>
+<h3 id="grep">grep</h3>
+<p>使用 grep 命令查找出所有包括图片的文件，并且显示将要被替换的文件内容</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>grep -nr <span style="color:#d14">&#39;/images&#39;</span> .
+</span></span></code></pre></div><p>其中：</p>
+<ul>
+<li>-n: 表示查找文件的名字并且显示匹配的文件行号和内容</li>
+<li>-r: 表示递归查找当前目录下的所有目录</li>
+</ul>
+<p>输入结果是这样的：</p>
+<p><img src="https://raw.githubusercontent.com/lewangdev/picb0/main/oh-my-blog/2022-05-21-replace-strings-in-all-files/grep-nr.jpg" alt=""></p>
+<h3 id="sed">sed</h3>
+<p>我常用的 sed 是这样替换文件内容，一般处理单个文件内容的替换，我会直接用 vim 来进行，替换的语法和 sed 也是差不多的。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>sed -i <span style="color:#d14">&#39;s/oldstr/newstr/g&#39;</span> filename
+</span></span></code></pre></div><p>其中：</p>
+<ul>
+<li>-i: 表示修改文件后保持到原文件名，并且创建一个 .bak 结尾的备份</li>
+<li>oldstr：为需要被替换的字符串</li>
+<li>newstr：为替换后的字符串</li>
+</ul>
+<p>为了修改博客 Markdown 文件的图片链接，需要这样来修改</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>sed -i <span style="color:#d14">&#39;s/\/images/https:\/\/raw.githubusercontent.com\/lewangdev\/picb0\/main\/oh-my-blog/g&#39;</span> 2013-03-04-so-load-path-in-linux.markdown
+</span></span></code></pre></div><p>注意如果 oldstr 或者 newstr 中有 <code>/</code> 符号，需要进行转义为 <code>\/</code>, 所以这里:</p>
+<ul>
+<li>oldstr</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>\/images
+</span></span></code></pre></div><ul>
+<li>newstr</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>https:\/\/raw.githubusercontent.com\/lewangdev\/picb0\/main\/oh-my-blog
+</span></span></code></pre></div><h3 id="xargs">xargs</h3>
+<p>弄清楚 grep 和 sed 之后，在使用 xargs 和|(管道符)把这几个命令连起来</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>grep -rl  &#34;oldstr&#34; .| xargs sed -i &#39;s/oldstr/newstr/g&#39;
+</span></span></code></pre></div><ul>
+<li>grep 的 n 参数换成了 l，因为我只需要文件名</li>
+<li>xargs 命令可以使用分割标准输入的内容作为另外一个命令的参数</li>
+</ul>
+<p>替换为我博客的实际需要替换的内容：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>grep -rl  &#34;/images&#34; .| xargs sed -i &#39;s/\/images/https:\/\/raw.githubusercontent.com\/lewangdev\/picb0\/main\/oh-my-blog/g&#39;
+</span></span></code></pre></div><p>使用 <code>git log -p</code> 查看一下是否替换成功</p>
+<p><img src="https://raw.githubusercontent.com/lewangdev/picb0/main/oh-my-blog/2022-05-21-replace-strings-in-all-files/grep-sed-replaced.jpg" alt=""></p>
+<h2 id="其它的替换方法">其它的替换方法</h2>
+<p>除了命令行，我们使用 ide 或者编辑器也很容易进行替换，比如 vscode 和 idea 系列的。</p>
+<h3 id="vscode">vscode</h3>
+<p><img src="https://raw.githubusercontent.com/lewangdev/picb0/main/oh-my-blog/2022-05-21-replace-strings-in-all-files/hugo-images-links.jpg" alt=""></p>
+<h3 id="idea">idea</h3>
+<p><img src="https://raw.githubusercontent.com/lewangdev/picb0/main/oh-my-blog/2022-05-21-replace-strings-in-all-files/idea-replace-in-files.jpg" alt=""></p>
+
+                    <p>(完)</p>
+                    
+                    <blockquote>
+                        <p>本文为原创文章，转载需注明出处，网站 <a href="https://lewang.dev">https://lewang.dev</a>。
+                        </p>
+                    </blockquote>
+                    
+                    
+                </div>
+
+                
+                
+
+<div class="post-archive">
+    <h2>相关文章</h2>
+    <ul>
+        
+        <li><a href="/posts/2022-05-20-format-json-in-command-line-copy/">命令行格式化 JSON</a></li>
+        
+        <li><a href="/posts/2022-05-16-cndevnet-intro/">国内开发者可能有点用的网络工具 cndevnet</a></li>
+        
+        <li><a href="/posts/2020-11-27-go-through-the-system-firewall/">机房不能访问互联网，轻松搞定系统部署</a></li>
+        
+        <li><a href="/posts/2020-02-22-hello-gradle-1/">大象（Gradle）的故事：一见如故</a></li>
+        
+        <li><a href="/posts/2019-10-30-wireguard-go-setup/">WireGuard 使用简介</a></li>
+        
+    </ul>
+</div>
+
+                
+
+                
+                <div class="post-meta">
+                    
+                    <h3>标签</h3>
+                    <ul class="clearfix">
+                        
+                        <li><a href="//lewang.dev/tags/grep"># grep</a></li>
+                        
+                        <li><a href="//lewang.dev/tags/sed"># sed</a></li>
+                        
+                    </ul>
+                    
+                </div>
+                
+            </article>
+            
+    
+
+    
+    
+    <div class="post markdown-body">
+      <script src="https://utteranc.es/client.js"
+            repo= "lewangdev/lewangdev.github.io"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+      </script>
+    </div>
+    
+        </div>
+    </div>
+    <footer id="footer">
+    <div class="container">
+        Copyright &copy; 2011-2022 <a href="//lewang.dev/">小碼哥</a>, All
+        rights reserved.
+        <a href="//lewang.dev/index.xml">订阅 RSS</a>
+    </div>
+</footer>
+
+
+<script type="text/javascript">
+    window.MathJax = {
+        tex2jax: {
+            inlineMath: [['$', '$']],
+            processEscapes: true
+        }
+    };
+</script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-12QS222X0Z"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-12QS222X0Z', { 'anonymize_ip': false });
+}
+</script>
+
+
+
+
+
+
+
+</body>
+
+</html>

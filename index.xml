@@ -224,13 +224,13 @@
 &lt;h2 id=&#34;三搭建可以访问互联网的部署环境&#34;&gt;三、搭建可以访问互联网的部署环境&lt;/h2&gt;
 &lt;p&gt;我们希望使用第 4 个方法来搭建部署的网络环境，通过测试客户的内网环境，几个前置条件都已满足，这样第 4 个方法的搭建过程不需要客户的参与就可以完成。首先要解决的是网络通路问题，我们在客户办公室添加了一台 4G 路由器，添加 4G 路由器之后的网络拓扑图如图:&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/lewangdev/picb0/main/oh-my-blog/go-through-the-system-firewall/network-topo-4g-router.png&#34; alt=&#34;network-topo&#34;&gt;&lt;/p&gt;
-&lt;p&gt;部署控制主机连接好 4G 路由器之后，获取到一个 &lt;code&gt;192.168.8.106&lt;/code&gt; 的 IP，注意 4G 路由器的网段要与办公室网段不同，例如办公室网段是 192.168.137.0/24 (也就是子网掩码为 255.255.255.0)，4G  路由器的网段为 192.168.8.0/24，也就是说部署控制主机需要有两个网络接口(网卡)：一个接内网，一个接外网（4G 路由器），如果部署控制主机刚好有一个 RJ45 的以太网卡和一个WiFI网卡（很多笔记本电脑就是这样），那部署控制主机在硬件上就不需要在添加额外的硬件了。&lt;/p&gt;
+&lt;p&gt;部署控制主机连接好 4G 路由器之后，获取到一个 &lt;code&gt;192.168.8.106&lt;/code&gt; 的 IP，注意 4G 路由器的网段要与办公室网段不同，例如办公室网段是 192.168.137.0/24 (也就是子网掩码为 255.255.255.0)，4G 路由器的网段为 192.168.8.0/24，也就是说部署控制主机需要有两个网络接口(网卡)：一个接内网，一个接外网（4G 路由器），如果部署控制主机刚好有一个 RJ45 的以太网卡和一个 WiFI 网卡（很多笔记本电脑就是这样），那部署控制主机在硬件上就不需要在添加额外的硬件了。&lt;/p&gt;
 &lt;p&gt;关于网络搭建过程中的使用到硬件就讲这些，各位读者可以根据自己的情况选用合适的网络设备，比如 4G 无线网卡，带 4G 模块的工控主机等等，原则上只要能建立一个互联网访问的通道就行了。&lt;/p&gt;
 &lt;p&gt;接下来我们再一起探讨一下如果利用开源软件来搭建互联网访问的通道，如图：&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/lewangdev/picb0/main/oh-my-blog/go-through-the-system-firewall/network-topo-tunnel.png&#34; alt=&#34;network-topo&#34;&gt;&lt;/p&gt;
 &lt;p&gt;现在解决问题的思路应该更加清晰了：需要在机房服务器和办公室部署控制主机之间建立一个通道。建立通道可以使用的开源软件有不少，相信很多人因为某些原因都或多或少使用过，从我自己长期实际使用的经验来看，&lt;a href=&#34;https://github.com/fatedier/frp/blob/dev/README_zh.md&#34;&gt;frp&lt;/a&gt; 和 &lt;a href=&#34;https://www.wireguard.com/&#34;&gt;WireGuard&lt;/a&gt; 非常适合用在当前情况下建立通道，&lt;a href=&#34;https://github.com/ginuerzh/gost&#34;&gt;gost&lt;/a&gt; 也十分容易搭建 HTTP 或者 SOCK5 代理。&lt;/p&gt;
 &lt;p&gt;可以用一句话来描述搭建的过程：&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;在机房一台服务器上面安装 frp 或 WireGuard 做服务端，在可以连接外网内网的部署控制主机上安装 frp  或 WireGuard 做客户端，并且在部署控制主机上安装 gost 服务启用  HTTP 代理服务，最后在服务器端的修改系统配置，让 yum 和 docker 拉镜像走 HTTP 代理。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;在机房一台服务器上面安装 frp 或 WireGuard 做服务端，在可以连接外网内网的部署控制主机上安装 frp 或 WireGuard 做客户端，并且在部署控制主机上安装 gost 服务启用 HTTP 代理服务，最后在服务器端的修改系统配置，让 yum 和 docker 拉镜像走 HTTP 代理。&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;因为部署系统使用 HTTP 代理就够了，这样 frp + gost 的组合可能比 WireGuard + gost 的组合配置起来会更加简单，WireGuard 是一个可以用于 SDWAN 组网的高性能通道软件，本文就不说明如何使用它来搭建，如果对 WireGuard 搭建 SDWAN 感兴趣，可以自行研究一下或者留言私信给我。&lt;/p&gt;
 &lt;p&gt;以下使用 frp + gost 来说明具体的搭建过程。&lt;/p&gt;
 &lt;h3 id=&#34;31-准备需要的软件&#34;&gt;3.1 准备需要的软件&lt;/h3&gt;
@@ -262,12 +262,12 @@
 &lt;/ol&gt;
 &lt;p&gt;以下部署过程以部署控制主机系统为 MacOS，机房服务器系统为 CentOS 7.6 为例，如果读者在实际部署过程中由于系统与本文不同而遇到问题不知如何解决，比如服务器为 Ubuntu，部署机是 Windows 10，欢迎留言一起探讨。&lt;/p&gt;
 &lt;h4 id=&#34;在部署控制主机上面配置路由&#34;&gt;在部署控制主机上面配置路由&lt;/h4&gt;
-&lt;p&gt;如果部署控制主机和机房服务器在同一个子网，则不需要添加路由。由于本次部署控制主机和机房服务器不在一个子网，在接了两个网卡之后，在部署控制主机上的 IP 包是不知道如何路由到机房网络的，如果不做路由设置，172.22.0.0/16 网段会走系统默认的路由，可能无法访问到机房网络。所以在部署控制主机上（ MacOS系统）添加以下路由:&lt;/p&gt;
+&lt;p&gt;如果部署控制主机和机房服务器在同一个子网，则不需要添加路由。由于本次部署控制主机和机房服务器不在一个子网，在接了两个网卡之后，在部署控制主机上的 IP 包是不知道如何路由到机房网络的，如果不做路由设置，172.22.0.0/16 网段会走系统默认的路由，可能无法访问到机房网络。所以在部署控制主机上（ MacOS 系统）添加以下路由:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo route add -net 172.22.0.0/16 192.168.137.1
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;如果部署控制主机为 Linux 或者 Windows 也需要手动添加路由。&lt;/p&gt;
 &lt;h4 id=&#34;在机房任意一台服务器上安装-frp&#34;&gt;在机房任意一台服务器上安装 frp&lt;/h4&gt;
 &lt;p&gt;上传 frp_0.34.3_linux_amd64.tar.gz 到服务器，解压 frp_0.34.3_linux_amd64.tar.gz 安装包&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ tar -zxvf frp_0.34.3_linux_amd64.tar.gz 
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ tar -zxvf frp_0.34.3_linux_amd64.tar.gz
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;frp_0.34.3_linux_amd64/
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;frp_0.34.3_linux_amd64/frps_full.ini
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;frp_0.34.3_linux_amd64/frps.ini
@@ -320,17 +320,17 @@
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ sudo yum makecache
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Loaded plugins: fastestmirror
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Loading mirror speeds from cached hostfile
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;epel/x86_64/metalink                                                                                                                                                                                                 |  &lt;span style=&#34;color:#099&#34;&gt;23&lt;/span&gt; kB  00:00:01     
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;epel/x86_64/metalink                                                                                                                                                                                                 |  &lt;span style=&#34;color:#099&#34;&gt;23&lt;/span&gt; kB  00:00:01
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; * base: mirrors.neusoft.edu.cn
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; * epel: ftp.iij.ad.jp
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; * extras: ftp.sjtu.edu.cn
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; * updates: ftp.sjtu.edu.cn
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;base                                                                                                                                                                                                                 | 3.6 kB  00:00:00     
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;docker-ce-stable                                                                                                                                                                                                     | 3.5 kB  00:00:00     
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;epel                                                                                                                                                                                                                 | 4.7 kB  00:00:00     
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;extras                                                                                                                                                                                                               | 2.9 kB  00:00:00     
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;updates                                                                                                                                                                                                              | 2.9 kB  00:00:00     
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;(&lt;/span&gt;2/3&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;)&lt;/span&gt;: epel/x86_64/primary_db                                                                           20% &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;[===================&lt;/span&gt;                                                                          &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#099&#34;&gt;790&lt;/span&gt; kB/s | 4.6 MB  00:00:22 ETA 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;base                                                                                                                                                                                                                 | 3.6 kB  00:00:00
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;docker-ce-stable                                                                                                                                                                                                     | 3.5 kB  00:00:00
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;epel                                                                                                                                                                                                                 | 4.7 kB  00:00:00
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;extras                                                                                                                                                                                                               | 2.9 kB  00:00:00
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;updates                                                                                                                                                                                                              | 2.9 kB  00:00:00
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;(&lt;/span&gt;2/3&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;)&lt;/span&gt;: epel/x86_64/primary_db                                                                           20% &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;[===================&lt;/span&gt;                                                                          &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#099&#34;&gt;790&lt;/span&gt; kB/s | 4.6 MB  00:00:22 ETA
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;代理看起来没有问题，我们来安装 git 试试。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ sudo yum install -y git
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Loaded plugins: fastestmirror
@@ -406,7 +406,7 @@
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ sudo docker run hello-world
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Unable to find image &lt;span style=&#34;color:#d14&#34;&gt;&amp;#39;hello-world:latest&amp;#39;&lt;/span&gt; locally
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;latest: Pulling from library/hello-world
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;0e03bdcc26d7: Pull &lt;span style=&#34;color:#0086b3&#34;&gt;complete&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;0e03bdcc26d7: Pull &lt;span style=&#34;color:#0086b3&#34;&gt;complete&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Digest: sha256:e7c70bb24b462baa86c102610182e3efcb12a04854e8c582838d92970a09f323
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Status: Downloaded newer image &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;for&lt;/span&gt; hello-world:latest
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
@@ -440,7 +440,7 @@
 &lt;p&gt;需要 CentOS 7 环境，且虚拟机不能访问外网&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;使用 vagrant 启动一个 centos/7 虚拟机，并且使用桥接模式获取局域网 IP, 例如 IP 为 192.168.52.79&lt;/li&gt;
-&lt;li&gt;在网关路由器上进行配置使得测试的 CentOS 7 虚拟机无法访问互联网，如果网关路由器是个linux based 的系统则可以尝试用 iptables 限制虚拟机访问互联网: &lt;code&gt;iptables -A FORWARD -s 192.168.52.79 -j DROP&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;在网关路由器上进行配置使得测试的 CentOS 7 虚拟机无法访问互联网，如果网关路由器是个 linux based 的系统则可以尝试用 iptables 限制虚拟机访问互联网: &lt;code&gt;iptables -A FORWARD -s 192.168.52.79 -j DROP&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;五远程维护&#34;&gt;五、远程维护&lt;/h2&gt;
 &lt;p&gt;通过前面关于 frp 的使用，不难看出来，只要在部署控制主机再启动一个 frp 客户端，把机房或者部署控制主机的 SSH 端口映射到到公网中的 frp 服务器可以了。当然这种情况下还在需要多做一些配置工作，比如在部署控制主机上配置好服务的自启动，然后把部署控制主机放在客户的办公室，在需要远程维护的时候，开机就好。&lt;/p&gt;
@@ -1068,7 +1068,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#d14&#34;&gt;&lt;/span&gt;    --volume /data/var/lib/gitlab/log:/var/log/gitlab &lt;span style=&#34;color:#d14&#34;&gt;\
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#d14&#34;&gt;&lt;/span&gt;    --volume /data/var/lib/gitlab/data:/var/opt/gitlab &lt;span style=&#34;color:#d14&#34;&gt;\
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#d14&#34;&gt;&lt;/span&gt;    beginor/gitlab-ce:10.3.1-ce.0
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;这个 Gitlab 的 Docker 镜像是基于  Ubuntu 16.04.3 LTS 这个版本来构建的，所以在 &lt;code&gt;docker exec -it gitlab /bin/bash&lt;/code&gt; 进入 Docker 容器之后跟使用 Ubuntu 就没有什么差别了。&lt;/p&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;这个 Gitlab 的 Docker 镜像是基于 Ubuntu 16.04.3 LTS 这个版本来构建的，所以在 &lt;code&gt;docker exec -it gitlab /bin/bash&lt;/code&gt; 进入 Docker 容器之后跟使用 Ubuntu 就没有什么差别了。&lt;/p&gt;
 &lt;p&gt;gitlab 容器中启动了很多服务，主要包括：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;gitlab&lt;/li&gt;
@@ -1132,7 +1132,7 @@
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;adduser git
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;id git
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#008080&#34;&gt;uid&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;=&lt;/span&gt;998&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;(&lt;/span&gt;git&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#008080&#34;&gt;gid&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;=&lt;/span&gt;998&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;(&lt;/span&gt;git&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#008080&#34;&gt;groups&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;=&lt;/span&gt;998&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;(&lt;/span&gt;git&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;要完成共享22端口，要求 gitlab 容器中的 git 账户的 uid 和 gid 和宿主机器上完全相同，这样读取 SSH Key 时就不会有权限问题。关于如何修改两个系统中 git 账户的 uid 和 gid，可以通过命令 &lt;code&gt;usermod&lt;/code&gt; 和 &lt;code&gt;groupmod&lt;/code&gt; 手动修改 git 用户的 uid 和 gid&lt;a href=&#34;//lewang.dev/posts/2019-07-16-change-uid-gid-in-linux&#34;&gt;参考文档&lt;/a&gt;。或者通过编辑 &lt;code&gt;/data/var/lib/gitlab/etc/gitlab.rb&lt;/code&gt; 这个配置文件，修改其中的行，来使用其他的用户&lt;a href=&#34;https://docs.gitlab.com/omnibus/settings/configuration.html#specify-numeric-user-and-group-identifiers&#34;&gt;具体请参考这里&lt;/a&gt;:&lt;/p&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;要完成共享 22 端口，要求 gitlab 容器中的 git 账户的 uid 和 gid 和宿主机器上完全相同，这样读取 SSH Key 时就不会有权限问题。关于如何修改两个系统中 git 账户的 uid 和 gid，可以通过命令 &lt;code&gt;usermod&lt;/code&gt; 和 &lt;code&gt;groupmod&lt;/code&gt; 手动修改 git 用户的 uid 和 gid&lt;a href=&#34;//lewang.dev/posts/2019-07-16-change-uid-gid-in-linux&#34;&gt;参考文档&lt;/a&gt;。或者通过编辑 &lt;code&gt;/data/var/lib/gitlab/etc/gitlab.rb&lt;/code&gt; 这个配置文件，修改其中的行，来使用其他的用户&lt;a href=&#34;https://docs.gitlab.com/omnibus/settings/configuration.html#specify-numeric-user-and-group-identifiers&#34;&gt;具体请参考这里&lt;/a&gt;:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-ruby&#34; data-lang=&#34;ruby&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;user&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#d14&#34;&gt;&amp;#39;username&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#d14&#34;&gt;&amp;#39;other-git&amp;#39;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;user&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#d14&#34;&gt;&amp;#39;group&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#d14&#34;&gt;&amp;#39;other-git&amp;#39;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;user&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#d14&#34;&gt;&amp;#39;uid&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#099&#34;&gt;1001&lt;/span&gt;
@@ -1148,7 +1148,7 @@
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ssh -p &lt;span style=&#34;color:#099&#34;&gt;8022&lt;/span&gt; 127.0.0.1
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;观察到 &lt;code&gt;~/.ssh/authorized_keys&lt;/code&gt; 其它行都是这样&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#008080&#34;&gt;command&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#d14&#34;&gt;&amp;#34;/opt/gitlab/embedded/service/gitlab-shell/bin/gitlab-shell key-32&amp;#34;&lt;/span&gt;,no-port-forwarding,no-X11-forwarding,no-agent-forwarding,no-pty ssh-rsa AAAAB3NzaC1yc2EAA......hOtpAl7J
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;在宿主机看来，每次git账户进行操作是都会执行 &lt;code&gt;/opt/gitlab/embedded/service/gitlab-shell/bin/gitlab-shell&lt;/code&gt;, 我们恰好可以使用这个脚本来实现转发。&lt;/p&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;在宿主机看来，每次 git 账户进行操作是都会执行 &lt;code&gt;/opt/gitlab/embedded/service/gitlab-shell/bin/gitlab-shell&lt;/code&gt;, 我们恰好可以使用这个脚本来实现转发。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;mkdir -p /opt/gitlab/embedded/service/gitlab-shell/bin/
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;touch gitlab-shell
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;chmod +x gitlab-shell
@@ -1239,45 +1239,35 @@
 &lt;/li&gt;
 &lt;li&gt;文艺类
 &lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&#34;https://book.douban.com/subject/1770782/&#34;&gt;《追风筝的人》&lt;/a&gt;&lt;/p&gt;
+&lt;li&gt;&lt;a href=&#34;https://book.douban.com/subject/1770782/&#34;&gt;《追风筝的人》&lt;/a&gt;
 &lt;ul&gt;
 &lt;li&gt;今年读到最长的一篇小说， 从作者笔下故事了解了阿富汗的人文历史，很是感动和惊讶。另外就是觉得译者也很厉害，从头读到尾，除了人名，没觉得是在读一本英文翻译过来的书&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&#34;https://book.douban.com/subject/2143732/&#34;&gt;《灿烂千阳》&lt;/a&gt;未读完&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&#34;https://book.douban.com/subject/1467022/&#34;&gt;《上帝掷骰子吗》&lt;/a&gt;&lt;/p&gt;
+&lt;li&gt;&lt;a href=&#34;https://book.douban.com/subject/2143732/&#34;&gt;《灿烂千阳》&lt;/a&gt;未读完&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://book.douban.com/subject/1467022/&#34;&gt;《上帝掷骰子吗》&lt;/a&gt;
 &lt;ul&gt;
 &lt;li&gt;感觉写这本书的作者应该是个天才，搜了一下，很神秘的作者&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&#34;https://book.douban.com/subject/26742663/&#34;&gt;《乡关何处》&lt;/a&gt;&lt;/p&gt;
+&lt;li&gt;&lt;a href=&#34;https://book.douban.com/subject/26742663/&#34;&gt;《乡关何处》&lt;/a&gt;
 &lt;ul&gt;
 &lt;li&gt;看着也挺有意思的&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&#34;https://book.douban.com/subject/4729583/&#34;&gt;《野火集》&lt;/a&gt;&lt;/p&gt;
+&lt;li&gt;&lt;a href=&#34;https://book.douban.com/subject/4729583/&#34;&gt;《野火集》&lt;/a&gt;
 &lt;ul&gt;
 &lt;li&gt;读晚了，读的大陆删节版，我觉得每一个人都应该读下这本书&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&#34;https://book.douban.com/subject/11445548/&#34;&gt;《自私的基因》&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&#34;https://book.douban.com/subject/27180566/&#34;&gt;《创业者的窘境》&lt;/a&gt;&lt;/p&gt;
+&lt;li&gt;&lt;a href=&#34;https://book.douban.com/subject/11445548/&#34;&gt;《自私的基因》&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://book.douban.com/subject/27180566/&#34;&gt;《创业者的窘境》&lt;/a&gt;
 &lt;ul&gt;
 &lt;li&gt;看完觉得最该读这本书的人应该是我老婆&lt;/li&gt;
 &lt;li&gt;还有就是身边的亲密好友或同学&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&#34;https://book.douban.com/subject/25985021/&#34;&gt;《人类简史》&lt;/a&gt;未读完&lt;/p&gt;
+&lt;li&gt;&lt;a href=&#34;https://book.douban.com/subject/25985021/&#34;&gt;《人类简史》&lt;/a&gt;未读完
 &lt;ul&gt;
 &lt;li&gt;Kindle 版，用手机看的，亚马逊真牛逼，让我买了一个 kindle 放在家里吃灰&lt;/li&gt;
 &lt;/ul&gt;
@@ -1303,14 +1293,14 @@
 &lt;p&gt;我想 2017 年的每一个技术人都应该从各种媒体渠道听说过 AlphaGo 的事迹，仿佛至此之后，人工智能变得特别的火，铺天盖地都是 AI 将要取代人类的信息。在 2017 年最后一个月里，有幸参加了 Google Developer Day 2017（GDD2017）大会，当然大会主题基本也都是 AI/IOT/Bigdata 相关的东西。记得李飞飞演讲中的这句话：The AI has changed the world，and who will change the AI？是的，Tensorflow API 工程师们，得好好思考一番了。&lt;/p&gt;
 &lt;p&gt;另外有件事，我本人在读研期间是研究数据库方向，最近 Jeff Dean 的论文 &lt;a href=&#34;https://arxiv.org/abs/1712.01208&#34;&gt;《The Case for Learned Index Structures》&lt;/a&gt; 把机器学习带到了数据库研究领域，我想很快，类似思路就会出现在计算机科学相关领域，一下子仿佛又打开了一扇窗的感觉。对于我来讲，目前我希望自己弄清楚人工智能，机器学习，深度学习这几个名词之间的关系是怎样的，不至于在茶余饭后瞎扯淡时不知道别人在讨论什么就行。&lt;/p&gt;
 &lt;h2 id=&#34;物联网大数据&#34;&gt;物联网大数据&lt;/h2&gt;
-&lt;p&gt;把物联网和大数据放在一起应该是一个超热的话题了。在这两个领域，常见情景下技术方案已经没有任何所谓的技术壁垒。各大云厂商（Google，AWS，MS，Aliyun等等）都推出或者增强了自己的物联网平台以及配套设施，智能硬件门槛也变得非常的低，让创业者或者企业不用费太大力气就可以搭建数据采集平台。&lt;/p&gt;
+&lt;p&gt;把物联网和大数据放在一起应该是一个超热的话题了。在这两个领域，常见情景下技术方案已经没有任何所谓的技术壁垒。各大云厂商（Google，AWS，MS，Aliyun 等等）都推出或者增强了自己的物联网平台以及配套设施，智能硬件门槛也变得非常的低，让创业者或者企业不用费太大力气就可以搭建数据采集平台。&lt;/p&gt;
 &lt;p&gt;短板效应不在：除了厂商提供云服务外，自行搭建也不再是难题。各种开源软件和组件都已经经过了长期的验证，只要用好了这些软件或者服务，相当于全世界最牛的程序员都在为你“打工”。这也是我计划搭建开源物联网平台的初衷。&lt;/p&gt;
 &lt;p&gt;2017 年，NB-IoT 的新闻也越来越多，万物相连的未来已经到来。&lt;/p&gt;
 &lt;h2 id=&#34;insurtech-和-fintech&#34;&gt;Insurtech 和 Fintech&lt;/h2&gt;
 &lt;p&gt;就我个人而言，头次把这两个词放在一起的是在一场面试上。我在前家公司工作的 4 年半时间里，公司发展得很慢，远远低于我的预期。从开始的智能硬件创业到最近（2017）的 Insurtech，业务虽然有转型，但是总能看到最初 UBI 车险的影子。保险是一个强监管的行业，里面水很深，但也到处都是机会。&lt;/p&gt;
 &lt;p&gt;像金融服务一样，越来越多的人，在各种场景下都需要各类保险来增加自身抗风险的能力。2017 年是我深入了解保险业和保险科技，包括但不限于车险、运费险、健康险以及各类创新险的元年，也是我进入金融科技领域（互联网金融）的元年。&lt;/p&gt;
 &lt;p&gt;到了今天，除了维持银行对我的用户等级的要求，一般情况下，我已经全部使用各类新兴的理财 APP 管理自己的血汗钱了，并且只需要在 APP 上简单的按几下，各类账户就自动开通，并且收益率很容易就可以跑赢 CPI。&lt;/p&gt;
-&lt;p&gt;目前自己2017年自己用过的理财 APP（除银行/证券 APP 外） 有：&lt;/p&gt;
+&lt;p&gt;目前自己 2017 年自己用过的理财 APP（除银行/证券 APP 外） 有：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;理财通（在微信钱包九宫格里，总体年收益率 5%，组成：活期 74% + 基金 26% ）&lt;/li&gt;
 &lt;li&gt;陆金所（各类抵用券大概有几百块，总体年收益率大约有 7.6%, 组成：定期（企业融资） 85% + 活期 5% + 基金 10%）&lt;/li&gt;
@@ -1340,13 +1330,13 @@
 &lt;h2 id=&#34;基本知识&#34;&gt;基本知识&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;磁盘 /dev/xvdb /dev/xvdc&lt;/li&gt;
-&lt;li&gt;分区, 使用 fdisk 进行分区 fdisk &amp;gt; n &amp;gt; p &amp;gt; 1..4, 主分区最多只有4个&lt;/li&gt;
+&lt;li&gt;分区, 使用 fdisk 进行分区 fdisk &amp;gt; n &amp;gt; p &amp;gt; 1..4, 主分区最多只有 4 个&lt;/li&gt;
 &lt;li&gt;准备分区后，将分区类型变为 LVM 分区，fdisk &amp;gt; t &amp;gt; 8e, 8e 是 LVM 类型 ID&lt;/li&gt;
 &lt;li&gt;物理卷（PV），卷组（VG），逻辑卷（LV），从磁盘分区创建 PV，通过 PV 创建 VG 或者把 PV 加入已有的 VG，在 VG 上创建 LV，LV 看起来就是逻辑的上磁盘，使用和真实的磁盘没什么明显区别, 在 LV 上构建文件系统&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;创建&#34;&gt;创建&lt;/h2&gt;
 &lt;ul&gt;
-&lt;li&gt;创建物理卷 pvcreate  /dev/xvdb1，对分区进行操作&lt;/li&gt;
+&lt;li&gt;创建物理卷 pvcreate /dev/xvdb1，对分区进行操作&lt;/li&gt;
 &lt;li&gt;创建 vg0 卷组 vgcreate vg0 /dev/xvdb1&lt;/li&gt;
 &lt;li&gt;查看卷组 vgdisplay， 可以看到卷组有多大&lt;/li&gt;
 &lt;li&gt;在 vg0 上创建 data 逻辑卷 lvcreate -L 99G -n data vg0 或者 lvcreate -l 25556 -n data vg0&lt;/li&gt;
@@ -1355,16 +1345,16 @@
 &lt;/ul&gt;
 &lt;h2 id=&#34;添加磁盘&#34;&gt;添加磁盘&lt;/h2&gt;
 &lt;ul&gt;
-&lt;li&gt;创建物理卷 pvcreate  /dev/xvdc1，对分区进行操作&lt;/li&gt;
+&lt;li&gt;创建物理卷 pvcreate /dev/xvdc1，对分区进行操作&lt;/li&gt;
 &lt;li&gt;添加到 vg0 卷组 vgextend vg0 /dev/xvdc1&lt;/li&gt;
-&lt;li&gt;扩容逻辑卷  lvextend -L +99G /dev/vg0/data, 可以通过 vgdispaly 查看卷组剩余空间有多少&lt;/li&gt;
+&lt;li&gt;扩容逻辑卷 lvextend -L +99G /dev/vg0/data, 可以通过 vgdispaly 查看卷组剩余空间有多少&lt;/li&gt;
 &lt;li&gt;扩容文件系统 resize2fs /dev/vg0/data, 不需要卸载逻辑卷，可以在线完成扩容&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;备注&#34;&gt;备注&lt;/h2&gt;
 &lt;p&gt;过程中有一块磁盘已经在使用，需要 umount 后再加入 LVM，出现了 device is busy 的情况，系统提示使用 lsof 或者 fuser 查询哪些进程在使用这个磁盘或者目录，最后通过 fuser 查询到进程号后，kill -9 pid 后解决 fuser -m /mnt&lt;/p&gt;
 &lt;h2 id=&#34;参考链接&#34;&gt;参考链接&lt;/h2&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.evernote.com/l/ASu5A6WwxuZFLKavPy1lUAv_uixPNJDMP98&#34;&gt;Linux下LVM的配置详解&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.evernote.com/l/ASu5A6WwxuZFLKavPy1lUAv_uixPNJDMP98&#34;&gt;Linux 下 LVM 的配置详解&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;http://man.linuxde.net/resize2fs&#34;&gt;Linux 命令大全&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
@@ -1391,7 +1381,7 @@
 &lt;ul&gt;
 &lt;li&gt;系统日志: 各类系统产生的跟业务有关的日志或者与业务无关的日志&lt;/li&gt;
 &lt;li&gt;web 服务器日志：如 access.log/error.log 等有固定格式的日志&lt;/li&gt;
-&lt;li&gt;性能监控日志：打点记录各类服务的 metrics(全部为数值类型long/double/bool)&lt;/li&gt;
+&lt;li&gt;性能监控日志：打点记录各类服务的 metrics(全部为数值类型 long/double/bool)&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;系统日志&#34;&gt;系统日志&lt;/h2&gt;
 &lt;p&gt;由时间戳、一些枚举值以及日志内容(变长字符串)组成&lt;/p&gt;
@@ -1414,11 +1404,11 @@
 &lt;/ul&gt;
 &lt;h2 id=&#34;web-服务器日志&#34;&gt;web 服务器日志&lt;/h2&gt;
 &lt;p&gt;access log（nginx）
-日志内容：主要是文本(string）或者一些系统 metrics 数据(数值类型long/double)&lt;/p&gt;
+日志内容：主要是文本(string）或者一些系统 metrics 数据(数值类型 long/double)&lt;/p&gt;
 &lt;h2 id=&#34;日志存储和处理&#34;&gt;日志存储和处理：&lt;/h2&gt;
 &lt;ul&gt;
-&lt;li&gt;数据磁带（1周）：kafka&lt;/li&gt;
-&lt;li&gt;提供热数据检索（1个月）：solr(or lucence based on cassandra)&lt;/li&gt;
+&lt;li&gt;数据磁带（1 周）：kafka&lt;/li&gt;
+&lt;li&gt;提供热数据检索（1 个月）：solr(or lucence based on cassandra)&lt;/li&gt;
 &lt;li&gt;日志存储（永久）：&lt;/li&gt;
 &lt;li&gt;kariosdb/cassandra: 支持 double/long/string 类型，kariosdb 相当于在 cassandra 上面套了一个壳，这样简化了很多时间序列数据处理的操作&lt;/li&gt;
 &lt;li&gt;数据展示：grafana，官方支持 kariosdb&lt;/li&gt;
@@ -1453,7 +1443,7 @@
       
       <guid>//lewang.dev/posts/2017-07-15-log4j2/</guid>
       <description>&lt;h2 id=&#34;背景&#34;&gt;背景&lt;/h2&gt;
-&lt;p&gt;Java 生态下的日志库太多，配置也不同，大多数情况下会使用  SLF4j (又引入了一个库)来抽象日志接口。在使用 Log4j2 后，发现可以不使用 SLF4j 了，并且配置变得更简单，可以使用 lombok 的 log4j2 注解等。&lt;/p&gt;
+&lt;p&gt;Java 生态下的日志库太多，配置也不同，大多数情况下会使用 SLF4j (又引入了一个库)来抽象日志接口。在使用 Log4j2 后，发现可以不使用 SLF4j 了，并且配置变得更简单，可以使用 lombok 的 log4j2 注解等。&lt;/p&gt;
 &lt;p&gt;需要搞清楚&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;如何设置哪些日志要记录下来&lt;/li&gt;
@@ -1461,7 +1451,7 @@
 &lt;/ul&gt;
 &lt;h2 id=&#34;level-日志级别&#34;&gt;LEVEL 日志级别：&lt;/h2&gt;
 &lt;ul&gt;
-&lt;li&gt;内置（有Fatal）：All &amp;lt; Trace &amp;lt; Debug &amp;lt; Info &amp;lt; Warn &amp;lt; Error &amp;lt; Fatal &amp;lt; OFF&lt;/li&gt;
+&lt;li&gt;内置（有 Fatal）：All &amp;lt; Trace &amp;lt; Debug &amp;lt; Info &amp;lt; Warn &amp;lt; Error &amp;lt; Fatal &amp;lt; OFF&lt;/li&gt;
 &lt;li&gt;还可以自定义： &lt;a href=&#34;https://logging.apache.org/log4j/2.0/manual/customloglevels.html&#34;&gt;https://logging.apache.org/log4j/2.0/manual/customloglevels.html&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;appender-日志输出的目的地&#34;&gt;Appender: 日志输出的目的地&lt;/h2&gt;
@@ -1525,9 +1515,9 @@
       <guid>//lewang.dev/posts/2017-06-06-xtrabackup/</guid>
       <description>&lt;h2 id=&#34;背景&#34;&gt;背景&lt;/h2&gt;
 &lt;p&gt;目前公司主要服务都是直接使用 MySQL 主服务器，从服务主要给离线数据分析服务使用，由于前期弄得比较简单的粗暴，从服务上还有一两个数据库在做生产使用, 并且从服数据已经不能和主服进行进行同步了，有大量错误，忽略都没有办法进行。此外，主服仅配置了三个核心数据的 binlog，随着业务的变化，其它数据库不能走主从这条路来同步数据，于是希望不停机的情形下重新调整主服配置，记录所有的数据库的 binlog，同时添加新的从服务器来同步数据&lt;/p&gt;
-&lt;h2 id=&#34;方案1&#34;&gt;方案1&lt;/h2&gt;
+&lt;h2 id=&#34;方案-1&#34;&gt;方案 1&lt;/h2&gt;
 &lt;p&gt;MySQL 的主从是通过同步 binlog 日志来实现数据同步的，于是需要想办法把从服数据先于主服同步，记录 binlog 的 pos 值，再配置从服从该 pos 处开始同步，考虑可以使用 mysqldump 导出所有 innodb 数据，使用 rsync 同步所有 myisam 数据文件，然后再开启主从同步。但是目前这种方案不适用，主服不能长时间停机&lt;/p&gt;
-&lt;h2 id=&#34;方案2&#34;&gt;方案2&lt;/h2&gt;
+&lt;h2 id=&#34;方案-2&#34;&gt;方案 2&lt;/h2&gt;
 &lt;p&gt;使用 xtrabackup 来完成目标&lt;/p&gt;
 &lt;p&gt;主从服务器上都需要安装 xtrabackup（实际使用 xtrabackupex）：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;yum install http://www.percona.com/downloads/percona-release/redhat/0.1-4/percona-release-0.1-4.noarch.rpm
@@ -1712,13 +1702,19 @@ Nginx 可以利用它通过 socket 发送缓存的或者磁盘上的内容，并
 &lt;p&gt;大概意思就是我们 Github Pages 服务最近做了升级，这个升级将会使你的博客访问起来快到碉堡了，赶快来配置(修改域名记录就可以)一下用上吧。&lt;/p&gt;
 &lt;p&gt;之前 iforget.info 这个域名有两条记录：&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;A 记录： iforget.info 到 207.97.227.245&lt;/li&gt;
-&lt;li&gt;CNAME(Alias) 记录：www.iforget.info  到  iforget.info&lt;/li&gt;
-&lt;/ul&gt;
+&lt;li&gt;
+&lt;p&gt;A 记录： iforget.info 到 207.97.227.245&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;CNAME(Alias) 记录：www.iforget.info 到 iforget.info&lt;/p&gt;
 &lt;p&gt;207.97.227.245 是个美帝的 IP，所以速度比较慢。我还想着给 iforget.info 备个案，从此用上七牛的 CND 来加速了。好消息来了，Github Pages 支持全球 CDN 了，赶紧修改一下 DNS 记录(把之前的记录都删掉吧)：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;CNAME 记录: iforget.info 到 thisiswangle.github.io&lt;/li&gt;
-&lt;li&gt;CNAME 记录: &lt;a href=&#34;https://www.iforget.info&#34;&gt;www.iforget.info&lt;/a&gt; 到 thisiswangle.github.io&lt;/li&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;CNAME 记录: iforget.info 到 thisiswangle.github.io&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;CNAME 记录: &lt;a href=&#34;https://www.iforget.info&#34;&gt;www.iforget.info&lt;/a&gt; 到 thisiswangle.github.io&lt;/p&gt;
+&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;好了，静候 DNS 生效。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;➜  ~  dig iforget.info +nostats +nocomments +nocmd
@@ -1754,9 +1750,9 @@ Nginx 可以利用它通过 socket 发送缓存的或者磁盘上的内容，并
       <pubDate>Thu, 06 Mar 2014 00:40:00 +0000</pubDate>
       
       <guid>//lewang.dev/posts/2014-03-06-arch-of-website-domain-cdn/</guid>
-      <description>&lt;p&gt;为了自己做好网站的架构，找了知乎，豆瓣，大众点评和百姓网来做参考。这里主要来看域名和CDN相关的部分，后台的架构也还是要边学便实践。&lt;/p&gt;
+      <description>&lt;p&gt;为了自己做好网站的架构，找了知乎，豆瓣，大众点评和百姓网来做参考。这里主要来看域名和 CDN 相关的部分，后台的架构也还是要边学便实践。&lt;/p&gt;
 &lt;h2 id=&#34;大概情况&#34;&gt;大概情况&lt;/h2&gt;
-&lt;p&gt;从前端分析了知乎的域名和 DNS 情况，同时对比了一下豆瓣、大众点评和百姓网。从域名、DNS、CDN等使用角度来说，他们之间大同小异。&lt;/p&gt;
+&lt;p&gt;从前端分析了知乎的域名和 DNS 情况，同时对比了一下豆瓣、大众点评和百姓网。从域名、DNS、CDN 等使用角度来说，他们之间大同小异。&lt;/p&gt;
 &lt;h2 id=&#34;使用的分析工具&#34;&gt;使用的分析工具&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;Chrome&lt;/li&gt;
@@ -1808,7 +1804,7 @@ Nginx 可以利用它通过 socket 发送缓存的或者磁盘上的内容，并
 &lt;/table&gt;
 &lt;p&gt;大部分都是用了 301 或者 302 跳转，注意他们的区别：301 是永久跳转(浏览器会做客户端端缓存)，而 302 是临时跳转。此外 baidu.com 到 &lt;a href=&#34;https://www.baidu.com&#34;&gt;www.baidu.com&lt;/a&gt; 并不是使用 301 或者 302 ，而是使用下面的一段 HTML 代码&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;lt;&lt;span style=&#34;color:#000080&#34;&gt;html&lt;/span&gt;&amp;gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;lt;&lt;span style=&#34;color:#000080&#34;&gt;meta&lt;/span&gt; &lt;span style=&#34;color:#008080&#34;&gt;http-equiv&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#d14&#34;&gt;&amp;#34;refresh&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#008080&#34;&gt;content&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#d14&#34;&gt;&amp;#34;0;url=http://www.baidu.com/&amp;#34;&lt;/span&gt;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &amp;lt;&lt;span style=&#34;color:#000080&#34;&gt;meta&lt;/span&gt; &lt;span style=&#34;color:#008080&#34;&gt;http-equiv&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#d14&#34;&gt;&amp;#34;refresh&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#008080&#34;&gt;content&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#d14&#34;&gt;&amp;#34;0;url=http://www.baidu.com/&amp;#34;&lt;/span&gt; /&amp;gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;lt;/&lt;span style=&#34;color:#000080&#34;&gt;html&lt;/span&gt;&amp;gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;相比而言，我觉得使用 301 更 Geek，更好一些。&lt;/p&gt;
 &lt;h2 id=&#34;cdn-使用&#34;&gt;CDN 使用&lt;/h2&gt;
@@ -1819,73 +1815,84 @@ Nginx 可以利用它通过 socket 发送缓存的或者磁盘上的内容，并
 &lt;th&gt;域名&lt;/th&gt;
 &lt;th&gt;用途&lt;/th&gt;
 &lt;th&gt;路径&lt;/th&gt;
+&lt;th&gt;&lt;/th&gt;
 &lt;/tr&gt;
 &lt;/thead&gt;
 &lt;tbody&gt;
 &lt;tr&gt;
 &lt;td&gt;CNAME&lt;/td&gt;
 &lt;td&gt;static.analytics.zhihu.com&lt;/td&gt;
-&lt;td&gt;CDN, 看 CNAME 以为是七牛CDN，其实用了 ChinaNetCenter 的 CDN&lt;/td&gt;
+&lt;td&gt;CDN, 看 CNAME 以为是七牛 CDN，其实用了 ChinaNetCenter 的 CDN&lt;/td&gt;
 &lt;td&gt;d.qiniudn.com &amp;gt; wsall.36tr.com.wscdns.com &amp;gt; 08911.xdwscache.glb0.lxdns.com &amp;gt; IP&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;CNAME&lt;/td&gt;
 &lt;td&gt;static.zhihu.com&lt;/td&gt;
-&lt;td&gt;网页资源文件cdn，包括css，js，image，不包括用户头像、用户发布的图片等&lt;/td&gt;
+&lt;td&gt;网页资源文件 cdn，包括 css，js，image，不包括用户头像、用户发布的图片等&lt;/td&gt;
 &lt;td&gt;同上&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;CNAME&lt;/td&gt;
 &lt;td&gt;p1.zhimg.com&lt;/td&gt;
-&lt;td&gt;用户头像，用户发布的图片, 这里使用又拍云CDN&lt;/td&gt;
+&lt;td&gt;用户头像，用户发布的图片, 这里使用又拍云 CDN&lt;/td&gt;
 &lt;td&gt;zhcdn-img.b0.aicdn.com &amp;gt; ctn.b9.aicdn.com &amp;gt; IP&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;CNAME&lt;/td&gt;
 &lt;td&gt;p2.zhimg.com&lt;/td&gt;
-&lt;td&gt;用户头像，用户发布的图片，这里使用了七牛CDN&lt;/td&gt;
-&lt;td&gt;zhimg0.qiniudn.com &amp;gt; 其它非七牛CDN&lt;/td&gt;
+&lt;td&gt;用户头像，用户发布的图片，这里使用了七牛 CDN&lt;/td&gt;
+&lt;td&gt;zhimg0.qiniudn.com &amp;gt; 其它非七牛 CDN&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;CNAME&lt;/td&gt;
 &lt;td&gt;p3.zhimg.com&lt;/td&gt;
-&lt;td&gt;与p1.zhimg.com相同&lt;/td&gt;
+&lt;td&gt;与 p1.zhimg.com 相同&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;CNAME&lt;/td&gt;
 &lt;td&gt;p4.zhimg.com&lt;/td&gt;
-&lt;td&gt;与p1.zhimg.com相同&lt;/td&gt;
+&lt;td&gt;与 p1.zhimg.com 相同&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;CNAME&lt;/td&gt;
 &lt;td&gt;s1.zhimg.com&lt;/td&gt;
 &lt;td&gt;视频片段等&lt;/td&gt;
-&lt;td&gt;这里使用了七牛CDN&lt;/td&gt;
+&lt;td&gt;这里使用了七牛 CDN&lt;/td&gt;
+&lt;td&gt;zhimg0.qiniudn.com &amp;gt; 其它非七牛 CDN&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;CNAME&lt;/td&gt;
 &lt;td&gt;s2.zhimg.com&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
-&lt;td&gt;这里使用了七牛CDN&lt;/td&gt;
+&lt;td&gt;这里使用了七牛 CDN&lt;/td&gt;
+&lt;td&gt;zhimg0.qiniudn.com &amp;gt; 其它非七牛 CDN&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;CNAME&lt;/td&gt;
 &lt;td&gt;s3.zhimg.com&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
-&lt;td&gt;这里使用了七牛CDN&lt;/td&gt;
+&lt;td&gt;这里使用了七牛 CDN&lt;/td&gt;
+&lt;td&gt;zhimg0.qiniudn.com &amp;gt; 其它非七牛 CDN&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;CNAME&lt;/td&gt;
 &lt;td&gt;s4.zhimg.com&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
-&lt;td&gt;这里使用了七牛CDN&lt;/td&gt;
+&lt;td&gt;这里使用了七牛 CDN&lt;/td&gt;
+&lt;td&gt;zhimg0.qiniudn.com &amp;gt; 其它非七牛 CDN&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;p&gt;p1-p4， s1-s4  由知乎服务器端按照一定算法选择（有可能就是等概率随机）&lt;/p&gt;
-&lt;p&gt;不得不有点疑问？为什么七牛CDN最后都直到别人的CDN服务器上去了，而又拍云全部是A记录到自己的服务器。又拍强调的自建机房就是这个意思？&lt;/p&gt;
+&lt;p&gt;p1-p4， s1-s4 由知乎服务器端按照一定算法选择（有可能就是等概率随机）&lt;/p&gt;
+&lt;p&gt;不得不有点疑问？为什么七牛 CDN 最后都直到别人的 CDN 服务器上去了，而又拍云全部是 A 记录到自己的服务器。又拍强调的自建机房就是这个意思？&lt;/p&gt;
 &lt;h2 id=&#34;静态资源版本控制&#34;&gt;静态资源版本控制&lt;/h2&gt;
 &lt;table&gt;
 &lt;thead&gt;
@@ -1897,23 +1904,23 @@ Nginx 可以利用它通过 socket 发送缓存的或者磁盘上的内容，并
 &lt;tbody&gt;
 &lt;tr&gt;
 &lt;td&gt;知乎&lt;/td&gt;
-&lt;td&gt;在文件名前添加类似 md5 的字符串，如 app.js, 发布版本为f853b06af5428ff5f78f66e3d09397e2.app.js&lt;/td&gt;
+&lt;td&gt;在文件名前添加类似 md5 的字符串，如 app.js, 发布版本为 f853b06af5428ff5f78f66e3d09397e2.app.js&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;百姓网&lt;/td&gt;
-&lt;td&gt;如gallery.js 发布版本为 gallery.f07b79d6.js&lt;/td&gt;
+&lt;td&gt;如 gallery.js 发布版本为 gallery.f07b79d6.js&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;豆瓣&lt;/td&gt;
-&lt;td&gt;将类似md5值放在路径中，如http://img3.douban.com/f/shire/55c9fe0e9ecb5725037e9839fc515504008dae74/js/ad.js&lt;/td&gt;
+&lt;td&gt;将类似 md5 值放在路径中，如http://img3.douban.com/f/shire/55c9fe0e9ecb5725037e9839fc515504008dae74/js/ad.js&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;大众点评&lt;/td&gt;
-&lt;td&gt;和百姓网类似，如发布版本为ga2.min.acd5dfe89e87135b4eef62dcf81ef849.js&lt;/td&gt;
+&lt;td&gt;和百姓网类似，如发布版本为 ga2.min.acd5dfe89e87135b4eef62dcf81ef849.js&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;p&gt;由于CDN使用简单镜像＋缓存的功能，每一个缓存的文件有一定的时效性，而且基本都是静态文件，不支持 Query String （如 ?ver=201413），于是需要在源头控制将要被分发到 CDN 中文件的版本。最为简单的做法就是对开发人员透明，在发布项目的时候，通过计算文件的 hash 签名或者 md5 签名来做类 HTML 等文本代码的重构。&lt;/p&gt;
+&lt;p&gt;由于 CDN 使用简单镜像＋缓存的功能，每一个缓存的文件有一定的时效性，而且基本都是静态文件，不支持 Query String （如 ?ver=201413），于是需要在源头控制将要被分发到 CDN 中文件的版本。最为简单的做法就是对开发人员透明，在发布项目的时候，通过计算文件的 hash 签名或者 md5 签名来做类 HTML 等文本代码的重构。&lt;/p&gt;
 &lt;h2 id=&#34;dns-选择&#34;&gt;DNS 选择&lt;/h2&gt;
 &lt;table&gt;
 &lt;thead&gt;
@@ -1958,13 +1965,13 @@ Nginx 可以利用它通过 socket 发送缓存的或者磁盘上的内容，并
       <pubDate>Mon, 03 Mar 2014 23:40:00 +0000</pubDate>
       
       <guid>//lewang.dev/posts/2014-03-03-building-devenv-by-vagrant/</guid>
-      <description>&lt;p&gt;&lt;a href=&#34;http://www.vagrantup.com/&#34;&gt;Vagrant&lt;/a&gt; 是一个构建虚拟开发环境的利器，它使得在团队中很容易共享开发环境，有了它，不必每个人都搭建一个自己的开发环境了。在没有使用 vagrant 之前，我在windows中安装了 virtualbox，然后在virtualbox中安装了一个ubuntu server。在 ubuntu 中安装了 mysql、jdk 等软件，并且设置了一个共享目录，以便于将工程代码直接共享给 ubuntu。在外部开发调试过程中（Java 项目），我需要在virtualbox中设置好几个端口映射，如 mysql，ssh等等。这样在 cygwin 里面就可以通过 ssh 登录 ubuntu server 了，为了使得ssh登录不用每次设置密码，还需要手动生成公钥私钥。换机器了，这一切我又得重新配置。新同事来了，他也得像我这样重新配置一遍。有可能他还会有问题说：为什么按照你的说明，代码在我这里却无法运行呢？&lt;/p&gt;
+      <description>&lt;p&gt;&lt;a href=&#34;http://www.vagrantup.com/&#34;&gt;Vagrant&lt;/a&gt; 是一个构建虚拟开发环境的利器，它使得在团队中很容易共享开发环境，有了它，不必每个人都搭建一个自己的开发环境了。在没有使用 vagrant 之前，我在 windows 中安装了 virtualbox，然后在 virtualbox 中安装了一个 ubuntu server。在 ubuntu 中安装了 mysql、jdk 等软件，并且设置了一个共享目录，以便于将工程代码直接共享给 ubuntu。在外部开发调试过程中（Java 项目），我需要在 virtualbox 中设置好几个端口映射，如 mysql，ssh 等等。这样在 cygwin 里面就可以通过 ssh 登录 ubuntu server 了，为了使得 ssh 登录不用每次设置密码，还需要手动生成公钥私钥。换机器了，这一切我又得重新配置。新同事来了，他也得像我这样重新配置一遍。有可能他还会有问题说：为什么按照你的说明，代码在我这里却无法运行呢？&lt;/p&gt;
 &lt;p&gt;一切都从 &lt;a href=&#34;http://yining.org&#34;&gt;Yining&lt;/a&gt; 告诉了我 vagrant 之后发生了变化，原来一切都这么简单。&lt;/p&gt;
 &lt;h2 id=&#34;安装-virtualbox&#34;&gt;安装 VirtualBox&lt;/h2&gt;
-&lt;p&gt;Vagrant 其实是对 virtualbox 做了一层包装，它让使用virtualbox作为虚拟机更为简单。当然也可以使用 vmware，使用vmware那得找一个license了。&lt;/p&gt;
+&lt;p&gt;Vagrant 其实是对 virtualbox 做了一层包装，它让使用 virtualbox 作为虚拟机更为简单。当然也可以使用 vmware，使用 vmware 那得找一个 license 了。&lt;/p&gt;
 &lt;p&gt;好吧，去&lt;a href=&#34;https://www.virtualbox.org/wiki/Downloads&#34;&gt;这里&lt;/a&gt; 下载 VirtualBox。我使用的是 4.3.8 for OSX&lt;/p&gt;
 &lt;h2 id=&#34;安装-vagrant&#34;&gt;安装 Vagrant&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&#34;http://www.vagrantup.com/downloads.html&#34;&gt;下载vagrant&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.vagrantup.com/downloads.html&#34;&gt;下载 vagrant&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&#34;添加虚拟机镜像到-vagrant&#34;&gt;添加虚拟机镜像到 Vagrant&lt;/h2&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;vagrant box add vdevenv ~/Workspace/vagrant/boxes/vdevenv-0.0.0.1.box
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;vagrant 的干净的镜像可以在这里下载:&lt;/p&gt;
@@ -1983,7 +1990,7 @@ Nginx 可以利用它通过 socket 发送缓存的或者磁盘上的内容，并
 &lt;p&gt;修改 Vagrantfile&lt;/p&gt;
 &lt;h2 id=&#34;分享开发环境&#34;&gt;分享开发环境&lt;/h2&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;vagrant package
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;执行之后在工作目录下面会生成一个*.bax的文件，把这个文件拷给别人就可以了&lt;/p&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;执行之后在工作目录下面会生成一个*.bax 的文件，把这个文件拷给别人就可以了&lt;/p&gt;
 &lt;h2 id=&#34;常用-vagrant-命令&#34;&gt;常用 Vagrant 命令&lt;/h2&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;vagrant ssh
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;vagrant status
@@ -2006,8 +2013,8 @@ Nginx 可以利用它通过 socket 发送缓存的或者磁盘上的内容，并
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;是不是很爽，rMBP 也带了 Python。不过传文件也不用 python 了，有更好用 Airdrop 可以用。&lt;/p&gt;
 &lt;p&gt;rMBP 刚到手的时候，我创建了第一个目录是 Workspace，小四同学问我为啥第一个字母要大写，输入多不方便，我说我 home 目录下都是大写的，这样我 ls 会比较漂亮。&lt;/p&gt;
 &lt;p&gt;其实我不想把我的系统变得很乱，我喜欢保持某些一致，让自己的心里觉得有点舒服。就像上学的时候，看到黑板上有点粉笔的字迹没有擦干净，就想伸手过去摸一下把它擦掉。&lt;/p&gt;
-&lt;p&gt;我想，nodejs，ruby，python的粉丝里不少都是这样的吧，不然怎么会有 nvm，rvm，virtualenv。&lt;/p&gt;
-&lt;p&gt;如果你也在用 python，而且还经常在 github 上面拉别人的代码过来玩，或者安装一些python lib, 我推荐你用 virtualenv:&lt;/p&gt;
+&lt;p&gt;我想，nodejs，ruby，python 的粉丝里不少都是这样的吧，不然怎么会有 nvm，rvm，virtualenv。&lt;/p&gt;
+&lt;p&gt;如果你也在用 python，而且还经常在 github 上面拉别人的代码过来玩，或者安装一些 python lib, 我推荐你用 virtualenv:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo easy_install pip
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo pip install virtualenv
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;接下来就可以在虚拟的环境里面随便折腾了，而且你的系统还会保持干干净净。&lt;/p&gt;
@@ -2674,13 +2681,13 @@ Nginx 可以利用它通过 socket 发送缓存的或者磁盘上的内容，并
       <guid>//lewang.dev/posts/2013-03-04-so-load-path-in-linux/</guid>
       <description>&lt;h2 id=&#34;相关的环境变量&#34;&gt;相关的环境变量&lt;/h2&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;LD_LIBRARY_PATH&lt;/strong&gt; ld-linux.so寻找shared object的路径，优先加载出现在路径前面的shared object。如，export LD_LIBRARY_PATH=/home/user/lib:$LD_LIBRARY_PATH&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;LD_PRELOAD&lt;/strong&gt; 指定优先供ld-linux.so加载的shared object。如，export LD_PRELAOD=/home/user/lib/glibc.so，可以使用这个变量来改变加载顺序，例如我们自定义的glibc.so中实现了新的strcmp之类的函数，那么可以使用这个变量来实现函数的替换，实现注入&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;LD_DEBUG&lt;/strong&gt; 使用这个环境变量来debug载入shared object的情况。如，export LD_DEBUG=files,这样会打印所有所有加载shared object的记录&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;LD_LIBRARY_PATH&lt;/strong&gt; ld-linux.so 寻找 shared object 的路径，优先加载出现在路径前面的 shared object。如，export LD_LIBRARY_PATH=/home/user/lib:$LD_LIBRARY_PATH&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;LD_PRELOAD&lt;/strong&gt; 指定优先供 ld-linux.so 加载的 shared object。如，export LD_PRELAOD=/home/user/lib/glibc.so，可以使用这个变量来改变加载顺序，例如我们自定义的 glibc.so 中实现了新的 strcmp 之类的函数，那么可以使用这个变量来实现函数的替换，实现注入&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;LD_DEBUG&lt;/strong&gt; 使用这个环境变量来 debug 载入 shared object 的情况。如，export LD_DEBUG=files,这样会打印所有所有加载 shared object 的记录&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;一些工具&#34;&gt;一些工具&lt;/h2&gt;
 &lt;ul&gt;
-&lt;li&gt;如何查看一个程序或者shared object加载哪些shared object&lt;/li&gt;
+&lt;li&gt;如何查看一个程序或者 shared object 加载哪些 shared object&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;ldd，可以查看程序或者.so，如，&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ ldd ./foo_test
@@ -2694,10 +2701,10 @@ Nginx 可以利用它通过 socket 发送缓存的或者磁盘上的内容，并
 &lt;li&gt;没有启动的程序可以这样&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ strace ./foo_test 2&amp;gt;&amp;amp;1 | grep &amp;#39;^open(&amp;#34;.*\.so&amp;#39;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;也可以用上面提到的环境变量来看shared object的加载顺序&lt;/p&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;也可以用上面提到的环境变量来看 shared object 的加载顺序&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ export LD_DEBUG=files
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ ./foo_test
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;顺便介绍下lsof&#34;&gt;顺便介绍下lsof&lt;/h2&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;顺便介绍下-lsof&#34;&gt;顺便介绍下 lsof&lt;/h2&gt;
 &lt;p&gt;查看占用端口的进程&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;le@SH:~$ sudo lsof -i TCP:80
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;COMMAND PID USER FD TYPE DEVICE SIZE/OFF NODE NAME
@@ -2709,12 +2716,12 @@ Nginx 可以利用它通过 socket 发送缓存的或者磁盘上的内容，并
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;具体的请&lt;strong&gt;man lsof&lt;/strong&gt;&lt;/p&gt;
 &lt;h2 id=&#34;objdump-和-readelf&#34;&gt;objdump 和 readelf&lt;/h2&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;objdump&lt;/strong&gt; 查看object的信息&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;objdump&lt;/strong&gt; 查看 object 的信息&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ objdump -t libfoo.so
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ objdump -s -j .rodata -t libfoo.so
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;readelf&lt;/strong&gt; 读elf的信息&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;readelf&lt;/strong&gt; 读 elf 的信息&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;readelf -r  libfoo.so
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
@@ -2726,18 +2733,18 @@ Nginx 可以利用它通过 socket 发送缓存的或者磁盘上的内容，并
       <pubDate>Thu, 22 Mar 2012 00:40:00 +0000</pubDate>
       
       <guid>//lewang.dev/posts/2012-03-22-a-short-discuss-of-SimpleXML-of-php/</guid>
-      <description>&lt;p&gt;前一篇帖子使用了xpath，后来了解到xpath的性能可能比较差，而且在遇到有命名空间的时候还有点小麻烦。这里都已豆瓣提供的API返回的xml为例。豆瓣返回的xml不是rss格式的，而是Atom格式，有很多的命名空间，如果习惯于操作rss格式的xml，那么可以直接把xml里面的命名空间的字符串都replace掉，这个方法貌似很简单很暴力，就不会遇到命名空间的问题了。&lt;/p&gt;
-&lt;p&gt;从豆瓣API开始，点击这个链接 &lt;a href=&#34;http://api.douban.com/book/subjects?q=java&#34;&gt;http://api.douban.com/book/subjects?q=java&lt;/a&gt; 你就可以看到xml格式，由于返回的是Atom格式的xml，浏览器会自动帮你解析，所以应该这样&lt;/p&gt;
+      <description>&lt;p&gt;前一篇帖子使用了 xpath，后来了解到 xpath 的性能可能比较差，而且在遇到有命名空间的时候还有点小麻烦。这里都已豆瓣提供的 API 返回的 xml 为例。豆瓣返回的 xml 不是 rss 格式的，而是 Atom 格式，有很多的命名空间，如果习惯于操作 rss 格式的 xml，那么可以直接把 xml 里面的命名空间的字符串都 replace 掉，这个方法貌似很简单很暴力，就不会遇到命名空间的问题了。&lt;/p&gt;
+&lt;p&gt;从豆瓣 API 开始，点击这个链接 &lt;a href=&#34;http://api.douban.com/book/subjects?q=java&#34;&gt;http://api.douban.com/book/subjects?q=java&lt;/a&gt; 你就可以看到 xml 格式，由于返回的是 Atom 格式的 xml，浏览器会自动帮你解析，所以应该这样&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#998;font-style:italic&#34;&gt;# 这样就可以得到一个java.xml文件。&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ wget -O java.xml http://api.douban.com/book/subjects?q&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;=&lt;/span&gt;java
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;这样就可以得到一个 java.xml 文件，接下来使用 SimplePHP 处理这个文件。&lt;/p&gt;
-&lt;p&gt;首先要创建一个SimpleXML对象&lt;/p&gt;
+&lt;p&gt;首先要创建一个 SimpleXML 对象&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;//$content为xml的内容
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$xml = new SimpleXMLElement($content);
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;现在要获取opensearch命名空间下的totalResults节点的文本，代码如下：&lt;/p&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;现在要获取 opensearch 命名空间下的 totalResults 节点的文本，代码如下：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$children = $xml-&amp;gt;children(&amp;#39;http://a9.com/-/spec/opensearchrss/1.0/&amp;#39;);
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$totalResults = $children-&amp;gt;totalResults;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;处理所有xml文档中所有的entry节点&lt;/p&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;处理所有 xml 文档中所有的 entry 节点&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;//处理所有找到的记录
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$entries = $xml-&amp;gt;entry;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;foreach($entries as $entry){
@@ -2755,13 +2762,13 @@ Nginx 可以利用它通过 socket 发送缓存的或者磁盘上的内容，并
       <pubDate>Tue, 13 Mar 2012 00:40:00 +0000</pubDate>
       
       <guid>//lewang.dev/posts/2012-03-13-things-i-create-must-be-cool/</guid>
-      <description>&lt;p&gt;这句话是FACEBOOK的马克·扎克伯格说的。&lt;/p&gt;
+      <description>&lt;p&gt;这句话是 FACEBOOK 的马克·扎克伯格说的。&lt;/p&gt;
 &lt;p&gt;我很认同，并且感觉自己也是这么做的。现在自己做得很多事情，从来没有考虑过它会不会值钱，只是感觉把自己的想法做出来，变成实物的过程就已经很酷。&lt;/p&gt;
 &lt;p&gt;对于酷，我觉得至少有两方面的意义。&lt;/p&gt;
 &lt;p&gt;一种酷，是一种自我实现的感觉，是一种认同感，成就感。比如自己把自己的不错的想法实现了，当自己看到自己作品的时候，肯定觉得这种感觉很酷。接着你的作品有很多人用了，看了，然后给与了肯定或者赞扬的评价，这时候感到酷，我觉得就应该是一种认同感和成就感。都是内心的感觉，一种推进自我完善的感觉。&lt;/p&gt;
 &lt;p&gt;还有一种酷，那就是表面上的酷，比如你的网页效果做得很酷很炫，你实现的功能很酷。虽然这些是表面上的酷，但这些酷的背后却隐藏着无数的思考和磨练。这么表面上的酷，却恰恰可以给人带来内心上的酷。&lt;/p&gt;
-&lt;p&gt;就拿摆摊网来说，小小的网站，做得很简单。但是为了实现页面小小的效果，还不得不去多学点东西多花些时间。我喜欢自己东西能弄得那种能给人至简至美的感觉，但是却不能因为简而不“美”了，这里的美是给人一种更好的感觉。所以自己总是在觉得不破坏简的前提下，尽量的让自己的应用让人使用的体验更好更酷。比如说发布书籍信息的页面，以前必须使用ISBN号，现在这里&lt;a href=&#34;http://baitan.sinaapp.com/Static/html/booksearch.html&#34;&gt;点击查看&lt;/a&gt;的将要改成 @林风琦 推荐的 chegg 的效果，是不是比豆瓣的书籍检索要酷很多。进一步思考，对于摆摊首页的检索，以后是不是应该结合用户的搜索习惯和本身的书籍物品数据也实现这种AutoComplete功能。还比如说摆摊还将开发Android手机客户端，到时候只要一拍，就可以把书信息扫下来了，看，多酷！&lt;/p&gt;
-&lt;p&gt;现在自己的科研也是这样，能给自己带来一种很酷的感觉，但是就科研的实际应用来说，我觉得可以应用的范围很小。但是想着能把Jim Gray这位数据库大神[此大神已经被外星人带走了，详情看这里]负责的基于微软SQL Server的SDSS项目迁移到适合科学运算的数组模型的数据库上来，然后我们还有可能就性能PK一把，想想就觉得很酷。更酷的是，自己还想到了一种自动迁移的方法[还没有经过深思和验证]。反正就是觉得酷儿！&lt;/p&gt;
+&lt;p&gt;就拿摆摊网来说，小小的网站，做得很简单。但是为了实现页面小小的效果，还不得不去多学点东西多花些时间。我喜欢自己东西能弄得那种能给人至简至美的感觉，但是却不能因为简而不“美”了，这里的美是给人一种更好的感觉。所以自己总是在觉得不破坏简的前提下，尽量的让自己的应用让人使用的体验更好更酷。比如说发布书籍信息的页面，以前必须使用 ISBN 号，现在这里&lt;a href=&#34;http://baitan.sinaapp.com/Static/html/booksearch.html&#34;&gt;点击查看&lt;/a&gt;的将要改成 @林风琦 推荐的 chegg 的效果，是不是比豆瓣的书籍检索要酷很多。进一步思考，对于摆摊首页的检索，以后是不是应该结合用户的搜索习惯和本身的书籍物品数据也实现这种 AutoComplete 功能。还比如说摆摊还将开发 Android 手机客户端，到时候只要一拍，就可以把书信息扫下来了，看，多酷！&lt;/p&gt;
+&lt;p&gt;现在自己的科研也是这样，能给自己带来一种很酷的感觉，但是就科研的实际应用来说，我觉得可以应用的范围很小。但是想着能把 Jim Gray 这位数据库大神[此大神已经被外星人带走了，详情看这里]负责的基于微软 SQL Server 的 SDSS 项目迁移到适合科学运算的数组模型的数据库上来，然后我们还有可能就性能 PK 一把，想想就觉得很酷。更酷的是，自己还想到了一种自动迁移的方法[还没有经过深思和验证]。反正就是觉得酷儿！&lt;/p&gt;
 &lt;p&gt;为了更酷，继续努力！&lt;/p&gt;
 &lt;p&gt;我是 A Lucky Apple，@小码哥&lt;/p&gt;
 </description>
@@ -2773,9 +2780,9 @@ Nginx 可以利用它通过 socket 发送缓存的或者磁盘上的内容，并
       <pubDate>Mon, 09 Jan 2012 00:40:00 +0000</pubDate>
       
       <guid>//lewang.dev/posts/2012-01-09-for-baigetan-2012/</guid>
-      <description>&lt;p&gt;我期待2012的到来，这一年我将有一个新的开始，好期待。&lt;/p&gt;
+      <description>&lt;p&gt;我期待 2012 的到来，这一年我将有一个新的开始，好期待。&lt;/p&gt;
 &lt;p&gt;最近一直在忙着做实验，读论文，都没有什么时间来弄弄摆摊，自己心里的那种对于摆摊的激情也渐渐淡了很多，但是想想自己当初的想法，立马又有动力拾起摆摊。&lt;/p&gt;
-&lt;p&gt;一个小小的网站，看起来确实很简单，也就是拿php连连数据库，做做一些简单的操作，可自己在写这个网站的时候总是很慢。时间少而且比较凌乱是一个原因，但是总的还是缺少一个全面完善细致的规划，自己大部分也是照着当初的设计，然后想到哪儿做到哪儿，如今的摆摊，已经和当初的相去甚远了。越写越复杂，问题也越来越多，停下来一想，还是挥起大刀把乱乱的东西都砍了吧，弄得越简单越好。&lt;/p&gt;
+&lt;p&gt;一个小小的网站，看起来确实很简单，也就是拿 php 连连数据库，做做一些简单的操作，可自己在写这个网站的时候总是很慢。时间少而且比较凌乱是一个原因，但是总的还是缺少一个全面完善细致的规划，自己大部分也是照着当初的设计，然后想到哪儿做到哪儿，如今的摆摊，已经和当初的相去甚远了。越写越复杂，问题也越来越多，停下来一想，还是挥起大刀把乱乱的东西都砍了吧，弄得越简单越好。&lt;/p&gt;
 &lt;p&gt;加油！过几天就要回家了，不知道什么时候才能做好，让自己心里舒服一下。这几天赶紧将域名绑定好，将人人、新浪微博等的接入做好，大概就这个样子了。&lt;/p&gt;
 &lt;p&gt;大家新年快乐！&lt;/p&gt;
 </description>
@@ -2787,26 +2794,26 @@ Nginx 可以利用它通过 socket 发送缓存的或者磁盘上的内容，并
       <pubDate>Thu, 01 Dec 2011 13:09:00 +0000</pubDate>
       
       <guid>//lewang.dev/posts/2011-12-01-how-to-use-simplexml-of-php/</guid>
-      <description>&lt;p&gt;这几天没心情看论文，于是开始写写摆摊网的代码。摆摊主要做高校二手书籍信息的分享，于是需要从豆瓣上获取图书信息，豆瓣提供了一个完整的xml来描述一本书，例如&lt;a href=&#34;http://api.douban.com/book/subject/isbn/9787543639136&#34;&gt;http://api.douban.com/book/subject/isbn/9787543639136&lt;/a&gt;，于是需要处理这个xml来获取相应信息，这里小码哥采用的是直接使用xpath来获取xml文档中相应的信息。摆摊使用了sae，于是使用SimpleXML来处理xml，加上自己还只是PHP的初学者，于是出现了一些问题。&lt;/p&gt;
+      <description>&lt;p&gt;这几天没心情看论文，于是开始写写摆摊网的代码。摆摊主要做高校二手书籍信息的分享，于是需要从豆瓣上获取图书信息，豆瓣提供了一个完整的 xml 来描述一本书，例如&lt;a href=&#34;http://api.douban.com/book/subject/isbn/9787543639136&#34;&gt;http://api.douban.com/book/subject/isbn/9787543639136&lt;/a&gt;，于是需要处理这个 xml 来获取相应信息，这里小码哥采用的是直接使用 xpath 来获取 xml 文档中相应的信息。摆摊使用了 sae，于是使用 SimpleXML 来处理 xml，加上自己还只是 PHP 的初学者，于是出现了一些问题。&lt;/p&gt;
 &lt;p&gt;这里是一些学习资料：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;xpath:http://www.w3school.com.cn/xpath/&lt;/li&gt;
 &lt;li&gt;simplexml:http://cn2.php.net/manual/en/simplexmlelement.xpath.php&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;新建SimpleXMLElement对象，xml文件内容在$content中&lt;/p&gt;
+&lt;p&gt;新建 SimpleXMLElement 对象，xml 文件内容在$content 中&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-php&#34; data-lang=&#34;php&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#008080&#34;&gt;$bookFromDouban&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;new&lt;/span&gt; SimpleXMLElement(&lt;span style=&#34;color:#008080&#34;&gt;$content&lt;/span&gt;);
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;直接查询，在命名空间db下的所有attribute，且有name属性，以下xpath查询是没有问题的，&lt;/p&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;直接查询，在命名空间 db 下的所有 attribute，且有 name 属性，以下 xpath 查询是没有问题的，&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-php&#34; data-lang=&#34;php&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#008080&#34;&gt;$result&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#008080&#34;&gt;$bookFromDouban&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#008080&#34;&gt;xpath&lt;/span&gt;(&lt;span style=&#34;color:#d14&#34;&gt;&amp;#34;//db:attribute[@name]&amp;#34;&lt;/span&gt;);
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;但是，这条查询就有问题了，如下，&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-php&#34; data-lang=&#34;php&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#008080&#34;&gt;$result&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#008080&#34;&gt;$bookFromDouban&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#008080&#34;&gt;xpath&lt;/span&gt;(&lt;span style=&#34;color:#d14&#34;&gt;&amp;#34;//link[@rel=&amp;#39;self&amp;#39;]|//link[@rel=&amp;#39;image&amp;#39;]&amp;#34;&lt;/span&gt;);
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;上面的代码表示在默认的命名空间里面查询link节点，但是在php 5.0以上却不能查出数据。需要这样操作&lt;/p&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;上面的代码表示在默认的命名空间里面查询 link 节点，但是在 php 5.0 以上却不能查出数据。需要这样操作&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-php&#34; data-lang=&#34;php&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#998;font-style:italic&#34;&gt;//获取这个xml的所有的命名空间
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#998;font-style:italic&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#008080&#34;&gt;$namespaces&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#008080&#34;&gt;$bookFromDouban&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#008080&#34;&gt;getNamespaces&lt;/span&gt;();
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#998;font-style:italic&#34;&gt;//注册默认的命名空间为&amp;#39;d&amp;#39;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#998;font-style:italic&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#008080&#34;&gt;$bookFromDouban&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#008080&#34;&gt;registerXPathNamespace&lt;/span&gt;(&lt;span style=&#34;color:#d14&#34;&gt;&amp;#39;d&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#008080&#34;&gt;$namespaces&lt;/span&gt;[&lt;span style=&#34;color:#d14&#34;&gt;&amp;#39;&amp;#39;&lt;/span&gt;]);
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#998;font-style:italic&#34;&gt;//现在这个查询就ok了
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#998;font-style:italic&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#008080&#34;&gt;$result&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#008080&#34;&gt;$bookFromDouban&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#008080&#34;&gt;xpath&lt;/span&gt;(&lt;span style=&#34;color:#d14&#34;&gt;&amp;#34;//d:link[@rel=&amp;#39;self&amp;#39;]|//d:link[@rel=&amp;#39;image&amp;#39;]&amp;#34;&lt;/span&gt;);
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;对$result遍历就简单了，这里也给出一个简单的例子，遍历完，变量就初始化了。PS：代码写的不优雅，欢迎拍砖。&lt;/p&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;对$result 遍历就简单了，这里也给出一个简单的例子，遍历完，变量就初始化了。PS：代码写的不优雅，欢迎拍砖。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-php&#34; data-lang=&#34;php&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;translator &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;array&lt;/span&gt;();
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#008080&#34;&gt;$author&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;array&lt;/span&gt;();
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#008080&#34;&gt;$i&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#008080&#34;&gt;$j&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#099&#34;&gt;0&lt;/span&gt;;
@@ -2834,15 +2841,15 @@ Nginx 可以利用它通过 socket 发送缓存的或者磁盘上的内容，并
       <pubDate>Thu, 01 Dec 2011 00:40:00 +0000</pubDate>
       
       <guid>//lewang.dev/posts/2011-12-01-when-datatype-is-json/</guid>
-      <description>&lt;p&gt;最近在为摆摊写点前端 js 的时候，在使用 jquery 的 $.ajax()这个方法的时候，当datatype设置为json时，总是不执行success回调，而是执行error回调。而将datatype设置成text，就可以执行success回调了，摆摊使用的是jQuery JavaScript Library v1.6.2，查看jQuery文档可知：&lt;/p&gt;
+      <description>&lt;p&gt;最近在为摆摊写点前端 js 的时候，在使用 jquery 的 $.ajax()这个方法的时候，当 datatype 设置为 json 时，总是不执行 success 回调，而是执行 error 回调。而将 datatype 设置成 text，就可以执行 success 回调了，摆摊使用的是 jQuery JavaScript Library v1.6.2，查看 jQuery 文档可知：&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;“json”: Evaluates the response as JSON and returns a JavaScript object. In jQuery 1.4 the JSON data is parsed in a strict manner; any malformed JSON is rejected and a parse error is thrown. (See json.org for more information on proper JSON formatting.)&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;我用php产生的字符串是&lt;/p&gt;
+&lt;p&gt;我用 php 产生的字符串是&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-php&#34; data-lang=&#34;php&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{‘isbn’&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#a61717;background-color:#e3d2d2&#34;&gt;&amp;#39;&lt;/span&gt;ISBN号码格式不正确，应为10位或者13位的字符串’}
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;很明显，json.org规则使用的是双引号，而不是单引号，jQuery1.4 以后都要求更为严格的 json 格式&lt;/p&gt;
-&lt;p&gt;对于以上单引号的字符串，可以使用datatype为text，然后使用&lt;/p&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;很明显，json.org 规则使用的是双引号，而不是单引号，jQuery1.4 以后都要求更为严格的 json 格式&lt;/p&gt;
+&lt;p&gt;对于以上单引号的字符串，可以使用 datatype 为 text，然后使用&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-php&#34; data-lang=&#34;php&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#998;font-style:italic&#34;&gt;//content = {‘isbn’:&amp;#39;ISBN号码格式不正确，应为10位或者13位的字符串’}
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#998;font-style:italic&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;var&lt;/span&gt; json &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;eval&lt;/span&gt;(‘(‘&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;+&lt;/span&gt; content &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;+&lt;/span&gt;’)&lt;span style=&#34;color:#a61717;background-color:#e3d2d2&#34;&gt;&amp;#39;&lt;/span&gt;)
@@ -2857,8 +2864,8 @@ Nginx 可以利用它通过 socket 发送缓存的或者磁盘上的内容，并
       <guid>//lewang.dev/posts/2011-11-08-think-of-baigetan/</guid>
       <description>&lt;p&gt;今天是十一假期归来的第一天，实验室也启用了新的管理制度，坐在北洋楼的实验室也有一会儿了，刚发了一会儿呆，对摆摊又有了一些新的思考。&lt;/p&gt;
 &lt;p&gt;我的目标是想把摆摊做成高校的网上交易平台，也就是类似淘宝，但是作为摆摊网的初期是不合适的，因为这个交易平台太大太复杂。&lt;/p&gt;
-&lt;p&gt;所以摆摊的第一步还是做交易信息的发布和检索，主打高校的书籍和物品交易信息，交易还是线下完成，这样，初期的摆摊应该就和赶集、百姓、58等类似了，而且这样摆摊的实现难度也会大大降低，在加上SNS和LBS，摆摊就可以提供比赶集、百姓、58等更精准的信息服务了。&lt;/p&gt;
-&lt;p&gt;这几天只是做了一些准备工作，熟悉了sae的环境，网站的架构也基本完成，页面上的设计也差不多了，接下来就是定下摆摊网的初步方向，确定第一阶段的核心功能，将其业务逻辑实现了。&lt;/p&gt;
+&lt;p&gt;所以摆摊的第一步还是做交易信息的发布和检索，主打高校的书籍和物品交易信息，交易还是线下完成，这样，初期的摆摊应该就和赶集、百姓、58 等类似了，而且这样摆摊的实现难度也会大大降低，在加上 SNS 和 LBS，摆摊就可以提供比赶集、百姓、58 等更精准的信息服务了。&lt;/p&gt;
+&lt;p&gt;这几天只是做了一些准备工作，熟悉了 sae 的环境，网站的架构也基本完成，页面上的设计也差不多了，接下来就是定下摆摊网的初步方向，确定第一阶段的核心功能，将其业务逻辑实现了。&lt;/p&gt;
 &lt;p&gt;加油！&lt;/p&gt;
 </description>
     </item>
@@ -2869,9 +2876,9 @@ Nginx 可以利用它通过 socket 发送缓存的或者磁盘上的内容，并
       <pubDate>Mon, 07 Nov 2011 00:40:00 +0000</pubDate>
       
       <guid>//lewang.dev/posts/2011-11-07-design-of-baigetan/</guid>
-      <description>&lt;p&gt;从泰山回来这几天，抽得空把摆摊网的页面做了出来，包括css和html的编写等，现在可以从baitan.sinaapp.com看到页面效果了，目前兼容ie8、ff、chrome、safari等。&lt;/p&gt;
-&lt;p&gt;baitan001.com也在备案之中，应该很快就可以使用baitan001.com域名访问了。&lt;/p&gt;
-&lt;p&gt;有同学想练习js，php等web技术的，不妨联系我，我肯定能让你参与进来！&lt;/p&gt;
+      <description>&lt;p&gt;从泰山回来这几天，抽得空把摆摊网的页面做了出来，包括 css 和 html 的编写等，现在可以从 baitan.sinaapp.com 看到页面效果了，目前兼容 ie8、ff、chrome、safari 等。&lt;/p&gt;
+&lt;p&gt;baitan001.com 也在备案之中，应该很快就可以使用 baitan001.com 域名访问了。&lt;/p&gt;
+&lt;p&gt;有同学想练习 js，php 等 web 技术的，不妨联系我，我肯定能让你参与进来！&lt;/p&gt;
 &lt;p&gt;我是小码哥&lt;/p&gt;
 </description>
     </item>
@@ -2931,12 +2938,12 @@ Nginx 可以利用它通过 socket 发送缓存的或者磁盘上的内容，并
 &lt;/blockquote&gt;
 &lt;p&gt;一转眼，20 年就过去了，终于要和自己 20 年的学生身份说拜拜了。&lt;/p&gt;
 &lt;p&gt;那天去图书馆借书，回来的路上敬业湖桥边的那棵树的时候，心不由得感叹起来，这棵树，我已经拍下了它的春夏秋冬，它叶枯叶落，相似年年，只因它生根于此，我是要走的。&lt;/p&gt;
-&lt;p&gt;去图书馆，边走边想，就想到了前几天在&lt;a href=&#34;http://www.zhihu.com&#34;&gt;知乎&lt;/a&gt;上看到的社会化图书馆网站，感觉很不错(而且UI做的很不错，想借鉴一下)。想着自己买了好多书，都闲在书架上，是不是也可以搞一个校园图书馆，把同学校的闲书都利用起来。然后又马上否定了自己，因为我自己其实并不愿意把自己买的书借给别人看。这个想法就此作罢。&lt;/p&gt;
-&lt;p&gt;想想自己倒是有不少二手书带不走了，得卖掉，还有一些小物件，也带不走了，扔了还挺可惜，也可以卖掉。于是想找找哪里去买，学校BBS感觉还可以，但是信息没有分类，不易于检索，而且用户体验很不好。百姓、赶集、58同城确实可以发布二手信息，但是信息又接近海量，不能针对目标人群——学生，比如我想找同专业学长学姐的书，那就不好找了，再比如我要找我考研学校的资料，那也不好找了，除非去相应的论坛，不然也是很难找。还有个大学生C2C，这个网站感觉心太大，不靠谱，而且用户体验很差。而且到学生毕业的时候，将会有大量的二手信息，是不是可以考虑搭建一个大学生专用的二手物品交易平台，而且融入校园SNS和LBS元素，主打二手书籍的交易呢。综合考虑以上，我觉得这挺靠谱的。&lt;/p&gt;
+&lt;p&gt;去图书馆，边走边想，就想到了前几天在&lt;a href=&#34;http://www.zhihu.com&#34;&gt;知乎&lt;/a&gt;上看到的社会化图书馆网站，感觉很不错(而且 UI 做的很不错，想借鉴一下)。想着自己买了好多书，都闲在书架上，是不是也可以搞一个校园图书馆，把同学校的闲书都利用起来。然后又马上否定了自己，因为我自己其实并不愿意把自己买的书借给别人看。这个想法就此作罢。&lt;/p&gt;
+&lt;p&gt;想想自己倒是有不少二手书带不走了，得卖掉，还有一些小物件，也带不走了，扔了还挺可惜，也可以卖掉。于是想找找哪里去买，学校 BBS 感觉还可以，但是信息没有分类，不易于检索，而且用户体验很不好。百姓、赶集、58 同城确实可以发布二手信息，但是信息又接近海量，不能针对目标人群——学生，比如我想找同专业学长学姐的书，那就不好找了，再比如我要找我考研学校的资料，那也不好找了，除非去相应的论坛，不然也是很难找。还有个大学生 C2C，这个网站感觉心太大，不靠谱，而且用户体验很差。而且到学生毕业的时候，将会有大量的二手信息，是不是可以考虑搭建一个大学生专用的二手物品交易平台，而且融入校园 SNS 和 LBS 元素，主打二手书籍的交易呢。综合考虑以上，我觉得这挺靠谱的。&lt;/p&gt;
 &lt;p&gt;于是我打算开发一个这样的平台——摆摊网&lt;/p&gt;
-&lt;p&gt;天大每年有6000多的毕业生，如果有30%的毕业生能使用，那就将近 2000 人，融入 SNS 元素之后，用户会不会爆炸是增加？我觉得流量肯定会有的。&lt;/p&gt;
+&lt;p&gt;天大每年有 6000 多的毕业生，如果有 30%的毕业生能使用，那就将近 2000 人，融入 SNS 元素之后，用户会不会爆炸是增加？我觉得流量肯定会有的。&lt;/p&gt;
 &lt;p&gt;于是立马动手，先是在美橙互联上注册了域名 &lt;a href=&#34;http://baitan.sinaapp.com&#34;&gt;baitan001.com&lt;/a&gt; (正宗的开心网也是 kaixin001.com )，然后找了几个同学听了他们意见，同时还邀请了两个同学一起来做这个小项目。&lt;/p&gt;
-&lt;p&gt;感谢新浪SAE给了我实现自己的这个小小梦想的机会，前段时间参加新浪微博应用大赛，对SAE也有了一些了解，综合考虑之后，决定就在 SAE 平台上来做摆摊网的开发。&lt;/p&gt;
+&lt;p&gt;感谢新浪 SAE 给了我实现自己的这个小小梦想的机会，前段时间参加新浪微博应用大赛，对 SAE 也有了一些了解，综合考虑之后，决定就在 SAE 平台上来做摆摊网的开发。&lt;/p&gt;
 &lt;p&gt;花了昨天一晚上加上今天一下午，结合以往自己用过的 PHP 框架代码，而且动手折腾出了 Baitan 0.0.1 版本 PHP 框架，兼容 SAE 平台，接下来就是一步一步的把摆摊做出来了。&lt;/p&gt;
 &lt;p&gt;这段时间一直忙于找工作，参加各种笔试面试，然后被各种鄙视，当然也收获了不少，短短不到一个月，也已经有了好几个巨头互联网公司的 offer 了，自己的工作也大概就这么定下来了。自己在大学和研究生阶段也折腾过不少东西了，但是还是没有做出一个让自己满意的东西，我想把摆摊网做好，即使没人用，我也自己去维护去完善，当做是自己在种地吧。我有梦想，但最开心的还是有个她愿意倾听我。&lt;/p&gt;
 &lt;p&gt;今天把&lt;a href=&#34;http://baitan.sinaapp.com&#34;&gt;baitan001.com&lt;/a&gt;做了域名备案，申请了腾讯的企业邮箱，Baitan 0.0.1 框架的相关测试也已经基本完成，敬请期待摆摊网的到来吧！&lt;/p&gt;

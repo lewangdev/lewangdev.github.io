@@ -83,7 +83,7 @@
                     
                     <span>/</span>
                     
-                    <span class="meta-category"><a href="//lewang.dev/categories/DevOps">DevOps</a></span>
+                    <span class="meta-category"><a href="//lewang.dev/categories/Technical">Technical</a></span>
                     
                     
                     
@@ -102,9 +102,9 @@
                     
                     <h2 id="背景">背景</h2>
 <p>目前公司主要服务都是直接使用 MySQL 主服务器，从服务主要给离线数据分析服务使用，由于前期弄得比较简单的粗暴，从服务上还有一两个数据库在做生产使用, 并且从服数据已经不能和主服进行进行同步了，有大量错误，忽略都没有办法进行。此外，主服仅配置了三个核心数据的 binlog，随着业务的变化，其它数据库不能走主从这条路来同步数据，于是希望不停机的情形下重新调整主服配置，记录所有的数据库的 binlog，同时添加新的从服务器来同步数据</p>
-<h2 id="方案1">方案1</h2>
+<h2 id="方案-1">方案 1</h2>
 <p>MySQL 的主从是通过同步 binlog 日志来实现数据同步的，于是需要想办法把从服数据先于主服同步，记录 binlog 的 pos 值，再配置从服从该 pos 处开始同步，考虑可以使用 mysqldump 导出所有 innodb 数据，使用 rsync 同步所有 myisam 数据文件，然后再开启主从同步。但是目前这种方案不适用，主服不能长时间停机</p>
-<h2 id="方案2">方案2</h2>
+<h2 id="方案-2">方案 2</h2>
 <p>使用 xtrabackup 来完成目标</p>
 <p>主从服务器上都需要安装 xtrabackup（实际使用 xtrabackupex）：</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>yum install http://www.percona.com/downloads/percona-release/redhat/0.1-4/percona-release-0.1-4.noarch.rpm

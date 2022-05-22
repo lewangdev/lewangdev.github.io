@@ -13,7 +13,7 @@
       <pubDate>Mon, 03 Mar 2014 23:40:00 +0000</pubDate>
       
       <guid>//lewang.dev/posts/2014-03-03-building-devenv-by-vagrant/</guid>
-      <description>Vagrant 是一个构建虚拟开发环境的利器，它使得在团队中很容易共享开发环境，有了它，不必每个人都搭建一个自己的开发环境了。在没有使用 vagrant 之前，我在windows中安装了 virtualbox，然后在virtualbox中安装了一个ubuntu server。在 ubuntu 中安装了 mysql、jdk 等软件，</description>
+      <description>Vagrant 是一个构建虚拟开发环境的利器，它使得在团队中很容易共享开发环境，有了它，不必每个人都搭建一个自己的开发环境了。在没有使用 vagrant 之前，我在 windows 中安装了 virtualbox，然后在 virtualbox 中安装了一个 ubuntu server。在 ubuntu 中安装了 mysql、jdk 等软件，并且设置了一个共享目录，以便于将工程代码</description>
     </item>
     
   </channel>

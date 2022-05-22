@@ -215,9 +215,117 @@
                 </div>
             </article>
             
+            <article class="post">
+                <header>
+                    <h1 class="post-title">
+                        <a href="//lewang.dev/posts/2017-08-03-lvm-in-action/">LVM 实战记录</a>
+                    </h1>
+                </header>
+                <div class="post-meta">
+                Aug 3, 2017
+                
+                    |
+                    
+                    <a href="//lewang.dev/categories/%E6%AF%8F%E6%97%A5%E6%8A%80%E5%B7%A7">每日技巧</a>
+                    
+                </div>
+                
+                <div class="post-summary">
+                    <a href="//lewang.dev/posts/2017-08-03-lvm-in-action/">
+                        背景 阿里云云主机两块 100G 的云盘合一个逻辑卷（LV）来使用，单个的 100G 磁盘不够用，需要合在一起使用，并且方便以后扩容 基本知识 磁盘 /dev/xvdb /dev/xvdc 分区, 使用 fdisk 进行分区 fdisk &gt; n &gt; p &gt; 1..4, 主分区最多只有 4 个 准备分区后，将分区类型变为 LVM 分区，fdisk &gt; t &gt; 8e, 8e 是 LVM 类型 ID 物理卷（PV），卷组（VG），逻辑卷（...
+                    </a>
+                </div>
+            </article>
+            
+            <article class="post">
+                <header>
+                    <h1 class="post-title">
+                        <a href="//lewang.dev/posts/2014-05-06-github-pages-dns-settings/">Github Pages 服务的域名设置</a>
+                    </h1>
+                </header>
+                <div class="post-meta">
+                May 6, 2014
+                
+                    |
+                    
+                    <a href="//lewang.dev/categories/%E6%AF%8F%E6%97%A5%E6%8A%80%E5%B7%A7">每日技巧</a>
+                    
+                </div>
+                
+                <div class="post-summary">
+                    <a href="//lewang.dev/posts/2014-05-06-github-pages-dns-settings/">
+                        这几天每次 Push 博客到 Github Pages 时总会收到一封邮件： The page build completed successfully, but returned the following warning: GitHub Pages recently underwent some improvements (https://github.com/blog/1715-faster-more-awesome-github-pages) to make your site faster and more awesome, but we&rsquo;ve noticed that iforget.info isn&rsquo;t properly configured to take advantage of these new features. While your site will continue to work just fine, updating your domain&rsquo;s configuration offers some additional speed and performance benefits. Instructions on updating your site&rsquo;s IP address can be found at https://help.github.com/articles/setting-up-a-custom-domain-with-github-pages#step-2-configure-dns-records, and of course, you can always get in touch with a human at support@github.com. For the more technical minded folks who want to skip the help docs: your site&rsquo;s DNS records are pointed to a deprecated IP address. For information on troubleshooting Jekyll see: https://help.github.com/articles/using-jekyll-with-pages#troubleshooting If you...
+                    </a>
+                </div>
+            </article>
+            
+            <article class="post">
+                <header>
+                    <h1 class="post-title">
+                        <a href="//lewang.dev/posts/2013-03-04-so-load-path-in-linux/">Linux 共享库（动态链接库）相关的一些记录</a>
+                    </h1>
+                </header>
+                <div class="post-meta">
+                Mar 4, 2013
+                
+                    |
+                    
+                    <a href="//lewang.dev/categories/%E6%AF%8F%E6%97%A5%E6%8A%80%E5%B7%A7">每日技巧</a>
+                    
+                </div>
+                
+                <div class="post-summary">
+                    <a href="//lewang.dev/posts/2013-03-04-so-load-path-in-linux/">
+                        相关的环境变量 LD_LIBRARY_PATH ld-linux.so 寻找 shared object 的路径，优先加载出现在路径前面的 shared object。如，export LD_LIBRARY_PATH=/home/user/lib:$LD_LIBRARY_PATH LD_PRELOAD 指定优先供 ld-linux.so 加载的 shared object。如，export LD_PRELAOD=/home/user/lib/glibc.so，可以使用这个变量来改变加载顺序，例如我们自定义的 glibc.so 中实现了新的 strcmp 之...
+                    </a>
+                </div>
+            </article>
+            
+            <article class="post">
+                <header>
+                    <h1 class="post-title">
+                        <a href="//lewang.dev/posts/2012-03-22-a-short-discuss-of-SimpleXML-of-php/">再说 PHP 中 SimpleXML</a>
+                    </h1>
+                </header>
+                <div class="post-meta">
+                Mar 22, 2012
+                
+                    |
+                    
+                    <a href="//lewang.dev/categories/%E6%AF%8F%E6%97%A5%E6%8A%80%E5%B7%A7">每日技巧</a>
+                    
+                </div>
+                
+                <div class="post-summary">
+                    <a href="//lewang.dev/posts/2012-03-22-a-short-discuss-of-SimpleXML-of-php/">
+                        前一篇帖子使用了 xpath，后来了解到 xpath 的性能可能比较差，而且在遇到有命名空间的时候还有点小麻烦。这里都已豆瓣提供的 API 返回的 xml 为例。豆瓣返回的 xml 不是 rss 格式的，而是 Atom 格式，有很多的命名空间，如果习惯于操作 rss 格式的 xml，那么可以直接把 xml 里面的命名空间的字符串都 replace 掉，这个方法貌似很简...
+                    </a>
+                </div>
+            </article>
+            
 
             
 
+
+<ol class="page-navigator">
+    
+
+    
+    <li  class="current">
+        <a href="//lewang.dev/categories/%E6%AF%8F%E6%97%A5%E6%8A%80%E5%B7%A7/">1</a>
+    </li>
+    
+    <li >
+        <a href="//lewang.dev/categories/%E6%AF%8F%E6%97%A5%E6%8A%80%E5%B7%A7/page/2/">2</a>
+    </li>
+    
+
+    
+    <li class="next">
+        <a href="//lewang.dev/categories/%E6%AF%8F%E6%97%A5%E6%8A%80%E5%B7%A7/page/2/">下一页</a>
+    </li>
+    
+</ol>
 
 
 

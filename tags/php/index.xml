@@ -13,7 +13,7 @@
       <pubDate>Thu, 22 Mar 2012 00:40:00 +0000</pubDate>
       
       <guid>//lewang.dev/posts/2012-03-22-a-short-discuss-of-SimpleXML-of-php/</guid>
-      <description>前一篇帖子使用了xpath，后来了解到xpath的性能可能比较差，而且在遇到有命名空间的时候还有点小麻烦。这里都已豆瓣提供的API返回的xml为例。豆瓣返回的xml不是rss格式的，而是Atom格式，有很多的命名空间，如果习惯于操作rss格式的xml，那么可以直接把xml里面的命</description>
+      <description>前一篇帖子使用了 xpath，后来了解到 xpath 的性能可能比较差，而且在遇到有命名空间的时候还有点小麻烦。这里都已豆瓣提供的 API 返回的 xml 为例。豆瓣返回的 xml 不是 rss 格式的，而是 Atom 格式，有很多的命名空间，如果习惯于操作 rss 格式的 xml，那么可以直接把 xml 里面的命名空间的字符串都 replace 掉，这个方法貌似很简</description>
     </item>
     
     <item>
@@ -22,7 +22,7 @@
       <pubDate>Thu, 01 Dec 2011 13:09:00 +0000</pubDate>
       
       <guid>//lewang.dev/posts/2011-12-01-how-to-use-simplexml-of-php/</guid>
-      <description>这几天没心情看论文，于是开始写写摆摊网的代码。摆摊主要做高校二手书籍信息的分享，于是需要从豆瓣上获取图书信息，豆瓣提供了一个完整的xml来描述一本书，例如http://api.douban.com/book/subject/isbn/9787543639136，于是需要处理这个x</description>
+      <description>这几天没心情看论文，于是开始写写摆摊网的代码。摆摊主要做高校二手书籍信息的分享，于是需要从豆瓣上获取图书信息，豆瓣提供了一个完整的 xml 来描述一本书，例如http://api.douban.com/book/subject/isbn/9787543639136，于是需要处理这个 xml 来获</description>
     </item>
     
     <item>
@@ -31,7 +31,7 @@
       <pubDate>Mon, 07 Nov 2011 00:40:00 +0000</pubDate>
       
       <guid>//lewang.dev/posts/2011-11-07-design-of-baigetan/</guid>
-      <description>从泰山回来这几天，抽得空把摆摊网的页面做了出来，包括css和html的编写等，现在可以从baitan.sinaapp.com看到页面效果了，目前兼容ie8、ff、chrome、safari等。 baitan001.com也在备案之中，应该很快就可以使用baitan001.com域名</description>
+      <description>从泰山回来这几天，抽得空把摆摊网的页面做了出来，包括 css 和 html 的编写等，现在可以从 baitan.sinaapp.com 看到页面效果了，目前兼容 ie8、ff、chrome、safari 等。 baitan001.com 也在备案之中，应该很快就可以使用 baitan001.com 域名访问了。 有同学想练习 js，php 等 web 技术的，不妨联系我，我肯定能让你参与进来！ 我是小码哥</description>
     </item>
     
   </channel>

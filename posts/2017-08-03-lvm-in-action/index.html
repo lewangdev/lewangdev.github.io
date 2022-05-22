@@ -83,7 +83,7 @@
                     
                     <span>/</span>
                     
-                    <span class="meta-category"><a href="//lewang.dev/categories/Linux">Linux</a></span>
+                    <span class="meta-category"><a href="//lewang.dev/categories/%E6%AF%8F%E6%97%A5%E6%8A%80%E5%B7%A7">每日技巧</a></span>
                     
                     
                     
@@ -105,13 +105,13 @@
 <h2 id="基本知识">基本知识</h2>
 <ul>
 <li>磁盘 /dev/xvdb /dev/xvdc</li>
-<li>分区, 使用 fdisk 进行分区 fdisk &gt; n &gt; p &gt; 1..4, 主分区最多只有4个</li>
+<li>分区, 使用 fdisk 进行分区 fdisk &gt; n &gt; p &gt; 1..4, 主分区最多只有 4 个</li>
 <li>准备分区后，将分区类型变为 LVM 分区，fdisk &gt; t &gt; 8e, 8e 是 LVM 类型 ID</li>
 <li>物理卷（PV），卷组（VG），逻辑卷（LV），从磁盘分区创建 PV，通过 PV 创建 VG 或者把 PV 加入已有的 VG，在 VG 上创建 LV，LV 看起来就是逻辑的上磁盘，使用和真实的磁盘没什么明显区别, 在 LV 上构建文件系统</li>
 </ul>
 <h2 id="创建">创建</h2>
 <ul>
-<li>创建物理卷 pvcreate  /dev/xvdb1，对分区进行操作</li>
+<li>创建物理卷 pvcreate /dev/xvdb1，对分区进行操作</li>
 <li>创建 vg0 卷组 vgcreate vg0 /dev/xvdb1</li>
 <li>查看卷组 vgdisplay， 可以看到卷组有多大</li>
 <li>在 vg0 上创建 data 逻辑卷 lvcreate -L 99G -n data vg0 或者 lvcreate -l 25556 -n data vg0</li>
@@ -120,16 +120,16 @@
 </ul>
 <h2 id="添加磁盘">添加磁盘</h2>
 <ul>
-<li>创建物理卷 pvcreate  /dev/xvdc1，对分区进行操作</li>
+<li>创建物理卷 pvcreate /dev/xvdc1，对分区进行操作</li>
 <li>添加到 vg0 卷组 vgextend vg0 /dev/xvdc1</li>
-<li>扩容逻辑卷  lvextend -L +99G /dev/vg0/data, 可以通过 vgdispaly 查看卷组剩余空间有多少</li>
+<li>扩容逻辑卷 lvextend -L +99G /dev/vg0/data, 可以通过 vgdispaly 查看卷组剩余空间有多少</li>
 <li>扩容文件系统 resize2fs /dev/vg0/data, 不需要卸载逻辑卷，可以在线完成扩容</li>
 </ul>
 <h2 id="备注">备注</h2>
 <p>过程中有一块磁盘已经在使用，需要 umount 后再加入 LVM，出现了 device is busy 的情况，系统提示使用 lsof 或者 fuser 查询哪些进程在使用这个磁盘或者目录，最后通过 fuser 查询到进程号后，kill -9 pid 后解决 fuser -m /mnt</p>
 <h2 id="参考链接">参考链接</h2>
 <ul>
-<li><a href="https://www.evernote.com/l/ASu5A6WwxuZFLKavPy1lUAv_uixPNJDMP98">Linux下LVM的配置详解</a></li>
+<li><a href="https://www.evernote.com/l/ASu5A6WwxuZFLKavPy1lUAv_uixPNJDMP98">Linux 下 LVM 的配置详解</a></li>
 <li><a href="http://man.linuxde.net/resize2fs">Linux 命令大全</a></li>
 </ul>
 

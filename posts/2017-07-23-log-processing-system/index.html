@@ -83,7 +83,7 @@
                     
                     <span>/</span>
                     
-                    <span class="meta-category"><a href="//lewang.dev/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84">系统架构</a></span>
+                    <span class="meta-category"><a href="//lewang.dev/categories/Technical">Technical</a></span>
                     
                     
                     
@@ -115,7 +115,7 @@
 <ul>
 <li>系统日志: 各类系统产生的跟业务有关的日志或者与业务无关的日志</li>
 <li>web 服务器日志：如 access.log/error.log 等有固定格式的日志</li>
-<li>性能监控日志：打点记录各类服务的 metrics(全部为数值类型long/double/bool)</li>
+<li>性能监控日志：打点记录各类服务的 metrics(全部为数值类型 long/double/bool)</li>
 </ul>
 <h2 id="系统日志">系统日志</h2>
 <p>由时间戳、一些枚举值以及日志内容(变长字符串)组成</p>
@@ -138,11 +138,11 @@
 </ul>
 <h2 id="web-服务器日志">web 服务器日志</h2>
 <p>access log（nginx）
-日志内容：主要是文本(string）或者一些系统 metrics 数据(数值类型long/double)</p>
+日志内容：主要是文本(string）或者一些系统 metrics 数据(数值类型 long/double)</p>
 <h2 id="日志存储和处理">日志存储和处理：</h2>
 <ul>
-<li>数据磁带（1周）：kafka</li>
-<li>提供热数据检索（1个月）：solr(or lucence based on cassandra)</li>
+<li>数据磁带（1 周）：kafka</li>
+<li>提供热数据检索（1 个月）：solr(or lucence based on cassandra)</li>
 <li>日志存储（永久）：</li>
 <li>kariosdb/cassandra: 支持 double/long/string 类型，kariosdb 相当于在 cassandra 上面套了一个壳，这样简化了很多时间序列数据处理的操作</li>
 <li>数据展示：grafana，官方支持 kariosdb</li>

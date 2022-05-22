@@ -86,94 +86,6 @@
             <article class="post">
                 <header>
                     <h1 class="post-title">
-                        <a href="//lewang.dev/posts/2019-05-29-centos7-pyenv-install-python-3/">CentOS 7 上使用 pyenv 安装 Python 3.7.3</a>
-                    </h1>
-                </header>
-                <div class="post-meta">
-                May 29, 2019
-                
-                    |
-                    
-                    <a href="//lewang.dev/categories/DevOps">DevOps</a>
-                    
-                </div>
-                
-                <div class="post-summary">
-                    <a href="//lewang.dev/posts/2019-05-29-centos7-pyenv-install-python-3/">
-                        概要 本文记录了在 CentOS 7.6 系统上通过 pyenv 安装 Python 3.7.3 的过程。 环境 CentOS Linux release 7.6.1810 (Core) Kernel 3 3.10.0-957.el7.x86_64 Pyenv 1.2.11 安装 pyenv $ curl https://pyenv.run | bash 然后根据提示把以下内容放到 ~/.bashrc 文件末尾 # Load pyenv automatically by adding # the following to ~/.bashrc: export PATH=&#34;/root/.pyenv/bin:$PATH&#34; eval &#34;$(pyenv init -)&#34; eval &#34;$(pyenv virtualenv-init -)&#34; 安装 Python 3.7.3 准备 $ sudo yum -y install xz bzip2 bzip2-devel sqlite-devel gcc openssl-devel readline-devel zlib-devel libffi-devel 安装 pyenv install 3.7.3 验证 $ pyenv versions * system (set by /root/.pyenv/version) 3.7.3 参考 https://github.com/pyenv/pyenv/issues/1183 https://github.com/pyenv/pyenv-installer https://github.com/pyenv/pyenv...
-                    </a>
-                </div>
-            </article>
-            
-            <article class="post">
-                <header>
-                    <h1 class="post-title">
-                        <a href="//lewang.dev/posts/2018-12-18-gitlab-docker-install/">使用 Docker 方式安装 Gitlab，没你想得那么简单</a>
-                    </h1>
-                </header>
-                <div class="post-meta">
-                Dec 18, 2018
-                
-                    |
-                    
-                    <a href="//lewang.dev/categories/DevOps">DevOps</a>
-                    
-                </div>
-                
-                <div class="post-summary">
-                    <a href="//lewang.dev/posts/2018-12-18-gitlab-docker-install/">
-                        为什么要写这篇文章？ 曾经几年前在 Docker 还没有广泛应用的时候，在公司使用过源码的方式安装和升级过 Gitlab，虽远没有 Docker 方便，因为自己对 Linux 系统的理解，所以整体上感觉还是挺简单的。这几年随着 Docker 的普及，使得安装 Gitlab 更加的容易，不仅方便了我这样的老鸟，也更方便了小白用户们。但是 Gitlab 官方的 Docker 安装文...
-                    </a>
-                </div>
-            </article>
-            
-            <article class="post">
-                <header>
-                    <h1 class="post-title">
-                        <a href="//lewang.dev/posts/2017-06-06-xtrabackup/">MySQL 数据备份和不停机重新搭建主从同步</a>
-                    </h1>
-                </header>
-                <div class="post-meta">
-                Jun 6, 2017
-                
-                    |
-                    
-                    <a href="//lewang.dev/categories/DevOps">DevOps</a>
-                    
-                </div>
-                
-                <div class="post-summary">
-                    <a href="//lewang.dev/posts/2017-06-06-xtrabackup/">
-                        背景 目前公司主要服务都是直接使用 MySQL 主服务器，从服务主要给离线数据分析服务使用，由于前期弄得比较简单的粗暴，从服务上还有一两个数据库在做生产使用, 并且从服数据已经不能和主服进行进行同步了，有大量错误，忽略都没有办法进行。此外，主服仅配置了三个核心数据的 binlog，随着业务的变化，...
-                    </a>
-                </div>
-            </article>
-            
-            <article class="post">
-                <header>
-                    <h1 class="post-title">
-                        <a href="//lewang.dev/posts/2014-10-16-tuning-nginx/">Nginx 性能调优「译」</a>
-                    </h1>
-                </header>
-                <div class="post-meta">
-                Oct 16, 2014
-                
-                    |
-                    
-                    <a href="//lewang.dev/categories/DevOps">DevOps</a>
-                    
-                </div>
-                
-                <div class="post-summary">
-                    <a href="//lewang.dev/posts/2014-10-16-tuning-nginx/">
-                        这是一篇译文，原文链接：Tuning NGINX for Performance Nginx 为人熟知的是在负载均衡、静态缓存和 WEB 服务器等方面的高性能，目前世界上最繁忙的站点中大约有 40% 在使用 Nginx。绝大多数情况下，大多数默认的 Nginx 和 Linux 配置都可以工作得非常好，但也需要做一些优化以获得最好的性能。本文将讨论在优化系统时需要考虑的 Nginx...
-                    </a>
-                </div>
-            </article>
-            
-            <article class="post">
-                <header>
-                    <h1 class="post-title">
                         <a href="//lewang.dev/posts/2014-03-06-arch-of-website-domain-cdn/">从域名和 CDN 来看网站架构</a>
                     </h1>
                 </header>
@@ -184,99 +96,13 @@
                     
                     <a href="//lewang.dev/categories/DevOps">DevOps</a>
                     
+                    <a href="//lewang.dev/categories/cdn">cdn</a>
+                    
                 </div>
                 
                 <div class="post-summary">
                     <a href="//lewang.dev/posts/2014-03-06-arch-of-website-domain-cdn/">
-                        为了自己做好网站的架构，找了知乎，豆瓣，大众点评和百姓网来做参考。这里主要来看域名和CDN相关的部分，后台的架构也还是要边学便实践。 大概情况 从前端分析了知乎的域名和 DNS 情况，同时对比了一下豆瓣、大众点评和百姓网。从域名、DNS、CDN等使用角度来说，他们之间大同小异。 使用的分析工具...
-                    </a>
-                </div>
-            </article>
-            
-            <article class="post">
-                <header>
-                    <h1 class="post-title">
-                        <a href="//lewang.dev/posts/2014-03-02-python-on-my-rmbp/">Python on My rMBP</a>
-                    </h1>
-                </header>
-                <div class="post-meta">
-                Mar 2, 2014
-                
-                    |
-                    
-                    <a href="//lewang.dev/categories/DevOps">DevOps</a>
-                    
-                </div>
-                
-                <div class="post-summary">
-                    <a href="//lewang.dev/posts/2014-03-02-python-on-my-rmbp/">
-                        前几天入手了一台 Macbook Pro Retina，把 BIG 提到了很爽的地步。经过几天的折腾，可以和 windows，ubuntu desktop 说 Byebye 了。之前整整用了一年的 Ubuntu 来工作，我用它来写 C、Java 和 Python, 要是 windows 没有 cygwin, 没有 MacType，那该多么恐怖。后来用了一段时间的 MBP，让我坚定了以后要自己买一个 MBP。 ubuntu 那...
-                    </a>
-                </div>
-            </article>
-            
-            <article class="post">
-                <header>
-                    <h1 class="post-title">
-                        <a href="//lewang.dev/posts/2013-08-09-benchmark-of-aliyun-and-ucloud/">阿里云和 ucloud 云主机评测</a>
-                    </h1>
-                </header>
-                <div class="post-meta">
-                Aug 9, 2013
-                
-                    |
-                    
-                    <a href="//lewang.dev/categories/DevOps">DevOps</a>
-                    
-                </div>
-                
-                <div class="post-summary">
-                    <a href="//lewang.dev/posts/2013-08-09-benchmark-of-aliyun-and-ucloud/">
-                        总体说明 我使用联通 10M 光网，SSH 在多个时间段登录两个主机都是非常的快，但是阿里云的 SSH 有时会断开连接，需要重新登录(一天遇到 n 次)，ucloud 一次都没有断开连接过。两者总体操作上都很流畅。平时我比较习惯于使用 ubuntu，于是在两个主机上都安装了 Ubuntu 12.04_64 的 Server 版本。在安装初始化系统过程...
-                    </a>
-                </div>
-            </article>
-            
-            <article class="post">
-                <header>
-                    <h1 class="post-title">
-                        <a href="//lewang.dev/posts/2013-03-04-so-load-path-in-linux/">Linux 共享库（动态链接库）相关的一些记录</a>
-                    </h1>
-                </header>
-                <div class="post-meta">
-                Mar 4, 2013
-                
-                    |
-                    
-                    <a href="//lewang.dev/categories/DevOps">DevOps</a>
-                    
-                </div>
-                
-                <div class="post-summary">
-                    <a href="//lewang.dev/posts/2013-03-04-so-load-path-in-linux/">
-                        相关的环境变量 LD_LIBRARY_PATH ld-linux.so寻找shared object的路径，优先加载出现在路径前面的shared object。如，export LD_LIBRARY_PATH=/home/user/lib:$LD_LIBRARY_PATH LD_PRELOAD 指定优先供ld-linux.so加载的shared object。如，export LD_PRELAOD=/home/user/lib/gl...
-                    </a>
-                </div>
-            </article>
-            
-            <article class="post">
-                <header>
-                    <h1 class="post-title">
-                        <a href="//lewang.dev/posts/2012-03-22-a-short-discuss-of-SimpleXML-of-php/">再说 PHP 中 SimpleXML</a>
-                    </h1>
-                </header>
-                <div class="post-meta">
-                Mar 22, 2012
-                
-                    |
-                    
-                    <a href="//lewang.dev/categories/DevOps">DevOps</a>
-                    
-                </div>
-                
-                <div class="post-summary">
-                    <a href="//lewang.dev/posts/2012-03-22-a-short-discuss-of-SimpleXML-of-php/">
-                        前一篇帖子使用了xpath，后来了解到xpath的性能可能比较差，而且在遇到有命名空间的时候还有点小麻烦。这里都已豆瓣提供的API返回的xml为例。豆瓣返回的xml不是rss格式的，而是Atom格式，有很多的命名空间，如果习惯于操作rss格式的xml，那么可以直接把xml里面的命...
+                        为了自己做好网站的架构，找了知乎，豆瓣，大众点评和百姓网来做参考。这里主要来看域名和 CDN 相关的部分，后台的架构也还是要边学便实践。 大概情况 从前端分析了知乎的域名和 DNS 情况，同时对比了一下豆瓣、大众点评和百姓网。从域名、DNS、CDN 等使用角度来说，他们之间大同小异。 使用的分析工具 Chrome WHOIS...
                     </a>
                 </div>
             </article>

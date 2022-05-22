@@ -70,7 +70,7 @@
                     
                     <span>/</span>
                     
-                    <span class="meta-category"><a href="//lewang.dev/categories/Coding">Coding</a></span>
+                    <span class="meta-category"><a href="//lewang.dev/categories/%E6%AF%8F%E6%97%A5%E6%8A%80%E5%B7%A7">每日技巧</a></span>
                     
                     
                     
@@ -87,26 +87,26 @@
                     </blockquote>
                     
                     
-                    <p>这几天没心情看论文，于是开始写写摆摊网的代码。摆摊主要做高校二手书籍信息的分享，于是需要从豆瓣上获取图书信息，豆瓣提供了一个完整的xml来描述一本书，例如<a href="http://api.douban.com/book/subject/isbn/9787543639136">http://api.douban.com/book/subject/isbn/9787543639136</a>，于是需要处理这个xml来获取相应信息，这里小码哥采用的是直接使用xpath来获取xml文档中相应的信息。摆摊使用了sae，于是使用SimpleXML来处理xml，加上自己还只是PHP的初学者，于是出现了一些问题。</p>
+                    <p>这几天没心情看论文，于是开始写写摆摊网的代码。摆摊主要做高校二手书籍信息的分享，于是需要从豆瓣上获取图书信息，豆瓣提供了一个完整的 xml 来描述一本书，例如<a href="http://api.douban.com/book/subject/isbn/9787543639136">http://api.douban.com/book/subject/isbn/9787543639136</a>，于是需要处理这个 xml 来获取相应信息，这里小码哥采用的是直接使用 xpath 来获取 xml 文档中相应的信息。摆摊使用了 sae，于是使用 SimpleXML 来处理 xml，加上自己还只是 PHP 的初学者，于是出现了一些问题。</p>
 <p>这里是一些学习资料：</p>
 <ul>
 <li>xpath:http://www.w3school.com.cn/xpath/</li>
 <li>simplexml:http://cn2.php.net/manual/en/simplexmlelement.xpath.php</li>
 </ul>
-<p>新建SimpleXMLElement对象，xml文件内容在$content中</p>
+<p>新建 SimpleXMLElement 对象，xml 文件内容在$content 中</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#008080">$bookFromDouban</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">new</span> SimpleXMLElement(<span style="color:#008080">$content</span>);
-</span></span></code></pre></div><p>直接查询，在命名空间db下的所有attribute，且有name属性，以下xpath查询是没有问题的，</p>
+</span></span></code></pre></div><p>直接查询，在命名空间 db 下的所有 attribute，且有 name 属性，以下 xpath 查询是没有问题的，</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#008080">$result</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#008080">$bookFromDouban</span><span style="color:#000;font-weight:bold">-&gt;</span><span style="color:#008080">xpath</span>(<span style="color:#d14">&#34;//db:attribute[@name]&#34;</span>);
 </span></span></code></pre></div><p>但是，这条查询就有问题了，如下，</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#008080">$result</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#008080">$bookFromDouban</span><span style="color:#000;font-weight:bold">-&gt;</span><span style="color:#008080">xpath</span>(<span style="color:#d14">&#34;//link[@rel=&#39;self&#39;]|//link[@rel=&#39;image&#39;]&#34;</span>);
-</span></span></code></pre></div><p>上面的代码表示在默认的命名空间里面查询link节点，但是在php 5.0以上却不能查出数据。需要这样操作</p>
+</span></span></code></pre></div><p>上面的代码表示在默认的命名空间里面查询 link 节点，但是在 php 5.0 以上却不能查出数据。需要这样操作</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#998;font-style:italic">//获取这个xml的所有的命名空间
 </span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span><span style="color:#008080">$namespaces</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#008080">$bookFromDouban</span><span style="color:#000;font-weight:bold">-&gt;</span><span style="color:#008080">getNamespaces</span>();
 </span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic">//注册默认的命名空间为&#39;d&#39;
 </span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span><span style="color:#008080">$bookFromDouban</span><span style="color:#000;font-weight:bold">-&gt;</span><span style="color:#008080">registerXPathNamespace</span>(<span style="color:#d14">&#39;d&#39;</span>, <span style="color:#008080">$namespaces</span>[<span style="color:#d14">&#39;&#39;</span>]);
 </span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic">//现在这个查询就ok了
 </span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span><span style="color:#008080">$result</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#008080">$bookFromDouban</span><span style="color:#000;font-weight:bold">-&gt;</span><span style="color:#008080">xpath</span>(<span style="color:#d14">&#34;//d:link[@rel=&#39;self&#39;]|//d:link[@rel=&#39;image&#39;]&#34;</span>);
-</span></span></code></pre></div><p>对$result遍历就简单了，这里也给出一个简单的例子，遍历完，变量就初始化了。PS：代码写的不优雅，欢迎拍砖。</p>
+</span></span></code></pre></div><p>对$result 遍历就简单了，这里也给出一个简单的例子，遍历完，变量就初始化了。PS：代码写的不优雅，欢迎拍砖。</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span>translator <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">array</span>();
 </span></span><span style="display:flex;"><span><span style="color:#008080">$author</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">array</span>();
 </span></span><span style="display:flex;"><span><span style="color:#008080">$i</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#008080">$j</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#099">0</span>;

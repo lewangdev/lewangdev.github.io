@@ -83,7 +83,7 @@
                     
                     <span>/</span>
                     
-                    <span class="meta-category"><a href="//lewang.dev/categories/Linux">Linux</a></span>
+                    <span class="meta-category"><a href="//lewang.dev/categories/Technical">Technical</a></span>
                     
                     
                     
@@ -154,13 +154,13 @@
 <h2 id="三搭建可以访问互联网的部署环境">三、搭建可以访问互联网的部署环境</h2>
 <p>我们希望使用第 4 个方法来搭建部署的网络环境，通过测试客户的内网环境，几个前置条件都已满足，这样第 4 个方法的搭建过程不需要客户的参与就可以完成。首先要解决的是网络通路问题，我们在客户办公室添加了一台 4G 路由器，添加 4G 路由器之后的网络拓扑图如图:</p>
 <p><img src="https://raw.githubusercontent.com/lewangdev/picb0/main/oh-my-blog/go-through-the-system-firewall/network-topo-4g-router.png" alt="network-topo"></p>
-<p>部署控制主机连接好 4G 路由器之后，获取到一个 <code>192.168.8.106</code> 的 IP，注意 4G 路由器的网段要与办公室网段不同，例如办公室网段是 192.168.137.0/24 (也就是子网掩码为 255.255.255.0)，4G  路由器的网段为 192.168.8.0/24，也就是说部署控制主机需要有两个网络接口(网卡)：一个接内网，一个接外网（4G 路由器），如果部署控制主机刚好有一个 RJ45 的以太网卡和一个WiFI网卡（很多笔记本电脑就是这样），那部署控制主机在硬件上就不需要在添加额外的硬件了。</p>
+<p>部署控制主机连接好 4G 路由器之后，获取到一个 <code>192.168.8.106</code> 的 IP，注意 4G 路由器的网段要与办公室网段不同，例如办公室网段是 192.168.137.0/24 (也就是子网掩码为 255.255.255.0)，4G 路由器的网段为 192.168.8.0/24，也就是说部署控制主机需要有两个网络接口(网卡)：一个接内网，一个接外网（4G 路由器），如果部署控制主机刚好有一个 RJ45 的以太网卡和一个 WiFI 网卡（很多笔记本电脑就是这样），那部署控制主机在硬件上就不需要在添加额外的硬件了。</p>
 <p>关于网络搭建过程中的使用到硬件就讲这些，各位读者可以根据自己的情况选用合适的网络设备，比如 4G 无线网卡，带 4G 模块的工控主机等等，原则上只要能建立一个互联网访问的通道就行了。</p>
 <p>接下来我们再一起探讨一下如果利用开源软件来搭建互联网访问的通道，如图：</p>
 <p><img src="https://raw.githubusercontent.com/lewangdev/picb0/main/oh-my-blog/go-through-the-system-firewall/network-topo-tunnel.png" alt="network-topo"></p>
 <p>现在解决问题的思路应该更加清晰了：需要在机房服务器和办公室部署控制主机之间建立一个通道。建立通道可以使用的开源软件有不少，相信很多人因为某些原因都或多或少使用过，从我自己长期实际使用的经验来看，<a href="https://github.com/fatedier/frp/blob/dev/README_zh.md">frp</a> 和 <a href="https://www.wireguard.com/">WireGuard</a> 非常适合用在当前情况下建立通道，<a href="https://github.com/ginuerzh/gost">gost</a> 也十分容易搭建 HTTP 或者 SOCK5 代理。</p>
 <p>可以用一句话来描述搭建的过程：</p>
-<p><strong>在机房一台服务器上面安装 frp 或 WireGuard 做服务端，在可以连接外网内网的部署控制主机上安装 frp  或 WireGuard 做客户端，并且在部署控制主机上安装 gost 服务启用  HTTP 代理服务，最后在服务器端的修改系统配置，让 yum 和 docker 拉镜像走 HTTP 代理。</strong></p>
+<p><strong>在机房一台服务器上面安装 frp 或 WireGuard 做服务端，在可以连接外网内网的部署控制主机上安装 frp 或 WireGuard 做客户端，并且在部署控制主机上安装 gost 服务启用 HTTP 代理服务，最后在服务器端的修改系统配置，让 yum 和 docker 拉镜像走 HTTP 代理。</strong></p>
 <p>因为部署系统使用 HTTP 代理就够了，这样 frp + gost 的组合可能比 WireGuard + gost 的组合配置起来会更加简单，WireGuard 是一个可以用于 SDWAN 组网的高性能通道软件，本文就不说明如何使用它来搭建，如果对 WireGuard 搭建 SDWAN 感兴趣，可以自行研究一下或者留言私信给我。</p>
 <p>以下使用 frp + gost 来说明具体的搭建过程。</p>
 <h3 id="31-准备需要的软件">3.1 准备需要的软件</h3>
@@ -192,12 +192,12 @@
 </ol>
 <p>以下部署过程以部署控制主机系统为 MacOS，机房服务器系统为 CentOS 7.6 为例，如果读者在实际部署过程中由于系统与本文不同而遇到问题不知如何解决，比如服务器为 Ubuntu，部署机是 Windows 10，欢迎留言一起探讨。</p>
 <h4 id="在部署控制主机上面配置路由">在部署控制主机上面配置路由</h4>
-<p>如果部署控制主机和机房服务器在同一个子网，则不需要添加路由。由于本次部署控制主机和机房服务器不在一个子网，在接了两个网卡之后，在部署控制主机上的 IP 包是不知道如何路由到机房网络的，如果不做路由设置，172.22.0.0/16 网段会走系统默认的路由，可能无法访问到机房网络。所以在部署控制主机上（ MacOS系统）添加以下路由:</p>
+<p>如果部署控制主机和机房服务器在同一个子网，则不需要添加路由。由于本次部署控制主机和机房服务器不在一个子网，在接了两个网卡之后，在部署控制主机上的 IP 包是不知道如何路由到机房网络的，如果不做路由设置，172.22.0.0/16 网段会走系统默认的路由，可能无法访问到机房网络。所以在部署控制主机上（ MacOS 系统）添加以下路由:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo route add -net 172.22.0.0/16 192.168.137.1
 </span></span></code></pre></div><p>如果部署控制主机为 Linux 或者 Windows 也需要手动添加路由。</p>
 <h4 id="在机房任意一台服务器上安装-frp">在机房任意一台服务器上安装 frp</h4>
 <p>上传 frp_0.34.3_linux_amd64.tar.gz 到服务器，解压 frp_0.34.3_linux_amd64.tar.gz 安装包</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ tar -zxvf frp_0.34.3_linux_amd64.tar.gz 
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ tar -zxvf frp_0.34.3_linux_amd64.tar.gz
 </span></span><span style="display:flex;"><span>frp_0.34.3_linux_amd64/
 </span></span><span style="display:flex;"><span>frp_0.34.3_linux_amd64/frps_full.ini
 </span></span><span style="display:flex;"><span>frp_0.34.3_linux_amd64/frps.ini
@@ -250,17 +250,17 @@
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ sudo yum makecache
 </span></span><span style="display:flex;"><span>Loaded plugins: fastestmirror
 </span></span><span style="display:flex;"><span>Loading mirror speeds from cached hostfile
-</span></span><span style="display:flex;"><span>epel/x86_64/metalink                                                                                                                                                                                                 |  <span style="color:#099">23</span> kB  00:00:01     
+</span></span><span style="display:flex;"><span>epel/x86_64/metalink                                                                                                                                                                                                 |  <span style="color:#099">23</span> kB  00:00:01
 </span></span><span style="display:flex;"><span> * base: mirrors.neusoft.edu.cn
 </span></span><span style="display:flex;"><span> * epel: ftp.iij.ad.jp
 </span></span><span style="display:flex;"><span> * extras: ftp.sjtu.edu.cn
 </span></span><span style="display:flex;"><span> * updates: ftp.sjtu.edu.cn
-</span></span><span style="display:flex;"><span>base                                                                                                                                                                                                                 | 3.6 kB  00:00:00     
-</span></span><span style="display:flex;"><span>docker-ce-stable                                                                                                                                                                                                     | 3.5 kB  00:00:00     
-</span></span><span style="display:flex;"><span>epel                                                                                                                                                                                                                 | 4.7 kB  00:00:00     
-</span></span><span style="display:flex;"><span>extras                                                                                                                                                                                                               | 2.9 kB  00:00:00     
-</span></span><span style="display:flex;"><span>updates                                                                                                                                                                                                              | 2.9 kB  00:00:00     
-</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">(</span>2/3<span style="color:#000;font-weight:bold">)</span>: epel/x86_64/primary_db                                                                           20% <span style="color:#000;font-weight:bold">[===================</span>                                                                          <span style="color:#000;font-weight:bold">]</span> <span style="color:#099">790</span> kB/s | 4.6 MB  00:00:22 ETA 
+</span></span><span style="display:flex;"><span>base                                                                                                                                                                                                                 | 3.6 kB  00:00:00
+</span></span><span style="display:flex;"><span>docker-ce-stable                                                                                                                                                                                                     | 3.5 kB  00:00:00
+</span></span><span style="display:flex;"><span>epel                                                                                                                                                                                                                 | 4.7 kB  00:00:00
+</span></span><span style="display:flex;"><span>extras                                                                                                                                                                                                               | 2.9 kB  00:00:00
+</span></span><span style="display:flex;"><span>updates                                                                                                                                                                                                              | 2.9 kB  00:00:00
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">(</span>2/3<span style="color:#000;font-weight:bold">)</span>: epel/x86_64/primary_db                                                                           20% <span style="color:#000;font-weight:bold">[===================</span>                                                                          <span style="color:#000;font-weight:bold">]</span> <span style="color:#099">790</span> kB/s | 4.6 MB  00:00:22 ETA
 </span></span></code></pre></div><p>代理看起来没有问题，我们来安装 git 试试。</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ sudo yum install -y git
 </span></span><span style="display:flex;"><span>Loaded plugins: fastestmirror
@@ -336,7 +336,7 @@
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ sudo docker run hello-world
 </span></span><span style="display:flex;"><span>Unable to find image <span style="color:#d14">&#39;hello-world:latest&#39;</span> locally
 </span></span><span style="display:flex;"><span>latest: Pulling from library/hello-world
-</span></span><span style="display:flex;"><span>0e03bdcc26d7: Pull <span style="color:#0086b3">complete</span> 
+</span></span><span style="display:flex;"><span>0e03bdcc26d7: Pull <span style="color:#0086b3">complete</span>
 </span></span><span style="display:flex;"><span>Digest: sha256:e7c70bb24b462baa86c102610182e3efcb12a04854e8c582838d92970a09f323
 </span></span><span style="display:flex;"><span>Status: Downloaded newer image <span style="color:#000;font-weight:bold">for</span> hello-world:latest
 </span></span><span style="display:flex;"><span>
@@ -370,7 +370,7 @@
 <p>需要 CentOS 7 环境，且虚拟机不能访问外网</p>
 <ul>
 <li>使用 vagrant 启动一个 centos/7 虚拟机，并且使用桥接模式获取局域网 IP, 例如 IP 为 192.168.52.79</li>
-<li>在网关路由器上进行配置使得测试的 CentOS 7 虚拟机无法访问互联网，如果网关路由器是个linux based 的系统则可以尝试用 iptables 限制虚拟机访问互联网: <code>iptables -A FORWARD -s 192.168.52.79 -j DROP</code></li>
+<li>在网关路由器上进行配置使得测试的 CentOS 7 虚拟机无法访问互联网，如果网关路由器是个 linux based 的系统则可以尝试用 iptables 限制虚拟机访问互联网: <code>iptables -A FORWARD -s 192.168.52.79 -j DROP</code></li>
 </ul>
 <h2 id="五远程维护">五、远程维护</h2>
 <p>通过前面关于 frp 的使用，不难看出来，只要在部署控制主机再启动一个 frp 客户端，把机房或者部署控制主机的 SSH 端口映射到到公网中的 frp 服务器可以了。当然这种情况下还在需要多做一些配置工作，比如在部署控制主机上配置好服务的自启动，然后把部署控制主机放在客户的办公室，在需要远程维护的时候，开机就好。</p>
@@ -393,8 +393,6 @@
     <h2>相关文章</h2>
     <ul>
         
-        <li><a href="/posts/2020-02-22-hello-gradle-1/">大象（Gradle）的故事：一见如故</a></li>
-        
         <li><a href="/posts/2019-10-30-wireguard-go-setup/">WireGuard 使用简介</a></li>
         
         <li><a href="/posts/2019-09-19-rpi-log-config/">树莓派系统日志配置</a></li>
@@ -402,6 +400,8 @@
         <li><a href="/posts/2019-07-16-change-uid-gid-in-linux/">如何修改 Linux 用户的 UID 和组的 GID</a></li>
         
         <li><a href="/posts/2019-05-29-centos7-pyenv-install-python-3/">CentOS 7 上使用 pyenv 安装 Python 3.7.3</a></li>
+        
+        <li><a href="/posts/2019-03-01-rpi-cm3-emmc-flashing/">树莓派 CM3/CM3&#43; 刷写系统</a></li>
         
     </ul>
 </div>
@@ -413,6 +413,8 @@
                     
                     <h3>标签</h3>
                     <ul class="clearfix">
+                        
+                        <li><a href="//lewang.dev/tags/Linux"># Linux</a></li>
                         
                         <li><a href="//lewang.dev/tags/%E9%83%A8%E7%BD%B2"># 部署</a></li>
                         

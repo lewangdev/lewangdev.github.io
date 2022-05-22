@@ -68,6 +68,11 @@
                 <div class="post-meta">
                     <span>Mar 3, 2014</span>
                     
+                    <span>/</span>
+                    
+                    <span class="meta-category"><a href="//lewang.dev/categories/Technical">Technical</a></span>
+                    
+                    
                     
                 </div>
                 
@@ -82,13 +87,13 @@
                     </blockquote>
                     
                     
-                    <p><a href="http://www.vagrantup.com/">Vagrant</a> 是一个构建虚拟开发环境的利器，它使得在团队中很容易共享开发环境，有了它，不必每个人都搭建一个自己的开发环境了。在没有使用 vagrant 之前，我在windows中安装了 virtualbox，然后在virtualbox中安装了一个ubuntu server。在 ubuntu 中安装了 mysql、jdk 等软件，并且设置了一个共享目录，以便于将工程代码直接共享给 ubuntu。在外部开发调试过程中（Java 项目），我需要在virtualbox中设置好几个端口映射，如 mysql，ssh等等。这样在 cygwin 里面就可以通过 ssh 登录 ubuntu server 了，为了使得ssh登录不用每次设置密码，还需要手动生成公钥私钥。换机器了，这一切我又得重新配置。新同事来了，他也得像我这样重新配置一遍。有可能他还会有问题说：为什么按照你的说明，代码在我这里却无法运行呢？</p>
+                    <p><a href="http://www.vagrantup.com/">Vagrant</a> 是一个构建虚拟开发环境的利器，它使得在团队中很容易共享开发环境，有了它，不必每个人都搭建一个自己的开发环境了。在没有使用 vagrant 之前，我在 windows 中安装了 virtualbox，然后在 virtualbox 中安装了一个 ubuntu server。在 ubuntu 中安装了 mysql、jdk 等软件，并且设置了一个共享目录，以便于将工程代码直接共享给 ubuntu。在外部开发调试过程中（Java 项目），我需要在 virtualbox 中设置好几个端口映射，如 mysql，ssh 等等。这样在 cygwin 里面就可以通过 ssh 登录 ubuntu server 了，为了使得 ssh 登录不用每次设置密码，还需要手动生成公钥私钥。换机器了，这一切我又得重新配置。新同事来了，他也得像我这样重新配置一遍。有可能他还会有问题说：为什么按照你的说明，代码在我这里却无法运行呢？</p>
 <p>一切都从 <a href="http://yining.org">Yining</a> 告诉了我 vagrant 之后发生了变化，原来一切都这么简单。</p>
 <h2 id="安装-virtualbox">安装 VirtualBox</h2>
-<p>Vagrant 其实是对 virtualbox 做了一层包装，它让使用virtualbox作为虚拟机更为简单。当然也可以使用 vmware，使用vmware那得找一个license了。</p>
+<p>Vagrant 其实是对 virtualbox 做了一层包装，它让使用 virtualbox 作为虚拟机更为简单。当然也可以使用 vmware，使用 vmware 那得找一个 license 了。</p>
 <p>好吧，去<a href="https://www.virtualbox.org/wiki/Downloads">这里</a> 下载 VirtualBox。我使用的是 4.3.8 for OSX</p>
 <h2 id="安装-vagrant">安装 Vagrant</h2>
-<p><a href="http://www.vagrantup.com/downloads.html">下载vagrant</a></p>
+<p><a href="http://www.vagrantup.com/downloads.html">下载 vagrant</a></p>
 <h2 id="添加虚拟机镜像到-vagrant">添加虚拟机镜像到 Vagrant</h2>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>vagrant box add vdevenv ~/Workspace/vagrant/boxes/vdevenv-0.0.0.1.box
 </span></span></code></pre></div><p>vagrant 的干净的镜像可以在这里下载:</p>
@@ -107,7 +112,7 @@
 <p>修改 Vagrantfile</p>
 <h2 id="分享开发环境">分享开发环境</h2>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>vagrant package
-</span></span></code></pre></div><p>执行之后在工作目录下面会生成一个*.bax的文件，把这个文件拷给别人就可以了</p>
+</span></span></code></pre></div><p>执行之后在工作目录下面会生成一个*.bax 的文件，把这个文件拷给别人就可以了</p>
 <h2 id="常用-vagrant-命令">常用 Vagrant 命令</h2>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>vagrant ssh
 </span></span><span style="display:flex;"><span>vagrant status

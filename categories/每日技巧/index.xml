@@ -61,5 +61,59 @@
       <description>准备 阅读Flashing the Compute Module eMMC 准备一个可以刷系统的底板，我用的是微雪Compute-Module-IO-Board-Plus 步骤(Linux 系统下刷系统，可以使用树莓派来刷机) sudo apt install git libusb-1.0-0-dev git clone --depth=1 https://github.com/raspberrypi/usbboot &amp;amp;&amp;amp; cd usbboot &amp;amp;&amp;amp; make sudo ./rpiboot 连好线，跳线部分见各自底板的手册 拔掉 USB SLAVE 1/2/3/4 拔掉 SELECT 跳线帽 将 BOOT ENABLE USB SLAVE 跳线帽</description>
     </item>
     
+    <item>
+      <title>LVM 实战记录</title>
+      <link>//lewang.dev/posts/2017-08-03-lvm-in-action/</link>
+      <pubDate>Thu, 03 Aug 2017 23:55:00 +0000</pubDate>
+      
+      <guid>//lewang.dev/posts/2017-08-03-lvm-in-action/</guid>
+      <description>背景 阿里云云主机两块 100G 的云盘合一个逻辑卷（LV）来使用，单个的 100G 磁盘不够用，需要合在一起使用，并且方便以后扩容 基本知识 磁盘 /dev/xvdb /dev/xvdc 分区, 使用 fdisk 进行分区 fdisk &amp;gt; n &amp;gt; p &amp;gt; 1..4, 主分区最多只有 4 个 准备分区后，将分区类型变为 LVM 分区，fdisk &amp;gt; t &amp;gt; 8e, 8e 是 LVM 类型 ID 物理卷（PV），卷组（VG），逻辑卷（</description>
+    </item>
+    
+    <item>
+      <title>Github Pages 服务的域名设置</title>
+      <link>//lewang.dev/posts/2014-05-06-github-pages-dns-settings/</link>
+      <pubDate>Tue, 06 May 2014 22:51:00 +0000</pubDate>
+      
+      <guid>//lewang.dev/posts/2014-05-06-github-pages-dns-settings/</guid>
+      <description>这几天每次 Push 博客到 Github Pages 时总会收到一封邮件： The page build completed successfully, but returned the following warning: GitHub Pages recently underwent some improvements (https://github.com/blog/1715-faster-more-awesome-github-pages) to make your site faster and more awesome, but we&amp;rsquo;ve noticed that iforget.info isn&amp;rsquo;t properly configured to take advantage of these new features. While your site will continue to work just fine, updating your domain&amp;rsquo;s configuration offers some additional speed and performance benefits. Instructions on updating your site&amp;rsquo;s IP address can be found at https://help.github.com/articles/setting-up-a-custom-domain-with-github-pages#step-2-configure-dns-records, and of course, you can always get in touch with a human at support@github.com. For the more technical minded folks who want to skip the help docs: your site&amp;rsquo;s DNS records are pointed to a deprecated IP address. For information on troubleshooting Jekyll see: https://help.github.com/articles/using-jekyll-with-pages#troubleshooting If you</description>
+    </item>
+    
+    <item>
+      <title>Linux 共享库（动态链接库）相关的一些记录</title>
+      <link>//lewang.dev/posts/2013-03-04-so-load-path-in-linux/</link>
+      <pubDate>Mon, 04 Mar 2013 00:40:00 +0000</pubDate>
+      
+      <guid>//lewang.dev/posts/2013-03-04-so-load-path-in-linux/</guid>
+      <description>相关的环境变量 LD_LIBRARY_PATH ld-linux.so 寻找 shared object 的路径，优先加载出现在路径前面的 shared object。如，export LD_LIBRARY_PATH=/home/user/lib:$LD_LIBRARY_PATH LD_PRELOAD 指定优先供 ld-linux.so 加载的 shared object。如，export LD_PRELAOD=/home/user/lib/glibc.so，可以使用这个变量来改变加载顺序，例如我们自定义的 glibc.so 中实现了新的 strcmp 之</description>
+    </item>
+    
+    <item>
+      <title>再说 PHP 中 SimpleXML</title>
+      <link>//lewang.dev/posts/2012-03-22-a-short-discuss-of-SimpleXML-of-php/</link>
+      <pubDate>Thu, 22 Mar 2012 00:40:00 +0000</pubDate>
+      
+      <guid>//lewang.dev/posts/2012-03-22-a-short-discuss-of-SimpleXML-of-php/</guid>
+      <description>前一篇帖子使用了 xpath，后来了解到 xpath 的性能可能比较差，而且在遇到有命名空间的时候还有点小麻烦。这里都已豆瓣提供的 API 返回的 xml 为例。豆瓣返回的 xml 不是 rss 格式的，而是 Atom 格式，有很多的命名空间，如果习惯于操作 rss 格式的 xml，那么可以直接把 xml 里面的命名空间的字符串都 replace 掉，这个方法貌似很简</description>
+    </item>
+    
+    <item>
+      <title>SimpleXML使用xpath</title>
+      <link>//lewang.dev/posts/2011-12-01-how-to-use-simplexml-of-php/</link>
+      <pubDate>Thu, 01 Dec 2011 13:09:00 +0000</pubDate>
+      
+      <guid>//lewang.dev/posts/2011-12-01-how-to-use-simplexml-of-php/</guid>
+      <description>这几天没心情看论文，于是开始写写摆摊网的代码。摆摊主要做高校二手书籍信息的分享，于是需要从豆瓣上获取图书信息，豆瓣提供了一个完整的 xml 来描述一本书，例如http://api.douban.com/book/subject/isbn/9787543639136，于是需要处理这个 xml 来获</description>
+    </item>
+    
+    <item>
+      <title>jquery $.ajax() 中 datatype 为 json 时的问题</title>
+      <link>//lewang.dev/posts/2011-12-01-when-datatype-is-json/</link>
+      <pubDate>Thu, 01 Dec 2011 00:40:00 +0000</pubDate>
+      
+      <guid>//lewang.dev/posts/2011-12-01-when-datatype-is-json/</guid>
+      <description>最近在为摆摊写点前端 js 的时候，在使用 jquery 的 $.ajax()这个方法的时候，当 datatype 设置为 json 时，总是不执行 success 回调，而是执行 error 回调。而将 datatype 设置成 text，就可以执行 success 回调了，摆摊使用的是 jQuery JavaScript Library v1.6.2，查看 jQuery 文档可知： “json”: Evaluates the response as JSON and returns a JavaScript object. In jQuery 1.4 the JSON data is parsed in a strict manner; any malformed JSON is rejected</description>
+    </item>
+    
   </channel>
 </rss>

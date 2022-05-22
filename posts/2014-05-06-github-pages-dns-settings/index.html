@@ -70,7 +70,7 @@
                     
                     <span>/</span>
                     
-                    <span class="meta-category"><a href="//lewang.dev/categories/Github">Github</a></span>
+                    <span class="meta-category"><a href="//lewang.dev/categories/%E6%AF%8F%E6%97%A5%E6%8A%80%E5%B7%A7">每日技巧</a></span>
                     
                     
                     
@@ -99,13 +99,19 @@
 <p>大概意思就是我们 Github Pages 服务最近做了升级，这个升级将会使你的博客访问起来快到碉堡了，赶快来配置(修改域名记录就可以)一下用上吧。</p>
 <p>之前 iforget.info 这个域名有两条记录：</p>
 <ul>
-<li>A 记录： iforget.info 到 207.97.227.245</li>
-<li>CNAME(Alias) 记录：www.iforget.info  到  iforget.info</li>
-</ul>
+<li>
+<p>A 记录： iforget.info 到 207.97.227.245</p>
+</li>
+<li>
+<p>CNAME(Alias) 记录：www.iforget.info 到 iforget.info</p>
 <p>207.97.227.245 是个美帝的 IP，所以速度比较慢。我还想着给 iforget.info 备个案，从此用上七牛的 CND 来加速了。好消息来了，Github Pages 支持全球 CDN 了，赶紧修改一下 DNS 记录(把之前的记录都删掉吧)：</p>
-<ul>
-<li>CNAME 记录: iforget.info 到 thisiswangle.github.io</li>
-<li>CNAME 记录: <a href="https://www.iforget.info">www.iforget.info</a> 到 thisiswangle.github.io</li>
+</li>
+<li>
+<p>CNAME 记录: iforget.info 到 thisiswangle.github.io</p>
+</li>
+<li>
+<p>CNAME 记录: <a href="https://www.iforget.info">www.iforget.info</a> 到 thisiswangle.github.io</p>
+</li>
 </ul>
 <p>好了，静候 DNS 生效。</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>➜  ~  dig iforget.info +nostats +nocomments +nocmd
@@ -172,10 +178,6 @@
                     <ul class="clearfix">
                         
                         <li><a href="//lewang.dev/tags/github"># github</a></li>
-                        
-                        <li><a href="//lewang.dev/tags/catcat"># catcat</a></li>
-                        
-                        <li><a href="//lewang.dev/tags/blog"># blog</a></li>
                         
                     </ul>
                     

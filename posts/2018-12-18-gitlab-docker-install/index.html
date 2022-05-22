@@ -83,7 +83,7 @@
                     
                     <span>/</span>
                     
-                    <span class="meta-category"><a href="//lewang.dev/categories/DevOps">DevOps</a></span>
+                    <span class="meta-category"><a href="//lewang.dev/categories/Technical">Technical</a></span>
                     
                     
                     
@@ -158,7 +158,7 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#d14"></span>    --volume /data/var/lib/gitlab/log:/var/log/gitlab <span style="color:#d14">\
 </span></span></span><span style="display:flex;"><span><span style="color:#d14"></span>    --volume /data/var/lib/gitlab/data:/var/opt/gitlab <span style="color:#d14">\
 </span></span></span><span style="display:flex;"><span><span style="color:#d14"></span>    beginor/gitlab-ce:10.3.1-ce.0
-</span></span></code></pre></div><p>这个 Gitlab 的 Docker 镜像是基于  Ubuntu 16.04.3 LTS 这个版本来构建的，所以在 <code>docker exec -it gitlab /bin/bash</code> 进入 Docker 容器之后跟使用 Ubuntu 就没有什么差别了。</p>
+</span></span></code></pre></div><p>这个 Gitlab 的 Docker 镜像是基于 Ubuntu 16.04.3 LTS 这个版本来构建的，所以在 <code>docker exec -it gitlab /bin/bash</code> 进入 Docker 容器之后跟使用 Ubuntu 就没有什么差别了。</p>
 <p>gitlab 容器中启动了很多服务，主要包括：</p>
 <ul>
 <li>gitlab</li>
@@ -222,7 +222,7 @@
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>adduser git
 </span></span><span style="display:flex;"><span>id git
 </span></span><span style="display:flex;"><span><span style="color:#008080">uid</span><span style="color:#000;font-weight:bold">=</span>998<span style="color:#000;font-weight:bold">(</span>git<span style="color:#000;font-weight:bold">)</span> <span style="color:#008080">gid</span><span style="color:#000;font-weight:bold">=</span>998<span style="color:#000;font-weight:bold">(</span>git<span style="color:#000;font-weight:bold">)</span> <span style="color:#008080">groups</span><span style="color:#000;font-weight:bold">=</span>998<span style="color:#000;font-weight:bold">(</span>git<span style="color:#000;font-weight:bold">)</span>
-</span></span></code></pre></div><p>要完成共享22端口，要求 gitlab 容器中的 git 账户的 uid 和 gid 和宿主机器上完全相同，这样读取 SSH Key 时就不会有权限问题。关于如何修改两个系统中 git 账户的 uid 和 gid，可以通过命令 <code>usermod</code> 和 <code>groupmod</code> 手动修改 git 用户的 uid 和 gid<a href="/posts/2019-07-16-change-uid-gid-in-linux">参考文档</a>。或者通过编辑 <code>/data/var/lib/gitlab/etc/gitlab.rb</code> 这个配置文件，修改其中的行，来使用其他的用户<a href="https://docs.gitlab.com/omnibus/settings/configuration.html#specify-numeric-user-and-group-identifiers">具体请参考这里</a>:</p>
+</span></span></code></pre></div><p>要完成共享 22 端口，要求 gitlab 容器中的 git 账户的 uid 和 gid 和宿主机器上完全相同，这样读取 SSH Key 时就不会有权限问题。关于如何修改两个系统中 git 账户的 uid 和 gid，可以通过命令 <code>usermod</code> 和 <code>groupmod</code> 手动修改 git 用户的 uid 和 gid<a href="/posts/2019-07-16-change-uid-gid-in-linux">参考文档</a>。或者通过编辑 <code>/data/var/lib/gitlab/etc/gitlab.rb</code> 这个配置文件，修改其中的行，来使用其他的用户<a href="https://docs.gitlab.com/omnibus/settings/configuration.html#specify-numeric-user-and-group-identifiers">具体请参考这里</a>:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ruby" data-lang="ruby"><span style="display:flex;"><span>user<span style="color:#000;font-weight:bold">[</span><span style="color:#d14">&#39;username&#39;</span><span style="color:#000;font-weight:bold">]</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#39;other-git&#39;</span>
 </span></span><span style="display:flex;"><span>user<span style="color:#000;font-weight:bold">[</span><span style="color:#d14">&#39;group&#39;</span><span style="color:#000;font-weight:bold">]</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#39;other-git&#39;</span>
 </span></span><span style="display:flex;"><span>user<span style="color:#000;font-weight:bold">[</span><span style="color:#d14">&#39;uid&#39;</span><span style="color:#000;font-weight:bold">]</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#099">1001</span>
@@ -238,7 +238,7 @@
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>ssh -p <span style="color:#099">8022</span> 127.0.0.1
 </span></span></code></pre></div><p>观察到 <code>~/.ssh/authorized_keys</code> 其它行都是这样</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span><span style="color:#008080">command</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;/opt/gitlab/embedded/service/gitlab-shell/bin/gitlab-shell key-32&#34;</span>,no-port-forwarding,no-X11-forwarding,no-agent-forwarding,no-pty ssh-rsa AAAAB3NzaC1yc2EAA......hOtpAl7J
-</span></span></code></pre></div><p>在宿主机看来，每次git账户进行操作是都会执行 <code>/opt/gitlab/embedded/service/gitlab-shell/bin/gitlab-shell</code>, 我们恰好可以使用这个脚本来实现转发。</p>
+</span></span></code></pre></div><p>在宿主机看来，每次 git 账户进行操作是都会执行 <code>/opt/gitlab/embedded/service/gitlab-shell/bin/gitlab-shell</code>, 我们恰好可以使用这个脚本来实现转发。</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>mkdir -p /opt/gitlab/embedded/service/gitlab-shell/bin/
 </span></span><span style="display:flex;"><span>touch gitlab-shell
 </span></span><span style="display:flex;"><span>chmod +x gitlab-shell

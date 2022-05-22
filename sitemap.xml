@@ -5,6 +5,9 @@
     <loc>//lewang.dev/tags/grep/</loc>
     <lastmod>2022-05-21T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>//lewang.dev/tags/Linux/</loc>
+    <lastmod>2022-05-21T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>//lewang.dev/tags/sed/</loc>
     <lastmod>2022-05-21T00:00:00+00:00</lastmod>
   </url><url>
@@ -29,7 +32,7 @@
     <loc>//lewang.dev/tags/Debian/</loc>
     <lastmod>2022-05-16T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>//lewang.dev/categories/Linux/</loc>
+    <loc>//lewang.dev/categories/Technical/</loc>
     <lastmod>2022-05-16T00:00:00+00:00</lastmod>
   </url><url>
     <loc>//lewang.dev/posts/2022-05-16-cndevnet-intro/</loc>
@@ -47,7 +50,7 @@
     <loc>//lewang.dev/tags/%E9%83%A8%E7%BD%B2/</loc>
     <lastmod>2020-11-27T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>//lewang.dev/categories/Gradle/</loc>
+    <loc>//lewang.dev/tags/Gradle/</loc>
     <lastmod>2020-02-22T00:00:00+00:00</lastmod>
   </url><url>
     <loc>//lewang.dev/tags/Groovy/</loc>
@@ -61,9 +64,6 @@
   </url><url>
     <loc>//lewang.dev/posts/2020-02-22-hello-gradle-1/</loc>
     <lastmod>2020-02-22T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>//lewang.dev/tags/Linux/</loc>
-    <lastmod>2019-10-30T00:00:00+00:00</lastmod>
   </url><url>
     <loc>//lewang.dev/tags/VPN/</loc>
     <lastmod>2019-10-30T00:00:00+00:00</lastmod>
@@ -89,17 +89,11 @@
     <loc>//lewang.dev/posts/2019-05-29-centos7-pyenv-install-python-3/</loc>
     <lastmod>2019-05-29T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>//lewang.dev/categories/DevOps/</loc>
-    <lastmod>2019-05-29T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>//lewang.dev/tags/Pyenv/</loc>
     <lastmod>2019-05-29T00:00:00+00:00</lastmod>
   </url><url>
     <loc>//lewang.dev/tags/SSH/</loc>
     <lastmod>2019-05-29T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>//lewang.dev/categories/Java/</loc>
-    <lastmod>2019-03-06T00:00:00+00:00</lastmod>
   </url><url>
     <loc>//lewang.dev/posts/2019-03-06-keynotes-of-new-java/</loc>
     <lastmod>2019-03-06T00:00:00+00:00</lastmod>
@@ -116,6 +110,9 @@
     <loc>//lewang.dev/posts/2018-12-18-gitlab-docker-install/</loc>
     <lastmod>2018-12-18T23:25:20+00:00</lastmod>
   </url><url>
+    <loc>//lewang.dev/categories/Life/</loc>
+    <lastmod>2017-12-31T00:08:25+00:00</lastmod>
+  </url><url>
     <loc>//lewang.dev/tags/%E5%9B%9E%E5%BF%86/</loc>
     <lastmod>2017-12-31T00:08:25+00:00</lastmod>
   </url><url>
@@ -123,9 +120,6 @@
     <lastmod>2017-12-31T00:08:25+00:00</lastmod>
   </url><url>
     <loc>//lewang.dev/tags/%E6%80%9D%E8%80%83/</loc>
-    <lastmod>2017-12-31T00:08:25+00:00</lastmod>
-  </url><url>
-    <loc>//lewang.dev/categories/%E6%80%BB%E7%BB%93/</loc>
     <lastmod>2017-12-31T00:08:25+00:00</lastmod>
   </url><url>
     <loc>//lewang.dev/tags/%E6%95%99%E8%AE%AD/</loc>
@@ -161,9 +155,6 @@
     <loc>//lewang.dev/posts/2017-07-23-log-processing-system/</loc>
     <lastmod>2017-07-23T22:30:00+00:00</lastmod>
   </url><url>
-    <loc>//lewang.dev/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/</loc>
-    <lastmod>2017-07-23T22:30:00+00:00</lastmod>
-  </url><url>
     <loc>//lewang.dev/tags/Log4j2/</loc>
     <lastmod>2017-07-15T23:31:00+00:00</lastmod>
   </url><url>
@@ -191,25 +182,19 @@
     <loc>//lewang.dev/tags/tuning/</loc>
     <lastmod>2014-10-16T15:27:00+00:00</lastmod>
   </url><url>
-    <loc>//lewang.dev/tags/blog/</loc>
-    <lastmod>2014-05-06T22:51:00+00:00</lastmod>
-  </url><url>
-    <loc>//lewang.dev/tags/catcat/</loc>
-    <lastmod>2014-05-06T22:51:00+00:00</lastmod>
-  </url><url>
     <loc>//lewang.dev/tags/github/</loc>
-    <lastmod>2014-05-06T22:51:00+00:00</lastmod>
-  </url><url>
-    <loc>//lewang.dev/categories/Github/</loc>
     <lastmod>2014-05-06T22:51:00+00:00</lastmod>
   </url><url>
     <loc>//lewang.dev/posts/2014-05-06-github-pages-dns-settings/</loc>
     <lastmod>2014-05-06T22:51:00+00:00</lastmod>
   </url><url>
-    <loc>//lewang.dev/tags/CDN/</loc>
+    <loc>//lewang.dev/categories/cdn/</loc>
     <lastmod>2014-03-06T00:40:00+00:00</lastmod>
   </url><url>
-    <loc>//lewang.dev/tags/DNS/</loc>
+    <loc>//lewang.dev/categories/DevOps/</loc>
+    <lastmod>2014-03-06T00:40:00+00:00</lastmod>
+  </url><url>
+    <loc>//lewang.dev/tags/Technical/</loc>
     <lastmod>2014-03-06T00:40:00+00:00</lastmod>
   </url><url>
     <loc>//lewang.dev/posts/2014-03-06-arch-of-website-domain-cdn/</loc>
@@ -263,9 +248,6 @@
     <loc>//lewang.dev/tags/idea/</loc>
     <lastmod>2012-03-13T00:40:00+00:00</lastmod>
   </url><url>
-    <loc>//lewang.dev/categories/%E6%84%9F%E6%82%9F/</loc>
-    <lastmod>2012-03-13T00:40:00+00:00</lastmod>
-  </url><url>
     <loc>//lewang.dev/posts/2012-03-13-things-i-create-must-be-cool/</loc>
     <lastmod>2012-03-13T00:40:00+00:00</lastmod>
   </url><url>
@@ -274,9 +256,6 @@
   </url><url>
     <loc>//lewang.dev/tags/%E5%BF%83%E6%83%85/</loc>
     <lastmod>2012-01-09T00:40:00+00:00</lastmod>
-  </url><url>
-    <loc>//lewang.dev/categories/Coding/</loc>
-    <lastmod>2011-12-01T13:09:00+00:00</lastmod>
   </url><url>
     <loc>//lewang.dev/posts/2011-12-01-how-to-use-simplexml-of-php/</loc>
     <lastmod>2011-12-01T13:09:00+00:00</lastmod>
@@ -308,7 +287,13 @@
     <loc>//lewang.dev/tags/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/</loc>
     <lastmod>2011-10-21T13:11:00+00:00</lastmod>
   </url><url>
+    <loc>//lewang.dev/tags/Life/</loc>
+    <lastmod>2011-09-28T03:40:00+00:00</lastmod>
+  </url><url>
     <loc>//lewang.dev/about/</loc>
+    <lastmod>2011-09-28T03:40:00+00:00</lastmod>
+  </url><url>
+    <loc>//lewang.dev/categories/%E6%84%9F%E6%82%9F/</loc>
     <lastmod>2011-09-28T03:40:00+00:00</lastmod>
   </url><url>
     <loc>//lewang.dev/posts/2011-09-28-hello-baigetan/</loc>

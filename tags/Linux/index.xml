@@ -6,7 +6,43 @@
     <description>Recent content in Linux on 小碼哥</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Wed, 30 Oct 2019 00:00:00 +0000</lastBuildDate><atom:link href="//lewang.dev/tags/Linux/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 21 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="//lewang.dev/tags/Linux/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>使用 grep，xargs 和 sed 命令批量替换所有 Markdown 文件中的链接</title>
+      <link>//lewang.dev/posts/2022-05-21-replace-strings-in-all-files/</link>
+      <pubDate>Sat, 21 May 2022 00:00:00 +0000</pubDate>
+      
+      <guid>//lewang.dev/posts/2022-05-21-replace-strings-in-all-files/</guid>
+      <description>趁着周末空隙把自己年久失修博客整理了一下，用到了 grep，xargs 和 sed 命令，使用 grep，xargs 和 sed 这 3 个命令组合批量替换所有 Markdown 文件中的图片链接。 我的博客从我的学生时代就开始了，不断折腾自己的博客，所以学会了 HTML/CSS/JS，下次和大家分享一下我的博客旅程。 这里不详细</description>
+    </item>
+    
+    <item>
+      <title>命令行格式化 JSON</title>
+      <link>//lewang.dev/posts/2022-05-20-format-json-in-command-line-copy/</link>
+      <pubDate>Fri, 20 May 2022 00:00:00 +0000</pubDate>
+      
+      <guid>//lewang.dev/posts/2022-05-20-format-json-in-command-line-copy/</guid>
+      <description>今天要改 Docker 的两个配置 hostconfig.json 和 config.v2.json，打开一看，这个文件是单行的，在编辑器里面显示这是这样的： 代码都堆在一起，用 vim 格式化也没啥效果，编辑起来不是很方便。 Python 自带模块格式化 JSON 格式化 JSON 文件有很多方法，我最常用的就是 Python 自带的 json.tool 这个模块，只要安装了 Python 的电脑，都可以直接使用，</description>
+    </item>
+    
+    <item>
+      <title>国内开发者可能有点用的网络工具 cndevnet</title>
+      <link>//lewang.dev/posts/2022-05-16-cndevnet-intro/</link>
+      <pubDate>Mon, 16 May 2022 00:00:00 +0000</pubDate>
+      
+      <guid>//lewang.dev/posts/2022-05-16-cndevnet-intro/</guid>
+      <description>一个国内开发者可能有点用的网络工具，cndevnet 帮助开发者，尤其是初学者不用再费心折腾 pip/npm/golang/flutter/android/blockchain 等等无法访问的问题。 背景 由于某些原因，国内开发者需要的不少技术站点或者镜像源都无法直接访问，这使得在开发者在日常工作中会消耗额外的时间，去设置各种代理或者寻找国内的可替代的镜像源来使用。 在</description>
+    </item>
+    
+    <item>
+      <title>机房不能访问互联网，轻松搞定系统部署</title>
+      <link>//lewang.dev/posts/2020-11-27-go-through-the-system-firewall/</link>
+      <pubDate>Fri, 27 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>//lewang.dev/posts/2020-11-27-go-through-the-system-firewall/</guid>
+      <description>创业这段时间以来，我们的 IoT 系统已经在不少客户的机房做了私有化部署，客户大多都是机加工厂、商业大楼、医院和大学实验室等，客户的机房都有一个相同的特点：私有云，与外网隔离，不能访问互联网。或者更为准确的说，是我们部署的服务器不能访问互联网，在没有互联网访问权限的情况下，系统的包管理工</description>
+    </item>
+    
     <item>
       <title>WireGuard 使用简介</title>
       <link>//lewang.dev/posts/2019-10-30-wireguard-go-setup/</link>
@@ -67,7 +103,7 @@
       <pubDate>Thu, 03 Aug 2017 23:55:00 +0000</pubDate>
       
       <guid>//lewang.dev/posts/2017-08-03-lvm-in-action/</guid>
-      <description>背景 阿里云云主机两块 100G 的云盘合一个逻辑卷（LV）来使用，单个的 100G 磁盘不够用，需要合在一起使用，并且方便以后扩容 基本知识 磁盘 /dev/xvdb /dev/xvdc 分区, 使用 fdisk 进行分区 fdisk &amp;gt; n &amp;gt; p &amp;gt; 1..4, 主分区最多只有4个 准备分区后，将分区类型变为 LVM 分区，fdisk &amp;gt; t &amp;gt; 8e, 8e 是 LVM 类型 ID 物理卷（PV），卷组（VG），逻辑卷（</description>
+      <description>背景 阿里云云主机两块 100G 的云盘合一个逻辑卷（LV）来使用，单个的 100G 磁盘不够用，需要合在一起使用，并且方便以后扩容 基本知识 磁盘 /dev/xvdb /dev/xvdc 分区, 使用 fdisk 进行分区 fdisk &amp;gt; n &amp;gt; p &amp;gt; 1..4, 主分区最多只有 4 个 准备分区后，将分区类型变为 LVM 分区，fdisk &amp;gt; t &amp;gt; 8e, 8e 是 LVM 类型 ID 物理卷（PV），卷组（VG），逻辑卷（</description>
     </item>
     
     <item>
@@ -85,7 +121,7 @@
       <pubDate>Mon, 04 Mar 2013 00:40:00 +0000</pubDate>
       
       <guid>//lewang.dev/posts/2013-03-04-so-load-path-in-linux/</guid>
-      <description>相关的环境变量 LD_LIBRARY_PATH ld-linux.so寻找shared object的路径，优先加载出现在路径前面的shared object。如，export LD_LIBRARY_PATH=/home/user/lib:$LD_LIBRARY_PATH LD_PRELOAD 指定优先供ld-linux.so加载的shared object。如，export LD_PRELAOD=/home/user/lib/gl</description>
+      <description>相关的环境变量 LD_LIBRARY_PATH ld-linux.so 寻找 shared object 的路径，优先加载出现在路径前面的 shared object。如，export LD_LIBRARY_PATH=/home/user/lib:$LD_LIBRARY_PATH LD_PRELOAD 指定优先供 ld-linux.so 加载的 shared object。如，export LD_PRELAOD=/home/user/lib/glibc.so，可以使用这个变量来改变加载顺序，例如我们自定义的 glibc.so 中实现了新的 strcmp 之</description>
     </item>
     
   </channel>

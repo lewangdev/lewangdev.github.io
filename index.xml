@@ -13,10 +13,11 @@
       <pubDate>Sat, 21 May 2022 00:00:00 +0000</pubDate>
       
       <guid>//lewang.dev/posts/2022-05-21-replace-strings-in-all-files/</guid>
-      <description>&lt;p&gt;趁着周末空隙把自己年久失修博客整理了一下，用到了 grep，xargs 和 sed 命令，使用 grep，xargs 和 sed 这 3 个命令组合批量替换所有 Markdown 文件中的图片链接。&lt;/p&gt;
+      <description>&lt;p&gt;趁着周末空隙把自己年久失修博客整理了一下，用到了 grep，xargs 和 sed 命令，使用这 3 个命令组合批量替换了所有 Markdown 文件中的图片链接。&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;我的博客从我的学生时代就开始了，不断折腾自己的博客，所以学会了 HTML/CSS/JS，下次和大家分享一下我的博客旅程。&lt;/p&gt;
 &lt;/blockquote&gt;
+&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/lewangdev/picb0/main/oh-my-blog/2022-05-21-replace-strings-in-all-files/cover.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;这里不详细讲解这 3 个命令的使用，如果希望详细的了解这些命令，可以在 Linux 的终端下输入这样的命令查看文档，例如查看 grep 如何使用：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;man grep
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;man 命令的常用操作:&lt;/p&gt;

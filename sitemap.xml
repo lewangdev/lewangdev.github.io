@@ -2,6 +2,21 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>//lewang.dev/tags/python/</loc>
+    <lastmod>2022-05-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>//lewang.dev/categories/Technical/</loc>
+    <lastmod>2022-05-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>//lewang.dev/tags/YouTube/</loc>
+    <lastmod>2022-05-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>//lewang.dev/</loc>
+    <lastmod>2022-05-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>//lewang.dev/posts/2022-05-27-store-files-as-youtube-videos/</loc>
+    <lastmod>2022-05-27T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>//lewang.dev/tags/grep/</loc>
     <lastmod>2022-05-21T00:00:00+00:00</lastmod>
   </url><url>
@@ -14,14 +29,8 @@
     <loc>//lewang.dev/posts/2022-05-21-replace-strings-in-all-files/</loc>
     <lastmod>2022-05-21T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>//lewang.dev/</loc>
-    <lastmod>2022-05-21T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>//lewang.dev/categories/%E6%AF%8F%E6%97%A5%E6%8A%80%E5%B7%A7/</loc>
     <lastmod>2022-05-21T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>//lewang.dev/tags/python/</loc>
-    <lastmod>2022-05-20T00:00:00+00:00</lastmod>
   </url><url>
     <loc>//lewang.dev/posts/2022-05-20-format-json-in-command-line-copy/</loc>
     <lastmod>2022-05-20T00:00:00+00:00</lastmod>
@@ -30,9 +39,6 @@
     <lastmod>2022-05-16T00:00:00+00:00</lastmod>
   </url><url>
     <loc>//lewang.dev/tags/Debian/</loc>
-    <lastmod>2022-05-16T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>//lewang.dev/categories/Technical/</loc>
     <lastmod>2022-05-16T00:00:00+00:00</lastmod>
   </url><url>
     <loc>//lewang.dev/posts/2022-05-16-cndevnet-intro/</loc>

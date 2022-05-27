@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="zh-CN">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="generator" content="Hugo 0.98.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>把油管变成大网盘的实验 - 小碼哥</title>
+    <meta property="og:title" content="把油管变成大网盘的实验 - 小碼哥">
+    <meta property="og:type" content="article">
+    
+    <meta property="article:published_time" content=" 2022-05-27T00:00:00&#43;08:00">
+    
+    
+    <meta property="article:modified_time" content=" 2022-05-27T00:00:00&#43;08:00">
+    
+    <meta name="Keywords" content="IoT, 物联网, 智能硬件，工业互联网方案，智能家居, 智慧工厂, 智慧建筑, Golang, Java, JVM, Python, 树莓派, Linux 玩家，果粉，系统架构，技术管理">
+    <meta name="description" content="把油管变成大网盘的实验">
+    
+    <meta name="author" content="小碼哥">
+    <meta property="og:url" content="//lewang.dev/posts/2022-05-27-store-files-as-youtube-videos/">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+
+    
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+
+    
+    <link rel="icon" sizes="192x192" href="https://raw.githubusercontent.com/lewangdev/picb0/main/oh-my-blog/favicon-192x192.png">
+
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="https://raw.githubusercontent.com/lewangdev/picb0/main/oh-my-blog/favicon-180x180-precomposed.png">
+
+    
+    <meta name="msapplication-TileColor" content="#FFFFFF">
+    <meta name="msapplication-TileImage" content="https://raw.githubusercontent.com/lewangdev/picb0/main/oh-my-blog/favicon-144x144.png">
+
+    <link rel="stylesheet" href="/css/normalize.css">
+    <link rel="stylesheet" href="/css/markdown.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+
+    
+
+    
+    
+</head>
+
+<body>
+    <header id="header">
+    <div class="container clearfix">
+    
+        <div class="site-name ">
+            <a id="logo" href="//lewang.dev/">
+                <img src="https://raw.githubusercontent.com/lewangdev/picb0/main/oh-my-blog/logo-2x.png" alt="小碼哥">
+            </a>
+        </div>
+        <nav id="nav-menu" class="clearfix">
+            <a class=""
+                href="//lewang.dev/">首页</a>
+            
+            <a  href="//lewang.dev/archives/"
+                title="归档">归档</a>
+            
+            <a  href="//lewang.dev/about/"
+                title="关于">关于</a>
+            
+        </nav>
+    
+    </div>
+</header>
+
+    <div id="body">
+        <div class="container">
+            <article class="post">
+                <h1 class="post-title">把油管变成大网盘的实验</h1>
+                
+                <div class="post-meta">
+                    <span>May 27, 2022</span>
+                    
+                    <span>/</span>
+                    
+                    <span class="meta-category"><a href="//lewang.dev/categories/Technical">Technical</a></span>
+                    
+                    
+                    
+                </div>
+                
+                
+                <div style="height: 1px; border-top: 1px #eee solid; margin-top: 16px;"></div>
+                
+                <div class="post-content markdown-body">
+                    
+                    
+                    
+                    <p>前几天刷新闻的时候，看到了一个代码仓库 YouTubeDrive 的介绍，他的作者在多年前用 Wolfram 语言（也就是 Mathematica） 编写了一段代码，可以将油管变成一个无限容量的大网盘，看完介绍之后我脑子里直接蹦出无数个“卧槽”，心里顿生“这样也行”的膜拜之情，不禁提问：这个是薅羊毛的最高境界吗？</p>
+<p>说起 Wolfram 语言和 Mathematica，不得不提一下，它是我学习的第一个编程语言（汇编是第二个）。多年前我是在学校机房学的，当时只用它画画数学公式的图，今天看着 YouTubeDrive 的实现，才了解到 Wolfram 还可以这样用。</p>
+<p>首先，和原作者一样，我也不提倡这样把 YouTube 当成一个无限容量的网盘使用，相同的道理，我也不提倡在国内把 B 站或者任意视频平台当做位无限容量的网盘来用。</p>
+<p>昨天在看完 YouTubeDrive 源码之后，想着要不我也用 Python 实现一个，正好傍晚溜娃的时候，啥也不能干，就边走边想，我用 Python 应该怎么来实现一个？ 在坐着等娃的时候，就用手机查下资料，大概了解了一下 numpy 和 opencv 的使用，晚上吃过晚饭就开始写了，很快也实现了一个可以工作的 Python 版的。</p>
+<p>我觉得这个想法还是挺有意思的，虽然不太靠谱，但是真的好玩。不想去读 Wolfram 源码的朋友可以看看我接下来的分析，看看是如何把文件变成 YouTube 视频的进行存储的。</p>
+<h2 id="磁盘上的文件是什么">磁盘上的文件是什么</h2>
+<p>在我们的计算机（无论电脑还是手机都是计算机）磁盘里，存放了很多很多的文件，例如图片，文档，视频等等，每种文件都有自己的类型，或者叫格式，一般我们都会给文件添加一个后缀名展示文件的类型，但是对于电脑而言，无论是什么文件，它都只是由比特（bit） 0 和 1 组成的数据。</p>
+<p>例如这张图片：</p>
+<p><img src="https://raw.githubusercontent.com/lewangdev/picb0/main/oh-my-blog/fangta-paintings/2.jpg" alt=""></p>
+<p>用 vim 执行命令 <code>:%!xxd</code>，打开是这样的：</p>
+<p><img src="https://raw.githubusercontent.com/lewangdev/picb0/main/oh-my-blog/2022-05-27-store-files-as-youtube-videos/view-image-in-vim.png" alt=""></p>
+<p>图片文件的头 4 个字节是 <code>ffd8</code>（其实 <code>ffd8</code> 说明了这个是 JPEG 格式的文件），<code>ffd8</code> 是 16 进制的表示法，比 2 进制看起来更清晰。</p>
+<p><img src="https://raw.githubusercontent.com/lewangdev/picb0/main/oh-my-blog/2022-05-27-store-files-as-youtube-videos/hex-binary.png" alt=""></p>
+<p>在计算机里，用 8 个 bit 表示一个 byte，即 1 个字节有 8 位，一个字节需要用 2 个 16 进制数来表示，例如：<code>ffd8</code> 是 2 个字节。</p>
+<h2 id="视频文件又是什么">视频文件又是什么</h2>
+<p>视频文件也是有各种类型的，对计算机而言，视频文件也是由比特 0 和 1 组成的数据，但是视频文件的头部是有规律的，这样计算机就能区分去视频文件的类型。</p>
+<p>视频通过播放器播放，人类去看视频的时候，眼睛看到的其实是一帧一帧播放的图片，超过每秒 20 帧，也就是一秒中播放 20 张图片，人类的大脑就会认为这是一个连续的画面，这样的画面就叫做视频，存放这些图片数据的就是视频文件。</p>
+<p>我们姑且不讨论视频中声音的部分，在后续我把文件转成视频的过程中，没有产生声音。其实声音也可以用来存储数据的，比如我们可以把文件编码成摩斯密码声波存储到视频中去。</p>
+<h2 id="图片是什么">图片是什么</h2>
+<p>既然视频是由图片组成的，那图片又是什么？我们在日常的工作或者生活中，会常常需要调整图片长宽大小，我们可以简单的用像素来表述图片的长宽，例如上面手提包图片的长宽是 1024x768, 表示长有 1024 个像素点，宽有 768 个像素点。</p>
+<p>每一个像素点都有一种颜色，这个颜色我们可以用 RGB 来表示。例如这样的颜色值<code>#ff0000</code>，表示红色，<code>#00ff00</code> 表示绿色，<code>#0000ff</code> 表示蓝色，用 3 个字节就可以表示颜色值了，颜色值还有另外的表示方法，例如红色可以用这样来表示：(ff, 00, 00) 或者 (255, 0, 0)，用了方便人类阅读，我们使用 (255, 0, 0) 这种方式来表示像素点的颜色。</p>
+<h2 id="任意文件如何图片来表示">任意文件如何图片来表示</h2>
+<p>文件是一个连续的由 0 和 1 组成的二进制数据，我们可以用一个一维的十进制数组来表示这个文件：假设文件由 n 个 bit 组成，那么这个一维数组的长度就是 n，数组的每一个元素对应着文件中的每一个 bit。我们再给十进制数组的每一个元素乘以 255 后，会得到一个新的数组，如图：</p>
+<p><img src="https://raw.githubusercontent.com/lewangdev/picb0/main/oh-my-blog/2022-05-27-store-files-as-youtube-videos/binary-to-array.png" alt=""></p>
+<p>这样十进制数组每 3 个元素就可以表示一个像素点的颜色了</p>
+<p><img src="https://raw.githubusercontent.com/lewangdev/picb0/main/oh-my-blog/2022-05-27-store-files-as-youtube-videos/array-to-rgb-color.png" alt=""></p>
+<p>我们只要准备一个足够大的图片，就可以把这个数组中的数据拷贝到这个图片中去，这样就可以把文件转成图片了。</p>
+<h2 id="用视频来存放图片">用视频来存放图片</h2>
+<p>我们不需要准备一张足够大的图片，我们可以用很多张小的图片来分块存储这些像素点，但是考虑到 YouTube 视频在上传后会被平台转成不同的画幅大小，所以我们可以把图片分成不同的尺寸，比如我们可以把图片分成 1280x720。</p>
+<p>在代码实现过程中，一张原始图片的长宽像素是 64 x 36，这样每张图片可以存储 2304 个比特位的数据，考虑到视频在平台被转码压缩后会有颜色变化，我们用 20x20 的小色块来表示一个像素点，那么 1280x720 的视频一帧恰好也是存储 2304 个比特位。</p>
+<p>视频我选择的 fps 是 20，也就是每秒播放 20 张图片，计算一些简单的计算，很容易就可以得到一个完整的视频。</p>
+<p><img src="https://raw.githubusercontent.com/lewangdev/picb0/main/oh-my-blog/2022-05-27-store-files-as-youtube-videos/px.png" alt=""></p>
+<h2 id="将视频转回文件">将视频转回文件</h2>
+<p>由于视频在转码的过程中会有一些数据丢失，在转回的过程中，需要对 20x20 的色块进行采样，计算出平均值后就很轻易的反推出比特位是 0 还是 1 了。</p>
+<h2 id="代码实现">代码实现</h2>
+<ul>
+<li>我用 Python 实现的 youtube-drive: <a href="https://github.com/lewangdev/youtube-drive">https://github.com/lewangdev/youtube-drive</a></li>
+<li>原版 Wolfram 实现的 YouTubeDrive: <a href="https://github.com/dzhang314/YouTubeDrive">https://github.com/dzhang314/YouTubeDrive</a></li>
+</ul>
+
+                    <p>(完)</p>
+                    
+                    <blockquote>
+                        <p>本文为原创文章，转载需注明出处，网站 <a href="https://lewang.dev">https://lewang.dev</a>。
+                        </p>
+                    </blockquote>
+                    
+                    
+                </div>
+
+                
+                
+
+<div class="post-archive">
+    <h2>相关文章</h2>
+    <ul>
+        
+        <li><a href="/posts/2022-05-20-format-json-in-command-line-copy/">命令行格式化 JSON</a></li>
+        
+        <li><a href="/posts/2019-05-29-centos7-pyenv-install-python-3/">CentOS 7 上使用 pyenv 安装 Python 3.7.3</a></li>
+        
+        <li><a href="/posts/2022-05-21-replace-strings-in-all-files/">使用 grep，xargs 和 sed 命令批量替换所有 Markdown 文件中的链接</a></li>
+        
+        <li><a href="/posts/2022-05-16-cndevnet-intro/">国内开发者可能有点用的网络工具 cndevnet</a></li>
+        
+        <li><a href="/posts/2020-11-27-go-through-the-system-firewall/">机房不能访问互联网，轻松搞定系统部署</a></li>
+        
+    </ul>
+</div>
+
+                
+
+                
+                <div class="post-meta">
+                    
+                    <h3>标签</h3>
+                    <ul class="clearfix">
+                        
+                        <li><a href="//lewang.dev/tags/Python"># Python</a></li>
+                        
+                        <li><a href="//lewang.dev/tags/YouTube"># YouTube</a></li>
+                        
+                    </ul>
+                    
+                </div>
+                
+            </article>
+            
+    
+
+    
+    
+    <div class="post markdown-body">
+      <script src="https://utteranc.es/client.js"
+            repo= "lewangdev/lewangdev.github.io"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+      </script>
+    </div>
+    
+        </div>
+    </div>
+    <footer id="footer">
+    <div class="container">
+        Copyright &copy; 2011-2022 <a href="//lewang.dev/">小碼哥</a>, All
+        rights reserved.
+        <a href="//lewang.dev/index.xml">订阅 RSS</a>
+    </div>
+</footer>
+
+
+<script type="text/javascript">
+    window.MathJax = {
+        tex2jax: {
+            inlineMath: [['$', '$']],
+            processEscapes: true
+        }
+    };
+</script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-12QS222X0Z"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-12QS222X0Z', { 'anonymize_ip': false });
+}
+</script>
+
+
+
+
+
+
+
+</body>
+
+</html>

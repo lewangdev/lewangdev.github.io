@@ -6,7 +6,16 @@
     <description>Recent content in python on 小碼哥</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 20 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="//lewang.dev/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 27 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="//lewang.dev/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>把油管变成大网盘的实验</title>
+      <link>//lewang.dev/posts/2022-05-27-store-files-as-youtube-videos/</link>
+      <pubDate>Fri, 27 May 2022 00:00:00 +0000</pubDate>
+      
+      <guid>//lewang.dev/posts/2022-05-27-store-files-as-youtube-videos/</guid>
+      <description>前几天刷新闻的时候，看到了一个代码仓库 YouTubeDrive 的介绍，他的作者在多年前用 Wolfram 语言（也就是 Mathematica） 编写了一段代码，可以将油管变成一个无限容量的大网盘，看完介绍之后我脑子里直接蹦出无数个“卧槽”，心里顿生“这样也行”的膜拜之情，不禁提问：这个是薅羊毛的最高境界吗？ 说起 Wolfram 语言和</description>
+    </item>
+    
     <item>
       <title>命令行格式化 JSON</title>
       <link>//lewang.dev/posts/2022-05-20-format-json-in-command-line-copy/</link>

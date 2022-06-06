@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="zh-CN">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="generator" content="Hugo 0.99.1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Kindle 中国停止运营，教你使用 Python 一键下载已购买的电子书 - 小碼哥</title>
+    <meta property="og:title" content="Kindle 中国停止运营，教你使用 Python 一键下载已购买的电子书 - 小碼哥">
+    <meta property="og:type" content="article">
+    
+    <meta property="article:published_time" content=" 2022-06-06T00:00:00&#43;08:00">
+    
+    
+    <meta property="article:modified_time" content=" 2022-06-06T00:00:00&#43;08:00">
+    
+    <meta name="Keywords" content="IoT, 物联网, 智能硬件，工业互联网方案，智能家居, 智慧工厂, 智慧建筑, Golang, Java, JVM, Python, 树莓派, Linux 玩家，果粉，系统架构，技术管理">
+    <meta name="description" content="Kindle 中国停止运营，教你使用 Python 一键下载已购买的电子书">
+    
+    <meta name="author" content="小碼哥">
+    <meta property="og:url" content="//lewang.dev/posts/2022-06-06-save-your-kindle-ebooks/">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+
+    
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+
+    
+    <link rel="icon" sizes="192x192" href="https://raw.githubusercontent.com/lewangdev/picb0/main/oh-my-blog/favicon-192x192.png">
+
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="https://raw.githubusercontent.com/lewangdev/picb0/main/oh-my-blog/favicon-180x180-precomposed.png">
+
+    
+    <meta name="msapplication-TileColor" content="#FFFFFF">
+    <meta name="msapplication-TileImage" content="https://raw.githubusercontent.com/lewangdev/picb0/main/oh-my-blog/favicon-144x144.png">
+
+    <link rel="stylesheet" href="/css/normalize.css">
+    <link rel="stylesheet" href="/css/markdown.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+
+    
+
+    
+    
+</head>
+
+<body>
+    <header id="header">
+    <div class="container clearfix">
+    
+        <div class="site-name ">
+            <a id="logo" href="//lewang.dev/">
+                <img src="https://raw.githubusercontent.com/lewangdev/picb0/main/oh-my-blog/logo-2x.png" alt="小碼哥">
+            </a>
+        </div>
+        <nav id="nav-menu" class="clearfix">
+            <a class=""
+                href="//lewang.dev/">首页</a>
+            
+            <a  href="//lewang.dev/archives/"
+                title="归档">归档</a>
+            
+            <a  href="//lewang.dev/about/"
+                title="关于">关于</a>
+            
+        </nav>
+    
+    </div>
+</header>
+
+    <div id="body">
+        <div class="container">
+            <article class="post">
+                <h1 class="post-title">Kindle 中国停止运营，教你使用 Python 一键下载已购买的电子书</h1>
+                
+                <div class="post-meta">
+                    <span>Jun 6, 2022</span>
+                    
+                    <span>/</span>
+                    
+                    <span class="meta-category"><a href="//lewang.dev/categories/Technical">Technical</a></span>
+                    
+                    
+                    
+                </div>
+                
+                
+                <div style="height: 1px; border-top: 1px #eee solid; margin-top: 16px;"></div>
+                
+                <div class="post-content markdown-body">
+                    
+                    
+                    
+                    <p>前几天亚马逊宣告 Kindle 中国电子书店运营进行调整，通知标题写得比较委婉，其实就是亚马逊电子书即将退出中国市场，到时候我们购买的国行版 Kindle 将不能购买新电子书，也不能下载已经购买的电子书了。</p>
+<p>如果购买的电子书比较多，手动一本一本的去下载是挺费时间的，我来分享一下我是如何使用 Python 一键下载所有电子书的。</p>
+<h2 id="安装-python">安装 Python</h2>
+<p>用 Chrome 浏览器打开 <a href="https://python.org">https://python.org</a>，下载最新版本的 Python 3.10.4</p>
+<p><img src="https://raw.githubusercontent.com/lewangdev/picb0/main/oh-my-blog/2022-06-06-save-your-kindle-ebooks/download-python.png" alt=""></p>
+<p>下载好然后运行 python-3.10.4-amd64.exe, 选择第一个选项，<strong>一定要记得勾选添加到 PATH</strong>，否则在命令行中执行 python 时会报错。</p>
+<p><img src="https://raw.githubusercontent.com/lewangdev/picb0/main/oh-my-blog/2022-06-06-save-your-kindle-ebooks/install-python.png" alt=""></p>
+<h2 id="准备-python-一键下载脚本">准备 Python 一键下载脚本</h2>
+<p>用 Chrome 浏览器打开 <a href="https://github.com/yihong0618/Kindle_download_helper">https://github.com/yihong0618/Kindle_download_helper</a>，下载 ZIP 包后并且解压:</p>
+<p><img src="https://raw.githubusercontent.com/lewangdev/picb0/main/oh-my-blog/2022-06-06-save-your-kindle-ebooks/download-kindle-download-helper.png" alt=""></p>
+<h2 id="使用-python-一键下载脚本">使用 Python 一键下载脚本</h2>
+<p>进入解压后的目录，点击鼠标右键打开一个命令行窗口</p>
+<p><img src="https://raw.githubusercontent.com/lewangdev/picb0/main/oh-my-blog/2022-06-06-save-your-kindle-ebooks/open-terminal.png" alt=""></p>
+<p>打开的命令行窗口是这样的：</p>
+<p><img src="https://raw.githubusercontent.com/lewangdev/picb0/main/oh-my-blog/2022-06-06-save-your-kindle-ebooks/terminal-window.png" alt=""></p>
+<p>接下来准备 python 的虚拟环境，在命令行窗口输入：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bat" data-lang="bat"><span style="display:flex;"><span>python -m venv venv
+</span></span></code></pre></div><p><img src="https://raw.githubusercontent.com/lewangdev/picb0/main/oh-my-blog/2022-06-06-save-your-kindle-ebooks/prepare-python-env.png" alt=""></p>
+<p>创建好虚拟环境之后，再激活虚拟环境，在命令行窗口输入：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bat" data-lang="bat"><span style="display:flex;"><span>.\venv\Scripts\activate.bat
+</span></span></code></pre></div><p><img src="https://raw.githubusercontent.com/lewangdev/picb0/main/oh-my-blog/2022-06-06-save-your-kindle-ebooks/activate-python-env.png" alt=""></p>
+<p>安装 Python 脚本的依赖库，在命令行窗口输入：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bat" data-lang="bat"><span style="display:flex;"><span>pip install -r requirements.txt
+</span></span></code></pre></div><p><img src="https://raw.githubusercontent.com/lewangdev/picb0/main/oh-my-blog/2022-06-06-save-your-kindle-ebooks/install-requirements.png" alt=""></p>
+<p>至此，一键下载脚本准备就绪，在命令行窗口输入：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>python kindle<span style="color:#000;font-weight:bold">.</span>py
+</span></span></code></pre></div><p>这样看到了脚本的帮助提示：</p>
+<p><img src="https://raw.githubusercontent.com/lewangdev/picb0/main/oh-my-blog/2022-06-06-save-your-kindle-ebooks/cmd-help.png" alt=""></p>
+<p>接下来我们准备脚本需要的 cookie 和 csrf_token, 这两个值都需要通过 Chrome 浏览器获取。</p>
+<h2 id="获取-cookie-和-csrf_token">获取 cookie 和 csrf_token</h2>
+<p>首先使用浏览器登录亚马逊账号，</p>
+<ul>
+<li>登录地址 <a href="https://z.cn">https://z.cn</a>，</li>
+<li>登录之后访问 <a href="https://www.amazon.cn/hz/mycd/myx#/home/content/booksAll/dateDsc/">https://www.amazon.cn/hz/mycd/myx#/home/content/booksAll/dateDsc/</a></li>
+</ul>
+<p>点击鼠标右键打开审查元素，</p>
+<p><img src="https://raw.githubusercontent.com/lewangdev/picb0/main/oh-my-blog/2022-06-06-save-your-kindle-ebooks/chrome-inspect.png" alt=""></p>
+<p>在网络标签下，察看任意的链接，就可以找到 cookie：</p>
+<p><img src="https://raw.githubusercontent.com/lewangdev/picb0/main/oh-my-blog/2022-06-06-save-your-kindle-ebooks/find-cookie.png" alt=""></p>
+<p>在页面上点击右键查看页面源代码</p>
+<p><img src="https://raw.githubusercontent.com/lewangdev/picb0/main/oh-my-blog/2022-06-06-save-your-kindle-ebooks/view-page-source.png" alt=""></p>
+<p>按 Ctrl + F 搜索 <code>csrf_token</code>，</p>
+<p><img src="https://raw.githubusercontent.com/lewangdev/picb0/main/oh-my-blog/2022-06-06-save-your-kindle-ebooks/csrf.png" alt=""></p>
+<p>cookie 和 csrf_token 找到之后，执行命令即可进行下载</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>python kindle<span style="color:#000;font-weight:bold">.</span>py <span style="color:#000;font-weight:bold">&lt;</span>cookie<span style="color:#000;font-weight:bold">&gt;</span> <span style="color:#000;font-weight:bold">&lt;</span>csrf_token<span style="color:#000;font-weight:bold">&gt;</span> <span style="color:#000;font-weight:bold">--</span><span style="color:#000;font-weight:bold">is</span><span style="color:#000;font-weight:bold">-</span>cn
+</span></span></code></pre></div><p><img src="https://raw.githubusercontent.com/lewangdev/picb0/main/oh-my-blog/2022-06-06-save-your-kindle-ebooks/execute-cmd.png" alt=""></p>
+<p>这样就可以自动下载已经购买的电子书了。</p>
+<p><img src="https://raw.githubusercontent.com/lewangdev/picb0/main/oh-my-blog/2022-06-06-save-your-kindle-ebooks/ebook-downloading.png" alt=""></p>
+<p>cookie 和 csrf_token 如果过期了，重复上面的步骤获取即可。</p>
+<h2 id="如何阅读下载回来的电子书">如何阅读下载回来的电子书</h2>
+<ul>
+<li>存到自己的 Kindle 中阅读</li>
+<li>使用自己的 Kindle 序列号清除 DRM 后使用 Calibre 阅读</li>
+</ul>
+
+                    <p>(完)</p>
+                    
+                    <blockquote>
+                        <p>本文为原创文章，转载需注明出处，网站 <a href="https://lewang.dev">https://lewang.dev</a>。
+                        </p>
+                    </blockquote>
+                    
+                    
+                </div>
+
+                
+                
+
+<div class="post-archive">
+    <h2>相关文章</h2>
+    <ul>
+        
+        <li><a href="/posts/2022-05-27-store-files-as-youtube-videos/">用 Python 写个程序把油管 YouTube 变成无限容量的网盘</a></li>
+        
+        <li><a href="/posts/2022-05-20-format-json-in-command-line-copy/">命令行格式化 JSON</a></li>
+        
+        <li><a href="/posts/2019-05-29-centos7-pyenv-install-python-3/">CentOS 7 上使用 pyenv 安装 Python 3.7.3</a></li>
+        
+        <li><a href="/posts/2022-05-21-replace-strings-in-all-files/">使用 grep，xargs 和 sed 命令批量替换所有 Markdown 文件中的链接</a></li>
+        
+        <li><a href="/posts/2022-05-16-cndevnet-intro/">国内开发者可能有点用的网络工具 cndevnet</a></li>
+        
+    </ul>
+</div>
+
+                
+
+                
+                <div class="post-meta">
+                    
+                    <h3>标签</h3>
+                    <ul class="clearfix">
+                        
+                        <li><a href="//lewang.dev/tags/Python"># Python</a></li>
+                        
+                        <li><a href="//lewang.dev/tags/Kindle"># Kindle</a></li>
+                        
+                    </ul>
+                    
+                </div>
+                
+            </article>
+            
+    
+
+    
+    
+    <div class="post markdown-body">
+      <script src="https://utteranc.es/client.js"
+            repo= "lewangdev/lewangdev.github.io"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+      </script>
+    </div>
+    
+        </div>
+    </div>
+    <footer id="footer">
+    <div class="container">
+        Copyright &copy; 2011-2022 <a href="//lewang.dev/">小碼哥</a>, All
+        rights reserved.
+        <a href="//lewang.dev/index.xml">订阅 RSS</a>
+    </div>
+</footer>
+
+
+<script type="text/javascript">
+    window.MathJax = {
+        tex2jax: {
+            inlineMath: [['$', '$']],
+            processEscapes: true
+        }
+    };
+</script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-12QS222X0Z"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-12QS222X0Z', { 'anonymize_ip': false });
+}
+</script>
+
+
+
+
+
+
+
+</body>
+
+</html>

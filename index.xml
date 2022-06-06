@@ -6,7 +6,70 @@
     <description>Recent content on 小碼哥</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 27 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="//lewang.dev/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 06 Jun 2022 00:00:00 +0000</lastBuildDate><atom:link href="//lewang.dev/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Kindle 中国停止运营，教你使用 Python 一键下载已购买的电子书</title>
+      <link>//lewang.dev/posts/2022-06-06-save-your-kindle-ebooks/</link>
+      <pubDate>Mon, 06 Jun 2022 00:00:00 +0000</pubDate>
+      
+      <guid>//lewang.dev/posts/2022-06-06-save-your-kindle-ebooks/</guid>
+      <description>&lt;p&gt;前几天亚马逊宣告 Kindle 中国电子书店运营进行调整，通知标题写得比较委婉，其实就是亚马逊电子书即将退出中国市场，到时候我们购买的国行版 Kindle 将不能购买新电子书，也不能下载已经购买的电子书了。&lt;/p&gt;
+&lt;p&gt;如果购买的电子书比较多，手动一本一本的去下载是挺费时间的，我来分享一下我是如何使用 Python 一键下载所有电子书的。&lt;/p&gt;
+&lt;h2 id=&#34;安装-python&#34;&gt;安装 Python&lt;/h2&gt;
+&lt;p&gt;用 Chrome 浏览器打开 &lt;a href=&#34;https://python.org&#34;&gt;https://python.org&lt;/a&gt;，下载最新版本的 Python 3.10.4&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/lewangdev/picb0/main/oh-my-blog/2022-06-06-save-your-kindle-ebooks/download-python.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;下载好然后运行 python-3.10.4-amd64.exe, 选择第一个选项，&lt;strong&gt;一定要记得勾选添加到 PATH&lt;/strong&gt;，否则在命令行中执行 python 时会报错。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/lewangdev/picb0/main/oh-my-blog/2022-06-06-save-your-kindle-ebooks/install-python.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;准备-python-一键下载脚本&#34;&gt;准备 Python 一键下载脚本&lt;/h2&gt;
+&lt;p&gt;用 Chrome 浏览器打开 &lt;a href=&#34;https://github.com/yihong0618/Kindle_download_helper&#34;&gt;https://github.com/yihong0618/Kindle_download_helper&lt;/a&gt;，下载 ZIP 包后并且解压:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/lewangdev/picb0/main/oh-my-blog/2022-06-06-save-your-kindle-ebooks/download-kindle-download-helper.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;使用-python-一键下载脚本&#34;&gt;使用 Python 一键下载脚本&lt;/h2&gt;
+&lt;p&gt;进入解压后的目录，点击鼠标右键打开一个命令行窗口&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/lewangdev/picb0/main/oh-my-blog/2022-06-06-save-your-kindle-ebooks/open-terminal.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;打开的命令行窗口是这样的：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/lewangdev/picb0/main/oh-my-blog/2022-06-06-save-your-kindle-ebooks/terminal-window.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;接下来准备 python 的虚拟环境，在命令行窗口输入：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bat&#34; data-lang=&#34;bat&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;python -m venv venv
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/lewangdev/picb0/main/oh-my-blog/2022-06-06-save-your-kindle-ebooks/prepare-python-env.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;创建好虚拟环境之后，再激活虚拟环境，在命令行窗口输入：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bat&#34; data-lang=&#34;bat&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;.\venv\Scripts\activate.bat
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/lewangdev/picb0/main/oh-my-blog/2022-06-06-save-your-kindle-ebooks/activate-python-env.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;安装 Python 脚本的依赖库，在命令行窗口输入：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bat&#34; data-lang=&#34;bat&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;pip install -r requirements.txt
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/lewangdev/picb0/main/oh-my-blog/2022-06-06-save-your-kindle-ebooks/install-requirements.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;至此，一键下载脚本准备就绪，在命令行窗口输入：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;python kindle&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;.&lt;/span&gt;py
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;这样看到了脚本的帮助提示：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/lewangdev/picb0/main/oh-my-blog/2022-06-06-save-your-kindle-ebooks/cmd-help.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;接下来我们准备脚本需要的 cookie 和 csrf_token, 这两个值都需要通过 Chrome 浏览器获取。&lt;/p&gt;
+&lt;h2 id=&#34;获取-cookie-和-csrf_token&#34;&gt;获取 cookie 和 csrf_token&lt;/h2&gt;
+&lt;p&gt;首先使用浏览器登录亚马逊账号，&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;登录地址 &lt;a href=&#34;https://z.cn&#34;&gt;https://z.cn&lt;/a&gt;，&lt;/li&gt;
+&lt;li&gt;登录之后访问 &lt;a href=&#34;https://www.amazon.cn/hz/mycd/myx#/home/content/booksAll/dateDsc/&#34;&gt;https://www.amazon.cn/hz/mycd/myx#/home/content/booksAll/dateDsc/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;点击鼠标右键打开审查元素，&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/lewangdev/picb0/main/oh-my-blog/2022-06-06-save-your-kindle-ebooks/chrome-inspect.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;在网络标签下，察看任意的链接，就可以找到 cookie：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/lewangdev/picb0/main/oh-my-blog/2022-06-06-save-your-kindle-ebooks/find-cookie.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;在页面上点击右键查看页面源代码&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/lewangdev/picb0/main/oh-my-blog/2022-06-06-save-your-kindle-ebooks/view-page-source.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;按 Ctrl + F 搜索 &lt;code&gt;csrf_token&lt;/code&gt;，&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/lewangdev/picb0/main/oh-my-blog/2022-06-06-save-your-kindle-ebooks/csrf.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;cookie 和 csrf_token 找到之后，执行命令即可进行下载&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;python kindle&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;.&lt;/span&gt;py &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;&amp;lt;&lt;/span&gt;cookie&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;&amp;lt;&lt;/span&gt;csrf_token&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;--&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;is&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;-&lt;/span&gt;cn
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/lewangdev/picb0/main/oh-my-blog/2022-06-06-save-your-kindle-ebooks/execute-cmd.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;这样就可以自动下载已经购买的电子书了。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/lewangdev/picb0/main/oh-my-blog/2022-06-06-save-your-kindle-ebooks/ebook-downloading.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;cookie 和 csrf_token 如果过期了，重复上面的步骤获取即可。&lt;/p&gt;
+&lt;h2 id=&#34;如何阅读下载回来的电子书&#34;&gt;如何阅读下载回来的电子书&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;存到自己的 Kindle 中阅读&lt;/li&gt;
+&lt;li&gt;使用自己的 Kindle 序列号清除 DRM 后使用 Calibre 阅读&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
     <item>
       <title>用 Python 写个程序把油管 YouTube 变成无限容量的网盘</title>
       <link>//lewang.dev/posts/2022-05-27-store-files-as-youtube-videos/</link>

@@ -8,42 +8,6 @@
     <language>zh-CN</language>
     <lastBuildDate>Mon, 06 Jun 2022 00:00:00 +0000</lastBuildDate><atom:link href="//lewang.dev/tags/python/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Kindle 中国停止运营，教你使用 Python 一键下载已购买的电子书</title>
-      <link>//lewang.dev/posts/2022-06-06-save-your-kindle-ebooks/</link>
-      <pubDate>Mon, 06 Jun 2022 00:00:00 +0000</pubDate>
-      
-      <guid>//lewang.dev/posts/2022-06-06-save-your-kindle-ebooks/</guid>
-      <description>前几天亚马逊宣告 Kindle 中国电子书店运营进行调整，通知标题写得比较委婉，其实就是亚马逊电子书即将退出中国市场，到时候我们购买的国行版 Kindle 将不能购买新电子书，也不能下载已经购买的电子书了。 如果购买的电子书比较多，手动一本一本的去下载是挺费时间的，我来分享一下我是如何使用 Python 一键下载所有电子书</description>
-    </item>
-    
-    <item>
-      <title>用 Python 写个程序把油管 YouTube 变成无限容量的网盘</title>
-      <link>//lewang.dev/posts/2022-05-27-store-files-as-youtube-videos/</link>
-      <pubDate>Fri, 27 May 2022 00:00:00 +0000</pubDate>
-      
-      <guid>//lewang.dev/posts/2022-05-27-store-files-as-youtube-videos/</guid>
-      <description>前几天刷新闻的时候，看到了一个代码仓库 YouTubeDrive 的介绍，他的作者在多年前用 Wolfram 语言（也就是 Mathematica） 编写了一段代码，可以将油管变成一个无限容量的大网盘，看完介绍之后我脑子里直接蹦出无数个“卧槽”，心里顿生“这样也行”的膜拜之情，不禁提问：这个是薅羊毛的最高境界吗？ 说起 Wolfram 语言和</description>
-    </item>
-    
-    <item>
-      <title>命令行格式化 JSON</title>
-      <link>//lewang.dev/posts/2022-05-20-format-json-in-command-line-copy/</link>
-      <pubDate>Fri, 20 May 2022 00:00:00 +0000</pubDate>
-      
-      <guid>//lewang.dev/posts/2022-05-20-format-json-in-command-line-copy/</guid>
-      <description>今天要改 Docker 的两个配置 hostconfig.json 和 config.v2.json，打开一看，这个文件是单行的，在编辑器里面显示这是这样的： 代码都堆在一起，用 vim 格式化也没啥效果，编辑起来不是很方便。 Python 自带模块格式化 JSON 格式化 JSON 文件有很多方法，我最常用的就是 Python 自带的 json.tool 这个模块，只要安装了 Python 的电脑，都可以直接使用，</description>
-    </item>
-    
-    <item>
-      <title>CentOS 7 上使用 pyenv 安装 Python 3.7.3</title>
-      <link>//lewang.dev/posts/2019-05-29-centos7-pyenv-install-python-3/</link>
-      <pubDate>Wed, 29 May 2019 00:00:00 +0000</pubDate>
-      
-      <guid>//lewang.dev/posts/2019-05-29-centos7-pyenv-install-python-3/</guid>
-      <description>概要 本文记录了在 CentOS 7.6 系统上通过 pyenv 安装 Python 3.7.3 的过程。 环境 CentOS Linux release 7.6.1810 (Core) Kernel 3 3.10.0-957.el7.x86_64 Pyenv 1.2.11 安装 pyenv $ curl https://pyenv.run | bash 然后根据提示把以下内容放到 ~/.bashrc 文件末尾 # Load pyenv automatically by adding # the following to ~/.bashrc: export PATH=&amp;#34;/root/.pyenv/bin:$PATH&amp;#34; eval &amp;#34;$(pyenv init -)&amp;#34; eval &amp;#34;$(pyenv virtualenv-init -)&amp;#34; 安装 Python 3.7.3 准备 $ sudo yum -y install xz bzip2 bzip2-devel sqlite-devel gcc openssl-devel readline-devel zlib-devel libffi-devel 安装 pyenv install 3.7.3 验证 $ pyenv versions * system (set by /root/.pyenv/version) 3.7.3 参考 https://github.com/pyenv/pyenv/issues/1183 https://github.com/pyenv/pyenv-installer https://github.com/pyenv/pyenv</description>
-    </item>
-    
-    <item>
       <title>Python on My rMBP</title>
       <link>//lewang.dev/posts/2014-03-02-python-on-my-rmbp/</link>
       <pubDate>Sun, 02 Mar 2014 21:16:00 +0000</pubDate>

@@ -173,6 +173,26 @@
             
             <article class="post">
                 <h1 class="post-title">
+                    <a href="//lewang.dev/posts/2020-12-02-add-gost-plugin-for-shadowsocks-ng/" title="写了一个 ShadowsocksX-NG 的 gost 插件">写了一个 ShadowsocksX-NG 的 gost 插件</a>
+                </h1>
+                <div class="post-meta">
+                    Dec 2, 2020
+                    
+                    <span>/</span>
+                    
+                    <span><a href="//lewang.dev/categories/Technical">Technical</a></span>
+                    
+                </div>
+                
+                <div class="post-summary">
+                    <a href="//lewang.dev/posts/2020-12-02-add-gost-plugin-for-shadowsocks-ng/">
+                        gost 是一个非常有用的网络工具，可以在 ShadowsocksX-NG 中安装 gost 插件，方便在 ShadowsocksX-NG 中使用 gost。 原由 自从查资料上网工具换成 gost 之后，由于 MacOS 上没有 gost 专用的智能代理（也就是该翻的时候翻，不用翻的时候不翻）桌面客户端，所以需要用 gost 在本地把 wss 代理转成 ss 后再继续使用 ShadowsocksX-NG。 虽然可以用 launchctl 启动...
+                    </a>
+                </div>
+            </article>
+            
+            <article class="post">
+                <h1 class="post-title">
                     <a href="//lewang.dev/posts/2020-11-27-go-through-the-system-firewall/" title="机房不能访问互联网，轻松搞定系统部署">机房不能访问互联网，轻松搞定系统部署</a>
                 </h1>
                 <div class="post-meta">
@@ -213,6 +233,26 @@
             
             <article class="post">
                 <h1 class="post-title">
+                    <a href="//lewang.dev/posts/2019-11-02-fangta-paintings/" title="游方塔园">游方塔园</a>
+                </h1>
+                <div class="post-meta">
+                    Nov 2, 2019
+                    
+                    <span>/</span>
+                    
+                    <span><a href="//lewang.dev/categories/%E5%B0%8F%E7%B3%8D%E7%B2%91">小糍粑</a></span>
+                    
+                </div>
+                
+                <div class="post-summary">
+                    <a href="//lewang.dev/posts/2019-11-02-fangta-paintings/">
+                        昨日陪小糍粑参加幼儿园秋游活动，游览了一下位于松江区的方塔园，校方安排幼儿在白色布袋上绘画，于是有了以下大作。 观察幼儿绘画的过程挺有意思的，我们父母无须提供任何绘画的指导，只要等待小朋友们绘画完毕，来听听他们关于自己的画的解释即可。 关于上面的画，小糍粑是这样解释的。 他和爸爸来看方...
+                    </a>
+                </div>
+            </article>
+            
+            <article class="post">
+                <h1 class="post-title">
                     <a href="//lewang.dev/posts/2019-10-30-wireguard-go-setup/" title="WireGuard 使用简介">WireGuard 使用简介</a>
                 </h1>
                 <div class="post-meta">
@@ -227,46 +267,6 @@
                 <div class="post-summary">
                     <a href="//lewang.dev/posts/2019-10-30-wireguard-go-setup/">
                         背景 搭建 VPN 方便连接无公网 IP 云主机进行开发，WireGuard 配置比 OpenVPN 要简单很多，WireGuard 是通过 Linux 内核模块的方式实现的，这样性能最好，但是只能用在 Linux 系统上。本文使用的 wireguard-go， 则是使用 Golang 实现的 WireGuard 协议，属于用户空间(User Space)的实现，性能没有内核模...
-                    </a>
-                </div>
-            </article>
-            
-            <article class="post">
-                <h1 class="post-title">
-                    <a href="//lewang.dev/posts/2019-09-19-rpi-log-config/" title="树莓派系统日志配置">树莓派系统日志配置</a>
-                </h1>
-                <div class="post-meta">
-                    Sep 19, 2019
-                    
-                    <span>/</span>
-                    
-                    <span><a href="//lewang.dev/categories/%E6%AF%8F%E6%97%A5%E6%8A%80%E5%B7%A7">每日技巧</a></span>
-                    
-                </div>
-                
-                <div class="post-summary">
-                    <a href="//lewang.dev/posts/2019-09-19-rpi-log-config/">
-                        背景 树莓派 raspbian 系统日志默认的配置会导致日志过大而占用太多的存储空间，并且频繁写日志也可能减短 EMMC 和 SD 卡的寿命，需要重新配置来满足项目的需求。 日志位置 /var/log /var/log/syslog /var/log/daemon.log /var/log/mail.info /var/log/mail.warn /var/log/mail.err /var/log/mail.log /var/log/kern.log /var/log/auth.log /var/log/user.log /var/log/lpr.log /var/log/cron.log /var/log/debug /var/log/messages 配置 rsyslog 与 logrotate rsyslog 的配置文件为 /etc/rsyslog.conf, 找到其中 RULES 段 ############### #### RULES #### ############### # # First some standard log files. Log by facility. # auth,authpriv.* /var/log/auth.log *.*;auth,authpriv.none -/var/log/syslog #cron.* /var/log/cron.log #daemon.* -/var/log/daemon.log kern.* -/var/log/kern.log lpr.* -/var/log/lpr.log mail.* -/var/log/mail.log user.* -/var/log/user.log 将其中...
-                    </a>
-                </div>
-            </article>
-            
-            <article class="post">
-                <h1 class="post-title">
-                    <a href="//lewang.dev/posts/2019-07-16-change-uid-gid-in-linux/" title="如何修改 Linux 用户的 UID 和组的 GID">如何修改 Linux 用户的 UID 和组的 GID</a>
-                </h1>
-                <div class="post-meta">
-                    Jul 16, 2019
-                    
-                    <span>/</span>
-                    
-                    <span><a href="//lewang.dev/categories/%E6%AF%8F%E6%97%A5%E6%8A%80%E5%B7%A7">每日技巧</a></span>
-                    
-                </div>
-                
-                <div class="post-summary">
-                    <a href="//lewang.dev/posts/2019-07-16-change-uid-gid-in-linux/">
-                        问题 在使用 Docker 或者 NFS 的时候，需要文件系统挂在到不同的系统中拥有正确的读写权限，需要指定文件所属用户和组的 uid 和 gid。在创建用户和组的时候，系统会自动分配对应的值，这导致在不同的系统中很容易造成 uid 和 gid 不一样而造成读写权限混乱。 例如在系统 A 中，用户 git 的 uid 和组 git 的gid 如下: [sysops@cn-bj-aliyun-3 ~]$ id git uid=1001(git) gid=1001(git)...
                     </a>
                 </div>
             </article>
@@ -293,6 +293,10 @@
     
     <li >
         <a href="//lewang.dev/page/4/">4</a>
+    </li>
+    
+    <li >
+        <a href="//lewang.dev/page/5/">5</a>
     </li>
     
 

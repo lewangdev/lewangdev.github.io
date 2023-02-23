@@ -73,6 +73,66 @@
             
             <article class="post">
                 <h1 class="post-title">
+                    <a href="//lewang.dev/posts/2019-10-13-sons-paintings/" title="小糍粑的画">小糍粑的画</a>
+                </h1>
+                <div class="post-meta">
+                    Oct 13, 2019
+                    
+                    <span>/</span>
+                    
+                    <span><a href="//lewang.dev/categories/%E5%B0%8F%E7%B3%8D%E7%B2%91">小糍粑</a></span>
+                    
+                </div>
+                
+                <div class="post-summary">
+                    <a href="//lewang.dev/posts/2019-10-13-sons-paintings/">
+                        2019/10/13 上午大作 画了一辆坦克 2019/10/10 晚大作 1 2 3 4 小糍粑自己介绍： 爸爸妈妈宝宝奶奶和他的同学，右一是奶奶，右二是爸爸，右三是他自己，右四是妈妈，奶奶没地方画了 点评： 很明显的出现头足人像...
+                    </a>
+                </div>
+            </article>
+            
+            <article class="post">
+                <h1 class="post-title">
+                    <a href="//lewang.dev/posts/2019-09-19-rpi-log-config/" title="树莓派系统日志配置">树莓派系统日志配置</a>
+                </h1>
+                <div class="post-meta">
+                    Sep 19, 2019
+                    
+                    <span>/</span>
+                    
+                    <span><a href="//lewang.dev/categories/%E6%AF%8F%E6%97%A5%E6%8A%80%E5%B7%A7">每日技巧</a></span>
+                    
+                </div>
+                
+                <div class="post-summary">
+                    <a href="//lewang.dev/posts/2019-09-19-rpi-log-config/">
+                        背景 树莓派 raspbian 系统日志默认的配置会导致日志过大而占用太多的存储空间，并且频繁写日志也可能减短 EMMC 和 SD 卡的寿命，需要重新配置来满足项目的需求。 日志位置 /var/log /var/log/syslog /var/log/daemon.log /var/log/mail.info /var/log/mail.warn /var/log/mail.err /var/log/mail.log /var/log/kern.log /var/log/auth.log /var/log/user.log /var/log/lpr.log /var/log/cron.log /var/log/debug /var/log/messages 配置 rsyslog 与 logrotate rsyslog 的配置文件为 /etc/rsyslog.conf, 找到其中 RULES 段 ############### #### RULES #### ############### # # First some standard log files. Log by facility. # auth,authpriv.* /var/log/auth.log *.*;auth,authpriv.none -/var/log/syslog #cron.* /var/log/cron.log #daemon.* -/var/log/daemon.log kern.* -/var/log/kern.log lpr.* -/var/log/lpr.log mail.* -/var/log/mail.log user.* -/var/log/user.log 将其中...
+                    </a>
+                </div>
+            </article>
+            
+            <article class="post">
+                <h1 class="post-title">
+                    <a href="//lewang.dev/posts/2019-07-16-change-uid-gid-in-linux/" title="如何修改 Linux 用户的 UID 和组的 GID">如何修改 Linux 用户的 UID 和组的 GID</a>
+                </h1>
+                <div class="post-meta">
+                    Jul 16, 2019
+                    
+                    <span>/</span>
+                    
+                    <span><a href="//lewang.dev/categories/%E6%AF%8F%E6%97%A5%E6%8A%80%E5%B7%A7">每日技巧</a></span>
+                    
+                </div>
+                
+                <div class="post-summary">
+                    <a href="//lewang.dev/posts/2019-07-16-change-uid-gid-in-linux/">
+                        问题 在使用 Docker 或者 NFS 的时候，需要文件系统挂在到不同的系统中拥有正确的读写权限，需要指定文件所属用户和组的 uid 和 gid。在创建用户和组的时候，系统会自动分配对应的值，这导致在不同的系统中很容易造成 uid 和 gid 不一样而造成读写权限混乱。 例如在系统 A 中，用户 git 的 uid 和组 git 的gid 如下: [sysops@cn-bj-aliyun-3 ~]$ id git uid=1001(git) gid=1001(git)...
+                    </a>
+                </div>
+            </article>
+            
+            <article class="post">
+                <h1 class="post-title">
                     <a href="//lewang.dev/posts/2019-05-29-centos7-pyenv-install-python-3/" title="CentOS 7 上使用 pyenv 安装 Python 3.7.3">CentOS 7 上使用 pyenv 安装 Python 3.7.3</a>
                 </h1>
                 <div class="post-meta">
@@ -211,66 +271,6 @@
                 </div>
             </article>
             
-            <article class="post">
-                <h1 class="post-title">
-                    <a href="//lewang.dev/posts/2017-07-15-log4j2/" title="Log4j2 快速入门">Log4j2 快速入门</a>
-                </h1>
-                <div class="post-meta">
-                    Jul 15, 2017
-                    
-                    <span>/</span>
-                    
-                    <span><a href="//lewang.dev/categories/Technical">Technical</a></span>
-                    
-                </div>
-                
-                <div class="post-summary">
-                    <a href="//lewang.dev/posts/2017-07-15-log4j2/">
-                        背景 Java 生态下的日志库太多，配置也不同，大多数情况下会使用 SLF4j (又引入了一个库)来抽象日志接口。在使用 Log4j2 后，发现可以不使用 SLF4j 了，并且配置变得更简单，可以使用 lombok 的 log4j2 注解等。 需要搞清楚 如何设置哪些日志要记录下来 日志记录到哪里去 LEVEL 日志级别： 内置（有 Fatal）：All &lt; Trace &lt; Debug &lt; Info &lt; Warn &lt; Error &lt;...
-                    </a>
-                </div>
-            </article>
-            
-            <article class="post">
-                <h1 class="post-title">
-                    <a href="//lewang.dev/posts/2017-06-06-xtrabackup/" title="MySQL 数据备份和不停机重新搭建主从同步">MySQL 数据备份和不停机重新搭建主从同步</a>
-                </h1>
-                <div class="post-meta">
-                    Jun 6, 2017
-                    
-                    <span>/</span>
-                    
-                    <span><a href="//lewang.dev/categories/Technical">Technical</a></span>
-                    
-                </div>
-                
-                <div class="post-summary">
-                    <a href="//lewang.dev/posts/2017-06-06-xtrabackup/">
-                        背景 目前公司主要服务都是直接使用 MySQL 主服务器，从服务主要给离线数据分析服务使用，由于前期弄得比较简单的粗暴，从服务上还有一两个数据库在做生产使用, 并且从服数据已经不能和主服进行进行同步了，有大量错误，忽略都没有办法进行。此外，主服仅配置了三个核心数据的 binlog，随着业务的变化，...
-                    </a>
-                </div>
-            </article>
-            
-            <article class="post">
-                <h1 class="post-title">
-                    <a href="//lewang.dev/posts/2014-10-16-tuning-nginx/" title="Nginx 性能调优「译」">Nginx 性能调优「译」</a>
-                </h1>
-                <div class="post-meta">
-                    Oct 16, 2014
-                    
-                    <span>/</span>
-                    
-                    <span><a href="//lewang.dev/categories/Technical">Technical</a></span>
-                    
-                </div>
-                
-                <div class="post-summary">
-                    <a href="//lewang.dev/posts/2014-10-16-tuning-nginx/">
-                        这是一篇译文，原文链接：Tuning NGINX for Performance Nginx 为人熟知的是在负载均衡、静态缓存和 WEB 服务器等方面的高性能，目前世界上最繁忙的站点中大约有 40% 在使用 Nginx。绝大多数情况下，大多数默认的 Nginx 和 Linux 配置都可以工作得非常好，但也需要做一些优化以获得最好的性能。本文将讨论在优化系统时需要考虑的 Nginx...
-                    </a>
-                </div>
-            </article>
-            
 
             
 
@@ -297,6 +297,10 @@
     
     <li >
         <a href="//lewang.dev/page/4/">4</a>
+    </li>
+    
+    <li >
+        <a href="//lewang.dev/page/5/">5</a>
     </li>
     
 

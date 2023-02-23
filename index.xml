@@ -277,6 +277,69 @@
     </item>
     
     <item>
+      <title>写了一个 ShadowsocksX-NG 的 gost 插件</title>
+      <link>//lewang.dev/posts/2020-12-02-add-gost-plugin-for-shadowsocks-ng/</link>
+      <pubDate>Wed, 02 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>//lewang.dev/posts/2020-12-02-add-gost-plugin-for-shadowsocks-ng/</guid>
+      <description>&lt;p&gt;gost 是一个非常有用的网络工具，可以在 ShadowsocksX-NG 中安装 gost 插件，方便在 ShadowsocksX-NG 中使用 gost。&lt;/p&gt;
+&lt;h2 id=&#34;原由&#34;&gt;原由&lt;/h2&gt;
+&lt;p&gt;自从查资料上网工具换成 &lt;a href=&#34;https://github.com/ginuerzh/gost&#34;&gt;gost&lt;/a&gt; 之后，由于 MacOS 上没有 gost 专用的智能代理（也就是该翻的时候翻，不用翻的时候不翻）桌面客户端，所以需要用 gost 在本地把 wss 代理转成 ss 后再继续使用 ShadowsocksX-NG。 虽然可以用 launchctl 启动一个 gost 后台服务，但是用起来还是不太方便。&lt;/p&gt;
+&lt;p&gt;看了下 ShadowsocksX-NG 是如何工作的： ShadowsocksX-NG 会在本地启动 ss-local 进程跑一个 socks5 服务，而且 ShadowsocksX-NG 实现智能代理的逻辑与 ss-local 并没有太多的关系，所以只要在想办法本地能提供一个 socks5 服务就够了。&lt;/p&gt;
+&lt;p&gt;于是写了以下脚本替换了 ShadowsocksX-NG 安装目录下的 ss-local(替换之前要备份一下这个文件)&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#999;font-weight:bold;font-style:italic&#34;&gt;#!/bin/sh -
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#999;font-weight:bold;font-style:italic&#34;&gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#998;font-style:italic&#34;&gt;#/opt/gost/gost -L=sock5://:1086 -F=wss://username:password@1.1.1.1:443&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#998;font-style:italic&#34;&gt;# Use gost.json&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#998;font-style:italic&#34;&gt;#{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#998;font-style:italic&#34;&gt;#    &amp;#34;Retries&amp;#34;: 3,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#998;font-style:italic&#34;&gt;#    &amp;#34;Debug&amp;#34;: false,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#998;font-style:italic&#34;&gt;#    &amp;#34;ServeNodes&amp;#34;: [&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#998;font-style:italic&#34;&gt;#        &amp;#34;socks5://127.0.0.1:1086&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#998;font-style:italic&#34;&gt;#    ],&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#998;font-style:italic&#34;&gt;#    &amp;#34;ChainNodes&amp;#34;: [&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#998;font-style:italic&#34;&gt;#        &amp;#34;wss://username:password@1.1.1.1:443&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#998;font-style:italic&#34;&gt;#    ]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#998;font-style:italic&#34;&gt;#}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;/opt/gost/gost -C /opt/gost/gost.json
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;替换之后，ShadowsocksX-NG 可以正常工作，但是这样 ShadowsocksX-NG 的其它设置就无法工作了，所以用 python3 把功能加强了一下，编写了这个脚本。&lt;/p&gt;
+&lt;h2 id=&#34;安装插件前的准备&#34;&gt;安装插件前的准备&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;安装好 &lt;a href=&#34;https://github.com/shadowsocks/ShadowsocksX-NG/releases/download/v1.9.4/ShadowsocksX-NG.1.9.4.zip&#34;&gt;ShadowsocksX-NG&lt;/a&gt; 并至少启动过一次&lt;/li&gt;
+&lt;li&gt;系统已经安装好 python3&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;手动安装插件&#34;&gt;手动安装插件&lt;/h2&gt;
+&lt;p&gt;手动安装过程包括以下几个步骤，主要是文件的替换：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;下载 &lt;a href=&#34;https://github.com/ginuerzh/gost/releases/download/v2.11.1/gost-darwin-amd64-2.11.1.gz&#34;&gt;gost&lt;/a&gt; 并解压到目录 &lt;code&gt;&amp;quot;${HOME}/Library/Application Support/ShadowsocksX-NG/gost&amp;quot;&lt;/code&gt;， 确保 &lt;code&gt;&amp;quot;${HOME}/Library/Application Support/ShadowsocksX-NG/gost&amp;quot;&lt;/code&gt; 目录下可执行文件名称为 &lt;code&gt;gost&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;备份 &lt;code&gt;/Applications/ShadowsocksX-NG.app/Contents/Resources/ss-local&lt;/code&gt; 为 &lt;code&gt;/Applications/ShadowsocksX-NG.app/Contents/Resources/real-ss-local&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;用 &lt;code&gt;https://raw.githubusercontent.com/lewangdev/gost-ss-local/master/ss-local&lt;/code&gt; 替换 &lt;code&gt;/Applications/ShadowsocksX-NG.app/Contents/Resources/ss-local&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;退出 ShadowsocksX-NG 应用，再打开即可正常使用&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;通过自动安装脚本安装插件&#34;&gt;通过自动安装脚本安装插件&lt;/h2&gt;
+&lt;p&gt;把上面的手动安装的过程变成自动安装的脚本&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;curl -L https://github.com/lewangdev/ShadowsocksX-NG-GostPlugin/raw/master/gost-plugin-installer | bash
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;设置&#34;&gt;设置&lt;/h2&gt;
+&lt;p&gt;ShadowsocksX-NG 客户端的配置并不能与 gost 的配置对应上，gost-ss-local 使用了 Address，Port，Password，Plugin，Plugin Opts 来设置 gost。假设 gost 在服务器 1.2.3.4 上是这样启动的：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;gost -L wss://username:password@:443
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;那么在 Plugin 使用 gost 之后，各参数设置如下:&lt;/p&gt;
+&lt;ol start=&#34;0&#34;&gt;
+&lt;li&gt;Plugin，如果希望使用 gost，那么 Plugin 需要填写 gost，例如 &lt;code&gt;gost&lt;/code&gt;，不填或填其它内容，则与 ShadowsocksX-NG 原行为一致&lt;/li&gt;
+&lt;li&gt;Address, 表示 gost 的服务器地址，可以是 IP 或域名, 例如填写 &lt;code&gt;1.2.3.4&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Port, 表示 gost 的端口, 例如填写 &lt;code&gt;443&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Password, 由于 ShadowsocksX-NG 不能设置用户名，密码这里需要填写 gost 的用户名和密码，格式为 &lt;code&gt;username:password&lt;/code&gt;, 例如填写 &lt;code&gt;username:password&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Plugin Opts, 如果填写了插件参数，则前 1-3 的设置无效，并且会把 Plugin Opts 填写的内容直接全部传给 gost 命令。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;1-3 的设置要求 gost 服务器端为 wss 代理，如果为其它类型的代理，可以通过设置 Plugin Opts 的参数来设置，例如与前面 1-3 等价的 Plugin Opts 配置为 &lt;code&gt;-L socks5://127.0.0.1:1086 -F wss://username:password@1.2.3.4:443&lt;/code&gt;&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;h2 id=&#34;说明&#34;&gt;说明&lt;/h2&gt;
+&lt;p&gt;目前脚本只测试了 gost，对于 &lt;a href=&#34;https://github.com/shadowsocks/ShadowsocksX-NG/wiki/SIP003-Plugin&#34;&gt;SIP003 Plugin&lt;/a&gt; 是否影响没有做过测试，如果有问题，欢迎前往&lt;a href=&#34;https://github.com/lewangdev/ShadowsocksX-NG-GostPlugin&#34;&gt;代码仓库&lt;/a&gt;提 &lt;a href=&#34;https://github.com/lewangdev/ShadowsocksX-NG-GostPlugin/issues&#34;&gt;Issues&lt;/a&gt;。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>机房不能访问互联网，轻松搞定系统部署</title>
       <link>//lewang.dev/posts/2020-11-27-go-through-the-system-firewall/</link>
       <pubDate>Fri, 27 Nov 2020 00:00:00 +0000</pubDate>
@@ -723,6 +786,22 @@
     </item>
     
     <item>
+      <title>游方塔园</title>
+      <link>//lewang.dev/posts/2019-11-02-fangta-paintings/</link>
+      <pubDate>Sat, 02 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>//lewang.dev/posts/2019-11-02-fangta-paintings/</guid>
+      <description>&lt;p&gt;昨日陪小糍粑参加幼儿园秋游活动，游览了一下位于松江区的方塔园，校方安排幼儿在白色布袋上绘画，于是有了以下大作。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/lewangdev/picb0/main/oh-my-blog/fangta-paintings/3.jpg&#34; alt=&#34;3&#34; title=&#34;3&#34;&gt;&lt;/p&gt;
+&lt;p&gt;观察幼儿绘画的过程挺有意思的，我们父母无须提供任何绘画的指导，只要等待小朋友们绘画完毕，来听听他们关于自己的画的解释即可。&lt;/p&gt;
+&lt;p&gt;关于上面的画，小糍粑是这样解释的。&lt;/p&gt;
+&lt;p&gt;他和爸爸来看方塔，想象和爸爸在方塔里面，草地的旁边有水，有果树(梨树)，有蓝天，蓝天上面有飞机在飞，他穿着红色的衣服和黑色的鞋子。&lt;/p&gt;
+&lt;p&gt;我感觉他画的非常自信，有考虑绘画的布局，所有的线条几乎都是一笔成型，丝毫不拖沓，很符合这个年龄幼儿的表现。&lt;/p&gt;
+&lt;p&gt;图里面有个地方是我画的，大家可以猜猜是哪里。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>WireGuard 使用简介</title>
       <link>//lewang.dev/posts/2019-10-30-wireguard-go-setup/</link>
       <pubDate>Wed, 30 Oct 2019 00:00:00 +0000</pubDate>
@@ -796,6 +875,31 @@
 &lt;li&gt;&lt;a href=&#34;https://medium.com/@xtarin/%5Dwireguard%E4%BB%8B%E7%BB%8D%E5%8F%8A%E5%AE%A2%E6%88%B7%E7%AB%AF%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B-2ae1eb4bf670&#34;&gt;https://medium.com/@xtarin&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.linode.com/docs/networking/vpn/set-up-wireguard-vpn-on-ubuntu/&#34;&gt;https://www.linode.com/docs&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>小糍粑的画</title>
+      <link>//lewang.dev/posts/2019-10-13-sons-paintings/</link>
+      <pubDate>Sun, 13 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>//lewang.dev/posts/2019-10-13-sons-paintings/</guid>
+      <description>&lt;h2 id=&#34;20191013-上午大作&#34;&gt;2019/10/13 上午大作&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/lewangdev/picb0/main/oh-my-blog/sons-paintings/20191013.jpg&#34; alt=&#34;20191013&#34; title=&#34;20191013&#34;&gt;&lt;/p&gt;
+&lt;p&gt;画了一辆坦克&lt;/p&gt;
+&lt;h2 id=&#34;20191010-晚大作&#34;&gt;2019/10/10 晚大作&lt;/h2&gt;
+&lt;h3 id=&#34;1&#34;&gt;1&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/lewangdev/picb0/main/oh-my-blog/sons-paintings/20191010-1.jpg&#34; alt=&#34;20191010&#34; title=&#34;20191010&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;2&#34;&gt;2&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/lewangdev/picb0/main/oh-my-blog/sons-paintings/20191010-2.jpg&#34; alt=&#34;20191010&#34; title=&#34;20191010&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;3&#34;&gt;3&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/lewangdev/picb0/main/oh-my-blog/sons-paintings/20191010-3.jpg&#34; alt=&#34;20191010&#34; title=&#34;20191010&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;4&#34;&gt;4&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/lewangdev/picb0/main/oh-my-blog/sons-paintings/20191010-4.jpg&#34; alt=&#34;20191010&#34; title=&#34;20191010&#34;&gt;&lt;/p&gt;
+&lt;p&gt;小糍粑自己介绍：
+爸爸妈妈宝宝奶奶和他的同学，右一是奶奶，右二是爸爸，右三是他自己，右四是妈妈，奶奶没地方画了&lt;/p&gt;
+&lt;p&gt;点评：
+很明显的出现头足人像&lt;/p&gt;
 </description>
     </item>
     
@@ -1677,6 +1781,90 @@
     </item>
     
     <item>
+      <title>办理机动车临牌</title>
+      <link>//lewang.dev/posts/2016-01-28-banlinpai/</link>
+      <pubDate>Thu, 28 Jan 2016 11:55:00 +0000</pubDate>
+      
+      <guid>//lewang.dev/posts/2016-01-28-banlinpai/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;政策已变，目前只能办理有效期为 15 天的临牌，并且最多只能办理两次&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;问题&#34;&gt;问题&lt;/h2&gt;
+&lt;p&gt;外地户口，上海购车办理机动车(出省)临牌(出省和不出省的临牌办理方法一样,出省临牌有效期是30天，不出省的是15天)&lt;/p&gt;
+&lt;h2 id=&#34;文档记录状态&#34;&gt;文档记录状态&lt;/h2&gt;
+&lt;p&gt;可用&lt;/p&gt;
+&lt;h2 id=&#34;发生时间&#34;&gt;发生时间&lt;/h2&gt;
+&lt;p&gt;2016年01月28日9:00至9:30&lt;/p&gt;
+&lt;h2 id=&#34;体验得分&#34;&gt;体验得分&lt;/h2&gt;
+&lt;p&gt;90&lt;/p&gt;
+&lt;h2 id=&#34;办理地点&#34;&gt;办理地点&lt;/h2&gt;
+&lt;p&gt;黄浦公安分局交警支队，地址上海黄浦区陆家浜路88号（地铁4号线南浦大桥站1号出口200米处）&lt;/p&gt;
+&lt;h2 id=&#34;可办理时间&#34;&gt;可办理时间&lt;/h2&gt;
+&lt;p&gt;周一至周六 8:30-17:00&lt;/p&gt;
+&lt;h2 id=&#34;需要材料&#34;&gt;需要材料&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;车辆合格证原件和复印件&lt;/li&gt;
+&lt;li&gt;购车发票原件和复印件&lt;/li&gt;
+&lt;li&gt;交强险保单原件和复印件&lt;/li&gt;
+&lt;li&gt;身份证原件和正反面复印件&lt;/li&gt;
+&lt;li&gt;零钱5元&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;办理流程记录&#34;&gt;办理流程记录&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;进入大厅后跟保安说办理机动车临牌，拿一张《申请办理机动车临时号牌单》，然后坐在椅子上排队并填好临时号牌单&lt;/li&gt;
+&lt;li&gt;等待办理, 交警会打印两张临牌出来&lt;/li&gt;
+&lt;li&gt;恭喜你，没有第3步，可以拿着临牌走了&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;提高效率的小提示&#34;&gt;提高效率的小提示&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;自带黑色签字笔一支&lt;/li&gt;
+&lt;li&gt;原件和复印件分开成两份&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>驾照转入换证</title>
+      <link>//lewang.dev/posts/2015-10-15-huanzheng/</link>
+      <pubDate>Thu, 15 Oct 2015 11:55:00 +0000</pubDate>
+      
+      <guid>//lewang.dev/posts/2015-10-15-huanzheng/</guid>
+      <description>&lt;h2 id=&#34;问题&#34;&gt;问题&lt;/h2&gt;
+&lt;p&gt;外地户口＋上海居住证，外地驾照即将到期，需要将外地驾照转入上海并且进行驾照到期换证。&lt;/p&gt;
+&lt;h2 id=&#34;可用状态&#34;&gt;可用状态&lt;/h2&gt;
+&lt;p&gt;可用&lt;/p&gt;
+&lt;h2 id=&#34;发生时间&#34;&gt;发生时间&lt;/h2&gt;
+&lt;p&gt;2015年10月15日8:00至10:00&lt;/p&gt;
+&lt;h2 id=&#34;体验得分&#34;&gt;体验得分&lt;/h2&gt;
+&lt;p&gt;90&lt;/p&gt;
+&lt;h2 id=&#34;办理地点&#34;&gt;办理地点&lt;/h2&gt;
+&lt;p&gt;车辆管理所三分所，地址浦东新区沪南公路2638 号&lt;/p&gt;
+&lt;h2 id=&#34;可办理时间&#34;&gt;可办理时间&lt;/h2&gt;
+&lt;p&gt;周一至周五 9:00-17:00&lt;/p&gt;
+&lt;h2 id=&#34;办理流程记录&#34;&gt;办理流程记录&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;前往4号楼的3层填表缴费并拍照，缴费需要排队，人较多，费用 25 元&lt;/li&gt;
+&lt;li&gt;拍好照片并拿到照片和表格后前往4号楼2层填表缴费并体检，缴费需要排队，人较多，费用 60 元
+&lt;ul&gt;
+&lt;li&gt;缴完体检费进去之后，需要填表并且贴好照片，体检项都是分开进行，主要体检内容包括视力，听力，身高体重，色盲等检测，其他项都是医生随手填上去的，哪个人少就先去体检哪个。我体检的顺序依次是视力，听力，身高体重，色盲检测。&lt;/li&gt;
+&lt;li&gt;每项体检完，看下体检表格，看看体检项有没有空的，如果没有就直接去出口处，把表格交上去，然后等报告&lt;/li&gt;
+&lt;li&gt;拿到体检报告后，直接去1号楼一层大厅门口右手处工作人员拿号，号码那张纸要保存好，最后一步领证还需要使用。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;叫号后前往柜台管理，跟工作人员确认下需要办理的内容。我这里是办理转入和到期换证。这里会使用照片一张，工作人员会提供剪刀。办理过程大约需要5分钟&lt;/li&gt;
+&lt;li&gt;前往缴费处缴费，注意看下缴费窗口的号码，缴费处在大厅另外一侧，费用 10 元&lt;/li&gt;
+&lt;li&gt;前往发证处等待叫号领证&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;提高效率的小提示&#34;&gt;提高效率的小提示&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;8点30之前到达4号楼3层排队, 尽管 9 点才开始&lt;/li&gt;
+&lt;li&gt;自带黑色签字笔一支&lt;/li&gt;
+&lt;li&gt;身份证复印件和居住证复印件各一份&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Nginx 性能调优「译」</title>
       <link>//lewang.dev/posts/2014-10-16-tuning-nginx/</link>
       <pubDate>Thu, 16 Oct 2014 15:27:00 +0000</pubDate>
@@ -1853,6 +2041,73 @@ Nginx 可以利用它通过 socket 发送缓存的或者磁盘上的内容，并
 &lt;/blockquote&gt;
 &lt;p&gt;浏览器中输入 &lt;a href=&#34;https://www.iforget.info&#34;&gt;www.iforget.info&lt;/a&gt; 时，Github Pages 将会永久跳转(301)到 iforget.info, 反之亦然。&lt;/p&gt;
 &lt;p&gt;如果你能看到本页，说明本站已经拿到了 GFW 认证。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>悟性</title>
+      <link>//lewang.dev/posts/2014-04-26-power-of-understanding/</link>
+      <pubDate>Sat, 26 Apr 2014 01:11:00 +0000</pubDate>
+      
+      <guid>//lewang.dev/posts/2014-04-26-power-of-understanding/</guid>
+      <description>&lt;p&gt;“悟性”是一个很虚的东西吗？&lt;/p&gt;
+&lt;p&gt;前段时间和同学聊天，聊如何从众多的各方面初步看起来差不多应聘者中去做选择？聊来聊去最终落到了“悟性”上。我自己在突然想到悟性这个词的时候脑子几乎一片空白，不知道如何去判断一个人的悟性，或者说悟性到底是怎么样的，凭什么说一个人悟性好或者悟性差。&lt;/p&gt;
+&lt;p&gt;昨天下午有个年龄不小的同学过来面试，聊了一个小时以后，向老板 汇报面试意见时，这同学各方面都很不错，但是总觉得有些地方不对，找不到词来形容自己内心当时的想法，于是结结巴巴的说，这种情况下，我要看一个人有没有悟性，接着我举了一个例子来说明什么时悟性：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;假如一个人，被安排了事情 A，我觉得有悟性的人，可能在做 A 事情的时候，把相关的事情 B、C 都做了，或者要求时做到A，但是主动把结果做成 A++&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;说完后，我觉得不妥：这可能不是一个人有没有悟性的问题，而是这个人主动不主动、有没有热情的问题。&lt;/p&gt;
+&lt;p&gt;到底什么怎样才能通过一些具体的例子体会悟性这个词的含义？&lt;/p&gt;
+&lt;p&gt;佛家讲究悟性。《心经》仅有 260 个字，有悟性的人才可以写出《心经与生活智慧》，甚至心经和量子物理都有关系，你看了之后，才发现：哦，原来心经是说这些的啊。&lt;/p&gt;
+&lt;p&gt;道家也讲究悟性。当年菩提老祖在孙猴子头上敲三下的时候，要是孙猴子没有悟性只有兽性的话，估计就没有后面的孙悟空了。&lt;/p&gt;
+&lt;p&gt;自己之前团队中有个新同事，年龄比我长，团队之间大家相互做 Code Review，且不说代码质量， 从代码风格上我就对此人无语了：从不注意已有代码在变量、函数、文件命名上的一些基本的规范，别人不告诉他，就不会意识到这个问题。一些看得见的东西不一定非要教条式的写到文件里，然后去专门花时间去学,去强制。有些问题，还是自己意识到比较好，从别人口里说出来，那就不好玩了。&lt;/p&gt;
+&lt;p&gt;一句话说得好：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;不怕狼一样的对手，就怕猪一样的队友。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;不多说了，不强求，悟性有可能就是天生的。做不了大师兄，做二师弟也不赖。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>成长</title>
+      <link>//lewang.dev/posts/2014-04-25-grow-up/</link>
+      <pubDate>Fri, 25 Apr 2014 00:40:00 +0000</pubDate>
+      
+      <guid>//lewang.dev/posts/2014-04-25-grow-up/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;成长就是看自己以前写的东西（包括微博、博客、说说等等）的时候觉得以前自己很 SB, 然后迫切地想把它们删掉&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;这句话不止一次看到，反思自己，确实是那么回事儿，不能太赞同哦（我了个去上海腔了呢）。&lt;/p&gt;
+&lt;p&gt;先前早些时候，把新浪博客和人人删的一干二净，也就是过把自己过去的所有文字的创造付之一炬，说没有一点惋惜，那是不可能的，想想当年自己顶着农村小孩黝黑皮肤初来乍到大城市，牛流不分，不怕喝不上牛奶只能喝豆浆的尴尬，给学校里各个杂志投稿，现在读来那些稿件，莫不觉得自己二逼。还好是些低年级学生玩的校办杂志，没多少人，为了回忆二逼的岁月，我特地还留了一本，没有其他人变态一样也留了一本吧。&lt;/p&gt;
+&lt;p&gt;哦，对了，如果你想删掉所有的 SNS 平台的日志，不如学门编程的手艺，使用他们所谓的开放接口删了他们。不知道人人网的 &lt;a href=&#34;http://3g.renren.com&#34;&gt;3g.renren.com&lt;/a&gt;, 如果还能访问那可以试试小码哥几年前弄的人人自杀小工具
+&lt;a href=&#34;http://xiaomg.sinaapp.com&#34;&gt;xiaomg.sinaapp.com&lt;/a&gt;，如果恰好能帮你删掉所有的东西，那么就是人人网的不对了，这么多年了，一点进步都没有，还有几个人在山寨机上开个ucweb访问你的3g网站。小工具的代码就不要看了，惨不忍闻，套用前面的话，写得太二逼了。说不定哪天就会被删掉，就像删这些日志一样。&lt;/p&gt;
+&lt;p&gt;感性的文字都已经被删掉了，这下子没人看的得到我过去的无知，也只有我自己知道自己过去的无畏。&lt;/p&gt;
+&lt;p&gt;准备把散落在各处的技术博文都挪到这里来，二逼 SB 可能不大适合形容一个人的手艺，但是菜鸟二字恰如其分。&lt;/p&gt;
+&lt;p&gt;又一个菜鸟来了。大牛们见笑了。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>谁是德布罗意</title>
+      <link>//lewang.dev/posts/2014-03-13-who-is-De-Broglie/</link>
+      <pubDate>Thu, 13 Mar 2014 21:16:00 +0000</pubDate>
+      
+      <guid>//lewang.dev/posts/2014-03-13-who-is-De-Broglie/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/lewangdev/picb0/main/oh-my-blog/old/great_scientists.jpg&#34; alt=&#34;Great Scientists&#34; title=&#34;Greatest Scientists&#34;&gt;&lt;/p&gt;
+&lt;p&gt;这张照片很多人应该都见过，名副其实的二十世纪最伟大科学家们的合影。爱因斯坦占据了最明显的位置，德布罗意也在其中。&lt;/p&gt;
+&lt;p&gt;这里是摘自百度百科的一些内容：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;在光具有波粒二象性的启发下，法国物理学家德布罗意（1892～1987）在 1924 年提出一个假说，指出波粒二象性不只是光子才有，一切微观粒子，包括电子和质子、中子，都有波粒二象性。他把光子的动量与波长的关系式 p=h/λ 推广到一切微观粒子上，指出：具有质量 m 和速度 v 的运动粒子也具有波动性，这种波的波长等于普朗克恒量 h 跟粒子动量 mv 的比，即 λ=h/(mv)。这个关系式后来就叫做德布罗意公式。&lt;/p&gt;
+&lt;p&gt;从德布罗意公式很容易算出运动粒子的波长。&lt;/p&gt;
+&lt;p&gt;例如，电子的电荷是 1.6×10^-19 库，质量是 0.91×10^-30 千克，经过 200 伏电势差加速的电子获得的能量 E=Ue=200×1.6×10-19 焦 =3.2×10-17 焦。这个能量就是电子的动能，即0.5mv^2=3.2×10^-17 焦，因此 v=8.39&lt;em&gt;10^6 米/秒。于是，按照德布罗意公式这运动电子的波长是 λ=h/(mv)=6.63&lt;/em&gt;10^-34/(9.1&lt;em&gt;10^-31&lt;/em&gt;8.39*10^6)=8.7×10-11 米，或者 0.87 埃。&lt;/p&gt;
+&lt;p&gt;我们看到，这个波长与伦琴射线的波长相仿。前面讲过，这样短的波长，只有用晶体做衍射光栅才能观察到衍射现象。后来人们的确用这种办法观察到了电子的衍射，从而证明了德布罗意假说的正确性。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;是不是有点印象了，这就是高中物理课本里面的内容吧。&lt;/p&gt;
+&lt;p&gt;前几天和公司几个童鞋一起吃饭，先是有人说《水知道答案》，且先不说它是不是伪科普，我们试图用一些我们想得到的知识来说明一些问题，于是我想到了物质波，也就是德布罗意波。让我惊愕的是，那三位同学一致表示他们完全不知道什么是德布罗意波，搞得我仿佛穿越了，穿越到阿西莫夫的基地里去了。&lt;/p&gt;
+&lt;p&gt;一定是在耍我。&lt;/p&gt;
+&lt;p&gt;如果德布罗意波都不知道，那肯定也错过了德布罗意本人和他那篇博士论文的八卦故事了。不多说了，还是偷着乐吧。&lt;/p&gt;
+&lt;p&gt;哈哈&lt;/p&gt;
 </description>
     </item>
     
@@ -2887,6 +3142,21 @@ Nginx 可以利用它通过 socket 发送缓存的或者磁盘上的内容，并
     </item>
     
     <item>
+      <title>在这安静的夜里</title>
+      <link>//lewang.dev/posts/2012-03-10-at-a-late-night/</link>
+      <pubDate>Sat, 10 Mar 2012 00:40:00 +0000</pubDate>
+      
+      <guid>//lewang.dev/posts/2012-03-10-at-a-late-night/</guid>
+      <description>&lt;p&gt;今天组会不用开了，报告也不用做了，感觉比较爽，于是晚上的时候决定给摆摊写一些新的东西。&lt;/p&gt;
+&lt;p&gt;于是刚刚给摆摊的首页添加了一个小小的功能，就是能够随机的选取5本书在首页上循环展示，另外修正了一些网友提出的问题。&lt;/p&gt;
+&lt;p&gt;首页图片轮换是用jquery实现的，做法也很简单，当然实现的功能和效果还是比较弱的，这里是我用到一些资料。
+CSS定位：&lt;a href=&#34;http://www.haozi.cn/code/position-static-relative-absolute-float/&#34;&gt;http://www.haozi.cn/code/position-static-relative-absolute-float/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;好了，摆摊这几天暂时就这个样子了，得放下心思继续去搞自己的科研了。&lt;/p&gt;
+&lt;p&gt;过段时间一定要好好总结一下，写一些关于数组数据库系列的文章。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>写给 2012 的摆摊</title>
       <link>//lewang.dev/posts/2012-01-09-for-baigetan-2012/</link>
       <pubDate>Mon, 09 Jan 2012 00:40:00 +0000</pubDate>
@@ -2969,6 +3239,25 @@ Nginx 可以利用它通过 socket 发送缓存的或者磁盘上的内容，并
     </item>
     
     <item>
+      <title>未来是个未知数</title>
+      <link>//lewang.dev/posts/2011-11-09-future-is-unknown/</link>
+      <pubDate>Wed, 09 Nov 2011 13:09:00 +0000</pubDate>
+      
+      <guid>//lewang.dev/posts/2011-11-09-future-is-unknown/</guid>
+      <description>&lt;p&gt;未来是个未知数，自己的未来自己都不知道会是什么样子，问别人，别人又怎么会知道你的未来。&lt;/p&gt;
+&lt;p&gt;不要忘了自己心中想要的东西，即使是为了养家糊口而从事自己不喜欢的工作，也不要忘记自己希望做什么，静静的准备着，迟早有一天会爆发的。&lt;/p&gt;
+&lt;p&gt;单纯的做着自己的业余爱好，业余爱好也就会发展成职业的。但是我不会忘了我心中想要去做什么，我会为之而积累准备。&lt;/p&gt;
+&lt;p&gt;未来是个未知数，没有方程组能解开这个未知数，只能去试，试试才会知道。&lt;/p&gt;
+&lt;p&gt;摆摊网的未来也是个未知数，很大的可能就是被淹没在数以亿计的小小站点之中，被互联网大潮一扫而过，什么也不会留下，但是，这就是我的爱好，我喜欢把自己的想法实现，不管别人喜不喜欢用，但是，我喜欢摆摊网，它是我想法的一个实体，我每次尝试的一个印记。&lt;/p&gt;
+&lt;p&gt;自己的工作也定下来了，有接着研究自己的课题，但这几天不能安静下来搞自己的课题，总想着摆摊网还没有做好，于是拿出了两天，把摆摊的页面都做了出来，接下来就要做网站的逻辑部分了。&lt;/p&gt;
+&lt;p&gt;网站很简单，但是要做好做的精致做得完美做得好用也是很不容易的。自己还是慢慢来搞，每天写点代码吧，还是要干些要紧的事儿，后天又得做报告了，得赶论文ppt了。&lt;/p&gt;
+&lt;p&gt;期待有同学加入，一起来开发摆摊网，让摆摊网早点上线！！！&lt;/p&gt;
+&lt;p&gt;要开始为了毕业而忙碌了。&lt;/p&gt;
+&lt;p&gt;我是小码哥（新浪微博）&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>关于摆摊的一些思考</title>
       <link>//lewang.dev/posts/2011-11-08-think-of-baigetan/</link>
       <pubDate>Tue, 08 Nov 2011 00:40:00 +0000</pubDate>
@@ -2996,6 +3285,22 @@ Nginx 可以利用它通过 socket 发送缓存的或者磁盘上的内容，并
     </item>
     
     <item>
+      <title>冬天来了</title>
+      <link>//lewang.dev/posts/2011-10-27-winter-is-coming/</link>
+      <pubDate>Thu, 27 Oct 2011 13:10:00 +0000</pubDate>
+      
+      <guid>//lewang.dev/posts/2011-10-27-winter-is-coming/</guid>
+      <description>&lt;p&gt;前几天一场大降温，把我给冻着了，肚子疼了好几天，还发烧，还好有个小盆友给我“打针喂药”，使得我这几天才得以康复，重现往日风采。&lt;/p&gt;
+&lt;p&gt;本来这周五得做论文的报告，于是这周基本都在看论文。谁知这周又冒出了几个公司让我去面试，论文的报告又就此作罢，挪到下周。&lt;/p&gt;
+&lt;p&gt;自己的外语很烂，基本没有投什么外企，昨天参加了微策略的面试之后，反而对自己的外语变得有些自信，最后和那位印度面试官聊天，他说我外语挺好，可是小盆友却说他那是在说客套话，不管客套不客套，反正我觉得挺开心，哈哈。。。&lt;/p&gt;
+&lt;p&gt;这周末还有几个知名互联网公司的笔试面试，加油！&lt;/p&gt;
+&lt;p&gt;关于摆摊，我还是抽出了一些时间来做了一些开发工作。先是看了赶集网吴石展&lt;a href=&#34;http://www.qconhangzhou.com/&#34;&gt;杭州Qcon&lt;/a&gt;的关于&lt;a href=&#34;http://vdisk.weibo.com/s/SMRp/1319453995&#34;&gt;MySQL数据库开发的三十六条军规&lt;/a&gt;，然后立马按照这些军规，对摆摊的数据库结构做了一些更改。此外，还开发了用户注册模块，只是页面还没有美化。&lt;/p&gt;
+&lt;p&gt;还是一点一点的来，事情太多，还要搞科研毕业，加油！&lt;/p&gt;
+&lt;p&gt;我是小码哥（新浪微博）&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>摆摊的一些进展</title>
       <link>//lewang.dev/posts/2011-10-21-process-of-baigetan/</link>
       <pubDate>Fri, 21 Oct 2011 13:11:00 +0000</pubDate>
@@ -3005,6 +3310,20 @@ Nginx 可以利用它通过 socket 发送缓存的或者磁盘上的内容，并
 &lt;p&gt;目前后台数据库部分已经设计完毕。&lt;/p&gt;
 &lt;p&gt;加油！&lt;/p&gt;
 &lt;p&gt;我是&lt;a href=&#34;http://weibo.com/xiaomg&#34;&gt;小码哥&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>十一掠影</title>
+      <link>//lewang.dev/posts/2011-10-01-snapshot-of-10-1/</link>
+      <pubDate>Sat, 01 Oct 2011 00:40:00 +0000</pubDate>
+      
+      <guid>//lewang.dev/posts/2011-10-01-snapshot-of-10-1/</guid>
+      <description>&lt;p&gt;早上睡到9点才起床，然后下楼载着小盆友去学三吃了早饭，一人吃了六个小包子，出了食堂发现天气真好，决定去拍些照片，然后又载着小盆友回到宿舍拿了相机。&lt;/p&gt;
+&lt;p&gt;今天天气真好，微微的风，蓝蓝的天，枝头的树叶也变成了整片整片的金黄，好美！&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/lewangdev/picb0/main/oh-my-blog/old/beautiful_autumn_in_tju.jpg&#34; alt=&#34;Beautiful TJU&#34; title=&#34;Beautiful TJU&#34;&gt;&lt;/p&gt;
+&lt;p&gt;东西都已经收拾好了，明天一早出发，去泰山，看日出。&lt;/p&gt;
+&lt;p&gt;我是小码哥&lt;/p&gt;
 </description>
     </item>
     

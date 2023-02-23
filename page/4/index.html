@@ -73,6 +73,186 @@
             
             <article class="post">
                 <h1 class="post-title">
+                    <a href="//lewang.dev/posts/2014-03-03-building-devenv-by-vagrant/" title="使用 Vagrant 构建开发环境">使用 Vagrant 构建开发环境</a>
+                </h1>
+                <div class="post-meta">
+                    Mar 3, 2014
+                    
+                    <span>/</span>
+                    
+                    <span><a href="//lewang.dev/categories/Technical">Technical</a></span>
+                    
+                </div>
+                
+                <div class="post-summary">
+                    <a href="//lewang.dev/posts/2014-03-03-building-devenv-by-vagrant/">
+                        Vagrant 是一个构建虚拟开发环境的利器，它使得在团队中很容易共享开发环境，有了它，不必每个人都搭建一个自己的开发环境了。在没有使用 vagrant 之前，我在 windows 中安装了 virtualbox，然后在 virtualbox 中安装了一个 ubuntu server。在 ubuntu 中安装了 mysql、jdk 等软件，并且设置了一个共享目录，以便于将工程代码...
+                    </a>
+                </div>
+            </article>
+            
+            <article class="post">
+                <h1 class="post-title">
+                    <a href="//lewang.dev/posts/2014-03-02-python-on-my-rmbp/" title="Python on My rMBP">Python on My rMBP</a>
+                </h1>
+                <div class="post-meta">
+                    Mar 2, 2014
+                    
+                    <span>/</span>
+                    
+                    <span><a href="//lewang.dev/categories/Technical">Technical</a></span>
+                    
+                </div>
+                
+                <div class="post-summary">
+                    <a href="//lewang.dev/posts/2014-03-02-python-on-my-rmbp/">
+                        前几天入手了一台 Macbook Pro Retina，把 BIG 提到了很爽的地步。经过几天的折腾，可以和 windows，ubuntu desktop 说 Byebye 了。之前整整用了一年的 Ubuntu 来工作，我用它来写 C、Java 和 Python, 要是 windows 没有 cygwin, 没有 MacType，那该多么恐怖。后来用了一段时间的 MBP，让我坚定了以后要自己买一个 MBP。 ubuntu 那...
+                    </a>
+                </div>
+            </article>
+            
+            <article class="post">
+                <h1 class="post-title">
+                    <a href="//lewang.dev/posts/2013-08-09-benchmark-of-aliyun-and-ucloud/" title="阿里云和 ucloud 云主机评测">阿里云和 ucloud 云主机评测</a>
+                </h1>
+                <div class="post-meta">
+                    Aug 9, 2013
+                    
+                    <span>/</span>
+                    
+                    <span><a href="//lewang.dev/categories/Technical">Technical</a></span>
+                    
+                </div>
+                
+                <div class="post-summary">
+                    <a href="//lewang.dev/posts/2013-08-09-benchmark-of-aliyun-and-ucloud/">
+                        总体说明 我使用联通 10M 光网，SSH 在多个时间段登录两个主机都是非常的快，但是阿里云的 SSH 有时会断开连接，需要重新登录(一天遇到 n 次)，ucloud 一次都没有断开连接过。两者总体操作上都很流畅。平时我比较习惯于使用 ubuntu，于是在两个主机上都安装了 Ubuntu 12.04_64 的 Server 版本。在安装初始化系统过程...
+                    </a>
+                </div>
+            </article>
+            
+            <article class="post">
+                <h1 class="post-title">
+                    <a href="//lewang.dev/posts/2013-03-04-so-load-path-in-linux/" title="Linux 共享库（动态链接库）相关的一些记录">Linux 共享库（动态链接库）相关的一些记录</a>
+                </h1>
+                <div class="post-meta">
+                    Mar 4, 2013
+                    
+                    <span>/</span>
+                    
+                    <span><a href="//lewang.dev/categories/%E6%AF%8F%E6%97%A5%E6%8A%80%E5%B7%A7">每日技巧</a></span>
+                    
+                </div>
+                
+                <div class="post-summary">
+                    <a href="//lewang.dev/posts/2013-03-04-so-load-path-in-linux/">
+                        相关的环境变量 LD_LIBRARY_PATH ld-linux.so 寻找 shared object 的路径，优先加载出现在路径前面的 shared object。如，export LD_LIBRARY_PATH=/home/user/lib:$LD_LIBRARY_PATH LD_PRELOAD 指定优先供 ld-linux.so 加载的 shared object。如，export LD_PRELAOD=/home/user/lib/glibc.so，可以使用这个变量来改变加载顺序，例如我们自定义的 glibc.so 中实现了新的 strcmp 之...
+                    </a>
+                </div>
+            </article>
+            
+            <article class="post">
+                <h1 class="post-title">
+                    <a href="//lewang.dev/posts/2012-03-22-a-short-discuss-of-SimpleXML-of-php/" title="再说 PHP 中 SimpleXML">再说 PHP 中 SimpleXML</a>
+                </h1>
+                <div class="post-meta">
+                    Mar 22, 2012
+                    
+                    <span>/</span>
+                    
+                    <span><a href="//lewang.dev/categories/%E6%AF%8F%E6%97%A5%E6%8A%80%E5%B7%A7">每日技巧</a></span>
+                    
+                </div>
+                
+                <div class="post-summary">
+                    <a href="//lewang.dev/posts/2012-03-22-a-short-discuss-of-SimpleXML-of-php/">
+                        前一篇帖子使用了 xpath，后来了解到 xpath 的性能可能比较差，而且在遇到有命名空间的时候还有点小麻烦。这里都已豆瓣提供的 API 返回的 xml 为例。豆瓣返回的 xml 不是 rss 格式的，而是 Atom 格式，有很多的命名空间，如果习惯于操作 rss 格式的 xml，那么可以直接把 xml 里面的命名空间的字符串都 replace 掉，这个方法貌似很简...
+                    </a>
+                </div>
+            </article>
+            
+            <article class="post">
+                <h1 class="post-title">
+                    <a href="//lewang.dev/posts/2012-03-13-things-i-create-must-be-cool/" title="我想做的东西可以不值钱，但是它必须‘酷’">我想做的东西可以不值钱，但是它必须‘酷’</a>
+                </h1>
+                <div class="post-meta">
+                    Mar 13, 2012
+                    
+                    <span>/</span>
+                    
+                    <span><a href="//lewang.dev/categories/Life">Life</a></span>
+                    
+                </div>
+                
+                <div class="post-summary">
+                    <a href="//lewang.dev/posts/2012-03-13-things-i-create-must-be-cool/">
+                        这句话是 FACEBOOK 的马克·扎克伯格说的。 我很认同，并且感觉自己也是这么做的。现在自己做得很多事情，从来没有考虑过它会不会值钱，只是感觉把自己的想法做出来，变成实物的过程就已经很酷。 对于酷，我觉得至少有两方面的意义。 一种酷，是一种自我实现的感觉，是一种认同感，成就感。比如自己把自己的不错的...
+                    </a>
+                </div>
+            </article>
+            
+            <article class="post">
+                <h1 class="post-title">
+                    <a href="//lewang.dev/posts/2012-03-10-at-a-late-night/" title="在这安静的夜里">在这安静的夜里</a>
+                </h1>
+                <div class="post-meta">
+                    Mar 10, 2012
+                    
+                    <span>/</span>
+                    
+                    <span><a href="//lewang.dev/categories/%E6%80%BB%E7%BB%93">总结</a></span>
+                    
+                </div>
+                
+                <div class="post-summary">
+                    <a href="//lewang.dev/posts/2012-03-10-at-a-late-night/">
+                        今天组会不用开了，报告也不用做了，感觉比较爽，于是晚上的时候决定给摆摊写一些新的东西。 于是刚刚给摆摊的首页添加了一个小小的功能，就是能够随机的选取5本书在首页上循环展示，另外修正了一些网友提出的问题。 首页图片轮换是用jquery实现的，做法也很简单，当然实现的功能和效果还是比较弱...
+                    </a>
+                </div>
+            </article>
+            
+            <article class="post">
+                <h1 class="post-title">
+                    <a href="//lewang.dev/posts/2012-01-09-for-baigetan-2012/" title="写给 2012 的摆摊">写给 2012 的摆摊</a>
+                </h1>
+                <div class="post-meta">
+                    Jan 9, 2012
+                    
+                    <span>/</span>
+                    
+                    <span><a href="//lewang.dev/categories/Life">Life</a></span>
+                    
+                </div>
+                
+                <div class="post-summary">
+                    <a href="//lewang.dev/posts/2012-01-09-for-baigetan-2012/">
+                        我期待 2012 的到来，这一年我将有一个新的开始，好期待。 最近一直在忙着做实验，读论文，都没有什么时间来弄弄摆摊，自己心里的那种对于摆摊的激情也渐渐淡了很多，但是想想自己当初的想法，立马又有动力拾起摆摊。 一个小小的网站，看起来确实很简单，也就是拿 php 连连数据库，做做一些简单的操作，可自己在...
+                    </a>
+                </div>
+            </article>
+            
+            <article class="post">
+                <h1 class="post-title">
+                    <a href="//lewang.dev/posts/2011-12-01-how-to-use-simplexml-of-php/" title="SimpleXML使用xpath">SimpleXML使用xpath</a>
+                </h1>
+                <div class="post-meta">
+                    Dec 1, 2011
+                    
+                    <span>/</span>
+                    
+                    <span><a href="//lewang.dev/categories/%E6%AF%8F%E6%97%A5%E6%8A%80%E5%B7%A7">每日技巧</a></span>
+                    
+                </div>
+                
+                <div class="post-summary">
+                    <a href="//lewang.dev/posts/2011-12-01-how-to-use-simplexml-of-php/">
+                        这几天没心情看论文，于是开始写写摆摊网的代码。摆摊主要做高校二手书籍信息的分享，于是需要从豆瓣上获取图书信息，豆瓣提供了一个完整的 xml 来描述一本书，例如http://api.douban.com/book/subject/isbn/9787543639136，于是需要处理这个 xml 来获...
+                    </a>
+                </div>
+            </article>
+            
+            <article class="post">
+                <h1 class="post-title">
                     <a href="//lewang.dev/posts/2011-12-01-when-datatype-is-json/" title="jquery $.ajax() 中 datatype 为 json 时的问题">jquery $.ajax() 中 datatype 为 json 时的问题</a>
                 </h1>
                 <div class="post-meta">
@@ -87,86 +267,6 @@
                 <div class="post-summary">
                     <a href="//lewang.dev/posts/2011-12-01-when-datatype-is-json/">
                         最近在为摆摊写点前端 js 的时候，在使用 jquery 的 $.ajax()这个方法的时候，当 datatype 设置为 json 时，总是不执行 success 回调，而是执行 error 回调。而将 datatype 设置成 text，就可以执行 success 回调了，摆摊使用的是 jQuery JavaScript Library v1.6.2，查看 jQuery 文档可知： “json”: Evaluates the response as JSON and returns a JavaScript object. In jQuery 1.4 the JSON data is parsed in a strict manner; any malformed JSON is rejected...
-                    </a>
-                </div>
-            </article>
-            
-            <article class="post">
-                <h1 class="post-title">
-                    <a href="//lewang.dev/posts/2011-11-08-think-of-baigetan/" title="关于摆摊的一些思考">关于摆摊的一些思考</a>
-                </h1>
-                <div class="post-meta">
-                    Nov 8, 2011
-                    
-                    <span>/</span>
-                    
-                    <span><a href="//lewang.dev/categories/Life">Life</a></span>
-                    
-                </div>
-                
-                <div class="post-summary">
-                    <a href="//lewang.dev/posts/2011-11-08-think-of-baigetan/">
-                        今天是十一假期归来的第一天，实验室也启用了新的管理制度，坐在北洋楼的实验室也有一会儿了，刚发了一会儿呆，对摆摊又有了一些新的思考。 我的目标是想把摆摊做成高校的网上交易平台，也就是类似淘宝，但是作为摆摊网的初期是不合适的，因为这个交易平台太大太复杂。 所以摆摊的第一步还是做交易信息的...
-                    </a>
-                </div>
-            </article>
-            
-            <article class="post">
-                <h1 class="post-title">
-                    <a href="//lewang.dev/posts/2011-11-07-design-of-baigetan/" title="摆摊网页面设计">摆摊网页面设计</a>
-                </h1>
-                <div class="post-meta">
-                    Nov 7, 2011
-                    
-                    <span>/</span>
-                    
-                    <span><a href="//lewang.dev/categories/Life">Life</a></span>
-                    
-                </div>
-                
-                <div class="post-summary">
-                    <a href="//lewang.dev/posts/2011-11-07-design-of-baigetan/">
-                        从泰山回来这几天，抽得空把摆摊网的页面做了出来，包括 css 和 html 的编写等，现在可以从 baitan.sinaapp.com 看到页面效果了，目前兼容 ie8、ff、chrome、safari 等。 baitan001.com 也在备案之中，应该很快就可以使用 baitan001.com 域名访问了。 有同学想练习 js，php 等 web 技术的，不妨联系我，我肯定能让你参与进来！ 我是小码哥...
-                    </a>
-                </div>
-            </article>
-            
-            <article class="post">
-                <h1 class="post-title">
-                    <a href="//lewang.dev/posts/2011-10-21-process-of-baigetan/" title="摆摊的一些进展">摆摊的一些进展</a>
-                </h1>
-                <div class="post-meta">
-                    Oct 21, 2011
-                    
-                    <span>/</span>
-                    
-                    <span><a href="//lewang.dev/categories/Life">Life</a></span>
-                    
-                </div>
-                
-                <div class="post-summary">
-                    <a href="//lewang.dev/posts/2011-10-21-process-of-baigetan/">
-                        这段时间都在进行密集的笔试面试，但还是没有停下摆摊网的开发进程。目前摆摊网已经由吴江川同学设计好了产品的原型，我也在原型的基础上做好了全部页面的设计工作，接下来就是开始后台逻辑的开发。 目前后台数据库部分已经设计完毕。 加油！ 我是小码哥...
-                    </a>
-                </div>
-            </article>
-            
-            <article class="post">
-                <h1 class="post-title">
-                    <a href="//lewang.dev/posts/2011-09-28-hello-baigetan/" title="摆摊网">摆摊网</a>
-                </h1>
-                <div class="post-meta">
-                    Sep 28, 2011
-                    
-                    <span>/</span>
-                    
-                    <span><a href="//lewang.dev/categories/%E6%84%9F%E6%82%9F">感悟</a></span>
-                    
-                </div>
-                
-                <div class="post-summary">
-                    <a href="//lewang.dev/posts/2011-09-28-hello-baigetan/">
-                        点评：留在这里，让自己可以看到以往无知的自己 一转眼，20 年就过去了，终于要和自己 20 年的学生身份说拜拜了。 那天去图书馆借书，回来的路上敬业湖桥边的那棵树的时候，心不由得感叹起来，这棵树，我已经拍下了它的春夏秋冬，它叶枯叶落，相似年年，只因它生根于此，我是要走的。 去图书馆，边走边想，...
                     </a>
                 </div>
             </article>
@@ -199,7 +299,15 @@
         <a href="//lewang.dev/page/4/">4</a>
     </li>
     
+    <li >
+        <a href="//lewang.dev/page/5/">5</a>
+    </li>
+    
 
+    
+    <li class="next">
+        <a href="//lewang.dev/page/5/">下一页</a>
+    </li>
     
 </ol>
 

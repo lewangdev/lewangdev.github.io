@@ -8,7 +8,7 @@
     <language>zh-CN</language>
     <lastBuildDate>Mon, 06 Jun 2022 00:00:00 +0000</lastBuildDate><atom:link href="//lewang.dev/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Kindle 中国停止运营，教你使用 Python 一键下载已购买的电子书</title>
+      <title>Kindle 中国停止运营，一键下载已购买的电子书</title>
       <link>//lewang.dev/posts/2022-06-06-save-your-kindle-ebooks/</link>
       <pubDate>Mon, 06 Jun 2022 00:00:00 +0000</pubDate>
       
@@ -71,7 +71,7 @@
     </item>
     
     <item>
-      <title>用 Python 写个程序把油管 YouTube 变成无限容量的网盘</title>
+      <title>写个程序把油管 YouTube 变成无限容量的网盘</title>
       <link>//lewang.dev/posts/2022-05-27-store-files-as-youtube-videos/</link>
       <pubDate>Fri, 27 May 2022 00:00:00 +0000</pubDate>
       
@@ -119,7 +119,7 @@
     </item>
     
     <item>
-      <title>使用 grep，xargs 和 sed 命令批量替换所有 Markdown 文件中的链接</title>
+      <title>grep，xargs 和 sed 的一次日常使用</title>
       <link>//lewang.dev/posts/2022-05-21-replace-strings-in-all-files/</link>
       <pubDate>Sat, 21 May 2022 00:00:00 +0000</pubDate>
       
@@ -229,7 +229,7 @@
     </item>
     
     <item>
-      <title>国内开发者可能有点用的网络工具 cndevnet</title>
+      <title>如何打造国内开发所需要的网络</title>
       <link>//lewang.dev/posts/2022-05-16-cndevnet-intro/</link>
       <pubDate>Mon, 16 May 2022 00:00:00 +0000</pubDate>
       

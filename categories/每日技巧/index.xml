@@ -8,7 +8,7 @@
     <language>zh-CN</language>
     <lastBuildDate>Sat, 21 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="//lewang.dev/categories/%E6%AF%8F%E6%97%A5%E6%8A%80%E5%B7%A7/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>使用 grep，xargs 和 sed 命令批量替换所有 Markdown 文件中的链接</title>
+      <title>grep，xargs 和 sed 的一次日常使用</title>
       <link>//lewang.dev/posts/2022-05-21-replace-strings-in-all-files/</link>
       <pubDate>Sat, 21 May 2022 00:00:00 +0000</pubDate>
       

@@ -164,6 +164,20 @@ if (!doNotTrack) {
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2>jquery $.ajax() 中 datatype 为 json 时的问题
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>最近在为摆摊写点前端 js 的时候，在使用 jquery 的 $.ajax()这个方法的时候，当 datatype 设置为 json 时，总是不执行 success 回调，而是执行 error 回调。而将 datatype 设置成 text，就可以执行 success 回调了，摆摊使用的是 jQuery JavaScript Library v1.6.2，查看 jQuery 文档可知：
+“json”: Evaluates the response as JSON and returns a JavaScript object. In jQuery 1.4 the JSON data is parsed in a strict manner; any malformed JSON is rejected and a parse error is thrown. (See json.org for more information on proper JSON formatting.)
+我用 php 产生的字符串是...</p>
+  </div>
+  <footer class="entry-footer"><span title='2011-12-01 00:40:00 +0000 UTC'>December 1, 2011</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Le</footer>
+  <a class="entry-link" aria-label="post link to jquery $.ajax() 中 datatype 为 json 时的问题" href="https://lewang.dev/posts/2011-12-01-when-datatype-is-json/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2>未来是个未知数
     </h2>
   </header>

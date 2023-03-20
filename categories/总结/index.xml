@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>总结 on PaperMod</title>
-    <link>https://adityatelange.github.io/hugo-PaperMod/categories/%E6%80%BB%E7%BB%93/</link>
-    <description>Recent content in 总结 on PaperMod</description>
+    <title>总结 on 小碼哥</title>
+    <link>https://lewang.dev/categories/%E6%80%BB%E7%BB%93/</link>
+    <description>Recent content in 总结 on 小碼哥</description>
     <image>
-      <title>PaperMod</title>
-      <url>https://adityatelange.github.io/hugo-PaperMod/papermod-cover.png</url>
-      <link>https://adityatelange.github.io/hugo-PaperMod/papermod-cover.png</link>
+      <title>小碼哥</title>
+      <url>https://lewang.dev/lewangdev-cover.png</url>
+      <link>https://lewang.dev/lewangdev-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 28 Jan 2016 11:55:00 +0000</lastBuildDate><atom:link href="https://adityatelange.github.io/hugo-PaperMod/categories/%E6%80%BB%E7%BB%93/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 28 Jan 2016 11:55:00 +0000</lastBuildDate><atom:link href="https://lewang.dev/categories/%E6%80%BB%E7%BB%93/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>办理机动车临牌</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/posts/2016-01-28-banlinpai/</link>
+      <link>https://lewang.dev/posts/2016-01-28-banlinpai/</link>
       <pubDate>Thu, 28 Jan 2016 11:55:00 +0000</pubDate>
       
-      <guid>https://adityatelange.github.io/hugo-PaperMod/posts/2016-01-28-banlinpai/</guid>
+      <guid>https://lewang.dev/posts/2016-01-28-banlinpai/</guid>
       <description> 政策已变，目前只能办理有效期为 15 天的临牌，并且最多只能办理两次
 问题 外地户口，上海购车办理机动车(出省)临牌(出省和不出省的临牌办理方法一样,出省临牌有效期是30天，不出省的是15天)
 文档记录状态 可用
@@ -29,10 +29,10 @@
     
     <item>
       <title>驾照转入换证</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/posts/2015-10-15-huanzheng/</link>
+      <link>https://lewang.dev/posts/2015-10-15-huanzheng/</link>
       <pubDate>Thu, 15 Oct 2015 11:55:00 +0000</pubDate>
       
-      <guid>https://adityatelange.github.io/hugo-PaperMod/posts/2015-10-15-huanzheng/</guid>
+      <guid>https://lewang.dev/posts/2015-10-15-huanzheng/</guid>
       <description>问题 外地户口＋上海居住证，外地驾照即将到期，需要将外地驾照转入上海并且进行驾照到期换证。
 可用状态 可用
 发生时间 2015年10月15日8:00至10:00
@@ -44,10 +44,10 @@
     
     <item>
       <title>在这安静的夜里</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/posts/2012-03-10-at-a-late-night/</link>
+      <link>https://lewang.dev/posts/2012-03-10-at-a-late-night/</link>
       <pubDate>Sat, 10 Mar 2012 00:40:00 +0000</pubDate>
       
-      <guid>https://adityatelange.github.io/hugo-PaperMod/posts/2012-03-10-at-a-late-night/</guid>
+      <guid>https://lewang.dev/posts/2012-03-10-at-a-late-night/</guid>
       <description>今天组会不用开了，报告也不用做了，感觉比较爽，于是晚上的时候决定给摆摊写一些新的东西。
 于是刚刚给摆摊的首页添加了一个小小的功能，就是能够随机的选取5本书在首页上循环展示，另外修正了一些网友提出的问题。
 首页图片轮换是用jquery实现的，做法也很简单，当然实现的功能和效果还是比较弱的，这里是我用到一些资料。 CSS定位：http://www.haozi.cn/code/position-static-relative-absolute-float/

@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>ucloud on PaperMod</title>
-    <link>https://adityatelange.github.io/hugo-PaperMod/tags/ucloud/</link>
-    <description>Recent content in ucloud on PaperMod</description>
+    <title>ucloud on 小碼哥</title>
+    <link>https://lewang.dev/tags/ucloud/</link>
+    <description>Recent content in ucloud on 小碼哥</description>
     <image>
-      <title>PaperMod</title>
-      <url>https://adityatelange.github.io/hugo-PaperMod/papermod-cover.png</url>
-      <link>https://adityatelange.github.io/hugo-PaperMod/papermod-cover.png</link>
+      <title>小碼哥</title>
+      <url>https://lewang.dev/lewangdev-cover.png</url>
+      <link>https://lewang.dev/lewangdev-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Fri, 09 Aug 2013 00:40:00 +0000</lastBuildDate><atom:link href="https://adityatelange.github.io/hugo-PaperMod/tags/ucloud/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 09 Aug 2013 00:40:00 +0000</lastBuildDate><atom:link href="https://lewang.dev/tags/ucloud/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>阿里云和 ucloud 云主机评测</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/posts/2013-08-09-benchmark-of-aliyun-and-ucloud/</link>
+      <link>https://lewang.dev/posts/2013-08-09-benchmark-of-aliyun-and-ucloud/</link>
       <pubDate>Fri, 09 Aug 2013 00:40:00 +0000</pubDate>
       
-      <guid>https://adityatelange.github.io/hugo-PaperMod/posts/2013-08-09-benchmark-of-aliyun-and-ucloud/</guid>
+      <guid>https://lewang.dev/posts/2013-08-09-benchmark-of-aliyun-and-ucloud/</guid>
       <description>总体说明 我使用联通 10M 光网，SSH 在多个时间段登录两个主机都是非常的快，但是阿里云的 SSH 有时会断开连接，需要重新登录(一天遇到 n 次)，ucloud 一次都没有断开连接过。两者总体操作上都很流畅。平时我比较习惯于使用 ubuntu，于是在两个主机上都安装了 Ubuntu 12.04_64 的 Server 版本。在安装初始化系统过程中(测试过两次)，Ucloud 的速度要快于阿里云主机，粗略估计都是在 20s 以内，因此差别不大。
 阿里云主机安装过程中不需要人为参与，选好主机配置即可，主机一旦创建完成，用户名和口令会发送到测试者手机上，而且直接发送的是 root 账户口令。Ucloud 除了选择配置之外，还需要设置强登录密码，使用普通用户登录，感觉更 geek 一点。
 默认情况配置下，关闭重启服务器，Ucloud 会发送主机变化短信到手机，阿里云不会。阿里云在系统负载预警方面比较全面，ucloud 侧重于 server 上在线状态和相关服务的预警。

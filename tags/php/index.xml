@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>php on PaperMod</title>
-    <link>https://adityatelange.github.io/hugo-PaperMod/tags/php/</link>
-    <description>Recent content in php on PaperMod</description>
+    <title>php on 小碼哥</title>
+    <link>https://lewang.dev/tags/php/</link>
+    <description>Recent content in php on 小碼哥</description>
     <image>
-      <title>PaperMod</title>
-      <url>https://adityatelange.github.io/hugo-PaperMod/papermod-cover.png</url>
-      <link>https://adityatelange.github.io/hugo-PaperMod/papermod-cover.png</link>
+      <title>小碼哥</title>
+      <url>https://lewang.dev/lewangdev-cover.png</url>
+      <link>https://lewang.dev/lewangdev-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 22 Mar 2012 00:40:00 +0000</lastBuildDate><atom:link href="https://adityatelange.github.io/hugo-PaperMod/tags/php/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 22 Mar 2012 00:40:00 +0000</lastBuildDate><atom:link href="https://lewang.dev/tags/php/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>再说 PHP 中 SimpleXML</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/posts/2012-03-22-a-short-discuss-of-simplexml-of-php/</link>
+      <link>https://lewang.dev/posts/2012-03-22-a-short-discuss-of-simplexml-of-php/</link>
       <pubDate>Thu, 22 Mar 2012 00:40:00 +0000</pubDate>
       
-      <guid>https://adityatelange.github.io/hugo-PaperMod/posts/2012-03-22-a-short-discuss-of-simplexml-of-php/</guid>
+      <guid>https://lewang.dev/posts/2012-03-22-a-short-discuss-of-simplexml-of-php/</guid>
       <description>前一篇帖子使用了 xpath，后来了解到 xpath 的性能可能比较差，而且在遇到有命名空间的时候还有点小麻烦。这里都已豆瓣提供的 API 返回的 xml 为例。豆瓣返回的 xml 不是 rss 格式的，而是 Atom 格式，有很多的命名空间，如果习惯于操作 rss 格式的 xml，那么可以直接把 xml 里面的命名空间的字符串都 replace 掉，这个方法貌似很简单很暴力，就不会遇到命名空间的问题了。
 从豆瓣 API 开始，点击这个链接 http://api.douban.com/book/subjects?q=java 你就可以看到 xml 格式，由于返回的是 Atom 格式的 xml，浏览器会自动帮你解析，所以应该这样
 # 这样就可以得到一个java.xml文件。 $ wget -O java.xml http://api.douban.com/book/subjects?q=java 这样就可以得到一个 java.xml 文件，接下来使用 SimplePHP 处理这个文件。
@@ -28,10 +28,10 @@ $children = $xml-&amp;gt;children(&amp;#39;http://a9.com/-/spec/opensearchrss/1.
     
     <item>
       <title>SimpleXML使用xpath</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/posts/2011-12-01-how-to-use-simplexml-of-php/</link>
+      <link>https://lewang.dev/posts/2011-12-01-how-to-use-simplexml-of-php/</link>
       <pubDate>Thu, 01 Dec 2011 13:09:00 +0000</pubDate>
       
-      <guid>https://adityatelange.github.io/hugo-PaperMod/posts/2011-12-01-how-to-use-simplexml-of-php/</guid>
+      <guid>https://lewang.dev/posts/2011-12-01-how-to-use-simplexml-of-php/</guid>
       <description>这几天没心情看论文，于是开始写写摆摊网的代码。摆摊主要做高校二手书籍信息的分享，于是需要从豆瓣上获取图书信息，豆瓣提供了一个完整的 xml 来描述一本书，例如http://api.douban.com/book/subject/isbn/9787543639136，于是需要处理这个 xml 来获取相应信息，这里小码哥采用的是直接使用 xpath 来获取 xml 文档中相应的信息。摆摊使用了 sae，于是使用 SimpleXML 来处理 xml，加上自己还只是 PHP 的初学者，于是出现了一些问题。
 这里是一些学习资料：
 xpath:http://www.w3school.com.cn/xpath/ simplexml:http://cn2.php.net/manual/en/simplexmlelement.xpath.php 新建 SimpleXMLElement 对象，xml 文件内容在$content 中
@@ -44,10 +44,10 @@ translator = array(); $author = array(); $i = $j = 0; foreach($result as $item) 
     
     <item>
       <title>摆摊网页面设计</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/posts/2011-11-07-design-of-baigetan/</link>
+      <link>https://lewang.dev/posts/2011-11-07-design-of-baigetan/</link>
       <pubDate>Mon, 07 Nov 2011 00:40:00 +0000</pubDate>
       
-      <guid>https://adityatelange.github.io/hugo-PaperMod/posts/2011-11-07-design-of-baigetan/</guid>
+      <guid>https://lewang.dev/posts/2011-11-07-design-of-baigetan/</guid>
       <description>从泰山回来这几天，抽得空把摆摊网的页面做了出来，包括 css 和 html 的编写等，现在可以从 baitan.sinaapp.com 看到页面效果了，目前兼容 ie8、ff、chrome、safari 等。
 baitan001.com 也在备案之中，应该很快就可以使用 baitan001.com 域名访问了。
 有同学想练习 js，php 等 web 技术的，不妨联系我，我肯定能让你参与进来！

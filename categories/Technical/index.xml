@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Technical on PaperMod</title>
-    <link>https://adityatelange.github.io/hugo-PaperMod/categories/technical/</link>
-    <description>Recent content in Technical on PaperMod</description>
+    <title>Technical on 小碼哥</title>
+    <link>https://lewang.dev/categories/technical/</link>
+    <description>Recent content in Technical on 小碼哥</description>
     <image>
-      <title>PaperMod</title>
-      <url>https://adityatelange.github.io/hugo-PaperMod/papermod-cover.png</url>
-      <link>https://adityatelange.github.io/hugo-PaperMod/papermod-cover.png</link>
+      <title>小碼哥</title>
+      <url>https://lewang.dev/lewangdev-cover.png</url>
+      <link>https://lewang.dev/lewangdev-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 06 Jun 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://adityatelange.github.io/hugo-PaperMod/categories/technical/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 06 Jun 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://lewang.dev/categories/technical/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Kindle 中国停止运营，一键下载已购买的电子书</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/posts/2022-06-06-save-your-kindle-ebooks/</link>
+      <link>https://lewang.dev/posts/2022-06-06-save-your-kindle-ebooks/</link>
       <pubDate>Mon, 06 Jun 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://adityatelange.github.io/hugo-PaperMod/posts/2022-06-06-save-your-kindle-ebooks/</guid>
+      <guid>https://lewang.dev/posts/2022-06-06-save-your-kindle-ebooks/</guid>
       <description>前几天亚马逊宣告 Kindle 中国电子书店运营进行调整，通知标题写得比较委婉，其实就是亚马逊电子书即将退出中国市场，到时候我们购买的国行版 Kindle 将不能购买新电子书，也不能下载已经购买的电子书了。
 如果购买的电子书比较多，手动一本一本的去下载是挺费时间的，我来分享一下我是如何使用 Python 一键下载所有电子书的。
 安装 Python 用 Chrome 浏览器打开 https://python.org，下载最新版本的 Python 3.10.4
@@ -36,10 +36,10 @@ python kindle.py 这样看到了脚本的帮助提示：
     
     <item>
       <title>写个程序把油管 YouTube 变成无限容量的网盘</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/posts/2022-05-27-store-files-as-youtube-videos/</link>
+      <link>https://lewang.dev/posts/2022-05-27-store-files-as-youtube-videos/</link>
       <pubDate>Fri, 27 May 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://adityatelange.github.io/hugo-PaperMod/posts/2022-05-27-store-files-as-youtube-videos/</guid>
+      <guid>https://lewang.dev/posts/2022-05-27-store-files-as-youtube-videos/</guid>
       <description>前几天刷新闻的时候，看到了一个代码仓库 YouTubeDrive 的介绍，他的作者在多年前用 Wolfram 语言（也就是 Mathematica） 编写了一段代码，可以将油管变成一个无限容量的大网盘，看完介绍之后我脑子里直接蹦出无数个“卧槽”，心里顿生“这样也行”的膜拜之情，不禁提问：这个是薅羊毛的最高境界吗？
 说起 Wolfram 语言和 Mathematica，不得不提一下，它是我学习的第一个编程语言（汇编是第二个）。多年前我是在学校机房学的，当时只用它画画数学公式的图，今天看着 YouTubeDrive 的实现，才了解到 Wolfram 还可以这样用。
 首先，和原作者一样，我也不提倡这样把 YouTube 当成一个无限容量的网盘使用，相同的道理，我也不提倡在国内把 B 站或者任意视频平台当做位无限容量的网盘来用。
@@ -54,10 +54,10 @@ python kindle.py 这样看到了脚本的帮助提示：
     
     <item>
       <title>如何打造国内开发所需要的网络</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/posts/2022-05-16-cndevnet-intro/</link>
+      <link>https://lewang.dev/posts/2022-05-16-cndevnet-intro/</link>
       <pubDate>Mon, 16 May 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://adityatelange.github.io/hugo-PaperMod/posts/2022-05-16-cndevnet-intro/</guid>
+      <guid>https://lewang.dev/posts/2022-05-16-cndevnet-intro/</guid>
       <description>一个国内开发者可能有点用的网络工具，cndevnet 帮助开发者，尤其是初学者不用再费心折腾 pip/npm/golang/flutter/android/blockchain 等等无法访问的问题。
 背景 由于某些原因，国内开发者需要的不少技术站点或者镜像源都无法直接访问，这使得在开发者在日常工作中会消耗额外的时间，去设置各种代理或者寻找国内的可替代的镜像源来使用。
 在开源软件的世界里，几乎所有的知名项目，原本只要把代码 clone 回来，不需要做额外任何配置，只需要按照它的说明就可以直接编译源码。但由于网络的原因，在国内甚至连开源软件的源码都不太方便直接下载，一些原本只需要从 GitHub 拉下来代码就可以直接编译成功的项目，在国内也是连编译都编译不过。
@@ -75,10 +75,10 @@ cndevnet 使用了以下软件和服务 Debian：目前支持的 Linux 系统 Do
     
     <item>
       <title>写了一个 ShadowsocksX-NG 的 gost 插件</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/posts/2020-12-02-add-gost-plugin-for-shadowsocks-ng/</link>
+      <link>https://lewang.dev/posts/2020-12-02-add-gost-plugin-for-shadowsocks-ng/</link>
       <pubDate>Wed, 02 Dec 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://adityatelange.github.io/hugo-PaperMod/posts/2020-12-02-add-gost-plugin-for-shadowsocks-ng/</guid>
+      <guid>https://lewang.dev/posts/2020-12-02-add-gost-plugin-for-shadowsocks-ng/</guid>
       <description>gost 是一个非常有用的网络工具，可以在 ShadowsocksX-NG 中安装 gost 插件，方便在 ShadowsocksX-NG 中使用 gost。
 原由 自从查资料上网工具换成 gost 之后，由于 MacOS 上没有 gost 专用的智能代理（也就是该翻的时候翻，不用翻的时候不翻）桌面客户端，所以需要用 gost 在本地把 wss 代理转成 ss 后再继续使用 ShadowsocksX-NG。 虽然可以用 launchctl 启动一个 gost 后台服务，但是用起来还是不太方便。
 看了下 ShadowsocksX-NG 是如何工作的： ShadowsocksX-NG 会在本地启动 ss-local 进程跑一个 socks5 服务，而且 ShadowsocksX-NG 实现智能代理的逻辑与 ss-local 并没有太多的关系，所以只要在想办法本地能提供一个 socks5 服务就够了。
@@ -88,10 +88,10 @@ cndevnet 使用了以下软件和服务 Debian：目前支持的 Linux 系统 Do
     
     <item>
       <title>机房不能访问互联网，轻松搞定系统部署</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/posts/2020-11-27-go-through-the-system-firewall/</link>
+      <link>https://lewang.dev/posts/2020-11-27-go-through-the-system-firewall/</link>
       <pubDate>Fri, 27 Nov 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://adityatelange.github.io/hugo-PaperMod/posts/2020-11-27-go-through-the-system-firewall/</guid>
+      <guid>https://lewang.dev/posts/2020-11-27-go-through-the-system-firewall/</guid>
       <description>创业这段时间以来，我们的 IoT 系统已经在不少客户的机房做了私有化部署，客户大多都是机加工厂、商业大楼、医院和大学实验室等，客户的机房都有一个相同的特点：私有云，与外网隔离，不能访问互联网。或者更为准确的说，是我们部署的服务器不能访问互联网，在没有互联网访问权限的情况下，系统的包管理工具(yum/apt/docker)都无法使用了，在这种情况下进行系统部署安装，费时费力，而且无法进行远程部署维护，也大大增加了项目的实施成本。
 在最近的一个客户项目的实施过程中，看到客户的一些其他供应商在系统部署过程中非常艰难，甚至是 CentOS 系统初始化和 Docker 的安装就花掉了两个礼拜的人力，不排除一些供应商这样折腾会给他的客户留下工作敬业钱花的值的好印象，但对于我们这样的小创业公司来说，这样的时间浪费和低效是无法承担的成本，因为来实操部署的人就是公司老板本人了，我也不想出差在客户这里待上两个礼拜。
 在工作完成之后，想想可以把解决问题的方法记录一下，也许能给遇到相同问题的同行一些启发和帮助。好了，废话不多说，接下来我们就来解决这个无外网的部署问题，顺便再解决一下远程维护的问题。
@@ -112,10 +112,10 @@ cndevnet 使用了以下软件和服务 Debian：目前支持的 Linux 系统 Do
     
     <item>
       <title>大象（Gradle）的故事：一见如故</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/posts/2020-02-22-hello-gradle-1/</link>
+      <link>https://lewang.dev/posts/2020-02-22-hello-gradle-1/</link>
       <pubDate>Sat, 22 Feb 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://adityatelange.github.io/hugo-PaperMod/posts/2020-02-22-hello-gradle-1/</guid>
+      <guid>https://lewang.dev/posts/2020-02-22-hello-gradle-1/</guid>
       <description>小码哥：“与大象（Gradle）一见如故？你就是 Gradle？”
 大象：“对，我就是那个用来构建 Java 项目的 Gradle 大象。 ”
 小码哥：“我好像天天都在用你啊。看，我的项目都是用你构建的。”
@@ -137,10 +137,10 @@ settings.gradle</description>
     
     <item>
       <title>CentOS 7 上使用 pyenv 安装 Python 3.7.3</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/posts/2019-05-29-centos7-pyenv-install-python-3/</link>
+      <link>https://lewang.dev/posts/2019-05-29-centos7-pyenv-install-python-3/</link>
       <pubDate>Wed, 29 May 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://adityatelange.github.io/hugo-PaperMod/posts/2019-05-29-centos7-pyenv-install-python-3/</guid>
+      <guid>https://lewang.dev/posts/2019-05-29-centos7-pyenv-install-python-3/</guid>
       <description>概要 本文记录了在 CentOS 7.6 系统上通过 pyenv 安装 Python 3.7.3 的过程。
 环境 CentOS Linux release 7.6.1810 (Core) Kernel 3 3.10.0-957.el7.x86_64 Pyenv 1.2.11 安装 pyenv $ curl https://pyenv.run | bash 然后根据提示把以下内容放到 ~/.bashrc 文件末尾
 # Load pyenv automatically by adding # the following to ~/.bashrc: export PATH=&amp;#34;/root/.pyenv/bin:$PATH&amp;#34; eval &amp;#34;$(pyenv init -)&amp;#34; eval &amp;#34;$(pyenv virtualenv-init -)&amp;#34; 安装 Python 3.7.3 准备
@@ -149,20 +149,20 @@ $ sudo yum -y install xz bzip2 bzip2-devel sqlite-devel gcc openssl-devel readli
     
     <item>
       <title>Java 进阶要点</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/posts/2019-03-06-keynotes-of-new-java/</link>
+      <link>https://lewang.dev/posts/2019-03-06-keynotes-of-new-java/</link>
       <pubDate>Wed, 06 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://adityatelange.github.io/hugo-PaperMod/posts/2019-03-06-keynotes-of-new-java/</guid>
+      <guid>https://lewang.dev/posts/2019-03-06-keynotes-of-new-java/</guid>
       <description>自己学习 Java 和用 Java 过程中的理解和备忘的知识点。
 JDK 11 Oracle 不在免费提供 LTS 版本了，包括 JDK 8 ZGC, 可伸缩的、低延迟的垃圾收集器，STW 时间不超过 10ms Nashorn 标记为 Deprecate 了 JDK 9 module try-catch 简化 _ 为保留关键字 var 将在 JDK 10 中作为关键字, 作为本地变量类型推断关键字 字符串相关，主要是 Compact String, 用 byte[] 替换了 char[], char 在 Java 中占两个字节 G1 作为默认垃圾回收器 JVM 启动 JVM 相关的命令行参数 G1 垃圾回收器 内存 JVM(Hotspot) 内存结构 制造各种 OutOfMemery 和 StackOverflow 各种 JVM 相关工具(jstat/jmap/jstack/jps 等) 解决 FullGC 的问题 引用：WeakRefrence/PhantomReference/SoftRefrence/FinalRefrence 等 ClassLoader/URLClassLoader Spring Boot 的 ClassLoader 自定义 ClassLoader 多线程和并发 JVM 的线程模型 1:1 协程 创建线程的方法 线程同步 synchronzied/对象锁/类锁/锁方法/锁锁代码块 线程池 锁相关（Lock 接口和实现类） Condition volatile ThreadLocal 用途和实现 并发（CAS/乐观锁/无锁/无等待/无阻塞） 字节码 基本结构 操作字节码的工具 Javassist/ASM AOP 集合 Collection,List,ArrayList,Vector,LinkedList, SkipList, Stack Queue HashMap/HashTable HashMap 扩容死循环问题 LinkedHashMap TreeMap HashSet,TreeSet WeakHashMap 并发相关的集合 ConcurrentHashMap CopyOnWriteArrayList IO IO 模型 NIO Non-blocking IO Java 8 IO 相关的接口和类 Netty Vert.</description>
     </item>
     
     <item>
       <title>使用 Docker 方式安装 Gitlab，没你想得那么简单</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/posts/2018-12-18-gitlab-docker-install/</link>
+      <link>https://lewang.dev/posts/2018-12-18-gitlab-docker-install/</link>
       <pubDate>Tue, 18 Dec 2018 23:25:20 +0000</pubDate>
       
-      <guid>https://adityatelange.github.io/hugo-PaperMod/posts/2018-12-18-gitlab-docker-install/</guid>
+      <guid>https://lewang.dev/posts/2018-12-18-gitlab-docker-install/</guid>
       <description>为什么要写这篇文章？ 曾经几年前在 Docker 还没有广泛应用的时候，在公司使用过源码的方式安装和升级过 Gitlab，虽远没有 Docker 方便，因为自己对 Linux 系统的理解，所以整体上感觉还是挺简单的。这几年随着 Docker 的普及，使得安装 Gitlab 更加的容易，不仅方便了我这样的老鸟，也更方便了小白用户们。但是 Gitlab 官方的 Docker 安装文档并没有写得很完善, 除了官方文档之外，检索出来的安装文档也是人云亦云，东拼西凑，结果也就是能运行起来，凑合着能用而已。避免出现下图中“我已经用 Docker 部署好啦”，其实已经翻车的情形。
 我希望每做一件小事的时候也都能抱着“知其然知其所以然”的心态对待，用 Docker 方式安装 Gitlab，说简单来说就是一行命令的事儿，但是这样就够了吗？我看是不够的，所以就有了这篇文档。
 本文需要达成的事项 在 CentOS 7 系统中安装 Docker 使用 Docker 方式安装中文版 Gitlab 和宿主机器共用 22(SSH) 端口 支持 SSH(22)/HTTPS(443) 方式推拉仓库 使用 SMTP 方式配置通知邮箱(腾讯企业邮箱) 改写默认的项目标签(Labels) 在 CentOS 7 系统中安装 Docker 这部分参考 Docker 的官方文档, 罗列一下安装步骤, 细节请看 Docker 的官方文档。如果使用 root 用户安装，sudo 可以去掉。
@@ -171,10 +171,10 @@ JDK 11 Oracle 不在免费提供 LTS 版本了，包括 JDK 8 ZGC, 可伸缩的�
     
     <item>
       <title>日志收集和分析系统架构</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/posts/2017-07-23-log-processing-system/</link>
+      <link>https://lewang.dev/posts/2017-07-23-log-processing-system/</link>
       <pubDate>Sun, 23 Jul 2017 22:30:00 +0000</pubDate>
       
-      <guid>https://adityatelange.github.io/hugo-PaperMod/posts/2017-07-23-log-processing-system/</guid>
+      <guid>https://lewang.dev/posts/2017-07-23-log-processing-system/</guid>
       <description>背景 微服务，日志分散且种类多（php/java/python），用 docker 起应用，日志通过卷放在宿主机器指定目录下，服务有众多实例，metrics 数据也不仅相同，无论是日志还是 metrics 数据，都可以看作是时间序列数据
 分散主要表现为：
 多个主机 多个目录下多个文件 应用开发所使用的技术栈不同日志格式不同 web log（主要是 nginx） 各类事件 一些其它事务性的日志 日志为时间序列数据，包括：
@@ -185,10 +185,10 @@ JDK 11 Oracle 不在免费提供 LTS 版本了，包括 JDK 8 ZGC, 可伸缩的�
     
     <item>
       <title>Log4j2 快速入门</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/posts/2017-07-15-log4j2/</link>
+      <link>https://lewang.dev/posts/2017-07-15-log4j2/</link>
       <pubDate>Sat, 15 Jul 2017 23:31:00 +0000</pubDate>
       
-      <guid>https://adityatelange.github.io/hugo-PaperMod/posts/2017-07-15-log4j2/</guid>
+      <guid>https://lewang.dev/posts/2017-07-15-log4j2/</guid>
       <description>背景 Java 生态下的日志库太多，配置也不同，大多数情况下会使用 SLF4j (又引入了一个库)来抽象日志接口。在使用 Log4j2 后，发现可以不使用 SLF4j 了，并且配置变得更简单，可以使用 lombok 的 log4j2 注解等。
 需要搞清楚
 如何设置哪些日志要记录下来 日志记录到哪里去 LEVEL 日志级别： 内置（有 Fatal）：All &amp;lt; Trace &amp;lt; Debug &amp;lt; Info &amp;lt; Warn &amp;lt; Error &amp;lt; Fatal &amp;lt; OFF 还可以自定义： https://logging.apache.org/log4j/2.0/manual/customloglevels.html Appender: 日志输出的目的地 内置的目的地有：
@@ -198,10 +198,10 @@ Logger 负责决定哪些日志要记录和发配日志 哪些需要记日志，
     
     <item>
       <title>MySQL 数据备份和不停机重新搭建主从同步</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/posts/2017-06-06-xtrabackup/</link>
+      <link>https://lewang.dev/posts/2017-06-06-xtrabackup/</link>
       <pubDate>Tue, 06 Jun 2017 12:15:07 +0000</pubDate>
       
-      <guid>https://adityatelange.github.io/hugo-PaperMod/posts/2017-06-06-xtrabackup/</guid>
+      <guid>https://lewang.dev/posts/2017-06-06-xtrabackup/</guid>
       <description>背景 目前公司主要服务都是直接使用 MySQL 主服务器，从服务主要给离线数据分析服务使用，由于前期弄得比较简单的粗暴，从服务上还有一两个数据库在做生产使用, 并且从服数据已经不能和主服进行进行同步了，有大量错误，忽略都没有办法进行。此外，主服仅配置了三个核心数据的 binlog，随着业务的变化，其它数据库不能走主从这条路来同步数据，于是希望不停机的情形下重新调整主服配置，记录所有的数据库的 binlog，同时添加新的从服务器来同步数据
 方案 1 MySQL 的主从是通过同步 binlog 日志来实现数据同步的，于是需要想办法把从服数据先于主服同步，记录 binlog 的 pos 值，再配置从服从该 pos 处开始同步，考虑可以使用 mysqldump 导出所有 innodb 数据，使用 rsync 同步所有 myisam 数据文件，然后再开启主从同步。但是目前这种方案不适用，主服不能长时间停机
 方案 2 使用 xtrabackup 来完成目标
@@ -211,10 +211,10 @@ yum install http://www.percona.com/downloads/percona-release/redhat/0.1-4/percon
     
     <item>
       <title>Nginx 性能调优「译」</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/posts/2014-10-16-tuning-nginx/</link>
+      <link>https://lewang.dev/posts/2014-10-16-tuning-nginx/</link>
       <pubDate>Thu, 16 Oct 2014 15:27:00 +0000</pubDate>
       
-      <guid>https://adityatelange.github.io/hugo-PaperMod/posts/2014-10-16-tuning-nginx/</guid>
+      <guid>https://lewang.dev/posts/2014-10-16-tuning-nginx/</guid>
       <description>这是一篇译文，原文链接：Tuning NGINX for Performance
 Nginx 为人熟知的是在负载均衡、静态缓存和 WEB 服务器等方面的高性能，目前世界上最繁忙的站点中大约有 40% 在使用 Nginx。绝大多数情况下，大多数默认的 Nginx 和 Linux 配置都可以工作得非常好，但也需要做一些优化以获得最好的性能。本文将讨论在优化系统时需要考虑的 Nginx 和 Linux 的部分配置。可配置的选项有很多，但是本文只涵盖推荐大多数用户调整的配置选项。本文没有涵盖的配置选项，只有那些对 Nginx 和 Linux 有了深入的理解的人或者获得了 Nginx 技术支持和专业的服务团队的推荐建议后，才可以考虑调整。Nginx 专业服务器团队已经为世界上一些最繁忙的站点通过优化 Nginx 获得了最高水平的性能，并且可以为任何需要获得自己系统最大产出的客户服务。
 简介 本文假设读者对 Nginx 架构和配置的概念已有了基本的了解。Nginx 的文档内容将不会在本文中重复，但本文会提供各项配置简要的介绍和相关文档的链接。
@@ -228,10 +228,10 @@ net.core.netdev_max_backlog: 设置数据包在被发送到 CPU 前可被网卡�
     
     <item>
       <title>使用 Vagrant 构建开发环境</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/posts/2014-03-03-building-devenv-by-vagrant/</link>
+      <link>https://lewang.dev/posts/2014-03-03-building-devenv-by-vagrant/</link>
       <pubDate>Mon, 03 Mar 2014 23:40:00 +0000</pubDate>
       
-      <guid>https://adityatelange.github.io/hugo-PaperMod/posts/2014-03-03-building-devenv-by-vagrant/</guid>
+      <guid>https://lewang.dev/posts/2014-03-03-building-devenv-by-vagrant/</guid>
       <description>Vagrant 是一个构建虚拟开发环境的利器，它使得在团队中很容易共享开发环境，有了它，不必每个人都搭建一个自己的开发环境了。在没有使用 vagrant 之前，我在 windows 中安装了 virtualbox，然后在 virtualbox 中安装了一个 ubuntu server。在 ubuntu 中安装了 mysql、jdk 等软件，并且设置了一个共享目录，以便于将工程代码直接共享给 ubuntu。在外部开发调试过程中（Java 项目），我需要在 virtualbox 中设置好几个端口映射，如 mysql，ssh 等等。这样在 cygwin 里面就可以通过 ssh 登录 ubuntu server 了，为了使得 ssh 登录不用每次设置密码，还需要手动生成公钥私钥。换机器了，这一切我又得重新配置。新同事来了，他也得像我这样重新配置一遍。有可能他还会有问题说：为什么按照你的说明，代码在我这里却无法运行呢？
 一切都从 Yining 告诉了我 vagrant 之后发生了变化，原来一切都这么简单。
 安装 VirtualBox Vagrant 其实是对 virtualbox 做了一层包装，它让使用 virtualbox 作为虚拟机更为简单。当然也可以使用 vmware，使用 vmware 那得找一个 license 了。
@@ -243,10 +243,10 @@ Ubuntu precise 32 VirtualBox Ubuntu precise 64 VirtualBox 更多镜像 在工作
     
     <item>
       <title>Python on My rMBP</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/posts/2014-03-02-python-on-my-rmbp/</link>
+      <link>https://lewang.dev/posts/2014-03-02-python-on-my-rmbp/</link>
       <pubDate>Sun, 02 Mar 2014 21:16:00 +0000</pubDate>
       
-      <guid>https://adityatelange.github.io/hugo-PaperMod/posts/2014-03-02-python-on-my-rmbp/</guid>
+      <guid>https://lewang.dev/posts/2014-03-02-python-on-my-rmbp/</guid>
       <description>前几天入手了一台 Macbook Pro Retina，把 BIG 提到了很爽的地步。经过几天的折腾，可以和 windows，ubuntu desktop 说 Byebye 了。之前整整用了一年的 Ubuntu 来工作，我用它来写 C、Java 和 Python, 要是 windows 没有 cygwin, 没有 MacType，那该多么恐怖。后来用了一段时间的 MBP，让我坚定了以后要自己买一个 MBP。
 ubuntu 那么的惹人爱，因为它有个还挺好用的 GUI，从 debian 那继承过来的 apt-get, 一下子把一个从 redhat 9 用到 fedora 4 的穷学生拉到了 ubuntu 的阵营，至此，deskop 就被 ubuntu 占领了。在此之前，我还用段时间的 debian 和 gentoo。
 不得不说，debian 太伟大太牛逼了，有一次要在一个 MIPS 的小设备上编译安装 erlang， openssl，libcurl 等做一些实验, 要跨平台编译这些软件安装到小设备上去，费了半天终于把这些都编好了，还写了一个编译脚步，结果 erlang 运行的时候虚拟机总是报错，也不知道怎么回事。后来注意到 debian 居然有 MIPS，ARM 的源，后来在 MIPS 设备上安装软件做实验，我再也没有遇到问题，一切都用 apt-get 搞定了。
@@ -255,10 +255,10 @@ ubuntu 那么的惹人爱，因为它有个还挺好用的 GUI，从 debian 那�
     
     <item>
       <title>阿里云和 ucloud 云主机评测</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/posts/2013-08-09-benchmark-of-aliyun-and-ucloud/</link>
+      <link>https://lewang.dev/posts/2013-08-09-benchmark-of-aliyun-and-ucloud/</link>
       <pubDate>Fri, 09 Aug 2013 00:40:00 +0000</pubDate>
       
-      <guid>https://adityatelange.github.io/hugo-PaperMod/posts/2013-08-09-benchmark-of-aliyun-and-ucloud/</guid>
+      <guid>https://lewang.dev/posts/2013-08-09-benchmark-of-aliyun-and-ucloud/</guid>
       <description>总体说明 我使用联通 10M 光网，SSH 在多个时间段登录两个主机都是非常的快，但是阿里云的 SSH 有时会断开连接，需要重新登录(一天遇到 n 次)，ucloud 一次都没有断开连接过。两者总体操作上都很流畅。平时我比较习惯于使用 ubuntu，于是在两个主机上都安装了 Ubuntu 12.04_64 的 Server 版本。在安装初始化系统过程中(测试过两次)，Ucloud 的速度要快于阿里云主机，粗略估计都是在 20s 以内，因此差别不大。
 阿里云主机安装过程中不需要人为参与，选好主机配置即可，主机一旦创建完成，用户名和口令会发送到测试者手机上，而且直接发送的是 root 账户口令。Ucloud 除了选择配置之外，还需要设置强登录密码，使用普通用户登录，感觉更 geek 一点。
 默认情况配置下，关闭重启服务器，Ucloud 会发送主机变化短信到手机，阿里云不会。阿里云在系统负载预警方面比较全面，ucloud 侧重于 server 上在线状态和相关服务的预警。

@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Kindle on PaperMod</title>
-    <link>https://adityatelange.github.io/hugo-PaperMod/tags/kindle/</link>
-    <description>Recent content in Kindle on PaperMod</description>
+    <title>Kindle on 小碼哥</title>
+    <link>https://lewang.dev/tags/kindle/</link>
+    <description>Recent content in Kindle on 小碼哥</description>
     <image>
-      <title>PaperMod</title>
-      <url>https://adityatelange.github.io/hugo-PaperMod/papermod-cover.png</url>
-      <link>https://adityatelange.github.io/hugo-PaperMod/papermod-cover.png</link>
+      <title>小碼哥</title>
+      <url>https://lewang.dev/lewangdev-cover.png</url>
+      <link>https://lewang.dev/lewangdev-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 06 Jun 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://adityatelange.github.io/hugo-PaperMod/tags/kindle/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 06 Jun 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://lewang.dev/tags/kindle/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Kindle 中国停止运营，一键下载已购买的电子书</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/posts/2022-06-06-save-your-kindle-ebooks/</link>
+      <link>https://lewang.dev/posts/2022-06-06-save-your-kindle-ebooks/</link>
       <pubDate>Mon, 06 Jun 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://adityatelange.github.io/hugo-PaperMod/posts/2022-06-06-save-your-kindle-ebooks/</guid>
+      <guid>https://lewang.dev/posts/2022-06-06-save-your-kindle-ebooks/</guid>
       <description>前几天亚马逊宣告 Kindle 中国电子书店运营进行调整，通知标题写得比较委婉，其实就是亚马逊电子书即将退出中国市场，到时候我们购买的国行版 Kindle 将不能购买新电子书，也不能下载已经购买的电子书了。
 如果购买的电子书比较多，手动一本一本的去下载是挺费时间的，我来分享一下我是如何使用 Python 一键下载所有电子书的。
 安装 Python 用 Chrome 浏览器打开 https://python.org，下载最新版本的 Python 3.10.4

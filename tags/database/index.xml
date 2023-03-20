@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>database on PaperMod</title>
-    <link>https://adityatelange.github.io/hugo-PaperMod/tags/database/</link>
-    <description>Recent content in database on PaperMod</description>
+    <title>database on 小碼哥</title>
+    <link>https://lewang.dev/tags/database/</link>
+    <description>Recent content in database on 小碼哥</description>
     <image>
-      <title>PaperMod</title>
-      <url>https://adityatelange.github.io/hugo-PaperMod/papermod-cover.png</url>
-      <link>https://adityatelange.github.io/hugo-PaperMod/papermod-cover.png</link>
+      <title>小碼哥</title>
+      <url>https://lewang.dev/lewangdev-cover.png</url>
+      <link>https://lewang.dev/lewangdev-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 07 Nov 2011 00:40:00 +0000</lastBuildDate><atom:link href="https://adityatelange.github.io/hugo-PaperMod/tags/database/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 07 Nov 2011 00:40:00 +0000</lastBuildDate><atom:link href="https://lewang.dev/tags/database/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>摆摊网页面设计</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/posts/2011-11-07-design-of-baigetan/</link>
+      <link>https://lewang.dev/posts/2011-11-07-design-of-baigetan/</link>
       <pubDate>Mon, 07 Nov 2011 00:40:00 +0000</pubDate>
       
-      <guid>https://adityatelange.github.io/hugo-PaperMod/posts/2011-11-07-design-of-baigetan/</guid>
+      <guid>https://lewang.dev/posts/2011-11-07-design-of-baigetan/</guid>
       <description>从泰山回来这几天，抽得空把摆摊网的页面做了出来，包括 css 和 html 的编写等，现在可以从 baitan.sinaapp.com 看到页面效果了，目前兼容 ie8、ff、chrome、safari 等。
 baitan001.com 也在备案之中，应该很快就可以使用 baitan001.com 域名访问了。
 有同学想练习 js，php 等 web 技术的，不妨联系我，我肯定能让你参与进来！

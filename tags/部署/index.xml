@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>部署 on PaperMod</title>
-    <link>https://adityatelange.github.io/hugo-PaperMod/tags/%E9%83%A8%E7%BD%B2/</link>
-    <description>Recent content in 部署 on PaperMod</description>
+    <title>部署 on 小碼哥</title>
+    <link>https://lewang.dev/tags/%E9%83%A8%E7%BD%B2/</link>
+    <description>Recent content in 部署 on 小碼哥</description>
     <image>
-      <title>PaperMod</title>
-      <url>https://adityatelange.github.io/hugo-PaperMod/papermod-cover.png</url>
-      <link>https://adityatelange.github.io/hugo-PaperMod/papermod-cover.png</link>
+      <title>小碼哥</title>
+      <url>https://lewang.dev/lewangdev-cover.png</url>
+      <link>https://lewang.dev/lewangdev-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Fri, 27 Nov 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://adityatelange.github.io/hugo-PaperMod/tags/%E9%83%A8%E7%BD%B2/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 27 Nov 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://lewang.dev/tags/%E9%83%A8%E7%BD%B2/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>机房不能访问互联网，轻松搞定系统部署</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/posts/2020-11-27-go-through-the-system-firewall/</link>
+      <link>https://lewang.dev/posts/2020-11-27-go-through-the-system-firewall/</link>
       <pubDate>Fri, 27 Nov 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://adityatelange.github.io/hugo-PaperMod/posts/2020-11-27-go-through-the-system-firewall/</guid>
+      <guid>https://lewang.dev/posts/2020-11-27-go-through-the-system-firewall/</guid>
       <description>创业这段时间以来，我们的 IoT 系统已经在不少客户的机房做了私有化部署，客户大多都是机加工厂、商业大楼、医院和大学实验室等，客户的机房都有一个相同的特点：私有云，与外网隔离，不能访问互联网。或者更为准确的说，是我们部署的服务器不能访问互联网，在没有互联网访问权限的情况下，系统的包管理工具(yum/apt/docker)都无法使用了，在这种情况下进行系统部署安装，费时费力，而且无法进行远程部署维护，也大大增加了项目的实施成本。
 在最近的一个客户项目的实施过程中，看到客户的一些其他供应商在系统部署过程中非常艰难，甚至是 CentOS 系统初始化和 Docker 的安装就花掉了两个礼拜的人力，不排除一些供应商这样折腾会给他的客户留下工作敬业钱花的值的好印象，但对于我们这样的小创业公司来说，这样的时间浪费和低效是无法承担的成本，因为来实操部署的人就是公司老板本人了，我也不想出差在客户这里待上两个礼拜。
 在工作完成之后，想想可以把解决问题的方法记录一下，也许能给遇到相同问题的同行一些启发和帮助。好了，废话不多说，接下来我们就来解决这个无外网的部署问题，顺便再解决一下远程维护的问题。

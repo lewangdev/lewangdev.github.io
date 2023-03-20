@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Life on PaperMod</title>
-    <link>https://adityatelange.github.io/hugo-PaperMod/tags/life/</link>
-    <description>Recent content in Life on PaperMod</description>
+    <title>Life on 小碼哥</title>
+    <link>https://lewang.dev/tags/life/</link>
+    <description>Recent content in Life on 小碼哥</description>
     <image>
-      <title>PaperMod</title>
-      <url>https://adityatelange.github.io/hugo-PaperMod/papermod-cover.png</url>
-      <link>https://adityatelange.github.io/hugo-PaperMod/papermod-cover.png</link>
+      <title>小碼哥</title>
+      <url>https://lewang.dev/lewangdev-cover.png</url>
+      <link>https://lewang.dev/lewangdev-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Wed, 28 Sep 2011 03:40:00 +0000</lastBuildDate><atom:link href="https://adityatelange.github.io/hugo-PaperMod/tags/life/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 28 Sep 2011 03:40:00 +0000</lastBuildDate><atom:link href="https://lewang.dev/tags/life/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>摆摊网</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/posts/2011-09-28-hello-baigetan/</link>
+      <link>https://lewang.dev/posts/2011-09-28-hello-baigetan/</link>
       <pubDate>Wed, 28 Sep 2011 03:40:00 +0000</pubDate>
       
-      <guid>https://adityatelange.github.io/hugo-PaperMod/posts/2011-09-28-hello-baigetan/</guid>
+      <guid>https://lewang.dev/posts/2011-09-28-hello-baigetan/</guid>
       <description>点评：留在这里，让自己可以看到以往无知的自己
 一转眼，20 年就过去了，终于要和自己 20 年的学生身份说拜拜了。
 那天去图书馆借书，回来的路上敬业湖桥边的那棵树的时候，心不由得感叹起来，这棵树，我已经拍下了它的春夏秋冬，它叶枯叶落，相似年年，只因它生根于此，我是要走的。

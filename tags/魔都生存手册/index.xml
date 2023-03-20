@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>魔都生存手册 on PaperMod</title>
-    <link>https://adityatelange.github.io/hugo-PaperMod/tags/%E9%AD%94%E9%83%BD%E7%94%9F%E5%AD%98%E6%89%8B%E5%86%8C/</link>
-    <description>Recent content in 魔都生存手册 on PaperMod</description>
+    <title>魔都生存手册 on 小碼哥</title>
+    <link>https://lewang.dev/tags/%E9%AD%94%E9%83%BD%E7%94%9F%E5%AD%98%E6%89%8B%E5%86%8C/</link>
+    <description>Recent content in 魔都生存手册 on 小碼哥</description>
     <image>
-      <title>PaperMod</title>
-      <url>https://adityatelange.github.io/hugo-PaperMod/papermod-cover.png</url>
-      <link>https://adityatelange.github.io/hugo-PaperMod/papermod-cover.png</link>
+      <title>小碼哥</title>
+      <url>https://lewang.dev/lewangdev-cover.png</url>
+      <link>https://lewang.dev/lewangdev-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 28 Jan 2016 11:55:00 +0000</lastBuildDate><atom:link href="https://adityatelange.github.io/hugo-PaperMod/tags/%E9%AD%94%E9%83%BD%E7%94%9F%E5%AD%98%E6%89%8B%E5%86%8C/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 28 Jan 2016 11:55:00 +0000</lastBuildDate><atom:link href="https://lewang.dev/tags/%E9%AD%94%E9%83%BD%E7%94%9F%E5%AD%98%E6%89%8B%E5%86%8C/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>办理机动车临牌</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/posts/2016-01-28-banlinpai/</link>
+      <link>https://lewang.dev/posts/2016-01-28-banlinpai/</link>
       <pubDate>Thu, 28 Jan 2016 11:55:00 +0000</pubDate>
       
-      <guid>https://adityatelange.github.io/hugo-PaperMod/posts/2016-01-28-banlinpai/</guid>
+      <guid>https://lewang.dev/posts/2016-01-28-banlinpai/</guid>
       <description> 政策已变，目前只能办理有效期为 15 天的临牌，并且最多只能办理两次
 问题 外地户口，上海购车办理机动车(出省)临牌(出省和不出省的临牌办理方法一样,出省临牌有效期是30天，不出省的是15天)
 文档记录状态 可用
@@ -29,10 +29,10 @@
     
     <item>
       <title>驾照转入换证</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/posts/2015-10-15-huanzheng/</link>
+      <link>https://lewang.dev/posts/2015-10-15-huanzheng/</link>
       <pubDate>Thu, 15 Oct 2015 11:55:00 +0000</pubDate>
       
-      <guid>https://adityatelange.github.io/hugo-PaperMod/posts/2015-10-15-huanzheng/</guid>
+      <guid>https://lewang.dev/posts/2015-10-15-huanzheng/</guid>
       <description>问题 外地户口＋上海居住证，外地驾照即将到期，需要将外地驾照转入上海并且进行驾照到期换证。
 可用状态 可用
 发生时间 2015年10月15日8:00至10:00

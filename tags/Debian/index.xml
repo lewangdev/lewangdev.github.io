@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Debian on PaperMod</title>
-    <link>https://adityatelange.github.io/hugo-PaperMod/tags/debian/</link>
-    <description>Recent content in Debian on PaperMod</description>
+    <title>Debian on 小碼哥</title>
+    <link>https://lewang.dev/tags/debian/</link>
+    <description>Recent content in Debian on 小碼哥</description>
     <image>
-      <title>PaperMod</title>
-      <url>https://adityatelange.github.io/hugo-PaperMod/papermod-cover.png</url>
-      <link>https://adityatelange.github.io/hugo-PaperMod/papermod-cover.png</link>
+      <title>小碼哥</title>
+      <url>https://lewang.dev/lewangdev-cover.png</url>
+      <link>https://lewang.dev/lewangdev-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 16 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://adityatelange.github.io/hugo-PaperMod/tags/debian/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 16 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://lewang.dev/tags/debian/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>如何打造国内开发所需要的网络</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/posts/2022-05-16-cndevnet-intro/</link>
+      <link>https://lewang.dev/posts/2022-05-16-cndevnet-intro/</link>
       <pubDate>Mon, 16 May 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://adityatelange.github.io/hugo-PaperMod/posts/2022-05-16-cndevnet-intro/</guid>
+      <guid>https://lewang.dev/posts/2022-05-16-cndevnet-intro/</guid>
       <description>一个国内开发者可能有点用的网络工具，cndevnet 帮助开发者，尤其是初学者不用再费心折腾 pip/npm/golang/flutter/android/blockchain 等等无法访问的问题。
 背景 由于某些原因，国内开发者需要的不少技术站点或者镜像源都无法直接访问，这使得在开发者在日常工作中会消耗额外的时间，去设置各种代理或者寻找国内的可替代的镜像源来使用。
 在开源软件的世界里，几乎所有的知名项目，原本只要把代码 clone 回来，不需要做额外任何配置，只需要按照它的说明就可以直接编译源码。但由于网络的原因，在国内甚至连开源软件的源码都不太方便直接下载，一些原本只需要从 GitHub 拉下来代码就可以直接编译成功的项目，在国内也是连编译都编译不过。

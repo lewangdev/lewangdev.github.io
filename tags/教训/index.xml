@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>教训 on PaperMod</title>
-    <link>https://adityatelange.github.io/hugo-PaperMod/tags/%E6%95%99%E8%AE%AD/</link>
-    <description>Recent content in 教训 on PaperMod</description>
+    <title>教训 on 小碼哥</title>
+    <link>https://lewang.dev/tags/%E6%95%99%E8%AE%AD/</link>
+    <description>Recent content in 教训 on 小碼哥</description>
     <image>
-      <title>PaperMod</title>
-      <url>https://adityatelange.github.io/hugo-PaperMod/papermod-cover.png</url>
-      <link>https://adityatelange.github.io/hugo-PaperMod/papermod-cover.png</link>
+      <title>小碼哥</title>
+      <url>https://lewang.dev/lewangdev-cover.png</url>
+      <link>https://lewang.dev/lewangdev-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sun, 31 Dec 2017 00:08:25 +0000</lastBuildDate><atom:link href="https://adityatelange.github.io/hugo-PaperMod/tags/%E6%95%99%E8%AE%AD/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 31 Dec 2017 00:08:25 +0000</lastBuildDate><atom:link href="https://lewang.dev/tags/%E6%95%99%E8%AE%AD/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>有关 2017 流水账和胡思乱想的记录</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/posts/2017-12-31-year-end-reviews-of-2017/</link>
+      <link>https://lewang.dev/posts/2017-12-31-year-end-reviews-of-2017/</link>
       <pubDate>Sun, 31 Dec 2017 00:08:25 +0000</pubDate>
       
-      <guid>https://adityatelange.github.io/hugo-PaperMod/posts/2017-12-31-year-end-reviews-of-2017/</guid>
+      <guid>https://lewang.dev/posts/2017-12-31-year-end-reviews-of-2017/</guid>
       <description>好久没有写过文字了，前几篇文也是自己从 Google Doc 中摘出来的工作日志，拿来凑凑数，刷新下 Github 的时间线，有点儿不太像话。看看自己书桌上叠起来超过一尺高的新书才知道，想看的还没来得及看完，想学的也还没来得及学会，想做的也没有做得很好，一年就过去了。2017 是我来魔都的第 5 年，回想这 5 年，自己的成长还是很多的，但 2017 这一年，好像与 2016 并没有什么大的不同，这让自己感到很担忧。
 在 2017 年的最后几天，终于离开了自己熟悉的工作环境，从自己的舒适空间加入了一个新的环境，我想这就是改变的开始，一个新的起点。
 2017 是平淡的，可能和未来的每一年也不会有太大差别，尽管我不希望这样。元旦假期这 3 天有空的时候都在回想，但是又想不起有那些特别印象深刻的事情，以至于总结都不太好写下去。我想那不如就回想几个和自己有关系的场景，做一个清单好了：

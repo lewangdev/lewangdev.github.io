@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>github on PaperMod</title>
-    <link>https://adityatelange.github.io/hugo-PaperMod/tags/github/</link>
-    <description>Recent content in github on PaperMod</description>
+    <title>github on 小碼哥</title>
+    <link>https://lewang.dev/tags/github/</link>
+    <description>Recent content in github on 小碼哥</description>
     <image>
-      <title>PaperMod</title>
-      <url>https://adityatelange.github.io/hugo-PaperMod/papermod-cover.png</url>
-      <link>https://adityatelange.github.io/hugo-PaperMod/papermod-cover.png</link>
+      <title>小碼哥</title>
+      <url>https://lewang.dev/lewangdev-cover.png</url>
+      <link>https://lewang.dev/lewangdev-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Tue, 06 May 2014 22:51:00 +0000</lastBuildDate><atom:link href="https://adityatelange.github.io/hugo-PaperMod/tags/github/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 06 May 2014 22:51:00 +0000</lastBuildDate><atom:link href="https://lewang.dev/tags/github/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Github Pages 服务的域名设置</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/posts/2014-05-06-github-pages-dns-settings/</link>
+      <link>https://lewang.dev/posts/2014-05-06-github-pages-dns-settings/</link>
       <pubDate>Tue, 06 May 2014 22:51:00 +0000</pubDate>
       
-      <guid>https://adityatelange.github.io/hugo-PaperMod/posts/2014-05-06-github-pages-dns-settings/</guid>
+      <guid>https://lewang.dev/posts/2014-05-06-github-pages-dns-settings/</guid>
       <description>这几天每次 Push 博客到 Github Pages 时总会收到一封邮件：
 The page build completed successfully, but returned the following warning:
 GitHub Pages recently underwent some improvements (https://github.com/blog/1715-faster-more-awesome-github-pages) to make your site faster and more awesome, but we&amp;rsquo;ve noticed that iforget.info isn&amp;rsquo;t properly configured to take advantage of these new features. While your site will continue to work just fine, updating your domain&amp;rsquo;s configuration offers some additional speed and performance benefits. Instructions on updating your site&amp;rsquo;s IP address can be found at https://help.</description>

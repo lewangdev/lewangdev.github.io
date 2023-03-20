@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>YouTube on PaperMod</title>
-    <link>https://adityatelange.github.io/hugo-PaperMod/tags/youtube/</link>
-    <description>Recent content in YouTube on PaperMod</description>
+    <title>YouTube on 小碼哥</title>
+    <link>https://lewang.dev/tags/youtube/</link>
+    <description>Recent content in YouTube on 小碼哥</description>
     <image>
-      <title>PaperMod</title>
-      <url>https://adityatelange.github.io/hugo-PaperMod/papermod-cover.png</url>
-      <link>https://adityatelange.github.io/hugo-PaperMod/papermod-cover.png</link>
+      <title>小碼哥</title>
+      <url>https://lewang.dev/lewangdev-cover.png</url>
+      <link>https://lewang.dev/lewangdev-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Fri, 27 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://adityatelange.github.io/hugo-PaperMod/tags/youtube/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 27 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://lewang.dev/tags/youtube/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>写个程序把油管 YouTube 变成无限容量的网盘</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/posts/2022-05-27-store-files-as-youtube-videos/</link>
+      <link>https://lewang.dev/posts/2022-05-27-store-files-as-youtube-videos/</link>
       <pubDate>Fri, 27 May 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://adityatelange.github.io/hugo-PaperMod/posts/2022-05-27-store-files-as-youtube-videos/</guid>
+      <guid>https://lewang.dev/posts/2022-05-27-store-files-as-youtube-videos/</guid>
       <description>前几天刷新闻的时候，看到了一个代码仓库 YouTubeDrive 的介绍，他的作者在多年前用 Wolfram 语言（也就是 Mathematica） 编写了一段代码，可以将油管变成一个无限容量的大网盘，看完介绍之后我脑子里直接蹦出无数个“卧槽”，心里顿生“这样也行”的膜拜之情，不禁提问：这个是薅羊毛的最高境界吗？
 说起 Wolfram 语言和 Mathematica，不得不提一下，它是我学习的第一个编程语言（汇编是第二个）。多年前我是在学校机房学的，当时只用它画画数学公式的图，今天看着 YouTubeDrive 的实现，才了解到 Wolfram 还可以这样用。
 首先，和原作者一样，我也不提倡这样把 YouTube 当成一个无限容量的网盘使用，相同的道理，我也不提倡在国内把 B 站或者任意视频平台当做位无限容量的网盘来用。

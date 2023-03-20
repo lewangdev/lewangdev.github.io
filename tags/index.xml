@@ -1,634 +1,634 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Tags on PaperMod</title>
-    <link>https://adityatelange.github.io/hugo-PaperMod/tags/</link>
-    <description>Recent content in Tags on PaperMod</description>
+    <title>Tags on 小碼哥</title>
+    <link>https://lewang.dev/tags/</link>
+    <description>Recent content in Tags on 小碼哥</description>
     <image>
-      <title>PaperMod</title>
-      <url>https://adityatelange.github.io/hugo-PaperMod/papermod-cover.png</url>
-      <link>https://adityatelange.github.io/hugo-PaperMod/papermod-cover.png</link>
+      <title>小碼哥</title>
+      <url>https://lewang.dev/lewangdev-cover.png</url>
+      <link>https://lewang.dev/lewangdev-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 06 Jun 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://adityatelange.github.io/hugo-PaperMod/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 06 Jun 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://lewang.dev/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Kindle</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/tags/kindle/</link>
+      <link>https://lewang.dev/tags/kindle/</link>
       <pubDate>Mon, 06 Jun 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://adityatelange.github.io/hugo-PaperMod/tags/kindle/</guid>
+      <guid>https://lewang.dev/tags/kindle/</guid>
       <description></description>
     </item>
     
     <item>
       <title>python</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/tags/python/</link>
+      <link>https://lewang.dev/tags/python/</link>
       <pubDate>Mon, 06 Jun 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://adityatelange.github.io/hugo-PaperMod/tags/python/</guid>
+      <guid>https://lewang.dev/tags/python/</guid>
       <description></description>
     </item>
     
     <item>
       <title>YouTube</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/tags/youtube/</link>
+      <link>https://lewang.dev/tags/youtube/</link>
       <pubDate>Fri, 27 May 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://adityatelange.github.io/hugo-PaperMod/tags/youtube/</guid>
+      <guid>https://lewang.dev/tags/youtube/</guid>
       <description></description>
     </item>
     
     <item>
       <title>grep</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/tags/grep/</link>
+      <link>https://lewang.dev/tags/grep/</link>
       <pubDate>Sat, 21 May 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://adityatelange.github.io/hugo-PaperMod/tags/grep/</guid>
+      <guid>https://lewang.dev/tags/grep/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Linux</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/tags/linux/</link>
+      <link>https://lewang.dev/tags/linux/</link>
       <pubDate>Sat, 21 May 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://adityatelange.github.io/hugo-PaperMod/tags/linux/</guid>
+      <guid>https://lewang.dev/tags/linux/</guid>
       <description></description>
     </item>
     
     <item>
       <title>sed</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/tags/sed/</link>
+      <link>https://lewang.dev/tags/sed/</link>
       <pubDate>Sat, 21 May 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://adityatelange.github.io/hugo-PaperMod/tags/sed/</guid>
+      <guid>https://lewang.dev/tags/sed/</guid>
       <description></description>
     </item>
     
     <item>
       <title>cndevnet</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/tags/cndevnet/</link>
+      <link>https://lewang.dev/tags/cndevnet/</link>
       <pubDate>Mon, 16 May 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://adityatelange.github.io/hugo-PaperMod/tags/cndevnet/</guid>
+      <guid>https://lewang.dev/tags/cndevnet/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Debian</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/tags/debian/</link>
+      <link>https://lewang.dev/tags/debian/</link>
       <pubDate>Mon, 16 May 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://adityatelange.github.io/hugo-PaperMod/tags/debian/</guid>
+      <guid>https://lewang.dev/tags/debian/</guid>
       <description></description>
     </item>
     
     <item>
       <title>gost</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/tags/gost/</link>
+      <link>https://lewang.dev/tags/gost/</link>
       <pubDate>Wed, 02 Dec 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://adityatelange.github.io/hugo-PaperMod/tags/gost/</guid>
+      <guid>https://lewang.dev/tags/gost/</guid>
       <description></description>
     </item>
     
     <item>
       <title>shadowsocks</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/tags/shadowsocks/</link>
+      <link>https://lewang.dev/tags/shadowsocks/</link>
       <pubDate>Wed, 02 Dec 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://adityatelange.github.io/hugo-PaperMod/tags/shadowsocks/</guid>
+      <guid>https://lewang.dev/tags/shadowsocks/</guid>
       <description></description>
     </item>
     
     <item>
       <title>IoT</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/tags/iot/</link>
+      <link>https://lewang.dev/tags/iot/</link>
       <pubDate>Fri, 27 Nov 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://adityatelange.github.io/hugo-PaperMod/tags/iot/</guid>
+      <guid>https://lewang.dev/tags/iot/</guid>
       <description></description>
     </item>
     
     <item>
       <title>网络拓扑</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/tags/%E7%BD%91%E7%BB%9C%E6%8B%93%E6%89%91/</link>
+      <link>https://lewang.dev/tags/%E7%BD%91%E7%BB%9C%E6%8B%93%E6%89%91/</link>
       <pubDate>Fri, 27 Nov 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://adityatelange.github.io/hugo-PaperMod/tags/%E7%BD%91%E7%BB%9C%E6%8B%93%E6%89%91/</guid>
+      <guid>https://lewang.dev/tags/%E7%BD%91%E7%BB%9C%E6%8B%93%E6%89%91/</guid>
       <description></description>
     </item>
     
     <item>
       <title>部署</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/tags/%E9%83%A8%E7%BD%B2/</link>
+      <link>https://lewang.dev/tags/%E9%83%A8%E7%BD%B2/</link>
       <pubDate>Fri, 27 Nov 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://adityatelange.github.io/hugo-PaperMod/tags/%E9%83%A8%E7%BD%B2/</guid>
+      <guid>https://lewang.dev/tags/%E9%83%A8%E7%BD%B2/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Gradle</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/tags/gradle/</link>
+      <link>https://lewang.dev/tags/gradle/</link>
       <pubDate>Sat, 22 Feb 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://adityatelange.github.io/hugo-PaperMod/tags/gradle/</guid>
+      <guid>https://lewang.dev/tags/gradle/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Groovy</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/tags/groovy/</link>
+      <link>https://lewang.dev/tags/groovy/</link>
       <pubDate>Sat, 22 Feb 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://adityatelange.github.io/hugo-PaperMod/tags/groovy/</guid>
+      <guid>https://lewang.dev/tags/groovy/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Java</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/tags/java/</link>
+      <link>https://lewang.dev/tags/java/</link>
       <pubDate>Sat, 22 Feb 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://adityatelange.github.io/hugo-PaperMod/tags/java/</guid>
+      <guid>https://lewang.dev/tags/java/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Kotlin</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/tags/kotlin/</link>
+      <link>https://lewang.dev/tags/kotlin/</link>
       <pubDate>Sat, 22 Feb 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://adityatelange.github.io/hugo-PaperMod/tags/kotlin/</guid>
+      <guid>https://lewang.dev/tags/kotlin/</guid>
       <description></description>
     </item>
     
     <item>
       <title>绘画</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/tags/%E7%BB%98%E7%94%BB/</link>
+      <link>https://lewang.dev/tags/%E7%BB%98%E7%94%BB/</link>
       <pubDate>Sat, 02 Nov 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://adityatelange.github.io/hugo-PaperMod/tags/%E7%BB%98%E7%94%BB/</guid>
+      <guid>https://lewang.dev/tags/%E7%BB%98%E7%94%BB/</guid>
       <description></description>
     </item>
     
     <item>
       <title>育儿</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/tags/%E8%82%B2%E5%84%BF/</link>
+      <link>https://lewang.dev/tags/%E8%82%B2%E5%84%BF/</link>
       <pubDate>Sat, 02 Nov 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://adityatelange.github.io/hugo-PaperMod/tags/%E8%82%B2%E5%84%BF/</guid>
+      <guid>https://lewang.dev/tags/%E8%82%B2%E5%84%BF/</guid>
       <description></description>
     </item>
     
     <item>
       <title>VPN</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/tags/vpn/</link>
+      <link>https://lewang.dev/tags/vpn/</link>
       <pubDate>Wed, 30 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://adityatelange.github.io/hugo-PaperMod/tags/vpn/</guid>
+      <guid>https://lewang.dev/tags/vpn/</guid>
       <description></description>
     </item>
     
     <item>
       <title>WireGuard</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/tags/wireguard/</link>
+      <link>https://lewang.dev/tags/wireguard/</link>
       <pubDate>Wed, 30 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://adityatelange.github.io/hugo-PaperMod/tags/wireguard/</guid>
+      <guid>https://lewang.dev/tags/wireguard/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Raspberry</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/tags/raspberry/</link>
+      <link>https://lewang.dev/tags/raspberry/</link>
       <pubDate>Thu, 19 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://adityatelange.github.io/hugo-PaperMod/tags/raspberry/</guid>
+      <guid>https://lewang.dev/tags/raspberry/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Raspbian</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/tags/raspbian/</link>
+      <link>https://lewang.dev/tags/raspbian/</link>
       <pubDate>Thu, 19 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://adityatelange.github.io/hugo-PaperMod/tags/raspbian/</guid>
+      <guid>https://lewang.dev/tags/raspbian/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Pyenv</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/tags/pyenv/</link>
+      <link>https://lewang.dev/tags/pyenv/</link>
       <pubDate>Wed, 29 May 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://adityatelange.github.io/hugo-PaperMod/tags/pyenv/</guid>
+      <guid>https://lewang.dev/tags/pyenv/</guid>
       <description></description>
     </item>
     
     <item>
       <title>SSH</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/tags/ssh/</link>
+      <link>https://lewang.dev/tags/ssh/</link>
       <pubDate>Wed, 29 May 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://adityatelange.github.io/hugo-PaperMod/tags/ssh/</guid>
+      <guid>https://lewang.dev/tags/ssh/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Docker</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/tags/docker/</link>
+      <link>https://lewang.dev/tags/docker/</link>
       <pubDate>Tue, 18 Dec 2018 23:25:20 +0000</pubDate>
       
-      <guid>https://adityatelange.github.io/hugo-PaperMod/tags/docker/</guid>
+      <guid>https://lewang.dev/tags/docker/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Gitlab</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/tags/gitlab/</link>
+      <link>https://lewang.dev/tags/gitlab/</link>
       <pubDate>Tue, 18 Dec 2018 23:25:20 +0000</pubDate>
       
-      <guid>https://adityatelange.github.io/hugo-PaperMod/tags/gitlab/</guid>
+      <guid>https://lewang.dev/tags/gitlab/</guid>
       <description></description>
     </item>
     
     <item>
       <title>回忆</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/tags/%E5%9B%9E%E5%BF%86/</link>
+      <link>https://lewang.dev/tags/%E5%9B%9E%E5%BF%86/</link>
       <pubDate>Sun, 31 Dec 2017 00:08:25 +0000</pubDate>
       
-      <guid>https://adityatelange.github.io/hugo-PaperMod/tags/%E5%9B%9E%E5%BF%86/</guid>
+      <guid>https://lewang.dev/tags/%E5%9B%9E%E5%BF%86/</guid>
       <description></description>
     </item>
     
     <item>
       <title>展望</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/tags/%E5%B1%95%E6%9C%9B/</link>
+      <link>https://lewang.dev/tags/%E5%B1%95%E6%9C%9B/</link>
       <pubDate>Sun, 31 Dec 2017 00:08:25 +0000</pubDate>
       
-      <guid>https://adityatelange.github.io/hugo-PaperMod/tags/%E5%B1%95%E6%9C%9B/</guid>
+      <guid>https://lewang.dev/tags/%E5%B1%95%E6%9C%9B/</guid>
       <description></description>
     </item>
     
     <item>
       <title>思考</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/tags/%E6%80%9D%E8%80%83/</link>
+      <link>https://lewang.dev/tags/%E6%80%9D%E8%80%83/</link>
       <pubDate>Sun, 31 Dec 2017 00:08:25 +0000</pubDate>
       
-      <guid>https://adityatelange.github.io/hugo-PaperMod/tags/%E6%80%9D%E8%80%83/</guid>
+      <guid>https://lewang.dev/tags/%E6%80%9D%E8%80%83/</guid>
       <description></description>
     </item>
     
     <item>
       <title>教训</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/tags/%E6%95%99%E8%AE%AD/</link>
+      <link>https://lewang.dev/tags/%E6%95%99%E8%AE%AD/</link>
       <pubDate>Sun, 31 Dec 2017 00:08:25 +0000</pubDate>
       
-      <guid>https://adityatelange.github.io/hugo-PaperMod/tags/%E6%95%99%E8%AE%AD/</guid>
+      <guid>https://lewang.dev/tags/%E6%95%99%E8%AE%AD/</guid>
       <description></description>
     </item>
     
     <item>
       <title>经验</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/tags/%E7%BB%8F%E9%AA%8C/</link>
+      <link>https://lewang.dev/tags/%E7%BB%8F%E9%AA%8C/</link>
       <pubDate>Sun, 31 Dec 2017 00:08:25 +0000</pubDate>
       
-      <guid>https://adityatelange.github.io/hugo-PaperMod/tags/%E7%BB%8F%E9%AA%8C/</guid>
+      <guid>https://lewang.dev/tags/%E7%BB%8F%E9%AA%8C/</guid>
       <description></description>
     </item>
     
     <item>
       <title>fdisk</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/tags/fdisk/</link>
+      <link>https://lewang.dev/tags/fdisk/</link>
       <pubDate>Thu, 03 Aug 2017 23:55:00 +0000</pubDate>
       
-      <guid>https://adityatelange.github.io/hugo-PaperMod/tags/fdisk/</guid>
+      <guid>https://lewang.dev/tags/fdisk/</guid>
       <description></description>
     </item>
     
     <item>
       <title>lvm</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/tags/lvm/</link>
+      <link>https://lewang.dev/tags/lvm/</link>
       <pubDate>Thu, 03 Aug 2017 23:55:00 +0000</pubDate>
       
-      <guid>https://adityatelange.github.io/hugo-PaperMod/tags/lvm/</guid>
+      <guid>https://lewang.dev/tags/lvm/</guid>
       <description></description>
     </item>
     
     <item>
       <title>resize2fs</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/tags/resize2fs/</link>
+      <link>https://lewang.dev/tags/resize2fs/</link>
       <pubDate>Thu, 03 Aug 2017 23:55:00 +0000</pubDate>
       
-      <guid>https://adityatelange.github.io/hugo-PaperMod/tags/resize2fs/</guid>
+      <guid>https://lewang.dev/tags/resize2fs/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Cassandra</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/tags/cassandra/</link>
+      <link>https://lewang.dev/tags/cassandra/</link>
       <pubDate>Sun, 23 Jul 2017 22:30:00 +0000</pubDate>
       
-      <guid>https://adityatelange.github.io/hugo-PaperMod/tags/cassandra/</guid>
+      <guid>https://lewang.dev/tags/cassandra/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Flume</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/tags/flume/</link>
+      <link>https://lewang.dev/tags/flume/</link>
       <pubDate>Sun, 23 Jul 2017 22:30:00 +0000</pubDate>
       
-      <guid>https://adityatelange.github.io/hugo-PaperMod/tags/flume/</guid>
+      <guid>https://lewang.dev/tags/flume/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Kafka</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/tags/kafka/</link>
+      <link>https://lewang.dev/tags/kafka/</link>
       <pubDate>Sun, 23 Jul 2017 22:30:00 +0000</pubDate>
       
-      <guid>https://adityatelange.github.io/hugo-PaperMod/tags/kafka/</guid>
+      <guid>https://lewang.dev/tags/kafka/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Log4j2</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/tags/log4j2/</link>
+      <link>https://lewang.dev/tags/log4j2/</link>
       <pubDate>Sat, 15 Jul 2017 23:31:00 +0000</pubDate>
       
-      <guid>https://adityatelange.github.io/hugo-PaperMod/tags/log4j2/</guid>
+      <guid>https://lewang.dev/tags/log4j2/</guid>
       <description></description>
     </item>
     
     <item>
       <title>MySQL</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/tags/mysql/</link>
+      <link>https://lewang.dev/tags/mysql/</link>
       <pubDate>Tue, 06 Jun 2017 12:15:07 +0000</pubDate>
       
-      <guid>https://adityatelange.github.io/hugo-PaperMod/tags/mysql/</guid>
+      <guid>https://lewang.dev/tags/mysql/</guid>
       <description></description>
     </item>
     
     <item>
       <title>xtrabackup</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/tags/xtrabackup/</link>
+      <link>https://lewang.dev/tags/xtrabackup/</link>
       <pubDate>Tue, 06 Jun 2017 12:15:07 +0000</pubDate>
       
-      <guid>https://adityatelange.github.io/hugo-PaperMod/tags/xtrabackup/</guid>
+      <guid>https://lewang.dev/tags/xtrabackup/</guid>
       <description></description>
     </item>
     
     <item>
       <title>临牌</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/tags/%E4%B8%B4%E7%89%8C/</link>
+      <link>https://lewang.dev/tags/%E4%B8%B4%E7%89%8C/</link>
       <pubDate>Thu, 28 Jan 2016 11:55:00 +0000</pubDate>
       
-      <guid>https://adityatelange.github.io/hugo-PaperMod/tags/%E4%B8%B4%E7%89%8C/</guid>
+      <guid>https://lewang.dev/tags/%E4%B8%B4%E7%89%8C/</guid>
       <description></description>
     </item>
     
     <item>
       <title>魔都生存手册</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/tags/%E9%AD%94%E9%83%BD%E7%94%9F%E5%AD%98%E6%89%8B%E5%86%8C/</link>
+      <link>https://lewang.dev/tags/%E9%AD%94%E9%83%BD%E7%94%9F%E5%AD%98%E6%89%8B%E5%86%8C/</link>
       <pubDate>Thu, 28 Jan 2016 11:55:00 +0000</pubDate>
       
-      <guid>https://adityatelange.github.io/hugo-PaperMod/tags/%E9%AD%94%E9%83%BD%E7%94%9F%E5%AD%98%E6%89%8B%E5%86%8C/</guid>
+      <guid>https://lewang.dev/tags/%E9%AD%94%E9%83%BD%E7%94%9F%E5%AD%98%E6%89%8B%E5%86%8C/</guid>
       <description></description>
     </item>
     
     <item>
       <title>驾照</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/tags/%E9%A9%BE%E7%85%A7/</link>
+      <link>https://lewang.dev/tags/%E9%A9%BE%E7%85%A7/</link>
       <pubDate>Thu, 15 Oct 2015 11:55:00 +0000</pubDate>
       
-      <guid>https://adityatelange.github.io/hugo-PaperMod/tags/%E9%A9%BE%E7%85%A7/</guid>
+      <guid>https://lewang.dev/tags/%E9%A9%BE%E7%85%A7/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Nginx</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/tags/nginx/</link>
+      <link>https://lewang.dev/tags/nginx/</link>
       <pubDate>Thu, 16 Oct 2014 15:27:00 +0000</pubDate>
       
-      <guid>https://adityatelange.github.io/hugo-PaperMod/tags/nginx/</guid>
+      <guid>https://lewang.dev/tags/nginx/</guid>
       <description></description>
     </item>
     
     <item>
       <title>performance</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/tags/performance/</link>
+      <link>https://lewang.dev/tags/performance/</link>
       <pubDate>Thu, 16 Oct 2014 15:27:00 +0000</pubDate>
       
-      <guid>https://adityatelange.github.io/hugo-PaperMod/tags/performance/</guid>
+      <guid>https://lewang.dev/tags/performance/</guid>
       <description></description>
     </item>
     
     <item>
       <title>tuning</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/tags/tuning/</link>
+      <link>https://lewang.dev/tags/tuning/</link>
       <pubDate>Thu, 16 Oct 2014 15:27:00 +0000</pubDate>
       
-      <guid>https://adityatelange.github.io/hugo-PaperMod/tags/tuning/</guid>
+      <guid>https://lewang.dev/tags/tuning/</guid>
       <description></description>
     </item>
     
     <item>
       <title>github</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/tags/github/</link>
+      <link>https://lewang.dev/tags/github/</link>
       <pubDate>Tue, 06 May 2014 22:51:00 +0000</pubDate>
       
-      <guid>https://adityatelange.github.io/hugo-PaperMod/tags/github/</guid>
+      <guid>https://lewang.dev/tags/github/</guid>
       <description></description>
     </item>
     
     <item>
       <title>心情</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/tags/%E5%BF%83%E6%83%85/</link>
+      <link>https://lewang.dev/tags/%E5%BF%83%E6%83%85/</link>
       <pubDate>Fri, 25 Apr 2014 00:40:00 +0000</pubDate>
       
-      <guid>https://adityatelange.github.io/hugo-PaperMod/tags/%E5%BF%83%E6%83%85/</guid>
+      <guid>https://lewang.dev/tags/%E5%BF%83%E6%83%85/</guid>
       <description></description>
     </item>
     
     <item>
       <title>物理</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/tags/%E7%89%A9%E7%90%86/</link>
+      <link>https://lewang.dev/tags/%E7%89%A9%E7%90%86/</link>
       <pubDate>Thu, 13 Mar 2014 21:16:00 +0000</pubDate>
       
-      <guid>https://adityatelange.github.io/hugo-PaperMod/tags/%E7%89%A9%E7%90%86/</guid>
+      <guid>https://lewang.dev/tags/%E7%89%A9%E7%90%86/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Technical</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/tags/technical/</link>
+      <link>https://lewang.dev/tags/technical/</link>
       <pubDate>Thu, 06 Mar 2014 00:40:00 +0000</pubDate>
       
-      <guid>https://adityatelange.github.io/hugo-PaperMod/tags/technical/</guid>
+      <guid>https://lewang.dev/tags/technical/</guid>
       <description></description>
     </item>
     
     <item>
       <title>vagrant</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/tags/vagrant/</link>
+      <link>https://lewang.dev/tags/vagrant/</link>
       <pubDate>Mon, 03 Mar 2014 23:40:00 +0000</pubDate>
       
-      <guid>https://adityatelange.github.io/hugo-PaperMod/tags/vagrant/</guid>
+      <guid>https://lewang.dev/tags/vagrant/</guid>
       <description></description>
     </item>
     
     <item>
       <title>virtualbox</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/tags/virtualbox/</link>
+      <link>https://lewang.dev/tags/virtualbox/</link>
       <pubDate>Mon, 03 Mar 2014 23:40:00 +0000</pubDate>
       
-      <guid>https://adityatelange.github.io/hugo-PaperMod/tags/virtualbox/</guid>
+      <guid>https://lewang.dev/tags/virtualbox/</guid>
       <description></description>
     </item>
     
     <item>
       <title>easy_install</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/tags/easy_install/</link>
+      <link>https://lewang.dev/tags/easy_install/</link>
       <pubDate>Sun, 02 Mar 2014 21:16:00 +0000</pubDate>
       
-      <guid>https://adityatelange.github.io/hugo-PaperMod/tags/easy_install/</guid>
+      <guid>https://lewang.dev/tags/easy_install/</guid>
       <description></description>
     </item>
     
     <item>
       <title>pip</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/tags/pip/</link>
+      <link>https://lewang.dev/tags/pip/</link>
       <pubDate>Sun, 02 Mar 2014 21:16:00 +0000</pubDate>
       
-      <guid>https://adityatelange.github.io/hugo-PaperMod/tags/pip/</guid>
+      <guid>https://lewang.dev/tags/pip/</guid>
       <description></description>
     </item>
     
     <item>
       <title>rMBP</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/tags/rmbp/</link>
+      <link>https://lewang.dev/tags/rmbp/</link>
       <pubDate>Sun, 02 Mar 2014 21:16:00 +0000</pubDate>
       
-      <guid>https://adityatelange.github.io/hugo-PaperMod/tags/rmbp/</guid>
+      <guid>https://lewang.dev/tags/rmbp/</guid>
       <description></description>
     </item>
     
     <item>
       <title>virtualenv</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/tags/virtualenv/</link>
+      <link>https://lewang.dev/tags/virtualenv/</link>
       <pubDate>Sun, 02 Mar 2014 21:16:00 +0000</pubDate>
       
-      <guid>https://adityatelange.github.io/hugo-PaperMod/tags/virtualenv/</guid>
+      <guid>https://lewang.dev/tags/virtualenv/</guid>
       <description></description>
     </item>
     
     <item>
       <title>aliyun</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/tags/aliyun/</link>
+      <link>https://lewang.dev/tags/aliyun/</link>
       <pubDate>Fri, 09 Aug 2013 00:40:00 +0000</pubDate>
       
-      <guid>https://adityatelange.github.io/hugo-PaperMod/tags/aliyun/</guid>
+      <guid>https://lewang.dev/tags/aliyun/</guid>
       <description></description>
     </item>
     
     <item>
       <title>ucloud</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/tags/ucloud/</link>
+      <link>https://lewang.dev/tags/ucloud/</link>
       <pubDate>Fri, 09 Aug 2013 00:40:00 +0000</pubDate>
       
-      <guid>https://adityatelange.github.io/hugo-PaperMod/tags/ucloud/</guid>
+      <guid>https://lewang.dev/tags/ucloud/</guid>
       <description></description>
     </item>
     
     <item>
       <title>php</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/tags/php/</link>
+      <link>https://lewang.dev/tags/php/</link>
       <pubDate>Thu, 22 Mar 2012 00:40:00 +0000</pubDate>
       
-      <guid>https://adityatelange.github.io/hugo-PaperMod/tags/php/</guid>
+      <guid>https://lewang.dev/tags/php/</guid>
       <description></description>
     </item>
     
     <item>
       <title>fackbook</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/tags/fackbook/</link>
+      <link>https://lewang.dev/tags/fackbook/</link>
       <pubDate>Tue, 13 Mar 2012 00:40:00 +0000</pubDate>
       
-      <guid>https://adityatelange.github.io/hugo-PaperMod/tags/fackbook/</guid>
+      <guid>https://lewang.dev/tags/fackbook/</guid>
       <description></description>
     </item>
     
     <item>
       <title>idea</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/tags/idea/</link>
+      <link>https://lewang.dev/tags/idea/</link>
       <pubDate>Tue, 13 Mar 2012 00:40:00 +0000</pubDate>
       
-      <guid>https://adityatelange.github.io/hugo-PaperMod/tags/idea/</guid>
+      <guid>https://lewang.dev/tags/idea/</guid>
       <description></description>
     </item>
     
     <item>
       <title>ajax</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/tags/ajax/</link>
+      <link>https://lewang.dev/tags/ajax/</link>
       <pubDate>Thu, 01 Dec 2011 00:40:00 +0000</pubDate>
       
-      <guid>https://adityatelange.github.io/hugo-PaperMod/tags/ajax/</guid>
+      <guid>https://lewang.dev/tags/ajax/</guid>
       <description></description>
     </item>
     
     <item>
       <title>jquery</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/tags/jquery/</link>
+      <link>https://lewang.dev/tags/jquery/</link>
       <pubDate>Thu, 01 Dec 2011 00:40:00 +0000</pubDate>
       
-      <guid>https://adityatelange.github.io/hugo-PaperMod/tags/jquery/</guid>
+      <guid>https://lewang.dev/tags/jquery/</guid>
       <description></description>
     </item>
     
     <item>
       <title>json</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/tags/json/</link>
+      <link>https://lewang.dev/tags/json/</link>
       <pubDate>Thu, 01 Dec 2011 00:40:00 +0000</pubDate>
       
-      <guid>https://adityatelange.github.io/hugo-PaperMod/tags/json/</guid>
+      <guid>https://lewang.dev/tags/json/</guid>
       <description></description>
     </item>
     
     <item>
       <title>database</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/tags/database/</link>
+      <link>https://lewang.dev/tags/database/</link>
       <pubDate>Mon, 07 Nov 2011 00:40:00 +0000</pubDate>
       
-      <guid>https://adityatelange.github.io/hugo-PaperMod/tags/database/</guid>
+      <guid>https://lewang.dev/tags/database/</guid>
       <description></description>
     </item>
     
     <item>
       <title>系统架构</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/tags/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/</link>
+      <link>https://lewang.dev/tags/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/</link>
       <pubDate>Fri, 21 Oct 2011 13:11:00 +0000</pubDate>
       
-      <guid>https://adityatelange.github.io/hugo-PaperMod/tags/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/</guid>
+      <guid>https://lewang.dev/tags/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/</guid>
       <description></description>
     </item>
     
     <item>
       <title>摄影</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/tags/%E6%91%84%E5%BD%B1/</link>
+      <link>https://lewang.dev/tags/%E6%91%84%E5%BD%B1/</link>
       <pubDate>Sat, 01 Oct 2011 00:40:00 +0000</pubDate>
       
-      <guid>https://adityatelange.github.io/hugo-PaperMod/tags/%E6%91%84%E5%BD%B1/</guid>
+      <guid>https://lewang.dev/tags/%E6%91%84%E5%BD%B1/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Life</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/tags/life/</link>
+      <link>https://lewang.dev/tags/life/</link>
       <pubDate>Wed, 28 Sep 2011 03:40:00 +0000</pubDate>
       
-      <guid>https://adityatelange.github.io/hugo-PaperMod/tags/life/</guid>
+      <guid>https://lewang.dev/tags/life/</guid>
       <description></description>
     </item>
     

@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>vagrant on PaperMod</title>
-    <link>https://adityatelange.github.io/hugo-PaperMod/tags/vagrant/</link>
-    <description>Recent content in vagrant on PaperMod</description>
+    <title>vagrant on 小碼哥</title>
+    <link>https://lewang.dev/tags/vagrant/</link>
+    <description>Recent content in vagrant on 小碼哥</description>
     <image>
-      <title>PaperMod</title>
-      <url>https://adityatelange.github.io/hugo-PaperMod/papermod-cover.png</url>
-      <link>https://adityatelange.github.io/hugo-PaperMod/papermod-cover.png</link>
+      <title>小碼哥</title>
+      <url>https://lewang.dev/lewangdev-cover.png</url>
+      <link>https://lewang.dev/lewangdev-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 03 Mar 2014 23:40:00 +0000</lastBuildDate><atom:link href="https://adityatelange.github.io/hugo-PaperMod/tags/vagrant/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 03 Mar 2014 23:40:00 +0000</lastBuildDate><atom:link href="https://lewang.dev/tags/vagrant/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>使用 Vagrant 构建开发环境</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/posts/2014-03-03-building-devenv-by-vagrant/</link>
+      <link>https://lewang.dev/posts/2014-03-03-building-devenv-by-vagrant/</link>
       <pubDate>Mon, 03 Mar 2014 23:40:00 +0000</pubDate>
       
-      <guid>https://adityatelange.github.io/hugo-PaperMod/posts/2014-03-03-building-devenv-by-vagrant/</guid>
+      <guid>https://lewang.dev/posts/2014-03-03-building-devenv-by-vagrant/</guid>
       <description>Vagrant 是一个构建虚拟开发环境的利器，它使得在团队中很容易共享开发环境，有了它，不必每个人都搭建一个自己的开发环境了。在没有使用 vagrant 之前，我在 windows 中安装了 virtualbox，然后在 virtualbox 中安装了一个 ubuntu server。在 ubuntu 中安装了 mysql、jdk 等软件，并且设置了一个共享目录，以便于将工程代码直接共享给 ubuntu。在外部开发调试过程中（Java 项目），我需要在 virtualbox 中设置好几个端口映射，如 mysql，ssh 等等。这样在 cygwin 里面就可以通过 ssh 登录 ubuntu server 了，为了使得 ssh 登录不用每次设置密码，还需要手动生成公钥私钥。换机器了，这一切我又得重新配置。新同事来了，他也得像我这样重新配置一遍。有可能他还会有问题说：为什么按照你的说明，代码在我这里却无法运行呢？
 一切都从 Yining 告诉了我 vagrant 之后发生了变化，原来一切都这么简单。
 安装 VirtualBox Vagrant 其实是对 virtualbox 做了一层包装，它让使用 virtualbox 作为虚拟机更为简单。当然也可以使用 vmware，使用 vmware 那得找一个 license 了。

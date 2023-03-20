@@ -10,7 +10,7 @@
 <meta name="description" content="准备 阅读Flashing the Compute Module eMMC 准备一个可以刷系统的底板，我用的是微雪Compute-Module-IO-Board-Plus 步骤(Linux 系统下刷系统，可以使用树莓派来刷机) sudo apt install git libusb-1.0-0-dev git clone --depth=1 https://github.com/raspberrypi/usbboot &amp;&amp; cd usbboot &amp;&amp; make sudo ./rpiboot 连好线，跳线部分见各自底板的手册 拔掉 USB SLAVE 1/2/3/4 拔掉 SELECT 跳线帽 将 BOOT ENABLE USB SLAVE 跳线帽接到 EN 端 sudo fdisk -l 查看磁盘名称，这里是 /dev/sda sudo dd if=raspbian-lite.img of=/dev/sda bs=4MiB 刷入系统后，挂在启动分区，添加 SSH 来开启 SSH 服务，sudo mount /dev/sda1 /media cd /media &amp;&amp; touch SSH 使用慧通科技出品的 HuiBox-700 底板 省略上述的第4步，其它步骤完全一样">
 <meta name="author" content="">
 <link rel="canonical" href="https://lewang.dev/posts/2019-03-01-rpi-cm3-emmc-flashing/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.dc96e9e0118e5e264a03d68b104df6ae869cfb73c61f5f89dd91aeb16b0d8c03.css" integrity="sha256-3Jbp4BGOXiZKA9aLEE32roac&#43;3PGH1&#43;J3ZGusWsNjAM=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.dbd18e1336dc132db688ca86056d639ba27a928e999c81066ffa967cd89b6ad9.css" integrity="sha256-29GOEzbcEy22iMqGBW1jm6J6ko6ZnIEGb/qWfNibatk=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://lewang.dev/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://lewang.dev/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://lewang.dev/favicon-32x32.png">

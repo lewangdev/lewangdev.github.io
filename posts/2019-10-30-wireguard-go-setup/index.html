@@ -13,7 +13,7 @@ VPN 的用处非常的多，不像 frp 之类的端口穿透应用，它是直�
 编译 wireguard-go # 使用 GitHub 的源码镜像，速度会快一些 git clone git@github.com:wireguard/wireguard-go.git # 在 MacOS 下交叉编译 CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -v -o &#34;wireguard-go&#34; # Linux 环境下直接编译 go build -v -o &#34;wireguard-go&#34; cp wireguard-go /usr/sbin/ 编译 WireGuard tools git clone git@github.com:wireguard/wireguard.git # 安装依赖 ## debian&amp;ubuntu sudo apt-get install libmnl-dev libelf-dev ## centos sudo yum install libmnl-devel elfutils-libelf-devel cd wireguard/src/tools make sudo make install 配置 WireGuard 生成密钥">
 <meta name="author" content="">
 <link rel="canonical" href="https://lewang.dev/posts/2019-10-30-wireguard-go-setup/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.dc96e9e0118e5e264a03d68b104df6ae869cfb73c61f5f89dd91aeb16b0d8c03.css" integrity="sha256-3Jbp4BGOXiZKA9aLEE32roac&#43;3PGH1&#43;J3ZGusWsNjAM=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.dbd18e1336dc132db688ca86056d639ba27a928e999c81066ffa967cd89b6ad9.css" integrity="sha256-29GOEzbcEy22iMqGBW1jm6J6ko6ZnIEGb/qWfNibatk=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://lewang.dev/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://lewang.dev/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://lewang.dev/favicon-32x32.png">

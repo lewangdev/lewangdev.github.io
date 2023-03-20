@@ -1,146 +1,275 @@
-<!doctype html>
-<html lang="zh-CN">
+<!DOCTYPE html>
+<html lang="en" dir="auto">
 
-<head>
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>部署 | PaperMod</title>
+<meta name="keywords" content="">
+<meta name="description" content="Theme PaperMod - https://github.com/adityatelange/hugo-PaperMod">
+<meta name="author" content="Theme PaperMod">
+<link rel="canonical" href="https://adityatelange.github.io/hugo-PaperMod/tags/%E9%83%A8%E7%BD%B2/">
+<link crossorigin="anonymous" href="/hugo-PaperMod/assets/css/stylesheet.dc96e9e0118e5e264a03d68b104df6ae869cfb73c61f5f89dd91aeb16b0d8c03.css" integrity="sha256-3Jbp4BGOXiZKA9aLEE32roac&#43;3PGH1&#43;J3ZGusWsNjAM=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://adityatelange.github.io/hugo-PaperMod/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://adityatelange.github.io/hugo-PaperMod/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://adityatelange.github.io/hugo-PaperMod/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://adityatelange.github.io/hugo-PaperMod/apple-touch-icon.png">
+<link rel="mask-icon" href="https://adityatelange.github.io/hugo-PaperMod/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" type="application/rss+xml" href="https://adityatelange.github.io/hugo-PaperMod/tags/%E9%83%A8%E7%BD%B2/index.xml">
+<link rel="alternate" hreflang="en" href="https://adityatelange.github.io/hugo-PaperMod/tags/%E9%83%A8%E7%BD%B2/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
 
-    <meta charset="utf-8">
-    <meta name="generator" content="Hugo 0.108.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
 
-    <title>部署 - 小碼哥</title>
-    <meta property="og:title" content="部署 - 小碼哥">
-    <meta property="og:type" content="article">
-    
-    
-    <meta name="Keywords" content="IoT, 物联网, 智能硬件，工业互联网方案，智能家居, 智慧工厂, 智慧建筑, Golang, Java, JVM, Python, 树莓派, Linux 玩家，果粉，系统架构，技术管理">
-    <meta name="description" content="部署">
-    
-    <meta name="author" content="小碼哥">
-    <meta property="og:url" content="//lewang.dev/tags/%E9%83%A8%E7%BD%B2/">
-    
-    <link rel="shortcut icon" href="/favicon.ico">
+            .list {
+                background: var(--theme);
+            }
 
-    
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
 
-    
-    <link rel="icon" sizes="192x192" href="https://raw.githubusercontent.com/lewangdev/picb0/main/oh-my-blog/favicons/lewangdev-logo-192x192.png">
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
 
-    
-    <link rel="apple-touch-icon" sizes="180x180" href="https://raw.githubusercontent.com/lewangdev/picb0/main/oh-my-blog/favicons/lewangdev-logo-180x180.png">
+    </style>
+</noscript><meta property="og:title" content="部署" />
+<meta property="og:description" content="Theme PaperMod - https://github.com/adityatelange/hugo-PaperMod" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://adityatelange.github.io/hugo-PaperMod/tags/%E9%83%A8%E7%BD%B2/" /><meta property="og:image" content="https://adityatelange.github.io/hugo-PaperMod/papermod-cover.png"/>
 
-    
-    <meta name="msapplication-TileColor" content="#FFFFFF">
-    <meta name="msapplication-TileImage" content="https://raw.githubusercontent.com/lewangdev/picb0/main/oh-my-blog/favicons/lewangdev-logo-144x144.png">
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://adityatelange.github.io/hugo-PaperMod/papermod-cover.png"/>
 
-    <link rel="stylesheet" href="/css/normalize.css">
-    <link rel="stylesheet" href="/css/markdown.css">
-    <link rel="stylesheet" href="/css/main.css">
-    
-    <link rel="alternate" type="application/rss+xml+xml" href="//lewang.dev/tags/%E9%83%A8%E7%BD%B2/index.xml" title="小碼哥" />
-    <script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<meta name="twitter:title" content="部署"/>
+<meta name="twitter:description" content="Theme PaperMod - https://github.com/adityatelange/hugo-PaperMod"/>
 
-    
-
-    
-    
 </head>
 
-<body>
-    <header id="header">
-    <div class="container clearfix">
-        
-        <div class="site-name ">
-            <a id="logo" href="//lewang.dev/">
-                <img src="https://raw.githubusercontent.com/lewangdev/picb0/main/oh-my-blog/favicons/lewangdev-logo-192x192.png"
-                    alt="小碼哥">
-            </a>
-        </div>
-        <nav id="nav-menu" class="clearfix">
-            <a class=""
-                href="//lewang.dev/">HOME</a>
-            
-            <a  href="//lewang.dev/archives/"
-                title="ARCHIVES">ARCHIVES</a>
-            
-            <a  href="//lewang.dev/about/"
-                title="ABOUT">ABOUT</a>
-            
-        </nav>
-        
-    </div>
-</header>
-
-    <div id="body">
-        <div class="container">
-            
-            <h3 class="archive-title">
-                包含标签
-                <span class="keyword">部署</span>
-                的文章
-            </h3>
-            
-
-            
-            <article class="post">
-                <header>
-                    <h1 class="post-title">
-                        <a href="//lewang.dev/posts/2020-11-27-go-through-the-system-firewall/">机房不能访问互联网，轻松搞定系统部署</a>
-                    </h1>
-                </header>
-                <div class="post-meta">
-                Nov 27, 2020
-                
-                    |
-                    
-                    <a href="//lewang.dev/categories/Technical">Technical</a>
-                    
-                </div>
-                
-                <div class="post-summary">
-                    <a href="//lewang.dev/posts/2020-11-27-go-through-the-system-firewall/">
-                        创业这段时间以来，我们的 IoT 系统已经在不少客户的机房做了私有化部署，客户大多都是机加工厂、商业大楼、医院和大学实验室等，客户的机房都有一个相同的特点：私有云，与外网隔离，不能访问互联网。或者更为准确的说，是我们部署的服务器不能访问互联网，在没有互联网访问权限的情况下，系统的包管理工...
-                    </a>
-                </div>
-            </article>
-            
-
-            
-
-
-
-
-        </div>
-    </div>
-    <footer id="footer">
-    <div class="container">
-        Copyright &copy; 2011-2023 <a href="//lewang.dev/">小碼哥</a>, All
-        rights reserved.
-        <a href="//lewang.dev/index.xml">订阅 RSS</a>
-    </div>
-</footer>
-
-
-
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-12QS222X0Z"></script>
+<body class="list" id="top">
 <script>
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.dataLayer = window.dataLayer || [];
-	function gtag(){dataLayer.push(arguments);}
-	gtag('js', new Date());
-	gtag('config', 'G-12QS222X0Z', { 'anonymize_ip': false });
-}
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
 </script>
 
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://adityatelange.github.io/hugo-PaperMod/" accesskey="h" title="PaperMod (Alt + H)">PaperMod</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+                <ul class="lang-switch"><li>|</li>
+                    <li>
+                        <a href="https://adityatelange.github.io/hugo-PaperMod/fr/" title="French"
+                            aria-label=":fr:">🇫🇷</a>
+                    </li>
+                    <li>
+                        <a href="https://adityatelange.github.io/hugo-PaperMod/fa/" title="Fa"
+                            aria-label="Fa">Fa</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://adityatelange.github.io/hugo-PaperMod/archives" title="Archive">
+                    <span>Archive</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://adityatelange.github.io/hugo-PaperMod/search/" title="Search">
+                    <span>Search</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://adityatelange.github.io/hugo-PaperMod/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://discord.gg/ahpmTvhVmp" title="Discord">
+                    <span>Discord</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+            <li>
+                <a href="https://github.com/adityatelange/hugo-PaperMod/wiki/" title="WiKi">
+                    <span>WiKi</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main"> 
+<header class="page-header"><div class="breadcrumbs"><a href="https://adityatelange.github.io/hugo-PaperMod/">Home</a>&nbsp;»&nbsp;<a href="https://adityatelange.github.io/hugo-PaperMod/tags/">Tags</a></div>
+  <h1>
+    部署
+    <a href="index.xml" title="RSS" aria-label="RSS">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" height="23">
+        <path d="M4 11a9 9 0 0 1 9 9" />
+        <path d="M4 4a16 16 0 0 1 16 16" />
+        <circle cx="5" cy="19" r="1" />
+      </svg>
+    </a>
+  </h1>
+</header>
 
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2>机房不能访问互联网，轻松搞定系统部署
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>创业这段时间以来，我们的 IoT 系统已经在不少客户的机房做了私有化部署，客户大多都是机加工厂、商业大楼、医院和大学实验室等，客户的机房都有一个相同的特点：私有云，与外网隔离，不能访问互联网。或者更为准确的说，是我们部署的服务器不能访问互联网，在没有互联网访问权限的情况下，系统的包管理工具(yum/apt/docker)都无法使用了，在这种情况下进行系统部署安装，费时费力，而且无法进行远程部署维护，也大大增加了项目的实施成本。
+在最近的一个客户项目的实施过程中，看到客户的一些其他供应商在系统部署过程中非常艰难，甚至是 CentOS 系统初始化和 Docker 的安装就花掉了两个礼拜的人力，不排除一些供应商这样折腾会给他的客户留下工作敬业钱花的值的好印象，但对于我们这样的小创业公司来说，这样的时间浪费和低效是无法承担的成本，因为来实操部署的人就是公司老板本人了，我也不想出差在客户这里待上两个礼拜。
+在工作完成之后，想想可以把解决问题的方法记录一下，也许能给遇到相同问题的同行一些启发和帮助。好了，废话不多说，接下来我们就来解决这个无外网的部署问题，顺便再解决一下远程维护的问题。
+一、面临的问题 在部署和维护一个私有化企业内部使用且无互联网访问的系统中，可能会面临以下问题:
+机房服务器无法访问 Internet 可通过接入企业内网来访问服务器，而从服务器无法直连办公室网络，即机房和办公室在不同的网段 无互联网访问权限的情况下，无法直接使用系统的配置工具，如 yum/apt/docker 等，配置系统和部署服务费时费力 无法远程进行维护 客户内网拓扑示意图，此处省略了防火墙，简化拓扑图的复杂度，如下:
+网络拓扑图说明:
+机房和办公室不在一个网段 机房网段假设为 172.22.0.0/16，办公室内网 WiFi 的网段为 192.168.137.0/24 机房服务器之间是互通的，办公室可以 ping 通机房服务器，在机房服务器上无法 ping 通办公室部署控制主机，这里假设办公室网络作为一个 NAT 放在上层交换机后面 内网没有互联网访问权限，包括机房服务器和办公室内网 WiFI 二、解决问题的方法 既然是由于机房服务器没有互联网访问权限，不能联网下载安装包，那就想办法让机房服务器可以连接互联网或者搭建内网的软件包镜像服务，于是想到一些方法来达到目的:
+告知客户问题，申请开通互联网访问权限，可以限定为指定的网址和协议(HTTP/HTTPS)，需要远程维护的化，还需要申请可以连接到服务器的 VPN。这个方法在需要客户的进行审批，可能时间比较长。我们的客户中有不少都没有自建 VPN，或这不方便给我们开通 VPN，另外也无法开通需要我们部署的服务器的互联网访问权限，所以不能使用这个方法
+在客户机房放置可以通过 4G 上网的堡垒机，堡垒机接入客户机房网络。在客户机房放一个堡垒机，虽然说是堡垒机，但可能客户那边的机房管理也还是不容许放置这样的机器的，所以也不能使用这个方法
+搭建 yum(CentOS)/apt(Debian/Ubuntu)/docker 的内网镜像服务，搭建内网镜像服务可能就是一个比较艰巨的任务，难以接受给自己又添加了一个艰难的任务，此方法也作罢
+通过在办公室网里放置部署控制机，同时连接内网和 4G 路由器提供的外网(互联网)，在部署控制机上搭建 SDWAN 或者 HTTP 代理，yum/apt/docker 都支持 HTTP 代理，这样修改系统配置之后，就可以通过代理安装部署服务，这个方法比较简单，而且几乎不需要客户的参与就可以完成。不过也有一些前置条件，例如:
+办公室中主机可以接入客户网络
+客户服务器允许办公室网络中主机通过 TCP 或者 UDP 访问其任意或者指定的端口
+客户办公室的 4G 网络信号要足够好，这样可以提供更好的外网速度
+拥有服务器的 root 管理员权限(需要安装软件和修改系统配置)
+通过权衡利弊，我们最终使用的是第 4 个方法来搭建的，下面来讲讲搭建的过程。...</p>
+  </div>
+  <footer class="entry-footer"><span title='2020-11-27 00:00:00 +0000 UTC'>November 27, 2020</span>&nbsp;·&nbsp;5 min&nbsp;·&nbsp;Theme PaperMod</footer>
+  <a class="entry-link" aria-label="post link to 机房不能访问互联网，轻松搞定系统部署" href="https://adityatelange.github.io/hugo-PaperMod/posts/2020-11-27-go-through-the-system-firewall/"></a>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2023 <a href="https://adityatelange.github.io/hugo-PaperMod/">PaperMod</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
 
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
 
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
 
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
 
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
 
-
+</script>
 </body>
 
 </html>

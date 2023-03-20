@@ -1,19 +1,95 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>python on 小碼哥</title>
-    <link>//lewang.dev/tags/python/</link>
-    <description>Recent content in python on 小碼哥</description>
+    <title>python on PaperMod</title>
+    <link>https://adityatelange.github.io/hugo-PaperMod/tags/python/</link>
+    <description>Recent content in python on PaperMod</description>
+    <image>
+      <title>PaperMod</title>
+      <url>https://adityatelange.github.io/hugo-PaperMod/papermod-cover.png</url>
+      <link>https://adityatelange.github.io/hugo-PaperMod/papermod-cover.png</link>
+    </image>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-CN</language>
-    <lastBuildDate>Mon, 06 Jun 2022 00:00:00 +0000</lastBuildDate><atom:link href="//lewang.dev/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 06 Jun 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://adityatelange.github.io/hugo-PaperMod/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Kindle 中国停止运营，一键下载已购买的电子书</title>
+      <link>https://adityatelange.github.io/hugo-PaperMod/posts/2022-06-06-save-your-kindle-ebooks/</link>
+      <pubDate>Mon, 06 Jun 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://adityatelange.github.io/hugo-PaperMod/posts/2022-06-06-save-your-kindle-ebooks/</guid>
+      <description>前几天亚马逊宣告 Kindle 中国电子书店运营进行调整，通知标题写得比较委婉，其实就是亚马逊电子书即将退出中国市场，到时候我们购买的国行版 Kindle 将不能购买新电子书，也不能下载已经购买的电子书了。
+如果购买的电子书比较多，手动一本一本的去下载是挺费时间的，我来分享一下我是如何使用 Python 一键下载所有电子书的。
+安装 Python 用 Chrome 浏览器打开 https://python.org，下载最新版本的 Python 3.10.4
+下载好然后运行 python-3.10.4-amd64.exe, 选择第一个选项，一定要记得勾选添加到 PATH，否则在命令行中执行 python 时会报错。
+准备 Python 一键下载脚本 用 Chrome 浏览器打开 https://github.com/yihong0618/Kindle_download_helper，下载 ZIP 包后并且解压:
+使用 Python 一键下载脚本 进入解压后的目录，点击鼠标右键打开一个命令行窗口
+打开的命令行窗口是这样的：
+接下来准备 python 的虚拟环境，在命令行窗口输入：
+python -m venv venv 创建好虚拟环境之后，再激活虚拟环境，在命令行窗口输入：
+.\venv\Scripts\activate.bat 安装 Python 脚本的依赖库，在命令行窗口输入：
+pip install -r requirements.txt 至此，一键下载脚本准备就绪，在命令行窗口输入：
+python kindle.py 这样看到了脚本的帮助提示：
+接下来我们准备脚本需要的 cookie 和 csrf_token, 这两个值都需要通过 Chrome 浏览器获取。
+获取 cookie 和 csrf_token 首先使用浏览器登录亚马逊账号，
+登录地址 https://z.cn， 登录之后访问 https://www.</description>
+    </item>
+    
+    <item>
+      <title>写个程序把油管 YouTube 变成无限容量的网盘</title>
+      <link>https://adityatelange.github.io/hugo-PaperMod/posts/2022-05-27-store-files-as-youtube-videos/</link>
+      <pubDate>Fri, 27 May 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://adityatelange.github.io/hugo-PaperMod/posts/2022-05-27-store-files-as-youtube-videos/</guid>
+      <description>前几天刷新闻的时候，看到了一个代码仓库 YouTubeDrive 的介绍，他的作者在多年前用 Wolfram 语言（也就是 Mathematica） 编写了一段代码，可以将油管变成一个无限容量的大网盘，看完介绍之后我脑子里直接蹦出无数个“卧槽”，心里顿生“这样也行”的膜拜之情，不禁提问：这个是薅羊毛的最高境界吗？
+说起 Wolfram 语言和 Mathematica，不得不提一下，它是我学习的第一个编程语言（汇编是第二个）。多年前我是在学校机房学的，当时只用它画画数学公式的图，今天看着 YouTubeDrive 的实现，才了解到 Wolfram 还可以这样用。
+首先，和原作者一样，我也不提倡这样把 YouTube 当成一个无限容量的网盘使用，相同的道理，我也不提倡在国内把 B 站或者任意视频平台当做位无限容量的网盘来用。
+昨天在看完 YouTubeDrive 源码之后，想着要不我也用 Python 实现一个，正好傍晚溜娃的时候，啥也不能干，就边走边想，我用 Python 应该怎么来实现一个？ 在坐着等娃的时候，就用手机查下资料，大概了解了一下 numpy 和 opencv 的使用，晚上吃过晚饭就开始写了，很快也实现了一个可以工作的 Python 版的。
+我觉得这个想法还是挺有意思的，虽然不太靠谱，但是真的好玩。不想去读 Wolfram 源码的朋友可以看看我接下来的分析，看看是如何把文件变成 YouTube 视频的进行存储的。
+磁盘上的文件是什么 在我们的计算机（无论电脑还是手机都是计算机）磁盘里，存放了很多很多的文件，例如图片，文档，视频等等，每种文件都有自己的类型，或者叫格式，一般我们都会给文件添加一个后缀名展示文件的类型，但是对于电脑而言，无论是什么文件，它都只是由比特（bit） 0 和 1 组成的数据。
+例如这张图片：
+用 vim 执行命令 :%!xxd，打开是这样的：
+图片文件的头 4 个字节是 ffd8（其实 ffd8 说明了这个是 JPEG 格式的文件），ffd8 是 16 进制的表示法，比 2 进制看起来更清晰。
+在计算机里，用 8 个 bit 表示一个 byte，即 1 个字节有 8 位，一个字节需要用 2 个 16 进制数来表示，例如：ffd8 是 2 个字节。</description>
+    </item>
+    
+    <item>
+      <title>命令行格式化 JSON</title>
+      <link>https://adityatelange.github.io/hugo-PaperMod/posts/2022-05-20-format-json-in-command-line-copy/</link>
+      <pubDate>Fri, 20 May 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://adityatelange.github.io/hugo-PaperMod/posts/2022-05-20-format-json-in-command-line-copy/</guid>
+      <description>今天要改 Docker 的两个配置 hostconfig.json 和 config.v2.json，打开一看，这个文件是单行的，在编辑器里面显示这是这样的：
+代码都堆在一起，用 vim 格式化也没啥效果，编辑起来不是很方便。
+Python 自带模块格式化 JSON 格式化 JSON 文件有很多方法，我最常用的就是 Python 自带的 json.tool 这个模块，只要安装了 Python 的电脑，都可以直接使用，这样就可以了：
+python -m json.tool hostconfig.json &amp;gt; hostconfig-formatted.json 格式化以后再打开看一看：
+这样编辑文件就方便多了。
+与管道符一起使用 前面的例子我们还可以使用管道符(|)来实现，例如:
+cat hostconfig.json | python -m json.tool &amp;gt; hostconfig-formatted.json 从 RESTful 接口直接获取数据并且格式化:
+curl -s https://api.github.com/users/lewangdev | python -m json.tool 其它本地格式化工具 DevToysMac: MacOS 版的 DevToys or Windows，我是用 Windows 11 时候看到这个软件的，于是顺手搜了一下 MacOS 版的，也挺好用的。 jq: 除了像 sed 一样的处理 JSON 以外，还能把输出的 JSON 变成彩色的。 curl &amp;#39;https://api.</description>
+    </item>
+    
+    <item>
+      <title>CentOS 7 上使用 pyenv 安装 Python 3.7.3</title>
+      <link>https://adityatelange.github.io/hugo-PaperMod/posts/2019-05-29-centos7-pyenv-install-python-3/</link>
+      <pubDate>Wed, 29 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://adityatelange.github.io/hugo-PaperMod/posts/2019-05-29-centos7-pyenv-install-python-3/</guid>
+      <description>概要 本文记录了在 CentOS 7.6 系统上通过 pyenv 安装 Python 3.7.3 的过程。
+环境 CentOS Linux release 7.6.1810 (Core) Kernel 3 3.10.0-957.el7.x86_64 Pyenv 1.2.11 安装 pyenv $ curl https://pyenv.run | bash 然后根据提示把以下内容放到 ~/.bashrc 文件末尾
+# Load pyenv automatically by adding # the following to ~/.bashrc: export PATH=&amp;#34;/root/.pyenv/bin:$PATH&amp;#34; eval &amp;#34;$(pyenv init -)&amp;#34; eval &amp;#34;$(pyenv virtualenv-init -)&amp;#34; 安装 Python 3.7.3 准备
+$ sudo yum -y install xz bzip2 bzip2-devel sqlite-devel gcc openssl-devel readline-devel zlib-devel libffi-devel 安装</description>
+    </item>
+    
     <item>
       <title>Python on My rMBP</title>
-      <link>//lewang.dev/posts/2014-03-02-python-on-my-rmbp/</link>
+      <link>https://adityatelange.github.io/hugo-PaperMod/posts/2014-03-02-python-on-my-rmbp/</link>
       <pubDate>Sun, 02 Mar 2014 21:16:00 +0000</pubDate>
       
-      <guid>//lewang.dev/posts/2014-03-02-python-on-my-rmbp/</guid>
-      <description>前几天入手了一台 Macbook Pro Retina，把 BIG 提到了很爽的地步。经过几天的折腾，可以和 windows，ubuntu desktop 说 Byebye 了。之前整整用了一年的 Ubuntu 来工作，我用它来写 C、Java 和 Python, 要是 windows 没有 cygwin, 没有 MacType，那该多么恐怖。后来用了一段时间的 MBP，让我坚定了以后要自己买一个 MBP。 ubuntu 那</description>
+      <guid>https://adityatelange.github.io/hugo-PaperMod/posts/2014-03-02-python-on-my-rmbp/</guid>
+      <description>前几天入手了一台 Macbook Pro Retina，把 BIG 提到了很爽的地步。经过几天的折腾，可以和 windows，ubuntu desktop 说 Byebye 了。之前整整用了一年的 Ubuntu 来工作，我用它来写 C、Java 和 Python, 要是 windows 没有 cygwin, 没有 MacType，那该多么恐怖。后来用了一段时间的 MBP，让我坚定了以后要自己买一个 MBP。
+ubuntu 那么的惹人爱，因为它有个还挺好用的 GUI，从 debian 那继承过来的 apt-get, 一下子把一个从 redhat 9 用到 fedora 4 的穷学生拉到了 ubuntu 的阵营，至此，deskop 就被 ubuntu 占领了。在此之前，我还用段时间的 debian 和 gentoo。
+不得不说，debian 太伟大太牛逼了，有一次要在一个 MIPS 的小设备上编译安装 erlang， openssl，libcurl 等做一些实验, 要跨平台编译这些软件安装到小设备上去，费了半天终于把这些都编好了，还写了一个编译脚步，结果 erlang 运行的时候虚拟机总是报错，也不知道怎么回事。后来注意到 debian 居然有 MIPS，ARM 的源，后来在 MIPS 设备上安装软件做实验，我再也没有遇到问题，一切都用 apt-get 搞定了。
+除了 apt-get, 我想最令我惊喜还有 ubuntu 自带了 python 2.7，让我很容易在两台电脑之间拷贝文件：</description>
     </item>
     
   </channel>

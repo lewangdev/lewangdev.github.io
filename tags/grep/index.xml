@@ -1,19 +1,28 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>grep on 小碼哥</title>
-    <link>//lewang.dev/tags/grep/</link>
-    <description>Recent content in grep on 小碼哥</description>
+    <title>grep on PaperMod</title>
+    <link>https://adityatelange.github.io/hugo-PaperMod/tags/grep/</link>
+    <description>Recent content in grep on PaperMod</description>
+    <image>
+      <title>PaperMod</title>
+      <url>https://adityatelange.github.io/hugo-PaperMod/papermod-cover.png</url>
+      <link>https://adityatelange.github.io/hugo-PaperMod/papermod-cover.png</link>
+    </image>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-CN</language>
-    <lastBuildDate>Sat, 21 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="//lewang.dev/tags/grep/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 21 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://adityatelange.github.io/hugo-PaperMod/tags/grep/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>grep，xargs 和 sed 的一次日常使用</title>
-      <link>//lewang.dev/posts/2022-05-21-replace-strings-in-all-files/</link>
+      <link>https://adityatelange.github.io/hugo-PaperMod/posts/2022-05-21-replace-strings-in-all-files/</link>
       <pubDate>Sat, 21 May 2022 00:00:00 +0000</pubDate>
       
-      <guid>//lewang.dev/posts/2022-05-21-replace-strings-in-all-files/</guid>
-      <description>趁着周末空隙把自己年久失修博客整理了一下，用到了 grep，xargs 和 sed 命令，使用这 3 个命令组合批量替换了所有 Markdown 文件中的图片链接。 我的博客从我的学生时代就开始了，不断折腾自己的博客，所以学会了 HTML/CSS/JS，下次和大家分享一下我的博客旅程。 这里不详细讲解这 3 个命令的使用，</description>
+      <guid>https://adityatelange.github.io/hugo-PaperMod/posts/2022-05-21-replace-strings-in-all-files/</guid>
+      <description>趁着周末空隙把自己年久失修博客整理了一下，用到了 grep，xargs 和 sed 命令，使用这 3 个命令组合批量替换了所有 Markdown 文件中的图片链接。
+我的博客从我的学生时代就开始了，不断折腾自己的博客，所以学会了 HTML/CSS/JS，下次和大家分享一下我的博客旅程。
+这里不详细讲解这 3 个命令的使用，这 3 个命令的使用可以写出来厚厚的一本书。如果希望详细的了解这些命令，可以在 Linux 的终端下输入这样的命令查看文档，例如查看 grep 如何使用：
+man grep man 命令的常用操作:
+退出: 按 q 键 查找：按 / 后输入查找关键字 下一页: 按 ctrl + d 或者 ctrl + f，tips: 这里的 d 大概是 down，f 大概是 forward 上一页: 按 ctrl + u 或者 ctrl + b，tips: 这里的 d 大概是 up，b 大概是 backward 查看其它命令的手册也是类似的。
+我博客的问题 我的博客是用 hugo 构建的，所有的文章都放在 post 下面的目录里，图片则需要放在 static 的 images 下面，这样在用 vscode 写博客 Markdown 的时候无法在预览里面看到图片。于是我在 hugo 项目的根目录下添加了的一个 images 的符号链接到 static 目录下的 images， 才能解决图片预览的问题。</description>
     </item>
     
   </channel>

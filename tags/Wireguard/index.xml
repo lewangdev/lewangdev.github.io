@@ -1,19 +1,26 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>WireGuard on 小碼哥</title>
-    <link>//lewang.dev/tags/WireGuard/</link>
-    <description>Recent content in WireGuard on 小碼哥</description>
+    <title>WireGuard on PaperMod</title>
+    <link>https://adityatelange.github.io/hugo-PaperMod/tags/wireguard/</link>
+    <description>Recent content in WireGuard on PaperMod</description>
+    <image>
+      <title>PaperMod</title>
+      <url>https://adityatelange.github.io/hugo-PaperMod/papermod-cover.png</url>
+      <link>https://adityatelange.github.io/hugo-PaperMod/papermod-cover.png</link>
+    </image>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-CN</language>
-    <lastBuildDate>Wed, 30 Oct 2019 00:00:00 +0000</lastBuildDate><atom:link href="//lewang.dev/tags/WireGuard/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 30 Oct 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://adityatelange.github.io/hugo-PaperMod/tags/wireguard/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>WireGuard 使用简介</title>
-      <link>//lewang.dev/posts/2019-10-30-wireguard-go-setup/</link>
+      <link>https://adityatelange.github.io/hugo-PaperMod/posts/2019-10-30-wireguard-go-setup/</link>
       <pubDate>Wed, 30 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>//lewang.dev/posts/2019-10-30-wireguard-go-setup/</guid>
-      <description>背景 搭建 VPN 方便连接无公网 IP 云主机进行开发，WireGuard 配置比 OpenVPN 要简单很多，WireGuard 是通过 Linux 内核模块的方式实现的，这样性能最好，但是只能用在 Linux 系统上。本文使用的 wireguard-go， 则是使用 Golang 实现的 WireGuard 协议，属于用户空间(User Space)的实现，性能没有内核模</description>
+      <guid>https://adityatelange.github.io/hugo-PaperMod/posts/2019-10-30-wireguard-go-setup/</guid>
+      <description>背景 搭建 VPN 方便连接无公网 IP 云主机进行开发，WireGuard 配置比 OpenVPN 要简单很多，WireGuard 是通过 Linux 内核模块的方式实现的，这样性能最好，但是只能用在 Linux 系统上。本文使用的 wireguard-go， 则是使用 Golang 实现的 WireGuard 协议，属于用户空间(User Space)的实现，性能没有内核模块方式好，但好处就是跨平台且更简单易用。
+VPN 的用处非常的多，不像 frp 之类的端口穿透应用，它是直接建立虚拟的网络，网络中的每个客户端也都可以拥有自己独立的 IP，于是测试调试就没有了端口的限制，非常的方便。
+除了方便安全连接云服务器，还可以通过 VPN 搭建工业设备的远程部署和维护的解决方案。
+编译 wireguard-go # 使用 GitHub 的源码镜像，速度会快一些 git clone git@github.com:wireguard/wireguard-go.git # 在 MacOS 下交叉编译 CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -v -o &amp;#34;wireguard-go&amp;#34; # Linux 环境下直接编译 go build -v -o &amp;#34;wireguard-go&amp;#34; cp wireguard-go /usr/sbin/ 编译 WireGuard tools git clone git@github.com:wireguard/wireguard.git # 安装依赖 ## debian&amp;amp;ubuntu sudo apt-get install libmnl-dev libelf-dev ## centos sudo yum install libmnl-devel elfutils-libelf-devel cd wireguard/src/tools make sudo make install 配置 WireGuard 生成密钥</description>
     </item>
     
   </channel>

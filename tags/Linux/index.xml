@@ -1,127 +1,195 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Linux on 小碼哥</title>
-    <link>//lewang.dev/tags/Linux/</link>
-    <description>Recent content in Linux on 小碼哥</description>
+    <title>Linux on PaperMod</title>
+    <link>https://adityatelange.github.io/hugo-PaperMod/tags/linux/</link>
+    <description>Recent content in Linux on PaperMod</description>
+    <image>
+      <title>PaperMod</title>
+      <url>https://adityatelange.github.io/hugo-PaperMod/papermod-cover.png</url>
+      <link>https://adityatelange.github.io/hugo-PaperMod/papermod-cover.png</link>
+    </image>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-CN</language>
-    <lastBuildDate>Sat, 21 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="//lewang.dev/tags/Linux/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 21 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://adityatelange.github.io/hugo-PaperMod/tags/linux/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>grep，xargs 和 sed 的一次日常使用</title>
-      <link>//lewang.dev/posts/2022-05-21-replace-strings-in-all-files/</link>
+      <link>https://adityatelange.github.io/hugo-PaperMod/posts/2022-05-21-replace-strings-in-all-files/</link>
       <pubDate>Sat, 21 May 2022 00:00:00 +0000</pubDate>
       
-      <guid>//lewang.dev/posts/2022-05-21-replace-strings-in-all-files/</guid>
-      <description>趁着周末空隙把自己年久失修博客整理了一下，用到了 grep，xargs 和 sed 命令，使用这 3 个命令组合批量替换了所有 Markdown 文件中的图片链接。 我的博客从我的学生时代就开始了，不断折腾自己的博客，所以学会了 HTML/CSS/JS，下次和大家分享一下我的博客旅程。 这里不详细讲解这 3 个命令的使用，</description>
+      <guid>https://adityatelange.github.io/hugo-PaperMod/posts/2022-05-21-replace-strings-in-all-files/</guid>
+      <description>趁着周末空隙把自己年久失修博客整理了一下，用到了 grep，xargs 和 sed 命令，使用这 3 个命令组合批量替换了所有 Markdown 文件中的图片链接。
+我的博客从我的学生时代就开始了，不断折腾自己的博客，所以学会了 HTML/CSS/JS，下次和大家分享一下我的博客旅程。
+这里不详细讲解这 3 个命令的使用，这 3 个命令的使用可以写出来厚厚的一本书。如果希望详细的了解这些命令，可以在 Linux 的终端下输入这样的命令查看文档，例如查看 grep 如何使用：
+man grep man 命令的常用操作:
+退出: 按 q 键 查找：按 / 后输入查找关键字 下一页: 按 ctrl + d 或者 ctrl + f，tips: 这里的 d 大概是 down，f 大概是 forward 上一页: 按 ctrl + u 或者 ctrl + b，tips: 这里的 d 大概是 up，b 大概是 backward 查看其它命令的手册也是类似的。
+我博客的问题 我的博客是用 hugo 构建的，所有的文章都放在 post 下面的目录里，图片则需要放在 static 的 images 下面，这样在用 vscode 写博客 Markdown 的时候无法在预览里面看到图片。于是我在 hugo 项目的根目录下添加了的一个 images 的符号链接到 static 目录下的 images， 才能解决图片预览的问题。</description>
     </item>
     
     <item>
       <title>命令行格式化 JSON</title>
-      <link>//lewang.dev/posts/2022-05-20-format-json-in-command-line-copy/</link>
+      <link>https://adityatelange.github.io/hugo-PaperMod/posts/2022-05-20-format-json-in-command-line-copy/</link>
       <pubDate>Fri, 20 May 2022 00:00:00 +0000</pubDate>
       
-      <guid>//lewang.dev/posts/2022-05-20-format-json-in-command-line-copy/</guid>
-      <description>今天要改 Docker 的两个配置 hostconfig.json 和 config.v2.json，打开一看，这个文件是单行的，在编辑器里面显示这是这样的： 代码都堆在一起，用 vim 格式化也没啥效果，编辑起来不是很方便。 Python 自带模块格式化 JSON 格式化 JSON 文件有很多方法，我最常用的就是 Python 自带的 json.tool 这个模块，只要安装了 Python 的电脑，都可以直接使用，</description>
+      <guid>https://adityatelange.github.io/hugo-PaperMod/posts/2022-05-20-format-json-in-command-line-copy/</guid>
+      <description>今天要改 Docker 的两个配置 hostconfig.json 和 config.v2.json，打开一看，这个文件是单行的，在编辑器里面显示这是这样的：
+代码都堆在一起，用 vim 格式化也没啥效果，编辑起来不是很方便。
+Python 自带模块格式化 JSON 格式化 JSON 文件有很多方法，我最常用的就是 Python 自带的 json.tool 这个模块，只要安装了 Python 的电脑，都可以直接使用，这样就可以了：
+python -m json.tool hostconfig.json &amp;gt; hostconfig-formatted.json 格式化以后再打开看一看：
+这样编辑文件就方便多了。
+与管道符一起使用 前面的例子我们还可以使用管道符(|)来实现，例如:
+cat hostconfig.json | python -m json.tool &amp;gt; hostconfig-formatted.json 从 RESTful 接口直接获取数据并且格式化:
+curl -s https://api.github.com/users/lewangdev | python -m json.tool 其它本地格式化工具 DevToysMac: MacOS 版的 DevToys or Windows，我是用 Windows 11 时候看到这个软件的，于是顺手搜了一下 MacOS 版的，也挺好用的。 jq: 除了像 sed 一样的处理 JSON 以外，还能把输出的 JSON 变成彩色的。 curl &amp;#39;https://api.</description>
     </item>
     
     <item>
       <title>如何打造国内开发所需要的网络</title>
-      <link>//lewang.dev/posts/2022-05-16-cndevnet-intro/</link>
+      <link>https://adityatelange.github.io/hugo-PaperMod/posts/2022-05-16-cndevnet-intro/</link>
       <pubDate>Mon, 16 May 2022 00:00:00 +0000</pubDate>
       
-      <guid>//lewang.dev/posts/2022-05-16-cndevnet-intro/</guid>
-      <description>一个国内开发者可能有点用的网络工具，cndevnet 帮助开发者，尤其是初学者不用再费心折腾 pip/npm/golang/flutter/android/blockchain 等等无法访问的问题。 背景 由于某些原因，国内开发者需要的不少技术站点或者镜像源都无法直接访问，这使得在开发者在日常工作中会消耗额外的时间，去设置各种代理或者寻找国内的可替代的镜像源来使用。 在</description>
+      <guid>https://adityatelange.github.io/hugo-PaperMod/posts/2022-05-16-cndevnet-intro/</guid>
+      <description>一个国内开发者可能有点用的网络工具，cndevnet 帮助开发者，尤其是初学者不用再费心折腾 pip/npm/golang/flutter/android/blockchain 等等无法访问的问题。
+背景 由于某些原因，国内开发者需要的不少技术站点或者镜像源都无法直接访问，这使得在开发者在日常工作中会消耗额外的时间，去设置各种代理或者寻找国内的可替代的镜像源来使用。
+在开源软件的世界里，几乎所有的知名项目，原本只要把代码 clone 回来，不需要做额外任何配置，只需要按照它的说明就可以直接编译源码。但由于网络的原因，在国内甚至连开源软件的源码都不太方便直接下载，一些原本只需要从 GitHub 拉下来代码就可以直接编译成功的项目，在国内也是连编译都编译不过。
+国内开发者群体是非常庞大的，所以我看到了很多知名的开源项目为中国用户在 README.md 文档或是页面的显著位置都增加了中文提示，去引导国内开发者去使用国内的镜像。
+Flutter
+powerlevel10k
+但是，我想这种做法应该不属于 i18n，因为我很少看到有引导日本的开发者去用日本的镜像，或者引导德国的开发者去用德国的镜像，这看似解决了访问慢或者无法访问的问题，但其实是加剧了国内开发者与全球互联网的割裂，在开发者的世界里面，也形成了国内和国外两个网络。
+给系统或软件单独设置代理，或者寻找国内的可替代的镜像源我都觉得不是一个好方案，因为这样在国内的你总会遇到各种各样的国外开发者就不会遇到的问题，最好还是能够拥有一个与国外开发者“用起来”好像是一样的网络环境。
+cndevnet 就是为了解决这个问题而创建的，希望能帮助到和我一样遇到相同问题的国内开发者。
+从 Linux 开始 cndevnet 可以在 Linux 环境下搭建一个专为初学开发者设置的开发网络，搭配使用 vscode 进行远程开发是一种不错的体验，适合学习 python/golang 等。
+Linux 环境可以是在国内云平台上的一台云主机，也可以是运行在本地虚拟机里面的主机，或者是局域网中的一台 Linux 主机。
+Debian 是一个非常棒的 Linux 发行版，推荐希望学习 Linux 的初学者使用。如果希望使用带有图形界面的 Linux 系统，Ubuntu 也是一个非常好的选择。
+cndevnet 使用了以下软件和服务 Debian：目前支持的 Linux 系统 Docker: 用于运行 gost 和 smartdns 服务 gost: 用于建立 WSS(Websocket over TLS) 服务 smartdns： 用于解决 DNS 污染 dnsmasq-china-list： 国内域名 Cloudflare IP Range: Cloudflare 的 IP 范围 Cloudflare: Cloudflare 的 WSS 代理服务 Oracle Cloud: Oracle Cloud 的云主机 cndevnet 原理 cndevnet 通过 iptables 等工具和数据实现了系统的透明代理，由于是系统级的透明代理，所以在启用了 cndevnet 的 Linux 系统上，是不需要为系统或者各类开发工具或者服务单独设置代理的。</description>
     </item>
     
     <item>
       <title>机房不能访问互联网，轻松搞定系统部署</title>
-      <link>//lewang.dev/posts/2020-11-27-go-through-the-system-firewall/</link>
+      <link>https://adityatelange.github.io/hugo-PaperMod/posts/2020-11-27-go-through-the-system-firewall/</link>
       <pubDate>Fri, 27 Nov 2020 00:00:00 +0000</pubDate>
       
-      <guid>//lewang.dev/posts/2020-11-27-go-through-the-system-firewall/</guid>
-      <description>创业这段时间以来，我们的 IoT 系统已经在不少客户的机房做了私有化部署，客户大多都是机加工厂、商业大楼、医院和大学实验室等，客户的机房都有一个相同的特点：私有云，与外网隔离，不能访问互联网。或者更为准确的说，是我们部署的服务器不能访问互联网，在没有互联网访问权限的情况下，系统的包管理工</description>
+      <guid>https://adityatelange.github.io/hugo-PaperMod/posts/2020-11-27-go-through-the-system-firewall/</guid>
+      <description>创业这段时间以来，我们的 IoT 系统已经在不少客户的机房做了私有化部署，客户大多都是机加工厂、商业大楼、医院和大学实验室等，客户的机房都有一个相同的特点：私有云，与外网隔离，不能访问互联网。或者更为准确的说，是我们部署的服务器不能访问互联网，在没有互联网访问权限的情况下，系统的包管理工具(yum/apt/docker)都无法使用了，在这种情况下进行系统部署安装，费时费力，而且无法进行远程部署维护，也大大增加了项目的实施成本。
+在最近的一个客户项目的实施过程中，看到客户的一些其他供应商在系统部署过程中非常艰难，甚至是 CentOS 系统初始化和 Docker 的安装就花掉了两个礼拜的人力，不排除一些供应商这样折腾会给他的客户留下工作敬业钱花的值的好印象，但对于我们这样的小创业公司来说，这样的时间浪费和低效是无法承担的成本，因为来实操部署的人就是公司老板本人了，我也不想出差在客户这里待上两个礼拜。
+在工作完成之后，想想可以把解决问题的方法记录一下，也许能给遇到相同问题的同行一些启发和帮助。好了，废话不多说，接下来我们就来解决这个无外网的部署问题，顺便再解决一下远程维护的问题。
+一、面临的问题 在部署和维护一个私有化企业内部使用且无互联网访问的系统中，可能会面临以下问题:
+机房服务器无法访问 Internet 可通过接入企业内网来访问服务器，而从服务器无法直连办公室网络，即机房和办公室在不同的网段 无互联网访问权限的情况下，无法直接使用系统的配置工具，如 yum/apt/docker 等，配置系统和部署服务费时费力 无法远程进行维护 客户内网拓扑示意图，此处省略了防火墙，简化拓扑图的复杂度，如下:
+网络拓扑图说明:
+机房和办公室不在一个网段 机房网段假设为 172.22.0.0/16，办公室内网 WiFi 的网段为 192.168.137.0/24 机房服务器之间是互通的，办公室可以 ping 通机房服务器，在机房服务器上无法 ping 通办公室部署控制主机，这里假设办公室网络作为一个 NAT 放在上层交换机后面 内网没有互联网访问权限，包括机房服务器和办公室内网 WiFI 二、解决问题的方法 既然是由于机房服务器没有互联网访问权限，不能联网下载安装包，那就想办法让机房服务器可以连接互联网或者搭建内网的软件包镜像服务，于是想到一些方法来达到目的:
+告知客户问题，申请开通互联网访问权限，可以限定为指定的网址和协议(HTTP/HTTPS)，需要远程维护的化，还需要申请可以连接到服务器的 VPN。这个方法在需要客户的进行审批，可能时间比较长。我们的客户中有不少都没有自建 VPN，或这不方便给我们开通 VPN，另外也无法开通需要我们部署的服务器的互联网访问权限，所以不能使用这个方法
+在客户机房放置可以通过 4G 上网的堡垒机，堡垒机接入客户机房网络。在客户机房放一个堡垒机，虽然说是堡垒机，但可能客户那边的机房管理也还是不容许放置这样的机器的，所以也不能使用这个方法
+搭建 yum(CentOS)/apt(Debian/Ubuntu)/docker 的内网镜像服务，搭建内网镜像服务可能就是一个比较艰巨的任务，难以接受给自己又添加了一个艰难的任务，此方法也作罢
+通过在办公室网里放置部署控制机，同时连接内网和 4G 路由器提供的外网(互联网)，在部署控制机上搭建 SDWAN 或者 HTTP 代理，yum/apt/docker 都支持 HTTP 代理，这样修改系统配置之后，就可以通过代理安装部署服务，这个方法比较简单，而且几乎不需要客户的参与就可以完成。不过也有一些前置条件，例如:
+办公室中主机可以接入客户网络
+客户服务器允许办公室网络中主机通过 TCP 或者 UDP 访问其任意或者指定的端口
+客户办公室的 4G 网络信号要足够好，这样可以提供更好的外网速度
+拥有服务器的 root 管理员权限(需要安装软件和修改系统配置)
+通过权衡利弊，我们最终使用的是第 4 个方法来搭建的，下面来讲讲搭建的过程。</description>
     </item>
     
     <item>
       <title>WireGuard 使用简介</title>
-      <link>//lewang.dev/posts/2019-10-30-wireguard-go-setup/</link>
+      <link>https://adityatelange.github.io/hugo-PaperMod/posts/2019-10-30-wireguard-go-setup/</link>
       <pubDate>Wed, 30 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>//lewang.dev/posts/2019-10-30-wireguard-go-setup/</guid>
-      <description>背景 搭建 VPN 方便连接无公网 IP 云主机进行开发，WireGuard 配置比 OpenVPN 要简单很多，WireGuard 是通过 Linux 内核模块的方式实现的，这样性能最好，但是只能用在 Linux 系统上。本文使用的 wireguard-go， 则是使用 Golang 实现的 WireGuard 协议，属于用户空间(User Space)的实现，性能没有内核模</description>
+      <guid>https://adityatelange.github.io/hugo-PaperMod/posts/2019-10-30-wireguard-go-setup/</guid>
+      <description>背景 搭建 VPN 方便连接无公网 IP 云主机进行开发，WireGuard 配置比 OpenVPN 要简单很多，WireGuard 是通过 Linux 内核模块的方式实现的，这样性能最好，但是只能用在 Linux 系统上。本文使用的 wireguard-go， 则是使用 Golang 实现的 WireGuard 协议，属于用户空间(User Space)的实现，性能没有内核模块方式好，但好处就是跨平台且更简单易用。
+VPN 的用处非常的多，不像 frp 之类的端口穿透应用，它是直接建立虚拟的网络，网络中的每个客户端也都可以拥有自己独立的 IP，于是测试调试就没有了端口的限制，非常的方便。
+除了方便安全连接云服务器，还可以通过 VPN 搭建工业设备的远程部署和维护的解决方案。
+编译 wireguard-go # 使用 GitHub 的源码镜像，速度会快一些 git clone git@github.com:wireguard/wireguard-go.git # 在 MacOS 下交叉编译 CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -v -o &amp;#34;wireguard-go&amp;#34; # Linux 环境下直接编译 go build -v -o &amp;#34;wireguard-go&amp;#34; cp wireguard-go /usr/sbin/ 编译 WireGuard tools git clone git@github.com:wireguard/wireguard.git # 安装依赖 ## debian&amp;amp;ubuntu sudo apt-get install libmnl-dev libelf-dev ## centos sudo yum install libmnl-devel elfutils-libelf-devel cd wireguard/src/tools make sudo make install 配置 WireGuard 生成密钥</description>
     </item>
     
     <item>
       <title>树莓派系统日志配置</title>
-      <link>//lewang.dev/posts/2019-09-19-rpi-log-config/</link>
+      <link>https://adityatelange.github.io/hugo-PaperMod/posts/2019-09-19-rpi-log-config/</link>
       <pubDate>Thu, 19 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>//lewang.dev/posts/2019-09-19-rpi-log-config/</guid>
-      <description>背景 树莓派 raspbian 系统日志默认的配置会导致日志过大而占用太多的存储空间，并且频繁写日志也可能减短 EMMC 和 SD 卡的寿命，需要重新配置来满足项目的需求。 日志位置 /var/log /var/log/syslog /var/log/daemon.log /var/log/mail.info /var/log/mail.warn /var/log/mail.err /var/log/mail.log /var/log/kern.log /var/log/auth.log /var/log/user.log /var/log/lpr.log /var/log/cron.log /var/log/debug /var/log/messages 配置 rsyslog 与 logrotate rsyslog 的配置文件为 /etc/rsyslog.conf, 找到其中 RULES 段 ############### #### RULES #### ############### # # First some standard log files. Log by facility. # auth,authpriv.* /var/log/auth.log *.*;auth,authpriv.none -/var/log/syslog #cron.* /var/log/cron.log #daemon.* -/var/log/daemon.log kern.* -/var/log/kern.log lpr.* -/var/log/lpr.log mail.* -/var/log/mail.log user.* -/var/log/user.log 将其中</description>
+      <guid>https://adityatelange.github.io/hugo-PaperMod/posts/2019-09-19-rpi-log-config/</guid>
+      <description>背景 树莓派 raspbian 系统日志默认的配置会导致日志过大而占用太多的存储空间，并且频繁写日志也可能减短 EMMC 和 SD 卡的寿命，需要重新配置来满足项目的需求。
+日志位置 /var/log /var/log/syslog /var/log/daemon.log /var/log/mail.info /var/log/mail.warn /var/log/mail.err /var/log/mail.log /var/log/kern.log /var/log/auth.log /var/log/user.log /var/log/lpr.log /var/log/cron.log /var/log/debug /var/log/messages 配置 rsyslog 与 logrotate rsyslog 的配置文件为 /etc/rsyslog.conf, 找到其中 RULES 段
+############### #### RULES #### ############### # # First some standard log files. Log by facility. # auth,authpriv.* /var/log/auth.log *.*;auth,authpriv.none -/var/log/syslog #cron.* /var/log/cron.log #daemon.* -/var/log/daemon.log kern.* -/var/log/kern.log lpr.* -/var/log/lpr.log mail.* -/var/log/mail.log user.* -/var/log/user.log 将其中 daemon.* -/var/log/daemon.log 行注释掉，syslog中已经包含 daemon 的日志。</description>
     </item>
     
     <item>
       <title>如何修改 Linux 用户的 UID 和组的 GID</title>
-      <link>//lewang.dev/posts/2019-07-16-change-uid-gid-in-linux/</link>
+      <link>https://adityatelange.github.io/hugo-PaperMod/posts/2019-07-16-change-uid-gid-in-linux/</link>
       <pubDate>Tue, 16 Jul 2019 00:00:00 +0000</pubDate>
       
-      <guid>//lewang.dev/posts/2019-07-16-change-uid-gid-in-linux/</guid>
-      <description>问题 在使用 Docker 或者 NFS 的时候，需要文件系统挂在到不同的系统中拥有正确的读写权限，需要指定文件所属用户和组的 uid 和 gid。在创建用户和组的时候，系统会自动分配对应的值，这导致在不同的系统中很容易造成 uid 和 gid 不一样而造成读写权限混乱。 例如在系统 A 中，用户 git 的 uid 和组 git 的gid 如下: [sysops@cn-bj-aliyun-3 ~]$ id git uid=1001(git) gid=1001(git)</description>
+      <guid>https://adityatelange.github.io/hugo-PaperMod/posts/2019-07-16-change-uid-gid-in-linux/</guid>
+      <description>问题 在使用 Docker 或者 NFS 的时候，需要文件系统挂在到不同的系统中拥有正确的读写权限，需要指定文件所属用户和组的 uid 和 gid。在创建用户和组的时候，系统会自动分配对应的值，这导致在不同的系统中很容易造成 uid 和 gid 不一样而造成读写权限混乱。
+例如在系统 A 中，用户 git 的 uid 和组 git 的gid 如下:
+[sysops@cn-bj-aliyun-3 ~]$ id git uid=1001(git) gid=1001(git) groups=1001(git) 而系统 B 中的值如下:
+[sysops@cn-bj-aliyun-3 ~]$ id git uid=998(git) gid=998(git) groups=998(git) 我们在系统 A 以 git 用户创建目录或者文件:
+[git@cn-bj-aliyun-3 data]$ ls -lh total 60K -rw-r--r-- 1 git git 100 Jul 5 23:22 file1 -rw-r--r-- 1 git git 400 Dec 18 2018 file2 -rw-r--r-- 1 git git 349 Dec 18 2018 file3 将这个目录挂在到 B 系统中时，将会出现这种情况:</description>
     </item>
     
     <item>
       <title>CentOS 7 上使用 pyenv 安装 Python 3.7.3</title>
-      <link>//lewang.dev/posts/2019-05-29-centos7-pyenv-install-python-3/</link>
+      <link>https://adityatelange.github.io/hugo-PaperMod/posts/2019-05-29-centos7-pyenv-install-python-3/</link>
       <pubDate>Wed, 29 May 2019 00:00:00 +0000</pubDate>
       
-      <guid>//lewang.dev/posts/2019-05-29-centos7-pyenv-install-python-3/</guid>
-      <description>概要 本文记录了在 CentOS 7.6 系统上通过 pyenv 安装 Python 3.7.3 的过程。 环境 CentOS Linux release 7.6.1810 (Core) Kernel 3 3.10.0-957.el7.x86_64 Pyenv 1.2.11 安装 pyenv $ curl https://pyenv.run | bash 然后根据提示把以下内容放到 ~/.bashrc 文件末尾 # Load pyenv automatically by adding # the following to ~/.bashrc: export PATH=&amp;#34;/root/.pyenv/bin:$PATH&amp;#34; eval &amp;#34;$(pyenv init -)&amp;#34; eval &amp;#34;$(pyenv virtualenv-init -)&amp;#34; 安装 Python 3.7.3 准备 $ sudo yum -y install xz bzip2 bzip2-devel sqlite-devel gcc openssl-devel readline-devel zlib-devel libffi-devel 安装 pyenv install 3.7.3 验证 $ pyenv versions * system (set by /root/.pyenv/version) 3.7.3 参考 https://github.com/pyenv/pyenv/issues/1183 https://github.com/pyenv/pyenv-installer https://github.com/pyenv/pyenv</description>
+      <guid>https://adityatelange.github.io/hugo-PaperMod/posts/2019-05-29-centos7-pyenv-install-python-3/</guid>
+      <description>概要 本文记录了在 CentOS 7.6 系统上通过 pyenv 安装 Python 3.7.3 的过程。
+环境 CentOS Linux release 7.6.1810 (Core) Kernel 3 3.10.0-957.el7.x86_64 Pyenv 1.2.11 安装 pyenv $ curl https://pyenv.run | bash 然后根据提示把以下内容放到 ~/.bashrc 文件末尾
+# Load pyenv automatically by adding # the following to ~/.bashrc: export PATH=&amp;#34;/root/.pyenv/bin:$PATH&amp;#34; eval &amp;#34;$(pyenv init -)&amp;#34; eval &amp;#34;$(pyenv virtualenv-init -)&amp;#34; 安装 Python 3.7.3 准备
+$ sudo yum -y install xz bzip2 bzip2-devel sqlite-devel gcc openssl-devel readline-devel zlib-devel libffi-devel 安装</description>
     </item>
     
     <item>
       <title>树莓派 CM3/CM3&#43; 刷写系统</title>
-      <link>//lewang.dev/posts/2019-03-01-rpi-cm3-emmc-flashing/</link>
+      <link>https://adityatelange.github.io/hugo-PaperMod/posts/2019-03-01-rpi-cm3-emmc-flashing/</link>
       <pubDate>Fri, 01 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>//lewang.dev/posts/2019-03-01-rpi-cm3-emmc-flashing/</guid>
-      <description>准备 阅读Flashing the Compute Module eMMC 准备一个可以刷系统的底板，我用的是微雪Compute-Module-IO-Board-Plus 步骤(Linux 系统下刷系统，可以使用树莓派来刷机) sudo apt install git libusb-1.0-0-dev git clone --depth=1 https://github.com/raspberrypi/usbboot &amp;amp;&amp;amp; cd usbboot &amp;amp;&amp;amp; make sudo ./rpiboot 连好线，跳线部分见各自底板的手册 拔掉 USB SLAVE 1/2/3/4 拔掉 SELECT 跳线帽 将 BOOT ENABLE USB SLAVE 跳线帽</description>
+      <guid>https://adityatelange.github.io/hugo-PaperMod/posts/2019-03-01-rpi-cm3-emmc-flashing/</guid>
+      <description>准备 阅读Flashing the Compute Module eMMC 准备一个可以刷系统的底板，我用的是微雪Compute-Module-IO-Board-Plus 步骤(Linux 系统下刷系统，可以使用树莓派来刷机) sudo apt install git libusb-1.0-0-dev git clone --depth=1 https://github.com/raspberrypi/usbboot &amp;amp;&amp;amp; cd usbboot &amp;amp;&amp;amp; make sudo ./rpiboot 连好线，跳线部分见各自底板的手册 拔掉 USB SLAVE 1/2/3/4 拔掉 SELECT 跳线帽 将 BOOT ENABLE USB SLAVE 跳线帽接到 EN 端 sudo fdisk -l 查看磁盘名称，这里是 /dev/sda sudo dd if=raspbian-lite.img of=/dev/sda bs=4MiB 刷入系统后，挂在启动分区，添加 SSH 来开启 SSH 服务，sudo mount /dev/sda1 /media cd /media &amp;amp;&amp;amp; touch SSH 使用慧通科技出品的 HuiBox-700 底板 省略上述的第4步，其它步骤完全一样</description>
     </item>
     
     <item>
       <title>使用 Docker 方式安装 Gitlab，没你想得那么简单</title>
-      <link>//lewang.dev/posts/2018-12-18-gitlab-docker-install/</link>
+      <link>https://adityatelange.github.io/hugo-PaperMod/posts/2018-12-18-gitlab-docker-install/</link>
       <pubDate>Tue, 18 Dec 2018 23:25:20 +0000</pubDate>
       
-      <guid>//lewang.dev/posts/2018-12-18-gitlab-docker-install/</guid>
-      <description>为什么要写这篇文章？ 曾经几年前在 Docker 还没有广泛应用的时候，在公司使用过源码的方式安装和升级过 Gitlab，虽远没有 Docker 方便，因为自己对 Linux 系统的理解，所以整体上感觉还是挺简单的。这几年随着 Docker 的普及，使得安装 Gitlab 更加的容易，不仅方便了我这样的老鸟，也更方便了小白用户们。但是 Gitlab 官方的 Docker 安装文</description>
+      <guid>https://adityatelange.github.io/hugo-PaperMod/posts/2018-12-18-gitlab-docker-install/</guid>
+      <description>为什么要写这篇文章？ 曾经几年前在 Docker 还没有广泛应用的时候，在公司使用过源码的方式安装和升级过 Gitlab，虽远没有 Docker 方便，因为自己对 Linux 系统的理解，所以整体上感觉还是挺简单的。这几年随着 Docker 的普及，使得安装 Gitlab 更加的容易，不仅方便了我这样的老鸟，也更方便了小白用户们。但是 Gitlab 官方的 Docker 安装文档并没有写得很完善, 除了官方文档之外，检索出来的安装文档也是人云亦云，东拼西凑，结果也就是能运行起来，凑合着能用而已。避免出现下图中“我已经用 Docker 部署好啦”，其实已经翻车的情形。
+我希望每做一件小事的时候也都能抱着“知其然知其所以然”的心态对待，用 Docker 方式安装 Gitlab，说简单来说就是一行命令的事儿，但是这样就够了吗？我看是不够的，所以就有了这篇文档。
+本文需要达成的事项 在 CentOS 7 系统中安装 Docker 使用 Docker 方式安装中文版 Gitlab 和宿主机器共用 22(SSH) 端口 支持 SSH(22)/HTTPS(443) 方式推拉仓库 使用 SMTP 方式配置通知邮箱(腾讯企业邮箱) 改写默认的项目标签(Labels) 在 CentOS 7 系统中安装 Docker 这部分参考 Docker 的官方文档, 罗列一下安装步骤, 细节请看 Docker 的官方文档。如果使用 root 用户安装，sudo 可以去掉。
+1. 删除老版本 Docker $ sudo yum remove docker \ docker-client \ docker-client-latest \ docker-common \ docker-latest \ docker-latest-logrotate \ docker-logrotate \ docker-selinux \ docker-engine-selinux \ docker-engine 2.</description>
     </item>
     
     <item>
       <title>LVM 实战记录</title>
-      <link>//lewang.dev/posts/2017-08-03-lvm-in-action/</link>
+      <link>https://adityatelange.github.io/hugo-PaperMod/posts/2017-08-03-lvm-in-action/</link>
       <pubDate>Thu, 03 Aug 2017 23:55:00 +0000</pubDate>
       
-      <guid>//lewang.dev/posts/2017-08-03-lvm-in-action/</guid>
-      <description>背景 阿里云云主机两块 100G 的云盘合一个逻辑卷（LV）来使用，单个的 100G 磁盘不够用，需要合在一起使用，并且方便以后扩容 基本知识 磁盘 /dev/xvdb /dev/xvdc 分区, 使用 fdisk 进行分区 fdisk &amp;gt; n &amp;gt; p &amp;gt; 1..4, 主分区最多只有 4 个 准备分区后，将分区类型变为 LVM 分区，fdisk &amp;gt; t &amp;gt; 8e, 8e 是 LVM 类型 ID 物理卷（PV），卷组（VG），逻辑卷（</description>
+      <guid>https://adityatelange.github.io/hugo-PaperMod/posts/2017-08-03-lvm-in-action/</guid>
+      <description>背景 阿里云云主机两块 100G 的云盘合一个逻辑卷（LV）来使用，单个的 100G 磁盘不够用，需要合在一起使用，并且方便以后扩容
+基本知识 磁盘 /dev/xvdb /dev/xvdc 分区, 使用 fdisk 进行分区 fdisk &amp;gt; n &amp;gt; p &amp;gt; 1..4, 主分区最多只有 4 个 准备分区后，将分区类型变为 LVM 分区，fdisk &amp;gt; t &amp;gt; 8e, 8e 是 LVM 类型 ID 物理卷（PV），卷组（VG），逻辑卷（LV），从磁盘分区创建 PV，通过 PV 创建 VG 或者把 PV 加入已有的 VG，在 VG 上创建 LV，LV 看起来就是逻辑的上磁盘，使用和真实的磁盘没什么明显区别, 在 LV 上构建文件系统 创建 创建物理卷 pvcreate /dev/xvdb1，对分区进行操作 创建 vg0 卷组 vgcreate vg0 /dev/xvdb1 查看卷组 vgdisplay， 可以看到卷组有多大 在 vg0 上创建 data 逻辑卷 lvcreate -L 99G -n data vg0 或者 lvcreate -l 25556 -n data vg0 创建文件系统 mkfs.</description>
     </item>
     
     <item>
       <title>Nginx 性能调优「译」</title>
-      <link>//lewang.dev/posts/2014-10-16-tuning-nginx/</link>
+      <link>https://adityatelange.github.io/hugo-PaperMod/posts/2014-10-16-tuning-nginx/</link>
       <pubDate>Thu, 16 Oct 2014 15:27:00 +0000</pubDate>
       
-      <guid>//lewang.dev/posts/2014-10-16-tuning-nginx/</guid>
-      <description>这是一篇译文，原文链接：Tuning NGINX for Performance Nginx 为人熟知的是在负载均衡、静态缓存和 WEB 服务器等方面的高性能，目前世界上最繁忙的站点中大约有 40% 在使用 Nginx。绝大多数情况下，大多数默认的 Nginx 和 Linux 配置都可以工作得非常好，但也需要做一些优化以获得最好的性能。本文将讨论在优化系统时需要考虑的 Nginx</description>
+      <guid>https://adityatelange.github.io/hugo-PaperMod/posts/2014-10-16-tuning-nginx/</guid>
+      <description>这是一篇译文，原文链接：Tuning NGINX for Performance
+Nginx 为人熟知的是在负载均衡、静态缓存和 WEB 服务器等方面的高性能，目前世界上最繁忙的站点中大约有 40% 在使用 Nginx。绝大多数情况下，大多数默认的 Nginx 和 Linux 配置都可以工作得非常好，但也需要做一些优化以获得最好的性能。本文将讨论在优化系统时需要考虑的 Nginx 和 Linux 的部分配置。可配置的选项有很多，但是本文只涵盖推荐大多数用户调整的配置选项。本文没有涵盖的配置选项，只有那些对 Nginx 和 Linux 有了深入的理解的人或者获得了 Nginx 技术支持和专业的服务团队的推荐建议后，才可以考虑调整。Nginx 专业服务器团队已经为世界上一些最繁忙的站点通过优化 Nginx 获得了最高水平的性能，并且可以为任何需要获得自己系统最大产出的客户服务。
+简介 本文假设读者对 Nginx 架构和配置的概念已有了基本的了解。Nginx 的文档内容将不会在本文中重复，但本文会提供各项配置简要的介绍和相关文档的链接。
+在性能调优时，要遵循一个好的规则：一次只修改一个配置选项，如果这个修改没有在性能方面带来优化，那么要再改回默认值。
+我们从 Linux 性能优化的讨论开始，因为 Linux 性能优化的一些值会影响到 Nginx 的一些配置。
+Linux 配置 尽管现代 Linux 内核（2.6+）在各种配置情况下都工作得很好，但也有一些配置是想要修改的。如果操作系统的配置设置的太低，那内核日志将会有错误信息，从而得知哪些配置需要调整。Linux 性能优化可能涉及的配置有很多，这里我们只讨论那些优化达到正常工作负载最有可能涉及到的那些配置。调整这些配置请参考详细的 Linux 文档。
+Backlog 队列 下面的配置选项与网络连接和其排队方法直接相关。如果连入率很高（译者注：客户端发起的连接很多）且系统性能配置不匹配，例如一些连接表现得有所停顿，那么修改下面得配置将可能有用。
+net.core.somaxconn: 设置等待 Nginx 接受的连接队列的大小。由于 Nginx 接受连接非常的快，这个值通常情况下不用设置得很大，但系统默认值可能比较小，所以对于流量比较大的站点，增大这个值是个不错的想法。如果这个值太小，在内核日志中应该会看到错误消息，那么就需要增大这个值，直到错误消失。注意：若将这个值设置为大于 512 的话，那么需要在 Nginx 配置中修改 listen 指令的 backlog 参数来匹配这个数字。
+net.core.netdev_max_backlog: 设置数据包在被发送到 CPU 前可被网卡缓存的速率。对于带宽很大的机器来说，这个值需要增大。可以查阅网卡关于这项设置的建议文档或者查看内核日志中此项设置相关的错误。</description>
     </item>
     
     <item>
       <title>Linux 共享库（动态链接库）相关的一些记录</title>
-      <link>//lewang.dev/posts/2013-03-04-so-load-path-in-linux/</link>
+      <link>https://adityatelange.github.io/hugo-PaperMod/posts/2013-03-04-so-load-path-in-linux/</link>
       <pubDate>Mon, 04 Mar 2013 00:40:00 +0000</pubDate>
       
-      <guid>//lewang.dev/posts/2013-03-04-so-load-path-in-linux/</guid>
-      <description>相关的环境变量 LD_LIBRARY_PATH ld-linux.so 寻找 shared object 的路径，优先加载出现在路径前面的 shared object。如，export LD_LIBRARY_PATH=/home/user/lib:$LD_LIBRARY_PATH LD_PRELOAD 指定优先供 ld-linux.so 加载的 shared object。如，export LD_PRELAOD=/home/user/lib/glibc.so，可以使用这个变量来改变加载顺序，例如我们自定义的 glibc.so 中实现了新的 strcmp 之</description>
+      <guid>https://adityatelange.github.io/hugo-PaperMod/posts/2013-03-04-so-load-path-in-linux/</guid>
+      <description>相关的环境变量 LD_LIBRARY_PATH ld-linux.so 寻找 shared object 的路径，优先加载出现在路径前面的 shared object。如，export LD_LIBRARY_PATH=/home/user/lib:$LD_LIBRARY_PATH LD_PRELOAD 指定优先供 ld-linux.so 加载的 shared object。如，export LD_PRELAOD=/home/user/lib/glibc.so，可以使用这个变量来改变加载顺序，例如我们自定义的 glibc.so 中实现了新的 strcmp 之类的函数，那么可以使用这个变量来实现函数的替换，实现注入 LD_DEBUG 使用这个环境变量来 debug 载入 shared object 的情况。如，export LD_DEBUG=files,这样会打印所有所有加载 shared object 的记录 一些工具 如何查看一个程序或者 shared object 加载哪些 shared object ldd，可以查看程序或者.so，如，
+$ ldd ./foo_test $ ldd ./libfoo.so 对于已经运行的程序，可以这样 $ cat /proc/PID/maps | awk &amp;#39;{print $6}&amp;#39;| grep &amp;#39;\.so&amp;#39;| sort | uniq $ lsof -p PID | awk &amp;#39;{print $9}&amp;#39; | grep &amp;#39;\.so&amp;#39; 没有启动的程序可以这样 $ strace .</description>
     </item>
     
   </channel>

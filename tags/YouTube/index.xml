@@ -1,19 +1,32 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>YouTube on 小碼哥</title>
-    <link>//lewang.dev/tags/YouTube/</link>
-    <description>Recent content in YouTube on 小碼哥</description>
+    <title>YouTube on PaperMod</title>
+    <link>https://adityatelange.github.io/hugo-PaperMod/tags/youtube/</link>
+    <description>Recent content in YouTube on PaperMod</description>
+    <image>
+      <title>PaperMod</title>
+      <url>https://adityatelange.github.io/hugo-PaperMod/papermod-cover.png</url>
+      <link>https://adityatelange.github.io/hugo-PaperMod/papermod-cover.png</link>
+    </image>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-CN</language>
-    <lastBuildDate>Fri, 27 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="//lewang.dev/tags/YouTube/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 27 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://adityatelange.github.io/hugo-PaperMod/tags/youtube/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>写个程序把油管 YouTube 变成无限容量的网盘</title>
-      <link>//lewang.dev/posts/2022-05-27-store-files-as-youtube-videos/</link>
+      <link>https://adityatelange.github.io/hugo-PaperMod/posts/2022-05-27-store-files-as-youtube-videos/</link>
       <pubDate>Fri, 27 May 2022 00:00:00 +0000</pubDate>
       
-      <guid>//lewang.dev/posts/2022-05-27-store-files-as-youtube-videos/</guid>
-      <description>前几天刷新闻的时候，看到了一个代码仓库 YouTubeDrive 的介绍，他的作者在多年前用 Wolfram 语言（也就是 Mathematica） 编写了一段代码，可以将油管变成一个无限容量的大网盘，看完介绍之后我脑子里直接蹦出无数个“卧槽”，心里顿生“这样也行”的膜拜之情，不禁提问：这个是薅羊毛的最高境界吗？ 说起 Wolfram 语言和</description>
+      <guid>https://adityatelange.github.io/hugo-PaperMod/posts/2022-05-27-store-files-as-youtube-videos/</guid>
+      <description>前几天刷新闻的时候，看到了一个代码仓库 YouTubeDrive 的介绍，他的作者在多年前用 Wolfram 语言（也就是 Mathematica） 编写了一段代码，可以将油管变成一个无限容量的大网盘，看完介绍之后我脑子里直接蹦出无数个“卧槽”，心里顿生“这样也行”的膜拜之情，不禁提问：这个是薅羊毛的最高境界吗？
+说起 Wolfram 语言和 Mathematica，不得不提一下，它是我学习的第一个编程语言（汇编是第二个）。多年前我是在学校机房学的，当时只用它画画数学公式的图，今天看着 YouTubeDrive 的实现，才了解到 Wolfram 还可以这样用。
+首先，和原作者一样，我也不提倡这样把 YouTube 当成一个无限容量的网盘使用，相同的道理，我也不提倡在国内把 B 站或者任意视频平台当做位无限容量的网盘来用。
+昨天在看完 YouTubeDrive 源码之后，想着要不我也用 Python 实现一个，正好傍晚溜娃的时候，啥也不能干，就边走边想，我用 Python 应该怎么来实现一个？ 在坐着等娃的时候，就用手机查下资料，大概了解了一下 numpy 和 opencv 的使用，晚上吃过晚饭就开始写了，很快也实现了一个可以工作的 Python 版的。
+我觉得这个想法还是挺有意思的，虽然不太靠谱，但是真的好玩。不想去读 Wolfram 源码的朋友可以看看我接下来的分析，看看是如何把文件变成 YouTube 视频的进行存储的。
+磁盘上的文件是什么 在我们的计算机（无论电脑还是手机都是计算机）磁盘里，存放了很多很多的文件，例如图片，文档，视频等等，每种文件都有自己的类型，或者叫格式，一般我们都会给文件添加一个后缀名展示文件的类型，但是对于电脑而言，无论是什么文件，它都只是由比特（bit） 0 和 1 组成的数据。
+例如这张图片：
+用 vim 执行命令 :%!xxd，打开是这样的：
+图片文件的头 4 个字节是 ffd8（其实 ffd8 说明了这个是 JPEG 格式的文件），ffd8 是 16 进制的表示法，比 2 进制看起来更清晰。
+在计算机里，用 8 个 bit 表示一个 byte，即 1 个字节有 8 位，一个字节需要用 2 个 16 进制数来表示，例如：ffd8 是 2 个字节。</description>
     </item>
     
   </channel>

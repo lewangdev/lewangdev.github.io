@@ -1,350 +1,333 @@
-<!doctype html>
-<html lang="zh-CN">
+<!DOCTYPE html>
+<html lang="en" dir="auto">
 
 <head>
+	<meta name="generator" content="Hugo 0.108.0"><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>PaperMod</title>
 
-    <meta charset="utf-8">
-    <meta name="generator" content="Hugo 0.108.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Theme PaperMod - https://github.com/adityatelange/hugo-PaperMod">
+<meta name="author" content="Theme PaperMod">
+<link rel="canonical" href="https://adityatelange.github.io/hugo-PaperMod/">
+<link crossorigin="anonymous" href="/hugo-PaperMod/assets/css/stylesheet.dc96e9e0118e5e264a03d68b104df6ae869cfb73c61f5f89dd91aeb16b0d8c03.css" integrity="sha256-3Jbp4BGOXiZKA9aLEE32roac&#43;3PGH1&#43;J3ZGusWsNjAM=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://adityatelange.github.io/hugo-PaperMod/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://adityatelange.github.io/hugo-PaperMod/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://adityatelange.github.io/hugo-PaperMod/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://adityatelange.github.io/hugo-PaperMod/apple-touch-icon.png">
+<link rel="mask-icon" href="https://adityatelange.github.io/hugo-PaperMod/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" type="application/rss+xml" href="https://adityatelange.github.io/hugo-PaperMod/index.xml">
+<link rel="alternate" type="application/json" href="https://adityatelange.github.io/hugo-PaperMod/index.json">
+<link rel="alternate" hreflang="en" href="https://adityatelange.github.io/hugo-PaperMod/">
+<link rel="alternate" hreflang="fr" href="https://adityatelange.github.io/hugo-PaperMod/fr/">
+<link rel="alternate" hreflang="fa" href="https://adityatelange.github.io/hugo-PaperMod/fa/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
 
-    <title>小碼哥</title>
-    <meta property="og:title" content="小碼哥 | 每一个平凡的日常都是连续发生的奇迹。">
-    <meta property="og:type" content="website">
-    <meta name="Keywords" content="IoT, 物联网, 智能硬件，工业互联网方案，智能家居, 智慧工厂, 智慧建筑, Golang, Java, JVM, Python, 树莓派, Linux 玩家，果粉，系统架构，技术管理">
-    <meta name="description" content="写一些生活或工作中遇到的、想到的、记得的或者不记得的那些无趣的事。">
-    <meta property="og:url" content="//lewang.dev/">
-    
-    <link rel="shortcut icon" href="/favicon.ico">
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
 
-    
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+            .list {
+                background: var(--theme);
+            }
 
-    
-    <link rel="icon" sizes="192x192" href="https://raw.githubusercontent.com/lewangdev/picb0/main/oh-my-blog/favicons/lewangdev-logo-192x192.png">
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
 
-    
-    <link rel="apple-touch-icon" sizes="180x180" href="https://raw.githubusercontent.com/lewangdev/picb0/main/oh-my-blog/favicons/lewangdev-logo-180x180.png">
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
 
-    
-    <meta name="msapplication-TileColor" content="#FFFFFF">
-    <meta name="msapplication-TileImage" content="https://raw.githubusercontent.com/lewangdev/picb0/main/oh-my-blog/favicons/lewangdev-logo-144x144.png">
+    </style>
+</noscript><meta property="og:title" content="PaperMod" />
+<meta property="og:description" content="Theme PaperMod - https://github.com/adityatelange/hugo-PaperMod" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://adityatelange.github.io/hugo-PaperMod/" /><meta property="og:image" content="https://adityatelange.github.io/hugo-PaperMod/papermod-cover.png"/>
 
-    <link rel="stylesheet" href="/css/normalize.css">
-    <link rel="stylesheet" href="/css/markdown.css">
-    <link rel="stylesheet" href="/css/main.css">
-    
-    <link rel="alternate" type="application/rss+xml+xml" href="//lewang.dev/index.xml" title="小碼哥" />
-    <script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://adityatelange.github.io/hugo-PaperMod/papermod-cover.png"/>
 
-    
+<meta name="twitter:title" content="PaperMod"/>
+<meta name="twitter:description" content="Theme PaperMod - https://github.com/adityatelange/hugo-PaperMod"/>
 
-    
-    
-</head>
-
-<body>
-    <header id="header">
-    <div class="container clearfix">
-        
-        <div class="site-name ">
-            <a id="logo" href="//lewang.dev/">
-                <img src="https://raw.githubusercontent.com/lewangdev/picb0/main/oh-my-blog/favicons/lewangdev-logo-192x192.png"
-                    alt="小碼哥">
-            </a>
-        </div>
-        <nav id="nav-menu" class="clearfix">
-            <a class="current"
-                href="//lewang.dev/">HOME</a>
-            
-            <a  href="//lewang.dev/archives/"
-                title="ARCHIVES">ARCHIVES</a>
-            
-            <a  href="//lewang.dev/about/"
-                title="ABOUT">ABOUT</a>
-            
-        </nav>
-        
-    </div>
-</header>
-
-    <div id="body">
-        <div class="container">
-            
-            <article class="post">
-                <h1 class="post-title">
-                    <a href="//lewang.dev/posts/2017-07-15-log4j2/" title="Log4j2 快速入门">Log4j2 快速入门</a>
-                </h1>
-                <div class="post-meta">
-                    Jul 15, 2017
-                    
-                    <span>/</span>
-                    
-                    <span><a href="//lewang.dev/categories/Technical">Technical</a></span>
-                    
-                </div>
-                
-                <div class="post-summary">
-                    <a href="//lewang.dev/posts/2017-07-15-log4j2/">
-                        背景 Java 生态下的日志库太多，配置也不同，大多数情况下会使用 SLF4j (又引入了一个库)来抽象日志接口。在使用 Log4j2 后，发现可以不使用 SLF4j 了，并且配置变得更简单，可以使用 lombok 的 log4j2 注解等。 需要搞清楚 如何设置哪些日志要记录下来 日志记录到哪里去 LEVEL 日志级别： 内置（有 Fatal）：All &lt; Trace &lt; Debug &lt; Info &lt; Warn &lt; Error &lt;...
-                    </a>
-                </div>
-            </article>
-            
-            <article class="post">
-                <h1 class="post-title">
-                    <a href="//lewang.dev/posts/2017-06-06-xtrabackup/" title="MySQL 数据备份和不停机重新搭建主从同步">MySQL 数据备份和不停机重新搭建主从同步</a>
-                </h1>
-                <div class="post-meta">
-                    Jun 6, 2017
-                    
-                    <span>/</span>
-                    
-                    <span><a href="//lewang.dev/categories/Technical">Technical</a></span>
-                    
-                </div>
-                
-                <div class="post-summary">
-                    <a href="//lewang.dev/posts/2017-06-06-xtrabackup/">
-                        背景 目前公司主要服务都是直接使用 MySQL 主服务器，从服务主要给离线数据分析服务使用，由于前期弄得比较简单的粗暴，从服务上还有一两个数据库在做生产使用, 并且从服数据已经不能和主服进行进行同步了，有大量错误，忽略都没有办法进行。此外，主服仅配置了三个核心数据的 binlog，随着业务的变化，...
-                    </a>
-                </div>
-            </article>
-            
-            <article class="post">
-                <h1 class="post-title">
-                    <a href="//lewang.dev/posts/2016-01-28-banlinpai/" title="办理机动车临牌">办理机动车临牌</a>
-                </h1>
-                <div class="post-meta">
-                    Jan 28, 2016
-                    
-                    <span>/</span>
-                    
-                    <span><a href="//lewang.dev/categories/%E6%80%BB%E7%BB%93">总结</a></span>
-                    
-                </div>
-                
-                <div class="post-summary">
-                    <a href="//lewang.dev/posts/2016-01-28-banlinpai/">
-                        政策已变，目前只能办理有效期为 15 天的临牌，并且最多只能办理两次 问题 外地户口，上海购车办理机动车(出省)临牌(出省和不出省的临牌办理方法一样,出省临牌有效期是30天，不出省的是15天) 文档记录状态 可用 发生时间 2016年01月28日9:00至9:30 体验得分 90 办理地点 黄浦公安分局交警...
-                    </a>
-                </div>
-            </article>
-            
-            <article class="post">
-                <h1 class="post-title">
-                    <a href="//lewang.dev/posts/2015-10-15-huanzheng/" title="驾照转入换证">驾照转入换证</a>
-                </h1>
-                <div class="post-meta">
-                    Oct 15, 2015
-                    
-                    <span>/</span>
-                    
-                    <span><a href="//lewang.dev/categories/%E6%80%BB%E7%BB%93">总结</a></span>
-                    
-                </div>
-                
-                <div class="post-summary">
-                    <a href="//lewang.dev/posts/2015-10-15-huanzheng/">
-                        问题 外地户口＋上海居住证，外地驾照即将到期，需要将外地驾照转入上海并且进行驾照到期换证。 可用状态 可用 发生时间 2015年10月15日8:00至10:00 体验得分 90 办理地点 车辆管理所三分所，地址浦东新区沪南公路2638 号 可办理时间 周一至周五 9:00-17:00 办理流程记录 前往4号楼的3层填表缴费并拍照...
-                    </a>
-                </div>
-            </article>
-            
-            <article class="post">
-                <h1 class="post-title">
-                    <a href="//lewang.dev/posts/2014-10-16-tuning-nginx/" title="Nginx 性能调优「译」">Nginx 性能调优「译」</a>
-                </h1>
-                <div class="post-meta">
-                    Oct 16, 2014
-                    
-                    <span>/</span>
-                    
-                    <span><a href="//lewang.dev/categories/Technical">Technical</a></span>
-                    
-                </div>
-                
-                <div class="post-summary">
-                    <a href="//lewang.dev/posts/2014-10-16-tuning-nginx/">
-                        这是一篇译文，原文链接：Tuning NGINX for Performance Nginx 为人熟知的是在负载均衡、静态缓存和 WEB 服务器等方面的高性能，目前世界上最繁忙的站点中大约有 40% 在使用 Nginx。绝大多数情况下，大多数默认的 Nginx 和 Linux 配置都可以工作得非常好，但也需要做一些优化以获得最好的性能。本文将讨论在优化系统时需要考虑的 Nginx...
-                    </a>
-                </div>
-            </article>
-            
-            <article class="post">
-                <h1 class="post-title">
-                    <a href="//lewang.dev/posts/2014-05-06-github-pages-dns-settings/" title="Github Pages 服务的域名设置">Github Pages 服务的域名设置</a>
-                </h1>
-                <div class="post-meta">
-                    May 6, 2014
-                    
-                    <span>/</span>
-                    
-                    <span><a href="//lewang.dev/categories/%E6%AF%8F%E6%97%A5%E6%8A%80%E5%B7%A7">每日技巧</a></span>
-                    
-                </div>
-                
-                <div class="post-summary">
-                    <a href="//lewang.dev/posts/2014-05-06-github-pages-dns-settings/">
-                        这几天每次 Push 博客到 Github Pages 时总会收到一封邮件： The page build completed successfully, but returned the following warning: GitHub Pages recently underwent some improvements (https://github.com/blog/1715-faster-more-awesome-github-pages) to make your site faster and more awesome, but we&rsquo;ve noticed that iforget.info isn&rsquo;t properly configured to take advantage of these new features. While your site will continue to work just fine, updating your domain&rsquo;s configuration offers some additional speed and performance benefits. Instructions on updating your site&rsquo;s IP address can be found at https://help.github.com/articles/setting-up-a-custom-domain-with-github-pages#step-2-configure-dns-records, and of course, you can always get in touch with a human at support@github.com. For the more technical minded folks who want to skip the help docs: your site&rsquo;s DNS records are pointed to a deprecated IP address. For information on troubleshooting Jekyll see: https://help.github.com/articles/using-jekyll-with-pages#troubleshooting If you...
-                    </a>
-                </div>
-            </article>
-            
-            <article class="post">
-                <h1 class="post-title">
-                    <a href="//lewang.dev/posts/2014-04-26-power-of-understanding/" title="悟性">悟性</a>
-                </h1>
-                <div class="post-meta">
-                    Apr 26, 2014
-                    
-                    <span>/</span>
-                    
-                    <span><a href="//lewang.dev/categories/%E6%84%9F%E6%82%9F">感悟</a></span>
-                    
-                </div>
-                
-                <div class="post-summary">
-                    <a href="//lewang.dev/posts/2014-04-26-power-of-understanding/">
-                        “悟性”是一个很虚的东西吗？ 前段时间和同学聊天，聊如何从众多的各方面初步看起来差不多应聘者中去做选择？聊来聊去最终落到了“悟性”上。我自己在突然想到悟性这个词的时候脑子几乎一片空白，不知道如何去判断一个人的悟性，或者说悟性到底是怎么样的，凭什么说一个人悟性好或者悟性差。 昨天下午有...
-                    </a>
-                </div>
-            </article>
-            
-            <article class="post">
-                <h1 class="post-title">
-                    <a href="//lewang.dev/posts/2014-04-25-grow-up/" title="成长">成长</a>
-                </h1>
-                <div class="post-meta">
-                    Apr 25, 2014
-                    
-                    <span>/</span>
-                    
-                    <span><a href="//lewang.dev/categories/%E6%84%9F%E6%82%9F">感悟</a></span>
-                    
-                </div>
-                
-                <div class="post-summary">
-                    <a href="//lewang.dev/posts/2014-04-25-grow-up/">
-                        成长就是看自己以前写的东西（包括微博、博客、说说等等）的时候觉得以前自己很 SB, 然后迫切地想把它们删掉 这句话不止一次看到，反思自己，确实是那么回事儿，不能太赞同哦（我了个去上海腔了呢）。 先前早些时候，把新浪博客和人人删的一干二净，也就是过把自己过去的所有文字的创造付之一炬，说没有一点...
-                    </a>
-                </div>
-            </article>
-            
-            <article class="post">
-                <h1 class="post-title">
-                    <a href="//lewang.dev/posts/2014-03-13-who-is-De-Broglie/" title="谁是德布罗意">谁是德布罗意</a>
-                </h1>
-                <div class="post-meta">
-                    Mar 13, 2014
-                    
-                    <span>/</span>
-                    
-                    <span><a href="//lewang.dev/categories/%E8%B6%A3%E8%B0%88">趣谈</a></span>
-                    
-                </div>
-                
-                <div class="post-summary">
-                    <a href="//lewang.dev/posts/2014-03-13-who-is-De-Broglie/">
-                        这张照片很多人应该都见过，名副其实的二十世纪最伟大科学家们的合影。爱因斯坦占据了最明显的位置，德布罗意也在其中。 这里是摘自百度百科的一些内容： 在光具有波粒二象性的启发下，法国物理学家德布罗意（1892～1987）在 1924 年提出一个假说，指出波粒二象性不只是光子才有，一切微观粒子，包括...
-                    </a>
-                </div>
-            </article>
-            
-            <article class="post">
-                <h1 class="post-title">
-                    <a href="//lewang.dev/posts/2014-03-06-arch-of-website-domain-cdn/" title="从域名和 CDN 来看网站架构">从域名和 CDN 来看网站架构</a>
-                </h1>
-                <div class="post-meta">
-                    Mar 6, 2014
-                    
-                    <span>/</span>
-                    
-                    <span><a href="//lewang.dev/categories/DevOps">DevOps</a></span>
-                    
-                    <span><a href="//lewang.dev/categories/cdn">cdn</a></span>
-                    
-                </div>
-                
-                <div class="post-summary">
-                    <a href="//lewang.dev/posts/2014-03-06-arch-of-website-domain-cdn/">
-                        为了自己做好网站的架构，找了知乎，豆瓣，大众点评和百姓网来做参考。这里主要来看域名和 CDN 相关的部分，后台的架构也还是要边学便实践。 大概情况 从前端分析了知乎的域名和 DNS 情况，同时对比了一下豆瓣、大众点评和百姓网。从域名、DNS、CDN 等使用角度来说，他们之间大同小异。 使用的分析工具 Chrome WHOIS...
-                    </a>
-                </div>
-            </article>
-            
-
-            
-
-
-<ol class="page-navigator">
-    
-    <li class="prev">
-        <a href="//lewang.dev/page/2/">上一页</a>
-    </li>
-    
-
-    
-    <li >
-        <a href="//lewang.dev/">1</a>
-    </li>
-    
-    <li >
-        <a href="//lewang.dev/page/2/">2</a>
-    </li>
-    
-    <li  class="current">
-        <a href="//lewang.dev/page/3/">3</a>
-    </li>
-    
-    <li >
-        <a href="//lewang.dev/page/4/">4</a>
-    </li>
-    
-    <li >
-        <a href="//lewang.dev/page/5/">5</a>
-    </li>
-    
-
-    
-    <li class="next">
-        <a href="//lewang.dev/page/4/">下一页</a>
-    </li>
-    
-</ol>
-
-
-
-        </div>
-    </div>
-    <footer id="footer">
-    <div class="container">
-        Copyright &copy; 2011-2023 <a href="//lewang.dev/">小碼哥</a>, All
-        rights reserved.
-        <a href="//lewang.dev/index.xml">订阅 RSS</a>
-    </div>
-</footer>
-
-
-
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-12QS222X0Z"></script>
-<script>
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.dataLayer = window.dataLayer || [];
-	function gtag(){dataLayer.push(arguments);}
-	gtag('js', new Date());
-	gtag('config', 'G-12QS222X0Z', { 'anonymize_ip': false });
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "PaperMod",
+  "url": "https://adityatelange.github.io/hugo-PaperMod/",
+  "description": "Theme PaperMod - https://github.com/adityatelange/hugo-PaperMod",
+  "thumbnailUrl": "https://adityatelange.github.io/hugo-PaperMod/favicon.ico",
+  "sameAs": [
+      "https://github.com/adityatelange/hugo-PaperMod", "https://ko-fi.com/adityatelange", "index.xml"
+  ]
 }
 </script>
+</head>
 
+<body class="list" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
 
+</script>
 
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://adityatelange.github.io/hugo-PaperMod/" accesskey="h" title="PaperMod (Alt + H)">PaperMod</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+                <ul class="lang-switch"><li>|</li>
+                    <li>
+                        <a href="https://adityatelange.github.io/hugo-PaperMod/fr/" title="French"
+                            aria-label=":fr:">🇫🇷</a>
+                    </li>
+                    <li>
+                        <a href="https://adityatelange.github.io/hugo-PaperMod/fa/" title="Fa"
+                            aria-label="Fa">Fa</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://adityatelange.github.io/hugo-PaperMod/archives" title="Archive">
+                    <span>Archive</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://adityatelange.github.io/hugo-PaperMod/search/" title="Search">
+                    <span>Search</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://adityatelange.github.io/hugo-PaperMod/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://discord.gg/ahpmTvhVmp" title="Discord">
+                    <span>Discord</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+            <li>
+                <a href="https://github.com/adityatelange/hugo-PaperMod/wiki/" title="WiKi">
+                    <span>WiKi</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main"> 
 
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2>小糍粑的画
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>2019/10/13 上午大作 画了一辆坦克
+2019/10/10 晚大作 1 2 3 4 小糍粑自己介绍： 爸爸妈妈宝宝奶奶和他的同学，右一是奶奶，右二是爸爸，右三是他自己，右四是妈妈，奶奶没地方画了
+点评： 很明显的出现头足人像</p>
+  </div>
+  <footer class="entry-footer"><span title='2019-10-13 00:00:00 +0000 UTC'>October 13, 2019</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Theme PaperMod</footer>
+  <a class="entry-link" aria-label="post link to 小糍粑的画" href="https://adityatelange.github.io/hugo-PaperMod/posts/2019-10-13-sons-paintings/"></a>
+</article>
 
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2>树莓派系统日志配置
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>背景 树莓派 raspbian 系统日志默认的配置会导致日志过大而占用太多的存储空间，并且频繁写日志也可能减短 EMMC 和 SD 卡的寿命，需要重新配置来满足项目的需求。
+日志位置 /var/log /var/log/syslog /var/log/daemon.log /var/log/mail.info /var/log/mail.warn /var/log/mail.err /var/log/mail.log /var/log/kern.log /var/log/auth.log /var/log/user.log /var/log/lpr.log /var/log/cron.log /var/log/debug /var/log/messages 配置 rsyslog 与 logrotate rsyslog 的配置文件为 /etc/rsyslog.conf, 找到其中 RULES 段
+############### #### RULES #### ############### # # First some standard log files. Log by facility. # auth,authpriv.* /var/log/auth.log *.*;auth,authpriv.none -/var/log/syslog #cron.* /var/log/cron.log #daemon.* -/var/log/daemon.log kern.* -/var/log/kern.log lpr.* -/var/log/lpr.log mail.* -/var/log/mail.log user.* -/var/log/user.log 将其中 daemon.* -/var/log/daemon.log 行注释掉，syslog中已经包含 daemon 的日志。...</p>
+  </div>
+  <footer class="entry-footer"><span title='2019-09-19 00:00:00 +0000 UTC'>September 19, 2019</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Theme PaperMod</footer>
+  <a class="entry-link" aria-label="post link to 树莓派系统日志配置" href="https://adityatelange.github.io/hugo-PaperMod/posts/2019-09-19-rpi-log-config/"></a>
+</article>
 
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2>如何修改 Linux 用户的 UID 和组的 GID
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>问题 在使用 Docker 或者 NFS 的时候，需要文件系统挂在到不同的系统中拥有正确的读写权限，需要指定文件所属用户和组的 uid 和 gid。在创建用户和组的时候，系统会自动分配对应的值，这导致在不同的系统中很容易造成 uid 和 gid 不一样而造成读写权限混乱。
+例如在系统 A 中，用户 git 的 uid 和组 git 的gid 如下:
+[sysops@cn-bj-aliyun-3 ~]$ id git uid=1001(git) gid=1001(git) groups=1001(git) 而系统 B 中的值如下:
+[sysops@cn-bj-aliyun-3 ~]$ id git uid=998(git) gid=998(git) groups=998(git) 我们在系统 A 以 git 用户创建目录或者文件:
+[git@cn-bj-aliyun-3 data]$ ls -lh total 60K -rw-r--r-- 1 git git 100 Jul 5 23:22 file1 -rw-r--r-- 1 git git 400 Dec 18 2018 file2 -rw-r--r-- 1 git git 349 Dec 18 2018 file3 将这个目录挂在到 B 系统中时，将会出现这种情况:...</p>
+  </div>
+  <footer class="entry-footer"><span title='2019-07-16 00:00:00 +0000 UTC'>July 16, 2019</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Theme PaperMod</footer>
+  <a class="entry-link" aria-label="post link to 如何修改 Linux 用户的 UID 和组的 GID" href="https://adityatelange.github.io/hugo-PaperMod/posts/2019-07-16-change-uid-gid-in-linux/"></a>
+</article>
 
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2>CentOS 7 上使用 pyenv 安装 Python 3.7.3
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>概要 本文记录了在 CentOS 7.6 系统上通过 pyenv 安装 Python 3.7.3 的过程。
+环境 CentOS Linux release 7.6.1810 (Core) Kernel 3 3.10.0-957.el7.x86_64 Pyenv 1.2.11 安装 pyenv $ curl https://pyenv.run | bash 然后根据提示把以下内容放到 ~/.bashrc 文件末尾
+# Load pyenv automatically by adding # the following to ~/.bashrc: export PATH=&#34;/root/.pyenv/bin:$PATH&#34; eval &#34;$(pyenv init -)&#34; eval &#34;$(pyenv virtualenv-init -)&#34; 安装 Python 3.7.3 准备
+$ sudo yum -y install xz bzip2 bzip2-devel sqlite-devel gcc openssl-devel readline-devel zlib-devel libffi-devel 安装...</p>
+  </div>
+  <footer class="entry-footer"><span title='2019-05-29 00:00:00 +0000 UTC'>May 29, 2019</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Theme PaperMod</footer>
+  <a class="entry-link" aria-label="post link to CentOS 7 上使用 pyenv 安装 Python 3.7.3" href="https://adityatelange.github.io/hugo-PaperMod/posts/2019-05-29-centos7-pyenv-install-python-3/"></a>
+</article>
 
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2>Java 进阶要点
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>自己学习 Java 和用 Java 过程中的理解和备忘的知识点。
+JDK 11 Oracle 不在免费提供 LTS 版本了，包括 JDK 8 ZGC, 可伸缩的、低延迟的垃圾收集器，STW 时间不超过 10ms Nashorn 标记为 Deprecate 了 JDK 9 module try-catch 简化 _ 为保留关键字 var 将在 JDK 10 中作为关键字, 作为本地变量类型推断关键字 字符串相关，主要是 Compact String, 用 byte[] 替换了 char[], char 在 Java 中占两个字节 G1 作为默认垃圾回收器 JVM 启动 JVM 相关的命令行参数 G1 垃圾回收器 内存 JVM(Hotspot) 内存结构 制造各种 OutOfMemery 和 StackOverflow 各种 JVM 相关工具(jstat/jmap/jstack/jps 等) 解决 FullGC 的问题 引用：WeakRefrence/PhantomReference/SoftRefrence/FinalRefrence 等 ClassLoader/URLClassLoader Spring Boot 的 ClassLoader 自定义 ClassLoader 多线程和并发 JVM 的线程模型 1:1 协程 创建线程的方法 线程同步 synchronzied/对象锁/类锁/锁方法/锁锁代码块 线程池 锁相关（Lock 接口和实现类） Condition volatile ThreadLocal 用途和实现 并发（CAS/乐观锁/无锁/无等待/无阻塞） 字节码 基本结构 操作字节码的工具 Javassist/ASM AOP 集合 Collection,List,ArrayList,Vector,LinkedList, SkipList, Stack Queue HashMap/HashTable HashMap 扩容死循环问题 LinkedHashMap TreeMap HashSet,TreeSet WeakHashMap 并发相关的集合 ConcurrentHashMap CopyOnWriteArrayList IO IO 模型 NIO Non-blocking IO Java 8 IO 相关的接口和类 Netty Vert....</p>
+  </div>
+  <footer class="entry-footer"><span title='2019-03-06 00:00:00 +0000 UTC'>March 6, 2019</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Theme PaperMod</footer>
+  <a class="entry-link" aria-label="post link to Java 进阶要点" href="https://adityatelange.github.io/hugo-PaperMod/posts/2019-03-06-keynotes-of-new-java/"></a>
+</article>
+<footer class="page-footer">
+  <nav class="pagination">
+    <a class="prev" href="https://adityatelange.github.io/hugo-PaperMod/page/2/">
+      «&nbsp;Prev&nbsp;
+    </a>
+    <a class="next" href="https://adityatelange.github.io/hugo-PaperMod/page/4/">Next&nbsp;&nbsp;»
+    </a>
+  </nav>
+</footer>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2023 <a href="https://adityatelange.github.io/hugo-PaperMod/">PaperMod</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
 </body>
 
 </html>

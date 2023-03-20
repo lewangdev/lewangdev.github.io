@@ -1,19 +1,38 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>网络拓扑 on 小碼哥</title>
-    <link>//lewang.dev/tags/%E7%BD%91%E7%BB%9C%E6%8B%93%E6%89%91/</link>
-    <description>Recent content in 网络拓扑 on 小碼哥</description>
+    <title>网络拓扑 on PaperMod</title>
+    <link>https://adityatelange.github.io/hugo-PaperMod/tags/%E7%BD%91%E7%BB%9C%E6%8B%93%E6%89%91/</link>
+    <description>Recent content in 网络拓扑 on PaperMod</description>
+    <image>
+      <title>PaperMod</title>
+      <url>https://adityatelange.github.io/hugo-PaperMod/papermod-cover.png</url>
+      <link>https://adityatelange.github.io/hugo-PaperMod/papermod-cover.png</link>
+    </image>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-CN</language>
-    <lastBuildDate>Fri, 27 Nov 2020 00:00:00 +0000</lastBuildDate><atom:link href="//lewang.dev/tags/%E7%BD%91%E7%BB%9C%E6%8B%93%E6%89%91/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 27 Nov 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://adityatelange.github.io/hugo-PaperMod/tags/%E7%BD%91%E7%BB%9C%E6%8B%93%E6%89%91/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>机房不能访问互联网，轻松搞定系统部署</title>
-      <link>//lewang.dev/posts/2020-11-27-go-through-the-system-firewall/</link>
+      <link>https://adityatelange.github.io/hugo-PaperMod/posts/2020-11-27-go-through-the-system-firewall/</link>
       <pubDate>Fri, 27 Nov 2020 00:00:00 +0000</pubDate>
       
-      <guid>//lewang.dev/posts/2020-11-27-go-through-the-system-firewall/</guid>
-      <description>创业这段时间以来，我们的 IoT 系统已经在不少客户的机房做了私有化部署，客户大多都是机加工厂、商业大楼、医院和大学实验室等，客户的机房都有一个相同的特点：私有云，与外网隔离，不能访问互联网。或者更为准确的说，是我们部署的服务器不能访问互联网，在没有互联网访问权限的情况下，系统的包管理工</description>
+      <guid>https://adityatelange.github.io/hugo-PaperMod/posts/2020-11-27-go-through-the-system-firewall/</guid>
+      <description>创业这段时间以来，我们的 IoT 系统已经在不少客户的机房做了私有化部署，客户大多都是机加工厂、商业大楼、医院和大学实验室等，客户的机房都有一个相同的特点：私有云，与外网隔离，不能访问互联网。或者更为准确的说，是我们部署的服务器不能访问互联网，在没有互联网访问权限的情况下，系统的包管理工具(yum/apt/docker)都无法使用了，在这种情况下进行系统部署安装，费时费力，而且无法进行远程部署维护，也大大增加了项目的实施成本。
+在最近的一个客户项目的实施过程中，看到客户的一些其他供应商在系统部署过程中非常艰难，甚至是 CentOS 系统初始化和 Docker 的安装就花掉了两个礼拜的人力，不排除一些供应商这样折腾会给他的客户留下工作敬业钱花的值的好印象，但对于我们这样的小创业公司来说，这样的时间浪费和低效是无法承担的成本，因为来实操部署的人就是公司老板本人了，我也不想出差在客户这里待上两个礼拜。
+在工作完成之后，想想可以把解决问题的方法记录一下，也许能给遇到相同问题的同行一些启发和帮助。好了，废话不多说，接下来我们就来解决这个无外网的部署问题，顺便再解决一下远程维护的问题。
+一、面临的问题 在部署和维护一个私有化企业内部使用且无互联网访问的系统中，可能会面临以下问题:
+机房服务器无法访问 Internet 可通过接入企业内网来访问服务器，而从服务器无法直连办公室网络，即机房和办公室在不同的网段 无互联网访问权限的情况下，无法直接使用系统的配置工具，如 yum/apt/docker 等，配置系统和部署服务费时费力 无法远程进行维护 客户内网拓扑示意图，此处省略了防火墙，简化拓扑图的复杂度，如下:
+网络拓扑图说明:
+机房和办公室不在一个网段 机房网段假设为 172.22.0.0/16，办公室内网 WiFi 的网段为 192.168.137.0/24 机房服务器之间是互通的，办公室可以 ping 通机房服务器，在机房服务器上无法 ping 通办公室部署控制主机，这里假设办公室网络作为一个 NAT 放在上层交换机后面 内网没有互联网访问权限，包括机房服务器和办公室内网 WiFI 二、解决问题的方法 既然是由于机房服务器没有互联网访问权限，不能联网下载安装包，那就想办法让机房服务器可以连接互联网或者搭建内网的软件包镜像服务，于是想到一些方法来达到目的:
+告知客户问题，申请开通互联网访问权限，可以限定为指定的网址和协议(HTTP/HTTPS)，需要远程维护的化，还需要申请可以连接到服务器的 VPN。这个方法在需要客户的进行审批，可能时间比较长。我们的客户中有不少都没有自建 VPN，或这不方便给我们开通 VPN，另外也无法开通需要我们部署的服务器的互联网访问权限，所以不能使用这个方法
+在客户机房放置可以通过 4G 上网的堡垒机，堡垒机接入客户机房网络。在客户机房放一个堡垒机，虽然说是堡垒机，但可能客户那边的机房管理也还是不容许放置这样的机器的，所以也不能使用这个方法
+搭建 yum(CentOS)/apt(Debian/Ubuntu)/docker 的内网镜像服务，搭建内网镜像服务可能就是一个比较艰巨的任务，难以接受给自己又添加了一个艰难的任务，此方法也作罢
+通过在办公室网里放置部署控制机，同时连接内网和 4G 路由器提供的外网(互联网)，在部署控制机上搭建 SDWAN 或者 HTTP 代理，yum/apt/docker 都支持 HTTP 代理，这样修改系统配置之后，就可以通过代理安装部署服务，这个方法比较简单，而且几乎不需要客户的参与就可以完成。不过也有一些前置条件，例如:
+办公室中主机可以接入客户网络
+客户服务器允许办公室网络中主机通过 TCP 或者 UDP 访问其任意或者指定的端口
+客户办公室的 4G 网络信号要足够好，这样可以提供更好的外网速度
+拥有服务器的 root 管理员权限(需要安装软件和修改系统配置)
+通过权衡利弊，我们最终使用的是第 4 个方法来搭建的，下面来讲讲搭建的过程。</description>
     </item>
     
   </channel>

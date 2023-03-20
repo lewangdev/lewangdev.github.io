@@ -1,64 +1,114 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>感悟 on 小碼哥</title>
-    <link>//lewang.dev/categories/%E6%84%9F%E6%82%9F/</link>
-    <description>Recent content in 感悟 on 小碼哥</description>
+    <title>感悟 on PaperMod</title>
+    <link>https://adityatelange.github.io/hugo-PaperMod/categories/%E6%84%9F%E6%82%9F/</link>
+    <description>Recent content in 感悟 on PaperMod</description>
+    <image>
+      <title>PaperMod</title>
+      <url>https://adityatelange.github.io/hugo-PaperMod/papermod-cover.png</url>
+      <link>https://adityatelange.github.io/hugo-PaperMod/papermod-cover.png</link>
+    </image>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-CN</language>
-    <lastBuildDate>Sat, 26 Apr 2014 01:11:00 +0000</lastBuildDate><atom:link href="//lewang.dev/categories/%E6%84%9F%E6%82%9F/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 26 Apr 2014 01:11:00 +0000</lastBuildDate><atom:link href="https://adityatelange.github.io/hugo-PaperMod/categories/%E6%84%9F%E6%82%9F/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>悟性</title>
-      <link>//lewang.dev/posts/2014-04-26-power-of-understanding/</link>
+      <link>https://adityatelange.github.io/hugo-PaperMod/posts/2014-04-26-power-of-understanding/</link>
       <pubDate>Sat, 26 Apr 2014 01:11:00 +0000</pubDate>
       
-      <guid>//lewang.dev/posts/2014-04-26-power-of-understanding/</guid>
-      <description>“悟性”是一个很虚的东西吗？ 前段时间和同学聊天，聊如何从众多的各方面初步看起来差不多应聘者中去做选择？聊来聊去最终落到了“悟性”上。我自己在突然想到悟性这个词的时候脑子几乎一片空白，不知道如何去判断一个人的悟性，或者说悟性到底是怎么样的，凭什么说一个人悟性好或者悟性差。 昨天下午有</description>
+      <guid>https://adityatelange.github.io/hugo-PaperMod/posts/2014-04-26-power-of-understanding/</guid>
+      <description>“悟性”是一个很虚的东西吗？
+前段时间和同学聊天，聊如何从众多的各方面初步看起来差不多应聘者中去做选择？聊来聊去最终落到了“悟性”上。我自己在突然想到悟性这个词的时候脑子几乎一片空白，不知道如何去判断一个人的悟性，或者说悟性到底是怎么样的，凭什么说一个人悟性好或者悟性差。
+昨天下午有个年龄不小的同学过来面试，聊了一个小时以后，向老板 汇报面试意见时，这同学各方面都很不错，但是总觉得有些地方不对，找不到词来形容自己内心当时的想法，于是结结巴巴的说，这种情况下，我要看一个人有没有悟性，接着我举了一个例子来说明什么时悟性：
+假如一个人，被安排了事情 A，我觉得有悟性的人，可能在做 A 事情的时候，把相关的事情 B、C 都做了，或者要求时做到A，但是主动把结果做成 A++
+说完后，我觉得不妥：这可能不是一个人有没有悟性的问题，而是这个人主动不主动、有没有热情的问题。
+到底什么怎样才能通过一些具体的例子体会悟性这个词的含义？
+佛家讲究悟性。《心经》仅有 260 个字，有悟性的人才可以写出《心经与生活智慧》，甚至心经和量子物理都有关系，你看了之后，才发现：哦，原来心经是说这些的啊。
+道家也讲究悟性。当年菩提老祖在孙猴子头上敲三下的时候，要是孙猴子没有悟性只有兽性的话，估计就没有后面的孙悟空了。
+自己之前团队中有个新同事，年龄比我长，团队之间大家相互做 Code Review，且不说代码质量， 从代码风格上我就对此人无语了：从不注意已有代码在变量、函数、文件命名上的一些基本的规范，别人不告诉他，就不会意识到这个问题。一些看得见的东西不一定非要教条式的写到文件里，然后去专门花时间去学,去强制。有些问题，还是自己意识到比较好，从别人口里说出来，那就不好玩了。
+一句话说得好：
+不怕狼一样的对手，就怕猪一样的队友。
+不多说了，不强求，悟性有可能就是天生的。做不了大师兄，做二师弟也不赖。</description>
     </item>
     
     <item>
       <title>成长</title>
-      <link>//lewang.dev/posts/2014-04-25-grow-up/</link>
+      <link>https://adityatelange.github.io/hugo-PaperMod/posts/2014-04-25-grow-up/</link>
       <pubDate>Fri, 25 Apr 2014 00:40:00 +0000</pubDate>
       
-      <guid>//lewang.dev/posts/2014-04-25-grow-up/</guid>
-      <description>成长就是看自己以前写的东西（包括微博、博客、说说等等）的时候觉得以前自己很 SB, 然后迫切地想把它们删掉 这句话不止一次看到，反思自己，确实是那么回事儿，不能太赞同哦（我了个去上海腔了呢）。 先前早些时候，把新浪博客和人人删的一干二净，也就是过把自己过去的所有文字的创造付之一炬，说没有一点</description>
+      <guid>https://adityatelange.github.io/hugo-PaperMod/posts/2014-04-25-grow-up/</guid>
+      <description>成长就是看自己以前写的东西（包括微博、博客、说说等等）的时候觉得以前自己很 SB, 然后迫切地想把它们删掉
+这句话不止一次看到，反思自己，确实是那么回事儿，不能太赞同哦（我了个去上海腔了呢）。
+先前早些时候，把新浪博客和人人删的一干二净，也就是过把自己过去的所有文字的创造付之一炬，说没有一点惋惜，那是不可能的，想想当年自己顶着农村小孩黝黑皮肤初来乍到大城市，牛流不分，不怕喝不上牛奶只能喝豆浆的尴尬，给学校里各个杂志投稿，现在读来那些稿件，莫不觉得自己二逼。还好是些低年级学生玩的校办杂志，没多少人，为了回忆二逼的岁月，我特地还留了一本，没有其他人变态一样也留了一本吧。
+哦，对了，如果你想删掉所有的 SNS 平台的日志，不如学门编程的手艺，使用他们所谓的开放接口删了他们。不知道人人网的 3g.renren.com, 如果还能访问那可以试试小码哥几年前弄的人人自杀小工具 xiaomg.sinaapp.com，如果恰好能帮你删掉所有的东西，那么就是人人网的不对了，这么多年了，一点进步都没有，还有几个人在山寨机上开个ucweb访问你的3g网站。小工具的代码就不要看了，惨不忍闻，套用前面的话，写得太二逼了。说不定哪天就会被删掉，就像删这些日志一样。
+感性的文字都已经被删掉了，这下子没人看的得到我过去的无知，也只有我自己知道自己过去的无畏。
+准备把散落在各处的技术博文都挪到这里来，二逼 SB 可能不大适合形容一个人的手艺，但是菜鸟二字恰如其分。
+又一个菜鸟来了。大牛们见笑了。</description>
     </item>
     
     <item>
       <title>未来是个未知数</title>
-      <link>//lewang.dev/posts/2011-11-09-future-is-unknown/</link>
+      <link>https://adityatelange.github.io/hugo-PaperMod/posts/2011-11-09-future-is-unknown/</link>
       <pubDate>Wed, 09 Nov 2011 13:09:00 +0000</pubDate>
       
-      <guid>//lewang.dev/posts/2011-11-09-future-is-unknown/</guid>
-      <description>未来是个未知数，自己的未来自己都不知道会是什么样子，问别人，别人又怎么会知道你的未来。 不要忘了自己心中想要的东西，即使是为了养家糊口而从事自己不喜欢的工作，也不要忘记自己希望做什么，静静的准备着，迟早有一天会爆发的。 单纯的做着自己的业余爱好，业余爱好也就会发展成职业的。但是我不会</description>
+      <guid>https://adityatelange.github.io/hugo-PaperMod/posts/2011-11-09-future-is-unknown/</guid>
+      <description>未来是个未知数，自己的未来自己都不知道会是什么样子，问别人，别人又怎么会知道你的未来。
+不要忘了自己心中想要的东西，即使是为了养家糊口而从事自己不喜欢的工作，也不要忘记自己希望做什么，静静的准备着，迟早有一天会爆发的。
+单纯的做着自己的业余爱好，业余爱好也就会发展成职业的。但是我不会忘了我心中想要去做什么，我会为之而积累准备。
+未来是个未知数，没有方程组能解开这个未知数，只能去试，试试才会知道。
+摆摊网的未来也是个未知数，很大的可能就是被淹没在数以亿计的小小站点之中，被互联网大潮一扫而过，什么也不会留下，但是，这就是我的爱好，我喜欢把自己的想法实现，不管别人喜不喜欢用，但是，我喜欢摆摊网，它是我想法的一个实体，我每次尝试的一个印记。
+自己的工作也定下来了，有接着研究自己的课题，但这几天不能安静下来搞自己的课题，总想着摆摊网还没有做好，于是拿出了两天，把摆摊的页面都做了出来，接下来就要做网站的逻辑部分了。
+网站很简单，但是要做好做的精致做得完美做得好用也是很不容易的。自己还是慢慢来搞，每天写点代码吧，还是要干些要紧的事儿，后天又得做报告了，得赶论文ppt了。
+期待有同学加入，一起来开发摆摊网，让摆摊网早点上线！！！
+要开始为了毕业而忙碌了。
+我是小码哥（新浪微博）</description>
     </item>
     
     <item>
       <title>冬天来了</title>
-      <link>//lewang.dev/posts/2011-10-27-winter-is-coming/</link>
+      <link>https://adityatelange.github.io/hugo-PaperMod/posts/2011-10-27-winter-is-coming/</link>
       <pubDate>Thu, 27 Oct 2011 13:10:00 +0000</pubDate>
       
-      <guid>//lewang.dev/posts/2011-10-27-winter-is-coming/</guid>
-      <description>前几天一场大降温，把我给冻着了，肚子疼了好几天，还发烧，还好有个小盆友给我“打针喂药”，使得我这几天才得以康复，重现往日风采。 本来这周五得做论文的报告，于是这周基本都在看论文。谁知这周又冒出了几个公司让我去面试，论文的报告又就此作罢，挪到下周。 自己的外语很烂，基本没有投什么外企，</description>
+      <guid>https://adityatelange.github.io/hugo-PaperMod/posts/2011-10-27-winter-is-coming/</guid>
+      <description>前几天一场大降温，把我给冻着了，肚子疼了好几天，还发烧，还好有个小盆友给我“打针喂药”，使得我这几天才得以康复，重现往日风采。
+本来这周五得做论文的报告，于是这周基本都在看论文。谁知这周又冒出了几个公司让我去面试，论文的报告又就此作罢，挪到下周。
+自己的外语很烂，基本没有投什么外企，昨天参加了微策略的面试之后，反而对自己的外语变得有些自信，最后和那位印度面试官聊天，他说我外语挺好，可是小盆友却说他那是在说客套话，不管客套不客套，反正我觉得挺开心，哈哈。。。
+这周末还有几个知名互联网公司的笔试面试，加油！
+关于摆摊，我还是抽出了一些时间来做了一些开发工作。先是看了赶集网吴石展杭州Qcon的关于MySQL数据库开发的三十六条军规，然后立马按照这些军规，对摆摊的数据库结构做了一些更改。此外，还开发了用户注册模块，只是页面还没有美化。
+还是一点一点的来，事情太多，还要搞科研毕业，加油！
+我是小码哥（新浪微博）</description>
     </item>
     
     <item>
       <title>十一掠影</title>
-      <link>//lewang.dev/posts/2011-10-01-snapshot-of-10-1/</link>
+      <link>https://adityatelange.github.io/hugo-PaperMod/posts/2011-10-01-snapshot-of-10-1/</link>
       <pubDate>Sat, 01 Oct 2011 00:40:00 +0000</pubDate>
       
-      <guid>//lewang.dev/posts/2011-10-01-snapshot-of-10-1/</guid>
-      <description>早上睡到9点才起床，然后下楼载着小盆友去学三吃了早饭，一人吃了六个小包子，出了食堂发现天气真好，决定去拍些照片，然后又载着小盆友回到宿舍拿了相机。 今天天气真好，微微的风，蓝蓝的天，枝头的树叶也变成了整片整片的金黄，好美！ 东西都已经收拾好了，明天一早出发，去泰山，看日出。 我是小码哥</description>
+      <guid>https://adityatelange.github.io/hugo-PaperMod/posts/2011-10-01-snapshot-of-10-1/</guid>
+      <description>早上睡到9点才起床，然后下楼载着小盆友去学三吃了早饭，一人吃了六个小包子，出了食堂发现天气真好，决定去拍些照片，然后又载着小盆友回到宿舍拿了相机。
+今天天气真好，微微的风，蓝蓝的天，枝头的树叶也变成了整片整片的金黄，好美！
+东西都已经收拾好了，明天一早出发，去泰山，看日出。
+我是小码哥</description>
     </item>
     
     <item>
       <title>摆摊网</title>
-      <link>//lewang.dev/posts/2011-09-28-hello-baigetan/</link>
+      <link>https://adityatelange.github.io/hugo-PaperMod/posts/2011-09-28-hello-baigetan/</link>
       <pubDate>Wed, 28 Sep 2011 03:40:00 +0000</pubDate>
       
-      <guid>//lewang.dev/posts/2011-09-28-hello-baigetan/</guid>
-      <description>点评：留在这里，让自己可以看到以往无知的自己 一转眼，20 年就过去了，终于要和自己 20 年的学生身份说拜拜了。 那天去图书馆借书，回来的路上敬业湖桥边的那棵树的时候，心不由得感叹起来，这棵树，我已经拍下了它的春夏秋冬，它叶枯叶落，相似年年，只因它生根于此，我是要走的。 去图书馆，边走边想，</description>
+      <guid>https://adityatelange.github.io/hugo-PaperMod/posts/2011-09-28-hello-baigetan/</guid>
+      <description>点评：留在这里，让自己可以看到以往无知的自己
+一转眼，20 年就过去了，终于要和自己 20 年的学生身份说拜拜了。
+那天去图书馆借书，回来的路上敬业湖桥边的那棵树的时候，心不由得感叹起来，这棵树，我已经拍下了它的春夏秋冬，它叶枯叶落，相似年年，只因它生根于此，我是要走的。
+去图书馆，边走边想，就想到了前几天在知乎上看到的社会化图书馆网站，感觉很不错(而且 UI 做的很不错，想借鉴一下)。想着自己买了好多书，都闲在书架上，是不是也可以搞一个校园图书馆，把同学校的闲书都利用起来。然后又马上否定了自己，因为我自己其实并不愿意把自己买的书借给别人看。这个想法就此作罢。
+想想自己倒是有不少二手书带不走了，得卖掉，还有一些小物件，也带不走了，扔了还挺可惜，也可以卖掉。于是想找找哪里去买，学校 BBS 感觉还可以，但是信息没有分类，不易于检索，而且用户体验很不好。百姓、赶集、58 同城确实可以发布二手信息，但是信息又接近海量，不能针对目标人群——学生，比如我想找同专业学长学姐的书，那就不好找了，再比如我要找我考研学校的资料，那也不好找了，除非去相应的论坛，不然也是很难找。还有个大学生 C2C，这个网站感觉心太大，不靠谱，而且用户体验很差。而且到学生毕业的时候，将会有大量的二手信息，是不是可以考虑搭建一个大学生专用的二手物品交易平台，而且融入校园 SNS 和 LBS 元素，主打二手书籍的交易呢。综合考虑以上，我觉得这挺靠谱的。
+于是我打算开发一个这样的平台——摆摊网
+天大每年有 6000 多的毕业生，如果有 30%的毕业生能使用，那就将近 2000 人，融入 SNS 元素之后，用户会不会爆炸是增加？我觉得流量肯定会有的。
+于是立马动手，先是在美橙互联上注册了域名 baitan001.com (正宗的开心网也是 kaixin001.com )，然后找了几个同学听了他们意见，同时还邀请了两个同学一起来做这个小项目。
+感谢新浪 SAE 给了我实现自己的这个小小梦想的机会，前段时间参加新浪微博应用大赛，对 SAE 也有了一些了解，综合考虑之后，决定就在 SAE 平台上来做摆摊网的开发。
+花了昨天一晚上加上今天一下午，结合以往自己用过的 PHP 框架代码，而且动手折腾出了 Baitan 0.0.1 版本 PHP 框架，兼容 SAE 平台，接下来就是一步一步的把摆摊做出来了。
+这段时间一直忙于找工作，参加各种笔试面试，然后被各种鄙视，当然也收获了不少，短短不到一个月，也已经有了好几个巨头互联网公司的 offer 了，自己的工作也大概就这么定下来了。自己在大学和研究生阶段也折腾过不少东西了，但是还是没有做出一个让自己满意的东西，我想把摆摊网做好，即使没人用，我也自己去维护去完善，当做是自己在种地吧。我有梦想，但最开心的还是有个她愿意倾听我。
+今天把baitan001.com做了域名备案，申请了腾讯的企业邮箱，Baitan 0.0.1 框架的相关测试也已经基本完成，敬请期待摆摊网的到来吧！</description>
     </item>
     
   </channel>

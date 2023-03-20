@@ -1,19 +1,25 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>ajax on 小碼哥</title>
-    <link>//lewang.dev/tags/ajax/</link>
-    <description>Recent content in ajax on 小碼哥</description>
+    <title>ajax on PaperMod</title>
+    <link>https://adityatelange.github.io/hugo-PaperMod/tags/ajax/</link>
+    <description>Recent content in ajax on PaperMod</description>
+    <image>
+      <title>PaperMod</title>
+      <url>https://adityatelange.github.io/hugo-PaperMod/papermod-cover.png</url>
+      <link>https://adityatelange.github.io/hugo-PaperMod/papermod-cover.png</link>
+    </image>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-CN</language>
-    <lastBuildDate>Thu, 01 Dec 2011 00:40:00 +0000</lastBuildDate><atom:link href="//lewang.dev/tags/ajax/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 01 Dec 2011 00:40:00 +0000</lastBuildDate><atom:link href="https://adityatelange.github.io/hugo-PaperMod/tags/ajax/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>jquery $.ajax() 中 datatype 为 json 时的问题</title>
-      <link>//lewang.dev/posts/2011-12-01-when-datatype-is-json/</link>
+      <link>https://adityatelange.github.io/hugo-PaperMod/posts/2011-12-01-when-datatype-is-json/</link>
       <pubDate>Thu, 01 Dec 2011 00:40:00 +0000</pubDate>
       
-      <guid>//lewang.dev/posts/2011-12-01-when-datatype-is-json/</guid>
-      <description>最近在为摆摊写点前端 js 的时候，在使用 jquery 的 $.ajax()这个方法的时候，当 datatype 设置为 json 时，总是不执行 success 回调，而是执行 error 回调。而将 datatype 设置成 text，就可以执行 success 回调了，摆摊使用的是 jQuery JavaScript Library v1.6.2，查看 jQuery 文档可知： “json”: Evaluates the response as JSON and returns a JavaScript object. In jQuery 1.4 the JSON data is parsed in a strict manner; any malformed JSON is rejected</description>
+      <guid>https://adityatelange.github.io/hugo-PaperMod/posts/2011-12-01-when-datatype-is-json/</guid>
+      <description>最近在为摆摊写点前端 js 的时候，在使用 jquery 的 $.ajax()这个方法的时候，当 datatype 设置为 json 时，总是不执行 success 回调，而是执行 error 回调。而将 datatype 设置成 text，就可以执行 success 回调了，摆摊使用的是 jQuery JavaScript Library v1.6.2，查看 jQuery 文档可知：
+“json”: Evaluates the response as JSON and returns a JavaScript object. In jQuery 1.4 the JSON data is parsed in a strict manner; any malformed JSON is rejected and a parse error is thrown. (See json.org for more information on proper JSON formatting.)
+我用 php 产生的字符串是</description>
     </item>
     
   </channel>

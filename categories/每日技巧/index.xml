@@ -1,118 +1,162 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>每日技巧 on 小碼哥</title>
-    <link>//lewang.dev/categories/%E6%AF%8F%E6%97%A5%E6%8A%80%E5%B7%A7/</link>
-    <description>Recent content in 每日技巧 on 小碼哥</description>
+    <title>每日技巧 on PaperMod</title>
+    <link>https://adityatelange.github.io/hugo-PaperMod/categories/%E6%AF%8F%E6%97%A5%E6%8A%80%E5%B7%A7/</link>
+    <description>Recent content in 每日技巧 on PaperMod</description>
+    <image>
+      <title>PaperMod</title>
+      <url>https://adityatelange.github.io/hugo-PaperMod/papermod-cover.png</url>
+      <link>https://adityatelange.github.io/hugo-PaperMod/papermod-cover.png</link>
+    </image>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-CN</language>
-    <lastBuildDate>Sat, 21 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="//lewang.dev/categories/%E6%AF%8F%E6%97%A5%E6%8A%80%E5%B7%A7/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 21 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://adityatelange.github.io/hugo-PaperMod/categories/%E6%AF%8F%E6%97%A5%E6%8A%80%E5%B7%A7/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>grep，xargs 和 sed 的一次日常使用</title>
-      <link>//lewang.dev/posts/2022-05-21-replace-strings-in-all-files/</link>
+      <link>https://adityatelange.github.io/hugo-PaperMod/posts/2022-05-21-replace-strings-in-all-files/</link>
       <pubDate>Sat, 21 May 2022 00:00:00 +0000</pubDate>
       
-      <guid>//lewang.dev/posts/2022-05-21-replace-strings-in-all-files/</guid>
-      <description>趁着周末空隙把自己年久失修博客整理了一下，用到了 grep，xargs 和 sed 命令，使用这 3 个命令组合批量替换了所有 Markdown 文件中的图片链接。 我的博客从我的学生时代就开始了，不断折腾自己的博客，所以学会了 HTML/CSS/JS，下次和大家分享一下我的博客旅程。 这里不详细讲解这 3 个命令的使用，</description>
+      <guid>https://adityatelange.github.io/hugo-PaperMod/posts/2022-05-21-replace-strings-in-all-files/</guid>
+      <description>趁着周末空隙把自己年久失修博客整理了一下，用到了 grep，xargs 和 sed 命令，使用这 3 个命令组合批量替换了所有 Markdown 文件中的图片链接。
+我的博客从我的学生时代就开始了，不断折腾自己的博客，所以学会了 HTML/CSS/JS，下次和大家分享一下我的博客旅程。
+这里不详细讲解这 3 个命令的使用，这 3 个命令的使用可以写出来厚厚的一本书。如果希望详细的了解这些命令，可以在 Linux 的终端下输入这样的命令查看文档，例如查看 grep 如何使用：
+man grep man 命令的常用操作:
+退出: 按 q 键 查找：按 / 后输入查找关键字 下一页: 按 ctrl + d 或者 ctrl + f，tips: 这里的 d 大概是 down，f 大概是 forward 上一页: 按 ctrl + u 或者 ctrl + b，tips: 这里的 d 大概是 up，b 大概是 backward 查看其它命令的手册也是类似的。
+我博客的问题 我的博客是用 hugo 构建的，所有的文章都放在 post 下面的目录里，图片则需要放在 static 的 images 下面，这样在用 vscode 写博客 Markdown 的时候无法在预览里面看到图片。于是我在 hugo 项目的根目录下添加了的一个 images 的符号链接到 static 目录下的 images， 才能解决图片预览的问题。</description>
     </item>
     
     <item>
       <title>命令行格式化 JSON</title>
-      <link>//lewang.dev/posts/2022-05-20-format-json-in-command-line-copy/</link>
+      <link>https://adityatelange.github.io/hugo-PaperMod/posts/2022-05-20-format-json-in-command-line-copy/</link>
       <pubDate>Fri, 20 May 2022 00:00:00 +0000</pubDate>
       
-      <guid>//lewang.dev/posts/2022-05-20-format-json-in-command-line-copy/</guid>
-      <description>今天要改 Docker 的两个配置 hostconfig.json 和 config.v2.json，打开一看，这个文件是单行的，在编辑器里面显示这是这样的： 代码都堆在一起，用 vim 格式化也没啥效果，编辑起来不是很方便。 Python 自带模块格式化 JSON 格式化 JSON 文件有很多方法，我最常用的就是 Python 自带的 json.tool 这个模块，只要安装了 Python 的电脑，都可以直接使用，</description>
+      <guid>https://adityatelange.github.io/hugo-PaperMod/posts/2022-05-20-format-json-in-command-line-copy/</guid>
+      <description>今天要改 Docker 的两个配置 hostconfig.json 和 config.v2.json，打开一看，这个文件是单行的，在编辑器里面显示这是这样的：
+代码都堆在一起，用 vim 格式化也没啥效果，编辑起来不是很方便。
+Python 自带模块格式化 JSON 格式化 JSON 文件有很多方法，我最常用的就是 Python 自带的 json.tool 这个模块，只要安装了 Python 的电脑，都可以直接使用，这样就可以了：
+python -m json.tool hostconfig.json &amp;gt; hostconfig-formatted.json 格式化以后再打开看一看：
+这样编辑文件就方便多了。
+与管道符一起使用 前面的例子我们还可以使用管道符(|)来实现，例如:
+cat hostconfig.json | python -m json.tool &amp;gt; hostconfig-formatted.json 从 RESTful 接口直接获取数据并且格式化:
+curl -s https://api.github.com/users/lewangdev | python -m json.tool 其它本地格式化工具 DevToysMac: MacOS 版的 DevToys or Windows，我是用 Windows 11 时候看到这个软件的，于是顺手搜了一下 MacOS 版的，也挺好用的。 jq: 除了像 sed 一样的处理 JSON 以外，还能把输出的 JSON 变成彩色的。 curl &amp;#39;https://api.</description>
     </item>
     
     <item>
       <title>WireGuard 使用简介</title>
-      <link>//lewang.dev/posts/2019-10-30-wireguard-go-setup/</link>
+      <link>https://adityatelange.github.io/hugo-PaperMod/posts/2019-10-30-wireguard-go-setup/</link>
       <pubDate>Wed, 30 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>//lewang.dev/posts/2019-10-30-wireguard-go-setup/</guid>
-      <description>背景 搭建 VPN 方便连接无公网 IP 云主机进行开发，WireGuard 配置比 OpenVPN 要简单很多，WireGuard 是通过 Linux 内核模块的方式实现的，这样性能最好，但是只能用在 Linux 系统上。本文使用的 wireguard-go， 则是使用 Golang 实现的 WireGuard 协议，属于用户空间(User Space)的实现，性能没有内核模</description>
+      <guid>https://adityatelange.github.io/hugo-PaperMod/posts/2019-10-30-wireguard-go-setup/</guid>
+      <description>背景 搭建 VPN 方便连接无公网 IP 云主机进行开发，WireGuard 配置比 OpenVPN 要简单很多，WireGuard 是通过 Linux 内核模块的方式实现的，这样性能最好，但是只能用在 Linux 系统上。本文使用的 wireguard-go， 则是使用 Golang 实现的 WireGuard 协议，属于用户空间(User Space)的实现，性能没有内核模块方式好，但好处就是跨平台且更简单易用。
+VPN 的用处非常的多，不像 frp 之类的端口穿透应用，它是直接建立虚拟的网络，网络中的每个客户端也都可以拥有自己独立的 IP，于是测试调试就没有了端口的限制，非常的方便。
+除了方便安全连接云服务器，还可以通过 VPN 搭建工业设备的远程部署和维护的解决方案。
+编译 wireguard-go # 使用 GitHub 的源码镜像，速度会快一些 git clone git@github.com:wireguard/wireguard-go.git # 在 MacOS 下交叉编译 CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -v -o &amp;#34;wireguard-go&amp;#34; # Linux 环境下直接编译 go build -v -o &amp;#34;wireguard-go&amp;#34; cp wireguard-go /usr/sbin/ 编译 WireGuard tools git clone git@github.com:wireguard/wireguard.git # 安装依赖 ## debian&amp;amp;ubuntu sudo apt-get install libmnl-dev libelf-dev ## centos sudo yum install libmnl-devel elfutils-libelf-devel cd wireguard/src/tools make sudo make install 配置 WireGuard 生成密钥</description>
     </item>
     
     <item>
       <title>树莓派系统日志配置</title>
-      <link>//lewang.dev/posts/2019-09-19-rpi-log-config/</link>
+      <link>https://adityatelange.github.io/hugo-PaperMod/posts/2019-09-19-rpi-log-config/</link>
       <pubDate>Thu, 19 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>//lewang.dev/posts/2019-09-19-rpi-log-config/</guid>
-      <description>背景 树莓派 raspbian 系统日志默认的配置会导致日志过大而占用太多的存储空间，并且频繁写日志也可能减短 EMMC 和 SD 卡的寿命，需要重新配置来满足项目的需求。 日志位置 /var/log /var/log/syslog /var/log/daemon.log /var/log/mail.info /var/log/mail.warn /var/log/mail.err /var/log/mail.log /var/log/kern.log /var/log/auth.log /var/log/user.log /var/log/lpr.log /var/log/cron.log /var/log/debug /var/log/messages 配置 rsyslog 与 logrotate rsyslog 的配置文件为 /etc/rsyslog.conf, 找到其中 RULES 段 ############### #### RULES #### ############### # # First some standard log files. Log by facility. # auth,authpriv.* /var/log/auth.log *.*;auth,authpriv.none -/var/log/syslog #cron.* /var/log/cron.log #daemon.* -/var/log/daemon.log kern.* -/var/log/kern.log lpr.* -/var/log/lpr.log mail.* -/var/log/mail.log user.* -/var/log/user.log 将其中</description>
+      <guid>https://adityatelange.github.io/hugo-PaperMod/posts/2019-09-19-rpi-log-config/</guid>
+      <description>背景 树莓派 raspbian 系统日志默认的配置会导致日志过大而占用太多的存储空间，并且频繁写日志也可能减短 EMMC 和 SD 卡的寿命，需要重新配置来满足项目的需求。
+日志位置 /var/log /var/log/syslog /var/log/daemon.log /var/log/mail.info /var/log/mail.warn /var/log/mail.err /var/log/mail.log /var/log/kern.log /var/log/auth.log /var/log/user.log /var/log/lpr.log /var/log/cron.log /var/log/debug /var/log/messages 配置 rsyslog 与 logrotate rsyslog 的配置文件为 /etc/rsyslog.conf, 找到其中 RULES 段
+############### #### RULES #### ############### # # First some standard log files. Log by facility. # auth,authpriv.* /var/log/auth.log *.*;auth,authpriv.none -/var/log/syslog #cron.* /var/log/cron.log #daemon.* -/var/log/daemon.log kern.* -/var/log/kern.log lpr.* -/var/log/lpr.log mail.* -/var/log/mail.log user.* -/var/log/user.log 将其中 daemon.* -/var/log/daemon.log 行注释掉，syslog中已经包含 daemon 的日志。</description>
     </item>
     
     <item>
       <title>如何修改 Linux 用户的 UID 和组的 GID</title>
-      <link>//lewang.dev/posts/2019-07-16-change-uid-gid-in-linux/</link>
+      <link>https://adityatelange.github.io/hugo-PaperMod/posts/2019-07-16-change-uid-gid-in-linux/</link>
       <pubDate>Tue, 16 Jul 2019 00:00:00 +0000</pubDate>
       
-      <guid>//lewang.dev/posts/2019-07-16-change-uid-gid-in-linux/</guid>
-      <description>问题 在使用 Docker 或者 NFS 的时候，需要文件系统挂在到不同的系统中拥有正确的读写权限，需要指定文件所属用户和组的 uid 和 gid。在创建用户和组的时候，系统会自动分配对应的值，这导致在不同的系统中很容易造成 uid 和 gid 不一样而造成读写权限混乱。 例如在系统 A 中，用户 git 的 uid 和组 git 的gid 如下: [sysops@cn-bj-aliyun-3 ~]$ id git uid=1001(git) gid=1001(git)</description>
+      <guid>https://adityatelange.github.io/hugo-PaperMod/posts/2019-07-16-change-uid-gid-in-linux/</guid>
+      <description>问题 在使用 Docker 或者 NFS 的时候，需要文件系统挂在到不同的系统中拥有正确的读写权限，需要指定文件所属用户和组的 uid 和 gid。在创建用户和组的时候，系统会自动分配对应的值，这导致在不同的系统中很容易造成 uid 和 gid 不一样而造成读写权限混乱。
+例如在系统 A 中，用户 git 的 uid 和组 git 的gid 如下:
+[sysops@cn-bj-aliyun-3 ~]$ id git uid=1001(git) gid=1001(git) groups=1001(git) 而系统 B 中的值如下:
+[sysops@cn-bj-aliyun-3 ~]$ id git uid=998(git) gid=998(git) groups=998(git) 我们在系统 A 以 git 用户创建目录或者文件:
+[git@cn-bj-aliyun-3 data]$ ls -lh total 60K -rw-r--r-- 1 git git 100 Jul 5 23:22 file1 -rw-r--r-- 1 git git 400 Dec 18 2018 file2 -rw-r--r-- 1 git git 349 Dec 18 2018 file3 将这个目录挂在到 B 系统中时，将会出现这种情况:</description>
     </item>
     
     <item>
       <title>树莓派 CM3/CM3&#43; 刷写系统</title>
-      <link>//lewang.dev/posts/2019-03-01-rpi-cm3-emmc-flashing/</link>
+      <link>https://adityatelange.github.io/hugo-PaperMod/posts/2019-03-01-rpi-cm3-emmc-flashing/</link>
       <pubDate>Fri, 01 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>//lewang.dev/posts/2019-03-01-rpi-cm3-emmc-flashing/</guid>
-      <description>准备 阅读Flashing the Compute Module eMMC 准备一个可以刷系统的底板，我用的是微雪Compute-Module-IO-Board-Plus 步骤(Linux 系统下刷系统，可以使用树莓派来刷机) sudo apt install git libusb-1.0-0-dev git clone --depth=1 https://github.com/raspberrypi/usbboot &amp;amp;&amp;amp; cd usbboot &amp;amp;&amp;amp; make sudo ./rpiboot 连好线，跳线部分见各自底板的手册 拔掉 USB SLAVE 1/2/3/4 拔掉 SELECT 跳线帽 将 BOOT ENABLE USB SLAVE 跳线帽</description>
+      <guid>https://adityatelange.github.io/hugo-PaperMod/posts/2019-03-01-rpi-cm3-emmc-flashing/</guid>
+      <description>准备 阅读Flashing the Compute Module eMMC 准备一个可以刷系统的底板，我用的是微雪Compute-Module-IO-Board-Plus 步骤(Linux 系统下刷系统，可以使用树莓派来刷机) sudo apt install git libusb-1.0-0-dev git clone --depth=1 https://github.com/raspberrypi/usbboot &amp;amp;&amp;amp; cd usbboot &amp;amp;&amp;amp; make sudo ./rpiboot 连好线，跳线部分见各自底板的手册 拔掉 USB SLAVE 1/2/3/4 拔掉 SELECT 跳线帽 将 BOOT ENABLE USB SLAVE 跳线帽接到 EN 端 sudo fdisk -l 查看磁盘名称，这里是 /dev/sda sudo dd if=raspbian-lite.img of=/dev/sda bs=4MiB 刷入系统后，挂在启动分区，添加 SSH 来开启 SSH 服务，sudo mount /dev/sda1 /media cd /media &amp;amp;&amp;amp; touch SSH 使用慧通科技出品的 HuiBox-700 底板 省略上述的第4步，其它步骤完全一样</description>
     </item>
     
     <item>
       <title>LVM 实战记录</title>
-      <link>//lewang.dev/posts/2017-08-03-lvm-in-action/</link>
+      <link>https://adityatelange.github.io/hugo-PaperMod/posts/2017-08-03-lvm-in-action/</link>
       <pubDate>Thu, 03 Aug 2017 23:55:00 +0000</pubDate>
       
-      <guid>//lewang.dev/posts/2017-08-03-lvm-in-action/</guid>
-      <description>背景 阿里云云主机两块 100G 的云盘合一个逻辑卷（LV）来使用，单个的 100G 磁盘不够用，需要合在一起使用，并且方便以后扩容 基本知识 磁盘 /dev/xvdb /dev/xvdc 分区, 使用 fdisk 进行分区 fdisk &amp;gt; n &amp;gt; p &amp;gt; 1..4, 主分区最多只有 4 个 准备分区后，将分区类型变为 LVM 分区，fdisk &amp;gt; t &amp;gt; 8e, 8e 是 LVM 类型 ID 物理卷（PV），卷组（VG），逻辑卷（</description>
+      <guid>https://adityatelange.github.io/hugo-PaperMod/posts/2017-08-03-lvm-in-action/</guid>
+      <description>背景 阿里云云主机两块 100G 的云盘合一个逻辑卷（LV）来使用，单个的 100G 磁盘不够用，需要合在一起使用，并且方便以后扩容
+基本知识 磁盘 /dev/xvdb /dev/xvdc 分区, 使用 fdisk 进行分区 fdisk &amp;gt; n &amp;gt; p &amp;gt; 1..4, 主分区最多只有 4 个 准备分区后，将分区类型变为 LVM 分区，fdisk &amp;gt; t &amp;gt; 8e, 8e 是 LVM 类型 ID 物理卷（PV），卷组（VG），逻辑卷（LV），从磁盘分区创建 PV，通过 PV 创建 VG 或者把 PV 加入已有的 VG，在 VG 上创建 LV，LV 看起来就是逻辑的上磁盘，使用和真实的磁盘没什么明显区别, 在 LV 上构建文件系统 创建 创建物理卷 pvcreate /dev/xvdb1，对分区进行操作 创建 vg0 卷组 vgcreate vg0 /dev/xvdb1 查看卷组 vgdisplay， 可以看到卷组有多大 在 vg0 上创建 data 逻辑卷 lvcreate -L 99G -n data vg0 或者 lvcreate -l 25556 -n data vg0 创建文件系统 mkfs.</description>
     </item>
     
     <item>
       <title>Github Pages 服务的域名设置</title>
-      <link>//lewang.dev/posts/2014-05-06-github-pages-dns-settings/</link>
+      <link>https://adityatelange.github.io/hugo-PaperMod/posts/2014-05-06-github-pages-dns-settings/</link>
       <pubDate>Tue, 06 May 2014 22:51:00 +0000</pubDate>
       
-      <guid>//lewang.dev/posts/2014-05-06-github-pages-dns-settings/</guid>
-      <description>这几天每次 Push 博客到 Github Pages 时总会收到一封邮件： The page build completed successfully, but returned the following warning: GitHub Pages recently underwent some improvements (https://github.com/blog/1715-faster-more-awesome-github-pages) to make your site faster and more awesome, but we&amp;rsquo;ve noticed that iforget.info isn&amp;rsquo;t properly configured to take advantage of these new features. While your site will continue to work just fine, updating your domain&amp;rsquo;s configuration offers some additional speed and performance benefits. Instructions on updating your site&amp;rsquo;s IP address can be found at https://help.github.com/articles/setting-up-a-custom-domain-with-github-pages#step-2-configure-dns-records, and of course, you can always get in touch with a human at support@github.com. For the more technical minded folks who want to skip the help docs: your site&amp;rsquo;s DNS records are pointed to a deprecated IP address. For information on troubleshooting Jekyll see: https://help.github.com/articles/using-jekyll-with-pages#troubleshooting If you</description>
+      <guid>https://adityatelange.github.io/hugo-PaperMod/posts/2014-05-06-github-pages-dns-settings/</guid>
+      <description>这几天每次 Push 博客到 Github Pages 时总会收到一封邮件：
+The page build completed successfully, but returned the following warning:
+GitHub Pages recently underwent some improvements (https://github.com/blog/1715-faster-more-awesome-github-pages) to make your site faster and more awesome, but we&amp;rsquo;ve noticed that iforget.info isn&amp;rsquo;t properly configured to take advantage of these new features. While your site will continue to work just fine, updating your domain&amp;rsquo;s configuration offers some additional speed and performance benefits. Instructions on updating your site&amp;rsquo;s IP address can be found at https://help.</description>
     </item>
     
     <item>
       <title>Linux 共享库（动态链接库）相关的一些记录</title>
-      <link>//lewang.dev/posts/2013-03-04-so-load-path-in-linux/</link>
+      <link>https://adityatelange.github.io/hugo-PaperMod/posts/2013-03-04-so-load-path-in-linux/</link>
       <pubDate>Mon, 04 Mar 2013 00:40:00 +0000</pubDate>
       
-      <guid>//lewang.dev/posts/2013-03-04-so-load-path-in-linux/</guid>
-      <description>相关的环境变量 LD_LIBRARY_PATH ld-linux.so 寻找 shared object 的路径，优先加载出现在路径前面的 shared object。如，export LD_LIBRARY_PATH=/home/user/lib:$LD_LIBRARY_PATH LD_PRELOAD 指定优先供 ld-linux.so 加载的 shared object。如，export LD_PRELAOD=/home/user/lib/glibc.so，可以使用这个变量来改变加载顺序，例如我们自定义的 glibc.so 中实现了新的 strcmp 之</description>
+      <guid>https://adityatelange.github.io/hugo-PaperMod/posts/2013-03-04-so-load-path-in-linux/</guid>
+      <description>相关的环境变量 LD_LIBRARY_PATH ld-linux.so 寻找 shared object 的路径，优先加载出现在路径前面的 shared object。如，export LD_LIBRARY_PATH=/home/user/lib:$LD_LIBRARY_PATH LD_PRELOAD 指定优先供 ld-linux.so 加载的 shared object。如，export LD_PRELAOD=/home/user/lib/glibc.so，可以使用这个变量来改变加载顺序，例如我们自定义的 glibc.so 中实现了新的 strcmp 之类的函数，那么可以使用这个变量来实现函数的替换，实现注入 LD_DEBUG 使用这个环境变量来 debug 载入 shared object 的情况。如，export LD_DEBUG=files,这样会打印所有所有加载 shared object 的记录 一些工具 如何查看一个程序或者 shared object 加载哪些 shared object ldd，可以查看程序或者.so，如，
+$ ldd ./foo_test $ ldd ./libfoo.so 对于已经运行的程序，可以这样 $ cat /proc/PID/maps | awk &amp;#39;{print $6}&amp;#39;| grep &amp;#39;\.so&amp;#39;| sort | uniq $ lsof -p PID | awk &amp;#39;{print $9}&amp;#39; | grep &amp;#39;\.so&amp;#39; 没有启动的程序可以这样 $ strace .</description>
     </item>
     
     <item>
       <title>再说 PHP 中 SimpleXML</title>
-      <link>//lewang.dev/posts/2012-03-22-a-short-discuss-of-SimpleXML-of-php/</link>
+      <link>https://adityatelange.github.io/hugo-PaperMod/posts/2012-03-22-a-short-discuss-of-simplexml-of-php/</link>
       <pubDate>Thu, 22 Mar 2012 00:40:00 +0000</pubDate>
       
-      <guid>//lewang.dev/posts/2012-03-22-a-short-discuss-of-SimpleXML-of-php/</guid>
-      <description>前一篇帖子使用了 xpath，后来了解到 xpath 的性能可能比较差，而且在遇到有命名空间的时候还有点小麻烦。这里都已豆瓣提供的 API 返回的 xml 为例。豆瓣返回的 xml 不是 rss 格式的，而是 Atom 格式，有很多的命名空间，如果习惯于操作 rss 格式的 xml，那么可以直接把 xml 里面的命名空间的字符串都 replace 掉，这个方法貌似很简</description>
+      <guid>https://adityatelange.github.io/hugo-PaperMod/posts/2012-03-22-a-short-discuss-of-simplexml-of-php/</guid>
+      <description>前一篇帖子使用了 xpath，后来了解到 xpath 的性能可能比较差，而且在遇到有命名空间的时候还有点小麻烦。这里都已豆瓣提供的 API 返回的 xml 为例。豆瓣返回的 xml 不是 rss 格式的，而是 Atom 格式，有很多的命名空间，如果习惯于操作 rss 格式的 xml，那么可以直接把 xml 里面的命名空间的字符串都 replace 掉，这个方法貌似很简单很暴力，就不会遇到命名空间的问题了。
+从豆瓣 API 开始，点击这个链接 http://api.douban.com/book/subjects?q=java 你就可以看到 xml 格式，由于返回的是 Atom 格式的 xml，浏览器会自动帮你解析，所以应该这样
+# 这样就可以得到一个java.xml文件。 $ wget -O java.xml http://api.douban.com/book/subjects?q=java 这样就可以得到一个 java.xml 文件，接下来使用 SimplePHP 处理这个文件。
+首先要创建一个 SimpleXML 对象
+//$content为xml的内容 $xml = new SimpleXMLElement($content); 现在要获取 opensearch 命名空间下的 totalResults 节点的文本，代码如下：
+$children = $xml-&amp;gt;children(&amp;#39;http://a9.com/-/spec/opensearchrss/1.0/&amp;#39;); $totalResults = $children-&amp;gt;totalResults; 处理所有 xml 文档中所有的 entry 节点
+//处理所有找到的记录 $entries = $xml-&amp;gt;entry; foreach($entries as $entry){ //取命名空间下的孩子节点 $entryChildren = $entry-&amp;gt;children(&amp;#39;http://www.</description>
     </item>
     
     <item>
       <title>SimpleXML使用xpath</title>
-      <link>//lewang.dev/posts/2011-12-01-how-to-use-simplexml-of-php/</link>
+      <link>https://adityatelange.github.io/hugo-PaperMod/posts/2011-12-01-how-to-use-simplexml-of-php/</link>
       <pubDate>Thu, 01 Dec 2011 13:09:00 +0000</pubDate>
       
-      <guid>//lewang.dev/posts/2011-12-01-how-to-use-simplexml-of-php/</guid>
-      <description>这几天没心情看论文，于是开始写写摆摊网的代码。摆摊主要做高校二手书籍信息的分享，于是需要从豆瓣上获取图书信息，豆瓣提供了一个完整的 xml 来描述一本书，例如http://api.douban.com/book/subject/isbn/9787543639136，于是需要处理这个 xml 来获</description>
+      <guid>https://adityatelange.github.io/hugo-PaperMod/posts/2011-12-01-how-to-use-simplexml-of-php/</guid>
+      <description>这几天没心情看论文，于是开始写写摆摊网的代码。摆摊主要做高校二手书籍信息的分享，于是需要从豆瓣上获取图书信息，豆瓣提供了一个完整的 xml 来描述一本书，例如http://api.douban.com/book/subject/isbn/9787543639136，于是需要处理这个 xml 来获取相应信息，这里小码哥采用的是直接使用 xpath 来获取 xml 文档中相应的信息。摆摊使用了 sae，于是使用 SimpleXML 来处理 xml，加上自己还只是 PHP 的初学者，于是出现了一些问题。
+这里是一些学习资料：
+xpath:http://www.w3school.com.cn/xpath/ simplexml:http://cn2.php.net/manual/en/simplexmlelement.xpath.php 新建 SimpleXMLElement 对象，xml 文件内容在$content 中
+$bookFromDouban = new SimpleXMLElement($content); 直接查询，在命名空间 db 下的所有 attribute，且有 name 属性，以下 xpath 查询是没有问题的，
+$result = $bookFromDouban-&amp;gt;xpath(&amp;#34;//db:attribute[@name]&amp;#34;); 但是，这条查询就有问题了，如下，
+$result = $bookFromDouban-&amp;gt;xpath(&amp;#34;//link[@rel=&amp;#39;self&amp;#39;]|//link[@rel=&amp;#39;image&amp;#39;]&amp;#34;); 上面的代码表示在默认的命名空间里面查询 link 节点，但是在 php 5.0 以上却不能查出数据。需要这样操作
+//获取这个xml的所有的命名空间 $namespaces = $bookFromDouban-&amp;gt;getNamespaces(); //注册默认的命名空间为&amp;#39;d&amp;#39; $bookFromDouban-&amp;gt;registerXPathNamespace(&amp;#39;d&amp;#39;, $namespaces[&amp;#39;&amp;#39;]); //现在这个查询就ok了 $result = $bookFromDouban-&amp;gt;xpath(&amp;#34;//d:link[@rel=&amp;#39;self&amp;#39;]|//d:link[@rel=&amp;#39;image&amp;#39;]&amp;#34;); 对$result 遍历就简单了，这里也给出一个简单的例子，遍历完，变量就初始化了。PS：代码写的不优雅，欢迎拍砖。
+translator = array(); $author = array(); $i = $j = 0; foreach($result as $item) { foreach($item-&amp;gt;attributes() as $val) { $val = str_replace(&amp;#39;-&amp;#39;,&amp;#39;_&amp;#39;,$val); if($val == &amp;#39;author&amp;#39;) { $author[$i++] = &amp;#39;&amp;#39;.</description>
     </item>
     
     <item>
       <title>jquery $.ajax() 中 datatype 为 json 时的问题</title>
-      <link>//lewang.dev/posts/2011-12-01-when-datatype-is-json/</link>
+      <link>https://adityatelange.github.io/hugo-PaperMod/posts/2011-12-01-when-datatype-is-json/</link>
       <pubDate>Thu, 01 Dec 2011 00:40:00 +0000</pubDate>
       
-      <guid>//lewang.dev/posts/2011-12-01-when-datatype-is-json/</guid>
-      <description>最近在为摆摊写点前端 js 的时候，在使用 jquery 的 $.ajax()这个方法的时候，当 datatype 设置为 json 时，总是不执行 success 回调，而是执行 error 回调。而将 datatype 设置成 text，就可以执行 success 回调了，摆摊使用的是 jQuery JavaScript Library v1.6.2，查看 jQuery 文档可知： “json”: Evaluates the response as JSON and returns a JavaScript object. In jQuery 1.4 the JSON data is parsed in a strict manner; any malformed JSON is rejected</description>
+      <guid>https://adityatelange.github.io/hugo-PaperMod/posts/2011-12-01-when-datatype-is-json/</guid>
+      <description>最近在为摆摊写点前端 js 的时候，在使用 jquery 的 $.ajax()这个方法的时候，当 datatype 设置为 json 时，总是不执行 success 回调，而是执行 error 回调。而将 datatype 设置成 text，就可以执行 success 回调了，摆摊使用的是 jQuery JavaScript Library v1.6.2，查看 jQuery 文档可知：
+“json”: Evaluates the response as JSON and returns a JavaScript object. In jQuery 1.4 the JSON data is parsed in a strict manner; any malformed JSON is rejected and a parse error is thrown. (See json.org for more information on proper JSON formatting.)
+我用 php 产生的字符串是</description>
     </item>
     
   </channel>

@@ -1,0 +1,1658 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>使用Code Blocks(mingw)IDE利用windows api编写远程桌面端口修改程序 | 小碼哥</title>
+<meta name="keywords" content="blogjava">
+<meta name="description" content="办公室通过路由器上网，所以不能直接远程桌面登录到自己计算机上，办公室的人都想在宿舍登录到自己的计算机上工作学习，所以可以简单的将路由器的3389端口(windows远程桌面默认使用3389端口)映射到自己的IP上，同时修改其他人计算机的远程桌面端口，然后再相应的将路由器端口映射到自己的IP上即可。
+修改远程桌面端口需要修改注册表中的两个值：
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp]
+&ldquo;PortNumber&rdquo;=dword:00000d3d
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server\Wds\rdpwd\Tds\tcp]
+&ldquo;PortNumber&rdquo;=dword:00000d3d
+修改两个值，十进制是0-65535，双字十六进制是0x00000000-0x0000FFFF，推荐修改为1024以上。
+如何使用windows api编写一个小程序来修改端口呢？接下来就详细的讲讲这个程序应该如何实现，另外在讨论一下如何使用windows api编写简单的windows程序。
+下载开源的windows api集成开发环境Code::Blocks (访问Code::Blocks主页)
+建议下载集成mingw的CodeBlocks，这样就不用单独下载安装mingw了，如果不知道什么是mingw，赶紧google一下看看吧。配置好开发环境后，就可以开始下一步啦。
+启动Code::Blocks，然后新建一个Win32 GUI Project，这样IDE会自动构建一个对话框，而且程序的基本结构也就构造好了。程序的入口就是WinMain函数，然后就可以在这个基础之上编写我们的程序了。
+先确定这个程序有几个窗口，然后修改resource.rc文件，资料都可以去MSDN查找
+resource.rc
+1 #include &ldquo;resource.h&rdquo;
+2 3 DLG_MAIN DIALOGEX 6,6,269,131
+4 STYLE 0x90CC0800
+5 CAPTION &ldquo;远程桌面连接端口修改器&rdquo;
+6 FONT 8,&ldquo;MS Sans Serif&rdquo;,0,0
+7 BEGIN
+8 CONTROL &ldquo;&quot;,IDC_EDT,&ldquo;Edit&rdquo;,0x50010000,72,51,170,13,0x00000200
+9 CONTROL &ldquo;十进制(&amp;D)&quot;,IDC_RBN_D,&ldquo;Button&rdquo;,0x50010009,20,81,54,9
+10 CONTROL &ldquo;十六进制(&amp;H)&quot;,IDC_RBN_H,&ldquo;Button&rdquo;,0x50010009,90,81,60,9
+11 CONTROL &ldquo;二进制(&amp;B)&quot;,IDC_RBN_B,&ldquo;Button&rdquo;,0x50010009,164,81,54,9
+12 CONTROL &ldquo;修改(&amp;E)&quot;,IDC_BTN_E,&ldquo;Button&rdquo;,0x50010000,14,107,54,13
+13 CONTROL &ldquo;还原(&amp;B)&quot;,IDC_BTN_B,&ldquo;Button&rdquo;,0x50010000,70,107,54,13
+14 CONTROL &ldquo;关于(&amp;A)&quot;,IDC_BTN_A,&ldquo;Button&rdquo;,0x50010000,126,107,54,13
+15 CONTROL &ldquo;退出(&amp;Q)&quot;,IDC_BTN_Q,&ldquo;Button&rdquo;,0x50010000,198,107,54,13
+16 CONTROL &ldquo;远程桌面端口&rdquo;,IDC_STC,&ldquo;Static&rdquo;,0x50000000,16,53,52,9
+17 CONTROL &ldquo;基数&rdquo;,IDC_GRP,&ldquo;Button&rdquo;,0x50000007,14,70,228,24">
+<meta name="author" content="Le">
+<link rel="canonical" href="https://lewang.dev/posts/2008-12-02-remotedesktop/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.css" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://lewang.dev/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://lewang.dev/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://lewang.dev/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://lewang.dev/apple-touch-icon.png">
+<link rel="mask-icon" href="https://lewang.dev/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-12QS222X0Z"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-12QS222X0Z', { 'anonymize_ip': false });
+}
+</script>
+<meta property="og:title" content="使用Code Blocks(mingw)IDE利用windows api编写远程桌面端口修改程序" />
+<meta property="og:description" content="办公室通过路由器上网，所以不能直接远程桌面登录到自己计算机上，办公室的人都想在宿舍登录到自己的计算机上工作学习，所以可以简单的将路由器的3389端口(windows远程桌面默认使用3389端口)映射到自己的IP上，同时修改其他人计算机的远程桌面端口，然后再相应的将路由器端口映射到自己的IP上即可。
+修改远程桌面端口需要修改注册表中的两个值：
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp]
+&ldquo;PortNumber&rdquo;=dword:00000d3d
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server\Wds\rdpwd\Tds\tcp]
+&ldquo;PortNumber&rdquo;=dword:00000d3d
+修改两个值，十进制是0-65535，双字十六进制是0x00000000-0x0000FFFF，推荐修改为1024以上。
+如何使用windows api编写一个小程序来修改端口呢？接下来就详细的讲讲这个程序应该如何实现，另外在讨论一下如何使用windows api编写简单的windows程序。
+下载开源的windows api集成开发环境Code::Blocks (访问Code::Blocks主页)
+建议下载集成mingw的CodeBlocks，这样就不用单独下载安装mingw了，如果不知道什么是mingw，赶紧google一下看看吧。配置好开发环境后，就可以开始下一步啦。
+启动Code::Blocks，然后新建一个Win32 GUI Project，这样IDE会自动构建一个对话框，而且程序的基本结构也就构造好了。程序的入口就是WinMain函数，然后就可以在这个基础之上编写我们的程序了。
+先确定这个程序有几个窗口，然后修改resource.rc文件，资料都可以去MSDN查找
+resource.rc
+1 #include &ldquo;resource.h&rdquo;
+2 3 DLG_MAIN DIALOGEX 6,6,269,131
+4 STYLE 0x90CC0800
+5 CAPTION &ldquo;远程桌面连接端口修改器&rdquo;
+6 FONT 8,&ldquo;MS Sans Serif&rdquo;,0,0
+7 BEGIN
+8 CONTROL &ldquo;&quot;,IDC_EDT,&ldquo;Edit&rdquo;,0x50010000,72,51,170,13,0x00000200
+9 CONTROL &ldquo;十进制(&amp;D)&quot;,IDC_RBN_D,&ldquo;Button&rdquo;,0x50010009,20,81,54,9
+10 CONTROL &ldquo;十六进制(&amp;H)&quot;,IDC_RBN_H,&ldquo;Button&rdquo;,0x50010009,90,81,60,9
+11 CONTROL &ldquo;二进制(&amp;B)&quot;,IDC_RBN_B,&ldquo;Button&rdquo;,0x50010009,164,81,54,9
+12 CONTROL &ldquo;修改(&amp;E)&quot;,IDC_BTN_E,&ldquo;Button&rdquo;,0x50010000,14,107,54,13
+13 CONTROL &ldquo;还原(&amp;B)&quot;,IDC_BTN_B,&ldquo;Button&rdquo;,0x50010000,70,107,54,13
+14 CONTROL &ldquo;关于(&amp;A)&quot;,IDC_BTN_A,&ldquo;Button&rdquo;,0x50010000,126,107,54,13
+15 CONTROL &ldquo;退出(&amp;Q)&quot;,IDC_BTN_Q,&ldquo;Button&rdquo;,0x50010000,198,107,54,13
+16 CONTROL &ldquo;远程桌面端口&rdquo;,IDC_STC,&ldquo;Static&rdquo;,0x50000000,16,53,52,9
+17 CONTROL &ldquo;基数&rdquo;,IDC_GRP,&ldquo;Button&rdquo;,0x50000007,14,70,228,24" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://lewang.dev/posts/2008-12-02-remotedesktop/" /><meta property="og:image" content="https://lewang.dev/lewangdev-cover.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2008-12-02T10:24:00+00:00" />
+<meta property="article:modified_time" content="2008-12-02T10:24:00+00:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://lewang.dev/lewangdev-cover.png"/>
+
+<meta name="twitter:title" content="使用Code Blocks(mingw)IDE利用windows api编写远程桌面端口修改程序"/>
+<meta name="twitter:description" content="办公室通过路由器上网，所以不能直接远程桌面登录到自己计算机上，办公室的人都想在宿舍登录到自己的计算机上工作学习，所以可以简单的将路由器的3389端口(windows远程桌面默认使用3389端口)映射到自己的IP上，同时修改其他人计算机的远程桌面端口，然后再相应的将路由器端口映射到自己的IP上即可。
+修改远程桌面端口需要修改注册表中的两个值：
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp]
+&ldquo;PortNumber&rdquo;=dword:00000d3d
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server\Wds\rdpwd\Tds\tcp]
+&ldquo;PortNumber&rdquo;=dword:00000d3d
+修改两个值，十进制是0-65535，双字十六进制是0x00000000-0x0000FFFF，推荐修改为1024以上。
+如何使用windows api编写一个小程序来修改端口呢？接下来就详细的讲讲这个程序应该如何实现，另外在讨论一下如何使用windows api编写简单的windows程序。
+下载开源的windows api集成开发环境Code::Blocks (访问Code::Blocks主页)
+建议下载集成mingw的CodeBlocks，这样就不用单独下载安装mingw了，如果不知道什么是mingw，赶紧google一下看看吧。配置好开发环境后，就可以开始下一步啦。
+启动Code::Blocks，然后新建一个Win32 GUI Project，这样IDE会自动构建一个对话框，而且程序的基本结构也就构造好了。程序的入口就是WinMain函数，然后就可以在这个基础之上编写我们的程序了。
+先确定这个程序有几个窗口，然后修改resource.rc文件，资料都可以去MSDN查找
+resource.rc
+1 #include &ldquo;resource.h&rdquo;
+2 3 DLG_MAIN DIALOGEX 6,6,269,131
+4 STYLE 0x90CC0800
+5 CAPTION &ldquo;远程桌面连接端口修改器&rdquo;
+6 FONT 8,&ldquo;MS Sans Serif&rdquo;,0,0
+7 BEGIN
+8 CONTROL &ldquo;&quot;,IDC_EDT,&ldquo;Edit&rdquo;,0x50010000,72,51,170,13,0x00000200
+9 CONTROL &ldquo;十进制(&amp;D)&quot;,IDC_RBN_D,&ldquo;Button&rdquo;,0x50010009,20,81,54,9
+10 CONTROL &ldquo;十六进制(&amp;H)&quot;,IDC_RBN_H,&ldquo;Button&rdquo;,0x50010009,90,81,60,9
+11 CONTROL &ldquo;二进制(&amp;B)&quot;,IDC_RBN_B,&ldquo;Button&rdquo;,0x50010009,164,81,54,9
+12 CONTROL &ldquo;修改(&amp;E)&quot;,IDC_BTN_E,&ldquo;Button&rdquo;,0x50010000,14,107,54,13
+13 CONTROL &ldquo;还原(&amp;B)&quot;,IDC_BTN_B,&ldquo;Button&rdquo;,0x50010000,70,107,54,13
+14 CONTROL &ldquo;关于(&amp;A)&quot;,IDC_BTN_A,&ldquo;Button&rdquo;,0x50010000,126,107,54,13
+15 CONTROL &ldquo;退出(&amp;Q)&quot;,IDC_BTN_Q,&ldquo;Button&rdquo;,0x50010000,198,107,54,13
+16 CONTROL &ldquo;远程桌面端口&rdquo;,IDC_STC,&ldquo;Static&rdquo;,0x50000000,16,53,52,9
+17 CONTROL &ldquo;基数&rdquo;,IDC_GRP,&ldquo;Button&rdquo;,0x50000007,14,70,228,24"/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Posts",
+      "item": "https://lewang.dev/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  3 ,
+      "name": "使用Code Blocks(mingw)IDE利用windows api编写远程桌面端口修改程序",
+      "item": "https://lewang.dev/posts/2008-12-02-remotedesktop/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "使用Code Blocks(mingw)IDE利用windows api编写远程桌面端口修改程序",
+  "name": "使用Code Blocks(mingw)IDE利用windows api编写远程桌面端口修改程序",
+  "description": "办公室通过路由器上网，所以不能直接远程桌面登录到自己计算机上，办公室的人都想在宿舍登录到自己的计算机上工作学习，所以可以简单的将路由器的3389端口(windows远程桌面默认使用3389端口)映射到自己的IP上，同时修改其他人计算机的远程桌面端口，然后再相应的将路由器端口映射到自己的IP上即可。\n修改远程桌面端口需要修改注册表中的两个值：\n[HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Terminal Server\\WinStations\\RDP-Tcp]\n\u0026ldquo;PortNumber\u0026rdquo;=dword:00000d3d\n[HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Terminal Server\\Wds\\rdpwd\\Tds\\tcp]\n\u0026ldquo;PortNumber\u0026rdquo;=dword:00000d3d\n修改两个值，十进制是0-65535，双字十六进制是0x00000000-0x0000FFFF，推荐修改为1024以上。\n如何使用windows api编写一个小程序来修改端口呢？接下来就详细的讲讲这个程序应该如何实现，另外在讨论一下如何使用windows api编写简单的windows程序。\n下载开源的windows api集成开发环境Code::Blocks (访问Code::Blocks主页)\n建议下载集成mingw的CodeBlocks，这样就不用单独下载安装mingw了，如果不知道什么是mingw，赶紧google一下看看吧。配置好开发环境后，就可以开始下一步啦。\n启动Code::Blocks，然后新建一个Win32 GUI Project，这样IDE会自动构建一个对话框，而且程序的基本结构也就构造好了。程序的入口就是WinMain函数，然后就可以在这个基础之上编写我们的程序了。\n先确定这个程序有几个窗口，然后修改resource.rc文件，资料都可以去MSDN查找\nresource.rc\n1 #include \u0026ldquo;resource.h\u0026rdquo;\n2 3 DLG_MAIN DIALOGEX 6,6,269,131\n4 STYLE 0x90CC0800\n5 CAPTION \u0026ldquo;远程桌面连接端口修改器\u0026rdquo;\n6 FONT 8,\u0026ldquo;MS Sans Serif\u0026rdquo;,0,0\n7 BEGIN\n8 CONTROL \u0026ldquo;\u0026quot;,IDC_EDT,\u0026ldquo;Edit\u0026rdquo;,0x50010000,72,51,170,13,0x00000200\n9 CONTROL \u0026ldquo;十进制(\u0026amp;D)\u0026quot;,IDC_RBN_D,\u0026ldquo;Button\u0026rdquo;,0x50010009,20,81,54,9\n10 CONTROL \u0026ldquo;十六进制(\u0026amp;H)\u0026quot;,IDC_RBN_H,\u0026ldquo;Button\u0026rdquo;,0x50010009,90,81,60,9\n11 CONTROL \u0026ldquo;二进制(\u0026amp;B)\u0026quot;,IDC_RBN_B,\u0026ldquo;Button\u0026rdquo;,0x50010009,164,81,54,9\n12 CONTROL \u0026ldquo;修改(\u0026amp;E)\u0026quot;,IDC_BTN_E,\u0026ldquo;Button\u0026rdquo;,0x50010000,14,107,54,13\n13 CONTROL \u0026ldquo;还原(\u0026amp;B)\u0026quot;,IDC_BTN_B,\u0026ldquo;Button\u0026rdquo;,0x50010000,70,107,54,13\n14 CONTROL \u0026ldquo;关于(\u0026amp;A)\u0026quot;,IDC_BTN_A,\u0026ldquo;Button\u0026rdquo;,0x50010000,126,107,54,13\n15 CONTROL \u0026ldquo;退出(\u0026amp;Q)\u0026quot;,IDC_BTN_Q,\u0026ldquo;Button\u0026rdquo;,0x50010000,198,107,54,13\n16 CONTROL \u0026ldquo;远程桌面端口\u0026rdquo;,IDC_STC,\u0026ldquo;Static\u0026rdquo;,0x50000000,16,53,52,9\n17 CONTROL \u0026ldquo;基数\u0026rdquo;,IDC_GRP,\u0026ldquo;Button\u0026rdquo;,0x50000007,14,70,228,24",
+  "keywords": [
+    "blogjava"
+  ],
+  "articleBody": "办公室通过路由器上网，所以不能直接远程桌面登录到自己计算机上，办公室的人都想在宿舍登录到自己的计算机上工作学习，所以可以简单的将路由器的3389端口(windows远程桌面默认使用3389端口)映射到自己的IP上，同时修改其他人计算机的远程桌面端口，然后再相应的将路由器端口映射到自己的IP上即可。\n修改远程桌面端口需要修改注册表中的两个值：\n[HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Terminal Server\\WinStations\\RDP-Tcp]\n“PortNumber”=dword:00000d3d\n[HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Terminal Server\\Wds\\rdpwd\\Tds\\tcp]\n“PortNumber”=dword:00000d3d\n修改两个值，十进制是0-65535，双字十六进制是0x00000000-0x0000FFFF，推荐修改为1024以上。\n如何使用windows api编写一个小程序来修改端口呢？接下来就详细的讲讲这个程序应该如何实现，另外在讨论一下如何使用windows api编写简单的windows程序。\n下载开源的windows api集成开发环境Code::Blocks (访问Code::Blocks主页)\n建议下载集成mingw的CodeBlocks，这样就不用单独下载安装mingw了，如果不知道什么是mingw，赶紧google一下看看吧。配置好开发环境后，就可以开始下一步啦。\n启动Code::Blocks，然后新建一个Win32 GUI Project，这样IDE会自动构建一个对话框，而且程序的基本结构也就构造好了。程序的入口就是WinMain函数，然后就可以在这个基础之上编写我们的程序了。\n先确定这个程序有几个窗口，然后修改resource.rc文件，资料都可以去MSDN查找\nresource.rc\n1 #include “resource.h”\n2 3 DLG_MAIN DIALOGEX 6,6,269,131\n4 STYLE 0x90CC0800\n5 CAPTION “远程桌面连接端口修改器”\n6 FONT 8,“MS Sans Serif”,0,0\n7 BEGIN\n8 CONTROL “\",IDC_EDT,“Edit”,0x50010000,72,51,170,13,0x00000200\n9 CONTROL “十进制(\u0026D)\",IDC_RBN_D,“Button”,0x50010009,20,81,54,9\n10 CONTROL “十六进制(\u0026H)\",IDC_RBN_H,“Button”,0x50010009,90,81,60,9\n11 CONTROL “二进制(\u0026B)\",IDC_RBN_B,“Button”,0x50010009,164,81,54,9\n12 CONTROL “修改(\u0026E)\",IDC_BTN_E,“Button”,0x50010000,14,107,54,13\n13 CONTROL “还原(\u0026B)\",IDC_BTN_B,“Button”,0x50010000,70,107,54,13\n14 CONTROL “关于(\u0026A)\",IDC_BTN_A,“Button”,0x50010000,126,107,54,13\n15 CONTROL “退出(\u0026Q)\",IDC_BTN_Q,“Button”,0x50010000,198,107,54,13\n16 CONTROL “远程桌面端口”,IDC_STC,“Static”,0x50000000,16,53,52,9\n17 CONTROL “基数”,IDC_GRP,“Button”,0x50000007,14,70,228,24\n18 CONTROL “#1013”,IDC_IMG,“Static”,0x5000020E,0,0,271,44\n19 END\n20 ICON_LOH ICON DISCARDABLE “rd.ico”\n21 BMP_HEAD BITMAP DISCARDABLE “head.bmp”\n22 23 IDD_DLG_ABOUT DIALOGEX 55,25,151,55\n24 CAPTION “关于”\n25 FONT 8,“MS Sans Serif”,0,0\n26 STYLE 0x90CC0000\n27 BEGIN\n28 CONTROL “#1012”,IDC_IMG_ABOUT,“Static”,0x50000203,14,11,20,19\n29 CONTROL “远程桌面链接端口修改器\\nloh.wong@qq.com”,IDC_STC_ABOUT,“Static”,0x50000000,42,11,94,20\n30 CONTROL “确定”,IDC_BTN_ABOUT,“Button”,0x50010000,106,38,40,13\n31 END\n32 resource.rc文件很简单，包括两个对话框，同时对话框里包括了一些简单的控件。\n修改resource.h文件，在其中添加一些控件的预定义\nresource.h\n1 #include 2 3 // ID of Main Dialog\n4 #define DLG_MAIN 1000\n5 6 // ID of Button Controls\n7 #define IDC_GRP 1003\n8 #define IDC_STC 1001\n9 #define IDC_EDT 1002\n10 #define IDC_RBN_H 1004\n11 #define IDC_RBN_D 1005\n12 #define IDC_BTN_E 1006\n13 #define IDC_BTN_B 1007\n14 #define IDC_BTN_Q 1008\n15 #define IDC_BTN_A 1009\n16 #define IDC_IMG 1010\n17 #define IDC_RBN_B 1011\n18 #define ICON_LOH 1012\n19 #define BMP_HEAD 1013\n20 21 //About Dialog\n22 #define IDD_DLG_ABOUT 1017\n23 #define IDC_STC_ABOUT 1014\n24 #define IDC_BTN_ABOUT 1015\n25 #define IDC_IMG_ABOUT 1016\n26 编写一些简单的工具函数，主要实现2进制、10进制和16进制之间的相互转换，和一些输入的校验。这个程序做的不是很完善，没有校验一些输入数据。\n这里是utils.h文件(H代表16进制，D代表10进制，B代表2进制)\nutils.h\n1 #ifndef UTILS_H_INCLUDED\n2 #define UTILS_H_INCLUDED\n3 4 #define H 16\n5 #define D 10\n6 #define B 2\n7 8 #define RD_FALSE 0\n9 #define RD_TRUE 1\n10 11 ///格式转换/\n12 char * strReverse(char *);\n13 char * DtoDstr(int);\n14 int CommontoD(char *, int);\n15 16 char * HtoD(char *);\n17 char * BtoD(char *);\n18 19 char * HtoB(char *);\n20 char * DtoB(char *);\n21 22 char * BtoH(char *);\n23 char * DtoH(char *);\n24 25 ///格式检查/\n26 int HFormatCheck(char *);\n27 int BFormatCheck(char *);\n28 int DFormatCheck(char *);\n29 30 #endif // UTILS_H_INCLUDED\n31 这里是utils.c文件\nutils.c\n1 #include 2 #include 3 #include 4 #include 5 #include “utils.h”\n6 7 //字符串逆序\n8 char * strReverse(char str)\n9 {\n10 int i,j,len = strlen(str);\n11 char * res = (char)malloc(len\n1);\n12 memset(res, 0, len + 1);\n13 for(i = len - 1, j = 0; i \u003e= 0; i --, j ++) {\n14 res[j] = str[i];\n15 }\n16 return res;\n17 }\n18 19 //2，16进制转10进制\n20 int CommontoD(char *pC, int factor)\n21 {\n22 pC = strReverse(pC);\n23 int d_res = 0;\n24 int d_num = 0;\n25 int i;\n26 for(i = strlen(pC) - 1; i \u003e= 0; i --)\n27 {\n28 if(pC[i] \u003e= ‘0’ \u0026\u0026 pC[i] \u003c= ‘9’) {\n29 d_num = pC[i] - ‘0’;\n30 }\n31 if(pC[i] \u003e= ‘a’ \u0026\u0026 pC[i] \u003c= ‘f’) {\n32 d_num = pC[i] - 87;\n33 }\n34 if(pC[i] \u003e= ‘A’ \u0026\u0026 pC[i] \u003c= ‘F’) {\n35 d_num = pC[i] - 55;\n36 }\n37 d_res += d_num * pow(factor, i);\n38 }\n39 return d_res;\n40 }\n41 42 //将10进制数转为字符串\n43 char * DtoDstr(int d_num)\n44 {\n45 char d_str = (char)malloc(6);\n46 memset(d_str,0,6);\n47 int i = 0;\n48 while(d_num \u003e 0)\n49 {\n50 d_str[i++] = (d_num % 10) + ‘0’;\n51 d_num /= 10;\n52 }\n53 return strReverse(d_str);\n54 }\n55 //二进制到十进制\n56 char * BtoD(char *pB)\n57 {\n58 return DtoDstr(CommontoD(pB, B));\n59 }\n60 61 //十六进制到十进制\n62 char * HtoD(char *pH)\n63 {\n64 return DtoDstr(CommontoD(pH, H));\n65 }\n66 67 68 //十进制到二进制\n69 char * DtoB(char *pD)\n70 {\n71 //65535用16个1表示\n72 //开17个就够了\n73 char b_str = (char)malloc(17);\n74 memset(b_str,0,17);\n75 int d_num = atoi(pD);\n76 int i = 0;\n77 while(d_num \u003e 0) {\n78 b_str[i++] = (d_num % 2) + ‘0’;\n79 d_num /= 2;\n80 }\n81 return strReverse(b_str);\n82 }\n83 84 //十六进制转二进制\n85 char * HtoB(char *pH)\n86 {\n87 return DtoB(HtoD(pH));\n88 }\n89 90 //十进制到十六进制\n91 char * DtoH(char *pD)\n92 {\n93 //65535用4个f表示\n94 //开5个就够了\n95 char h_str = (char)malloc(5);\n96 memset(h_str,0,5);\n97 int d_num = atoi(pD);\n98 int bit;\n99 int i = 0;\n100 while(d_num \u003e 0) {\n101 bit = d_num % 16;\n102 if(bit \u003e= 0 \u0026\u0026 bit \u003c= 9) {\n103 h_str[i++] = bit + ‘0’;\n104 }\n105 else {\n106 h_str[i++] = bit + 87;\n107 }\n108 d_num /= 16;\n109 }\n110 return strReverse(h_str);\n111 }\n112 113 //二进制转十六进制\n114 char * BtoH(char *pB)\n115 {\n116 return DtoH(BtoD(pB));\n117 }\n118 119 //检查16进制数是否合法\n120 int HFormatCheck(char *pH)\n121 {\n122 if(pH == NULL) {\n123 return RD_FALSE;\n124 }\n125 126 int len = strlen(pH);\n127 int i;\n128 for(i = 0; i \u003c len; i ++)\n129 {\n130 if(!((pH[i] \u003e= ‘0’ \u0026\u0026 pH[i] \u003c= ‘9’) || (pH[i] \u003e= ‘a’ \u0026\u0026 pH[i] \u003c= ‘f’) || (pH[i] \u003e= ‘A’ \u0026\u0026 pH[i] \u003c= ‘F’) ))\n131 {\n132 return RD_FALSE;\n133 }\n134 }\n135 return RD_TRUE;\n136 }\n137 //检查2进制数是否合法\n138 int BFormatCheck(char *pH)\n139 {\n140 if(pH == NULL) {\n141 return RD_FALSE;\n142 }\n143 144 int len = strlen(pH);\n145 int i;\n146 for(i = 0; i \u003c len; i ++)\n147 {\n148 if(!(pH[i] \u003e= ‘0’ \u0026\u0026 pH[i] \u003c= ‘1’))\n149 {\n150 return RD_FALSE;\n151 }\n152 }\n153 return RD_TRUE;\n154 }\n155 156 //检查10进制数是否合法\n157 int DFormatCheck(char *pH)\n158 {\n159 if(pH == NULL) {\n160 return RD_FALSE;\n161 }\n162 163 int len = strlen(pH);\n164 int i;\n165 for(i = 0; i \u003c len; i ++)\n166 {\n167 if(!(pH[i] \u003e= ‘0’ \u0026\u0026 pH[i] \u003c= ‘9’))\n168 {\n169 return RD_FALSE;\n170 }\n171 }\n172 return RD_TRUE;\n173 }\n174 175 176 最后是主程序main.c\nmain.c\n1 #include 2 #include 3 #include 4 5 #include “utils.h”\n6 #include “resource.h”\n7 8 HINSTANCE hInst;\n9 HICON hIcon;\n10 int id_pre_checked;\n11 int port;\n12 char *buf;\n13 14 //两个注册表\n15 HKEY winstations;\n16 HKEY wds;\n17 18 //获得十进制的数\n19 int GetPortNumber(char *port, int IDC)\n20 {\n21 //char * res;\n22 if(IDC == IDC_RBN_D)\n23 {\n24 return atoi(port);\n25 }\n26 if(IDC == IDC_RBN_H)\n27 {\n28 return atoi(HtoD(port));\n29 }\n30 if(IDC == IDC_RBN_B)\n31 {\n32 return atoi(BtoD(port));\n33 }\n34 return -1;\n35 }\n36 37 //关于窗口\n38 BOOL CALLBACK AboutDialogProc(HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM lParam)\n39 {\n40 switch(uMsg)\n41 {\n42 case WM_INITDIALOG:\n43 SendMessage(hwndDlg,WM_SETICON,ICON_BIG,(LPARAM)hIcon);\n44 //SendMessage(hwndDlg,WM_SETICON,ICON_SMALL,(LPARAM)hIcon);\n45 return TRUE;\n46 case WM_CLOSE:\n47 EndDialog(hwndDlg, 0);\n48 return TRUE;\n49 50 case WM_COMMAND:\n51 switch(LOWORD(wParam))\n52 {\n53 case IDC_BTN_ABOUT:\n54 EndDialog(hwndDlg, 0);\n55 return TRUE;\n56 }\n57 }\n58 return FALSE;\n59 }\n60 61 //主窗口\n62 BOOL CALLBACK DialogProc(HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM lParam)\n63 {\n64 switch(uMsg)\n65 {\n66 case WM_INITDIALOG:\n67 //设置十进制是选中状态\n68 CheckRadioButton(hwndDlg,IDC_RBN_D,IDC_RBN_B,IDC_RBN_D);\n69 id_pre_checked = IDC_RBN_D;\n70 buf = (char *)malloc(20);\n71 72 //打开注册表\n73 RegOpenKeyEx(HKEY_LOCAL_MACHINE,“SYSTEM\\\\CurrentControlSet\\\\Control\\\\Terminal Server\\\\Wds\\\\rdpwd\\\\Tds\\\\tcp”,0,KEY_ALL_ACCESS,\u0026wds);\n74 RegOpenKeyEx(HKEY_LOCAL_MACHINE,“SYSTEM\\\\CurrentControlSet\\\\Control\\\\Terminal Server\\\\WinStations\\\\RDP-Tcp”,0,KEY_ALL_ACCESS,\u0026winstations);\n75 76 //读取注册表的值\n77 DWORD value = 0;\n78 DWORD dwType = REG_DWORD;\n79 DWORD dwSize = sizeof(DWORD);\n80 RegQueryValueEx(wds,“PortNumber”,NULL,\u0026dwType,(LPBYTE)\u0026value, \u0026dwSize);\n81 82 SetDlgItemText(hwndDlg,IDC_EDT,DtoDstr(value));\n83 84 //加载图标\n85 hIcon = LoadIcon(hInst,(LPCTSTR)ICON_LOH);\n86 SendMessage(hwndDlg,WM_SETICON,ICON_BIG,(LPARAM)hIcon);\n87 //SendMessage(hwndDlg,WM_SETICON,ICON_SMALL,(LPARAM)hIcon);\n88 return TRUE;\n89 90 case WM_CLOSE:\n91 EndDialog(hwndDlg, 0);\n92 RegCloseKey(wds);\n93 RegCloseKey(winstations);\n94 return TRUE;\n95 96 case WM_COMMAND:\n97 switch(LOWORD(wParam))\n98 {\n99 case IDC_BTN_Q:\n100 EndDialog(hwndDlg, 0);\n101 return TRUE;\n102 103 case IDC_BTN_E:\n104 memset(buf,0,20);\n105 GetDlgItemText(hwndDlg,IDC_EDT,buf,19);\n106 port = GetPortNumber(buf,id_pre_checked);\n107 if(RegSetValueEx(wds,“PortNumber”,0,REG_DWORD,(LPBYTE)\u0026port, sizeof(DWORD)) || RegSetValueEx(winstations,“PortNumber”,0,REG_DWORD,(LPBYTE)\u0026port, sizeof(DWORD)))\n108 {\n109 printf(“Could not set the event message file.”);\n110 }\n111 return TRUE;\n112 113 case IDC_BTN_B:\n114 port = 3389;\n115 if(RegSetValueEx(wds,“PortNumber”,0,REG_DWORD,(LPBYTE)\u0026port, sizeof(DWORD)) || RegSetValueEx(winstations,“PortNumber”,0,REG_DWORD,(LPBYTE)\u0026port, sizeof(DWORD)))\n116 {\n117 printf(“Could not set the event message file.”);\n118 }\n119 SetDlgItemText(hwndDlg,IDC_EDT,DtoDstr(port));\n120 return TRUE;\n121 122 case IDC_BTN_A:\n123 //MessageBox(hwndDlg, “关于!”, “提示信息”, MB_ICONINFORMATION);\n124 return DialogBox(hInst, MAKEINTRESOURCE(IDD_DLG_ABOUT), hwndDlg, AboutDialogProc);\n125 //return TRUE;\n126 127 case IDC_RBN_D:\n128 memset(buf,0,20);\n129 GetDlgItemText(hwndDlg,IDC_EDT,buf,19);\n130 if(id_pre_checked == IDC_RBN_H)\n131 {\n132 SetDlgItemText(hwndDlg, IDC_EDT, HtoD(buf));\n133 }\n134 if(id_pre_checked == IDC_RBN_B)\n135 {\n136 SetDlgItemText(hwndDlg,IDC_EDT,BtoD(buf));\n137 }\n138 139 id_pre_checked = IDC_RBN_D;\n140 return TRUE;\n141 142 case IDC_RBN_H:\n143 memset(buf,0,20);\n144 GetDlgItemText(hwndDlg,IDC_EDT,buf,19);\n145 if(id_pre_checked == IDC_RBN_D)\n146 {\n147 SetDlgItemText(hwndDlg, IDC_EDT, DtoH(buf));\n148 }\n149 if(id_pre_checked == IDC_RBN_B)\n150 {\n151 SetDlgItemText(hwndDlg,IDC_EDT,BtoH(buf));\n152 }\n153 id_pre_checked = IDC_RBN_H;\n154 return TRUE;\n155 156 case IDC_RBN_B:\n157 memset(buf,0,20);\n158 GetDlgItemText(hwndDlg,IDC_EDT,buf,19);\n159 if(id_pre_checked == IDC_RBN_H)\n160 {\n161 SetDlgItemText(hwndDlg, IDC_EDT, HtoB(buf));\n162 }\n163 if(id_pre_checked == IDC_RBN_D)\n164 {\n165 SetDlgItemText(hwndDlg,IDC_EDT,DtoB(buf));\n166 }\n167 id_pre_checked = IDC_RBN_B;\n168 return TRUE;\n169 }\n170 }\n171 return FALSE;\n172 }\n173 174 175 int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nShowCmd)\n176 {\n177 hInst = hInstance;\n178 179 // The user interface is a modal dialog box\n180 return DialogBox(hInstance, MAKEINTRESOURCE(DLG_MAIN), NULL, DialogProc);\n181 }\n182 关于使用windows api操作注册表需要注意的是：\n1.先打开注册表，获得注册表的句柄，代码为:\n1 //打开注册表\n2 RegOpenKeyEx(HKEY_LOCAL_MACHINE,“SYSTEM\\\\CurrentControlSet\\\\Control\\\\Terminal Server\\\\Wds\\\\rdpwd\\\\Tds\\\\tcp”,0,KEY_ALL_ACCESS,\u0026wds);\n3 RegOpenKeyEx(HKEY_LOCAL_MACHINE,“SYSTEM\\\\CurrentControlSet\\\\Control\\\\Terminal Server\\\\WinStations\\\\RDP-Tcp”,0,KEY_ALL_ACCESS,\u0026winstations);\n2.然后在读入注册表的值或是写入注册表的值\n例如读取PortNumber的值到变量value中：\n//读取注册表的值\nDWORD value = 0;\nDWORD dwType = REG_DWORD;\nDWORD dwSize = sizeof(DWORD);\nRegQueryValueEx(wds,“PortNumber”,NULL,\u0026dwType,(LPBYTE)\u0026value, \u0026dwSize);\n例如写值到PortNumber中：\nint port = 3389；\nRegSetValueEx(wds,“PortNumber”,0,REG_DWORD,(LPBYTE)\u0026port, sizeof(DWORD))\n这里是最终程序的截图，[下载这个程序]\n",
+  "wordCount" : "1498",
+  "inLanguage": "en",
+  "datePublished": "2008-12-02T10:24:00Z",
+  "dateModified": "2008-12-02T10:24:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "Le"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://lewang.dev/posts/2008-12-02-remotedesktop/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "小碼哥",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://lewang.dev/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://lewang.dev" accesskey="h" title="小碼哥 (Alt + H)">小碼哥</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://lewang.dev/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://lewang.dev/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://lewang.dev">Home</a>&nbsp;»&nbsp;<a href="https://lewang.dev/posts/">Posts</a></div>
+    <h1 class="post-title">
+      使用Code Blocks(mingw)IDE利用windows api编写远程桌面端口修改程序
+    </h1>
+    <div class="post-meta"><span title='2008-12-02 10:24:00 +0000 UTC'>December 2, 2008</span>&nbsp;·&nbsp;8 min&nbsp;·&nbsp;Le
+
+</div>
+  </header> 
+
+  <div class="post-content"><p>办公室通过路由器上网，所以不能直接远程桌面登录到自己计算机上，办公室的人都想在宿舍登录到自己的计算机上工作学习，所以可以简单的将路由器的3389端口(windows远程桌面默认使用3389端口)映射到自己的IP上，同时修改其他人计算机的远程桌面端口，然后再相应的将路由器端口映射到自己的IP上即可。<br>
+修改远程桌面端口需要修改注册表中的两个值：<br>
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal
+Server\WinStations\RDP-Tcp]<br>
+&ldquo;PortNumber&rdquo;=dword:00000d3d</p>
+<p>[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal
+Server\Wds\rdpwd\Tds\tcp]<br>
+&ldquo;PortNumber&rdquo;=dword:00000d3d</p>
+<p>修改两个值，十进制是0-65535，双字十六进制是0x00000000-0x0000FFFF，推荐修改为1024以上。</p>
+<p>如何使用windows api编写一个小程序来修改端口呢？接下来就详细的讲讲这个程序应该如何实现，另外在讨论一下如何使用windows
+api编写简单的windows程序。</p>
+<p>下载开源的windows api集成开发环境Code::Blocks
+(<a href="http://www.codeblocks.org/">访问Code::Blocks主页</a>)<br>
+建议下载集成mingw的CodeBlocks，这样就不用单独下载安装mingw了，如果不知道什么是mingw，赶紧google一下看看吧。配置好开发环境后，就可以开始下一步啦。</p>
+<p>启动Code::Blocks，然后新建一个Win32 GUI
+Project，这样IDE会自动构建一个对话框，而且程序的基本结构也就构造好了。程序的入口就是WinMain函数，然后就可以在这个基础之上编写我们的程序了。</p>
+<p>先确定这个程序有几个窗口，然后修改resource.rc文件，资料都可以去MSDN查找</p>
+<p><img loading="lazy" src="/Images/OutliningIndicators/ContractedBlock.gif" alt=""  />
+<img loading="lazy" src="/Images/OutliningIndicators/ExpandedBlockStart.gif" alt=""  />
+resource.rc<br>
+1<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+#include &ldquo;resource.h&rdquo;<br>
+2<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+<br>
+3<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+DLG_MAIN DIALOGEX 6,6,269,131<br>
+4<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+STYLE 0x90CC0800<br>
+5<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+CAPTION &ldquo;远程桌面连接端口修改器&rdquo;<br>
+6<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+FONT 8,&ldquo;MS Sans Serif&rdquo;,0,0<br>
+7<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+BEGIN<br>
+8<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+ CONTROL
+&ldquo;&quot;,IDC_EDT,&ldquo;Edit&rdquo;,0x50010000,72,51,170,13,0x00000200<br>
+9<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+ CONTROL
+&ldquo;十进制(&amp;D)&quot;,IDC_RBN_D,&ldquo;Button&rdquo;,0x50010009,20,81,54,9<br>
+10<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+ CONTROL
+&ldquo;十六进制(&amp;H)&quot;,IDC_RBN_H,&ldquo;Button&rdquo;,0x50010009,90,81,60,9<br>
+11<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+ CONTROL
+&ldquo;二进制(&amp;B)&quot;,IDC_RBN_B,&ldquo;Button&rdquo;,0x50010009,164,81,54,9<br>
+12<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+ CONTROL
+&ldquo;修改(&amp;E)&quot;,IDC_BTN_E,&ldquo;Button&rdquo;,0x50010000,14,107,54,13<br>
+13<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+ CONTROL
+&ldquo;还原(&amp;B)&quot;,IDC_BTN_B,&ldquo;Button&rdquo;,0x50010000,70,107,54,13<br>
+14<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+ CONTROL
+&ldquo;关于(&amp;A)&quot;,IDC_BTN_A,&ldquo;Button&rdquo;,0x50010000,126,107,54,13<br>
+15<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+ CONTROL
+&ldquo;退出(&amp;Q)&quot;,IDC_BTN_Q,&ldquo;Button&rdquo;,0x50010000,198,107,54,13<br>
+16<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+ CONTROL
+&ldquo;远程桌面端口&rdquo;,IDC_STC,&ldquo;Static&rdquo;,0x50000000,16,53,52,9<br>
+17<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+ CONTROL
+&ldquo;基数&rdquo;,IDC_GRP,&ldquo;Button&rdquo;,0x50000007,14,70,228,24<br>
+18<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+ CONTROL
+&ldquo;#1013&rdquo;,IDC_IMG,&ldquo;Static&rdquo;,0x5000020E,0,0,271,44<br>
+19<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+END<br>
+20<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+ICON_LOH ICON DISCARDABLE &ldquo;rd.ico&rdquo;<br>
+21<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+BMP_HEAD BITMAP DISCARDABLE
+&ldquo;head.bmp&rdquo;<br>
+22<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+<br>
+23<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+IDD_DLG_ABOUT DIALOGEX 55,25,151,55<br>
+24<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+CAPTION &ldquo;关于&rdquo;<br>
+25<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+FONT 8,&ldquo;MS Sans Serif&rdquo;,0,0<br>
+26<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+STYLE 0x90CC0000<br>
+27<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+BEGIN<br>
+28<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+ CONTROL
+&ldquo;#1012&rdquo;,IDC_IMG_ABOUT,&ldquo;Static&rdquo;,0x50000203,14,11,20,19<br>
+29<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+ CONTROL
+&ldquo;远程桌面链接端口修改器\nloh.wong@qq.com&rdquo;,IDC_STC_ABOUT,&ldquo;Static&rdquo;,0x50000000,42,11,94,20<br>
+30<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+ CONTROL
+&ldquo;确定&rdquo;,IDC_BTN_ABOUT,&ldquo;Button&rdquo;,0x50010000,106,38,40,13<br>
+31<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+END<br>
+32<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+</p>
+<p>resource.rc文件很简单，包括两个对话框，同时对话框里包括了一些简单的控件。</p>
+<p>修改resource.h文件，在其中添加一些控件的预定义</p>
+<p><img loading="lazy" src="/Images/OutliningIndicators/ContractedBlock.gif" alt=""  />
+<img loading="lazy" src="/Images/OutliningIndicators/ExpandedBlockStart.gif" alt=""  />
+resource.h<br>
+1<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+#include &lt;windows.h&gt;<br>
+2<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+<br>
+3<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+// ID of Main Dialog<br>
+4<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+#define DLG_MAIN 1000<br>
+5<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+<br>
+6<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+// ID of Button Controls<br>
+7<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+#define IDC_GRP 1003<br>
+8<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+#define IDC_STC 1001<br>
+9<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+#define IDC_EDT 1002<br>
+10<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+#define IDC_RBN_H 1004<br>
+11<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+#define IDC_RBN_D 1005<br>
+12<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+#define IDC_BTN_E 1006<br>
+13<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+#define IDC_BTN_B 1007<br>
+14<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+#define IDC_BTN_Q 1008<br>
+15<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+#define IDC_BTN_A 1009<br>
+16<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+#define IDC_IMG 1010<br>
+17<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+#define IDC_RBN_B 1011<br>
+18<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+#define ICON_LOH 1012<br>
+19<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+#define BMP_HEAD 1013<br>
+20<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+<br>
+21<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+//About Dialog<br>
+22<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+#define IDD_DLG_ABOUT 1017<br>
+23<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+#define IDC_STC_ABOUT 1014<br>
+24<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+#define IDC_BTN_ABOUT 1015<br>
+25<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+#define IDC_IMG_ABOUT 1016<br>
+26<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+</p>
+<p>编写一些简单的工具函数，主要实现2进制、10进制和16进制之间的相互转换，和一些输入的校验。这个程序做的不是很完善，没有校验一些输入数据。</p>
+<p>这里是utils.h文件(H代表16进制，D代表10进制，B代表2进制)</p>
+<p><img loading="lazy" src="/Images/OutliningIndicators/ContractedBlock.gif" alt=""  />
+<img loading="lazy" src="/Images/OutliningIndicators/ExpandedBlockStart.gif" alt=""  />
+utils.h<br>
+1<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+#ifndef UTILS_H_INCLUDED<br>
+2<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+#define UTILS_H_INCLUDED<br>
+3<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+<br>
+4<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+#define H 16<br>
+5<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+#define D 10<br>
+6<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+#define B 2<br>
+7<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+<br>
+8<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+#define RD_FALSE 0<br>
+9<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+#define RD_TRUE 1<br>
+10<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+<br>
+11<img loading="lazy" src="/Images/OutliningIndicators/ExpandedBlockStart.gif" alt=""  />
+<img loading="lazy" src="/Images/OutliningIndicators/ContractedBlock.gif" alt=""  />
+/<strong>//<em>格式转换</em>/<br>
+12<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+char * strReverse(char *);<br>
+13<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+char * DtoDstr(int);<br>
+14<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+int CommontoD(char *, int);<br>
+15<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+<br>
+16<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+char * HtoD(char *);<br>
+17<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+char * BtoD(char *);<br>
+18<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+<br>
+19<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+char * HtoB(char *);<br>
+20<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+char * DtoB(char *);<br>
+21<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+<br>
+22<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+char * BtoH(char *);<br>
+23<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+char * DtoH(char *);<br>
+24<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+<br>
+25<img loading="lazy" src="/Images/OutliningIndicators/ExpandedBlockStart.gif" alt=""  />
+<img loading="lazy" src="/Images/OutliningIndicators/ContractedBlock.gif" alt=""  />
+/</strong>//<em>格式检查</em>/<br>
+26<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+int HFormatCheck(char *);<br>
+27<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+int BFormatCheck(char *);<br>
+28<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+int DFormatCheck(char *);<br>
+29<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+<br>
+30<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+#endif // UTILS_H_INCLUDED<br>
+31<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+</p>
+<p>这里是utils.c文件</p>
+<p><img loading="lazy" src="/Images/OutliningIndicators/ContractedBlock.gif" alt=""  />
+<img loading="lazy" src="/Images/OutliningIndicators/ExpandedBlockStart.gif" alt=""  />
+utils.c<br>
+1<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+#include &lt;stdio.h&gt;<br>
+2<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+#include &lt;stdlib.h&gt;<br>
+3<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+#include &lt;string.h&gt;<br>
+4<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+#include &lt;math.h&gt;<br>
+5<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+#include &ldquo;utils.h&rdquo;<br>
+6<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+<br>
+7<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+//字符串逆序<br>
+8<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+char * strReverse(char <em>str)<br>
+9<img loading="lazy" src="/Images/OutliningIndicators/ExpandedBlockStart.gif" alt=""  />
+<img loading="lazy" src="/Images/OutliningIndicators/ContractedBlock.gif" alt=""  />
+<img loading="lazy" src="http://www.blogjava.net/Images/dot.gif" alt=""  />
+{<br>
+10<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ int i,j,len = strlen(str);<br>
+11<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ char * res = (char</em>)malloc(len</p>
+<ul>
+<li>1);<br>
+12<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ memset(res, 0, len + 1);<br>
+13<img loading="lazy" src="/Images/OutliningIndicators/ExpandedSubBlockStart.gif" alt=""  />
+<img loading="lazy" src="/Images/OutliningIndicators/ContractedSubBlock.gif" alt=""  />
+
+for(i = len - 1, j = 0; i &gt;= 0; i --, j
+++)<img loading="lazy" src="http://www.blogjava.net/Images/dot.gif" alt=""  />
+{<br>
+14<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ res[j] = str[i];<br>
+15<img loading="lazy" src="/Images/OutliningIndicators/ExpandedSubBlockEnd.gif" alt=""  />
+ }<br>
+16<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ return res;<br>
+17<img loading="lazy" src="/Images/OutliningIndicators/ExpandedBlockEnd.gif" alt=""  />
+}<br>
+18<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+<br>
+19<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+//2，16进制转10进制<br>
+20<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+int CommontoD(char *pC, int factor)<br>
+21<img loading="lazy" src="/Images/OutliningIndicators/ExpandedBlockStart.gif" alt=""  />
+<img loading="lazy" src="/Images/OutliningIndicators/ContractedBlock.gif" alt=""  />
+<img loading="lazy" src="http://www.blogjava.net/Images/dot.gif" alt=""  />
+{<br>
+22<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ pC = strReverse(pC);<br>
+23<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ int d_res = 0;<br>
+24<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ int d_num = 0;<br>
+25<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ int i;<br>
+26<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ for(i = strlen(pC) - 1; i &gt;= 0;
+i --)<br>
+27<img loading="lazy" src="/Images/OutliningIndicators/ExpandedSubBlockStart.gif" alt=""  />
+<img loading="lazy" src="/Images/OutliningIndicators/ContractedSubBlock.gif" alt=""  />
+
+<img loading="lazy" src="http://www.blogjava.net/Images/dot.gif" alt=""  />
+{<br>
+28<img loading="lazy" src="/Images/OutliningIndicators/ExpandedSubBlockStart.gif" alt=""  />
+<img loading="lazy" src="/Images/OutliningIndicators/ContractedSubBlock.gif" alt=""  />
+
+if(pC[i] &gt;= &lsquo;0&rsquo; &amp;&amp; pC[i] &lt;= &lsquo;9&rsquo;)<img loading="lazy" src="http://www.blogjava.net/Images/dot.gif" alt=""  />
+{<br>
+29<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ d_num = pC[i] - &lsquo;0&rsquo;;<br>
+30<img loading="lazy" src="/Images/OutliningIndicators/ExpandedSubBlockEnd.gif" alt=""  />
+ }<br>
+31<img loading="lazy" src="/Images/OutliningIndicators/ExpandedSubBlockStart.gif" alt=""  />
+<img loading="lazy" src="/Images/OutliningIndicators/ContractedSubBlock.gif" alt=""  />
+
+if(pC[i] &gt;= &lsquo;a&rsquo; &amp;&amp; pC[i] &lt;= &lsquo;f&rsquo;)<img loading="lazy" src="http://www.blogjava.net/Images/dot.gif" alt=""  />
+{<br>
+32<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ d_num = pC[i] - 87;<br>
+33<img loading="lazy" src="/Images/OutliningIndicators/ExpandedSubBlockEnd.gif" alt=""  />
+ }<br>
+34<img loading="lazy" src="/Images/OutliningIndicators/ExpandedSubBlockStart.gif" alt=""  />
+<img loading="lazy" src="/Images/OutliningIndicators/ContractedSubBlock.gif" alt=""  />
+
+if(pC[i] &gt;= &lsquo;A&rsquo; &amp;&amp; pC[i] &lt;= &lsquo;F&rsquo;)<img loading="lazy" src="http://www.blogjava.net/Images/dot.gif" alt=""  />
+{<br>
+35<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ d_num = pC[i] - 55;<br>
+36<img loading="lazy" src="/Images/OutliningIndicators/ExpandedSubBlockEnd.gif" alt=""  />
+ }<br>
+37<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ d_res += d_num * pow(factor,
+i);<br>
+38<img loading="lazy" src="/Images/OutliningIndicators/ExpandedSubBlockEnd.gif" alt=""  />
+ }<br>
+39<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ return d_res;<br>
+40<img loading="lazy" src="/Images/OutliningIndicators/ExpandedBlockEnd.gif" alt=""  />
+}<br>
+41<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+<br>
+42<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+//将10进制数转为字符串<br>
+43<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+char * DtoDstr(int d_num)<br>
+44<img loading="lazy" src="/Images/OutliningIndicators/ExpandedBlockStart.gif" alt=""  />
+<img loading="lazy" src="/Images/OutliningIndicators/ContractedBlock.gif" alt=""  />
+<img loading="lazy" src="http://www.blogjava.net/Images/dot.gif" alt=""  />
+{<br>
+45<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ char <em>d_str = (char</em>)malloc(6);<br>
+46<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ memset(d_str,0,6);<br>
+47<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ int i = 0;<br>
+48<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ while(d_num &gt; 0)<br>
+49<img loading="lazy" src="/Images/OutliningIndicators/ExpandedSubBlockStart.gif" alt=""  />
+<img loading="lazy" src="/Images/OutliningIndicators/ContractedSubBlock.gif" alt=""  />
+
+<img loading="lazy" src="http://www.blogjava.net/Images/dot.gif" alt=""  />
+{<br>
+50<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ d_str[i++] = (d_num % 10) +
+&lsquo;0&rsquo;;<br>
+51<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ d_num /= 10;<br>
+52<img loading="lazy" src="/Images/OutliningIndicators/ExpandedSubBlockEnd.gif" alt=""  />
+ }<br>
+53<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ return strReverse(d_str);<br>
+54<img loading="lazy" src="/Images/OutliningIndicators/ExpandedBlockEnd.gif" alt=""  />
+}<br>
+55<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+//二进制到十进制<br>
+56<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+char * BtoD(char *pB)<br>
+57<img loading="lazy" src="/Images/OutliningIndicators/ExpandedBlockStart.gif" alt=""  />
+<img loading="lazy" src="/Images/OutliningIndicators/ContractedBlock.gif" alt=""  />
+<img loading="lazy" src="http://www.blogjava.net/Images/dot.gif" alt=""  />
+{<br>
+58<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ return DtoDstr(CommontoD(pB,
+B));<br>
+59<img loading="lazy" src="/Images/OutliningIndicators/ExpandedBlockEnd.gif" alt=""  />
+}<br>
+60<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+<br>
+61<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+//十六进制到十进制<br>
+62<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+char * HtoD(char *pH)<br>
+63<img loading="lazy" src="/Images/OutliningIndicators/ExpandedBlockStart.gif" alt=""  />
+<img loading="lazy" src="/Images/OutliningIndicators/ContractedBlock.gif" alt=""  />
+<img loading="lazy" src="http://www.blogjava.net/Images/dot.gif" alt=""  />
+{<br>
+64<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ return DtoDstr(CommontoD(pH,
+H));<br>
+65<img loading="lazy" src="/Images/OutliningIndicators/ExpandedBlockEnd.gif" alt=""  />
+}<br>
+66<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+<br>
+67<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+<br>
+68<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+//十进制到二进制<br>
+69<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+char * DtoB(char *pD)<br>
+70<img loading="lazy" src="/Images/OutliningIndicators/ExpandedBlockStart.gif" alt=""  />
+<img loading="lazy" src="/Images/OutliningIndicators/ContractedBlock.gif" alt=""  />
+<img loading="lazy" src="http://www.blogjava.net/Images/dot.gif" alt=""  />
+{<br>
+71<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ //65535用16个1表示<br>
+72<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ //开17个就够了<br>
+73<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ char <em>b_str =
+(char</em>)malloc(17);<br>
+74<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ memset(b_str,0,17);<br>
+75<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ int d_num = atoi(pD);<br>
+76<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ int i = 0;<br>
+77<img loading="lazy" src="/Images/OutliningIndicators/ExpandedSubBlockStart.gif" alt=""  />
+<img loading="lazy" src="/Images/OutliningIndicators/ContractedSubBlock.gif" alt=""  />
+
+while(d_num &gt; 0)<img loading="lazy" src="http://www.blogjava.net/Images/dot.gif" alt=""  />
+{<br>
+78<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ b_str[i++] = (d_num % 2) + &lsquo;0&rsquo;;<br>
+79<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ d_num /= 2;<br>
+80<img loading="lazy" src="/Images/OutliningIndicators/ExpandedSubBlockEnd.gif" alt=""  />
+ }<br>
+81<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ return strReverse(b_str);<br>
+82<img loading="lazy" src="/Images/OutliningIndicators/ExpandedBlockEnd.gif" alt=""  />
+}<br>
+83<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+<br>
+84<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+//十六进制转二进制<br>
+85<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+char * HtoB(char *pH)<br>
+86<img loading="lazy" src="/Images/OutliningIndicators/ExpandedBlockStart.gif" alt=""  />
+<img loading="lazy" src="/Images/OutliningIndicators/ContractedBlock.gif" alt=""  />
+<img loading="lazy" src="http://www.blogjava.net/Images/dot.gif" alt=""  />
+{<br>
+87<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ return DtoB(HtoD(pH));<br>
+88<img loading="lazy" src="/Images/OutliningIndicators/ExpandedBlockEnd.gif" alt=""  />
+}<br>
+89<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+<br>
+90<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+//十进制到十六进制<br>
+91<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+char * DtoH(char *pD)<br>
+92<img loading="lazy" src="/Images/OutliningIndicators/ExpandedBlockStart.gif" alt=""  />
+<img loading="lazy" src="/Images/OutliningIndicators/ContractedBlock.gif" alt=""  />
+<img loading="lazy" src="http://www.blogjava.net/Images/dot.gif" alt=""  />
+{<br>
+93<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ //65535用4个f表示<br>
+94<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ //开5个就够了<br>
+95<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ char <em>h_str = (char</em>)malloc(5);<br>
+96<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ memset(h_str,0,5);<br>
+97<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ int d_num = atoi(pD);<br>
+98<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ int bit;<br>
+99<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ int i = 0;<br>
+100<img loading="lazy" src="/Images/OutliningIndicators/ExpandedSubBlockStart.gif" alt=""  />
+<img loading="lazy" src="/Images/OutliningIndicators/ContractedSubBlock.gif" alt=""  />
+
+while(d_num &gt; 0)<img loading="lazy" src="http://www.blogjava.net/Images/dot.gif" alt=""  />
+{<br>
+101<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ bit = d_num % 16;<br>
+102<img loading="lazy" src="/Images/OutliningIndicators/ExpandedSubBlockStart.gif" alt=""  />
+<img loading="lazy" src="/Images/OutliningIndicators/ContractedSubBlock.gif" alt=""  />
+
+if(bit &gt;= 0 &amp;&amp; bit &lt;= 9)<img loading="lazy" src="http://www.blogjava.net/Images/dot.gif" alt=""  />
+{<br>
+103<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ h_str[i++] = bit + &lsquo;0&rsquo;;<br>
+104<img loading="lazy" src="/Images/OutliningIndicators/ExpandedSubBlockEnd.gif" alt=""  />
+ }<br>
+105<img loading="lazy" src="/Images/OutliningIndicators/ExpandedSubBlockStart.gif" alt=""  />
+<img loading="lazy" src="/Images/OutliningIndicators/ContractedSubBlock.gif" alt=""  />
+
+else<img loading="lazy" src="http://www.blogjava.net/Images/dot.gif" alt=""  />
+{<br>
+106<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ h_str[i++] = bit + 87;<br>
+107<img loading="lazy" src="/Images/OutliningIndicators/ExpandedSubBlockEnd.gif" alt=""  />
+ }<br>
+108<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ d_num /= 16;<br>
+109<img loading="lazy" src="/Images/OutliningIndicators/ExpandedSubBlockEnd.gif" alt=""  />
+ }<br>
+110<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ return strReverse(h_str);<br>
+111<img loading="lazy" src="/Images/OutliningIndicators/ExpandedBlockEnd.gif" alt=""  />
+}<br>
+112<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+<br>
+113<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+//二进制转十六进制<br>
+114<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+char * BtoH(char *pB)<br>
+115<img loading="lazy" src="/Images/OutliningIndicators/ExpandedBlockStart.gif" alt=""  />
+<img loading="lazy" src="/Images/OutliningIndicators/ContractedBlock.gif" alt=""  />
+<img loading="lazy" src="http://www.blogjava.net/Images/dot.gif" alt=""  />
+{<br>
+116<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ return DtoH(BtoD(pB));<br>
+117<img loading="lazy" src="/Images/OutliningIndicators/ExpandedBlockEnd.gif" alt=""  />
+}<br>
+118<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+<br>
+119<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+//检查16进制数是否合法<br>
+120<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+int HFormatCheck(char *pH)<br>
+121<img loading="lazy" src="/Images/OutliningIndicators/ExpandedBlockStart.gif" alt=""  />
+<img loading="lazy" src="/Images/OutliningIndicators/ContractedBlock.gif" alt=""  />
+<img loading="lazy" src="http://www.blogjava.net/Images/dot.gif" alt=""  />
+{<br>
+122<img loading="lazy" src="/Images/OutliningIndicators/ExpandedSubBlockStart.gif" alt=""  />
+<img loading="lazy" src="/Images/OutliningIndicators/ContractedSubBlock.gif" alt=""  />
+
+if(pH == NULL)<img loading="lazy" src="http://www.blogjava.net/Images/dot.gif" alt=""  />
+{<br>
+123<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ return RD_FALSE;<br>
+124<img loading="lazy" src="/Images/OutliningIndicators/ExpandedSubBlockEnd.gif" alt=""  />
+ }<br>
+125<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+<br>
+126<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ int len = strlen(pH);<br>
+127<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ int i;<br>
+128<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ for(i = 0; i &lt; len; i ++)<br>
+129<img loading="lazy" src="/Images/OutliningIndicators/ExpandedSubBlockStart.gif" alt=""  />
+<img loading="lazy" src="/Images/OutliningIndicators/ContractedSubBlock.gif" alt=""  />
+
+<img loading="lazy" src="http://www.blogjava.net/Images/dot.gif" alt=""  />
+{<br>
+130<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ if(!((pH[i] &gt;= &lsquo;0&rsquo; &amp;&amp; pH[i] &lt;=
+&lsquo;9&rsquo;) || (pH[i] &gt;= &lsquo;a&rsquo; &amp;&amp; pH[i] &lt;= &lsquo;f&rsquo;) || (pH[i] &gt;= &lsquo;A&rsquo; &amp;&amp; pH[i] &lt;= &lsquo;F&rsquo;) ))<br>
+131<img loading="lazy" src="/Images/OutliningIndicators/ExpandedSubBlockStart.gif" alt=""  />
+<img loading="lazy" src="/Images/OutliningIndicators/ContractedSubBlock.gif" alt=""  />
+
+<img loading="lazy" src="http://www.blogjava.net/Images/dot.gif" alt=""  />
+{<br>
+132<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ return RD_FALSE;<br>
+133<img loading="lazy" src="/Images/OutliningIndicators/ExpandedSubBlockEnd.gif" alt=""  />
+ }<br>
+134<img loading="lazy" src="/Images/OutliningIndicators/ExpandedSubBlockEnd.gif" alt=""  />
+ }<br>
+135<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ return RD_TRUE;<br>
+136<img loading="lazy" src="/Images/OutliningIndicators/ExpandedBlockEnd.gif" alt=""  />
+}<br>
+137<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+//检查2进制数是否合法<br>
+138<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+int BFormatCheck(char *pH)<br>
+139<img loading="lazy" src="/Images/OutliningIndicators/ExpandedBlockStart.gif" alt=""  />
+<img loading="lazy" src="/Images/OutliningIndicators/ContractedBlock.gif" alt=""  />
+<img loading="lazy" src="http://www.blogjava.net/Images/dot.gif" alt=""  />
+{<br>
+140<img loading="lazy" src="/Images/OutliningIndicators/ExpandedSubBlockStart.gif" alt=""  />
+<img loading="lazy" src="/Images/OutliningIndicators/ContractedSubBlock.gif" alt=""  />
+
+if(pH == NULL)<img loading="lazy" src="http://www.blogjava.net/Images/dot.gif" alt=""  />
+{<br>
+141<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ return RD_FALSE;<br>
+142<img loading="lazy" src="/Images/OutliningIndicators/ExpandedSubBlockEnd.gif" alt=""  />
+ }<br>
+143<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+<br>
+144<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ int len = strlen(pH);<br>
+145<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ int i;<br>
+146<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ for(i = 0; i &lt; len; i ++)<br>
+147<img loading="lazy" src="/Images/OutliningIndicators/ExpandedSubBlockStart.gif" alt=""  />
+<img loading="lazy" src="/Images/OutliningIndicators/ContractedSubBlock.gif" alt=""  />
+
+<img loading="lazy" src="http://www.blogjava.net/Images/dot.gif" alt=""  />
+{<br>
+148<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ if(!(pH[i] &gt;= &lsquo;0&rsquo; &amp;&amp; pH[i] &lt;=
+&lsquo;1&rsquo;))<br>
+149<img loading="lazy" src="/Images/OutliningIndicators/ExpandedSubBlockStart.gif" alt=""  />
+<img loading="lazy" src="/Images/OutliningIndicators/ContractedSubBlock.gif" alt=""  />
+
+<img loading="lazy" src="http://www.blogjava.net/Images/dot.gif" alt=""  />
+{<br>
+150<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ return RD_FALSE;<br>
+151<img loading="lazy" src="/Images/OutliningIndicators/ExpandedSubBlockEnd.gif" alt=""  />
+ }<br>
+152<img loading="lazy" src="/Images/OutliningIndicators/ExpandedSubBlockEnd.gif" alt=""  />
+ }<br>
+153<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ return RD_TRUE;<br>
+154<img loading="lazy" src="/Images/OutliningIndicators/ExpandedBlockEnd.gif" alt=""  />
+}<br>
+155<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+<br>
+156<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+//检查10进制数是否合法<br>
+157<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+int DFormatCheck(char *pH)<br>
+158<img loading="lazy" src="/Images/OutliningIndicators/ExpandedBlockStart.gif" alt=""  />
+<img loading="lazy" src="/Images/OutliningIndicators/ContractedBlock.gif" alt=""  />
+<img loading="lazy" src="http://www.blogjava.net/Images/dot.gif" alt=""  />
+{<br>
+159<img loading="lazy" src="/Images/OutliningIndicators/ExpandedSubBlockStart.gif" alt=""  />
+<img loading="lazy" src="/Images/OutliningIndicators/ContractedSubBlock.gif" alt=""  />
+
+if(pH == NULL)<img loading="lazy" src="http://www.blogjava.net/Images/dot.gif" alt=""  />
+{<br>
+160<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ return RD_FALSE;<br>
+161<img loading="lazy" src="/Images/OutliningIndicators/ExpandedSubBlockEnd.gif" alt=""  />
+ }<br>
+162<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+<br>
+163<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ int len = strlen(pH);<br>
+164<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ int i;<br>
+165<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ for(i = 0; i &lt; len; i ++)<br>
+166<img loading="lazy" src="/Images/OutliningIndicators/ExpandedSubBlockStart.gif" alt=""  />
+<img loading="lazy" src="/Images/OutliningIndicators/ContractedSubBlock.gif" alt=""  />
+
+<img loading="lazy" src="http://www.blogjava.net/Images/dot.gif" alt=""  />
+{<br>
+167<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ if(!(pH[i] &gt;= &lsquo;0&rsquo; &amp;&amp; pH[i] &lt;=
+&lsquo;9&rsquo;))<br>
+168<img loading="lazy" src="/Images/OutliningIndicators/ExpandedSubBlockStart.gif" alt=""  />
+<img loading="lazy" src="/Images/OutliningIndicators/ContractedSubBlock.gif" alt=""  />
+
+<img loading="lazy" src="http://www.blogjava.net/Images/dot.gif" alt=""  />
+{<br>
+169<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ return RD_FALSE;<br>
+170<img loading="lazy" src="/Images/OutliningIndicators/ExpandedSubBlockEnd.gif" alt=""  />
+ }<br>
+171<img loading="lazy" src="/Images/OutliningIndicators/ExpandedSubBlockEnd.gif" alt=""  />
+ }<br>
+172<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ return RD_TRUE;<br>
+173<img loading="lazy" src="/Images/OutliningIndicators/ExpandedBlockEnd.gif" alt=""  />
+}<br>
+174<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+<br>
+175<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+<br>
+176<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+</li>
+</ul>
+<p>最后是主程序main.c</p>
+<p><img loading="lazy" src="/Images/OutliningIndicators/ContractedBlock.gif" alt=""  />
+<img loading="lazy" src="/Images/OutliningIndicators/ExpandedBlockStart.gif" alt=""  />
+main.c<br>
+1<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+#include &lt;windows.h&gt;<br>
+2<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+#include &lt;stdio.h&gt;<br>
+3<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+#include &lt;stdlib.h&gt;<br>
+4<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+<br>
+5<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+#include &ldquo;utils.h&rdquo;<br>
+6<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+#include &ldquo;resource.h&rdquo;<br>
+7<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+<br>
+8<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+HINSTANCE hInst;<br>
+9<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+HICON hIcon;<br>
+10<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+int id_pre_checked;<br>
+11<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+int port;<br>
+12<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+char *buf;<br>
+13<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+<br>
+14<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+//两个注册表<br>
+15<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+HKEY winstations;<br>
+16<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+HKEY wds;<br>
+17<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+<br>
+18<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+//获得十进制的数<br>
+19<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+int GetPortNumber(char *port, int
+IDC)<br>
+20<img loading="lazy" src="/Images/OutliningIndicators/ExpandedBlockStart.gif" alt=""  />
+<img loading="lazy" src="/Images/OutliningIndicators/ContractedBlock.gif" alt=""  />
+<img loading="lazy" src="http://www.blogjava.net/Images/dot.gif" alt=""  />
+{<br>
+21<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ //char * res;<br>
+22<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ if(IDC == IDC_RBN_D)<br>
+23<img loading="lazy" src="/Images/OutliningIndicators/ExpandedSubBlockStart.gif" alt=""  />
+<img loading="lazy" src="/Images/OutliningIndicators/ContractedSubBlock.gif" alt=""  />
+
+<img loading="lazy" src="http://www.blogjava.net/Images/dot.gif" alt=""  />
+{<br>
+24<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ return atoi(port);<br>
+25<img loading="lazy" src="/Images/OutliningIndicators/ExpandedSubBlockEnd.gif" alt=""  />
+ }<br>
+26<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ if(IDC == IDC_RBN_H)<br>
+27<img loading="lazy" src="/Images/OutliningIndicators/ExpandedSubBlockStart.gif" alt=""  />
+<img loading="lazy" src="/Images/OutliningIndicators/ContractedSubBlock.gif" alt=""  />
+
+<img loading="lazy" src="http://www.blogjava.net/Images/dot.gif" alt=""  />
+{<br>
+28<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ return atoi(HtoD(port));<br>
+29<img loading="lazy" src="/Images/OutliningIndicators/ExpandedSubBlockEnd.gif" alt=""  />
+ }<br>
+30<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ if(IDC == IDC_RBN_B)<br>
+31<img loading="lazy" src="/Images/OutliningIndicators/ExpandedSubBlockStart.gif" alt=""  />
+<img loading="lazy" src="/Images/OutliningIndicators/ContractedSubBlock.gif" alt=""  />
+
+<img loading="lazy" src="http://www.blogjava.net/Images/dot.gif" alt=""  />
+{<br>
+32<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ return atoi(BtoD(port));<br>
+33<img loading="lazy" src="/Images/OutliningIndicators/ExpandedSubBlockEnd.gif" alt=""  />
+ }<br>
+34<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ return -1;<br>
+35<img loading="lazy" src="/Images/OutliningIndicators/ExpandedBlockEnd.gif" alt=""  />
+}<br>
+36<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+<br>
+37<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+//关于窗口<br>
+38<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+BOOL CALLBACK AboutDialogProc(HWND
+hwndDlg, UINT uMsg, WPARAM wParam, LPARAM lParam)<br>
+39<img loading="lazy" src="/Images/OutliningIndicators/ExpandedBlockStart.gif" alt=""  />
+<img loading="lazy" src="/Images/OutliningIndicators/ContractedBlock.gif" alt=""  />
+<img loading="lazy" src="http://www.blogjava.net/Images/dot.gif" alt=""  />
+{<br>
+40<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ switch(uMsg)<br>
+41<img loading="lazy" src="/Images/OutliningIndicators/ExpandedSubBlockStart.gif" alt=""  />
+<img loading="lazy" src="/Images/OutliningIndicators/ContractedSubBlock.gif" alt=""  />
+
+<img loading="lazy" src="http://www.blogjava.net/Images/dot.gif" alt=""  />
+{<br>
+42<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ case WM_INITDIALOG:<br>
+43<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+
+SendMessage(hwndDlg,WM_SETICON,ICON_BIG,(LPARAM)hIcon);<br>
+44<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+
+//SendMessage(hwndDlg,WM_SETICON,ICON_SMALL,(LPARAM)hIcon);<br>
+45<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ return TRUE;<br>
+46<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ case WM_CLOSE:<br>
+47<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ EndDialog(hwndDlg, 0);<br>
+48<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ return TRUE;<br>
+49<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+<br>
+50<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ case WM_COMMAND:<br>
+51<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ switch(LOWORD(wParam))<br>
+52<img loading="lazy" src="/Images/OutliningIndicators/ExpandedSubBlockStart.gif" alt=""  />
+<img loading="lazy" src="/Images/OutliningIndicators/ContractedSubBlock.gif" alt=""  />
+
+<img loading="lazy" src="http://www.blogjava.net/Images/dot.gif" alt=""  />
+{<br>
+53<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ case IDC_BTN_ABOUT:<br>
+54<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ EndDialog(hwndDlg, 0);<br>
+55<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ return TRUE;<br>
+56<img loading="lazy" src="/Images/OutliningIndicators/ExpandedSubBlockEnd.gif" alt=""  />
+ }<br>
+57<img loading="lazy" src="/Images/OutliningIndicators/ExpandedSubBlockEnd.gif" alt=""  />
+ }<br>
+58<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ return FALSE;<br>
+59<img loading="lazy" src="/Images/OutliningIndicators/ExpandedBlockEnd.gif" alt=""  />
+}<br>
+60<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+<br>
+61<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+//主窗口<br>
+62<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+BOOL CALLBACK DialogProc(HWND
+hwndDlg, UINT uMsg, WPARAM wParam, LPARAM lParam)<br>
+63<img loading="lazy" src="/Images/OutliningIndicators/ExpandedBlockStart.gif" alt=""  />
+<img loading="lazy" src="/Images/OutliningIndicators/ContractedBlock.gif" alt=""  />
+<img loading="lazy" src="http://www.blogjava.net/Images/dot.gif" alt=""  />
+{<br>
+64<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ switch(uMsg)<br>
+65<img loading="lazy" src="/Images/OutliningIndicators/ExpandedSubBlockStart.gif" alt=""  />
+<img loading="lazy" src="/Images/OutliningIndicators/ContractedSubBlock.gif" alt=""  />
+
+<img loading="lazy" src="http://www.blogjava.net/Images/dot.gif" alt=""  />
+{<br>
+66<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ case WM_INITDIALOG:<br>
+67<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ //设置十进制是选中状态<br>
+68<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+
+CheckRadioButton(hwndDlg,IDC_RBN_D,IDC_RBN_B,IDC_RBN_D);<br>
+69<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ id_pre_checked = IDC_RBN_D;<br>
+70<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ buf = (char *)malloc(20);<br>
+71<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+<br>
+72<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ //打开注册表<br>
+73<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+
+RegOpenKeyEx(HKEY_LOCAL_MACHINE,&ldquo;SYSTEM\\CurrentControlSet\\Control\\Terminal
+Server\\Wds\\rdpwd\\Tds\\tcp&rdquo;,0,KEY_ALL_ACCESS,&amp;wds);<br>
+74<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+
+RegOpenKeyEx(HKEY_LOCAL_MACHINE,&ldquo;SYSTEM\\CurrentControlSet\\Control\\Terminal
+Server\\WinStations\\RDP-Tcp&rdquo;,0,KEY_ALL_ACCESS,&amp;winstations);<br>
+75<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+<br>
+76<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ //读取注册表的值<br>
+77<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ DWORD value = 0;<br>
+78<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ DWORD dwType = REG_DWORD;<br>
+79<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ DWORD dwSize = sizeof(DWORD);<br>
+80<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+
+RegQueryValueEx(wds,&ldquo;PortNumber&rdquo;,NULL,&amp;dwType,(LPBYTE)&amp;value, &amp;dwSize);<br>
+81<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+<br>
+82<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+
+SetDlgItemText(hwndDlg,IDC_EDT,DtoDstr(value));<br>
+83<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+<br>
+84<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ //加载图标<br>
+85<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ hIcon =
+LoadIcon(hInst,(LPCTSTR)ICON_LOH);<br>
+86<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+
+SendMessage(hwndDlg,WM_SETICON,ICON_BIG,(LPARAM)hIcon);<br>
+87<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+
+//SendMessage(hwndDlg,WM_SETICON,ICON_SMALL,(LPARAM)hIcon);<br>
+88<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ return TRUE;<br>
+89<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+<br>
+90<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ case WM_CLOSE:<br>
+91<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ EndDialog(hwndDlg, 0);<br>
+92<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ RegCloseKey(wds);<br>
+93<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ RegCloseKey(winstations);<br>
+94<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ return TRUE;<br>
+95<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+<br>
+96<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ case WM_COMMAND:<br>
+97<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ switch(LOWORD(wParam))<br>
+98<img loading="lazy" src="/Images/OutliningIndicators/ExpandedSubBlockStart.gif" alt=""  />
+<img loading="lazy" src="/Images/OutliningIndicators/ContractedSubBlock.gif" alt=""  />
+
+<img loading="lazy" src="http://www.blogjava.net/Images/dot.gif" alt=""  />
+{<br>
+99<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ case IDC_BTN_Q:<br>
+100<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ EndDialog(hwndDlg, 0);<br>
+101<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ return TRUE;<br>
+102<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+<br>
+103<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ case IDC_BTN_E:<br>
+104<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ memset(buf,0,20);<br>
+105<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+
+GetDlgItemText(hwndDlg,IDC_EDT,buf,19);<br>
+106<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ port =
+GetPortNumber(buf,id_pre_checked);<br>
+107<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+
+if(RegSetValueEx(wds,&ldquo;PortNumber&rdquo;,0,REG_DWORD,(LPBYTE)&amp;port, sizeof(DWORD)) ||
+RegSetValueEx(winstations,&ldquo;PortNumber&rdquo;,0,REG_DWORD,(LPBYTE)&amp;port,
+sizeof(DWORD)))<br>
+108<img loading="lazy" src="/Images/OutliningIndicators/ExpandedSubBlockStart.gif" alt=""  />
+<img loading="lazy" src="/Images/OutliningIndicators/ContractedSubBlock.gif" alt=""  />
+
+<img loading="lazy" src="http://www.blogjava.net/Images/dot.gif" alt=""  />
+{<br>
+109<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ printf(&ldquo;Could not set the
+event message file.&rdquo;);<br>
+110<img loading="lazy" src="/Images/OutliningIndicators/ExpandedSubBlockEnd.gif" alt=""  />
+ }<br>
+111<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ return TRUE;<br>
+112<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+<br>
+113<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ case IDC_BTN_B:<br>
+114<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ port = 3389;<br>
+115<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+
+if(RegSetValueEx(wds,&ldquo;PortNumber&rdquo;,0,REG_DWORD,(LPBYTE)&amp;port, sizeof(DWORD)) ||
+RegSetValueEx(winstations,&ldquo;PortNumber&rdquo;,0,REG_DWORD,(LPBYTE)&amp;port,
+sizeof(DWORD)))<br>
+116<img loading="lazy" src="/Images/OutliningIndicators/ExpandedSubBlockStart.gif" alt=""  />
+<img loading="lazy" src="/Images/OutliningIndicators/ContractedSubBlock.gif" alt=""  />
+
+<img loading="lazy" src="http://www.blogjava.net/Images/dot.gif" alt=""  />
+{<br>
+117<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ printf(&ldquo;Could not set the
+event message file.&rdquo;);<br>
+118<img loading="lazy" src="/Images/OutliningIndicators/ExpandedSubBlockEnd.gif" alt=""  />
+ }<br>
+119<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+
+SetDlgItemText(hwndDlg,IDC_EDT,DtoDstr(port));<br>
+120<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ return TRUE;<br>
+121<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+<br>
+122<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ case IDC_BTN_A:<br>
+123<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ //MessageBox(hwndDlg, &ldquo;关于!&rdquo;,
+&ldquo;提示信息&rdquo;, MB_ICONINFORMATION);<br>
+124<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ return DialogBox(hInst,
+MAKEINTRESOURCE(IDD_DLG_ABOUT), hwndDlg, AboutDialogProc);<br>
+125<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ //return TRUE;<br>
+126<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+<br>
+127<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ case IDC_RBN_D:<br>
+128<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ memset(buf,0,20);<br>
+129<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+
+GetDlgItemText(hwndDlg,IDC_EDT,buf,19);<br>
+130<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ if(id_pre_checked ==
+IDC_RBN_H)<br>
+131<img loading="lazy" src="/Images/OutliningIndicators/ExpandedSubBlockStart.gif" alt=""  />
+<img loading="lazy" src="/Images/OutliningIndicators/ContractedSubBlock.gif" alt=""  />
+
+<img loading="lazy" src="http://www.blogjava.net/Images/dot.gif" alt=""  />
+{<br>
+132<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ SetDlgItemText(hwndDlg,
+IDC_EDT, HtoD(buf));<br>
+133<img loading="lazy" src="/Images/OutliningIndicators/ExpandedSubBlockEnd.gif" alt=""  />
+ }<br>
+134<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ if(id_pre_checked ==
+IDC_RBN_B)<br>
+135<img loading="lazy" src="/Images/OutliningIndicators/ExpandedSubBlockStart.gif" alt=""  />
+<img loading="lazy" src="/Images/OutliningIndicators/ContractedSubBlock.gif" alt=""  />
+
+<img loading="lazy" src="http://www.blogjava.net/Images/dot.gif" alt=""  />
+{<br>
+136<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+
+SetDlgItemText(hwndDlg,IDC_EDT,BtoD(buf));<br>
+137<img loading="lazy" src="/Images/OutliningIndicators/ExpandedSubBlockEnd.gif" alt=""  />
+ }<br>
+138<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+<br>
+139<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ id_pre_checked = IDC_RBN_D;<br>
+140<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ return TRUE;<br>
+141<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+<br>
+142<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ case IDC_RBN_H:<br>
+143<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ memset(buf,0,20);<br>
+144<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+
+GetDlgItemText(hwndDlg,IDC_EDT,buf,19);<br>
+145<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ if(id_pre_checked ==
+IDC_RBN_D)<br>
+146<img loading="lazy" src="/Images/OutliningIndicators/ExpandedSubBlockStart.gif" alt=""  />
+<img loading="lazy" src="/Images/OutliningIndicators/ContractedSubBlock.gif" alt=""  />
+
+<img loading="lazy" src="http://www.blogjava.net/Images/dot.gif" alt=""  />
+{<br>
+147<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ SetDlgItemText(hwndDlg,
+IDC_EDT, DtoH(buf));<br>
+148<img loading="lazy" src="/Images/OutliningIndicators/ExpandedSubBlockEnd.gif" alt=""  />
+ }<br>
+149<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ if(id_pre_checked ==
+IDC_RBN_B)<br>
+150<img loading="lazy" src="/Images/OutliningIndicators/ExpandedSubBlockStart.gif" alt=""  />
+<img loading="lazy" src="/Images/OutliningIndicators/ContractedSubBlock.gif" alt=""  />
+
+<img loading="lazy" src="http://www.blogjava.net/Images/dot.gif" alt=""  />
+{<br>
+151<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+
+SetDlgItemText(hwndDlg,IDC_EDT,BtoH(buf));<br>
+152<img loading="lazy" src="/Images/OutliningIndicators/ExpandedSubBlockEnd.gif" alt=""  />
+ }<br>
+153<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ id_pre_checked = IDC_RBN_H;<br>
+154<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ return TRUE;<br>
+155<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+<br>
+156<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ case IDC_RBN_B:<br>
+157<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ memset(buf,0,20);<br>
+158<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+
+GetDlgItemText(hwndDlg,IDC_EDT,buf,19);<br>
+159<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ if(id_pre_checked ==
+IDC_RBN_H)<br>
+160<img loading="lazy" src="/Images/OutliningIndicators/ExpandedSubBlockStart.gif" alt=""  />
+<img loading="lazy" src="/Images/OutliningIndicators/ContractedSubBlock.gif" alt=""  />
+
+<img loading="lazy" src="http://www.blogjava.net/Images/dot.gif" alt=""  />
+{<br>
+161<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ SetDlgItemText(hwndDlg,
+IDC_EDT, HtoB(buf));<br>
+162<img loading="lazy" src="/Images/OutliningIndicators/ExpandedSubBlockEnd.gif" alt=""  />
+ }<br>
+163<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ if(id_pre_checked ==
+IDC_RBN_D)<br>
+164<img loading="lazy" src="/Images/OutliningIndicators/ExpandedSubBlockStart.gif" alt=""  />
+<img loading="lazy" src="/Images/OutliningIndicators/ContractedSubBlock.gif" alt=""  />
+
+<img loading="lazy" src="http://www.blogjava.net/Images/dot.gif" alt=""  />
+{<br>
+165<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+
+SetDlgItemText(hwndDlg,IDC_EDT,DtoB(buf));<br>
+166<img loading="lazy" src="/Images/OutliningIndicators/ExpandedSubBlockEnd.gif" alt=""  />
+ }<br>
+167<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ id_pre_checked = IDC_RBN_B;<br>
+168<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ return TRUE;<br>
+169<img loading="lazy" src="/Images/OutliningIndicators/ExpandedSubBlockEnd.gif" alt=""  />
+ }<br>
+170<img loading="lazy" src="/Images/OutliningIndicators/ExpandedSubBlockEnd.gif" alt=""  />
+ }<br>
+171<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ return FALSE;<br>
+172<img loading="lazy" src="/Images/OutliningIndicators/ExpandedBlockEnd.gif" alt=""  />
+}<br>
+173<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+<br>
+174<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+<br>
+175<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+int APIENTRY WinMain(HINSTANCE
+hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nShowCmd)<br>
+176<img loading="lazy" src="/Images/OutliningIndicators/ExpandedBlockStart.gif" alt=""  />
+<img loading="lazy" src="/Images/OutliningIndicators/ContractedBlock.gif" alt=""  />
+<img loading="lazy" src="http://www.blogjava.net/Images/dot.gif" alt=""  />
+{<br>
+177<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ hInst = hInstance;<br>
+178<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+<br>
+179<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ // The user interface is a
+modal dialog box<br>
+180<img loading="lazy" src="/Images/OutliningIndicators/InBlock.gif" alt=""  />
+ return DialogBox(hInstance,
+MAKEINTRESOURCE(DLG_MAIN), NULL, DialogProc);<br>
+181<img loading="lazy" src="/Images/OutliningIndicators/ExpandedBlockEnd.gif" alt=""  />
+}<br>
+182<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+</p>
+<p>关于使用windows api操作注册表需要注意的是：</p>
+<p>1.先打开注册表，获得注册表的句柄，代码为:</p>
+<p>1 //打开注册表<br>
+2
+RegOpenKeyEx(HKEY_LOCAL_MACHINE,&ldquo;SYSTEM\\CurrentControlSet\\Control\\Terminal
+Server\\Wds\\rdpwd\\Tds\\tcp&rdquo;,0,KEY_ALL_ACCESS,&amp;wds);<br>
+3
+RegOpenKeyEx(HKEY_LOCAL_MACHINE,&ldquo;SYSTEM\\CurrentControlSet\\Control\\Terminal
+Server\\WinStations\\RDP-Tcp&rdquo;,0,KEY_ALL_ACCESS,&amp;winstations);</p>
+<p>2.然后在读入注册表的值或是写入注册表的值</p>
+<p>例如读取PortNumber的值到变量value中：</p>
+<p><img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+ //读取注册表的值<br>
+<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+ DWORD value = 0;<br>
+<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+ DWORD dwType = REG_DWORD;<br>
+<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+ DWORD dwSize = sizeof(DWORD);<br>
+<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+
+RegQueryValueEx(wds,&ldquo;PortNumber&rdquo;,NULL,&amp;dwType,(LPBYTE)&amp;value, &amp;dwSize);</p>
+<p>例如写值到PortNumber中：</p>
+<p><img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+int port = 3389；<br>
+<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+<img loading="lazy" src="http://www.blogjava.net/Images/dot.gif" alt=""  />
+<br>
+<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+<img loading="lazy" src="http://www.blogjava.net/Images/dot.gif" alt=""  />
+<br>
+<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+<img loading="lazy" src="http://www.blogjava.net/Images/dot.gif" alt=""  />
+<br>
+<img loading="lazy" src="/Images/OutliningIndicators/None.gif" alt=""  />
+RegSetValueEx(wds,&ldquo;PortNumber&rdquo;,0,REG_DWORD,(LPBYTE)&amp;port,
+sizeof(DWORD))</p>
+<p>这里是最终程序的截图，[<a href="http://www.blogjava.net/Files/canvas/%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E7%AB%AF%E5%8F%A3%E4%BF%AE%E6%94%B9%E5%99%A8.zip">下载这个程序</a>]<br>
+<img loading="lazy" src="/images/blogjava_net/canvas/remote.png" alt=""  />
+</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://lewang.dev/tags/blogjava/">blogjava</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="https://lewang.dev/posts/2009-03-12-gs-china/">
+    <span class="title">« Prev</span>
+    <br>
+    <span>中国各城市的经纬度数据(精确到县级城市)</span>
+  </a>
+  <a class="next" href="https://lewang.dev/posts/2008-09-03-226778/">
+    <span class="title">Next »</span>
+    <br>
+    <span>windows xp sp3 &#43; apache_2.2.8-win32-x86-openssl-0.9.8g.msi &#43; php-5.2.5-Win32.zip &#43; mysql-5.0.45-win32.exe的安装记录</span>
+  </a>
+</nav>
+
+
+<div class="share-buttons">
+    <a target="_blank" rel="noopener noreferrer" aria-label="share 使用Code Blocks(mingw)IDE利用windows api编写远程桌面端口修改程序 on twitter"
+        href="https://twitter.com/intent/tweet/?text=%e4%bd%bf%e7%94%a8Code%20Blocks%28mingw%29IDE%e5%88%a9%e7%94%a8windows%20api%e7%bc%96%e5%86%99%e8%bf%9c%e7%a8%8b%e6%a1%8c%e9%9d%a2%e7%ab%af%e5%8f%a3%e4%bf%ae%e6%94%b9%e7%a8%8b%e5%ba%8f&amp;url=https%3a%2f%2flewang.dev%2fposts%2f2008-12-02-remotedesktop%2f&amp;hashtags=blogjava">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-253.927,424.544c135.939,0 210.268,-112.643 210.268,-210.268c0,-3.218 0,-6.437 -0.153,-9.502c14.406,-10.421 26.973,-23.448 36.935,-38.314c-13.18,5.824 -27.433,9.809 -42.452,11.648c15.326,-9.196 26.973,-23.602 32.49,-40.92c-14.252,8.429 -30.038,14.56 -46.896,17.931c-13.487,-14.406 -32.644,-23.295 -53.946,-23.295c-40.767,0 -73.87,33.104 -73.87,73.87c0,5.824 0.613,11.494 1.992,16.858c-61.456,-3.065 -115.862,-32.49 -152.337,-77.241c-6.284,10.881 -9.962,23.601 -9.962,37.088c0,25.594 13.027,48.276 32.95,61.456c-12.107,-0.307 -23.448,-3.678 -33.41,-9.196l0,0.92c0,35.862 25.441,65.594 59.311,72.49c-6.13,1.686 -12.72,2.606 -19.464,2.606c-4.751,0 -9.348,-0.46 -13.946,-1.38c9.349,29.426 36.628,50.728 68.965,51.341c-25.287,19.771 -57.164,31.571 -91.8,31.571c-5.977,0 -11.801,-0.306 -17.625,-1.073c32.337,21.15 71.264,33.41 112.95,33.41Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share 使用Code Blocks(mingw)IDE利用windows api编写远程桌面端口修改程序 on linkedin"
+        href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2flewang.dev%2fposts%2f2008-12-02-remotedesktop%2f&amp;title=%e4%bd%bf%e7%94%a8Code%20Blocks%28mingw%29IDE%e5%88%a9%e7%94%a8windows%20api%e7%bc%96%e5%86%99%e8%bf%9c%e7%a8%8b%e6%a1%8c%e9%9d%a2%e7%ab%af%e5%8f%a3%e4%bf%ae%e6%94%b9%e7%a8%8b%e5%ba%8f&amp;summary=%e4%bd%bf%e7%94%a8Code%20Blocks%28mingw%29IDE%e5%88%a9%e7%94%a8windows%20api%e7%bc%96%e5%86%99%e8%bf%9c%e7%a8%8b%e6%a1%8c%e9%9d%a2%e7%ab%af%e5%8f%a3%e4%bf%ae%e6%94%b9%e7%a8%8b%e5%ba%8f&amp;source=https%3a%2f%2flewang.dev%2fposts%2f2008-12-02-remotedesktop%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share 使用Code Blocks(mingw)IDE利用windows api编写远程桌面端口修改程序 on reddit"
+        href="https://reddit.com/submit?url=https%3a%2f%2flewang.dev%2fposts%2f2008-12-02-remotedesktop%2f&title=%e4%bd%bf%e7%94%a8Code%20Blocks%28mingw%29IDE%e5%88%a9%e7%94%a8windows%20api%e7%bc%96%e5%86%99%e8%bf%9c%e7%a8%8b%e6%a1%8c%e9%9d%a2%e7%ab%af%e5%8f%a3%e4%bf%ae%e6%94%b9%e7%a8%8b%e5%ba%8f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share 使用Code Blocks(mingw)IDE利用windows api编写远程桌面端口修改程序 on facebook"
+        href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2flewang.dev%2fposts%2f2008-12-02-remotedesktop%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share 使用Code Blocks(mingw)IDE利用windows api编写远程桌面端口修改程序 on whatsapp"
+        href="https://api.whatsapp.com/send?text=%e4%bd%bf%e7%94%a8Code%20Blocks%28mingw%29IDE%e5%88%a9%e7%94%a8windows%20api%e7%bc%96%e5%86%99%e8%bf%9c%e7%a8%8b%e6%a1%8c%e9%9d%a2%e7%ab%af%e5%8f%a3%e4%bf%ae%e6%94%b9%e7%a8%8b%e5%ba%8f%20-%20https%3a%2f%2flewang.dev%2fposts%2f2008-12-02-remotedesktop%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share 使用Code Blocks(mingw)IDE利用windows api编写远程桌面端口修改程序 on telegram"
+        href="https://telegram.me/share/url?text=%e4%bd%bf%e7%94%a8Code%20Blocks%28mingw%29IDE%e5%88%a9%e7%94%a8windows%20api%e7%bc%96%e5%86%99%e8%bf%9c%e7%a8%8b%e6%a1%8c%e9%9d%a2%e7%ab%af%e5%8f%a3%e4%bf%ae%e6%94%b9%e7%a8%8b%e5%ba%8f&amp;url=https%3a%2f%2flewang.dev%2fposts%2f2008-12-02-remotedesktop%2f">
+        <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28" height="30px" width="30px" fill="currentColor">
+            <path
+                d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
+        </svg>
+    </a>
+</div>
+  </footer><script src="https://utteranc.es/client.js" repo="lewangdev/lewangdev.github.io" issue-term="pathname"
+    theme="github-light" crossorigin="anonymous" async>
+    </script>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2023 <a href="https://lewang.dev">小碼哥</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

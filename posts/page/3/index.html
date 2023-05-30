@@ -148,7 +148,7 @@ if (!doNotTrack) {
     </nav>
 </header>
 <main class="main"> 
-<header class="page-header">
+<header class="page-header"><div class="breadcrumbs"><a href="https://lewang.dev">Home</a></div>
   <h1>
     Posts
     <a href="index.xml" title="RSS" aria-label="RSS">
@@ -161,6 +161,95 @@ if (!doNotTrack) {
     </a>
   </h1>
 </header>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2>再说 PHP 中 SimpleXML
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>前一篇帖子使用了 xpath，后来了解到 xpath 的性能可能比较差，而且在遇到有命名空间的时候还有点小麻烦。这里都已豆瓣提供的 API 返回的 xml 为例。豆瓣返回的 xml 不是 rss 格式的，而是 Atom 格式，有很多的命名空间，如果习惯于操作 rss 格式的 xml，那么可以直接把 xml 里面的命名空间的字符串都 replace 掉，这个方法貌似很简单很暴力，就不会遇到命名空间的问题了。
+从豆瓣 API 开始，点击这个链接 http://api.douban.com/book/subjects?q=java 你就可以看到 xml 格式，由于返回的是 Atom 格式的 xml，浏览器会自动帮你解析，所以应该这样
+# 这样就可以得到一个java.xml文件。 $ wget -O java.xml http://api.douban.com/book/subjects?q=java 这样就可以得到一个 java.xml 文件，接下来使用 SimplePHP 处理这个文件。
+首先要创建一个 SimpleXML 对象
+//$content为xml的内容 $xml = new SimpleXMLElement($content); 现在要获取 opensearch 命名空间下的 totalResults 节点的文本，代码如下：
+$children = $xml-&gt;children(&#39;http://a9.com/-/spec/opensearchrss/1.0/&#39;); $totalResults = $children-&gt;totalResults; 处理所有 xml 文档中所有的 entry 节点
+//处理所有找到的记录 $entries = $xml-&gt;entry; foreach($entries as $entry){ //取命名空间下的孩子节点 $entryChildren = $entry-&gt;children(&#39;http://www....</p>
+  </div>
+  <footer class="entry-footer"><span title='2012-03-22 00:40:00 +0000 UTC'>March 22, 2012</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Le</footer>
+  <a class="entry-link" aria-label="post link to 再说 PHP 中 SimpleXML" href="https://lewang.dev/posts/2012-03-22-a-short-discuss-of-simplexml-of-php/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2>我想做的东西可以不值钱，但是它必须‘酷’
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>这句话是 FACEBOOK 的马克·扎克伯格说的。
+我很认同，并且感觉自己也是这么做的。现在自己做得很多事情，从来没有考虑过它会不会值钱，只是感觉把自己的想法做出来，变成实物的过程就已经很酷。
+对于酷，我觉得至少有两方面的意义。
+一种酷，是一种自我实现的感觉，是一种认同感，成就感。比如自己把自己的不错的想法实现了，当自己看到自己作品的时候，肯定觉得这种感觉很酷。接着你的作品有很多人用了，看了，然后给与了肯定或者赞扬的评价，这时候感到酷，我觉得就应该是一种认同感和成就感。都是内心的感觉，一种推进自我完善的感觉。
+还有一种酷，那就是表面上的酷，比如你的网页效果做得很酷很炫，你实现的功能很酷。虽然这些是表面上的酷，但这些酷的背后却隐藏着无数的思考和磨练。这么表面上的酷，却恰恰可以给人带来内心上的酷。
+就拿摆摊网来说，小小的网站，做得很简单。但是为了实现页面小小的效果，还不得不去多学点东西多花些时间。我喜欢自己东西能弄得那种能给人至简至美的感觉，但是却不能因为简而不“美”了，这里的美是给人一种更好的感觉。所以自己总是在觉得不破坏简的前提下，尽量的让自己的应用让人使用的体验更好更酷。比如说发布书籍信息的页面，以前必须使用 ISBN 号，现在这里点击查看的将要改成 @林风琦 推荐的 chegg 的效果，是不是比豆瓣的书籍检索要酷很多。进一步思考，对于摆摊首页的检索，以后是不是应该结合用户的搜索习惯和本身的书籍物品数据也实现这种 AutoComplete 功能。还比如说摆摊还将开发 Android 手机客户端，到时候只要一拍，就可以把书信息扫下来了，看，多酷！
+现在自己的科研也是这样，能给自己带来一种很酷的感觉，但是就科研的实际应用来说，我觉得可以应用的范围很小。但是想着能把 Jim Gray 这位数据库大神[此大神已经被外星人带走了，详情看这里]负责的基于微软 SQL Server 的 SDSS 项目迁移到适合科学运算的数组模型的数据库上来，然后我们还有可能就性能 PK 一把，想想就觉得很酷。更酷的是，自己还想到了一种自动迁移的方法[还没有经过深思和验证]。反正就是觉得酷儿！
+为了更酷，继续努力！
+我是 A Lucky Apple，@小码哥</p>
+  </div>
+  <footer class="entry-footer"><span title='2012-03-13 00:40:00 +0000 UTC'>March 13, 2012</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Le</footer>
+  <a class="entry-link" aria-label="post link to 我想做的东西可以不值钱，但是它必须‘酷’" href="https://lewang.dev/posts/2012-03-13-things-i-create-must-be-cool/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2>在这安静的夜里
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>今天组会不用开了，报告也不用做了，感觉比较爽，于是晚上的时候决定给摆摊写一些新的东西。
+于是刚刚给摆摊的首页添加了一个小小的功能，就是能够随机的选取5本书在首页上循环展示，另外修正了一些网友提出的问题。
+首页图片轮换是用jquery实现的，做法也很简单，当然实现的功能和效果还是比较弱的，这里是我用到一些资料。 CSS定位：http://www.haozi.cn/code/position-static-relative-absolute-float/
+好了，摆摊这几天暂时就这个样子了，得放下心思继续去搞自己的科研了。
+过段时间一定要好好总结一下，写一些关于数组数据库系列的文章。</p>
+  </div>
+  <footer class="entry-footer"><span title='2012-03-10 00:40:00 +0000 UTC'>March 10, 2012</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Le</footer>
+  <a class="entry-link" aria-label="post link to 在这安静的夜里" href="https://lewang.dev/posts/2012-03-10-at-a-late-night/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2>写给 2012 的摆摊
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>我期待 2012 的到来，这一年我将有一个新的开始，好期待。
+最近一直在忙着做实验，读论文，都没有什么时间来弄弄摆摊，自己心里的那种对于摆摊的激情也渐渐淡了很多，但是想想自己当初的想法，立马又有动力拾起摆摊。
+一个小小的网站，看起来确实很简单，也就是拿 php 连连数据库，做做一些简单的操作，可自己在写这个网站的时候总是很慢。时间少而且比较凌乱是一个原因，但是总的还是缺少一个全面完善细致的规划，自己大部分也是照着当初的设计，然后想到哪儿做到哪儿，如今的摆摊，已经和当初的相去甚远了。越写越复杂，问题也越来越多，停下来一想，还是挥起大刀把乱乱的东西都砍了吧，弄得越简单越好。
+加油！过几天就要回家了，不知道什么时候才能做好，让自己心里舒服一下。这几天赶紧将域名绑定好，将人人、新浪微博等的接入做好，大概就这个样子了。
+大家新年快乐！</p>
+  </div>
+  <footer class="entry-footer"><span title='2012-01-09 00:40:00 +0000 UTC'>January 9, 2012</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Le</footer>
+  <a class="entry-link" aria-label="post link to 写给 2012 的摆摊" href="https://lewang.dev/posts/2012-01-09-for-baigetan-2012/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2>SimpleXML使用xpath
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>这几天没心情看论文，于是开始写写摆摊网的代码。摆摊主要做高校二手书籍信息的分享，于是需要从豆瓣上获取图书信息，豆瓣提供了一个完整的 xml 来描述一本书，例如http://api.douban.com/book/subject/isbn/9787543639136，于是需要处理这个 xml 来获取相应信息，这里小码哥采用的是直接使用 xpath 来获取 xml 文档中相应的信息。摆摊使用了 sae，于是使用 SimpleXML 来处理 xml，加上自己还只是 PHP 的初学者，于是出现了一些问题。
+这里是一些学习资料：
+xpath:http://www.w3school.com.cn/xpath/ simplexml:http://cn2.php.net/manual/en/simplexmlelement.xpath.php 新建 SimpleXMLElement 对象，xml 文件内容在$content 中
+$bookFromDouban = new SimpleXMLElement($content); 直接查询，在命名空间 db 下的所有 attribute，且有 name 属性，以下 xpath 查询是没有问题的，
+$result = $bookFromDouban-&gt;xpath(&#34;//db:attribute[@name]&#34;); 但是，这条查询就有问题了，如下，
+$result = $bookFromDouban-&gt;xpath(&#34;//link[@rel=&#39;self&#39;]|//link[@rel=&#39;image&#39;]&#34;); 上面的代码表示在默认的命名空间里面查询 link 节点，但是在 php 5.0 以上却不能查出数据。需要这样操作
+//获取这个xml的所有的命名空间 $namespaces = $bookFromDouban-&gt;getNamespaces(); //注册默认的命名空间为&#39;d&#39; $bookFromDouban-&gt;registerXPathNamespace(&#39;d&#39;, $namespaces[&#39;&#39;]); //现在这个查询就ok了 $result = $bookFromDouban-&gt;xpath(&#34;//d:link[@rel=&#39;self&#39;]|//d:link[@rel=&#39;image&#39;]&#34;); 对$result 遍历就简单了，这里也给出一个简单的例子，遍历完，变量就初始化了。PS：代码写的不优雅，欢迎拍砖。
+translator = array(); $author = array(); $i = $j = 0; foreach($result as $item) { foreach($item-&gt;attributes() as $val) { $val = str_replace(&#39;-&#39;,&#39;_&#39;,$val); if($val == &#39;author&#39;) { $author[$i&#43;&#43;] = &#39;&#39;....</p>
+  </div>
+  <footer class="entry-footer"><span title='2011-12-01 13:09:00 +0000 UTC'>December 1, 2011</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Le</footer>
+  <a class="entry-link" aria-label="post link to SimpleXML使用xpath" href="https://lewang.dev/posts/2011-12-01-how-to-use-simplexml-of-php/"></a>
+</article>
 
 <article class="post-entry"> 
   <header class="entry-header">
@@ -301,32 +390,195 @@ baitan001.com 也在备案之中，应该很快就可以使用 baitan001.com 域
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2>改造openlayers构建轻量级专用地图信息系统（1）
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>本文为一个openlayers项目的总结，其中可能有一些遗漏或描述得不准确的地方，望批评指正。
+本文目标：
+构建一个完全自定义的轻量级地图信息系统，以openlayers为基础，需要自定义地图的元素样式，包括图层切换的样式、地图导航的样式、地图标记的实现、自定义弹出框等等。该专用地图信息系统地图来源于google地图，包括普通地图图层、卫星影像图层、路面信息图层，另外自行画了一些局部区域的三维地图，本项目为企业内部项目，与互联网隔离，故不可使用google的地图api，则需要抓取google的相关地图资源（暂时使用google地图资源），利用openlayers构建轻量级专用地图信息系统，这里的轻量级是指使用tilecache接口实现地图图层（相关资料见前篇博文）
+实现的效果图如下：
+图1 后台管理页面
+图2 前台展示页面（全屏显示）
+地图相关说明：
+地图页面事件说明
+地图基本功能
+(1) 左上角的地图浏览控件：包括地图的上下左右移动，地图的缩放
+(2) 右上角三个选项，包括地图、航拍、三维，点击每个选项，出现相应的地图视图，其中地图、航拍使用google地图数据（下载google地图）
+(3) 能够标注地图的行政区域
+(4) 鼠标在地图上双击鼠标左键，放大地图一个级别，鼠标滚轮向前向后转动分别是放大缩小地图一个级别，鼠标右键点击，无响应事件
+展示平台功能
+(1)主界面视图
+a) 有若干个个图层，地图下面有各个图层的选项卡，点击每个选项，显示相应的内容
+(2)局部区域视图
+a) 选中标记（点），跳转到局部区域视图
+b) 点击标记（点），根据项目的相应设置，显示地图下方的选项卡，点击选项卡，显示响应的内容
+c) 鼠标放在标记（点）上时。出现提示框，鼠标移到提示框上面，可以点击相应的链接，点击链接之后，弹出一个对话框，并且锁住地图界面
+地图数据说明
+地图基本数据
+(1)地图图片，要有连续的缩放级别的图，每个级别之间相差2倍
+(2)航拍图片，要有连续的缩放级别的图，每个级别之间相差2倍
+(3)三维图片，需要和地图图片、航拍图片保持一致的大小，和缩放级别和地理位置
+(4)地图效果图上面的使用的图标和弹出窗口图，需要原件，编写css需要使用</p>
+  </div>
+  <footer class="entry-footer"><span title='2011-08-15 05:55:00 +0000 UTC'>August 15, 2011</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Le</footer>
+  <a class="entry-link" aria-label="post link to 改造openlayers构建轻量级专用地图信息系统（1）" href="https://lewang.dev/posts/2011-08-15-openlayers-custom/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2>mark一下学习计划
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>为2011年mark一篇日志
+好久都没有做总结了，好久都没有做什么项目了，整天忙着上课，读论文，最近一段时间还开始忙着谈恋爱了。
+2011年开始这几个月读了数篇readings in database systems中超牛们的论文，对关系数据库知识也有了一定了解，而不是停留在以前仅仅会用关系数据库那个层次上了。还读了simpledb的源代码，minibase的源代码没有读完，也不想读了，很没意思，Jim Gray大神说关系数据库没啥搞头了，我觉得也是。Stonebraker大神也搞出了scidb，不搞传统的关系数据库了。
+好吧，我也不搞关系数据库了，开始跟进scidb吧。no-sql，not only-sql。我来了。</p>
+  </div>
+  <footer class="entry-footer"><span title='2011-05-11 14:26:00 +0000 UTC'>May 11, 2011</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Le</footer>
+  <a class="entry-link" aria-label="post link to mark一下学习计划" href="https://lewang.dev/posts/2011-05-11-mark2011/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2>openlayers小结(有参考项目代码)
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>最近一段时间里，又做了一个跟openlayers相关的项目，但是到目前为止，我对openlayers还是不怎么了解，做东西也只是参考了openlayers的例子，以及自己的一些对openlayers用法的一些猜测。openlayers是一个用js实现的GIS前端框架，我的js目前还是打酱油的水平，要是没有jquery，那就基本写不了几行js代码了。js那是相当的强大，再加上VML\SVG、HTML5以及很多js rich框架等等，感觉js在浏览器端真是无所不能啊
+目前这个项目主要功能就是在某城市的地图上标示电缆、光缆、井盖、光缆接头、线杆、建筑物形状和位置、各分级单位的位置以及快速定位等等，要求的功能很简单，而且有前段时间做学校电子地图的一些积累，所以大概在两周左右就做完了这个项目。
+感觉openlayers的资料很少，自己也没有太多的时间和精力去读它的源码，目前我都是通过看openlayers自带的那些example和api文档来摸索的，下面简单总结一下openlayers的相关用法，欢迎大家拍砖。
+（以下均以OpenLayers-2.9.1为例说明，完整的项目代码在这里下载,地图图片http://121.193.130.68/list/）
+1、我只用到了openlayers里面的tilecache接口，其它的例如WMS，google map等等都没有用到。原因是这样的。tilecache接口是用来从tilecache服务器上请求图片的。通过观察google map或者一些其它的地图服务，发现他们都是使用256x256像素大小的图片（也就是tile）来拼接地图的，通常的做法是在gis服务器之间架设一个tilecache服务器，这样，gis生成的图片就可以缓存在tilecahe服务器上，而tilecache服务器仅仅提供简单http服务即可，如果请求的图片(tile)不在tilecache服务器上，那么tilecache服务器会想gis服务器请求，把把gis生成的图片缓存在tilecache服务器上。
+通过观察tilecache服务器的目录结构，发现缓存图片按照这样的模具结构存放：{缩放级别}/{横坐标}/{纵坐标}.{图片格式后缀名}，注意这个坐标系的原点在屏幕的左下角。观察到这个规律以后，就可以直接把一张大的地图按照256x256的大小切割，并按照上述的目录结构存放，值得注意的是，每个缩放级别要一定满足2^n的规律，即第一级整个地图大小若为1，那么第二级整个地图大小应为2，第三级应为4，依次类推。这里需要简单修改一下openlayers的tilecache接口代码，文件位于OpenLayers-2.9.1\lib\OpenLayers\Layer\TileCache.js,修改如下：
+1 var components = [
+2 this.layername,
+3 zeroPad(tileZ, 2),
+4 //zeroPad(parseInt(tileX / 1000000), 3),
+5 //zeroPad((parseInt(tileX / 1000) % 1000), 3),
+6 zeroPad((parseInt(tileX) % 1000), 3),
+7 //zeroPad(parseInt(tileY / 1000000), 3),
+8 //zeroPad((parseInt(tileY / 1000) % 1000), 3),
+9 zeroPad((parseInt(tileY) % 1000), 3) &#43; ‘.’ &#43; this.extension
+10 ];
+同样，由于只使用tilecache，所以openlayers里面其它的代码也可删除，以减小openlayers的代码量，最后通过自带的python写的工具，压缩openlayers代码即可。
+2.地图初次加载的时候，向服务器请求所有数据信息，并在地图上绘出相应的点线面。如何画出建筑的轮廓？用透明的就行了。
+a.显示点信息,包括画点、用图标显示点，代码如下。
+1 /*
+2 * 在地图上画出所有的点并保存点的相关信息到字典中
+3 */
+4 function initFeaturePoint(vectorLayer,categoryId){...</p>
+  </div>
+  <footer class="entry-footer"><span title='2010-10-11 12:42:00 +0000 UTC'>October 11, 2010</span>&nbsp;·&nbsp;5 min&nbsp;·&nbsp;Le</footer>
+  <a class="entry-link" aria-label="post link to openlayers小结(有参考项目代码)" href="https://lewang.dev/posts/2010-10-11-how_to_do_with_openlayers/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2>小记盛大校园牛人创新技术大赛
     </h2>
   </header>
   <div class="entry-content">
-    <p>这篇博客是从我的 BlogJava 上搬运过来的，原文地址 http://www.blogjava.net/canvas/archive/2010/09/18/snda.html
-好久没有在 blogjava 上面写东西了，前段时间一直在忙两个项目，忙到没有时间做一些总结，还好项目进展都还不错。这段时间自己虽然搞得很忙，但是自己却感到非常的开心，我突然觉得这个世界好像都是属于我的：遇到了很多给我帮助的人，做了很多自己喜欢做的事，开始了自己特别向往的生活。
+    <p>好久没有在blogjava上面写东西了，前段时间一直在忙两个项目，忙到没有时间做一些总结，还好项目进展都还不错。这段时间自己虽然搞得很忙，但是自己却感到非常的开心，我突然觉得这个世界好像都是属于我的：遇到了很多给我帮助的人，做了很多自己喜欢做的事，开始了自己特别向往的生活。
 突然觉得自己的梦想正在慢慢靠近，简直是触手可及，但是我还是冷静了一下，没有急忙着伸出手，还是把梦想放在高高的地方，让自己一直都能看到，然后去追逐吧。
 觉得自己越来越感性，喜欢研究血型，喜欢研究星座，喜欢思考，喜欢去捕捉自己的点点思绪，然后写成文字，留在纸上，也觉得自己越来越走向偏执，而不是小时候那种的任性。
-言归正传，说说自己参加的这次盛大校园牛人创新技术大赛。比赛相关细节请访问 http://ic.sdo.com/ 。这是自己再次成为学生以后参加的第一个面向全国在校学生的技术大赛，在这个比赛中，我一个人一组，并最终进入决赛获得了三等奖，拿到了 1w 块的奖金。自己真是太幸运了，从决定参加比赛到完成代码大概用了两个星期的时间，而且主要的编码工作还只是用了两个周末的时间来完成的。
+言归正传，说说自己参加的这次盛大校园牛人创新技术大赛。比赛相关细节请访问http://ic.sdo.com/。这是自己再次成为学生以后参加的第一个面向全国在校学生的技术大赛，在这个比赛中，我一个人一组，并最终进入决赛获得了三等奖，拿到了1w块的奖金。自己真是太幸运了，从决定参加比赛到完成代码大概用了两个星期的时间，而且主要的编码工作还只是用了两个周末的时间来完成的。
 下面说说我做了什么。
-我很喜欢旅游，喜欢背着包安静的行走，拍下自己路过的一切景色，也很喜欢在自己的日记本里记下自己每一天的心情。这个小应用旨在让每一个喜欢旅游的中国人都能在自己祖国的版图上留下自己的足迹，形成自己的足迹快照，并且能够在自己留下的足迹的地方添加日志和上传照片，这样去过相同地方的人就可以交流着相互的旅行记忆，想去同一个地方的人也可以组团或者提供那种类似“沙发客”的那种服务，帮助别人实现自己的旅行梦想。同时，可以对用户的数据进行发掘，也许 20 年后，在相同一天去过某个地方的人会收到一封相同的信，内容是我们为他保留的日志和照片；足迹中国还应该积极发掘想要去相同地方的或者路线相同相似的人，推荐他们组成一个旅行梦之队，为这些人提供订票、预定住所、购买保险等等一站式的旅游服务。
+我很喜欢旅游，喜欢背着包安静的行走，拍下自己路过的一切景色，也很喜欢在自己的日记本里记下自己每一天的心情。这个小应用旨在让每一个喜欢旅游的中国人都能在自己祖国的版图上留下自己的足迹，形成自己的足迹快照，并且能够在自己留下的足迹的地方添加日志和上传照片，这样去过相同地方的人就可以交流着相互的旅行记忆，想去同一个地方的人也可以组团或者提供那种类似“沙发客”的那种服务，帮助别人实现自己的旅行梦想。同时，可以对用户的数据进行发掘，也许20年后，在相同一天去过某个地方的人会收到一封相同的信，内容是我们为他保留的日志和照片；足迹中国还应该积极发掘想要去相同地方的或者路线相同相似的人，推荐他们组成一个旅行梦之队，为这些人提供订票、预定住所、购买保险等等一站式的旅游服务。
 我给这个小应用取名为足迹中国。
-因为我想： 在自己去过的每一个地方留下足迹，分享自己的旅行记忆 在自己想去的每一个地方做个标记，分享自己的旅行梦想。
+因为我想：
+在自己去过的每一个地方留下足迹，分享自己的旅行记忆
+在自己想去的每一个地方做个标记，分享自己的旅行梦想。
 东西弄得很简单，技术细节就不说了。下面说说比赛入围以后的，我去到盛大的一些所见所闻。
-说到比赛，我想除了收获了最直接的奖金之外，还有如朋友、实实在在的企业体验、以及对盛大的了解等等。我想，说到盛大，几乎在每一个中国网民的心里网络游戏简直就是他的代名词，在参观了盛大创新院、盛大在线、盛大客服之后以及 HR 老师们培训的过程中，HR 老师不断问我们盛大是一个什么类型的企业，最后终于被成功洗脑，我现在可以清楚的说出盛大是一个互动娱乐媒体企业了。
-在上海待的这几天，盛大在线和盛大创新院的老师们都给我们做了比较周到的安排。第一天上午创新院的范老师和庄老师带领我们参观了创新院(其实之前我已经来过创新院了，并且待了一个多月)，并给我们下午的演讲做了一次演练。下午的时候盛大在线的朱总、创新院的郭院长以及其他几位盛大各部门的大牛们准时坐到了评委席，我第一个上，有点紧张啊(此处省去 200 字)。晚上的时候和专家们共进晚餐，可以和专家直接交谈，咨询技术问题，交流自己的想法确实是一件非常爽的事情。当晚还和 HR 的老师们交流和很长时间，了解到了盛大的一些福利待遇，最重要的是HR姐姐们传授了我们很多找工作方面的有用经验。当然HR姐姐们还说那张获奖证书就是盛大的绿卡。。。第一天就这样过去了。
-第二天参观了盛大在线和客服中心，并且最终揭晓了奖项情况。最后很意外的让我代表了所有获奖同学上台做个简单的发言。真是有点激动啊，被代表了 20 多年了，今天终于可以&#34;代表&#34;一下别人了。立马沉住气，开始打腹稿。等到走上讲台之后，才发现刚才打完的腹稿早就被胃消化，没被吸收就直接进入大肠了。算了，于是胡言乱语了一通，现在只记得说自己想去创新院实习。因为自己确实希望能去创新院实习。我在创新院呆过一段时间，对那里的技术氛围有些了解，感觉那里的每个人都超牛，每个人都能不断的闪出非常吸引人的点子。那里环境优雅，一切都非常好，给人一种自由的感觉。
-ft。。。一下子写了这么多了。。。就此搁笔，期待奖金早日入账！我就可以换个 Android 的手机了</p>
+说到比赛，我想除了收获了最直接的奖金之外，还有如朋友、实实在在的企业体验、以及对盛大的了解等等。我想，说到盛大，几乎在每一个中国网民的心里网络游戏简直就是他的代名词，在参观了盛大创新院、盛大在线、盛大客服之后以及HR老师们培训的过程中，HR老师不断问我们盛大是一个什么类型的企业，最后终于被成功洗脑，我现在可以清楚的说出盛大是一个互动娱乐媒体企业了。
+在上海待的这几天，盛大在线和盛大创新院的老师们都给我们做了比较周到的安排。第一天上午创新院的范老师和庄老师带领我们参观了创新院(其实之前我已经来过创新院了，并且待了一个多月)，并给我们下午的演讲做了一次演练。下午的时候盛大在线的朱总、创新院的郭院长以及其他几位盛大各部门的大牛们准时坐到了评委席，我第一个上，有点紧张啊(此处省去200字)。晚上的时候和专家们共进晚餐，可以和专家直接交谈，咨询技术问题，交流自己的想法确实是一件非常爽的事情。当晚还和HR的老师们交流和很长时间，了解到了盛大的一些福利待遇，最重要的是HR姐姐们传授了我们很多找工作方面的有用经验。当然HR姐姐们还说那张获奖证书就是盛大的绿卡。。。第一天就这样过去了。
+第二天参观了盛大在线和客服中心，并且最终揭晓了奖项情况。最后很意外的让我代表了所有获奖同学上台做个简单的发言。真是有点激动啊，被代表了20多年了，今天终于可以代表一下别人了。立马沉住气，开始打腹稿。等到走上讲台之后，才发现刚才打完的腹稿早就被胃消化，没被吸收就直接进入大肠了。算了，于是胡言乱语了一通，现在只记得说自己想去创新院实习。因为自己确实希望能去创新院实习。我在创新院呆过一段时间，对那里的技术氛围有些了解，感觉那里的每个人都超牛，每个人都能不断的闪出非常吸引人的点子。那里环境优雅，一切都非常好，给人一种自由的感觉。
+ft。。。一下子写了这么多了。。。就此搁笔，期待奖金早日入账！我就可以换个android的手机了</p>
   </div>
-  <footer class="entry-footer">1 min</footer>
+  <footer class="entry-footer"><span title='2010-09-18 09:13:00 +0000 UTC'>September 18, 2010</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Le</footer>
   <a class="entry-link" aria-label="post link to 小记盛大校园牛人创新技术大赛" href="https://lewang.dev/posts/2010-09-18-snda/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2>删除Firefox地址栏下拉列表中的指定记录
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>2010年的第一篇日志献给了firefox
+原因很简单，我要删掉删除Firefox地址栏下拉列表中指定的几条记录，试了del、alt&#43;del、shift&#43;del、ctrl&#43;del都不管用
+才发现这些记录都已经是书签了，于是选择:书签–&gt;管理书签–&gt;在搜索书签栏里面输入要删除的网址，找到删除即可</p>
+  </div>
+  <footer class="entry-footer"><span title='2010-01-11 08:31:00 +0000 UTC'>January 11, 2010</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Le</footer>
+  <a class="entry-link" aria-label="post link to 删除Firefox地址栏下拉列表中的指定记录" href="https://lewang.dev/posts/2010-01-11-del-firefox-address/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2>用飞信(libfetion)定时发天气预报
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>什么是libfetion？请访问http://www.libfetion.cn/查看
+以下都是在ubuntu下进行的
+参考
+http://www.libfetion.cn/Docs-dve/Build-LibFx-on-ubuntu.txt
+请使用svn客户端下载libfetion-gui的源码
+http://libfetion-gui.googlecode.com/svn/
+安装开发过程中需要的软件
+1 sudo apt-get install libc-dev
+2 sudo apt-get install g&#43;&#43;
+3 sudo apt-get install libcurl4-openssl-dev
+在trunk/qt4_src/libfetion/lib目录下找到静态库libfetion_32.a，由于代码打算是用python来写，所以制作了一个动态库libfetion.so
+具体步骤如下：
+#解压静态库为*.o
+ar -x libfetion_32.a
+#重新封装为so
+g&#43;&#43; -shared -Wall -fPIC -lcurl -pthread *.o -o libfetion.so
+#查看so[可选步骤]
+nm libfetion.so
+发送天气预报的python代码如下，libfetion.so中具体的方法请查看trunk/qt4_src/libfetion/include/libfetion/libfetion.h
+1 #!/usr/bin/env python
+2 #coding=utf-8
+3 #only can run at linux
+4 import os
+5 import ctypes
+6 import urllib2
+7
+8 #城市代码列表
+9 city_codes = {
+10 ‘合肥’ : ‘CHXX0448’,...</p>
+  </div>
+  <footer class="entry-footer"><span title='2009-11-23 06:56:00 +0000 UTC'>November 23, 2009</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Le</footer>
+  <a class="entry-link" aria-label="post link to 用飞信(libfetion)定时发天气预报" href="https://lewang.dev/posts/2009-11-23-libfetion/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2>使用Openlayers搭一个E校园(e-campus),类似e都市，6d校园
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>最近为学校搭建了一个校园电子地图，做得不怎么好，只能凑合着用了。
+快回家了，做点记录，欢迎拍砖指正。
+新生应该可以在录取通知书里看到这个地图的链接了^_^
+刚开始做这个地图的时候，打算使用geoserver等专业的东西，时间太紧了，对GIS一点了解都没有，所以就放弃了。看到了6D校园和e都市的实现方案，找了一找，发现了mapeasy这个js库，于是把6D校园的地图图片下载下来了，自己试着用mapeasy实现了一下，效果很好，但是总感觉不对劲，像6D校园和e都市都是使用html map area来标注地图信息的，这样就与真正的地理信息系统差远了，不好快速的添加信息或者做路径搜索了，于是又不是很满意。在使用geoserver的时候，注意到它显示地图信息使用了openlayers，于是简单看了一下openlayers的例子，感觉很强大，也比较符合我的想法。
+openlayers可以直接使用图片做地图的来源，然后直接编辑地图，添加地图的地理信息，包括点，线，多边形区域，这样就很容易做路径搜索，也很快速容易添加地图的地理信息了。
+看到openlayers可以使用tilecache做地图的图片来源，我就搭建了tilecache服务器，这个tilecache是用python写的，很容易配置。我仔细看了一下tilecache的配置，发现这个完全可以直接使用图片就可以，只是把切好的图片按照titlecache的目录结构放置好，就行了。于是简单的修改了一下openlayers的tilecache接口，就基本实现了电子地图。地图原图是一个面积很大图片，我用PIL库，使用python写了一个简单的切图程序，把地图按照横纵坐标切成了256X256大小的图片，并且按照自己定制tilecache的目录结构存好图片，最后把这些图片放在apache http服务器下，使用openlayers直接读取即可。
+最后实现的功能有：地图浏览，地图缩略展示，地面建筑标记，地面建筑提示，路线标记，快速定位，后台添加信息等(路径搜索暂未实现)
+其中后台可以直接画出建筑的多边形、路线、点标记，然后添加信息
+后台管理页面如下：</p>
+  </div>
+  <footer class="entry-footer"><span title='2009-07-10 16:57:00 +0000 UTC'>July 10, 2009</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Le</footer>
+  <a class="entry-link" aria-label="post link to 使用Openlayers搭一个E校园(e-campus),类似e都市，6d校园" href="https://lewang.dev/posts/2009-07-10-e-campus/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
     <a class="prev" href="https://lewang.dev/posts/page/2/">
       «&nbsp;Prev&nbsp;
+    </a>
+    <a class="next" href="https://lewang.dev/posts/page/4/">Next&nbsp;&nbsp;»
     </a>
   </nav>
 </footer>

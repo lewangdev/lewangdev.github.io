@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>中国各城市的经纬度数据(精确到县级城市) | 小碼哥</title>
+<meta name="keywords" content="blogjava">
+<meta name="description" content="经纬度数据收集自 维北有斗-天文爱好者的乐园
+编写这篇博文有几个目的：
+首先认识了两个单词
+latitude [lat·i·tude || &rsquo;lætɪtuːd /-tjuːd] n. 纬度; 回旋余地, 自由; 纬度地区
+longitude [lon·gi·tude || &rsquo;lɑndʒɪtuːd /&rsquo;lɒndʒɪtjuːd] n. 经度; 经线
+1.学习dom4j的简单用法
+2.做一个方便使用的全国城市经纬度数据库
+3.利用google天气api做一个全面的天气预报服务
+4.学习用python编写webservice
+内容：
+1.学习dom4j的简单用法
+收集了的经纬度都是按照城市分开的单独的htm文件，我已经处理过为符合html4.0标准的html文件了，即所有的标识都是成对的，这里可以下载这些文件(点击下载经纬度html包)
+(1)如何使用dom4j读入xml文档
+使用dom4j读入xml文档代码片段
+1 File file = new File(&ldquo;G:\\workspace\\test.xml&rdquo;);
+2 SAXReader reader = new SAXReader();
+3 //根据实际情况设置编码
+4 reader.setEncoding(&ldquo;GBK&rdquo;);
+5 Document doc = reader.read(files);
+6
+7 //获得xml文档的根节点
+8 Element root = doc.getRootElement();
+(2)如何遍历xml文档的所有结点
+这样就读入了这个xml文档，并获得了这个xml文档对象的根结点，由于xml文档是一个树形结构，这样就很容易遍历它所有的结点了。
+这里根据自己的需要，测试使用了两种遍历方法，一种是根据树的结构编写递归程序，一种就是直接使用循环，还有都dom4j自带的visitor模式访问也很好用，这里有篇参考文档，可以看看(查看)
+使用递归遍历
+public void visitAll(Element root, Element child){// 枚举所有子节点for ( Iterator i = root.">
+<meta name="author" content="Le">
+<link rel="canonical" href="https://lewang.dev/posts/2009-03-12-gs-china/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.css" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://lewang.dev/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://lewang.dev/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://lewang.dev/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://lewang.dev/apple-touch-icon.png">
+<link rel="mask-icon" href="https://lewang.dev/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-12QS222X0Z"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-12QS222X0Z', { 'anonymize_ip': false });
+}
+</script>
+<meta property="og:title" content="中国各城市的经纬度数据(精确到县级城市)" />
+<meta property="og:description" content="经纬度数据收集自 维北有斗-天文爱好者的乐园
+编写这篇博文有几个目的：
+首先认识了两个单词
+latitude [lat·i·tude || &rsquo;lætɪtuːd /-tjuːd] n. 纬度; 回旋余地, 自由; 纬度地区
+longitude [lon·gi·tude || &rsquo;lɑndʒɪtuːd /&rsquo;lɒndʒɪtjuːd] n. 经度; 经线
+1.学习dom4j的简单用法
+2.做一个方便使用的全国城市经纬度数据库
+3.利用google天气api做一个全面的天气预报服务
+4.学习用python编写webservice
+内容：
+1.学习dom4j的简单用法
+收集了的经纬度都是按照城市分开的单独的htm文件，我已经处理过为符合html4.0标准的html文件了，即所有的标识都是成对的，这里可以下载这些文件(点击下载经纬度html包)
+(1)如何使用dom4j读入xml文档
+使用dom4j读入xml文档代码片段
+1 File file = new File(&ldquo;G:\\workspace\\test.xml&rdquo;);
+2 SAXReader reader = new SAXReader();
+3 //根据实际情况设置编码
+4 reader.setEncoding(&ldquo;GBK&rdquo;);
+5 Document doc = reader.read(files);
+6
+7 //获得xml文档的根节点
+8 Element root = doc.getRootElement();
+(2)如何遍历xml文档的所有结点
+这样就读入了这个xml文档，并获得了这个xml文档对象的根结点，由于xml文档是一个树形结构，这样就很容易遍历它所有的结点了。
+这里根据自己的需要，测试使用了两种遍历方法，一种是根据树的结构编写递归程序，一种就是直接使用循环，还有都dom4j自带的visitor模式访问也很好用，这里有篇参考文档，可以看看(查看)
+使用递归遍历
+public void visitAll(Element root, Element child){// 枚举所有子节点for ( Iterator i = root." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://lewang.dev/posts/2009-03-12-gs-china/" /><meta property="og:image" content="https://lewang.dev/lewangdev-cover.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2009-03-12T12:34:00+00:00" />
+<meta property="article:modified_time" content="2009-03-12T12:34:00+00:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://lewang.dev/lewangdev-cover.png"/>
+
+<meta name="twitter:title" content="中国各城市的经纬度数据(精确到县级城市)"/>
+<meta name="twitter:description" content="经纬度数据收集自 维北有斗-天文爱好者的乐园
+编写这篇博文有几个目的：
+首先认识了两个单词
+latitude [lat·i·tude || &rsquo;lætɪtuːd /-tjuːd] n. 纬度; 回旋余地, 自由; 纬度地区
+longitude [lon·gi·tude || &rsquo;lɑndʒɪtuːd /&rsquo;lɒndʒɪtjuːd] n. 经度; 经线
+1.学习dom4j的简单用法
+2.做一个方便使用的全国城市经纬度数据库
+3.利用google天气api做一个全面的天气预报服务
+4.学习用python编写webservice
+内容：
+1.学习dom4j的简单用法
+收集了的经纬度都是按照城市分开的单独的htm文件，我已经处理过为符合html4.0标准的html文件了，即所有的标识都是成对的，这里可以下载这些文件(点击下载经纬度html包)
+(1)如何使用dom4j读入xml文档
+使用dom4j读入xml文档代码片段
+1 File file = new File(&ldquo;G:\\workspace\\test.xml&rdquo;);
+2 SAXReader reader = new SAXReader();
+3 //根据实际情况设置编码
+4 reader.setEncoding(&ldquo;GBK&rdquo;);
+5 Document doc = reader.read(files);
+6
+7 //获得xml文档的根节点
+8 Element root = doc.getRootElement();
+(2)如何遍历xml文档的所有结点
+这样就读入了这个xml文档，并获得了这个xml文档对象的根结点，由于xml文档是一个树形结构，这样就很容易遍历它所有的结点了。
+这里根据自己的需要，测试使用了两种遍历方法，一种是根据树的结构编写递归程序，一种就是直接使用循环，还有都dom4j自带的visitor模式访问也很好用，这里有篇参考文档，可以看看(查看)
+使用递归遍历
+public void visitAll(Element root, Element child){// 枚举所有子节点for ( Iterator i = root."/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Posts",
+      "item": "https://lewang.dev/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  3 ,
+      "name": "中国各城市的经纬度数据(精确到县级城市)",
+      "item": "https://lewang.dev/posts/2009-03-12-gs-china/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "中国各城市的经纬度数据(精确到县级城市)",
+  "name": "中国各城市的经纬度数据(精确到县级城市)",
+  "description": "经纬度数据收集自 维北有斗-天文爱好者的乐园\n编写这篇博文有几个目的：\n首先认识了两个单词\nlatitude [lat·i·tude || \u0026rsquo;lætɪtuːd /-tjuːd] n. 纬度; 回旋余地, 自由; 纬度地区\nlongitude [lon·gi·tude || \u0026rsquo;lɑndʒɪtuːd /\u0026rsquo;lɒndʒɪtjuːd] n. 经度; 经线\n1.学习dom4j的简单用法\n2.做一个方便使用的全国城市经纬度数据库\n3.利用google天气api做一个全面的天气预报服务\n4.学习用python编写webservice\n内容：\n1.学习dom4j的简单用法\n收集了的经纬度都是按照城市分开的单独的htm文件，我已经处理过为符合html4.0标准的html文件了，即所有的标识都是成对的，这里可以下载这些文件(点击下载经纬度html包)\n(1)如何使用dom4j读入xml文档\n使用dom4j读入xml文档代码片段\n1 File file = new File(\u0026ldquo;G:\\\\workspace\\\\test.xml\u0026rdquo;);\n2 SAXReader reader = new SAXReader();\n3 //根据实际情况设置编码\n4 reader.setEncoding(\u0026ldquo;GBK\u0026rdquo;);\n5 Document doc = reader.read(files);\n6\n7 //获得xml文档的根节点\n8 Element root = doc.getRootElement();\n(2)如何遍历xml文档的所有结点\n这样就读入了这个xml文档，并获得了这个xml文档对象的根结点，由于xml文档是一个树形结构，这样就很容易遍历它所有的结点了。\n这里根据自己的需要，测试使用了两种遍历方法，一种是根据树的结构编写递归程序，一种就是直接使用循环，还有都dom4j自带的visitor模式访问也很好用，这里有篇参考文档，可以看看(查看)\n使用递归遍历\npublic void visitAll(Element root, Element child){\r// 枚举所有子节点\rfor ( Iterator i = root.",
+  "keywords": [
+    "blogjava"
+  ],
+  "articleBody": "经纬度数据收集自 维北有斗-天文爱好者的乐园\n编写这篇博文有几个目的：\n首先认识了两个单词\nlatitude [lat·i·tude || ’lætɪtuːd /-tjuːd] n. 纬度; 回旋余地, 自由; 纬度地区\nlongitude [lon·gi·tude || ’lɑndʒɪtuːd /’lɒndʒɪtjuːd] n. 经度; 经线\n1.学习dom4j的简单用法\n2.做一个方便使用的全国城市经纬度数据库\n3.利用google天气api做一个全面的天气预报服务\n4.学习用python编写webservice\n内容：\n1.学习dom4j的简单用法\n收集了的经纬度都是按照城市分开的单独的htm文件，我已经处理过为符合html4.0标准的html文件了，即所有的标识都是成对的，这里可以下载这些文件(点击下载经纬度html包)\n(1)如何使用dom4j读入xml文档\n使用dom4j读入xml文档代码片段\n1 File file = new File(“G:\\\\workspace\\\\test.xml”);\n2 SAXReader reader = new SAXReader();\n3 //根据实际情况设置编码\n4 reader.setEncoding(“GBK”);\n5 Document doc = reader.read(files);\n6\n7 //获得xml文档的根节点\n8 Element root = doc.getRootElement();\n(2)如何遍历xml文档的所有结点\n这样就读入了这个xml文档，并获得了这个xml文档对象的根结点，由于xml文档是一个树形结构，这样就很容易遍历它所有的结点了。\n这里根据自己的需要，测试使用了两种遍历方法，一种是根据树的结构编写递归程序，一种就是直接使用循环，还有都dom4j自带的visitor模式访问也很好用，这里有篇参考文档，可以看看(查看)\n使用递归遍历\npublic void visitAll(Element root, Element child){\r// 枚举所有子节点\rfor ( Iterator i = root.elementIterator(); i.hasNext(); ) {\rElement element = (Element) i.next();\rSystem.out.println(stringTrim(element.getText()));\rif(this.stringTrim(element.getTextTrim()).equals(\"\")){\rreturn;\r} else {\rElement tmp = child.addElement(\"city\");\rvisitAll(element, tmp);\r}\r}\r}\r这里提供的xml文档层数为2，直接循环即可\n直接循环遍历\npublic void visitAll(Element root, Element child){\r// 枚举所有子节点\rfor ( Iterator i = root.elementIterator(); i.hasNext(); ) {\rElement element = (Element) i.next(); Iterator j = element.elementIterator();\rElement tmpElement = (Element)j.next();\rif(!(stringTrim(tmpElement.getTextTrim()).equals(\"城市名\")))\r{\rElement tmp = child.addElement(\"city\");\rtmp.addAttribute(\"name\", stringTrim(tmpElement.getTextTrim()).trim());\rtmpElement = (Element)j.next();\rtmp.addAttribute(\"longitude\", stringTrim(tmpElement.getTextTrim()).trim());\rtmpElement = (Element)j.next();\rtmp.addAttribute(\"latitude\", stringTrim(tmpElement.getTextTrim()).trim());\r}\r}\r}\r关于visitor模式的使用，请参看上面给出的参考文档\n(3)创建新的xml文档\n创建xml文档\npublic void createXMLFile(String filename) throws Exception{\r//使用辅助方法创建文档对象\rDocument res = DocumentHelper.createDocument();\r//添加文档跟结点country\rElement rootElement = res.addElement(\"country\");\r//给根节点添加属性name，值为\"中国\"\rrootElement.addAttribute(\"name\", \"中国\");\r//打开目录\rFile file = new File(\"G:\\\\workspace\\\\jwd\\\\jwd\");\r//打开目录下所有的xml文档\rFile[] files = file.listFiles();\r//依次操作每个xml文档\rfor(int i = 0; i \u003c files.length; i ++){\r//获取文件名，去掉文件扩展名\rString[] name = files[i].getName().split(\"\\\\.\");\r//在根结点下添加子节点province\rElement childElement = rootElement.addElement(\"province\");\r//添加属性name，值为文件名\rchildElement.addAttribute(\"name\", name[0].trim());\r//创建reader\rSAXReader reader = new SAXReader();\r//根据实际情况设置编码\rreader.setEncoding(\"GBK\");\rDocument doc = reader.read(files[i]);\r//获得xml文档的根节点\rElement root = doc.getRootElement();\r//遍历所有的结点\rthis.visitAll(root, childElement);\r}\r//格式化即将输出的xml，让它看起来整齐点\rOutputFormat format = OutputFormat.createPrettyPrint();\r/*将document中的内容写入文件中 */\rXMLWriter writer = new XMLWriter(new FileWriter(new File(filename)),format);\rwriter.write(res);\rwriter.close(); }\r整个合并所有html页为一个xml的代码如下\n完整的代码\nimport java.io.File;\rimport java.io.FileWriter;\rimport java.util.Iterator;\rimport org.dom4j.Document;\rimport org.dom4j.DocumentHelper;\rimport org.dom4j.Element;\rimport org.dom4j.io.OutputFormat;\rimport org.dom4j.io.SAXReader;\rimport org.dom4j.io.XMLWriter;\r/**\r* @author canvas\r*\r*/\rpublic class GIS {\rpublic void createXMLFile(String filename) throws Exception{\r//使用辅助方法创建文档对象\rDocument res = DocumentHelper.createDocument();\r//添加文档跟结点country\rElement rootElement = res.addElement(\"country\");\r//给根节点添加属性name，值为\"中国\"\rrootElement.addAttribute(\"name\", \"中国\");\r//打开目录\rFile file = new File(\"G:\\\\workspace\\\\jwd\\\\jwd\");\r//打开目录下所有的xml文档\rFile[] files = file.listFiles();\r//依次操作每个xml文档\rfor(int i = 0; i \u003c files.length; i ++){\r//获取文件名，去掉文件扩展名\rString[] name = files[i].getName().split(\"\\\\.\");\r//在根结点下添加子节点province\rElement childElement = rootElement.addElement(\"province\");\r//添加属性name，值为文件名\rchildElement.addAttribute(\"name\", name[0].trim());\r//创建reader\rSAXReader reader = new SAXReader();\r//根据实际情况设置编码\rreader.setEncoding(\"GBK\");\rDocument doc = reader.read(files[i]);\r//获得xml文档的根节点\rElement root = doc.getRootElement();\r//遍历所有的结点\rthis.visitAll(root, childElement);\r}\r//格式化即将输出的xml，让它看起来整齐点\rOutputFormat format = OutputFormat.createPrettyPrint();\r/*将document中的内容写入文件中 */\rXMLWriter writer = new XMLWriter(new FileWriter(new File(filename)),format);\rwriter.write(res);\rwriter.close(); }\rpublic void visitAll(Element root, Element child){\r// 枚举所有子节点\rfor ( Iterator i = root.elementIterator(); i.hasNext(); ) {\rElement element = (Element) i.next();\r//System.out.println(stringTrim(element.getText()));\r/*if(this.stringTrim(element.getTextTrim()).equals(\"\")){\rreturn;\r} else {\rElement tmp = child.addElement(\"city\");\rvisitAll(element, tmp);\r}*/\rIterator j = element.elementIterator();\rElement tmpElement = (Element)j.next();\rif(!(stringTrim(tmpElement.getTextTrim()).equals(\"城市名\")))\r{\rElement tmp = child.addElement(\"city\");\rtmp.addAttribute(\"name\", stringTrim(tmpElement.getTextTrim()).trim());\rtmpElement = (Element)j.next();\rtmp.addAttribute(\"longitude\", stringTrim(tmpElement.getTextTrim()).trim());\rtmpElement = (Element)j.next();\rtmp.addAttribute(\"latitude\", stringTrim(tmpElement.getTextTrim()).trim());\r}\r}\r}\rpublic String stringTrim(String str){\r//去掉空格和全角空格\rString[] tmp = str.split(\"\\\\s| \");\rStringBuffer sb = new StringBuffer();\rfor(int i = 0; i \u003c tmp.length; i ++){\rsb.append(tmp[i].trim());\r}\rreturn sb.toString();\r}\r/**\r* @param args\r*/\rpublic static void main(String[] args) {\rtry {\rnew GIS().createXMLFile(\"d:\\\\GI-China.xml\");\r} catch (Exception e) {\re.printStackTrace();\r}\r}\r}\r2.做一个方便使用的全国城市经纬度数据库\n经过上面的操作，一个完整的全国城市经纬度数据库就做好了，只不过它是xml格式的，看起来还不错，[下载这个数据库](/Files/canvas/GI- China.zip “下载这个数据库”)\n生成的xml展示\n\u003c?xml version=\"1.0\" encoding=\"UTF-8\"?\u003e\r3.利用google天气api做一个全面的天气预报服务\ngoogle提供的天气api可以有两种方式访问，\n一种是\n[ http://www.google.com/ig/api?hl=zh- cn\u0026weather=,,,30670000,104019996](http://www.google.com/ig/api?hl=zh- cn\u0026weather=,,,30670000,104019996)\n30670000为纬度，104019996为经度，这个是把上面的xml中的经纬度乘以了10^6(10的六次方)，这个方法有个好处，就是可以根据经纬度获得天气预报，自然预报地区也可变得精确些\n另一种是\nhttp://www.google.com/ig/api?weather=Beijing\n这个链接比较简单，但是支持的城市比较少，所以还是使用第一种方式比较好，于是才整理好了所有城市的经纬度\n访问上面的链接，google返回的xml内容看起来是这样的\ngoogle返回的xml\n1 \u003c?xml version=\"1.0\" encoding=\"UTF-8\"?\u003e\n2 对于返回的xml中的，可以这样构造链接获取google提供的图片\n取其中的cn_cloudy.gif，然后放在http://www.google.cn/ig/images/weather/之后，生成的链接是\nhttp://www.google.cn/ig/images/weather/cn_cloudy.png\n这样这个天气api就基本构思好了\n4.学习用python编写webservice(待续……)\n将这个服务编写为一个webservice，决定使用python去写，所以要学习一下python了\n",
+  "wordCount" : "628",
+  "inLanguage": "en",
+  "datePublished": "2009-03-12T12:34:00Z",
+  "dateModified": "2009-03-12T12:34:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "Le"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://lewang.dev/posts/2009-03-12-gs-china/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "小碼哥",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://lewang.dev/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://lewang.dev" accesskey="h" title="小碼哥 (Alt + H)">小碼哥</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://lewang.dev/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://lewang.dev/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://lewang.dev">Home</a>&nbsp;»&nbsp;<a href="https://lewang.dev/posts/">Posts</a></div>
+    <h1 class="post-title">
+      中国各城市的经纬度数据(精确到县级城市)
+    </h1>
+    <div class="post-meta"><span title='2009-03-12 12:34:00 +0000 UTC'>March 12, 2009</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Le
+
+</div>
+  </header> 
+
+  <div class="post-content"><p>经纬度数据收集自 <a href="http://samuel.lamost.org/">维北有斗-天文爱好者的乐园</a><br>
+编写这篇博文有几个目的：<br>
+首先认识了两个单词</p>
+<p><strong>latitude</strong> [lat·i·tude || &rsquo;lætɪtuːd /-tjuːd] n. 纬度; 回旋余地, 自由; 纬度地区</p>
+<p><strong>longitude</strong> [lon·gi·tude || &rsquo;lɑndʒɪtuːd /&rsquo;lɒndʒɪtjuːd] n. 经度; 经线</p>
+<p>1.学习dom4j的简单用法<br>
+2.做一个方便使用的全国城市经纬度数据库<br>
+3.利用google天气api做一个全面的天气预报服务<br>
+4.学习用python编写webservice</p>
+<p>内容：<br>
+1.学习dom4j的简单用法<br>
+收集了的经纬度都是按照城市分开的单独的htm文件，我已经处理过为符合html4.0标准的html文件了，即所有的标识都是成对的，这里可以下载这些文件<a href="/Files/canvas/jwd.zip" title="经纬度html包">(点击下载经纬度html包)</a><br>
+(1)如何使用dom4j读入xml文档</p>
+<p><img loading="lazy" src="/Images/OutliningIndicators/ContractedBlock.gif" alt=""  />
+<img loading="lazy" src="/Images/OutliningIndicators/ExpandedBlockStart.gif" alt=""  />
+使用dom4j读入xml文档代码片段<br>
+1 File file = new File(&ldquo;G:\\workspace\\test.xml&rdquo;);<br>
+2 SAXReader reader = new SAXReader();<br>
+3 //根据实际情况设置编码<br>
+4 reader.setEncoding(&ldquo;GBK&rdquo;);<br>
+5 Document doc = reader.read(files);<br>
+6<br>
+7 //获得xml文档的根节点<br>
+8 Element root = doc.getRootElement();</p>
+<p>(2)如何遍历xml文档的所有结点<br>
+这样就读入了这个xml文档，并获得了这个xml文档对象的根结点，由于xml文档是一个树形结构，这样就很容易遍历它所有的结点了。<br>
+这里根据自己的需要，测试使用了两种遍历方法，一种是根据树的结构编写递归程序，一种就是直接使用循环，还有都dom4j自带的visitor模式访问也很好用，这里有篇参考文档，可以看看(<a href="http://www.cnblogs.com/eafy/archive/2008/04/11/1148006.html">查看</a>)</p>
+<p><img loading="lazy" src="/Images/OutliningIndicators/ContractedBlock.gif" alt=""  />
+<img loading="lazy" src="/Images/OutliningIndicators/ExpandedBlockStart.gif" alt=""  />
+使用递归遍历</p>
+<pre><code>public  void visitAll(Element root, Element child){
+// 枚举所有子节点
+for ( Iterator i = root.elementIterator(); i.hasNext(); ) {
+Element element = (Element) i.next();
+System.out.println(stringTrim(element.getText()));
+if(this.stringTrim(element.getTextTrim()).equals(&quot;&quot;)){
+return;
+} 
+else {
+Element tmp = child.addElement(&quot;city&quot;);
+visitAll(element, tmp);
+}
+}
+}
+</code></pre>
+<p>这里提供的xml文档层数为2，直接循环即可</p>
+<p><img loading="lazy" src="/Images/OutliningIndicators/ContractedBlock.gif" alt=""  />
+<img loading="lazy" src="/Images/OutliningIndicators/ExpandedBlockStart.gif" alt=""  />
+直接循环遍历</p>
+<pre><code>public  void visitAll(Element root, Element child){
+// 枚举所有子节点
+for ( Iterator i = root.elementIterator(); i.hasNext(); ) {
+Element element = (Element) i.next();      
+Iterator j = element.elementIterator();
+Element tmpElement = (Element)j.next();
+if(!(stringTrim(tmpElement.getTextTrim()).equals(&quot;城市名&quot;)))
+{
+Element tmp = child.addElement(&quot;city&quot;);
+tmp.addAttribute(&quot;name&quot;, 
+stringTrim(tmpElement.getTextTrim()).trim());
+tmpElement = (Element)j.next();
+tmp.addAttribute(&quot;longitude&quot;, 
+stringTrim(tmpElement.getTextTrim()).trim());
+tmpElement = (Element)j.next();
+tmp.addAttribute(&quot;latitude&quot;, 
+stringTrim(tmpElement.getTextTrim()).trim());
+}
+}
+}
+</code></pre>
+<p>关于visitor模式的使用，请参看上面给出的参考文档</p>
+<p>(3)创建新的xml文档</p>
+<p><img loading="lazy" src="/Images/OutliningIndicators/ContractedBlock.gif" alt=""  />
+<img loading="lazy" src="/Images/OutliningIndicators/ExpandedBlockStart.gif" alt=""  />
+创建xml文档</p>
+<pre><code>public void createXMLFile(String filename) throws Exception{
+//使用辅助方法创建文档对象
+Document res = DocumentHelper.createDocument();
+//添加文档跟结点country
+Element rootElement = res.addElement(&quot;country&quot;);
+//给根节点添加属性name，值为&quot;中国&quot;
+rootElement.addAttribute(&quot;name&quot;, &quot;中国&quot;);
+//打开目录
+File file = new File(&quot;G:\\workspace\\jwd\\jwd&quot;);
+//打开目录下所有的xml文档
+File[] files = file.listFiles();
+//依次操作每个xml文档
+for(int i = 0; i &lt; files.length; i ++){
+//获取文件名，去掉文件扩展名
+String[] name = files[i].getName().split(&quot;\\.&quot;);
+//在根结点下添加子节点province
+Element childElement = rootElement.addElement(&quot;province&quot;);
+//添加属性name，值为文件名
+childElement.addAttribute(&quot;name&quot;, name[0].trim());
+//创建reader
+SAXReader reader = new SAXReader();
+//根据实际情况设置编码
+reader.setEncoding(&quot;GBK&quot;);
+Document doc = reader.read(files[i]);
+//获得xml文档的根节点
+Element root = doc.getRootElement();
+//遍历所有的结点
+this.visitAll(root, childElement);
+}
+//格式化即将输出的xml，让它看起来整齐点
+OutputFormat format = OutputFormat.createPrettyPrint();
+/*将document中的内容写入文件中 */
+XMLWriter writer = new XMLWriter(new FileWriter(new File(filename)),format);
+writer.write(res);
+writer.close(); 
+}
+</code></pre>
+<p>整个合并所有html页为一个xml的代码如下</p>
+<p><img loading="lazy" src="/Images/OutliningIndicators/ContractedBlock.gif" alt=""  />
+<img loading="lazy" src="/Images/OutliningIndicators/ExpandedBlockStart.gif" alt=""  />
+完整的代码</p>
+<pre><code>import java.io.File;
+import java.io.FileWriter;
+import java.util.Iterator;
+import org.dom4j.Document;
+import org.dom4j.DocumentHelper;
+import org.dom4j.Element;
+import org.dom4j.io.OutputFormat;
+import org.dom4j.io.SAXReader;
+import org.dom4j.io.XMLWriter;
+/**
+ * @author canvas
+ *
+ */
+public class GIS {
+public void createXMLFile(String filename) throws Exception{
+//使用辅助方法创建文档对象
+Document res = DocumentHelper.createDocument();
+//添加文档跟结点country
+Element rootElement = res.addElement(&quot;country&quot;);
+//给根节点添加属性name，值为&quot;中国&quot;
+rootElement.addAttribute(&quot;name&quot;, &quot;中国&quot;);
+//打开目录
+File file = new File(&quot;G:\\workspace\\jwd\\jwd&quot;);
+//打开目录下所有的xml文档
+File[] files = file.listFiles();
+//依次操作每个xml文档
+for(int i = 0; i &lt; files.length; i ++){
+//获取文件名，去掉文件扩展名
+String[] name = files[i].getName().split(&quot;\\.&quot;);
+//在根结点下添加子节点province
+Element childElement = rootElement.addElement(&quot;province&quot;);
+//添加属性name，值为文件名
+childElement.addAttribute(&quot;name&quot;, name[0].trim());
+//创建reader
+SAXReader reader = new SAXReader();
+//根据实际情况设置编码
+reader.setEncoding(&quot;GBK&quot;);
+Document doc = reader.read(files[i]);
+//获得xml文档的根节点
+Element root = doc.getRootElement();
+//遍历所有的结点
+this.visitAll(root, childElement);
+}
+//格式化即将输出的xml，让它看起来整齐点
+OutputFormat format = OutputFormat.createPrettyPrint();
+/*将document中的内容写入文件中 */
+XMLWriter writer = new XMLWriter(new FileWriter(new File(filename)),format);
+writer.write(res);
+writer.close(); 
+}
+public  void visitAll(Element root, Element child){
+// 枚举所有子节点
+for ( Iterator i = root.elementIterator(); i.hasNext(); ) {
+Element element = (Element) i.next();
+//System.out.println(stringTrim(element.getText()));
+/*if(this.stringTrim(element.getTextTrim()).equals(&quot;&quot;)){
+               return;
+           } 
+           else {
+                Element tmp = child.addElement(&quot;city&quot;);
+                visitAll(element, tmp);
+           }*/
+Iterator j = element.elementIterator();
+Element tmpElement = (Element)j.next();
+if(!(stringTrim(tmpElement.getTextTrim()).equals(&quot;城市名&quot;)))
+{
+Element tmp = child.addElement(&quot;city&quot;);
+tmp.addAttribute(&quot;name&quot;, 
+stringTrim(tmpElement.getTextTrim()).trim());
+tmpElement = (Element)j.next();
+tmp.addAttribute(&quot;longitude&quot;, 
+stringTrim(tmpElement.getTextTrim()).trim());
+tmpElement = (Element)j.next();
+tmp.addAttribute(&quot;latitude&quot;, 
+stringTrim(tmpElement.getTextTrim()).trim());
+}
+}
+}
+public String stringTrim(String str){
+//去掉空格和全角空格
+String[] tmp = str.split(&quot;\\s| &quot;);
+StringBuffer sb = new StringBuffer();
+for(int i = 0; i &lt; tmp.length; i ++){
+sb.append(tmp[i].trim());
+}
+return sb.toString();
+}
+/**
+     * @param args
+     */
+public static void main(String[] args) {
+try {
+new GIS().createXMLFile(&quot;d:\\GI-China.xml&quot;);
+} catch (Exception e) {
+e.printStackTrace();
+}
+}
+}
+</code></pre>
+<p>2.做一个方便使用的全国城市经纬度数据库<br>
+经过上面的操作，一个完整的全国城市经纬度数据库就做好了，只不过它是xml格式的，看起来还不错，[下载这个数据库](/Files/canvas/GI-
+China.zip &ldquo;下载这个数据库&rdquo;)</p>
+<p><img loading="lazy" src="/Images/OutliningIndicators/ContractedBlock.gif" alt=""  />
+<img loading="lazy" src="/Images/OutliningIndicators/ExpandedBlockStart.gif" alt=""  />
+生成的xml展示</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;country name=&quot;中国&quot;&gt;
+  &lt;province name=&quot;上海&quot;&gt;
+    &lt;city name=&quot;上海&quot; longitude=&quot;121.48&quot; latitude=&quot;31.22&quot;/&gt;
+    &lt;city name=&quot;嘉定&quot; longitude=&quot;121.24&quot; latitude=&quot;31.4&quot;/&gt;
+    &lt;city name=&quot;宝山&quot; longitude=&quot;121.48&quot; latitude=&quot;31.41&quot;/&gt;
+    &lt;city name=&quot;川沙&quot; longitude=&quot;121.7&quot; latitude=&quot;31.19&quot;/&gt;
+    &lt;city name=&quot;南汇&quot; longitude=&quot;121.76&quot; latitude=&quot;31.05&quot;/&gt;
+    &lt;city name=&quot;奉贤&quot; longitude=&quot;121.46&quot; latitude=&quot;30.92&quot;/&gt;
+    &lt;city name=&quot;松江&quot; longitude=&quot;121.24&quot; latitude=&quot;31&quot;/&gt;
+    &lt;city name=&quot;金山&quot; longitude=&quot;121.16&quot; latitude=&quot;30.89&quot;/&gt;
+    &lt;city name=&quot;青浦&quot; longitude=&quot;121.1&quot; latitude=&quot;31.15&quot;/&gt;
+    &lt;city name=&quot;崇明&quot; longitude=&quot;121.4&quot; latitude=&quot;31.73&quot;/&gt;
+  &lt;/province&gt;
+  &lt;province name=&quot;云南&quot;&gt;
+    &lt;city name=&quot;昆明&quot; longitude=&quot;102.73&quot; latitude=&quot;25.04&quot;/&gt;
+    &lt;city name=&quot;富民&quot; longitude=&quot;102.48&quot; latitude=&quot;25.21&quot;/&gt;
+    &lt;city name=&quot;晋宁&quot; longitude=&quot;102.58&quot; latitude=&quot;24.68&quot;/&gt;
+    &lt;city name=&quot;呈贡&quot; longitude=&quot;102.79&quot; latitude=&quot;24.9&quot;/&gt;
+    &lt;city name=&quot;安宁&quot; longitude=&quot;102.44&quot; latitude=&quot;24.95&quot;/&gt;
+    &lt;city name=&quot;昭通&quot; longitude=&quot;103.7&quot; latitude=&quot;29.32&quot;/&gt;
+    &lt;city name=&quot;永善&quot; longitude=&quot;103.63&quot; latitude=&quot;28.22&quot;/&gt;
+    &lt;city name=&quot;大关&quot; longitude=&quot;103.91&quot; latitude=&quot;27.74&quot;/&gt;
+    &lt;city name=&quot;彝良&quot; longitude=&quot;104.06&quot; latitude=&quot;27.61&quot;/&gt;
+    &lt;city name=&quot;鲁甸&quot; longitude=&quot;103.54&quot; latitude=&quot;27.21&quot;/&gt;
+    &lt;city name=&quot;绥江&quot; longitude=&quot;103.97&quot; latitude=&quot;28.58&quot;/&gt;
+</code></pre>
+<p>3.利用google天气api做一个全面的天气预报服务<br>
+google提供的天气api可以有两种方式访问，<br>
+一种是<br>
+[ http://www.google.com/ig/api?hl=zh-
+cn&amp;weather=,,,30670000,104019996](<a href="http://www.google.com/ig/api?hl=zh-">http://www.google.com/ig/api?hl=zh-</a>
+cn&amp;weather=,,,30670000,104019996)<br>
+30670000为纬度，104019996为经度，这个是把上面的xml中的经纬度乘以了10^6(10的六次方)，这个方法有个好处，就是可以根据经纬度获得天气预报，自然预报地区也可变得精确些<br>
+另一种是<br>
+<a href="http://www.google.com/ig/api?weather=Beijing">http://www.google.com/ig/api?weather=Beijing</a><br>
+这个链接比较简单，但是支持的城市比较少，所以还是使用第一种方式比较好，于是才整理好了所有城市的经纬度</p>
+<p>访问上面的链接，google返回的xml内容看起来是这样的</p>
+<p><img loading="lazy" src="/Images/OutliningIndicators/ContractedBlock.gif" alt=""  />
+<img loading="lazy" src="/Images/OutliningIndicators/ExpandedBlockStart.gif" alt=""  />
+google返回的xml<br>
+1 <?xml version="1.0" encoding="UTF-8"?><br>
+2 &lt;xml_api_reply version=&ldquo;1&rdquo;&gt;<weather module_id="0"
+tab_id="0">&lt;forecast_information&gt;<city data=""/>&lt;postal_code
+data=&quot;&quot;/&gt;&lt;latitude_e6 data=&ldquo;30670000&rdquo;/&gt;&lt;longitude_e6
+data=&ldquo;104019996&rdquo;/&gt;&lt;forecast_date data=&ldquo;2009-03-05&rdquo;/&gt;&lt;current_date_time
+data=&ldquo;2009-03-05 19:00:00 +0000&rdquo;/&gt;&lt;unit_system
+data=&ldquo;SI&rdquo;/&gt;&lt;/forecast_information&gt;&lt;current_conditions&gt;<condition
+data="晴"/>&lt;temp_f data=&ldquo;61&rdquo;/&gt;&lt;temp_c data=&ldquo;16&rdquo;/&gt;<humidity data="湿度：
+45%"/><icon data="/images/weather/sunny.gif"/>&lt;wind_condition data=&ldquo;风向： 北、风速：6
+(公里/小时）&rdquo;/&gt;&lt;/current_conditions&gt;&lt;forecast_conditions&gt;&lt;day_of_week
+data=&ldquo;周四&rdquo;/&gt;<low data="7"/><high data="16"/><icon
+data="/images/weather/mostly_sunny.gif"/><condition
+data="以晴为主"/>&lt;/forecast_conditions&gt;&lt;forecast_conditions&gt;&lt;day_of_week
+data=&ldquo;周五&rdquo;/&gt;<low data="4"/><high data="9"/><icon
+data="/images/weather/chance_of_rain.gif"/><condition
+data="可能有雨"/>&lt;/forecast_conditions&gt;&lt;forecast_conditions&gt;&lt;day_of_week
+data=&ldquo;周六&rdquo;/&gt;<low data="5"/><high data="10"/><icon
+data="/images/weather/mostly_sunny.gif"/><condition
+data="以晴为主"/>&lt;/forecast_conditions&gt;&lt;forecast_conditions&gt;&lt;day_of_week
+data=&ldquo;周日&rdquo;/&gt;<low data="3"/><high data="12"/><icon
+data="/images/weather/chance_of_rain.gif"/><condition
+data="可能有雨"/>&lt;/forecast_conditions&gt;</weather>&lt;/xml_api_reply&gt;</p>
+<p>对于返回的xml中的<icon data="/images/weather/cn_cloudy.gif"/>，可以这样构造链接获取google提供的图片<br>
+取其中的cn_cloudy.gif，然后放在http://www.google.cn/ig/images/weather/之后，生成的链接是<br>
+<a href="http://www.google.cn/ig/images/weather/cn_cloudy.png">http://www.google.cn/ig/images/weather/cn_cloudy.png</a><br>
+这样这个天气api就基本构思好了</p>
+<p>4.学习用python编写webservice(待续……)<br>
+将这个服务编写为一个webservice，决定使用python去写，所以要学习一下python了</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://lewang.dev/tags/blogjava/">blogjava</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="https://lewang.dev/posts/2009-03-25-python-start/">
+    <span class="title">« Prev</span>
+    <br>
+    <span>初识python</span>
+  </a>
+  <a class="next" href="https://lewang.dev/posts/2008-12-02-remotedesktop/">
+    <span class="title">Next »</span>
+    <br>
+    <span>使用Code Blocks(mingw)IDE利用windows api编写远程桌面端口修改程序</span>
+  </a>
+</nav>
+
+
+<div class="share-buttons">
+    <a target="_blank" rel="noopener noreferrer" aria-label="share 中国各城市的经纬度数据(精确到县级城市) on twitter"
+        href="https://twitter.com/intent/tweet/?text=%e4%b8%ad%e5%9b%bd%e5%90%84%e5%9f%8e%e5%b8%82%e7%9a%84%e7%bb%8f%e7%ba%ac%e5%ba%a6%e6%95%b0%e6%8d%ae%28%e7%b2%be%e7%a1%ae%e5%88%b0%e5%8e%bf%e7%ba%a7%e5%9f%8e%e5%b8%82%29&amp;url=https%3a%2f%2flewang.dev%2fposts%2f2009-03-12-gs-china%2f&amp;hashtags=blogjava">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-253.927,424.544c135.939,0 210.268,-112.643 210.268,-210.268c0,-3.218 0,-6.437 -0.153,-9.502c14.406,-10.421 26.973,-23.448 36.935,-38.314c-13.18,5.824 -27.433,9.809 -42.452,11.648c15.326,-9.196 26.973,-23.602 32.49,-40.92c-14.252,8.429 -30.038,14.56 -46.896,17.931c-13.487,-14.406 -32.644,-23.295 -53.946,-23.295c-40.767,0 -73.87,33.104 -73.87,73.87c0,5.824 0.613,11.494 1.992,16.858c-61.456,-3.065 -115.862,-32.49 -152.337,-77.241c-6.284,10.881 -9.962,23.601 -9.962,37.088c0,25.594 13.027,48.276 32.95,61.456c-12.107,-0.307 -23.448,-3.678 -33.41,-9.196l0,0.92c0,35.862 25.441,65.594 59.311,72.49c-6.13,1.686 -12.72,2.606 -19.464,2.606c-4.751,0 -9.348,-0.46 -13.946,-1.38c9.349,29.426 36.628,50.728 68.965,51.341c-25.287,19.771 -57.164,31.571 -91.8,31.571c-5.977,0 -11.801,-0.306 -17.625,-1.073c32.337,21.15 71.264,33.41 112.95,33.41Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share 中国各城市的经纬度数据(精确到县级城市) on linkedin"
+        href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2flewang.dev%2fposts%2f2009-03-12-gs-china%2f&amp;title=%e4%b8%ad%e5%9b%bd%e5%90%84%e5%9f%8e%e5%b8%82%e7%9a%84%e7%bb%8f%e7%ba%ac%e5%ba%a6%e6%95%b0%e6%8d%ae%28%e7%b2%be%e7%a1%ae%e5%88%b0%e5%8e%bf%e7%ba%a7%e5%9f%8e%e5%b8%82%29&amp;summary=%e4%b8%ad%e5%9b%bd%e5%90%84%e5%9f%8e%e5%b8%82%e7%9a%84%e7%bb%8f%e7%ba%ac%e5%ba%a6%e6%95%b0%e6%8d%ae%28%e7%b2%be%e7%a1%ae%e5%88%b0%e5%8e%bf%e7%ba%a7%e5%9f%8e%e5%b8%82%29&amp;source=https%3a%2f%2flewang.dev%2fposts%2f2009-03-12-gs-china%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share 中国各城市的经纬度数据(精确到县级城市) on reddit"
+        href="https://reddit.com/submit?url=https%3a%2f%2flewang.dev%2fposts%2f2009-03-12-gs-china%2f&title=%e4%b8%ad%e5%9b%bd%e5%90%84%e5%9f%8e%e5%b8%82%e7%9a%84%e7%bb%8f%e7%ba%ac%e5%ba%a6%e6%95%b0%e6%8d%ae%28%e7%b2%be%e7%a1%ae%e5%88%b0%e5%8e%bf%e7%ba%a7%e5%9f%8e%e5%b8%82%29">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share 中国各城市的经纬度数据(精确到县级城市) on facebook"
+        href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2flewang.dev%2fposts%2f2009-03-12-gs-china%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share 中国各城市的经纬度数据(精确到县级城市) on whatsapp"
+        href="https://api.whatsapp.com/send?text=%e4%b8%ad%e5%9b%bd%e5%90%84%e5%9f%8e%e5%b8%82%e7%9a%84%e7%bb%8f%e7%ba%ac%e5%ba%a6%e6%95%b0%e6%8d%ae%28%e7%b2%be%e7%a1%ae%e5%88%b0%e5%8e%bf%e7%ba%a7%e5%9f%8e%e5%b8%82%29%20-%20https%3a%2f%2flewang.dev%2fposts%2f2009-03-12-gs-china%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share 中国各城市的经纬度数据(精确到县级城市) on telegram"
+        href="https://telegram.me/share/url?text=%e4%b8%ad%e5%9b%bd%e5%90%84%e5%9f%8e%e5%b8%82%e7%9a%84%e7%bb%8f%e7%ba%ac%e5%ba%a6%e6%95%b0%e6%8d%ae%28%e7%b2%be%e7%a1%ae%e5%88%b0%e5%8e%bf%e7%ba%a7%e5%9f%8e%e5%b8%82%29&amp;url=https%3a%2f%2flewang.dev%2fposts%2f2009-03-12-gs-china%2f">
+        <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28" height="30px" width="30px" fill="currentColor">
+            <path
+                d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
+        </svg>
+    </a>
+</div>
+  </footer><script src="https://utteranc.es/client.js" repo="lewangdev/lewangdev.github.io" issue-term="pathname"
+    theme="github-light" crossorigin="anonymous" async>
+    </script>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2023 <a href="https://lewang.dev">小碼哥</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

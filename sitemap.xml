@@ -329,6 +329,27 @@
     <loc>https://lewang.dev/posts/2013-03-04-so-load-path-in-linux/</loc>
     <lastmod>2013-03-04T00:40:00+00:00</lastmod>
   </url><url>
+    <loc>https://lewang.dev/tags/blogjava/</loc>
+    <lastmod>2012-11-13T01:25:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lewang.dev/posts/2012-11-13-about_openlayers/</loc>
+    <lastmod>2012-11-13T01:25:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lewang.dev/categories/%E5%A4%87%E4%BB%BD/</loc>
+    <lastmod>2012-11-13T01:25:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lewang.dev/posts/2012-11-06-how_to_use_gdb_to_find_the_kernel_source_code/</loc>
+    <lastmod>2012-11-06T07:18:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lewang.dev/posts/2012-11-06-quick_makefile/</loc>
+    <lastmod>2012-11-06T07:05:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lewang.dev/posts/2012-10-18-bandwidthlimiter/</loc>
+    <lastmod>2012-10-18T08:34:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lewang.dev/posts/2012-08-22-router-dhcp/</loc>
+    <lastmod>2012-08-22T14:30:00+00:00</lastmod>
+  </url><url>
     <loc>https://lewang.dev/tags/php/</loc>
     <lastmod>2012-03-22T00:40:00+00:00</lastmod>
   </url><url>
@@ -401,9 +422,58 @@
     <loc>https://lewang.dev/posts/2011-09-28-hello-baigetan/</loc>
     <lastmod>2011-09-28T03:40:00+00:00</lastmod>
   </url><url>
-    <loc>https://lewang.dev/series/</loc>
+    <loc>https://lewang.dev/posts/2011-08-15-openlayers-custom/</loc>
+    <lastmod>2011-08-15T05:55:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lewang.dev/posts/2011-05-11-mark2011/</loc>
+    <lastmod>2011-05-11T14:26:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lewang.dev/posts/2010-10-11-how_to_do_with_openlayers/</loc>
+    <lastmod>2010-10-11T12:42:00+00:00</lastmod>
   </url><url>
     <loc>https://lewang.dev/posts/2010-09-18-snda/</loc>
+    <lastmod>2010-09-18T09:13:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lewang.dev/posts/2010-01-11-del-firefox-address/</loc>
+    <lastmod>2010-01-11T08:31:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lewang.dev/posts/2009-11-23-libfetion/</loc>
+    <lastmod>2009-11-23T06:56:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lewang.dev/posts/2009-07-10-e-campus/</loc>
+    <lastmod>2009-07-10T16:57:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lewang.dev/posts/2009-07-09-jquery-msn/</loc>
+    <lastmod>2009-07-09T15:20:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lewang.dev/posts/2009-04-08-appenginejavaoverview/</loc>
+    <lastmod>2009-04-08T06:40:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lewang.dev/posts/2009-03-25-python-start/</loc>
+    <lastmod>2009-03-25T01:02:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lewang.dev/posts/2009-03-12-gs-china/</loc>
+    <lastmod>2009-03-12T12:34:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lewang.dev/posts/2008-12-02-remotedesktop/</loc>
+    <lastmod>2008-12-02T10:24:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lewang.dev/posts/2008-09-03-226778/</loc>
+    <lastmod>2008-09-03T13:16:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lewang.dev/posts/2008-09-02-226416/</loc>
+    <lastmod>2008-09-02T08:10:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lewang.dev/posts/2008-05-06-template-canvas/</loc>
+    <lastmod>2008-05-06T07:49:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lewang.dev/posts/2008-05-06-jni-free-ictclas/</loc>
+    <lastmod>2008-05-06T06:40:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lewang.dev/posts/2008-05-05-jni-hello-world/</loc>
+    <lastmod>2008-05-05T06:29:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lewang.dev/series/</loc>
   </url><url>
     <loc>https://lewang.dev/archives/</loc>
   </url>

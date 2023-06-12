@@ -1,353 +1,747 @@
 <!DOCTYPE html>
-<html lang="en" dir="auto">
+<html lang="en">
+  <head>
+	<meta name="generator" content="Hugo 0.108.0">
+    
+      <title>
+        小碼哥
+      </title>
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta
+  name="description"
+  content=""
+/>
+<meta
+  name="keywords"
+  content=""
+/>
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="https://lewang.dev/" />
 
-<head>
-	<meta name="generator" content="Hugo 0.108.0"><meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="index, follow">
-<title>PaperMod</title>
 
-<meta name="description" content="Theme PaperMod - https://github.com/adityatelange/hugo-PaperMod">
-<meta name="author" content="Theme PaperMod">
-<link rel="canonical" href="https://adityatelange.github.io/hugo-PaperMod/">
-<link crossorigin="anonymous" href="/hugo-PaperMod/assets/css/stylesheet.dc96e9e0118e5e264a03d68b104df6ae869cfb73c61f5f89dd91aeb16b0d8c03.css" integrity="sha256-3Jbp4BGOXiZKA9aLEE32roac&#43;3PGH1&#43;J3ZGusWsNjAM=" rel="preload stylesheet" as="style">
-<link rel="icon" href="https://adityatelange.github.io/hugo-PaperMod/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="https://adityatelange.github.io/hugo-PaperMod/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="https://adityatelange.github.io/hugo-PaperMod/favicon-32x32.png">
-<link rel="apple-touch-icon" href="https://adityatelange.github.io/hugo-PaperMod/apple-touch-icon.png">
-<link rel="mask-icon" href="https://adityatelange.github.io/hugo-PaperMod/safari-pinned-tab.svg">
-<meta name="theme-color" content="#2e2e33">
-<meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" type="application/rss+xml" href="https://adityatelange.github.io/hugo-PaperMod/index.xml">
-<link rel="alternate" type="application/json" href="https://adityatelange.github.io/hugo-PaperMod/index.json">
-<link rel="alternate" hreflang="en" href="https://adityatelange.github.io/hugo-PaperMod/">
-<link rel="alternate" hreflang="fr" href="https://adityatelange.github.io/hugo-PaperMod/fr/">
-<link rel="alternate" hreflang="fa" href="https://adityatelange.github.io/hugo-PaperMod/fa/">
-<noscript>
-    <style>
-        #theme-toggle,
-        .top-link {
-            display: none;
-        }
 
-    </style>
-    <style>
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --theme: rgb(29, 30, 32);
-                --entry: rgb(46, 46, 51);
-                --primary: rgb(218, 218, 219);
-                --secondary: rgb(155, 156, 157);
-                --tertiary: rgb(65, 66, 68);
-                --content: rgb(196, 196, 197);
-                --hljs-bg: rgb(46, 46, 51);
-                --code-bg: rgb(55, 56, 62);
-                --border: rgb(51, 51, 51);
-            }
 
-            .list {
-                background: var(--theme);
-            }
 
-            .list:not(.dark)::-webkit-scrollbar-track {
-                background: 0 0;
-            }
 
-            .list:not(.dark)::-webkit-scrollbar-thumb {
-                border-color: var(--theme);
-            }
-        }
 
-    </style>
-</noscript><meta property="og:title" content="PaperMod" />
-<meta property="og:description" content="Theme PaperMod - https://github.com/adityatelange/hugo-PaperMod" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://adityatelange.github.io/hugo-PaperMod/" /><meta property="og:image" content="https://adityatelange.github.io/hugo-PaperMod/papermod-cover.png"/>
+<link rel="stylesheet" href="/css/style.css" />
+
+<link rel="stylesheet" href="https://lewang.dev/style.css" />
+
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://lewang.dev/img/apple-touch-icon-144-precomposed.png" />
+<link rel="shortcut icon" href="https://lewang.dev/img/favicon.png" />
+
+
+<link href="/fonts/Inter-Italic.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="/fonts/Inter-Regular.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="/fonts/Inter-Medium.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="/fonts/Inter-MediumItalic.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="/fonts/Inter-Bold.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="/fonts/Inter-BoldItalic.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+
 
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://adityatelange.github.io/hugo-PaperMod/papermod-cover.png"/>
+<meta name="twitter:image" content="https://lewang.dev/lewangdev-cover.png"/>
 
-<meta name="twitter:title" content="PaperMod"/>
-<meta name="twitter:description" content="Theme PaperMod - https://github.com/adityatelange/hugo-PaperMod"/>
+<meta name="twitter:title" content="小碼哥"/>
+<meta name="twitter:description" content="我是小码哥，时常会分享一些关于创业/产品/Web开发/效率/DevOps/玩等方面的东西"/>
 
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "PaperMod",
-  "url": "https://adityatelange.github.io/hugo-PaperMod/",
-  "description": "Theme PaperMod - https://github.com/adityatelange/hugo-PaperMod",
-  "thumbnailUrl": "https://adityatelange.github.io/hugo-PaperMod/favicon.ico",
-  "sameAs": [
-      "https://github.com/adityatelange/hugo-PaperMod", "https://ko-fi.com/adityatelange", "index.xml"
-  ]
-}
-</script>
-</head>
 
-<body class="list" id="top">
-<script>
-    if (localStorage.getItem("pref-theme") === "dark") {
-        document.body.classList.add('dark');
-    } else if (localStorage.getItem("pref-theme") === "light") {
-        document.body.classList.remove('dark')
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.body.classList.add('dark');
-    }
 
-</script>
+<meta property="og:title" content="小碼哥" />
+<meta property="og:description" content="我是小码哥，时常会分享一些关于创业/产品/Web开发/效率/DevOps/玩等方面的东西" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://lewang.dev/" /><meta property="og:image" content="https://lewang.dev/lewangdev-cover.png"/>
 
-<header class="header">
-    <nav class="nav">
-        <div class="logo">
-            <a href="https://adityatelange.github.io/hugo-PaperMod/" accesskey="h" title="PaperMod (Alt + H)">PaperMod</a>
-            <div class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
-                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                    </svg>
-                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="5"></circle>
-                        <line x1="12" y1="1" x2="12" y2="3"></line>
-                        <line x1="12" y1="21" x2="12" y2="23"></line>
-                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                        <line x1="1" y1="12" x2="3" y2="12"></line>
-                        <line x1="21" y1="12" x2="23" y2="12"></line>
-                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                    </svg>
-                </button>
-                <ul class="lang-switch"><li>|</li>
-                    <li>
-                        <a href="https://adityatelange.github.io/hugo-PaperMod/fr/" title="French"
-                            aria-label=":fr:">🇫🇷</a>
-                    </li>
-                    <li>
-                        <a href="https://adityatelange.github.io/hugo-PaperMod/fa/" title="Fa"
-                            aria-label="Fa">Fa</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <ul id="menu">
-            <li>
-                <a href="https://adityatelange.github.io/hugo-PaperMod/archives" title="Archive">
-                    <span>Archive</span>
-                </a>
-            </li>
-            <li>
-                <a href="https://adityatelange.github.io/hugo-PaperMod/search/" title="Search">
-                    <span>Search</span>
-                </a>
-            </li>
-            <li>
-                <a href="https://adityatelange.github.io/hugo-PaperMod/tags/" title="Tags">
-                    <span>Tags</span>
-                </a>
-            </li>
-            <li>
-                <a href="https://discord.gg/ahpmTvhVmp" title="Discord">
-                    <span>Discord</span>&nbsp;
-                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
-                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
-                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
-                        <path d="M15 3h6v6"></path>
-                        <path d="M10 14L21 3"></path>
-                    </svg>
-                </a>
-            </li>
-            <li>
-                <a href="https://github.com/adityatelange/hugo-PaperMod/wiki/" title="WiKi">
-                    <span>WiKi</span>&nbsp;
-                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
-                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
-                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
-                        <path d="M15 3h6v6"></path>
-                        <path d="M10 14L21 3"></path>
-                    </svg>
-                </a>
-            </li>
-        </ul>
-    </nav>
-</header>
-<main class="main"> 
 
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>Github Pages 服务的域名设置
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>这几天每次 Push 博客到 Github Pages 时总会收到一封邮件：
-The page build completed successfully, but returned the following warning:
-GitHub Pages recently underwent some improvements (https://github.com/blog/1715-faster-more-awesome-github-pages) to make your site faster and more awesome, but we’ve noticed that iforget.info isn’t properly configured to take advantage of these new features. While your site will continue to work just fine, updating your domain’s configuration offers some additional speed and performance benefits. Instructions on updating your site’s IP address can be found at https://help....</p>
-  </div>
-  <footer class="entry-footer"><span title='2014-05-06 22:51:00 +0000 UTC'>May 6, 2014</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Le</footer>
-  <a class="entry-link" aria-label="post link to Github Pages 服务的域名设置" href="https://adityatelange.github.io/hugo-PaperMod/posts/2014-05-06-github-pages-dns-settings/"></a>
-</article>
 
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>悟性
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>“悟性”是一个很虚的东西吗？
-前段时间和同学聊天，聊如何从众多的各方面初步看起来差不多应聘者中去做选择？聊来聊去最终落到了“悟性”上。我自己在突然想到悟性这个词的时候脑子几乎一片空白，不知道如何去判断一个人的悟性，或者说悟性到底是怎么样的，凭什么说一个人悟性好或者悟性差。
-昨天下午有个年龄不小的同学过来面试，聊了一个小时以后，向老板 汇报面试意见时，这同学各方面都很不错，但是总觉得有些地方不对，找不到词来形容自己内心当时的想法，于是结结巴巴的说，这种情况下，我要看一个人有没有悟性，接着我举了一个例子来说明什么时悟性：
-假如一个人，被安排了事情 A，我觉得有悟性的人，可能在做 A 事情的时候，把相关的事情 B、C 都做了，或者要求时做到A，但是主动把结果做成 A&#43;&#43;
-说完后，我觉得不妥：这可能不是一个人有没有悟性的问题，而是这个人主动不主动、有没有热情的问题。
-到底什么怎样才能通过一些具体的例子体会悟性这个词的含义？
-佛家讲究悟性。《心经》仅有 260 个字，有悟性的人才可以写出《心经与生活智慧》，甚至心经和量子物理都有关系，你看了之后，才发现：哦，原来心经是说这些的啊。
-道家也讲究悟性。当年菩提老祖在孙猴子头上敲三下的时候，要是孙猴子没有悟性只有兽性的话，估计就没有后面的孙悟空了。
-自己之前团队中有个新同事，年龄比我长，团队之间大家相互做 Code Review，且不说代码质量， 从代码风格上我就对此人无语了：从不注意已有代码在变量、函数、文件命名上的一些基本的规范，别人不告诉他，就不会意识到这个问题。一些看得见的东西不一定非要教条式的写到文件里，然后去专门花时间去学,去强制。有些问题，还是自己意识到比较好，从别人口里说出来，那就不好玩了。
-一句话说得好：
-不怕狼一样的对手，就怕猪一样的队友。
-不多说了，不强求，悟性有可能就是天生的。做不了大师兄，做二师弟也不赖。</p>
-  </div>
-  <footer class="entry-footer"><span title='2014-04-26 01:11:00 +0000 UTC'>April 26, 2014</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Theme PaperMod</footer>
-  <a class="entry-link" aria-label="post link to 悟性" href="https://adityatelange.github.io/hugo-PaperMod/posts/2014-04-26-power-of-understanding/"></a>
-</article>
+<link rel="alternate" type="application/rss+xml" href="/index.xml" title="小碼哥" />
+<link rel="alternate" type="application/json" href="/index.json" title="小碼哥" />
 
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>成长
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>成长就是看自己以前写的东西（包括微博、博客、说说等等）的时候觉得以前自己很 SB, 然后迫切地想把它们删掉
-这句话不止一次看到，反思自己，确实是那么回事儿，不能太赞同哦（我了个去上海腔了呢）。
-先前早些时候，把新浪博客和人人删的一干二净，也就是过把自己过去的所有文字的创造付之一炬，说没有一点惋惜，那是不可能的，想想当年自己顶着农村小孩黝黑皮肤初来乍到大城市，牛流不分，不怕喝不上牛奶只能喝豆浆的尴尬，给学校里各个杂志投稿，现在读来那些稿件，莫不觉得自己二逼。还好是些低年级学生玩的校办杂志，没多少人，为了回忆二逼的岁月，我特地还留了一本，没有其他人变态一样也留了一本吧。
-哦，对了，如果你想删掉所有的 SNS 平台的日志，不如学门编程的手艺，使用他们所谓的开放接口删了他们。不知道人人网的 3g.renren.com, 如果还能访问那可以试试小码哥几年前弄的人人自杀小工具 xiaomg.sinaapp.com，如果恰好能帮你删掉所有的东西，那么就是人人网的不对了，这么多年了，一点进步都没有，还有几个人在山寨机上开个ucweb访问你的3g网站。小工具的代码就不要看了，惨不忍闻，套用前面的话，写得太二逼了。说不定哪天就会被删掉，就像删这些日志一样。
-感性的文字都已经被删掉了，这下子没人看的得到我过去的无知，也只有我自己知道自己过去的无畏。
-准备把散落在各处的技术博文都挪到这里来，二逼 SB 可能不大适合形容一个人的手艺，但是菜鸟二字恰如其分。
-又一个菜鸟来了。大牛们见笑了。</p>
-  </div>
-  <footer class="entry-footer"><span title='2014-04-25 00:40:00 +0000 UTC'>April 25, 2014</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Le</footer>
-  <a class="entry-link" aria-label="post link to 成长" href="https://adityatelange.github.io/hugo-PaperMod/posts/2014-04-25-grow-up/"></a>
-</article>
 
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>谁是德布罗意
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>这张照片很多人应该都见过，名副其实的二十世纪最伟大科学家们的合影。爱因斯坦占据了最明显的位置，德布罗意也在其中。
-这里是摘自百度百科的一些内容：
-在光具有波粒二象性的启发下，法国物理学家德布罗意（1892～1987）在 1924 年提出一个假说，指出波粒二象性不只是光子才有，一切微观粒子，包括电子和质子、中子，都有波粒二象性。他把光子的动量与波长的关系式 p=h/λ 推广到一切微观粒子上，指出：具有质量 m 和速度 v 的运动粒子也具有波动性，这种波的波长等于普朗克恒量 h 跟粒子动量 mv 的比，即 λ=h/(mv)。这个关系式后来就叫做德布罗意公式。
-从德布罗意公式很容易算出运动粒子的波长。
-例如，电子的电荷是 1.6×10^-19 库，质量是 0.91×10^-30 千克，经过 200 伏电势差加速的电子获得的能量 E=Ue=200×1.6×10-19 焦 =3.2×10-17 焦。这个能量就是电子的动能，即0.5mv^2=3.2×10^-17 焦，因此 v=8.3910^6 米/秒。于是，按照德布罗意公式这运动电子的波长是 λ=h/(mv)=6.6310^-34/(9.110^-318.39*10^6)=8.7×10-11 米，或者 0.87 埃。
-我们看到，这个波长与伦琴射线的波长相仿。前面讲过，这样短的波长，只有用晶体做衍射光栅才能观察到衍射现象。后来人们的确用这种办法观察到了电子的衍射，从而证明了德布罗意假说的正确性。
-是不是有点印象了，这就是高中物理课本里面的内容吧。
-前几天和公司几个童鞋一起吃饭，先是有人说《水知道答案》，且先不说它是不是伪科普，我们试图用一些我们想得到的知识来说明一些问题，于是我想到了物质波，也就是德布罗意波。让我惊愕的是，那三位同学一致表示他们完全不知道什么是德布罗意波，搞得我仿佛穿越了，穿越到阿西莫夫的基地里去了。
-一定是在耍我。
-如果德布罗意波都不知道，那肯定也错过了德布罗意本人和他那篇博士论文的八卦故事了。不多说了，还是偷着乐吧。
-哈哈</p>
-  </div>
-  <footer class="entry-footer"><span title='2014-03-13 21:16:00 +0000 UTC'>March 13, 2014</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Le</footer>
-  <a class="entry-link" aria-label="post link to 谁是德布罗意" href="https://adityatelange.github.io/hugo-PaperMod/posts/2014-03-13-who-is-de-broglie/"></a>
-</article>
 
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>从域名和 CDN 来看网站架构
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>为了自己做好网站的架构，找了知乎，豆瓣，大众点评和百姓网来做参考。这里主要来看域名和 CDN 相关的部分，后台的架构也还是要边学便实践。
-大概情况 从前端分析了知乎的域名和 DNS 情况，同时对比了一下豆瓣、大众点评和百姓网。从域名、DNS、CDN 等使用角度来说，他们之间大同小异。
-使用的分析工具 Chrome WHOIS DNSLookup 非 CDN 使用 记录 域名 用途 路径 A zhihu.com 使用 301 跳转到 www.zhuhu.com IP A zhi.hu 使用 302 跳转到 www.zhihu.com IP A www.zhihu.com IP A comet.zhihu.com WebSocket 推送消息 IP A analytics.zhihu.com 知乎自己的统计分析，同时使用了 Google Analytics IP 大部分都是用了 301 或者 302 跳转，注意他们的区别：301 是永久跳转(浏览器会做客户端端缓存)，而 302 是临时跳转。此外 baidu.com 到 www.baidu.com 并不是使用 301 或者 302 ，而是使用下面的一段 HTML 代码
-&lt;html&gt; &lt;meta http-equiv=&#34;refresh&#34; content=&#34;0;url=http://www.baidu.com/&#34; /&gt; &lt;/html&gt; 相比而言，我觉得使用 301 更 Geek，更好一些。...</p>
-  </div>
-  <footer class="entry-footer"><span title='2014-03-06 00:40:00 +0000 UTC'>March 6, 2014</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Theme PaperMod</footer>
-  <a class="entry-link" aria-label="post link to 从域名和 CDN 来看网站架构" href="https://adityatelange.github.io/hugo-PaperMod/posts/2014-03-06-arch-of-website-domain-cdn/"></a>
-</article>
-<footer class="page-footer">
-  <nav class="pagination">
-    <a class="prev" href="https://adityatelange.github.io/hugo-PaperMod/page/5/">
-      «&nbsp;Prev&nbsp;
-    </a>
-    <a class="next" href="https://adityatelange.github.io/hugo-PaperMod/page/7/">Next&nbsp;&nbsp;»
-    </a>
-  </nav>
-</footer>
-    </main>
-    
-<footer class="footer">
-    <span>&copy; 2023 <a href="https://adityatelange.github.io/hugo-PaperMod/">PaperMod</a></span>
-    <span>
-        Powered by
-        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
-        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
-    </span>
-</footer>
-<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
-        <path d="M12 6H0l6-6z" />
-    </svg>
+  </head>
+  <body class="auto-theme">
+    <div class="container">
+      <header class="header">
+  <span class="header__inner">
+    <a
+  href="https://lewang.dev"
+  class="logo"
+  style="text-decoration: none;"
+>
+  
+    <span class="logo__mark"><svg xmlns="http://www.w3.org/2000/svg" class="greater-icon" viewBox="0 0 44 44">
+  <path fill="none" d="M15 8l14.729 14.382L15 35.367" />
+</svg>
+</span>
+    <span class="logo__text"
+      >小碼哥</span
+    >
+    <span class="logo__cursor"></span>
+  
 </a>
 
+    <span class="header__right">
+      
+        <nav class="menu">
+  <ul class="menu__inner menu__inner--desktop">
+    
+      
+        
+          <li><a href="/tags/">Tags</a></li>
+        
+      
+        
+          <li><a href="/about/">About</a></li>
+        
+      
+    
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+      
+        <li><a href="/tags/">Tags</a></li>
+      
+    
+      
+        <li><a href="/about/">About</a></li>
+      
+    
+  </ul>
+</nav>
+
+        <span class="menu-trigger">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M0 0h24v24H0z" fill="none" />
+            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+          </svg>
+        </span>
+      
+      <span class="theme-toggle">
+        <svg
+  class="theme-toggler"
+  width="24"
+  height="24"
+  viewBox="0 0 48 48"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <path
+    d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"
+  />
+</svg>
+
+      </span>
+    </span>
+  </span>
+</header>
+
+
+      <div class="content">
+        
+  
+  
+
+  
+  
+    
+  
+  
+
+  
+
+  <div class="posts">
+    
+    <article class="post on-list">
+      <h1 class="post-title"><a href="https://lewang.dev/posts/2011-10-21-process-of-baigetan/">摆摊的一些进展</a></h1>
+      <div class="post-meta">
+        
+          <time class="post-date">
+            2011-10-21
+          </time>
+
+          
+            
+
+
+
+          
+        
+
+        
+          <span class="post-author">— Written by Le</span>
+        
+
+        
+          <span class="post-read-time">— 1 min read</span>
+        
+      </div>
+
+      
+        <span class="post-tags">
+          
+            <a href="https://lewang.dev/tags/%E5%BF%83%E6%83%85/">#心情</a>&nbsp;
+          
+            <a href="https://lewang.dev/tags/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/">#系统架构</a>&nbsp;
+          
+        </span>
+      
+
+      
+
+      <div class="post-content">
+        
+          
+        
+      </div>
+      
+        <div><a class="read-more button" href="/posts/2011-10-21-process-of-baigetan/">Read more →</a></div>
+      
+    </article>
+    
+    <article class="post on-list">
+      <h1 class="post-title"><a href="https://lewang.dev/posts/2011-10-01-snapshot-of-10-1/">十一掠影</a></h1>
+      <div class="post-meta">
+        
+          <time class="post-date">
+            2011-10-01
+          </time>
+
+          
+            
+
+
+
+          
+        
+
+        
+          <span class="post-author">— Written by Le</span>
+        
+
+        
+          <span class="post-read-time">— 1 min read</span>
+        
+      </div>
+
+      
+        <span class="post-tags">
+          
+            <a href="https://lewang.dev/tags/%E6%91%84%E5%BD%B1/">#摄影</a>&nbsp;
+          
+        </span>
+      
+
+      
+
+      <div class="post-content">
+        
+          
+        
+      </div>
+      
+        <div><a class="read-more button" href="/posts/2011-10-01-snapshot-of-10-1/">Read more →</a></div>
+      
+    </article>
+    
+    <article class="post on-list">
+      <h1 class="post-title"><a href="https://lewang.dev/posts/2011-09-28-hello-baigetan/">摆摊网</a></h1>
+      <div class="post-meta">
+        
+          <time class="post-date">
+            2011-09-28
+          </time>
+
+          
+            
+
+
+
+          
+        
+
+        
+          <span class="post-author">— Written by Le</span>
+        
+
+        
+          <span class="post-read-time">— 1 min read</span>
+        
+      </div>
+
+      
+        <span class="post-tags">
+          
+            <a href="https://lewang.dev/tags/life/">#Life</a>&nbsp;
+          
+        </span>
+      
+
+      
+
+      <div class="post-content">
+        
+          
+        
+      </div>
+      
+        <div><a class="read-more button" href="/posts/2011-09-28-hello-baigetan/">Read more →</a></div>
+      
+    </article>
+    
+    <article class="post on-list">
+      <h1 class="post-title"><a href="https://lewang.dev/posts/2011-08-15-openlayers-custom/">改造openlayers构建轻量级专用地图信息系统（1）</a></h1>
+      <div class="post-meta">
+        
+          <time class="post-date">
+            2011-08-15
+          </time>
+
+          
+            
+
+
+
+          
+        
+
+        
+          <span class="post-author">— Written by Le</span>
+        
+
+        
+          <span class="post-read-time">— 1 min read</span>
+        
+      </div>
+
+      
+        <span class="post-tags">
+          
+            <a href="https://lewang.dev/tags/blogjava/">#blogjava</a>&nbsp;
+          
+        </span>
+      
+
+      
+
+      <div class="post-content">
+        
+          
+        
+      </div>
+      
+        <div><a class="read-more button" href="/posts/2011-08-15-openlayers-custom/">Read more →</a></div>
+      
+    </article>
+    
+    <article class="post on-list">
+      <h1 class="post-title"><a href="https://lewang.dev/posts/2011-05-11-mark2011/">mark一下学习计划</a></h1>
+      <div class="post-meta">
+        
+          <time class="post-date">
+            2011-05-11
+          </time>
+
+          
+            
+
+
+
+          
+        
+
+        
+          <span class="post-author">— Written by Le</span>
+        
+
+        
+          <span class="post-read-time">— 1 min read</span>
+        
+      </div>
+
+      
+        <span class="post-tags">
+          
+            <a href="https://lewang.dev/tags/blogjava/">#blogjava</a>&nbsp;
+          
+        </span>
+      
+
+      
+
+      <div class="post-content">
+        
+          
+        
+      </div>
+      
+        <div><a class="read-more button" href="/posts/2011-05-11-mark2011/">Read more →</a></div>
+      
+    </article>
+    
+    <article class="post on-list">
+      <h1 class="post-title"><a href="https://lewang.dev/posts/2010-10-11-how_to_do_with_openlayers/">openlayers小结(有参考项目代码)</a></h1>
+      <div class="post-meta">
+        
+          <time class="post-date">
+            2010-10-11
+          </time>
+
+          
+            
+
+
+
+          
+        
+
+        
+          <span class="post-author">— Written by Le</span>
+        
+
+        
+          <span class="post-read-time">— 5 min read</span>
+        
+      </div>
+
+      
+        <span class="post-tags">
+          
+            <a href="https://lewang.dev/tags/blogjava/">#blogjava</a>&nbsp;
+          
+        </span>
+      
+
+      
+
+      <div class="post-content">
+        
+          
+            最近一段时间里，又做了一个跟openlayers相关的项目，但是到目前为止，我对openlayers还是不怎么了解，做东西也只是参考了openlayers的例子，以及自己的一些对openlayers用法的一些猜测。openlayers是一个用js实现的GIS前端框架，我的js目前还是打酱油的水平，要是没有jquery，那就基本写不了几行js代码了。js那是相当的强大，再加上VML\SVG、HTML5以及很多js rich框架等等，感觉js在浏览器端真是无所不能啊
+目前这个项目主要功能就是在某城市的地图上标示电缆、光缆、井盖、光缆接头、线杆、建筑物形状和位置、各分级单位的位置以及快速定位等等，要求的功能很简单，而且有前段时间做学校电子地图的一些积累，所以大概在两周左右就做完了这个项目。
+感觉openlayers的资料很少，自己也没有太多的时间和精力去读它的源码，目前我都是通过看openlayers自带的那些example和api文档来摸索的，下面简单总结一下openlayers的相关用法，欢迎大家拍砖。
+（以下均以OpenLayers-2.9.1为例说明，完整的项目代码在这里下载,地图图片http://121.193.130.68/list/）
+1、我只用到了openlayers里面的tilecache接口，其它的例如WMS，google map等等都没有用到。原因是这样的。tilecache接口是用来从tilecache服务器上请求图片的。通过观察google map或者一些其它的地图服务，发现他们都是使用256x256像素大小的图片（也就是tile）来拼接地图的，通常的做法是在gis服务器之间架设一个tilecache服务器，这样，gis生成的图片就可以缓存在tilecahe服务器上，而tilecache服务器仅仅提供简单http服务即可，如果请求的图片(tile)不在tilecache服务器上，那么tilecache服务器会想gis服务器请求，把把gis生成的图片缓存在tilecache服务器上。
+通过观察tilecache服务器的目录结构，发现缓存图片按照这样的模具结构存放：{缩放级别}/{横坐标}/{纵坐标}.{图片格式后缀名}，注意这个坐标系的原点在屏幕的左下角。观察到这个规律以后，就可以直接把一张大的地图按照256x256的大小切割，并按照上述的目录结构存放，值得注意的是，每个缩放级别要一定满足2^n的规律，即第一级整个地图大小若为1，那么第二级整个地图大小应为2，第三级应为4，依次类推。这里需要简单修改一下openlayers的tilecache接口代码，文件位于OpenLayers-2.9.1\lib\OpenLayers\Layer\TileCache.js,修改如下：
+1 var components = [
+2 this.layername,
+3 zeroPad(tileZ, 2),
+4 //zeroPad(parseInt(tileX / 1000000), 3),
+5 //zeroPad((parseInt(tileX / 1000) % 1000), 3),
+6 zeroPad((parseInt(tileX) % 1000), 3),
+7 //zeroPad(parseInt(tileY / 1000000), 3),
+8 //zeroPad((parseInt(tileY / 1000) % 1000), 3),
+9 zeroPad((parseInt(tileY) % 1000), 3) + &lsquo;.&rsquo; + this.extension
+10 ];
+同样，由于只使用tilecache，所以openlayers里面其它的代码也可删除，以减小openlayers的代码量，最后通过自带的python写的工具，压缩openlayers代码即可。
+2.地图初次加载的时候，向服务器请求所有数据信息，并在地图上绘出相应的点线面。如何画出建筑的轮廓？用透明的就行了。
+a.显示点信息,包括画点、用图标显示点，代码如下。
+1 /*
+2 * 在地图上画出所有的点并保存点的相关信息到字典中
+3 */
+4 function initFeaturePoint(vectorLayer,categoryId){
+          
+        
+      </div>
+      
+        <div><a class="read-more button" href="/posts/2010-10-11-how_to_do_with_openlayers/">Read more →</a></div>
+      
+    </article>
+    
+    <article class="post on-list">
+      <h1 class="post-title"><a href="https://lewang.dev/posts/2010-09-18-snda/">小记盛大校园牛人创新技术大赛</a></h1>
+      <div class="post-meta">
+        
+          <time class="post-date">
+            2010-09-18
+          </time>
+
+          
+            
+
+
+
+          
+        
+
+        
+          <span class="post-author">— Written by Le</span>
+        
+
+        
+          <span class="post-read-time">— 1 min read</span>
+        
+      </div>
+
+      
+        <span class="post-tags">
+          
+            <a href="https://lewang.dev/tags/blogjava/">#blogjava</a>&nbsp;
+          
+        </span>
+      
+
+      
+
+      <div class="post-content">
+        
+          
+        
+      </div>
+      
+        <div><a class="read-more button" href="/posts/2010-09-18-snda/">Read more →</a></div>
+      
+    </article>
+    
+    <article class="post on-list">
+      <h1 class="post-title"><a href="https://lewang.dev/posts/2010-01-11-del-firefox-address/">删除Firefox地址栏下拉列表中的指定记录</a></h1>
+      <div class="post-meta">
+        
+          <time class="post-date">
+            2010-01-11
+          </time>
+
+          
+            
+
+
+
+          
+        
+
+        
+          <span class="post-author">— Written by Le</span>
+        
+
+        
+          <span class="post-read-time">— 1 min read</span>
+        
+      </div>
+
+      
+        <span class="post-tags">
+          
+            <a href="https://lewang.dev/tags/blogjava/">#blogjava</a>&nbsp;
+          
+        </span>
+      
+
+      
+
+      <div class="post-content">
+        
+          
+        
+      </div>
+      
+        <div><a class="read-more button" href="/posts/2010-01-11-del-firefox-address/">Read more →</a></div>
+      
+    </article>
+    
+    <article class="post on-list">
+      <h1 class="post-title"><a href="https://lewang.dev/posts/2009-11-23-libfetion/">用飞信(libfetion)定时发天气预报</a></h1>
+      <div class="post-meta">
+        
+          <time class="post-date">
+            2009-11-23
+          </time>
+
+          
+            
+
+
+
+          
+        
+
+        
+          <span class="post-author">— Written by Le</span>
+        
+
+        
+          <span class="post-read-time">— 3 min read</span>
+        
+      </div>
+
+      
+        <span class="post-tags">
+          
+            <a href="https://lewang.dev/tags/blogjava/">#blogjava</a>&nbsp;
+          
+        </span>
+      
+
+      
+
+      <div class="post-content">
+        
+          
+            什么是libfetion？请访问http://www.libfetion.cn/查看
+以下都是在ubuntu下进行的
+参考
+http://www.libfetion.cn/Docs-dve/Build-LibFx-on-ubuntu.txt
+请使用svn客户端下载libfetion-gui的源码
+http://libfetion-gui.googlecode.com/svn/
+安装开发过程中需要的软件
+1 sudo apt-get install libc-dev
+2 sudo apt-get install g++
+3 sudo apt-get install libcurl4-openssl-dev
+在trunk/qt4_src/libfetion/lib目录下找到静态库libfetion_32.a，由于代码打算是用python来写，所以制作了一个动态库libfetion.so
+具体步骤如下：
+#解压静态库为*.o
+ar -x libfetion_32.a
+#重新封装为so
+g++ -shared -Wall -fPIC -lcurl -pthread *.o -o libfetion.so
+#查看so[可选步骤]
+nm libfetion.so
+发送天气预报的python代码如下，libfetion.so中具体的方法请查看trunk/qt4_src/libfetion/include/libfetion/libfetion.h
+1 #!/usr/bin/env python
+2 #coding=utf-8
+3 #only can run at linux
+4 import os
+5 import ctypes
+6 import urllib2
+7
+8 #城市代码列表
+9 city_codes = {
+10 &lsquo;合肥&rsquo; : &lsquo;CHXX0448&rsquo;,
+          
+        
+      </div>
+      
+        <div><a class="read-more button" href="/posts/2009-11-23-libfetion/">Read more →</a></div>
+      
+    </article>
+    
+    <article class="post on-list">
+      <h1 class="post-title"><a href="https://lewang.dev/posts/2009-07-10-e-campus/">使用Openlayers搭一个E校园(e-campus),类似e都市，6d校园</a></h1>
+      <div class="post-meta">
+        
+          <time class="post-date">
+            2009-07-10
+          </time>
+
+          
+            
+
+
+
+          
+        
+
+        
+          <span class="post-author">— Written by Le</span>
+        
+
+        
+          <span class="post-read-time">— 1 min read</span>
+        
+      </div>
+
+      
+        <span class="post-tags">
+          
+            <a href="https://lewang.dev/tags/blogjava/">#blogjava</a>&nbsp;
+          
+        </span>
+      
+
+      
+
+      <div class="post-content">
+        
+          
+        
+      </div>
+      
+        <div><a class="read-more button" href="/posts/2009-07-10-e-campus/">Read more →</a></div>
+      
+    </article>
+    
+    <div class="pagination">
+  <div class="pagination__buttons">
+    
+      <span class="button previous">
+        <a href="/page/5/">
+          <span class="button__icon">←</span>
+          <span class="button__text">Newer posts</span>
+        </a>
+      </span>
+    
+    
+      <span class="button next">
+        <a href="/page/7/">
+          <span class="button__text">Older posts</span>
+          <span class="button__icon">→</span>
+        </a>
+      </span>
+    
+  </div>
+</div>
+
+  </div>
+
+      </div>
+
+      
+        <footer class="footer">
+  <div class="footer__inner">
+    
+      <a
+  href="https://lewang.dev"
+  class="logo"
+  style="text-decoration: none;"
+>
+  
+    <span class="logo__mark"><svg xmlns="http://www.w3.org/2000/svg" class="greater-icon" viewBox="0 0 44 44">
+  <path fill="none" d="M15 8l14.729 14.382L15 35.367" />
+</svg>
+</span>
+    <span class="logo__text"
+      >小碼哥</span
+    >
+    <span class="logo__cursor"></span>
+  
+</a>
+
+      <div class="copyright">
+        <span>© 2023 Powered by <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a></span>
+        <span><a href="https://github.com/panr/hugo-theme-hello-friend" target="_blank">Theme</a> made by <a href="https://github.com/panr" target="_blank">panr</a></span>
+      </div>
+    
+  </div>
+</footer>
+
+
+
+
+
+<script type="text/javascript" src="/bundle.min.js"></script>
+
+
+      
+    </div>
+
+    
+      
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-12QS222X0Z"></script>
 <script>
-    let menu = document.getElementById('menu')
-    if (menu) {
-        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
-        menu.onscroll = function () {
-            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
-        }
-    }
-
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener("click", function (e) {
-            e.preventDefault();
-            var id = this.getAttribute("href").substr(1);
-            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
-                    behavior: "smooth"
-                });
-            } else {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
-            }
-            if (id === "top") {
-                history.replaceState(null, null, " ");
-            } else {
-                history.pushState(null, null, `#${id}`);
-            }
-        });
-    });
-
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-12QS222X0Z', { 'anonymize_ip': false });
+}
 </script>
-<script>
-    var mybutton = document.getElementById("top-link");
-    window.onscroll = function () {
-        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
-            mybutton.style.visibility = "visible";
-            mybutton.style.opacity = "1";
-        } else {
-            mybutton.style.visibility = "hidden";
-            mybutton.style.opacity = "0";
-        }
-    };
 
-</script>
-<script>
-    document.getElementById("theme-toggle").addEventListener("click", () => {
-        if (document.body.className.includes("dark")) {
-            document.body.classList.remove('dark');
-            localStorage.setItem("pref-theme", 'light');
-        } else {
-            document.body.classList.add('dark');
-            localStorage.setItem("pref-theme", 'dark');
-        }
-    })
-
-</script>
-</body>
-
+    
+  </body>
 </html>

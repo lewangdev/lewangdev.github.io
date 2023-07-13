@@ -10,6 +10,7 @@
       <link>https://lewang.dev/lewangdev-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
     <lastBuildDate>Tue, 06 May 2014 22:51:00 +0000</lastBuildDate><atom:link href="https://lewang.dev/tags/github/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Github Pages 服务的域名设置</title>

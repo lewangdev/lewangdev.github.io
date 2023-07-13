@@ -10,6 +10,7 @@
       <link>https://lewang.dev/lewangdev-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
     <lastBuildDate>Mon, 03 Mar 2014 23:40:00 +0000</lastBuildDate><atom:link href="https://lewang.dev/tags/virtualbox/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>使用 Vagrant 构建开发环境</title>

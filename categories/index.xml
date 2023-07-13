@@ -10,7 +10,17 @@
       <link>https://lewang.dev/lewangdev-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 20 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://lewang.dev/categories/index.xml" rel="self" type="application/rss+xml" />
+    <language>en</language>
+    <lastBuildDate>Sat, 08 Jul 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://lewang.dev/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>随笔</title>
+      <link>https://lewang.dev/categories/%E9%9A%8F%E7%AC%94/</link>
+      <pubDate>Sat, 08 Jul 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://lewang.dev/categories/%E9%9A%8F%E7%AC%94/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>TalkToMyself</title>
       <link>https://lewang.dev/categories/talktomyself/</link>

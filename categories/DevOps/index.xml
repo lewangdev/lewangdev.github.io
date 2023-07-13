@@ -10,6 +10,7 @@
       <link>https://lewang.dev/lewangdev-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
     <lastBuildDate>Thu, 06 Mar 2014 00:40:00 +0000</lastBuildDate><atom:link href="https://lewang.dev/categories/devops/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>从域名和 CDN 来看网站架构</title>

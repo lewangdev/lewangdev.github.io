@@ -164,6 +164,33 @@ if (!doNotTrack) {
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2>把ubuntu配置成路由器&#43;DHCP
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>资源： __ __
+PC A: Ubuntu 12.04 LTS，两块网卡，分别为eth0和eth1，使用eth0连接 互联网 __ __
+PC B: Windows 7, 一块网卡，为eth0 __ __
+目标： __ __
+使得B通过A连接互联网(IPv4)，即实现A为路由器的功能 __ __
+步骤： __ __
+PC A: __ __
+(0)假设eth0已经配置好，PC可以通过eth0连接互联网 ，配置eth1为，如/etc/network/interface所示 __ __
+auto lo __ __
+iface lo inet loopback __ __
+auto eth0 __ __
+iface eth0 inet static __ __
+address 172.16.10.65 __ __
+gateway 172.16.10.254 __ __
+netmask 255.255.0.0 __ __
+auto eth1 __ __...</p>
+  </div>
+  <footer class="entry-footer"><span title='2012-08-22 14:30:00 +0000 UTC'>August 22, 2012</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Le</footer>
+  <a class="entry-link" aria-label="post link to 把ubuntu配置成路由器&#43;DHCP" href="https://lewang.dev/posts/2012-08-22-router-dhcp/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2>再说 PHP 中 SimpleXML
     </h2>
   </header>
@@ -552,26 +579,6 @@ nm libfetion.so
   </div>
   <footer class="entry-footer"><span title='2009-11-23 06:56:00 +0000 UTC'>November 23, 2009</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Le</footer>
   <a class="entry-link" aria-label="post link to 用飞信(libfetion)定时发天气预报" href="https://lewang.dev/posts/2009-11-23-libfetion/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>使用Openlayers搭一个E校园(e-campus),类似e都市，6d校园
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>最近为学校搭建了一个校园电子地图，做得不怎么好，只能凑合着用了。
-快回家了，做点记录，欢迎拍砖指正。
-新生应该可以在录取通知书里看到这个地图的链接了^_^
-刚开始做这个地图的时候，打算使用geoserver等专业的东西，时间太紧了，对GIS一点了解都没有，所以就放弃了。看到了6D校园和e都市的实现方案，找了一找，发现了mapeasy这个js库，于是把6D校园的地图图片下载下来了，自己试着用mapeasy实现了一下，效果很好，但是总感觉不对劲，像6D校园和e都市都是使用html map area来标注地图信息的，这样就与真正的地理信息系统差远了，不好快速的添加信息或者做路径搜索了，于是又不是很满意。在使用geoserver的时候，注意到它显示地图信息使用了openlayers，于是简单看了一下openlayers的例子，感觉很强大，也比较符合我的想法。
-openlayers可以直接使用图片做地图的来源，然后直接编辑地图，添加地图的地理信息，包括点，线，多边形区域，这样就很容易做路径搜索，也很快速容易添加地图的地理信息了。
-看到openlayers可以使用tilecache做地图的图片来源，我就搭建了tilecache服务器，这个tilecache是用python写的，很容易配置。我仔细看了一下tilecache的配置，发现这个完全可以直接使用图片就可以，只是把切好的图片按照titlecache的目录结构放置好，就行了。于是简单的修改了一下openlayers的tilecache接口，就基本实现了电子地图。地图原图是一个面积很大图片，我用PIL库，使用python写了一个简单的切图程序，把地图按照横纵坐标切成了256X256大小的图片，并且按照自己定制tilecache的目录结构存好图片，最后把这些图片放在apache http服务器下，使用openlayers直接读取即可。
-最后实现的功能有：地图浏览，地图缩略展示，地面建筑标记，地面建筑提示，路线标记，快速定位，后台添加信息等(路径搜索暂未实现)
-其中后台可以直接画出建筑的多边形、路线、点标记，然后添加信息
-后台管理页面如下：</p>
-  </div>
-  <footer class="entry-footer"><span title='2009-07-10 16:57:00 +0000 UTC'>July 10, 2009</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Le</footer>
-  <a class="entry-link" aria-label="post link to 使用Openlayers搭一个E校园(e-campus),类似e都市，6d校园" href="https://lewang.dev/posts/2009-07-10-e-campus/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

@@ -164,6 +164,26 @@ if (!doNotTrack) {
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2>逐渐消失的被依靠感
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>写了篇随笔记录送娃那天的心里感受，拍照片录视频很容易记录一些画面，但是想把自己的心里感受的记录下来，可能还是要靠文字
+我的妹妹一家三口住在南方小镇，暑假之前儿子就和我说好，等放假了他要和奶奶一起去姑姑家找哥哥玩。上海南站有趟卧铺列车时间很合适，在高铁的时代，儿子从来没有体验过卧铺列车旅行，全家商量好之后，儿子决定尝试“新”的旅行方式。
+送儿子和我妈去上海南站坐车，我先送他们到出发层，车站门口只能停 6 分钟，送他们到进站口后，我便马上返回车上开往停车场，准备在停好车之后再去车站找他们，还没等我停好车，儿子打来电话，好稚嫩的声音：“爸爸，你走吧，我们不需要你了，我们已经找到了候车的地方。”
+我听完在夸他做得很好之后，除了惊讶，心里竟有了些失落，不过想到他那小小孩子就有了独立自信的样子，我心里也有了些许难以言说的自豪。
+我刚出停车场没开出多远，我妈又打来了电话，说她在候车厅看到有人可以帮他们送上车，问我要不要让人送一下。我当然说同意，然后就听到我妈在电话里传来喊人的声音：“师傅，师傅，帮我们送上去” 。挂掉电话后，我继续驾车前行。
+不一会儿，我正在高架上行驶，我妈再一次打来了电话。她告诉我他们已经到达了自己的卧铺座位，还告诉我他们没有找人送，因为我儿子不同意，死活不让别人送，坚持要自己去找位置。
+其实在我妈打电话给我的时候，我也在想，虽然这是你们第一次坐卧铺车，但也没什么行李，是可以自己排队检票上车的。这时才明白原来我妈给我打电话是希望征得我的支持来否定她孙子的想法。
+儿子继续在电话里和我说，奶奶路上一直在问人，他觉得没有必要，因为他有妈妈给他制作的乘车卡片，再根据车站里面的路牌指示，就可以认得路。我能想象出儿子他那坚定自信的样子，就像平时他坚持他可以自己建造他的乐高城堡一样。
+祝他们旅途顺利。</p>
+  </div>
+  <footer class="entry-footer"><span title='2023-07-08 00:00:00 +0000 UTC'>July 8, 2023</span>&nbsp;·&nbsp;1 min</footer>
+  <a class="entry-link" aria-label="post link to 逐渐消失的被依靠感" href="https://lewang.dev/posts/2023-07-08-i-dont-need-you-any-more/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2>日常吐槽
     </h2>
   </header>
@@ -505,19 +525,6 @@ Bye 2017 区块链和比特币 人工智能（AI） 物联网大数据 Insurtech
   </div>
   <footer class="entry-footer"><span title='2017-12-31 00:08:25 +0000 UTC'>December 31, 2017</span>&nbsp;·&nbsp;2 min</footer>
   <a class="entry-link" aria-label="post link to 有关 2017 流水账和胡思乱想的记录" href="https://lewang.dev/posts/2017-12-31-year-end-reviews-of-2017/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>LVM 实战记录
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>背景 阿里云云主机两块 100G 的云盘合一个逻辑卷（LV）来使用，单个的 100G 磁盘不够用，需要合在一起使用，并且方便以后扩容
-基本知识 磁盘 /dev/xvdb /dev/xvdc 分区, 使用 fdisk 进行分区 fdisk &gt; n &gt; p &gt; 1..4, 主分区最多只有 4 个 准备分区后，将分区类型变为 LVM 分区，fdisk &gt; t &gt; 8e, 8e 是 LVM 类型 ID 物理卷（PV），卷组（VG），逻辑卷（LV），从磁盘分区创建 PV，通过 PV 创建 VG 或者把 PV 加入已有的 VG，在 VG 上创建 LV，LV 看起来就是逻辑的上磁盘，使用和真实的磁盘没什么明显区别, 在 LV 上构建文件系统 创建 创建物理卷 pvcreate /dev/xvdb1，对分区进行操作 创建 vg0 卷组 vgcreate vg0 /dev/xvdb1 查看卷组 vgdisplay， 可以看到卷组有多大 在 vg0 上创建 data 逻辑卷 lvcreate -L 99G -n data vg0 或者 lvcreate -l 25556 -n data vg0 创建文件系统 mkfs....</p>
-  </div>
-  <footer class="entry-footer"><span title='2017-08-03 23:55:00 +0000 UTC'>August 3, 2017</span>&nbsp;·&nbsp;1 min</footer>
-  <a class="entry-link" aria-label="post link to LVM 实战记录" href="https://lewang.dev/posts/2017-08-03-lvm-in-action/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

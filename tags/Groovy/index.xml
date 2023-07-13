@@ -10,6 +10,7 @@
       <link>https://lewang.dev/lewangdev-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
     <lastBuildDate>Sat, 22 Feb 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://lewang.dev/tags/groovy/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>大象（Gradle）的故事：一见如故</title>

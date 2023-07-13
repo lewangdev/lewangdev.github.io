@@ -303,9 +303,42 @@ if (!doNotTrack) {
         </svg>
     </a>
 </div>
-  </footer><script src="https://utteranc.es/client.js" repo="lewangdev/lewangdev.github.io" issue-term="pathname"
-    theme="github-light" crossorigin="anonymous" async>
+  </footer><div class="comments">
+    <script>
+        
+        var getTheme = window.localStorage && window.localStorage.getItem("theme");
+        getTheme = getTheme == null ? 'auto' : getTheme;
+
+        let theme = getTheme === 'dark' ? 'github-dark' : 'github-light';
+        let s = document.createElement('script');
+        s.src = 'https://utteranc.es/client.js';
+        s.setAttribute('repo', '');
+        s.setAttribute('issue-term', '');
+        s.setAttribute('theme', theme);
+        s.setAttribute('crossorigin', 'anonymous');
+        s.setAttribute('async', '');
+        document.querySelector('div.comments').innerHTML = '';
+        document.querySelector('div.comments').appendChild(s);
+
+        
+        const mutationObserver = new MutationObserver((mutationsList, observer) => {
+            mutationsList.forEach(mutation => {
+                if (mutation.attributeName === "class") {
+                    if (document.querySelector('.utterances-frame')) {
+                        const theme = mutation.target.classList.contains("dark-theme") ? 'github-dark' : 'github-light'
+                        const message = {
+                            type: 'set-theme',
+                            theme: theme
+                        };
+                        const iframe = document.querySelector('.utterances-frame');
+                        iframe.contentWindow.postMessage(message, 'https://utteranc.es');
+                    }
+                }
+            })
+        });
+        mutationObserver.observe(document.body, { attributes: true });
     </script>
+</div>
 </article>
     </main>
     

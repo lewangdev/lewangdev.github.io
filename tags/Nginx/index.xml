@@ -10,6 +10,7 @@
       <link>https://lewang.dev/lewangdev-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
     <lastBuildDate>Thu, 16 Oct 2014 15:27:00 +0000</lastBuildDate><atom:link href="https://lewang.dev/tags/nginx/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Nginx 性能调优「译」</title>

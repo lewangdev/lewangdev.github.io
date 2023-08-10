@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>树莓派 CM3/CM3&#43; 刷写系统 | 小碼哥</title>
+<title>树莓派 CM3/CM3&#43; 刷写系统 | 小碼哥的博客</title>
 <meta name="keywords" content="Linux, Raspberry, Raspbian">
 <meta name="description" content="准备 阅读Flashing the Compute Module eMMC 准备一个可以刷系统的底板，我用的是微雪Compute-Module-IO-Board-Plus 步骤(Linux 系统下刷系统，可以使用树莓派来刷机) sudo apt install git libusb-1.0-0-dev git clone --depth=1 https://github.com/raspberrypi/usbboot &amp;&amp; cd usbboot &amp;&amp; make sudo ./rpiboot 连好线，跳线部分见各自底板的手册 拔掉 USB SLAVE 1/2/3/4 拔掉 SELECT 跳线帽 将 BOOT ENABLE USB SLAVE 跳线帽接到 EN 端 sudo fdisk -l 查看磁盘名称，这里是 /dev/sda sudo dd if=raspbian-lite.img of=/dev/sda bs=4MiB 刷入系统后，挂在启动分区，添加 SSH 来开启 SSH 服务，sudo mount /dev/sda1 /media cd /media &amp;&amp; touch SSH 使用慧通科技出品的 HuiBox-700 底板 省略上述的第4步，其它步骤完全一样">
 <meta name="author" content="">
@@ -120,7 +120,7 @@ if (!doNotTrack) {
   },
   "publisher": {
     "@type": "Organization",
-    "name": "小碼哥",
+    "name": "小碼哥的博客",
     "logo": {
       "@type": "ImageObject",
       "url": "https://lewang.dev/favicon.ico"
@@ -145,7 +145,7 @@ if (!doNotTrack) {
 <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="https://lewang.dev" accesskey="h" title="小碼哥 (Alt + H)">小碼哥</a>
+            <a href="https://lewang.dev" accesskey="h" title="小碼哥的博客 (Alt + H)">小碼哥的博客</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -187,7 +187,7 @@ if (!doNotTrack) {
 
 <article class="post-single">
   <header class="post-header">
-    
+    <div class="breadcrumbs"><a href="https://lewang.dev">Home</a>&nbsp;»&nbsp;<a href="https://lewang.dev/posts/">Posts</a></div>
     <h1 class="post-title">
       树莓派 CM3/CM3&#43; 刷写系统
     </h1>
@@ -345,7 +345,7 @@ if (!doNotTrack) {
     </main>
     
 <footer class="footer">
-    <span>&copy; 2023 <a href="https://lewang.dev">小碼哥</a></span>
+    <span>&copy; 2023 <a href="https://lewang.dev">小碼哥的博客</a></span>
     <span>
         Powered by
         <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &

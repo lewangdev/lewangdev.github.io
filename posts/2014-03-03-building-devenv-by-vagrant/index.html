@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>使用 Vagrant 构建开发环境 | 小碼哥</title>
+<title>使用 Vagrant 构建开发环境 | 小碼哥的博客</title>
 <meta name="keywords" content="virtualbox, vagrant">
 <meta name="description" content="Vagrant 是一个构建虚拟开发环境的利器，它使得在团队中很容易共享开发环境，有了它，不必每个人都搭建一个自己的开发环境了。在没有使用 vagrant 之前，我在 windows 中安装了 virtualbox，然后在 virtualbox 中安装了一个 ubuntu server。在 ubuntu 中安装了 mysql、jdk 等软件，并且设置了一个共享目录，以便于将工程代码直接共享给 ubuntu。在外部开发调试过程中（Java 项目），我需要在 virtualbox 中设置好几个端口映射，如 mysql，ssh 等等。这样在 cygwin 里面就可以通过 ssh 登录 ubuntu server 了，为了使得 ssh 登录不用每次设置密码，还需要手动生成公钥私钥。换机器了，这一切我又得重新配置。新同事来了，他也得像我这样重新配置一遍。有可能他还会有问题说：为什么按照你的说明，代码在我这里却无法运行呢？
 一切都从 Yining 告诉了我 vagrant 之后发生了变化，原来一切都这么简单。
@@ -142,7 +142,7 @@ Ubuntu precise 32 VirtualBox Ubuntu precise 64 VirtualBox 更多镜像 在工作
   },
   "publisher": {
     "@type": "Organization",
-    "name": "小碼哥",
+    "name": "小碼哥的博客",
     "logo": {
       "@type": "ImageObject",
       "url": "https://lewang.dev/favicon.ico"
@@ -167,7 +167,7 @@ Ubuntu precise 32 VirtualBox Ubuntu precise 64 VirtualBox 更多镜像 在工作
 <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="https://lewang.dev" accesskey="h" title="小碼哥 (Alt + H)">小碼哥</a>
+            <a href="https://lewang.dev" accesskey="h" title="小碼哥的博客 (Alt + H)">小碼哥的博客</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -209,7 +209,7 @@ Ubuntu precise 32 VirtualBox Ubuntu precise 64 VirtualBox 更多镜像 在工作
 
 <article class="post-single">
   <header class="post-header">
-    
+    <div class="breadcrumbs"><a href="https://lewang.dev">Home</a>&nbsp;»&nbsp;<a href="https://lewang.dev/posts/">Posts</a></div>
     <h1 class="post-title">
       使用 Vagrant 构建开发环境
     </h1>
@@ -381,7 +381,7 @@ vagrant up
     </main>
     
 <footer class="footer">
-    <span>&copy; 2023 <a href="https://lewang.dev">小碼哥</a></span>
+    <span>&copy; 2023 <a href="https://lewang.dev">小碼哥的博客</a></span>
     <span>
         Powered by
         <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>使用 Docker 方式安装 Gitlab，没你想得那么简单 | 小碼哥</title>
+<title>使用 Docker 方式安装 Gitlab，没你想得那么简单 | 小碼哥的博客</title>
 <meta name="keywords" content="Docker, Gitlab, SSH, Linux">
 <meta name="description" content="为什么要写这篇文章？ 曾经几年前在 Docker 还没有广泛应用的时候，在公司使用过源码的方式安装和升级过 Gitlab，虽远没有 Docker 方便，因为自己对 Linux 系统的理解，所以整体上感觉还是挺简单的。这几年随着 Docker 的普及，使得安装 Gitlab 更加的容易，不仅方便了我这样的老鸟，也更方便了小白用户们。但是 Gitlab 官方的 Docker 安装文档并没有写得很完善, 除了官方文档之外，检索出来的安装文档也是人云亦云，东拼西凑，结果也就是能运行起来，凑合着能用而已。避免出现下图中“我已经用 Docker 部署好啦”，其实已经翻车的情形。
 我希望每做一件小事的时候也都能抱着“知其然知其所以然”的心态对待，用 Docker 方式安装 Gitlab，说简单来说就是一行命令的事儿，但是这样就够了吗？我看是不够的，所以就有了这篇文档。
@@ -129,7 +129,7 @@ if (!doNotTrack) {
   },
   "publisher": {
     "@type": "Organization",
-    "name": "小碼哥",
+    "name": "小碼哥的博客",
     "logo": {
       "@type": "ImageObject",
       "url": "https://lewang.dev/favicon.ico"
@@ -154,7 +154,7 @@ if (!doNotTrack) {
 <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="https://lewang.dev" accesskey="h" title="小碼哥 (Alt + H)">小碼哥</a>
+            <a href="https://lewang.dev" accesskey="h" title="小碼哥的博客 (Alt + H)">小碼哥的博客</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -196,7 +196,7 @@ if (!doNotTrack) {
 
 <article class="post-single">
   <header class="post-header">
-    
+    <div class="breadcrumbs"><a href="https://lewang.dev">Home</a>&nbsp;»&nbsp;<a href="https://lewang.dev/posts/">Posts</a></div>
     <h1 class="post-title">
       使用 Docker 方式安装 Gitlab，没你想得那么简单
     </h1>
@@ -537,7 +537,7 @@ cat ~/.ssh/id_rsa.pub &gt;&gt; ~/.ssh/authorized_keys
     </main>
     
 <footer class="footer">
-    <span>&copy; 2023 <a href="https://lewang.dev">小碼哥</a></span>
+    <span>&copy; 2023 <a href="https://lewang.dev">小碼哥的博客</a></span>
     <span>
         Powered by
         <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &

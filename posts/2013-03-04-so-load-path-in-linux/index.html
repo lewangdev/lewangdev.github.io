@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>Linux 共享库（动态链接库）相关的一些记录 | 小碼哥</title>
+<title>Linux 共享库（动态链接库）相关的一些记录 | 小碼哥的博客</title>
 <meta name="keywords" content="Linux">
 <meta name="description" content="相关的环境变量 LD_LIBRARY_PATH ld-linux.so 寻找 shared object 的路径，优先加载出现在路径前面的 shared object。如，export LD_LIBRARY_PATH=/home/user/lib:$LD_LIBRARY_PATH LD_PRELOAD 指定优先供 ld-linux.so 加载的 shared object。如，export LD_PRELAOD=/home/user/lib/glibc.so，可以使用这个变量来改变加载顺序，例如我们自定义的 glibc.so 中实现了新的 strcmp 之类的函数，那么可以使用这个变量来实现函数的替换，实现注入 LD_DEBUG 使用这个环境变量来 debug 载入 shared object 的情况。如，export LD_DEBUG=files,这样会打印所有所有加载 shared object 的记录 一些工具 如何查看一个程序或者 shared object 加载哪些 shared object ldd，可以查看程序或者.so，如，
 $ ldd ./foo_test $ ldd ./libfoo.so 对于已经运行的程序，可以这样 $ cat /proc/PID/maps | awk &#39;{print $6}&#39;| grep &#39;\.so&#39;| sort | uniq $ lsof -p PID | awk &#39;{print $9}&#39; | grep &#39;\.so&#39; 没有启动的程序可以这样 $ strace .">
@@ -127,7 +127,7 @@ $ ldd ./foo_test $ ldd ./libfoo.so 对于已经运行的程序，可以这样 $ 
   },
   "publisher": {
     "@type": "Organization",
-    "name": "小碼哥",
+    "name": "小碼哥的博客",
     "logo": {
       "@type": "ImageObject",
       "url": "https://lewang.dev/favicon.ico"
@@ -152,7 +152,7 @@ $ ldd ./foo_test $ ldd ./libfoo.so 对于已经运行的程序，可以这样 $ 
 <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="https://lewang.dev" accesskey="h" title="小碼哥 (Alt + H)">小碼哥</a>
+            <a href="https://lewang.dev" accesskey="h" title="小碼哥的博客 (Alt + H)">小碼哥的博客</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -194,7 +194,7 @@ $ ldd ./foo_test $ ldd ./libfoo.so 对于已经运行的程序，可以这样 $ 
 
 <article class="post-single">
   <header class="post-header">
-    
+    <div class="breadcrumbs"><a href="https://lewang.dev">Home</a>&nbsp;»&nbsp;<a href="https://lewang.dev/posts/">Posts</a></div>
     <h1 class="post-title">
       Linux 共享库（动态链接库）相关的一些记录
     </h1>
@@ -373,7 +373,7 @@ $ objdump -s -j .rodata -t libfoo.so
     </main>
     
 <footer class="footer">
-    <span>&copy; 2023 <a href="https://lewang.dev">小碼哥</a></span>
+    <span>&copy; 2023 <a href="https://lewang.dev">小碼哥的博客</a></span>
     <span>
         Powered by
         <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &

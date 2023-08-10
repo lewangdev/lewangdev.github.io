@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>Nginx 性能调优「译」 | 小碼哥</title>
+<title>Nginx 性能调优「译」 | 小碼哥的博客</title>
 <meta name="keywords" content="Nginx, tuning, Linux, performance">
 <meta name="description" content="这是一篇译文，原文链接：Tuning NGINX for Performance
 Nginx 为人熟知的是在负载均衡、静态缓存和 WEB 服务器等方面的高性能，目前世界上最繁忙的站点中大约有 40% 在使用 Nginx。绝大多数情况下，大多数默认的 Nginx 和 Linux 配置都可以工作得非常好，但也需要做一些优化以获得最好的性能。本文将讨论在优化系统时需要考虑的 Nginx 和 Linux 的部分配置。可配置的选项有很多，但是本文只涵盖推荐大多数用户调整的配置选项。本文没有涵盖的配置选项，只有那些对 Nginx 和 Linux 有了深入的理解的人或者获得了 Nginx 技术支持和专业的服务团队的推荐建议后，才可以考虑调整。Nginx 专业服务器团队已经为世界上一些最繁忙的站点通过优化 Nginx 获得了最高水平的性能，并且可以为任何需要获得自己系统最大产出的客户服务。
@@ -144,7 +144,7 @@ net.core.netdev_max_backlog: 设置数据包在被发送到 CPU 前可被网卡�
   },
   "publisher": {
     "@type": "Organization",
-    "name": "小碼哥",
+    "name": "小碼哥的博客",
     "logo": {
       "@type": "ImageObject",
       "url": "https://lewang.dev/favicon.ico"
@@ -169,7 +169,7 @@ net.core.netdev_max_backlog: 设置数据包在被发送到 CPU 前可被网卡�
 <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="https://lewang.dev" accesskey="h" title="小碼哥 (Alt + H)">小碼哥</a>
+            <a href="https://lewang.dev" accesskey="h" title="小碼哥的博客 (Alt + H)">小碼哥的博客</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -211,7 +211,7 @@ net.core.netdev_max_backlog: 设置数据包在被发送到 CPU 前可被网卡�
 
 <article class="post-single">
   <header class="post-header">
-    
+    <div class="breadcrumbs"><a href="https://lewang.dev">Home</a>&nbsp;»&nbsp;<a href="https://lewang.dev/posts/">Posts</a></div>
     <h1 class="post-title">
       Nginx 性能调优「译」
     </h1>
@@ -487,7 +487,7 @@ Nginx 可以利用它通过 socket 发送缓存的或者磁盘上的内容，并
     </main>
     
 <footer class="footer">
-    <span>&copy; 2023 <a href="https://lewang.dev">小碼哥</a></span>
+    <span>&copy; 2023 <a href="https://lewang.dev">小碼哥的博客</a></span>
     <span>
         Powered by
         <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &

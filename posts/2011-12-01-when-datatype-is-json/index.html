@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>jquery $.ajax() 中 datatype 为 json 时的问题 | 小碼哥</title>
+<title>jquery $.ajax() 中 datatype 为 json 时的问题 | 小碼哥的博客</title>
 <meta name="keywords" content="jquery, ajax, json">
 <meta name="description" content="最近在为摆摊写点前端 js 的时候，在使用 jquery 的 $.ajax()这个方法的时候，当 datatype 设置为 json 时，总是不执行 success 回调，而是执行 error 回调。而将 datatype 设置成 text，就可以执行 success 回调了，摆摊使用的是 jQuery JavaScript Library v1.6.2，查看 jQuery 文档可知：
 “json”: Evaluates the response as JSON and returns a JavaScript object. In jQuery 1.4 the JSON data is parsed in a strict manner; any malformed JSON is rejected and a parse error is thrown. (See json.org for more information on proper JSON formatting.)
@@ -130,7 +130,7 @@ if (!doNotTrack) {
   },
   "publisher": {
     "@type": "Organization",
-    "name": "小碼哥",
+    "name": "小碼哥的博客",
     "logo": {
       "@type": "ImageObject",
       "url": "https://lewang.dev/favicon.ico"
@@ -155,7 +155,7 @@ if (!doNotTrack) {
 <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="https://lewang.dev" accesskey="h" title="小碼哥 (Alt + H)">小碼哥</a>
+            <a href="https://lewang.dev" accesskey="h" title="小碼哥的博客 (Alt + H)">小碼哥的博客</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -197,7 +197,7 @@ if (!doNotTrack) {
 
 <article class="post-single">
   <header class="post-header">
-    
+    <div class="breadcrumbs"><a href="https://lewang.dev">Home</a>&nbsp;»&nbsp;<a href="https://lewang.dev/posts/">Posts</a></div>
     <h1 class="post-title">
       jquery $.ajax() 中 datatype 为 json 时的问题
     </h1>
@@ -326,7 +326,7 @@ if (!doNotTrack) {
     </main>
     
 <footer class="footer">
-    <span>&copy; 2023 <a href="https://lewang.dev">小碼哥</a></span>
+    <span>&copy; 2023 <a href="https://lewang.dev">小碼哥的博客</a></span>
     <span>
         Powered by
         <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &

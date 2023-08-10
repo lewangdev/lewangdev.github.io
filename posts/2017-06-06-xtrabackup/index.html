@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>MySQL 数据备份和不停机重新搭建主从同步 | 小碼哥</title>
+<title>MySQL 数据备份和不停机重新搭建主从同步 | 小碼哥的博客</title>
 <meta name="keywords" content="MySQL, xtrabackup">
 <meta name="description" content="背景 目前公司主要服务都是直接使用 MySQL 主服务器，从服务主要给离线数据分析服务使用，由于前期弄得比较简单的粗暴，从服务上还有一两个数据库在做生产使用, 并且从服数据已经不能和主服进行进行同步了，有大量错误，忽略都没有办法进行。此外，主服仅配置了三个核心数据的 binlog，随着业务的变化，其它数据库不能走主从这条路来同步数据，于是希望不停机的情形下重新调整主服配置，记录所有的数据库的 binlog，同时添加新的从服务器来同步数据
 方案 1 MySQL 的主从是通过同步 binlog 日志来实现数据同步的，于是需要想办法把从服数据先于主服同步，记录 binlog 的 pos 值，再配置从服从该 pos 处开始同步，考虑可以使用 mysqldump 导出所有 innodb 数据，使用 rsync 同步所有 myisam 数据文件，然后再开启主从同步。但是目前这种方案不适用，主服不能长时间停机
@@ -132,7 +132,7 @@ yum install http://www.percona.com/downloads/percona-release/redhat/0.1-4/percon
   },
   "publisher": {
     "@type": "Organization",
-    "name": "小碼哥",
+    "name": "小碼哥的博客",
     "logo": {
       "@type": "ImageObject",
       "url": "https://lewang.dev/favicon.ico"
@@ -157,7 +157,7 @@ yum install http://www.percona.com/downloads/percona-release/redhat/0.1-4/percon
 <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="https://lewang.dev" accesskey="h" title="小碼哥 (Alt + H)">小碼哥</a>
+            <a href="https://lewang.dev" accesskey="h" title="小碼哥的博客 (Alt + H)">小碼哥的博客</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -199,7 +199,7 @@ yum install http://www.percona.com/downloads/percona-release/redhat/0.1-4/percon
 
 <article class="post-single">
   <header class="post-header">
-    
+    <div class="breadcrumbs"><a href="https://lewang.dev">Home</a>&nbsp;»&nbsp;<a href="https://lewang.dev/posts/">Posts</a></div>
     <h1 class="post-title">
       MySQL 数据备份和不停机重新搭建主从同步
     </h1>
@@ -398,7 +398,7 @@ show slave status\G;
     </main>
     
 <footer class="footer">
-    <span>&copy; 2023 <a href="https://lewang.dev">小碼哥</a></span>
+    <span>&copy; 2023 <a href="https://lewang.dev">小碼哥的博客</a></span>
     <span>
         Powered by
         <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>再说 PHP 中 SimpleXML | 小碼哥</title>
+<title>再说 PHP 中 SimpleXML | 小碼哥的博客</title>
 <meta name="keywords" content="php">
 <meta name="description" content="前一篇帖子使用了 xpath，后来了解到 xpath 的性能可能比较差，而且在遇到有命名空间的时候还有点小麻烦。这里都已豆瓣提供的 API 返回的 xml 为例。豆瓣返回的 xml 不是 rss 格式的，而是 Atom 格式，有很多的命名空间，如果习惯于操作 rss 格式的 xml，那么可以直接把 xml 里面的命名空间的字符串都 replace 掉，这个方法貌似很简单很暴力，就不会遇到命名空间的问题了。
 从豆瓣 API 开始，点击这个链接 http://api.douban.com/book/subjects?q=java 你就可以看到 xml 格式，由于返回的是 Atom 格式的 xml，浏览器会自动帮你解析，所以应该这样
@@ -142,7 +142,7 @@ $children = $xml-&gt;children(&#39;http://a9.com/-/spec/opensearchrss/1.0/&#39;)
   },
   "publisher": {
     "@type": "Organization",
-    "name": "小碼哥",
+    "name": "小碼哥的博客",
     "logo": {
       "@type": "ImageObject",
       "url": "https://lewang.dev/favicon.ico"
@@ -167,7 +167,7 @@ $children = $xml-&gt;children(&#39;http://a9.com/-/spec/opensearchrss/1.0/&#39;)
 <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="https://lewang.dev" accesskey="h" title="小碼哥 (Alt + H)">小碼哥</a>
+            <a href="https://lewang.dev" accesskey="h" title="小碼哥的博客 (Alt + H)">小碼哥的博客</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -209,7 +209,7 @@ $children = $xml-&gt;children(&#39;http://a9.com/-/spec/opensearchrss/1.0/&#39;)
 
 <article class="post-single">
   <header class="post-header">
-    
+    <div class="breadcrumbs"><a href="https://lewang.dev">Home</a>&nbsp;»&nbsp;<a href="https://lewang.dev/posts/">Posts</a></div>
     <h1 class="post-title">
       再说 PHP 中 SimpleXML
     </h1>
@@ -344,7 +344,7 @@ $entryChildren = $entry-&gt;children(&#39;http://www.douban.com/xmlns/&#39;);
     </main>
     
 <footer class="footer">
-    <span>&copy; 2023 <a href="https://lewang.dev">小碼哥</a></span>
+    <span>&copy; 2023 <a href="https://lewang.dev">小碼哥的博客</a></span>
     <span>
         Powered by
         <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &

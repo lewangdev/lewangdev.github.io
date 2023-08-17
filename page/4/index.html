@@ -151,6 +151,46 @@ if (!doNotTrack) {
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2>用飞信(libfetion)定时发天气预报
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>什么是libfetion？请访问http://www.libfetion.cn/查看
+以下都是在ubuntu下进行的
+参考
+http://www.libfetion.cn/Docs-dve/Build-LibFx-on-ubuntu.txt
+请使用svn客户端下载libfetion-gui的源码
+http://libfetion-gui.googlecode.com/svn/
+安装开发过程中需要的软件
+1 sudo apt-get install libc-dev
+2 sudo apt-get install g&#43;&#43;
+3 sudo apt-get install libcurl4-openssl-dev
+在trunk/qt4_src/libfetion/lib目录下找到静态库libfetion_32.a，由于代码打算是用python来写，所以制作了一个动态库libfetion.so
+具体步骤如下：
+#解压静态库为*.o
+ar -x libfetion_32.a
+#重新封装为so
+g&#43;&#43; -shared -Wall -fPIC -lcurl -pthread *.o -o libfetion.so
+#查看so[可选步骤]
+nm libfetion.so
+发送天气预报的python代码如下，libfetion.so中具体的方法请查看trunk/qt4_src/libfetion/include/libfetion/libfetion.h
+1 #!/usr/bin/env python
+2 #coding=utf-8
+3 #only can run at linux
+4 import os
+5 import ctypes
+6 import urllib2
+7
+8 #城市代码列表
+9 city_codes = {
+10 ‘合肥’ : ‘CHXX0448’,...</p>
+  </div>
+  <footer class="entry-footer"><span title='2009-11-23 06:56:00 +0000 UTC'>November 23, 2009</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Le</footer>
+  <a class="entry-link" aria-label="post link to 用飞信(libfetion)定时发天气预报" href="https://lewang.dev/posts/2009-11-23-libfetion/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2>使用Openlayers搭一个E校园(e-campus),类似e都市，6d校园
     </h2>
   </header>

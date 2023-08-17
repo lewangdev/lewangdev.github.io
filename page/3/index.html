@@ -151,6 +151,40 @@ if (!doNotTrack) {
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2>Java程序如何限速(控制下载和上传速度)
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>好久没有在这里写点东西了，要养成书写记录的习惯。
+这里简单的讨论一下java设计网络程序中如何控制上传和下载速度，我们常见的FTP，HTTP，BT等协议都是TCP的，但是现在流行的utorrent却基于UDP实现了自己UTP协议(UDP&#43;拥塞控制)，不管使用什么协议，站在I/O的角度来说，限速的控制思路都是一样的。
+思路很简单，如下：
+1.假设下载或者上传速度上限是m (KB/s),那么发送一个固定的字节数据(假设是n字节)的时间花费是：n/m；
+2.假设现在要发送n字节的数据，那么理论所需的时间应该是n/m，而在实际情况下，发送n字节的数据只花费了t秒，那么发送该发送线程就应该睡眠n/m-t秒，这样就基本实现了速度的控制。
+代码以TCP为例
+速度控制
+1 package com.actiontec.net.bandwidth;
+2
+3 /**
+4 *
+5 * @author Le
+6 *
+7 /
+8 public class BandwidthLimiter {
+9
+10 / KB /
+11 private static Long KB = 1024l;
+12
+13 / The smallest count chunk length in bytes /
+14 private static Long CHUNK_LENGTH = 1024l;
+15
+16 / How many bytes will be sent or receive /...</p>
+  </div>
+  <footer class="entry-footer"><span title='2012-10-18 08:34:00 +0000 UTC'>October 18, 2012</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;Le</footer>
+  <a class="entry-link" aria-label="post link to Java程序如何限速(控制下载和上传速度)" href="https://lewang.dev/posts/2012-10-18-bandwidthlimiter/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2>把ubuntu配置成路由器&#43;DHCP
     </h2>
   </header>
@@ -526,46 +560,6 @@ ft。。。一下子写了这么多了。。。就此搁笔，期待奖金早日
   </div>
   <footer class="entry-footer"><span title='2010-01-11 08:31:00 +0000 UTC'>January 11, 2010</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Le</footer>
   <a class="entry-link" aria-label="post link to 删除Firefox地址栏下拉列表中的指定记录" href="https://lewang.dev/posts/2010-01-11-del-firefox-address/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>用飞信(libfetion)定时发天气预报
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>什么是libfetion？请访问http://www.libfetion.cn/查看
-以下都是在ubuntu下进行的
-参考
-http://www.libfetion.cn/Docs-dve/Build-LibFx-on-ubuntu.txt
-请使用svn客户端下载libfetion-gui的源码
-http://libfetion-gui.googlecode.com/svn/
-安装开发过程中需要的软件
-1 sudo apt-get install libc-dev
-2 sudo apt-get install g&#43;&#43;
-3 sudo apt-get install libcurl4-openssl-dev
-在trunk/qt4_src/libfetion/lib目录下找到静态库libfetion_32.a，由于代码打算是用python来写，所以制作了一个动态库libfetion.so
-具体步骤如下：
-#解压静态库为*.o
-ar -x libfetion_32.a
-#重新封装为so
-g&#43;&#43; -shared -Wall -fPIC -lcurl -pthread *.o -o libfetion.so
-#查看so[可选步骤]
-nm libfetion.so
-发送天气预报的python代码如下，libfetion.so中具体的方法请查看trunk/qt4_src/libfetion/include/libfetion/libfetion.h
-1 #!/usr/bin/env python
-2 #coding=utf-8
-3 #only can run at linux
-4 import os
-5 import ctypes
-6 import urllib2
-7
-8 #城市代码列表
-9 city_codes = {
-10 ‘合肥’ : ‘CHXX0448’,...</p>
-  </div>
-  <footer class="entry-footer"><span title='2009-11-23 06:56:00 +0000 UTC'>November 23, 2009</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Le</footer>
-  <a class="entry-link" aria-label="post link to 用飞信(libfetion)定时发天气预报" href="https://lewang.dev/posts/2009-11-23-libfetion/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

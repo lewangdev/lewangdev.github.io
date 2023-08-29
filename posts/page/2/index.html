@@ -164,6 +164,21 @@ if (!doNotTrack) {
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2>使用 Docker 方式安装 Gitlab，没你想得那么简单
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>为什么要写这篇文章？ 曾经几年前在 Docker 还没有广泛应用的时候，在公司使用过源码的方式安装和升级过 Gitlab，虽远没有 Docker 方便，因为自己对 Linux 系统的理解，所以整体上感觉还是挺简单的。这几年随着 Docker 的普及，使得安装 Gitlab 更加的容易，不仅方便了我这样的老鸟，也更方便了小白用户们。但是 Gitlab 官方的 Docker 安装文档并没有写得很完善, 除了官方文档之外，检索出来的安装文档也是人云亦云，东拼西凑，结果也就是能运行起来，凑合着能用而已。避免出现下图中“我已经用 Docker 部署好啦”，其实已经翻车的情形。
+我希望每做一件小事的时候也都能抱着“知其然知其所以然”的心态对待，用 Docker 方式安装 Gitlab，说简单来说就是一行命令的事儿，但是这样就够了吗？我看是不够的，所以就有了这篇文档。
+本文需要达成的事项 在 CentOS 7 系统中安装 Docker 使用 Docker 方式安装中文版 Gitlab 和宿主机器共用 22(SSH) 端口 支持 SSH(22)/HTTPS(443) 方式推拉仓库 使用 SMTP 方式配置通知邮箱(腾讯企业邮箱) 改写默认的项目标签(Labels) 在 CentOS 7 系统中安装 Docker 这部分参考 Docker 的官方文档, 罗列一下安装步骤, 细节请看 Docker 的官方文档。如果使用 root 用户安装，sudo 可以去掉。
+1. 删除老版本 Docker $ sudo yum remove docker \ docker-client \ docker-client-latest \ docker-common \ docker-latest \ docker-latest-logrotate \ docker-logrotate \ docker-selinux \ docker-engine-selinux \ docker-engine 2....</p>
+  </div>
+  <footer class="entry-footer"><span title='2018-12-18 23:25:20 +0000 UTC'>December 18, 2018</span>&nbsp;·&nbsp;4 min</footer>
+  <a class="entry-link" aria-label="post link to 使用 Docker 方式安装 Gitlab，没你想得那么简单" href="https://lewang.dev/posts/2018-12-18-gitlab-docker-install/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2>有关 2017 流水账和胡思乱想的记录
     </h2>
   </header>
@@ -499,42 +514,6 @@ This is free software: you are free to change and redistribute it....</p>
   </div>
   <footer class="entry-footer"><span title='2012-11-06 07:18:00 +0000 UTC'>November 6, 2012</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Le</footer>
   <a class="entry-link" aria-label="post link to 使用gdb根据指令地址定位到C代码对应的行" href="https://lewang.dev/posts/2012-11-06-how_to_use_gdb_to_find_the_kernel_source_code/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>几个简单的Makefile
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>几个简单适合小程序的Makefile，可直接拷贝使用，自己mark一下，这样长时间不用Makefile也不用去看手册了
-0.只有一个文件
-变量的定义，方便使用 CC = gcc
-CCFLAGS = -O2 -s
-BIN = test
-OBJ = root_password_tool_win32.o
-$(BIN) : $(OBJ)
-$(CC) $(CCFLAGS) -o test $(OBJ)
-$(OBJ) : root_password_tool_win32.c
-$(CC) $(CCFLAGS) -c root_password_tool_win32.c
-.PHONY : clean
-clean :
--rm $(BIN) $(OBJ)
-1.简单编译命令行程序，$(CC)前面是tab，不是space
-一共五个文件：
-test.c
-md5.c md5.h
-password.c password.h
-main函数在test.c中，test.c文件include了md5.h和password.h
-CC = gcc
-CCFLAGS = -O2 -s
-BIN = password
-OBJ = md5.o password.o test.o
-$(BIN) : $(OBJ)
-$(CC) $(CCFLAGS) -o password $(OBJ)...</p>
-  </div>
-  <footer class="entry-footer"><span title='2012-11-06 07:05:00 +0000 UTC'>November 6, 2012</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Le</footer>
-  <a class="entry-link" aria-label="post link to 几个简单的Makefile" href="https://lewang.dev/posts/2012-11-06-quick_makefile/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

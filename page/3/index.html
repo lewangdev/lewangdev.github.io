@@ -151,6 +151,42 @@ if (!doNotTrack) {
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2>几个简单的Makefile
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>几个简单适合小程序的Makefile，可直接拷贝使用，自己mark一下，这样长时间不用Makefile也不用去看手册了
+0.只有一个文件
+变量的定义，方便使用 CC = gcc
+CCFLAGS = -O2 -s
+BIN = test
+OBJ = root_password_tool_win32.o
+$(BIN) : $(OBJ)
+$(CC) $(CCFLAGS) -o test $(OBJ)
+$(OBJ) : root_password_tool_win32.c
+$(CC) $(CCFLAGS) -c root_password_tool_win32.c
+.PHONY : clean
+clean :
+-rm $(BIN) $(OBJ)
+1.简单编译命令行程序，$(CC)前面是tab，不是space
+一共五个文件：
+test.c
+md5.c md5.h
+password.c password.h
+main函数在test.c中，test.c文件include了md5.h和password.h
+CC = gcc
+CCFLAGS = -O2 -s
+BIN = password
+OBJ = md5.o password.o test.o
+$(BIN) : $(OBJ)
+$(CC) $(CCFLAGS) -o password $(OBJ)...</p>
+  </div>
+  <footer class="entry-footer"><span title='2012-11-06 07:05:00 +0000 UTC'>November 6, 2012</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Le</footer>
+  <a class="entry-link" aria-label="post link to 几个简单的Makefile" href="https://lewang.dev/posts/2012-11-06-quick_makefile/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2>Java程序如何限速(控制下载和上传速度)
     </h2>
   </header>
@@ -546,20 +582,6 @@ ft。。。一下子写了这么多了。。。就此搁笔，期待奖金早日
   </div>
   <footer class="entry-footer"><span title='2010-09-18 09:13:00 +0000 UTC'>September 18, 2010</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Le</footer>
   <a class="entry-link" aria-label="post link to 小记盛大校园牛人创新技术大赛" href="https://lewang.dev/posts/2010-09-18-snda/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>删除Firefox地址栏下拉列表中的指定记录
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>2010年的第一篇日志献给了firefox
-原因很简单，我要删掉删除Firefox地址栏下拉列表中指定的几条记录，试了del、alt&#43;del、shift&#43;del、ctrl&#43;del都不管用
-才发现这些记录都已经是书签了，于是选择:书签–&gt;管理书签–&gt;在搜索书签栏里面输入要删除的网址，找到删除即可</p>
-  </div>
-  <footer class="entry-footer"><span title='2010-01-11 08:31:00 +0000 UTC'>January 11, 2010</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Le</footer>
-  <a class="entry-link" aria-label="post link to 删除Firefox地址栏下拉列表中的指定记录" href="https://lewang.dev/posts/2010-01-11-del-firefox-address/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

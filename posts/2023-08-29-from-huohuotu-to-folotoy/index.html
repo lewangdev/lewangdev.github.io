@@ -214,7 +214,7 @@ ChatGPT 玩具在对话时需要一直在线，是需要联网的 IoT 设备，�
 
 <article class="post-single">
   <header class="post-header">
-    
+    <div class="breadcrumbs"><a href="https://lewang.dev">Home</a>&nbsp;»&nbsp;<a href="https://lewang.dev/posts/">Posts</a></div>
     <h1 class="post-title">
       从「改造火火兔」开始，到遇见 ChatGPT 玩具「FoloToy」
     </h1>
@@ -226,7 +226,7 @@ ChatGPT 玩具在对话时需要一直在线，是需要联网的 IoT 设备，�
   <div class="post-content"><blockquote>
 <p>获取「改造火火兔」动态和「FoloToy」玩具进展请关注我的电报频道 <a href="https://t.me/s/FoloToy">FoloToy</a></p>
 </blockquote>
-<p><img loading="lazy" src="https://cdn.staticaly.com/gh/lewangdev/picb0@main/20230829/lewang_an_artificial_rabbit_has_been_set_on_a_table_with_a_voic_44a8884a-60a4-4350-b3a7-6411c536f353.2hqf957e1xm0.webp" alt=""  />
+<p><img loading="lazy" src="https://github.com/lewangdev/picb0/raw/main/20230829/lewang_an_artificial_rabbit_has_been_set_on_a_table_with_a_voic_44a8884a-60a4-4350-b3a7-6411c536f353.2hqf957e1xm0.webp" alt="lewang_an_artificial_rabbit_has_been_set_on_a_table_with_a_voic_44a8884a-60a4-4350-b3a7-6411c536f353"  />
 </p>
 <p>从上个月在推上公开一系列脑洞开始，到选定其中做智能硬件的想法，借助「改造火火兔」到昨天大概一个多月才算验证通所有的产品化技术难点，群友们都在安静等待着产品发布，我自己反而觉得越来越着急，这是一个月遇到技术问题的汇总，希望也能给其他做 IoT 硬件产品的朋友以启发。</p>
 <p>我们没有选用树莓派之类的可以运行完整 Linux 的方案，而是采用了 ESP32 嵌入式方案，我们希望模块可以做得非常小，功耗低，成本也低，这样我们就需要自己搞定硬件的设计和固件的开发，也就遇到了后续的这些问题。</p>
@@ -236,7 +236,7 @@ ChatGPT 玩具在对话时需要一直在线，是需要联网的 IoT 设备，�
 <p>一开始，我们认为玩具的交互过程非常简单，直接使用 UDP 就可以了，但在实现的过程中发现，服务器在向 ESP32 板子发送 UDP 的语音数据时，会发生非常明显的丢包，从而造成扬声器播放有断断续续的现象，而且不同的电脑运行服务器程序现象还不尽相同，我的 MacBook 体验就很好，而换成 ThinkPad 就丢包严重。</p>
 <p>从 UDP 上解决这个问题我感觉难度较大，可能要我们自己做缓存适配硬件解码速度的来播放语音。于是我们从服务器推语音文件转向由板子自己拉(下载)语音文件的方式，流程：板子通过 UDP 上传语音，服务器接收语音后通过 MQTT 下发语音文件 URL，在服务器完成所有的接口调用和语音处理之后，通知板子下载语音。</p>
 <p>到此，技术上主要的问题都已经解决，此外我们还做好了通过 Web 更新固件，配网，定义好了灯的状态，而且芯片换为资源更多的 ESP32，从而有足够的 Flash 用于存储出厂固件等。</p>
-<p><img loading="lazy" src="https://cdn.staticaly.com/gh/lewangdev/picb0@main/20230829/2023-08-29-15.49.19.5n35z0tq2900.webp" alt=""  />
+<p><img loading="lazy" src="https://github.com/lewangdev/picb0/raw/main/20230829/2023-08-29-15.49.19.5n35z0tq2900.webp" alt="2023-08-29-15"  />
 </p>
 <p>另外也我注册好了产品的域名 <a href="https://FoloToy.com">https://FoloToy.com</a>，接下来我们在 <a href="https://FoloToy.com">https://FoloToy.com</a> 上相会, 谢谢。</p>
 

@@ -164,6 +164,25 @@ if (!doNotTrack) {
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2>使用 rcode&#43;vscode&#43;docker 快速搭建隔离的 cuda 开发环境
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>昨天组装了一台GPU 开发机，我使用 rcode&#43;vscode&#43;docker 可以快速搭建出隔离的cuda开发环境，我感觉非常的方便。特别是 rcode 这个命令在使用 docker 构建 cuda 开发环境时非常有用。下面以搭建 faster-whisper 开发环境为例：
+faster-whisper 的项目说明里提到，NVIDIA 官方 Docker 镜像 nvidia/cuda:11.8.0-cudnn8-runtime-ubuntu22.04 已经包括了开发需要的库 cuBLAS for CUDA 11 和 cuDNN 8 for CUDA 11。执行以下命令下载并启动这个镜像，并且在启动时，安装好需要的 python 库 和 openssh-server 服务
+执行以下命令查找到刚刚启动的容器的名称
+sudo docker ps 例如我的容器名称是 admiring_kapitsa，使用以下命令进入容器的 console
+sudo docker exec -it admiring_kapitsa /bin/bash 进入 console 之后，进入 /root 目录，创建以下目录和文件，并且把自己的公钥加到 authorized_keys 中：
+mkdir /root/.ssh touch /root/.ssh/authorized_keys chmod 600 /root/.ssh/authorized_keys 经过这一步操作之后，后面可以通过 ssh 直接登录到容器中。
+关闭容器 admiring_kapitsa 之后，把容器 commit 为一个本地镜像，这样以后可以重复使用
+sudo docker stop admiring_kapitsa sudo docker commit admiring_kapitsa lewangdev/cudalab 下载 faster-whisper 的代码然后重新启动一个容器，并且配置好容器的 ssh 端口，挂载 faster-whisper 项目代码到容器中，例如我这里把 8822 端口映射到容器的 22 端口，把 faster-whisper 代码挂载到容器的 /src 目录下：...</p>
+  </div>
+  <footer class="entry-footer"><span title='2023-11-28 00:00:00 +0000 UTC'>November 28, 2023</span>&nbsp;·&nbsp;1 min</footer>
+  <a class="entry-link" aria-label="post link to 使用 rcode&#43;vscode&#43;docker 快速搭建隔离的 cuda 开发环境" href="https://lewang.dev/posts/2023-11-28-build-cuda-dev-env-with-rcode-vscode-docker/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2>从「改造火火兔」开始，到遇见 ChatGPT 玩具「FoloToy」
     </h2>
   </header>
@@ -539,18 +558,6 @@ JDK 11 Oracle 不在免费提供 LTS 版本了，包括 JDK 8 ZGC, 可伸缩的�
   </div>
   <footer class="entry-footer"><span title='2019-03-06 00:00:00 +0000 UTC'>March 6, 2019</span>&nbsp;·&nbsp;1 min</footer>
   <a class="entry-link" aria-label="post link to Java 进阶要点" href="https://lewang.dev/posts/2019-03-06-keynotes-of-new-java/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>树莓派 CM3/CM3&#43; 刷写系统
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>准备 阅读Flashing the Compute Module eMMC 准备一个可以刷系统的底板，我用的是微雪Compute-Module-IO-Board-Plus 步骤(Linux 系统下刷系统，可以使用树莓派来刷机) sudo apt install git libusb-1.0-0-dev git clone --depth=1 https://github.com/raspberrypi/usbboot &amp;&amp; cd usbboot &amp;&amp; make sudo ./rpiboot 连好线，跳线部分见各自底板的手册 拔掉 USB SLAVE 1/2/3/4 拔掉 SELECT 跳线帽 将 BOOT ENABLE USB SLAVE 跳线帽接到 EN 端 sudo fdisk -l 查看磁盘名称，这里是 /dev/sda sudo dd if=raspbian-lite.img of=/dev/sda bs=4MiB 刷入系统后，挂在启动分区，添加 SSH 来开启 SSH 服务，sudo mount /dev/sda1 /media cd /media &amp;&amp; touch SSH 使用慧通科技出品的 HuiBox-700 底板 省略上述的第4步，其它步骤完全一样</p>
-  </div>
-  <footer class="entry-footer"><span title='2019-03-01 00:00:00 +0000 UTC'>March 1, 2019</span>&nbsp;·&nbsp;1 min</footer>
-  <a class="entry-link" aria-label="post link to 树莓派 CM3/CM3&#43; 刷写系统" href="https://lewang.dev/posts/2019-03-01-rpi-cm3-emmc-flashing/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

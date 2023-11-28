@@ -149,6 +149,25 @@ if (!doNotTrack) {
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2>使用 rcode&#43;vscode&#43;docker 快速搭建隔离的 cuda 开发环境
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>昨天组装了一台GPU 开发机，我使用 rcode&#43;vscode&#43;docker 可以快速搭建出隔离的cuda开发环境，我感觉非常的方便。特别是 rcode 这个命令在使用 docker 构建 cuda 开发环境时非常有用。下面以搭建 faster-whisper 开发环境为例：
+faster-whisper 的项目说明里提到，NVIDIA 官方 Docker 镜像 nvidia/cuda:11.8.0-cudnn8-runtime-ubuntu22.04 已经包括了开发需要的库 cuBLAS for CUDA 11 和 cuDNN 8 for CUDA 11。执行以下命令下载并启动这个镜像，并且在启动时，安装好需要的 python 库 和 openssh-server 服务
+执行以下命令查找到刚刚启动的容器的名称
+sudo docker ps 例如我的容器名称是 admiring_kapitsa，使用以下命令进入容器的 console
+sudo docker exec -it admiring_kapitsa /bin/bash 进入 console 之后，进入 /root 目录，创建以下目录和文件，并且把自己的公钥加到 authorized_keys 中：
+mkdir /root/.ssh touch /root/.ssh/authorized_keys chmod 600 /root/.ssh/authorized_keys 经过这一步操作之后，后面可以通过 ssh 直接登录到容器中。
+关闭容器 admiring_kapitsa 之后，把容器 commit 为一个本地镜像，这样以后可以重复使用
+sudo docker stop admiring_kapitsa sudo docker commit admiring_kapitsa lewangdev/cudalab 下载 faster-whisper 的代码然后重新启动一个容器，并且配置好容器的 ssh 端口，挂载 faster-whisper 项目代码到容器中，例如我这里把 8822 端口映射到容器的 22 端口，把 faster-whisper 代码挂载到容器的 /src 目录下：...</p>
+  </div>
+  <footer class="entry-footer"><span title='2023-11-28 00:00:00 +0000 UTC'>November 28, 2023</span>&nbsp;·&nbsp;1 min</footer>
+  <a class="entry-link" aria-label="post link to 使用 rcode&#43;vscode&#43;docker 快速搭建隔离的 cuda 开发环境" href="https://lewang.dev/posts/2023-11-28-build-cuda-dev-env-with-rcode-vscode-docker/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2>使用 Docker 方式安装 Gitlab，没你想得那么简单
     </h2>
   </header>

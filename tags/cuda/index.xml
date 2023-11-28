@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Docker on 小碼哥的博客</title>
-    <link>https://lewang.dev/tags/docker/</link>
-    <description>Recent content in Docker on 小碼哥的博客</description>
+    <title>cuda on 小碼哥的博客</title>
+    <link>https://lewang.dev/tags/cuda/</link>
+    <description>Recent content in cuda on 小碼哥的博客</description>
     <image>
       <title>小碼哥的博客</title>
       <url>https://lewang.dev/lewangdev-cover.png</url>
@@ -11,7 +11,7 @@
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 28 Nov 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://lewang.dev/tags/docker/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 28 Nov 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://lewang.dev/tags/cuda/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>使用 rcode&#43;vscode&#43;docker 快速搭建隔离的 cuda 开发环境</title>
       <link>https://lewang.dev/posts/2023-11-28-build-cuda-dev-env-with-rcode-vscode-docker/</link>
@@ -26,18 +26,6 @@ sudo docker exec -it admiring_kapitsa /bin/bash 进入 console 之后，进入 /
 mkdir /root/.ssh touch /root/.ssh/authorized_keys chmod 600 /root/.ssh/authorized_keys 经过这一步操作之后，后面可以通过 ssh 直接登录到容器中。
 关闭容器 admiring_kapitsa 之后，把容器 commit 为一个本地镜像，这样以后可以重复使用
 sudo docker stop admiring_kapitsa sudo docker commit admiring_kapitsa lewangdev/cudalab 下载 faster-whisper 的代码然后重新启动一个容器，并且配置好容器的 ssh 端口，挂载 faster-whisper 项目代码到容器中，例如我这里把 8822 端口映射到容器的 22 端口，把 faster-whisper 代码挂载到容器的 /src 目录下：</description>
-    </item>
-    
-    <item>
-      <title>使用 Docker 方式安装 Gitlab，没你想得那么简单</title>
-      <link>https://lewang.dev/posts/2018-12-18-gitlab-docker-install/</link>
-      <pubDate>Tue, 18 Dec 2018 23:25:20 +0000</pubDate>
-      
-      <guid>https://lewang.dev/posts/2018-12-18-gitlab-docker-install/</guid>
-      <description>为什么要写这篇文章？ 曾经几年前在 Docker 还没有广泛应用的时候，在公司使用过源码的方式安装和升级过 Gitlab，虽远没有 Docker 方便，因为自己对 Linux 系统的理解，所以整体上感觉还是挺简单的。这几年随着 Docker 的普及，使得安装 Gitlab 更加的容易，不仅方便了我这样的老鸟，也更方便了小白用户们。但是 Gitlab 官方的 Docker 安装文档并没有写得很完善, 除了官方文档之外，检索出来的安装文档也是人云亦云，东拼西凑，结果也就是能运行起来，凑合着能用而已。避免出现下图中“我已经用 Docker 部署好啦”，其实已经翻车的情形。
-我希望每做一件小事的时候也都能抱着“知其然知其所以然”的心态对待，用 Docker 方式安装 Gitlab，说简单来说就是一行命令的事儿，但是这样就够了吗？我看是不够的，所以就有了这篇文档。
-本文需要达成的事项 在 CentOS 7 系统中安装 Docker 使用 Docker 方式安装中文版 Gitlab 和宿主机器共用 22(SSH) 端口 支持 SSH(22)/HTTPS(443) 方式推拉仓库 使用 SMTP 方式配置通知邮箱(腾讯企业邮箱) 改写默认的项目标签(Labels) 在 CentOS 7 系统中安装 Docker 这部分参考 Docker 的官方文档, 罗列一下安装步骤, 细节请看 Docker 的官方文档。如果使用 root 用户安装，sudo 可以去掉。
-1. 删除老版本 Docker $ sudo yum remove docker \ docker-client \ docker-client-latest \ docker-common \ docker-latest \ docker-latest-logrotate \ docker-logrotate \ docker-selinux \ docker-engine-selinux \ docker-engine 2.</description>
     </item>
     
   </channel>

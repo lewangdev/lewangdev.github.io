@@ -164,6 +164,18 @@ if (!doNotTrack) {
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2>树莓派 CM3/CM3&#43; 刷写系统
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>准备 阅读Flashing the Compute Module eMMC 准备一个可以刷系统的底板，我用的是微雪Compute-Module-IO-Board-Plus 步骤(Linux 系统下刷系统，可以使用树莓派来刷机) sudo apt install git libusb-1.0-0-dev git clone --depth=1 https://github.com/raspberrypi/usbboot &amp;&amp; cd usbboot &amp;&amp; make sudo ./rpiboot 连好线，跳线部分见各自底板的手册 拔掉 USB SLAVE 1/2/3/4 拔掉 SELECT 跳线帽 将 BOOT ENABLE USB SLAVE 跳线帽接到 EN 端 sudo fdisk -l 查看磁盘名称，这里是 /dev/sda sudo dd if=raspbian-lite.img of=/dev/sda bs=4MiB 刷入系统后，挂在启动分区，添加 SSH 来开启 SSH 服务，sudo mount /dev/sda1 /media cd /media &amp;&amp; touch SSH 使用慧通科技出品的 HuiBox-700 底板 省略上述的第4步，其它步骤完全一样</p>
+  </div>
+  <footer class="entry-footer"><span title='2019-03-01 00:00:00 +0000 UTC'>March 1, 2019</span>&nbsp;·&nbsp;1 min</footer>
+  <a class="entry-link" aria-label="post link to 树莓派 CM3/CM3&#43; 刷写系统" href="https://lewang.dev/posts/2019-03-01-rpi-cm3-emmc-flashing/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2>使用 Docker 方式安装 Gitlab，没你想得那么简单
     </h2>
   </header>
@@ -479,41 +491,6 @@ $ ldd ./foo_test $ ldd ./libfoo.so 对于已经运行的程序，可以这样 $ 
   </div>
   <footer class="entry-footer"><span title='2012-11-13 01:25:00 +0000 UTC'>November 13, 2012</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Le</footer>
   <a class="entry-link" aria-label="post link to 关于openlayers的一些说明" href="https://lewang.dev/posts/2012-11-13-about_openlayers/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>使用gdb根据指令地址定位到C代码对应的行
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>最近做一些Kernel方面的工作，从一头雾水开始，多做些记录吧。
-addr2line也可以根据指令地址定位C代码对应的行，但是对于Kernel module却不是很方便，使用gdb就要容易得多。
-NOTE：在使用gdb定位C代码之前需要开启-g选项编译内核或者module
-例如有这样的Call Trace
-Call Trace:
-[&lt;8033265c&gt;] dump_stack&#43;0x8/0x30
-[&lt;8003abbc&gt;] warn_slowpath_common&#43;0x70/0x98
-[&lt;80041f10&gt;] local_bh_enable_ip&#43;0x98/0xec
-[] ieee80211_alloc_node&#43;0x29c/0x47c [umac]
-[] ieee80211_reset_bss&#43;0x58/0x154 [umac]
-[] ieee80211_vap_attach&#43;0x20/0x68 [umac]
-[] ath_vap_create&#43;0x430/0x6b0 [umac]
-[] wlan_vap_create&#43;0x58/0x210 [umac]
-[] osif_ioctl_create_vap&#43;0x268/0x790 [umac]
-[] ath_ioctl&#43;0x134/0x94c [umac]
-[&lt;8022db50&gt;] dev_ioctl&#43;0x28c/0x88
-现在想定位指令：
-[&lt;80041f10&gt;] local_bh_enable_ip&#43;0x98/0xec
-可以这样做：
-$ mips-linux-gdb vmlinux
-GNU gdb 6.8
-Copyright (coffee) 2008 Free Software Foundation, Inc.
-License GPLv3&#43;: GNU GPL version 3 or later http://gnu.org/licenses/gpl.html
-This is free software: you are free to change and redistribute it....</p>
-  </div>
-  <footer class="entry-footer"><span title='2012-11-06 07:18:00 +0000 UTC'>November 6, 2012</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Le</footer>
-  <a class="entry-link" aria-label="post link to 使用gdb根据指令地址定位到C代码对应的行" href="https://lewang.dev/posts/2012-11-06-how_to_use_gdb_to_find_the_kernel_source_code/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

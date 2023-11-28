@@ -2,16 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://lewang.dev/categories/</loc>
-    <lastmod>2023-08-29T00:00:00+00:00</lastmod>
+    <loc>https://lewang.dev/tags/ai/</loc>
+    <lastmod>2023-11-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://lewang.dev/categories/folotoy/</loc>
-    <lastmod>2023-08-29T00:00:00+00:00</lastmod>
+    <loc>https://lewang.dev/categories/</loc>
+    <lastmod>2023-11-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lewang.dev/tags/cuda/</loc>
+    <lastmod>2023-11-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lewang.dev/tags/docker/</loc>
+    <lastmod>2023-11-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lewang.dev/categories/linux/</loc>
+    <lastmod>2023-11-28T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lewang.dev/posts/</loc>
-    <lastmod>2023-08-29T00:00:00+00:00</lastmod>
+    <lastmod>2023-11-28T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lewang.dev/tags/</loc>
+    <lastmod>2023-11-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lewang.dev/posts/2023-11-28-build-cuda-dev-env-with-rcode-vscode-docker/</loc>
+    <lastmod>2023-11-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lewang.dev/</loc>
+    <lastmod>2023-11-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lewang.dev/categories/folotoy/</loc>
     <lastmod>2023-08-29T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lewang.dev/tags/%E4%BA%A7%E5%93%81%E8%AE%BE%E8%AE%A1/</loc>
@@ -21,9 +39,6 @@
     <lastmod>2023-08-29T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lewang.dev/tags/%E5%88%9B%E4%B8%9A/</loc>
-    <lastmod>2023-08-29T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://lewang.dev/</loc>
     <lastmod>2023-08-29T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lewang.dev/tags/%E7%8B%AC%E7%AB%8B%E5%BC%80%E5%8F%91%E8%80%85/</loc>
@@ -184,9 +199,6 @@
   </url><url>
     <loc>https://lewang.dev/posts/2019-03-01-rpi-cm3-emmc-flashing/</loc>
     <lastmod>2019-03-01T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://lewang.dev/tags/docker/</loc>
-    <lastmod>2018-12-18T23:25:20+00:00</lastmod>
   </url><url>
     <loc>https://lewang.dev/tags/gitlab/</loc>
     <lastmod>2018-12-18T23:25:20+00:00</lastmod>

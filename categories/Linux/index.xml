@@ -1,37 +1,31 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Linux on 小碼哥</title>
-    <link>//lewang.dev/categories/Linux/</link>
-    <description>Recent content in Linux on 小碼哥</description>
+    <title>Linux on 小碼哥的博客</title>
+    <link>https://lewang.dev/categories/linux/</link>
+    <description>Recent content in Linux on 小碼哥的博客</description>
+    <image>
+      <title>小碼哥的博客</title>
+      <url>https://lewang.dev/lewangdev-cover.png</url>
+      <link>https://lewang.dev/lewangdev-cover.png</link>
+    </image>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-CN</language>
-    <lastBuildDate>Mon, 16 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="//lewang.dev/categories/Linux/index.xml" rel="self" type="application/rss+xml" />
+    <language>en</language>
+    <lastBuildDate>Tue, 28 Nov 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://lewang.dev/categories/linux/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>国内开发者可能有点用的网络工具 cndevnet</title>
-      <link>//lewang.dev/posts/2022-05-16-cndevnet-intro/</link>
-      <pubDate>Mon, 16 May 2022 00:00:00 +0000</pubDate>
+      <title>使用 rcode&#43;vscode&#43;docker 快速搭建隔离的 cuda 开发环境</title>
+      <link>https://lewang.dev/posts/2023-11-28-build-cuda-dev-env-with-rcode-vscode-docker/</link>
+      <pubDate>Tue, 28 Nov 2023 00:00:00 +0000</pubDate>
       
-      <guid>//lewang.dev/posts/2022-05-16-cndevnet-intro/</guid>
-      <description>一个国内开发者可能有点用的网络工具，cndevnet 帮助开发者，尤其是初学者不用再费心折腾 pip/npm/golang/flutter/android/blockchain 等等无法访问的问题。 背景 由于某些原因，国内开发者需要的不少技术站点或者镜像源都无法直接访问，这使得在开发者在日常工作中会消耗额外的时间，去设置各种代理或者寻找国内的可替代的镜像源来使用。 在</description>
-    </item>
-    
-    <item>
-      <title>机房不能访问互联网，轻松搞定系统部署</title>
-      <link>//lewang.dev/posts/2020-11-27-go-through-the-system-firewall/</link>
-      <pubDate>Fri, 27 Nov 2020 00:00:00 +0000</pubDate>
-      
-      <guid>//lewang.dev/posts/2020-11-27-go-through-the-system-firewall/</guid>
-      <description>创业这段时间以来，我们的 IoT 系统已经在不少客户的机房做了私有化部署，客户大多都是机加工厂、商业大楼、医院和大学实验室等，客户的机房都有一个相同的特点：私有云，与外网隔离，不能访问互联网。或者更为准确的说，是我们部署的服务器不能访问互联网，在没有互联网访问权限的情况下，系统的包管理工</description>
-    </item>
-    
-    <item>
-      <title>LVM 实战记录</title>
-      <link>//lewang.dev/posts/2017-08-03-lvm-in-action/</link>
-      <pubDate>Thu, 03 Aug 2017 23:55:00 +0000</pubDate>
-      
-      <guid>//lewang.dev/posts/2017-08-03-lvm-in-action/</guid>
-      <description>背景 阿里云云主机两块 100G 的云盘合一个逻辑卷（LV）来使用，单个的 100G 磁盘不够用，需要合在一起使用，并且方便以后扩容 基本知识 磁盘 /dev/xvdb /dev/xvdc 分区, 使用 fdisk 进行分区 fdisk &amp;gt; n &amp;gt; p &amp;gt; 1..4, 主分区最多只有4个 准备分区后，将分区类型变为 LVM 分区，fdisk &amp;gt; t &amp;gt; 8e, 8e 是 LVM 类型 ID 物理卷（PV），卷组（VG），逻辑卷（</description>
+      <guid>https://lewang.dev/posts/2023-11-28-build-cuda-dev-env-with-rcode-vscode-docker/</guid>
+      <description>昨天组装了一台GPU 开发机，我使用 rcode+vscode+docker 可以快速搭建出隔离的cuda开发环境，我感觉非常的方便。特别是 rcode 这个命令在使用 docker 构建 cuda 开发环境时非常有用。下面以搭建 faster-whisper 开发环境为例：
+faster-whisper 的项目说明里提到，NVIDIA 官方 Docker 镜像 nvidia/cuda:11.8.0-cudnn8-runtime-ubuntu22.04 已经包括了开发需要的库 cuBLAS for CUDA 11 和 cuDNN 8 for CUDA 11。执行以下命令下载并启动这个镜像，并且在启动时，安装好需要的 python 库 和 openssh-server 服务
+执行以下命令查找到刚刚启动的容器的名称
+sudo docker ps 例如我的容器名称是 admiring_kapitsa，使用以下命令进入容器的 console
+sudo docker exec -it admiring_kapitsa /bin/bash 进入 console 之后，进入 /root 目录，创建以下目录和文件，并且把自己的公钥加到 authorized_keys 中：
+mkdir /root/.ssh touch /root/.ssh/authorized_keys chmod 600 /root/.ssh/authorized_keys 经过这一步操作之后，后面可以通过 ssh 直接登录到容器中。
+关闭容器 admiring_kapitsa 之后，把容器 commit 为一个本地镜像，这样以后可以重复使用
+sudo docker stop admiring_kapitsa sudo docker commit admiring_kapitsa lewangdev/cudalab 下载 faster-whisper 的代码然后重新启动一个容器，并且配置好容器的 ssh 端口，挂载 faster-whisper 项目代码到容器中，例如我这里把 8822 端口映射到容器的 22 端口，把 faster-whisper 代码挂载到容器的 /src 目录下：</description>
     </item>
     
   </channel>

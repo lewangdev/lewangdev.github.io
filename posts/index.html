@@ -164,6 +164,25 @@ if (!doNotTrack) {
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2>一次完美的逃离公有云操作：把挂载300G数据盘的阿里云主机迁移到本地
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>在主机还有 1 天到期之前，尝试下云就成功了，节省几千块。从阿里云下载的虚拟机文件在本地用 qemu 运行没有任何问题，因为备份的磁盘文件单个接近 200GB，我还担心网络问题以及操作复杂会比较耗时间，于是先把主机降到了最低配置准备再续一个月，没想到迁移过程很丝滑。这次迁移主机的系统盘和数据盘是通过下载从阿里云的磁盘快照构建镜像来恢复的，而不是通过备份数据的方式。
+通过直接恢复虚拟机磁盘这种方式来迁移云主机，相较于通过 rsync 备份数据，要方便得多。
+以下是我的操作过程。
+阿里云导出主机镜像的文档写得还是不错的，生成和导出磁盘镜像我都是看阿里云文档来操作。第一步是打开阿里云控制台进入镜像页面，为自己的云主机创建一个镜像。我的这台主机每天都自动生成快照，并且在创建镜像之前，我手动也创建了一个永久保存的快照，我用这个永久快照来构建镜像的。
+接下来点击「导出镜像」，阿里云后台会弹出提示窗口，根据提示配置好 oss Bucket，然后耐心等待，最后在会在 oss Bucket 看到两个文件，一个是系统盘，另外一个数据盘。
+从 oss Bucket 下载文件到外网的流量是收费，我第一次直接用 http 链接下载，系统盘可以下载下来，但是数据盘下载失败了，浪费了不少的流量（钱），后来尝试用 阿里云的 ossutil 命令来下载，一次就成功了，把着两个文件下载到本地之后，接下来在本地使用 qemu 就可以把虚拟机跑起来
+我从阿里云导出的 raw 格式的镜像， qemu 可以直接使用，如果打算用 virtualbox 来运行，也可以尝试用 qumu-img 转为 virtualbox 支持的磁盘格式。我这里直接解压系统盘和数据盘文件之后，执行一下命令来构建虚拟机：
+# 使用系统盘创建虚拟机 virt-install \ --name aliyun-ci \ --osinfo centos7 \ --ram 8192 \ --vcpus 4 \ --network network=default \ --disk /var/lib/libvirt/images/aliyun-ci.raw \ --graphics vnc,listen=0.0.0.0 \ --noautoconsole --autostart \ --import # 挂载数据盘 virsh attach-disk aliyun-ci /mnt/nas/aliyun/ci/data....</p>
+  </div>
+  <footer class="entry-footer"><span title='2023-12-04 00:00:00 +0000 UTC'>December 4, 2023</span>&nbsp;·&nbsp;1 min</footer>
+  <a class="entry-link" aria-label="post link to 一次完美的逃离公有云操作：把挂载300G数据盘的阿里云主机迁移到本地" href="https://lewang.dev/posts/2023-12-04-bails-out-of-the-public-cloud/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2>使用 rcode&#43;vscode&#43;docker 快速搭建隔离的 cuda 开发环境
     </h2>
   </header>
@@ -545,19 +564,6 @@ $ sudo yum -y install xz bzip2 bzip2-devel sqlite-devel gcc openssl-devel readli
   </div>
   <footer class="entry-footer"><span title='2019-05-29 00:00:00 +0000 UTC'>May 29, 2019</span>&nbsp;·&nbsp;1 min</footer>
   <a class="entry-link" aria-label="post link to CentOS 7 上使用 pyenv 安装 Python 3.7.3" href="https://lewang.dev/posts/2019-05-29-centos7-pyenv-install-python-3/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>Java 进阶要点
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>自己学习 Java 和用 Java 过程中的理解和备忘的知识点。
-JDK 11 Oracle 不在免费提供 LTS 版本了，包括 JDK 8 ZGC, 可伸缩的、低延迟的垃圾收集器，STW 时间不超过 10ms Nashorn 标记为 Deprecate 了 JDK 9 module try-catch 简化 _ 为保留关键字 var 将在 JDK 10 中作为关键字, 作为本地变量类型推断关键字 字符串相关，主要是 Compact String, 用 byte[] 替换了 char[], char 在 Java 中占两个字节 G1 作为默认垃圾回收器 JVM 启动 JVM 相关的命令行参数 G1 垃圾回收器 内存 JVM(Hotspot) 内存结构 制造各种 OutOfMemery 和 StackOverflow 各种 JVM 相关工具(jstat/jmap/jstack/jps 等) 解决 FullGC 的问题 引用：WeakRefrence/PhantomReference/SoftRefrence/FinalRefrence 等 ClassLoader/URLClassLoader Spring Boot 的 ClassLoader 自定义 ClassLoader 多线程和并发 JVM 的线程模型 1:1 协程 创建线程的方法 线程同步 synchronzied/对象锁/类锁/锁方法/锁锁代码块 线程池 锁相关（Lock 接口和实现类） Condition volatile ThreadLocal 用途和实现 并发（CAS/乐观锁/无锁/无等待/无阻塞） 字节码 基本结构 操作字节码的工具 Javassist/ASM AOP 集合 Collection,List,ArrayList,Vector,LinkedList, SkipList, Stack Queue HashMap/HashTable HashMap 扩容死循环问题 LinkedHashMap TreeMap HashSet,TreeSet WeakHashMap 并发相关的集合 ConcurrentHashMap CopyOnWriteArrayList IO IO 模型 NIO Non-blocking IO Java 8 IO 相关的接口和类 Netty Vert....</p>
-  </div>
-  <footer class="entry-footer"><span title='2019-03-06 00:00:00 +0000 UTC'>March 6, 2019</span>&nbsp;·&nbsp;1 min</footer>
-  <a class="entry-link" aria-label="post link to Java 进阶要点" href="https://lewang.dev/posts/2019-03-06-keynotes-of-new-java/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

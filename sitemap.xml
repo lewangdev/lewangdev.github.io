@@ -2,10 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://lewang.dev/tags/ai/</loc>
-    <lastmod>2023-11-28T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://lewang.dev/categories/</loc>
+    <lastmod>2023-12-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lewang.dev/tags/cloud/</loc>
+    <lastmod>2023-12-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lewang.dev/categories/linux/</loc>
+    <lastmod>2023-12-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lewang.dev/posts/</loc>
+    <lastmod>2023-12-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lewang.dev/tags/qemu/</loc>
+    <lastmod>2023-12-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lewang.dev/tags/</loc>
+    <lastmod>2023-12-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lewang.dev/tags/wireguard/</loc>
+    <lastmod>2023-12-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lewang.dev/posts/2023-12-04-bails-out-of-the-public-cloud/</loc>
+    <lastmod>2023-12-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lewang.dev/</loc>
+    <lastmod>2023-12-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lewang.dev/tags/ai/</loc>
     <lastmod>2023-11-28T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lewang.dev/tags/cuda/</loc>
@@ -14,19 +38,7 @@
     <loc>https://lewang.dev/tags/docker/</loc>
     <lastmod>2023-11-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://lewang.dev/categories/linux/</loc>
-    <lastmod>2023-11-28T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://lewang.dev/posts/</loc>
-    <lastmod>2023-11-28T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://lewang.dev/tags/</loc>
-    <lastmod>2023-11-28T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://lewang.dev/posts/2023-11-28-build-cuda-dev-env-with-rcode-vscode-docker/</loc>
-    <lastmod>2023-11-28T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://lewang.dev/</loc>
     <lastmod>2023-11-28T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lewang.dev/categories/folotoy/</loc>
@@ -162,9 +174,6 @@
     <lastmod>2019-11-02T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lewang.dev/tags/vpn/</loc>
-    <lastmod>2019-10-30T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://lewang.dev/tags/wireguard/</loc>
     <lastmod>2019-10-30T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lewang.dev/posts/2019-10-30-wireguard-go-setup/</loc>

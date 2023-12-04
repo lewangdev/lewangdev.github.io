@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Linux on 小碼哥的博客</title>
-    <link>https://lewang.dev/categories/linux/</link>
-    <description>Recent content in Linux on 小碼哥的博客</description>
+    <title>cloud on 小碼哥的博客</title>
+    <link>https://lewang.dev/tags/cloud/</link>
+    <description>Recent content in cloud on 小碼哥的博客</description>
     <image>
       <title>小碼哥的博客</title>
       <url>https://lewang.dev/lewangdev-cover.png</url>
@@ -11,7 +11,7 @@
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 04 Dec 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://lewang.dev/categories/linux/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 04 Dec 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://lewang.dev/tags/cloud/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>一次完美的逃离公有云操作：把挂载300G数据盘的阿里云主机迁移到本地</title>
       <link>https://lewang.dev/posts/2023-12-04-bails-out-of-the-public-cloud/</link>
@@ -26,22 +26,6 @@
 从 oss Bucket 下载文件到外网的流量是收费，我第一次直接用 http 链接下载，系统盘可以下载下来，但是数据盘下载失败了，浪费了不少的流量（钱），后来尝试用 阿里云的 ossutil 命令来下载，一次就成功了，把着两个文件下载到本地之后，接下来在本地使用 qemu 就可以把虚拟机跑起来
 我从阿里云导出的 raw 格式的镜像， qemu 可以直接使用，如果打算用 virtualbox 来运行，也可以尝试用 qumu-img 转为 virtualbox 支持的磁盘格式。我这里直接解压系统盘和数据盘文件之后，执行一下命令来构建虚拟机：
 # 使用系统盘创建虚拟机 virt-install \ --name aliyun-ci \ --osinfo centos7 \ --ram 8192 \ --vcpus 4 \ --network network=default \ --disk /var/lib/libvirt/images/aliyun-ci.raw \ --graphics vnc,listen=0.0.0.0 \ --noautoconsole --autostart \ --import # 挂载数据盘 virsh attach-disk aliyun-ci /mnt/nas/aliyun/ci/data.</description>
-    </item>
-    
-    <item>
-      <title>使用 rcode&#43;vscode&#43;docker 快速搭建隔离的 cuda 开发环境</title>
-      <link>https://lewang.dev/posts/2023-11-28-build-cuda-dev-env-with-rcode-vscode-docker/</link>
-      <pubDate>Tue, 28 Nov 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://lewang.dev/posts/2023-11-28-build-cuda-dev-env-with-rcode-vscode-docker/</guid>
-      <description>昨天组装了一台GPU 开发机，我使用 rcode+vscode+docker 可以快速搭建出隔离的cuda开发环境，我感觉非常的方便。特别是 rcode 这个命令在使用 docker 构建 cuda 开发环境时非常有用。下面以搭建 faster-whisper 开发环境为例：
-faster-whisper 的项目说明里提到，NVIDIA 官方 Docker 镜像 nvidia/cuda:11.8.0-cudnn8-runtime-ubuntu22.04 已经包括了开发需要的库 cuBLAS for CUDA 11 和 cuDNN 8 for CUDA 11。执行以下命令下载并启动这个镜像，并且在启动时，安装好需要的 python 库 和 openssh-server 服务
-执行以下命令查找到刚刚启动的容器的名称
-sudo docker ps 例如我的容器名称是 admiring_kapitsa，使用以下命令进入容器的 console
-sudo docker exec -it admiring_kapitsa /bin/bash 进入 console 之后，进入 /root 目录，创建以下目录和文件，并且把自己的公钥加到 authorized_keys 中：
-mkdir /root/.ssh touch /root/.ssh/authorized_keys chmod 600 /root/.ssh/authorized_keys 经过这一步操作之后，后面可以通过 ssh 直接登录到容器中。
-关闭容器 admiring_kapitsa 之后，把容器 commit 为一个本地镜像，这样以后可以重复使用
-sudo docker stop admiring_kapitsa sudo docker commit admiring_kapitsa lewangdev/cudalab 下载 faster-whisper 的代码然后重新启动一个容器，并且配置好容器的 ssh 端口，挂载 faster-whisper 项目代码到容器中，例如我这里把 8822 端口映射到容器的 22 端口，把 faster-whisper 代码挂载到容器的 /src 目录下：</description>
     </item>
     
   </channel>

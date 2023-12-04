@@ -151,6 +151,40 @@ if (!doNotTrack) {
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2>openlayers小结(有参考项目代码)
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>最近一段时间里，又做了一个跟openlayers相关的项目，但是到目前为止，我对openlayers还是不怎么了解，做东西也只是参考了openlayers的例子，以及自己的一些对openlayers用法的一些猜测。openlayers是一个用js实现的GIS前端框架，我的js目前还是打酱油的水平，要是没有jquery，那就基本写不了几行js代码了。js那是相当的强大，再加上VML\SVG、HTML5以及很多js rich框架等等，感觉js在浏览器端真是无所不能啊
+目前这个项目主要功能就是在某城市的地图上标示电缆、光缆、井盖、光缆接头、线杆、建筑物形状和位置、各分级单位的位置以及快速定位等等，要求的功能很简单，而且有前段时间做学校电子地图的一些积累，所以大概在两周左右就做完了这个项目。
+感觉openlayers的资料很少，自己也没有太多的时间和精力去读它的源码，目前我都是通过看openlayers自带的那些example和api文档来摸索的，下面简单总结一下openlayers的相关用法，欢迎大家拍砖。
+（以下均以OpenLayers-2.9.1为例说明，完整的项目代码在这里下载,地图图片http://121.193.130.68/list/）
+1、我只用到了openlayers里面的tilecache接口，其它的例如WMS，google map等等都没有用到。原因是这样的。tilecache接口是用来从tilecache服务器上请求图片的。通过观察google map或者一些其它的地图服务，发现他们都是使用256x256像素大小的图片（也就是tile）来拼接地图的，通常的做法是在gis服务器之间架设一个tilecache服务器，这样，gis生成的图片就可以缓存在tilecahe服务器上，而tilecache服务器仅仅提供简单http服务即可，如果请求的图片(tile)不在tilecache服务器上，那么tilecache服务器会想gis服务器请求，把把gis生成的图片缓存在tilecache服务器上。
+通过观察tilecache服务器的目录结构，发现缓存图片按照这样的模具结构存放：{缩放级别}/{横坐标}/{纵坐标}.{图片格式后缀名}，注意这个坐标系的原点在屏幕的左下角。观察到这个规律以后，就可以直接把一张大的地图按照256x256的大小切割，并按照上述的目录结构存放，值得注意的是，每个缩放级别要一定满足2^n的规律，即第一级整个地图大小若为1，那么第二级整个地图大小应为2，第三级应为4，依次类推。这里需要简单修改一下openlayers的tilecache接口代码，文件位于OpenLayers-2.9.1\lib\OpenLayers\Layer\TileCache.js,修改如下：
+1 var components = [
+2 this.layername,
+3 zeroPad(tileZ, 2),
+4 //zeroPad(parseInt(tileX / 1000000), 3),
+5 //zeroPad((parseInt(tileX / 1000) % 1000), 3),
+6 zeroPad((parseInt(tileX) % 1000), 3),
+7 //zeroPad(parseInt(tileY / 1000000), 3),
+8 //zeroPad((parseInt(tileY / 1000) % 1000), 3),
+9 zeroPad((parseInt(tileY) % 1000), 3) &#43; ‘.’ &#43; this.extension
+10 ];
+同样，由于只使用tilecache，所以openlayers里面其它的代码也可删除，以减小openlayers的代码量，最后通过自带的python写的工具，压缩openlayers代码即可。
+2.地图初次加载的时候，向服务器请求所有数据信息，并在地图上绘出相应的点线面。如何画出建筑的轮廓？用透明的就行了。
+a.显示点信息,包括画点、用图标显示点，代码如下。
+1 /*
+2 * 在地图上画出所有的点并保存点的相关信息到字典中
+3 */
+4 function initFeaturePoint(vectorLayer,categoryId){...</p>
+  </div>
+  <footer class="entry-footer"><span title='2010-10-11 12:42:00 +0000 UTC'>October 11, 2010</span>&nbsp;·&nbsp;5 min&nbsp;·&nbsp;Le</footer>
+  <a class="entry-link" aria-label="post link to openlayers小结(有参考项目代码)" href="https://lewang.dev/posts/2010-10-11-how_to_do_with_openlayers/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2>小记盛大校园牛人创新技术大赛
     </h2>
   </header>

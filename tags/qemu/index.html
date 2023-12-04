@@ -5,11 +5,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>WireGuard | 小碼哥的博客</title>
+<title>qemu | 小碼哥的博客</title>
 <meta name="keywords" content="">
 <meta name="description" content="我是小码哥，时常会分享一些关于创业/产品/Web开发/效率/DevOps/玩等方面的东西">
 <meta name="author" content="">
-<link rel="canonical" href="https://lewang.dev/tags/wireguard/">
+<link rel="canonical" href="https://lewang.dev/tags/qemu/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.css" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://lewang.dev/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://lewang.dev/favicon-16x16.png">
@@ -18,7 +18,7 @@
 <link rel="mask-icon" href="https://lewang.dev/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" type="application/rss+xml" href="https://lewang.dev/tags/wireguard/index.xml">
+<link rel="alternate" type="application/rss+xml" href="https://lewang.dev/tags/qemu/index.xml">
 <noscript>
     <style>
         #theme-toggle,
@@ -66,15 +66,15 @@ if (!doNotTrack) {
 	gtag('config', 'G-12QS222X0Z', { 'anonymize_ip': false });
 }
 </script>
-<meta property="og:title" content="WireGuard" />
+<meta property="og:title" content="qemu" />
 <meta property="og:description" content="我是小码哥，时常会分享一些关于创业/产品/Web开发/效率/DevOps/玩等方面的东西" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://lewang.dev/tags/wireguard/" /><meta property="og:image" content="https://lewang.dev/lewangdev-cover.png"/>
+<meta property="og:url" content="https://lewang.dev/tags/qemu/" /><meta property="og:image" content="https://lewang.dev/lewangdev-cover.png"/>
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://lewang.dev/lewangdev-cover.png"/>
 
-<meta name="twitter:title" content="WireGuard"/>
+<meta name="twitter:title" content="qemu"/>
 <meta name="twitter:description" content="我是小码哥，时常会分享一些关于创业/产品/Web开发/效率/DevOps/玩等方面的东西"/>
 
 </head>
@@ -135,7 +135,7 @@ if (!doNotTrack) {
 <main class="main"> 
 <header class="page-header"><div class="breadcrumbs"><a href="https://lewang.dev">Home</a>&nbsp;»&nbsp;<a href="https://lewang.dev/tags/">Tags</a></div>
   <h1>
-    WireGuard
+    qemu
     <a href="index.xml" title="RSS" aria-label="RSS">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
         stroke-linecap="round" stroke-linejoin="round" height="23">
@@ -164,21 +164,6 @@ if (!doNotTrack) {
   </div>
   <footer class="entry-footer"><span title='2023-12-04 00:00:00 +0000 UTC'>December 4, 2023</span>&nbsp;·&nbsp;1 min</footer>
   <a class="entry-link" aria-label="post link to 一次完美的逃离公有云操作：把挂载300G数据盘的阿里云主机迁移到本地" href="https://lewang.dev/posts/2023-12-04-bails-out-of-the-public-cloud/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2>WireGuard 使用简介
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>背景 搭建 VPN 方便连接无公网 IP 云主机进行开发，WireGuard 配置比 OpenVPN 要简单很多，WireGuard 是通过 Linux 内核模块的方式实现的，这样性能最好，但是只能用在 Linux 系统上。本文使用的 wireguard-go， 则是使用 Golang 实现的 WireGuard 协议，属于用户空间(User Space)的实现，性能没有内核模块方式好，但好处就是跨平台且更简单易用。
-VPN 的用处非常的多，不像 frp 之类的端口穿透应用，它是直接建立虚拟的网络，网络中的每个客户端也都可以拥有自己独立的 IP，于是测试调试就没有了端口的限制，非常的方便。
-除了方便安全连接云服务器，还可以通过 VPN 搭建工业设备的远程部署和维护的解决方案。
-编译 wireguard-go # 使用 GitHub 的源码镜像，速度会快一些 git clone git@github.com:wireguard/wireguard-go.git # 在 MacOS 下交叉编译 CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -v -o &#34;wireguard-go&#34; # Linux 环境下直接编译 go build -v -o &#34;wireguard-go&#34; cp wireguard-go /usr/sbin/ 编译 WireGuard tools git clone git@github.com:wireguard/wireguard.git # 安装依赖 ## debian&amp;ubuntu sudo apt-get install libmnl-dev libelf-dev ## centos sudo yum install libmnl-devel elfutils-libelf-devel cd wireguard/src/tools make sudo make install 配置 WireGuard 生成密钥...</p>
-  </div>
-  <footer class="entry-footer"><span title='2019-10-30 00:00:00 +0000 UTC'>October 30, 2019</span>&nbsp;·&nbsp;2 min</footer>
-  <a class="entry-link" aria-label="post link to WireGuard 使用简介" href="https://lewang.dev/posts/2019-10-30-wireguard-go-setup/"></a>
 </article>
     </main>
     

@@ -208,7 +208,7 @@ if (!doNotTrack) {
 
 <article class="post-single">
   <header class="post-header">
-    <div class="breadcrumbs"><a href="https://lewang.dev">Home</a>&nbsp;»&nbsp;<a href="https://lewang.dev/posts/">Posts</a></div>
+    
     <h1 class="post-title">
       一次完美的逃离公有云操作：把挂载300G数据盘的阿里云主机迁移到本地
     </h1>
@@ -218,11 +218,19 @@ if (!doNotTrack) {
   </header> 
 
   <div class="post-content"><p>在主机还有 1 天到期之前，尝试下云就成功了，节省几千块。从阿里云下载的虚拟机文件在本地用 qemu 运行没有任何问题，因为备份的磁盘文件单个接近 200GB，我还担心网络问题以及操作复杂会比较耗时间，于是先把主机降到了最低配置准备再续一个月，没想到迁移过程很丝滑。这次迁移主机的系统盘和数据盘是通过下载从阿里云的磁盘快照构建镜像来恢复的，而不是通过备份数据的方式。</p>
+<p><img loading="lazy" src="https://github.com/lewangdev/picb0/raw/main/20231204/ia.5ezf0mllzgo0.webp" alt="ia"  />
+</p>
 <p>通过直接恢复虚拟机磁盘这种方式来迁移云主机，相较于通过 rsync 备份数据，要方便得多。</p>
 <p>以下是我的操作过程。</p>
 <p>阿里云导出主机镜像的文档写得还是不错的，生成和导出磁盘镜像我都是看阿里云文档来操作。第一步是打开阿里云控制台进入镜像页面，为自己的云主机创建一个镜像。我的这台主机每天都自动生成快照，并且在创建镜像之前，我手动也创建了一个永久保存的快照，我用这个永久快照来构建镜像的。</p>
+<p><img loading="lazy" src="https://github.com/lewangdev/picb0/raw/main/20231204/ZARS-ECS-IS.3wped36593m0.webp" alt="ZARS-ECS-IS"  />
+</p>
 <p>接下来点击「导出镜像」，阿里云后台会弹出提示窗口，根据提示配置好 oss Bucket，然后耐心等待，最后在会在 oss Bucket 看到两个文件，一个是系统盘，另外一个数据盘。</p>
+<p><img loading="lazy" src="https://github.com/lewangdev/picb0/raw/main/20231204/ci-2312021-12.19yswfwvtt34.webp" alt="ci-2312021-12"  />
+</p>
 <p>从 oss Bucket 下载文件到外网的流量是收费，我第一次直接用 http 链接下载，系统盘可以下载下来，但是数据盘下载失败了，浪费了不少的流量（钱），后来尝试用 阿里云的 ossutil 命令来下载，一次就成功了，把着两个文件下载到本地之后，接下来在本地使用 qemu 就可以把虚拟机跑起来</p>
+<p><img loading="lazy" src="https://github.com/lewangdev/picb0/raw/main/20231204/F.5npbj8f0vuc0.webp" alt="F"  />
+</p>
 <p>我从阿里云导出的 raw 格式的镜像， qemu 可以直接使用，如果打算用 virtualbox 来运行，也可以尝试用 qumu-img 转为 virtualbox 支持的磁盘格式。我这里直接解压系统盘和数据盘文件之后，执行一下命令来构建虚拟机：</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># 使用系统盘创建虚拟机</span>
 </span></span><span class="line"><span class="cl">virt-install <span class="se">\
@@ -242,6 +250,8 @@ if (!doNotTrack) {
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">virt-edit system.raw /etc/shadow
 </span></span></code></pre></div><p>将文件中加密后的字符串删除，虚拟机开机后 root 用户不需要密码就可以直接登录，登录后再修改一下密码就行了。</p>
 <p>进入启动之后虚拟机，修改一下网络配置，另外我还安装配置了 WireGuard，把这台导出的虚拟机连到了我的阿里云内网中，这样虚拟机中服务几乎不用修改，就恢复正常访问了。</p>
+<p><img loading="lazy" src="https://github.com/lewangdev/picb0/raw/main/20231204/Swpi.730b3es8t200.webp" alt="Swpi"  />
+</p>
 
 
   </div>
